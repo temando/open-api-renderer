@@ -1,0 +1,61 @@
+var webpack = require('webpack');
+var path = require('path');
+var config = require('config');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+  name: 'browser',
+  devtool: 'source-map',
+  entry: [
+    'webpack-dev-server/client?http://' + config.webpackHost + ':' + config.webpackPort,
+    path.join(__dirname, 'client/index.jsx')
+  ],
+  output: {
+    path: path.resolve(__dirname, 'client'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'client'),
+    // devtool: 'eval',
+    compress: false,
+    // inline: true,
+    port: config.webpackPort,
+    historyApiFallback: true
+  },
+  resolve: {
+    modules: ['client/', 'node_modules'],
+    extensions: ['.js', '.jsx', '.json']
+  },
+  plugins: [
+    new ExtractTextPlugin('bundle.css')
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js?/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }, {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: "css-loader", options: {
+              sourceMap: true
+            }
+          }, {
+            loader: "sass-loader", options: {
+              sourceMap: true
+            }
+          }]
+        ,
+          allChunks: true
+        })
+      }
+    ]
+  }
+};
