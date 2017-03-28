@@ -8,23 +8,21 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     'webpack-dev-server/client?http://' + config.webpackHost + ':' + config.webpackPort,
-    path.join(__dirname, 'client/index.jsx')
+    path.join(__dirname, 'src/index.jsx')
   ],
   output: {
-    path: path.resolve(__dirname, 'client'),
+    path: path.resolve(__dirname, 'src'),
     filename: 'bundle.js',
     publicPath: '/'
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'client'),
-    // devtool: 'eval',
+    contentBase: path.resolve(__dirname, 'src'),
     compress: false,
-    // inline: true,
     port: config.webpackPort,
     historyApiFallback: true
   },
   resolve: {
-    modules: ['client/', 'node_modules'],
+    modules: ['src/', 'node_modules'],
     extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
