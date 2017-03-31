@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     'webpack-dev-server/client?http://' + config.webpackHost + ':' + config.webpackPort,
-    path.join(__dirname, 'src/index.jsx')
+    path.join(__dirname, 'src/index.js')
   ],
   output: {
     path: path.resolve(__dirname, 'src'),

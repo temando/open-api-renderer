@@ -1,0 +1,16 @@
+@import '../../base.scss';
+
+.nav {
+  display: table-cell;
+  width: 20%;
+  background-color: $grey;
+  padding: 20px;
+}
+
+.nav-level1 {
+  text-transform: uppercase;
+}
+
+.nav-level2 {
+  text-indent: 10px;
+}
