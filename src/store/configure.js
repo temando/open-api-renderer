@@ -3,11 +3,14 @@ import thunkMiddleware from 'redux-thunk';
 //import createHistory from 'history/createBrowserHistory';
 import { routerReducer } from 'react-router-redux';
 
+import definitionReducer from './definition/reducer';
+
 //export const history = createHistory();
 
 export default function configureStore(initialState = window.STATE_FROM_SERVER) {
   const reducer = combineReducers({
-    routing: routerReducer
+    routing: routerReducer,
+    definition: definitionReducer
   });
 
   const additionalStoreEnhancers = [
