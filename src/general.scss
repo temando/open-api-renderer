@@ -1,5 +1,9 @@
 @import './base.scss';
 
+html, #app, .main {
+  height: 100%;
+}
+
 body {
   height: 100%;
   margin: 0;

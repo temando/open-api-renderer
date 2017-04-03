@@ -1,7 +1,12 @@
 @import '../../base.scss';
 
 .page {
-  display: table;
   width: 100%;
   height: 100%;
+}
+
+.page-main {
+  margin-left: 20%;
+  width: 80%;
+  box-sizing: border-box;
 }

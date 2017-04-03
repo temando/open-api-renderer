@@ -1,0 +1,29 @@
+@import '../../base.scss';
+
+.property {
+  display: table-row;
+}
+
+.property-name,
+.property-info {
+  display: table-cell;
+  padding: 10px;
+}
+
+.property-name {
+  vertical-align: middle;
+}
+
+.property-info {
+  width: 80%;
+}
+
+.property+.property {
+  .property-info {
+    border-top: 1px solid black;
+  }
+}
+
+.property-required {
+  color: red;
+}

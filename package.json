@@ -17,6 +17,7 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-1": "^6.22.0",
+    "classnames": "^2.2.5",
     "config": "^1.25.1",
     "css-loader": "^0.27.3",
     "eslint": "^3.18.0",

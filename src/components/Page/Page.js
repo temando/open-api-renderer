@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 import ContentContainer from 'components/ContentContainer/ContentContainer';
 import ServiceContainer from 'components/ServiceContainer/ServiceContainer';
@@ -14,16 +15,22 @@ export default class Page extends Component {
     return (
       <div className="page">
         <Navigation navigation={navigation} />
-        <ContentContainer>
-          {services.map((service) => {
-            return (
-              <ServiceContainer
-                key={service.get('title')}
-                service={service}
-              />
-            );
-          }).toArray()}
-        </ContentContainer>
+        <div className="page-main">
+           <Header
+            definitionTitle={definition.get('title')}
+            version={definition.get('version')}
+          />
+          <ContentContainer>
+            {services.map((service) => {
+              return (
+                <ServiceContainer
+                  key={service.get('title')}
+                  service={service}
+                />
+              );
+            }).toArray()}
+          </ContentContainer>
+        </div>
       </div>
     );
   }

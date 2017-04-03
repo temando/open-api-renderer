@@ -1,14 +1,19 @@
 @import '../../base.scss';
 
 .nav {
-  display: table-cell;
   width: 20%;
-  background-color: $grey;
+  height: 100%;
   padding: 20px;
+  vertical-align: top;
+  background-color: $grey;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
 }
 
 .nav-level1 {
-  text-transform: uppercase;
+  margin-top: 10px;
+  //text-transform: uppercase;
 }
 
 .nav-level2 {

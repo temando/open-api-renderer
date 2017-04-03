@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import './Property.scss';
+import './Property.scss';
 
 export default class Property extends Component {
   render() {
