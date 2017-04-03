@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Element } from 'react-scroll';
 
 import Method from 'components/Method/Method';
 
@@ -8,9 +9,10 @@ export default class ServiceContainer extends Component {
   render() {
     const { service } = this.props;
     const methods = service.get('methods');
+    const title = service.get('title');
     return (
-      <div className="service-container">
-        <h2>{service.get('title')}</h2>
+      <Element className="service-container" name={title} id={title}>
+        <h2>{title}</h2>
         {methods.map((method) => {
           return (
             <Method
@@ -19,7 +21,7 @@ export default class ServiceContainer extends Component {
             />
           );
         }).toArray()}
-      </div>
+      </Element>
     );
   }
 }
