@@ -1,0 +1,15 @@
+@import '../../base.scss';
+
+.header {
+  height: 60px;
+  line-height: 60px;
+  text-indent: 20px;
+}
+
+h1 {
+  display: inline;
+}
+
+.header-version {
+  float: right;
+}

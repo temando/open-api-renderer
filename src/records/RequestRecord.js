@@ -3,7 +3,8 @@ import createImmutableFromJS from 'utils/createImmutableFromJS';
 
 export const RequestObject = {
   description: undefined,
-  schema: undefined //map or list of PropertyRecord
+  schema: undefined, //map or list of PropertyRecord
+  example: undefined
 };
 
 const BaseRecord = Immutable.Record(RequestObject);

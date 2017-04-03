@@ -1,0 +1,34 @@
+@import '../../base.scss';
+
+.body-schema, .body-example {
+  display: table;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.body-tabs {
+  position: relative;
+  top: 2px;
+}
+
+.body-tabs > div {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-left: none;
+  background-color: $grey;
+  cursor: pointer;
+  &:first-child {
+    border-left: 2px solid black;
+  }
+}
+
+.body-tabs > div.active {
+  background-color: white;
+  border-bottom: none;
+  padding-bottom: 12px;
+}
+
+.body-example {
+  padding: 10px;
+}

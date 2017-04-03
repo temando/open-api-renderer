@@ -19,7 +19,7 @@ class BaseHandler extends Component {
     const { definition } = this.props;
     return (
       <DocumentTitle title="Open API v3 renderer">
-        <div>
+        <div className="main">
           {!definition && "Welcome to Temando's new Open API Renderer. Watch this space!"}
           {definition && <Page definition={definition} />}
         </div>

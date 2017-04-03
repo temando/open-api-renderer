@@ -6,17 +6,16 @@ import BodySchema from 'components/BodySchema/BodySchema';
 
 export default class Request extends Component {
   render() {
-    const { description, schema } = this.props;
+    const { request } = this.props;
     return (
       <div className="request">
-        <div className="request-description">{description}</div>
-        <BodySchema properties={schema} />
+        <div className="request-description">{request.get('description')}</div>
+        <BodySchema properties={request.get('schema')} example={request.get('example')} />
       </div>
     );
   }
 }
 
 Request.propTypes = {
-  description: React.PropTypes.string,
-  schema: React.PropTypes.object
+  request: React.PropTypes.object
 };

@@ -4,15 +4,17 @@ import './Header.scss';
 
 export default class Header extends Component {
   render() {
+    const { definitionTitle, version } = this.props;
     return (
       <div className="header">
-        
+        <h1>{definitionTitle}</h1>
+        <span className="header-version">{version}</span>
       </div>
     );
   }
 }
 
 Header.propTypes = {
-  title: React.PropTypes.string,
-  version: React.PropTypes.version
+  definitionTitle: React.PropTypes.string,
+  version: React.PropTypes.string
 };
