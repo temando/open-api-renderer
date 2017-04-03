@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Element } from 'react-scroll';
 
 import BodySchema from 'components/BodySchema/BodySchema';
 import Request from 'components/Request/Request';
@@ -21,13 +22,13 @@ export default class Method extends Component {
     const request = method.get('request');
     const responses = method.get('responses');
     return (
-      <div className="method">
+      <Element className="method" name={method.get('link')}>
         <h3>{method.get('summary')}</h3>
         <div className="method-description">{method.get('description')}</div>
         {parameters && this.renderParameters(parameters)}
         {request && this.renderRequest(request)}
         {responses && this.renderResponses(responses)}
-      </div>
+      </Element>
     );
   }
 

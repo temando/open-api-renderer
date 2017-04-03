@@ -27,11 +27,11 @@ const definition = new Immutable.Map({
       methods: new Immutable.Map({
         post: new Immutable.Map({
           title: "POST /shipments",
-          link: "#order/post"
+          link: "#shipment/post"
         }),
         get: new Immutable.Map({
           title: "GET /shipments",
-          link: "#order/get"
+          link: "#shipment/get"
         })
       })
     })
@@ -42,6 +42,7 @@ const definition = new Immutable.Map({
       methods: new Immutable.Map({
         post: new Immutable.Map({
           type: "POST",
+          link: "#order/post",
           summary: "POST /orders",
           description: "Method description",
           request: RequestRecord.createFromJS({
@@ -81,6 +82,7 @@ const definition = new Immutable.Map({
         get: new Immutable.Map({
           type: "GET",
           summary: "GET /orders",
+          link: "#order/get",
           description: "Method description",
           parameters: new Immutable.Map({
             query: new Immutable.Map({
@@ -100,6 +102,7 @@ const definition = new Immutable.Map({
       methods: new Immutable.Map({
         post: new Immutable.Map({
           type: "POST",
+          link: "#shipment/post",
           summary: "POST /shipments",
           description: "Method description",
           request: RequestRecord.createFromJS({
@@ -115,7 +118,7 @@ const definition = new Immutable.Map({
                 name: "property2",
                 type: "string",
                 description: "Property2 description",
-                required: false
+                required: true
               })
             }),
             example: "{some: json}"
@@ -138,6 +141,7 @@ const definition = new Immutable.Map({
         }),
         get: new Immutable.Map({
           type: "GET",
+          link: "#shipment/get",
           summary: "GET /shipments",
           description: "Method description",
           parameters: new Immutable.Map({

@@ -3,7 +3,6 @@
 .nav {
   width: 20%;
   height: 100%;
-  padding: 20px;
   vertical-align: top;
   background-color: $grey;
   position: fixed;
@@ -12,10 +11,21 @@
 }
 
 .nav-level1 {
+  display: block;
+  padding: 5px 20px;
   margin-top: 10px;
-  //text-transform: uppercase;
+  cursor: pointer;
+  &.active {
+    background-color: $grey-dark;
+  }
 }
 
 .nav-level2 {
+  display: block;
+  padding: 5px 20px;
   text-indent: 10px;
+  cursor: pointer;
+  &.active {
+    background-color: $grey-dark;
+  }
 }
