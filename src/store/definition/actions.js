@@ -59,6 +59,12 @@ const definition = new Immutable.Map({
                 type: "string",
                 description: "Property2 description",
                 required: false
+              }),
+              property3: PropertyRecord.createFromJS({
+                name: "property3",
+                type: "string",
+                description: "Property3 description",
+                required: true
               })
             }),
             example: "{some: json}"
