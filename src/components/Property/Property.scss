@@ -1,5 +1,11 @@
 @import '../../base.scss';
 
+$tree-line-width: 1px;
+$tree-border-style: $tree-line-width solid red;
+$tree-border-erase: $tree-line-width solid white;
+$line-height: 40px;
+$cell-padding: 10px;
+
 .property {
   display: table-row;
 }
@@ -7,11 +13,18 @@
 .property-name,
 .property-info {
   display: table-cell;
-  padding: 10px;
+  padding: $cell-padding;
 }
 
 .property-name {
   vertical-align: middle;
+  position: relative;
+  span {
+    display: inline-block;
+    padding-left: $cell-padding;
+    line-height: $line-height;
+    vertical-align: middle;
+  }
 }
 
 .property-info {
@@ -27,4 +40,54 @@
 .property-required {
   margin-left: 10px;
   color: red;
+}
+
+/* Tree */
+
+.property-name {
+  border-left: $tree-border-style;
+  span::before {
+    content: '';
+    display: inline-block;
+    width: $cell-padding;
+    height: $tree-line-width + 6;
+    vertical-align: middle;
+    border-left: $tree-border-style;
+  }
+  span::after {
+    content: '';
+    border-top: $tree-border-style;
+    width: 2 * $cell-padding;
+    position: absolute;
+    left: 0;
+    top: ($line-height + 2 * $cell-padding) / 2 + 1;
+  }
+}
+
+.property {
+  &:only-child {
+    .property-name {
+      border: $tree-border-erase;
+    }
+  }
+  &:first-child {
+    .property-name::before {
+      content: '';
+      border-left: $tree-border-erase;
+      position: absolute;
+      top: 0;
+      left: -$tree-line-width;
+      height: ($line-height + 2 * $cell-padding) / 2 + 1;
+    }
+  }
+  &:last-child {
+    .property-name::before {
+      content: '';
+      border-left: $tree-border-erase;
+      position: absolute;
+      bottom: 0;
+      left: -$tree-line-width;
+      height: ($line-height + 2 * $cell-padding) / 2 - ($tree-line-width + 1);
+    }
+  }
 }

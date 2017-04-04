@@ -7,7 +7,7 @@ export default class Property extends Component {
     const { name, type, description, required } = this.props;
     return (
       <div className="property">
-        <div className="property-name">{name}</div>
+        <div className="property-name"><span>{name}</span></div>
         <div className="property-info">
           <span>{type}</span>
           {required && <span className="property-required">Required</span>}
