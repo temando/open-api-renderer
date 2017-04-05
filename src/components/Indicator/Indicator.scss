@@ -1,0 +1,10 @@
+@import '../../base.scss';
+
+.indicator {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.indicator--open img {
+  transform: rotate(180deg);
+}

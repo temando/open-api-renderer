@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Property from 'components/Property/Property';
 
@@ -11,6 +12,10 @@ export default class BodySchema extends Component {
 
     this.renderPropertyRow = this.renderPropertyRow.bind(this);
     this.renderSubsetProperties = this.renderSubsetProperties.bind(this);
+
+    this.state = {
+      expandedProp: null
+    };
   }
 
   render() {
@@ -19,11 +24,13 @@ export default class BodySchema extends Component {
       <table className="body-schema">
         <tbody>
           {properties.map((property) => {
-            if (property.get('type') === 'object') {
+            if (property.get('type') === 'object' && this.state.expandedProp === property.get('name')) {
               return createFragment({
-                property: this.renderPropertyRow(property),
+                property: this.renderPropertyRow(property, true),
                 subset: this.renderSubsetProperties(property)
               });
+            } else if (property.get('type') === 'object') {
+              return this.renderPropertyRow(property, false);
             } else {
               return this.renderPropertyRow(property);
             }
@@ -33,7 +40,7 @@ export default class BodySchema extends Component {
     );
   }
 
-  renderPropertyRow(property) {
+  renderPropertyRow(property, isOpen) {
     return (
       <Property
         key={property.get('name')}
@@ -41,6 +48,8 @@ export default class BodySchema extends Component {
         type={property.get('type')}
         description={property.get('description')}
         required={property.get('required')}
+        onClick={this.onClick.bind(this, property.get('name'))}
+        isOpen={isOpen}
       />
     );
   }
@@ -49,13 +58,29 @@ export default class BodySchema extends Component {
     return (
       <tr className="body-schema-subset">
         <td colSpan="100">
-          <BodySchema
-            key={`${property.get('name')}-properties`}
-            properties={property.get('properties')}
-          />
+          <ReactCSSTransitionGroup
+            transitionName="schema-slide-toggle"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+            transitionAppear
+            transitionAppearTimeout={500}
+          >
+            <BodySchema
+              key={`${property.get('name')}-properties`}
+              properties={property.get('properties')}
+            />
+          </ReactCSSTransitionGroup>
         </td>
       </tr>
     );
+  }
+
+  onClick(propertyName) {
+    if (this.state.expandedProp === propertyName) {
+      this.setState({ expandedProp: null });
+    } else {
+      this.setState({ expandedProp: propertyName });
+    }
   }
 }
 

@@ -7,3 +7,14 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+.schema-slide-toggle-appear,
+.schema-slide-toggle-enter {
+  max-height: 0;
+}
+
+.schema-slide-toggle-appear.schema-slide-toggle-appear-active,
+.schema-slide-toggle-enter.schema-slide-toggle-enter-active {
+  max-height: 1500px;
+  transition: max-height 500ms ease-in;
+}
