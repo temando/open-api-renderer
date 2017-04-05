@@ -6,14 +6,14 @@ export default class Property extends Component {
   render() {
     const { name, type, description, required } = this.props;
     return (
-      <div className="property">
-        <div className="property-name"><span>{name}</span></div>
-        <div className="property-info">
+      <tr className="property">
+        <td className="property-name"><span>{name}</span></td>
+        <td className="property-info">
           <span>{type}</span>
           {required && <span className="property-required">Required</span>}
-          <div className="property-description">{description}</div>
-        </div>
-      </div>
+          {description && <div className="property-description">{description}</div>}
+        </td>
+      </tr>
     );
   }
 }

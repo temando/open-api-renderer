@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+import createFragment from 'react-addons-create-fragment';
 
 import Property from 'components/Property/Property';
 
@@ -9,85 +9,56 @@ export default class BodySchema extends Component {
   constructor(props) {
     super(props);
 
-    this.renderTabs = this.renderTabs.bind(this);
-    this.renderSchema = this.renderSchema.bind(this);
-    this.renderExample = this.renderExample.bind(this);
-
-    this.state = {
-      tab: 'schema'
-    };
+    this.renderPropertyRow = this.renderPropertyRow.bind(this);
+    this.renderSubsetProperties = this.renderSubsetProperties.bind(this);
   }
 
   render() {
-    const { properties, example } = this.props;
-    const { tab } = this.state;
+    const { properties } = this.props;
     return (
-      <div className="body">
-        {example && this.renderTabs()}
-        {tab === 'schema' && this.renderSchema(properties)}
-        {tab === 'example' && this.renderExample(example)}
-      </div>
+      <table className="body-schema">
+        <tbody>
+          {properties.map((property) => {
+            if (property.get('type') === 'object') {
+              return createFragment({
+                property: this.renderPropertyRow(property),
+                subset: this.renderSubsetProperties(property)
+              });
+            } else {
+              return this.renderPropertyRow(property);
+            }
+          }).toArray()}
+        </tbody>
+      </table>
     );
   }
 
-  renderTabs() {
-    const { tab } = this.state;
+  renderPropertyRow(property) {
     return (
-      <div className="body-tabs">
-        <div
-          role="button"
-          onClick={() => this.setState({ tab: 'schema'})}
-          className={classNames({
-            'active': (tab === 'schema')
-          })}
-        >
-          Schema
-        </div>
-        <div
-          role="button"
-          onClick={() => this.setState({ tab: 'example'})}
-          className={classNames({
-            'active': (tab === 'example')
-          })}
-        >
-          Example
-        </div>
-      </div>
+      <Property
+        key={property.get('name')}
+        name={property.get('name')}
+        type={property.get('type')}
+        description={property.get('description')}
+        required={property.get('required')}
+      />
     );
   }
 
-  renderSchema(properties) {
+  renderSubsetProperties(property) {
     return (
-      <div className="body-schema">
-        {properties.map((property) => {
-          if (property.get('type') === 'object') {
-            return <BodySchema properties={property} />
-          } else {
-            return (
-              <Property
-                key={property.get('name')}
-                name={property.get('name')}
-                type={property.get('type')}
-                description={property.get('description')}
-                required={property.get('required')}
-              />
-            );
-          }
-        }).toArray()}
-      </div>
-    );
-  }
-
-  renderExample(example) {
-    return (
-      <div className="body-example">
-        {example}
-      </div>
+      <tr className="body-schema-subset">
+        <td colSpan="100">
+          <BodySchema
+            key={`${property.get('name')}-properties`}
+            properties={property.get('properties')}
+          />
+        </td>
+      </tr>
     );
   }
 }
 
 BodySchema.propTypes = {
-  properties: React.PropTypes.object,
-  example: React.PropTypes.string
+  properties: React.PropTypes.object
 };
