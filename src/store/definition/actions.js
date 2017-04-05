@@ -1,8 +1,8 @@
 import Immutable from 'immutable';
 
-import RequestRecord from 'records/RequestRecord';
-import PropertyRecord from 'records/PropertyRecord';
-import ResponseRecord from 'records/ResponseRecord';
+import RequestRecord from '../../records/RequestRecord';
+import PropertyRecord from '../../records/PropertyRecord';
+import ResponseRecord from '../../records/ResponseRecord';
 
 const definition = new Immutable.Map({
   title: 'Test API title',

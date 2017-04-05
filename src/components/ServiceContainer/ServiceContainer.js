@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 
-import Method from 'components/Method/Method';
+import Method from '../Method/Method';
 
 // import './ServiceContainer.scss';
 

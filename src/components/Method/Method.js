@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 
-import BodySchema from 'components/BodySchema/BodySchema';
-import Request from 'components/Request/Request';
-import Response from 'components/Response/Response';
+import BodySchema from '../BodySchema/BodySchema';
+import Request from '../Request/Request';
+import Response from '../Response/Response';
 
 import './Method.scss';
 

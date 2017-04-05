@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import Property from 'components/Property/Property';
+import Property from '../Property/Property';
 
 import './BodySchema.scss';
 

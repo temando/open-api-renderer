@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DocumentTitle from 'react-document-title';
 
-import Page from 'components/Page/Page';
+import Page from '../components/Page/Page';
 
-import getDefinition from 'store/definition/actions';
+import getDefinition from '../store/definition/actions';
 
 import '../general.scss';
 

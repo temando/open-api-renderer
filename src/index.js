@@ -5,8 +5,8 @@ import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import 'babel-polyfill';
 
-import routes from 'routes';
-import configureStore from 'store/configure';
+import routes from './routes';
+import configureStore from './store/configure';
 
 // const isBrowser = typeof navigator !== 'undefined' && navigator.indexOf('Node.js') === -1;
 
