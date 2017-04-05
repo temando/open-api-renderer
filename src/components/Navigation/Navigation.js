@@ -14,8 +14,8 @@ export default class Navigation extends Component {
               <Link
                 className="nav-level1"
                 to={item.get('title')}
-                spy={true}
-                smooth={true}
+                spy
+                smooth
                 duration={300}
               >
                 {item.get('title')}
@@ -27,8 +27,8 @@ export default class Navigation extends Component {
                       className="nav-level2"
                       key={subitem.get('link')}
                       to={subitem.get('link')}
-                      spy={true}
-                      smooth={true}
+                      spy
+                      smooth
                       duration={300}
                       offset={-30}
                       //containerId={item.get('title')}
