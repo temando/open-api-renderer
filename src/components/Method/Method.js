@@ -50,7 +50,7 @@ export default class Method extends Component {
     return (
       <div className="method-request">
         <h4>Request</h4>
-        <Request 
+        <Request
           request={request}
         />
       </div>

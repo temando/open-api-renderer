@@ -51,7 +51,7 @@ export default class Request extends Component {
           role="button"
           onClick={() => this.setState({ tab: 'schema'})}
           className={classNames({
-            'active': (tab === 'schema')
+            active: (tab === 'schema')
           })}
         >
           Schema
@@ -60,7 +60,7 @@ export default class Request extends Component {
           role="button"
           onClick={() => this.setState({ tab: 'example'})}
           className={classNames({
-            'active': (tab === 'example')
+            active: (tab === 'example')
           })}
         >
           Example
