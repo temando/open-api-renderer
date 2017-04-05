@@ -53,6 +53,10 @@ module.exports = {
         ,
           allChunks: true
         })
+      },
+      {
+        test: /\.(ttf|eot|svg|png|gif|jpg|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
       }
     ]
   }
