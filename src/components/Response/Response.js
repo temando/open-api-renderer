@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import BodySchema from 'components/BodySchema/BodySchema';
+import BodySchema from '../BodySchema/BodySchema';
 
-import ResponseRecord from 'records/ResponseRecord';
+import ResponseRecord from '../../records/ResponseRecord';
 
 // import './Response.scss';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
-import BodySchema from 'components/BodySchema/BodySchema';
+import BodySchema from '../BodySchema/BodySchema';
 
 import './Request.scss';
 
@@ -32,16 +32,6 @@ export default class Request extends Component {
       </div>
     );
   }
-
-  /*render() {
-    const { request } = this.props;
-    return (
-      <div className="request">
-        <div className="request-description">{request.get('description')}</div>
-        <BodySchema properties={request.get('schema')} example={request.get('example')} />
-      </div>
-    );
-  }*/
 
   renderTabs() {
     const { tab } = this.state;

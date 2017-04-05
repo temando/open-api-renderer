@@ -7,7 +7,7 @@ export default function createImmutableFromJS(fromSeq, json) {
       return fromSeq(valueSeq);
     }
     // other objects become Map or List
-    var isIndexed = Immutable.Iterable.isIndexed(valueSeq);
+    const isIndexed = Immutable.Iterable.isIndexed(valueSeq);
     return isIndexed ? valueSeq.toList() : valueSeq.toMap();
   });
 }

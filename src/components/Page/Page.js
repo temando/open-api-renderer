@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Header from 'components/Header/Header';
-import Navigation from 'components/Navigation/Navigation';
-import ContentContainer from 'components/ContentContainer/ContentContainer';
-import ServiceContainer from 'components/ServiceContainer/ServiceContainer';
+import Header from '../Header/Header';
+import Navigation from '../Navigation/Navigation';
+import ContentContainer from '../ContentContainer/ContentContainer';
+import ServiceContainer from '../ServiceContainer/ServiceContainer';
 
 import './Page.scss';
 
