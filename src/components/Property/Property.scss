@@ -6,18 +6,13 @@ $tree-border-erase: $tree-line-width solid white;
 $line-height: 40px;
 $cell-padding: 10px;
 
-.property {
-  display: table-row;
-}
-
 .property-name,
 .property-info {
-  display: table-cell;
+  vertical-align: middle;
   padding: $cell-padding;
 }
 
 .property-name {
-  vertical-align: middle;
   position: relative;
   span {
     display: inline-block;
@@ -65,12 +60,12 @@ $cell-padding: 10px;
 }
 
 .property {
-  &:only-child {
+  &:only-of-type {
     .property-name {
       border: $tree-border-erase;
     }
   }
-  &:first-child {
+  &:first-of-type {
     .property-name::before {
       content: '';
       border-left: $tree-border-erase;
@@ -80,8 +75,8 @@ $cell-padding: 10px;
       height: ($line-height + 2 * $cell-padding) / 2 + 1;
     }
   }
-  &:last-child {
-    .property-name::before {
+  &:last-of-type {
+    .property-name::after {
       content: '';
       border-left: $tree-border-erase;
       position: absolute;

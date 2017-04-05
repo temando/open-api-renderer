@@ -48,23 +48,29 @@ const definition = new Immutable.Map({
           request: RequestRecord.createFromJS({
             description: "Request description",
             schema: new Immutable.Map({
-              property1: PropertyRecord.createFromJS({
-                name: "property1",
-                type: "string",
-                description: "Property1 description",
-                required: false
-              }),
-              property2: PropertyRecord.createFromJS({
-                name: "property2",
-                type: "string",
-                description: "Property2 description",
-                required: false
-              }),
-              property3: PropertyRecord.createFromJS({
-                name: "property3",
-                type: "string",
-                description: "Property3 description",
-                required: true
+              data: new Immutable.Map({
+                name: "data",
+                type: "object",
+                properties: new Immutable.Map({
+                  property1: PropertyRecord.createFromJS({
+                    name: "property1",
+                    type: "string",
+                    description: "Property1 description",
+                    required: false
+                  }),
+                  property2: PropertyRecord.createFromJS({
+                    name: "property2",
+                    type: "string",
+                    description: "Property2 description",
+                    required: false
+                  }),
+                  property3: PropertyRecord.createFromJS({
+                    name: "property3",
+                    type: "string",
+                    description: "Property3 description",
+                    required: true
+                  })
+                })
               })
             }),
             example: "{some: json}"
@@ -74,10 +80,10 @@ const definition = new Immutable.Map({
               code: "201",
               description: "Response description",
               schema: new Immutable.Map({
-                property1: PropertyRecord.createFromJS({
-                  name: "property1",
+                property4: PropertyRecord.createFromJS({
+                  name: "property4",
                   type: "string",
-                  description: "Property1 description",
+                  description: "Property4 description",
                   required: false
                 })
               }),
@@ -114,16 +120,16 @@ const definition = new Immutable.Map({
           request: RequestRecord.createFromJS({
             description: "Request description",
             schema: new Immutable.Map({
-              property1: PropertyRecord.createFromJS({
-                name: "property1",
+              property5: PropertyRecord.createFromJS({
+                name: "property5",
                 type: "string",
-                description: "Property1 description",
+                description: "Property5 description",
                 required: false
               }),
-              property2: PropertyRecord.createFromJS({
-                name: "property2",
+              property6: PropertyRecord.createFromJS({
+                name: "property6",
                 type: "string",
-                description: "Property2 description",
+                description: "Property6 description",
                 required: true
               })
             }),
@@ -152,8 +158,8 @@ const definition = new Immutable.Map({
           description: "Method description",
           parameters: new Immutable.Map({
             query: new Immutable.Map({
-              offset: PropertyRecord.createFromJS({
-                name: "offset",
+              limit: PropertyRecord.createFromJS({
+                name: "limit",
                 description: "Parameter description",
                 required: false,
                 type: "number"

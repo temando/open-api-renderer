@@ -3642,6 +3642,13 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-addons-create-fragment@^15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/react-addons-create-fragment/-/react-addons-create-fragment-15.4.2.tgz#11372924f730a97dff4c690535211bb73d8f8815"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-document-title@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/react-document-title/-/react-document-title-2.0.2.tgz#1e42b672d300f8f90d8d05544b0d71f0ca7860aa"

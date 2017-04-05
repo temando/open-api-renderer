@@ -1,0 +1,36 @@
+@import '../../base.scss';
+
+.request-schema, .request-example {
+  display: table;
+  width: 100%;
+  border: 2px solid black;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.request-tabs {
+  position: relative;
+  top: 2px;
+}
+
+.request-tabs > div {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-left: none;
+  background-color: $grey;
+  cursor: pointer;
+  &:first-child {
+    border-left: 2px solid black;
+  }
+}
+
+.request-tabs > div.active {
+  background-color: white;
+  border-bottom: none;
+  padding-bottom: 12px;
+}
+
+.request-example {
+  padding: 10px;
+}
