@@ -14,25 +14,32 @@ export default class BodySchema extends Component {
     this.renderSubsetProperties = this.renderSubsetProperties.bind(this);
 
     this.state = {
-      expandedProp: null
+      expandedProp: []
     };
   }
 
   render() {
     const { properties } = this.props;
+    const { expandedProp } = this.state;
+    let iterator = 0;
     return (
       <table className="body-schema">
         <tbody>
           {properties.map((property) => {
-            if (property.get('type') === 'object' && this.state.expandedProp === property.get('name')) {
+            iterator = iterator + 1;
+            let isLast = false;
+            if (properties.size === iterator) {
+              isLast = true;
+            }
+            if (property.get('type') === 'object' && expandedProp.indexOf(property.get('name')) !== -1) {
               return createFragment({
-                property: this.renderPropertyRow(property, true),
+                property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property)
               });
             } else if (property.get('type') === 'object') {
-              return this.renderPropertyRow(property, false);
+              return this.renderPropertyRow(property, isLast, false);
             } else {
-              return this.renderPropertyRow(property);
+              return this.renderPropertyRow(property, isLast);
             }
           }).toArray()}
         </tbody>
@@ -40,7 +47,7 @@ export default class BodySchema extends Component {
     );
   }
 
-  renderPropertyRow(property, isOpen) {
+  renderPropertyRow(property, isLast, isOpen) {
     return (
       <Property
         key={property.get('name')}
@@ -50,6 +57,7 @@ export default class BodySchema extends Component {
         required={property.get('required')}
         onClick={this.onClick.bind(this, property.get('name'))}
         isOpen={isOpen}
+        isLast={isLast}
       />
     );
   }
@@ -76,10 +84,12 @@ export default class BodySchema extends Component {
   }
 
   onClick(propertyName) {
-    if (this.state.expandedProp === propertyName) {
-      this.setState({ expandedProp: null });
+    const { expandedProp } = this.state;
+    if (expandedProp.indexOf(propertyName) !== -1) {
+      const newExpanded = expandedProp.filter((prop) => prop !== propertyName);
+      this.setState({ expandedProp: newExpanded });
     } else {
-      this.setState({ expandedProp: propertyName });
+      this.setState({ expandedProp: [...expandedProp, propertyName]});
     }
   }
 }

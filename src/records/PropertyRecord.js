@@ -5,7 +5,8 @@ export const PropertyObject = {
   name: undefined,
   type: undefined,
   description: undefined,
-  required: undefined
+  required: undefined,
+  properties: undefined
 };
 
 const BaseRecord = Immutable.Record(PropertyObject);

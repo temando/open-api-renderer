@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 import Indicator from 'components/Indicator/Indicator';
 
@@ -6,16 +7,26 @@ import './Property.scss';
 
 export default class Property extends Component {
   render() {
-    const { name, type, description, required, onClick, isOpen } = this.props;
+    const { name, type, description, required, onClick, isOpen, isLast } = this.props;
+    let isClickable = false;
+    if (isOpen !== undefined) {
+      isClickable = true;
+    }
     let status;
     if (isOpen) {
       status = 'open';
     }
     return (
-      <tr className="property" onClick={onClick}>
+      <tr
+        className={classNames('property', {
+          'property--isclickable': isClickable,
+          'last': isLast
+        })}
+        onClick={onClick}
+      >
         <td className="property-name">
           <span>{name}</span>
-          {isOpen !== undefined &&
+          {isClickable &&
             <Indicator className="property-indicator" status={status} />
         }
         </td>
@@ -35,5 +46,6 @@ Property.propTypes = {
   description: React.PropTypes.string,
   required: React.PropTypes.bool,
   onClick: React.PropTypes.func,
-  isOpen: React.PropTypes.bool
+  isOpen: React.PropTypes.bool,
+  isLast: React.PropTypes.bool
 };

@@ -66,9 +66,29 @@ const definition = new Immutable.Map({
                   }),
                   property3: PropertyRecord.createFromJS({
                     name: 'property3',
-                    type: 'string',
+                    type: 'object',
                     description: 'Property3 description',
-                    required: true
+                    required: true,
+                    properties: new Immutable.Map({
+                      subproperty: PropertyRecord.createFromJS({
+                        name: 'subproperty',
+                        type: 'string',
+                        description: 'Subproperty description',
+                        required: false
+                      })
+                    })
+                  })
+                })
+              }),
+              data2: new Immutable.Map({
+                name: 'data2',
+                type: 'object',
+                properties: new Immutable.Map({
+                  subproperty2: PropertyRecord.createFromJS({
+                    name: 'subproperty2',
+                    type: 'string',
+                    description: 'Subproperty2 description',
+                    required: false
                   })
                 })
               })

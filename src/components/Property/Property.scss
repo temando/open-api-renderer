@@ -37,6 +37,10 @@ $cell-padding: 10px;
   color: red;
 }
 
+.property--isclickable {
+  cursor: pointer;
+}
+
 /* Tree */
 
 .property-name {
@@ -65,7 +69,7 @@ $cell-padding: 10px;
       border: $tree-border-erase;
     }
   }
-  &:first-of-type {
+  &:first-child {
     .property-name::before {
       content: '';
       border-left: $tree-border-erase;
@@ -75,7 +79,7 @@ $cell-padding: 10px;
       height: ($line-height + 2 * $cell-padding) / 2 + 1;
     }
   }
-  &:last-of-type {
+  &:last-child, &.last {
     .property-name::after {
       content: '';
       border-left: $tree-border-erase;
