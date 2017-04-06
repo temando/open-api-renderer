@@ -3,6 +3,12 @@
 .indicator {
   display: inline-block;
   vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+.indicator img {
+  width: 20px;
 }
 
 .indicator--open img {
