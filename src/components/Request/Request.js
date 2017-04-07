@@ -61,7 +61,7 @@ export default class Request extends Component {
 
   renderSchema(schema) {
     return (
-      <BodySchema properties={schema} />
+      <BodySchema properties={schema} styleVariation="odd" />
     );
   }
 
