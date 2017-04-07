@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import classNames from 'classnames';
 
 import Property from '../Property/Property';
 
@@ -19,11 +20,11 @@ export default class BodySchema extends Component {
   }
 
   render() {
-    const { properties } = this.props;
+    const { properties, styleVariation } = this.props;
     const { expandedProp } = this.state;
     let iterator = 0;
     return (
-      <table className="body-schema">
+      <table className={classNames('body-schema', `body-schema--${styleVariation}`)}>
         <tbody>
           {properties.map((property) => {
             iterator = iterator + 1;
@@ -63,6 +64,11 @@ export default class BodySchema extends Component {
   }
 
   renderSubsetProperties(property) {
+    const { styleVariation } = this.props;
+    let nextStyleVariation = 'even';
+    if (styleVariation === 'even') {
+      nextStyleVariation = 'odd';
+    }
     return (
       <tr className="body-schema-subset">
         <td colSpan="100">
@@ -76,6 +82,7 @@ export default class BodySchema extends Component {
             <BodySchema
               key={`${property.get('name')}-properties`}
               properties={property.get('properties')}
+              styleVariation={nextStyleVariation}
             />
           </ReactCSSTransitionGroup>
         </td>
@@ -95,5 +102,9 @@ export default class BodySchema extends Component {
 }
 
 BodySchema.propTypes = {
-  properties: React.PropTypes.object
+  properties: React.PropTypes.object,
+  styleVariation: React.PropTypes.oneOf([
+    'odd',
+    'even'
+  ])
 };
