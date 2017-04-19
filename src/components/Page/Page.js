@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
@@ -21,7 +22,7 @@ export default class Page extends Component {
             version={definition.get('version')}
           />
           <ContentContainer>
-            {services.map((service) => {
+            {services && services.map((service) => {
               return (
                 <ServiceContainer
                   key={service.get('title')}
@@ -37,5 +38,5 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-  definition: React.PropTypes.object
+  definition: PropTypes.object
 };

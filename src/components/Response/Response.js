@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
 
@@ -22,5 +23,5 @@ export default class Response extends Component {
 }
 
 Response.propTypes = {
-  response: React.PropTypes.instanceOf(ResponseRecord)
+  response: PropTypes.instanceOf(ResponseRecord)
 };
