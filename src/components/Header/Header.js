@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './Header.scss';
 
@@ -15,6 +16,6 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-  definitionTitle: React.PropTypes.string,
-  version: React.PropTypes.string
+  definitionTitle: PropTypes.string,
+  version: PropTypes.string
 };

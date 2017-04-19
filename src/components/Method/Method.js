@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
+import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
 import Request from '../Request/Request';
@@ -75,5 +76,5 @@ export default class Method extends Component {
 }
 
 Method.propTypes = {
-  method: React.PropTypes.object
+  method: PropTypes.object
 };

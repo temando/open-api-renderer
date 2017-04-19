@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
 
@@ -75,5 +76,5 @@ export default class Request extends Component {
 }
 
 Request.propTypes = {
-  request: React.PropTypes.object
+  request: PropTypes.object
 };

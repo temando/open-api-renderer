@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import Property from '../Property/Property';
 
@@ -102,8 +103,8 @@ export default class BodySchema extends Component {
 }
 
 BodySchema.propTypes = {
-  properties: React.PropTypes.object,
-  styleVariation: React.PropTypes.oneOf([
+  properties: PropTypes.object,
+  styleVariation: PropTypes.oneOf([
     'odd',
     'even'
   ])

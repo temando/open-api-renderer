@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
+import PropTypes from 'prop-types';
 
 import Method from '../Method/Method';
 
@@ -27,5 +28,5 @@ export default class ServiceContainer extends Component {
 }
 
 ServiceContainer.propTypes = {
-  service: React.PropTypes.object
+  service: PropTypes.object
 };
