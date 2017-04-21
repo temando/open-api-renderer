@@ -57,5 +57,8 @@ module.exports = {
         loader: 'file-loader'
       }
     ]
+  },
+  node: {
+    fs: 'empty'
   }
 };

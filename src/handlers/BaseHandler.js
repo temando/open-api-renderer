@@ -12,16 +12,15 @@ import '../general.scss';
 
 class BaseHandler extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     // TODO: refactor this to be more flexible, i.e. coming from multiple places
-    // const openApiUrl = this.props.location.query.url;
-    // const openApiUrl = 'https://s3.amazonaws.com/temando-swagger-registry-dmidwaffle-storage/swagger/temando-public-api.json';
-    const openApiUrl = 'http://localhost:8000/temando/resources/temando-public-api.json';
-    this.props.getDefinition(openApiUrl);
+    const openApiUrl = this.props.location.query.url;
+    const parserType = this.props.parserType;
+    this.props.getDefinition(openApiUrl, parserType);
   }
 
   render() {
-    const { definition } = this.props;
+    const definition = this.props.parsedDefinition;
 
     return (
       <DocumentTitle title="Open API v3 renderer">
@@ -34,9 +33,12 @@ class BaseHandler extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  definition: state.definition
-});
+const mapStateToProps = state => {
+  return {
+    parsedDefinition: state.data.parsedDefinition,
+    parserType: state.data.parserType,
+  }
+};
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   getDefinition

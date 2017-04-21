@@ -15,7 +15,7 @@ const definition = new Immutable.Map({
       title: 'Order',
       methods: new Immutable.Map({
         post: new Immutable.Map({
-          title: 'POST /orders',
+          title: 'Register client account configuration data',
           link: '#order/post'
         }),
         get: new Immutable.Map({
@@ -182,13 +182,25 @@ const definition = new Immutable.Map({
   })
 });
 
-let initialState = null;
+let initialState = {
+  parserType: 'open-api-v3',
+  definition: null,
+  parsedDefinition: null,
+};
 
 export default function definitionReducer(state = initialState, action) {
   const { payload } = action;
   switch (action.type) {
     case ActionType.FETCH_DEFINITION_SUCCESS:
-      return definition;
+      return {
+        ...state,
+        definition: payload,
+      };
+    case ActionType.PARSE_DEFINITION_SUCCESS:
+      return {
+        ...state,
+        parsedDefinition: payload,
+      };
     default:
       return state;
   }
