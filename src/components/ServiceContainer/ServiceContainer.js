@@ -11,13 +11,14 @@ export default class ServiceContainer extends Component {
     const { service } = this.props;
     const methods = service.get('methods');
     const title = service.get('title');
+
     return (
       <Element className="service-container" name={title} id={title}>
         <h2>{title}</h2>
         {methods.map((method) => {
           return (
             <Method
-              key={method.get('type')}
+              key={method.get('link')}
               method={method}
             />
           );

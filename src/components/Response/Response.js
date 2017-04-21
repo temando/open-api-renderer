@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
-
-import ResponseRecord from '../../records/ResponseRecord';
+import BodyContent from '../BodyContent/BodyContent';
 
 // import './Response.scss';
 
 export default class Response extends Component {
   render() {
     const { response } = this.props;
+    const { responseCode, description, schema, example } = response;
+
     return (
       <div className="response">
         <div className="response-info">
-          <span>{response.get('code')}</span>
-          <div className="response-description">{response.get('description')}</div>
+          <span>{responseCode}</span>
         </div>
-        <BodySchema properties={response.get('schema')} />
+        <BodyContent description={description} schema={schema} example={example}/>
       </div>
     );
   }
 }
 
 Response.propTypes = {
-  response: PropTypes.instanceOf(ResponseRecord)
+  response: PropTypes.object
 };

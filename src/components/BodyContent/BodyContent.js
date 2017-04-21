@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
 
-import './Request.scss';
+import './BodyContent.scss';
 
-export default class Request extends Component {
+export default class BodyContent extends Component {
   constructor(props) {
     super(props);
 
@@ -20,15 +20,12 @@ export default class Request extends Component {
   }
 
   render() {
-    const { request } = this.props;
-
-    const schema = request.get('schema');
-    const example = request.get('example');
+    const { description, schema, example } = this.props;
 
     const { tab } = this.state;
     return (
-      <div className="request">
-        <div className="request-description">{request.get('description')}</div>
+      <div className="bodyContent">
+        <div className="bodyContent-description">{description}</div>
         {schema && this.renderTabs(schema, example)}
         {tab === 'schema' && this.renderSchema(schema)}
         {tab === 'example' && this.renderExample(example)}
@@ -39,7 +36,7 @@ export default class Request extends Component {
   renderTabs(includeSchema, includeExample) {
     const currentTab = this.state.tab;
     return (
-      <div className="request-tabs">
+      <div className="bodyContent-tabs">
         {includeSchema && this.renderSchemaTab(currentTab)}
         {includeExample && this.renderExampleTab(currentTab)}
       </div>
@@ -85,7 +82,7 @@ export default class Request extends Component {
   renderExample(example) {
     if (example) {
       return (
-        <div className="request-example">
+        <div className="bodyContent-example">
           {example}
         </div>
       );
@@ -93,6 +90,8 @@ export default class Request extends Component {
   }
 }
 
-Request.propTypes = {
-  request: PropTypes.object
+BodyContent.propTypes = {
+  description: PropTypes.string,
+  schema: PropTypes.object,
+  example: PropTypes.string,
 };

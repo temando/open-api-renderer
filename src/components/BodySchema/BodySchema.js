@@ -22,6 +22,11 @@ export default class BodySchema extends Component {
 
   render() {
     const { properties, styleVariation } = this.props;
+
+    if (!properties) {
+      return null;
+    }
+
     const { expandedProp } = this.state;
     let iterator = 0;
     return (
@@ -33,6 +38,7 @@ export default class BodySchema extends Component {
             if (properties.size === iterator) {
               isLast = true;
             }
+
             if (property.get('type') === 'object' && expandedProp.indexOf(property.get('name')) !== -1) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
@@ -109,3 +115,4 @@ BodySchema.propTypes = {
     'even'
   ])
 };
+

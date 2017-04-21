@@ -11,6 +11,11 @@ import './Page.scss';
 export default class Page extends Component {
   render() {
     const { definition } = this.props;
+
+    if (!definition) {
+      return '';
+    }
+
     const navigation = definition.get('navigation');
     const services = definition.get('services');
     return (
