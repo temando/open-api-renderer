@@ -11,42 +11,42 @@ export default class Navigation extends Component {
       <div className="nav">
         {navigation && navigation.map((item) => {
           return (
-            <div key={item.get('title')}>
+            <div key={item.title}>
               <Link
                 className="nav-level1"
-                to={item.get('title')}
+                to={item.title}
                 spy
                 smooth
                 duration={300}
               >
-                {item.get('title')}
+                {item.title}
               </Link>
               <div>
-                {item.get('methods').map((subitem) => {
+                {item.methods.map((subitem) => {
                   return (
                     <Link
                       className="nav-level2"
-                      key={subitem.get('link')}
-                      to={subitem.get('link')}
+                      key={subitem.link}
+                      to={subitem.link}
                       spy
                       smooth
                       duration={300}
                       offset={-30}
-                      //containerId={item.get('title')}
+                      //containerId={item.title}
                     >
-                      {subitem.get('title')}
+                      {subitem.title}
                     </Link>
                   );
-                }).toArray()}
+                })}
               </div>
             </div>
           );
-        }).toArray()}
+        })}
       </div>
     );
   }
 }
 
 Navigation.propTypes = {
-  navigation: PropTypes.object
+  navigation: React.PropTypes.array
 };

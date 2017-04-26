@@ -19,13 +19,13 @@ export default class Method extends Component {
 
   render() {
     const { method } = this.props;
-    const parameters = method.get('parameters');
-    const request = method.get('request');
-    const responses = method.get('responses');
+    const parameters = method.parameters;
+    const request = method.request;
+    const responses = method.responses;
     return (
-      <Element className="method" name={method.get('link')}>
-        <h3>{method.get('summary')}</h3>
-        <div className="method-description">{method.get('description')}</div>
+      <Element className="method" name={method.link}>
+        <h3>{method.summary}</h3>
+        <div className="method-description">{method.description}</div>
         {parameters && this.renderParameters(parameters)}
         {request && this.renderRequest(request)}
         {responses && this.renderResponses(responses)}
@@ -37,20 +37,20 @@ export default class Method extends Component {
     return (
       <div className="method-parameters">
         <h4>Parameters</h4>
-        {parameters.get('query') &&
-        <BodySchema properties={parameters.get('query')}/>
+        {parameters.query &&
+          <BodySchema properties={parameters.query} />
         }
-        {parameters.get('path') &&
-        <BodySchema properties={parameters.get('path')}/>
+        {parameters.path &&
+          <BodySchema properties={parameters.path} />
         }
       </div>
     );
   }
 
   renderRequest(request) {
-    const description = request.get('description');
-    const schema = request.get('schema');
-    const example = request.get('example');
+    const description = request.description;
+    const schema = request.schema;
+    const example = request.example;
 
     return (
       <div className="method-request">
@@ -71,7 +71,7 @@ export default class Method extends Component {
               response={response}
             />
           );
-        }).toArray()}
+        })}
       </div>
     );
   }
