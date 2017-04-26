@@ -23,21 +23,102 @@ export default async function getUIReadyDefinition(openApiV3) {
   // Get tags
   const tags = getTags(paths);
 
-  // Construct navigation
-  const navigation = getUIReadyNavigation(paths, tags);
-
-  // Construct main contents
-  const services = getUIReadyServices(paths, tags);
+  // Construction navigation and services
+  const { navigation, services } = getUINavigationAndServices(tags, paths);
 
   const definition = new Immutable.Map({
     title: info.title,
     version: info.version,
     description: info.description,
-    navigation,
-    services,
+    navigation: new Immutable.OrderedMap(navigation),
+    services: new Immutable.OrderedMap(services),
   });
 
   return definition;
+}
+
+/**
+ * Construct navigation and services ready to be consumed by the UI
+ *
+ * @param {Array} tags
+ * @param {Object} paths
+ *
+ * @return {{navigation: {}, services: {}}}
+ */
+function getUINavigationAndServices(tags, paths) {
+  const navigation = {};
+  const services = {};
+
+  tags.forEach((tag) => {
+    const navigationMethods = {};
+    const servicesMethods = {};
+
+    for (const pathKey in paths) {
+      const path = paths[pathKey];
+
+      for (const methodName in path) {
+        const method = path[methodName];
+        const methodTags = method.tags;
+
+        if (methodTags.includes(tag)) {
+          const link = pathKey + '/' + methodName;
+          const navigationMethod = {
+            title: method.summary,
+            link,
+          };
+          navigationMethods[link] = new Immutable.OrderedMap(navigationMethod);
+
+          const uiRequest = getUIRequest(method.description, method.requestBody);
+          const uiResponses = getUIResponses(method.responses);
+          const servicesMethod = {
+            type: methodName,
+            link,
+            summary: method.summary,
+            description: method.description,
+            request: new Immutable.Map(uiRequest),
+            responses: new Immutable.Map(uiResponses),
+          };
+          servicesMethods[link] = new Immutable.OrderedMap(servicesMethod);
+        }
+      }
+    }
+
+    navigation[tag] = new Immutable.Map({
+      title: tag,
+      methods: new Immutable.Map(navigationMethods),
+    });
+
+    services[tag] = new Immutable.Map({
+      title: tag,
+      methods: new Immutable.Map(servicesMethods),
+    });
+  });
+
+  return { navigation, services };
+}
+
+/**
+ * Construct request object ready to be consumed by the UI
+ *
+ * @param {String} description
+ * @param {Object} requestBody
+ *
+ * @return {Object}
+ */
+function getUIRequest(description, requestBody = null) {
+  const uiRequest = {
+    description,
+  };
+
+  if (requestBody) {
+    // TODO: tidy this up
+    const requestContent = requestBody.content['application/vnd.api+json'] || requestBody.content['application/json'];
+
+    uiRequest.schema = getUIReadySchema(requestContent.schema);
+    uiRequest.example = requestContent.examples;
+  }
+
+  return uiRequest;
 }
 
 /**
@@ -59,6 +140,7 @@ function getUIResponses(responses) {
     };
 
     if (response.content) {
+      // TODO: tidy this up
       const responseContent = response.content['application/vnd.api+json'] || response.content['application/json'];
       uiResponse.schema = getUIReadySchema(responseContent.schema);
     }
@@ -68,123 +150,6 @@ function getUIResponses(responses) {
 
   return uiResponses;
 }
-
-/**
- * Construct request object ready to be consumed by the UI
- *
- * @param {String} description
- * @param {Object} requestBody
- *
- * @return {Object}
- */
-function getUIRequest(description, requestBody = null) {
-  const uiRequest = {
-    description,
-  };
-
-  if (requestBody) {
-    const requestContent =
-      requestBody.content['application/vnd.api+json'] ||
-      requestBody.content['application/json'];
-
-    uiRequest.schema = getUIReadySchema(requestContent.schema);
-    uiRequest.example = requestContent.examples;
-  }
-
-  return uiRequest;
-}
-
-/**
- * Construct services Map from paths object
- *
- * @param {Object} paths
- * @param {Array} tags
- *
- * @return {Immutable.Map}
- */
-function getUIReadyServices(paths, tags) {
-  const services = {};
-
-  tags.forEach((tag) => {
-    let uiMethods = {};
-
-    for (const pathKey in paths) {
-      const path = paths[pathKey];
-
-      for (const methodName in path) {
-        const method = path[methodName];
-        const methodTags = method.tags;
-
-        if (methodTags.includes(tag)) {
-          const link = pathKey + '/' + methodName;
-          const uiRequest = getUIRequest(method.description, method.requestBody);
-          const uiResponses = getUIResponses(method.responses);
-
-          const uiMethod = {
-            type: methodName,
-            link,
-            summary: method.summary,
-            description: method.description,
-            request: new Immutable.Map(uiRequest),
-            responses: new Immutable.Map(uiResponses),
-          };
-
-          uiMethods[link] = new Immutable.OrderedMap(uiMethod);
-        }
-      }
-    }
-
-    services[tag] = new Immutable.Map({
-      title: tag,
-      methods: new Immutable.Map(uiMethods),
-    });
-  });
-
-  return new Immutable.OrderedMap(services);
-}
-
-/**
- * Construct navigation Map from paths object
- *
- * @param {Object} paths
- * @param {Array} tags
- *
- * @return {Immutable.Map}
- */
-function getUIReadyNavigation(paths, tags) {
-  const navigation = {};
-
-  tags.forEach((tag) => {
-    let uiMethods = {};
-
-    for (const pathKey in paths) {
-      const path = paths[pathKey];
-
-      for (const methodName in path) {
-        const method = path[methodName];
-        const methodTags = method.tags;
-
-        if (methodTags.includes(tag)) {
-          const link = pathKey + '/' + methodName;
-          const uiMethod = {
-            title: method.summary,
-            link,
-          };
-
-          uiMethods[link] = new Immutable.OrderedMap(uiMethod);
-        }
-      }
-    }
-
-    navigation[tag] = new Immutable.Map({
-      title: tag,
-      methods: new Immutable.Map(uiMethods),
-    });
-  });
-
-  return new Immutable.OrderedMap(navigation);
-}
-
 
 /**
  * Extract unique tags from paths object

@@ -1,6 +1,6 @@
 @import '../../base.scss';
 
-.bodyContent-schema, .bodyContent-example {
+.body-content-schema, .body-content-example {
   display: table;
   width: 100%;
   border: 2px solid black;
@@ -8,12 +8,12 @@
   box-sizing: border-box;
 }
 
-.bodyContent-tabs {
+.body-content-tabs {
   position: relative;
   top: 2px;
 }
 
-.bodyContent-tabs > div {
+.body-content-tabs > div {
   display: inline-block;
   padding: 10px 20px;
   border: 2px solid black;
@@ -25,12 +25,12 @@
   }
 }
 
-.bodyContent-tabs > div.active {
+.body-content-tabs > div.active {
   background-color: white;
   border-bottom: none;
   padding-bottom: 12px;
 }
 
-.bodyContent-example {
+.body-content-example {
   padding: 10px;
 }
