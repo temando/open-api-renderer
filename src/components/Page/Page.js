@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
@@ -10,6 +11,11 @@ import './Page.scss';
 export default class Page extends Component {
   render() {
     const { definition } = this.props;
+
+    if (!definition) {
+      return '';
+    }
+
     const navigation = definition.get('navigation');
     const services = definition.get('services');
     return (
@@ -21,7 +27,7 @@ export default class Page extends Component {
             version={definition.get('version')}
           />
           <ContentContainer>
-            {services.map((service) => {
+            {services && services.map((service) => {
               return (
                 <ServiceContainer
                   key={service.get('title')}
@@ -37,5 +43,5 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-  definition: React.PropTypes.object
+  definition: PropTypes.object
 };

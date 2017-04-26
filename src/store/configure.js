@@ -10,7 +10,7 @@ import definitionReducer from './definition/reducer';
 export default function configureStore(initialState = window.STATE_FROM_SERVER) {
   const reducer = combineReducers({
     routing: routerReducer,
-    definition: definitionReducer
+    data: definitionReducer
   });
 
   const additionalStoreEnhancers = [

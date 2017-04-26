@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import './Indicator.scss';
 
@@ -20,6 +21,6 @@ export default class Indicator extends Component {
 }
 
 Indicator.propTypes = {
-  status: React.PropTypes.string,
-  className: React.PropTypes.string
+  status: PropTypes.string,
+  className: PropTypes.string
 };

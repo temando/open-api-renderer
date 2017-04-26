@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .nav-level1 {
@@ -17,7 +18,10 @@
   cursor: pointer;
   &.active {
     background-color: $grey-dark;
-  }
+  };
+  text-transform: uppercase;
+  color: $blue;
+  font-weight: bold;
 }
 
 .nav-level2 {
