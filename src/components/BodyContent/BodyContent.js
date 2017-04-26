@@ -24,8 +24,8 @@ export default class BodyContent extends Component {
 
     const { tab } = this.state;
     return (
-      <div className="bodyContent">
-        <div className="bodyContent-description">{description}</div>
+      <div className="body-content">
+        <div className="body-content-description">{description}</div>
         {schema && this.renderTabs(schema, example)}
         {tab === 'schema' && this.renderSchema(schema)}
         {tab === 'example' && this.renderExample(example)}
@@ -36,7 +36,7 @@ export default class BodyContent extends Component {
   renderTabs(includeSchema, includeExample) {
     const currentTab = this.state.tab;
     return (
-      <div className="bodyContent-tabs">
+      <div className="body-content-tabs">
         {includeSchema && this.renderSchemaTab(currentTab)}
         {includeExample && this.renderExampleTab(currentTab)}
       </div>
@@ -82,7 +82,7 @@ export default class BodyContent extends Component {
   renderExample(example) {
     if (example) {
       return (
-        <div className="bodyContent-example">
+        <div className="body-content-example">
           {example}
         </div>
       );

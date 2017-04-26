@@ -59,7 +59,11 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
   if (nodeType === 'string' || nodeType === 'number') {
     return new Immutable.Map(outputNode);
   } else if (nodeType === 'object') {
-    outputNode.properties = getPropertiesNode(propertyNode.properties, propertyNode.required);
+    const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required);
+
+    if (!propertiesNode.isEmpty()) {
+      outputNode.properties = propertiesNode;
+    }
 
     return new Immutable.Map(outputNode);
   }
