@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-import Indicator from 'components/Indicator/Indicator';
+import Indicator from '../Indicator/Indicator';
 
 import './Property.scss';
 
@@ -41,11 +42,11 @@ export default class Property extends Component {
 }
 
 Property.propTypes = {
-  name: React.PropTypes.string,
-  type: React.PropTypes.string,
-  description: React.PropTypes.string,
-  required: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  isOpen: React.PropTypes.bool,
-  isLast: React.PropTypes.bool
+  name: PropTypes.string,
+  type: PropTypes.string,
+  description: PropTypes.string,
+  required: PropTypes.bool,
+  onClick: PropTypes.func,
+  isOpen: PropTypes.bool,
+  isLast: PropTypes.bool
 };

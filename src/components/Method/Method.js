@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
+import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
-import Request from '../Request/Request';
+import BodyContent from '../BodyContent/BodyContent';
 import Response from '../Response/Response';
 
 import './Method.scss';
@@ -37,22 +38,24 @@ export default class Method extends Component {
       <div className="method-parameters">
         <h4>Parameters</h4>
         {parameters.get('query') &&
-          <BodySchema properties={parameters.get('query')} />
+        <BodySchema properties={parameters.get('query')}/>
         }
         {parameters.get('path') &&
-          <BodySchema properties={parameters.get('path')} />
+        <BodySchema properties={parameters.get('path')}/>
         }
       </div>
     );
   }
 
   renderRequest(request) {
+    const description = request.get('description');
+    const schema = request.get('schema');
+    const example = request.get('example');
+
     return (
       <div className="method-request">
         <h4>Request</h4>
-        <Request
-          request={request}
-        />
+        <BodyContent description={description} schema={schema} example={example}/>
       </div>
     );
   }
@@ -75,5 +78,5 @@ export default class Method extends Component {
 }
 
 Method.propTypes = {
-  method: React.PropTypes.object
+  method: PropTypes.object
 };

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import Property from '../Property/Property';
 
@@ -21,6 +22,11 @@ export default class BodySchema extends Component {
 
   render() {
     const { properties, styleVariation } = this.props;
+
+    if (!properties) {
+      return null;
+    }
+
     const { expandedProp } = this.state;
     let iterator = 0;
     return (
@@ -32,6 +38,7 @@ export default class BodySchema extends Component {
             if (properties.size === iterator) {
               isLast = true;
             }
+
             if (property.get('type') === 'object' && expandedProp.indexOf(property.get('name')) !== -1) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
@@ -102,9 +109,10 @@ export default class BodySchema extends Component {
 }
 
 BodySchema.propTypes = {
-  properties: React.PropTypes.object,
-  styleVariation: React.PropTypes.oneOf([
+  properties: PropTypes.object,
+  styleVariation: PropTypes.oneOf([
     'odd',
     'even'
   ])
 };
+
