@@ -11,7 +11,6 @@ export default function getDefinition(url, parserType) {
         deadline: 60000
       })
       .then((response) => {
-        // Use mock data
         let definition = response.body;
 
         // TODO move this to another place

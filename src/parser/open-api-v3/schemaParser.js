@@ -3,12 +3,12 @@
  *
  * @param {Object} jsonSchema
  *
- * @return {Immutable.Map}
+ * @return {Object}
  */
 export default function getUIReadySchema(jsonSchema) {
   const schema = getPropertiesNode(jsonSchema.properties, jsonSchema.required);
 
-  return new Immutable.Map(schema);
+  return schema;
 }
 
 /**
@@ -17,7 +17,7 @@ export default function getUIReadySchema(jsonSchema) {
  * @param {Object} propertiesNode
  * @param {Array} requiredProperties
  *
- * @return {Immutable.Map}
+ * @return {Object}
  */
 function getPropertiesNode(propertiesNode, requiredProperties = []) {
   const outputNode = {};
@@ -31,7 +31,7 @@ function getPropertiesNode(propertiesNode, requiredProperties = []) {
     }
   }
 
-  return new Immutable.Map(outputNode);
+  return outputNode;
 }
 
 /**
@@ -41,7 +41,7 @@ function getPropertiesNode(propertiesNode, requiredProperties = []) {
  * @param {Object} propertyNode
  * @param {Boolean} required
  *
- * @return {Immutable.Map}
+ * @return {Object}
  */
 function getPropertyNode(nodeName, propertyNode, required = false) {
   const nodeType = propertyNode.type || 'string';
@@ -55,14 +55,14 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
 
   // TODO: work out how to handle array in the UI, and update the code here
   if (nodeType === 'string' || nodeType === 'number') {
-    return new Immutable.Map(outputNode);
+    return outputNode;
   } else if (nodeType === 'object') {
     const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required);
 
-    if (!propertiesNode.isEmpty()) {
+    if (!propertiesNode === undefined) {
       outputNode.properties = propertiesNode;
     }
 
-    return new Immutable.Map(outputNode);
+    return outputNode;
   }
 }

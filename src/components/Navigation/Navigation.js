@@ -48,5 +48,5 @@ export default class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  navigation: React.PropTypes.array
+  navigation: React.PropTypes.object
 };
