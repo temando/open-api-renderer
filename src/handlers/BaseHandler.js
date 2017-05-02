@@ -5,9 +5,7 @@ import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page/Page';
-
 import getDefinition from '../store/definition/actions';
-
 import '../general.scss';
 
 class BaseHandler extends Component {
@@ -21,7 +19,6 @@ class BaseHandler extends Component {
 
   render() {
     const definition = this.props.parsedDefinition;
-
     return (
       <DocumentTitle title="Open API v3 renderer">
         <div className="main">
@@ -36,8 +33,8 @@ class BaseHandler extends Component {
 const mapStateToProps = state => {
   return {
     parsedDefinition: state.data.parsedDefinition,
-    parserType: state.data.parserType,
-  }
+    parserType: state.data.parserType
+  };
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

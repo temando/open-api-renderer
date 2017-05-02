@@ -38,18 +38,17 @@ export default class BodySchema extends Component {
             if (properties.size === iterator) {
               isLast = true;
             }
-
-            if (property.get('type') === 'object' && expandedProp.indexOf(property.get('name')) !== -1) {
+            if (property.type === 'object' && expandedProp.indexOf(property.name) !== -1) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property)
               });
-            } else if (property.get('type') === 'object') {
+            } else if (property.type === 'object') {
               return this.renderPropertyRow(property, isLast, false);
             } else {
               return this.renderPropertyRow(property, isLast);
             }
-          }).toArray()}
+          })}
         </tbody>
       </table>
     );
@@ -58,12 +57,12 @@ export default class BodySchema extends Component {
   renderPropertyRow(property, isLast, isOpen) {
     return (
       <Property
-        key={property.get('name')}
-        name={property.get('name')}
-        type={property.get('type')}
-        description={property.get('description')}
-        required={property.get('required')}
-        onClick={this.onClick.bind(this, property.get('name'))}
+        key={property.name}
+        name={property.name}
+        type={property.type}
+        description={property.description}
+        required={property.required}
+        onClick={this.onClick.bind(this, property.name)}
         isOpen={isOpen}
         isLast={isLast}
       />
@@ -87,8 +86,8 @@ export default class BodySchema extends Component {
             transitionAppearTimeout={500}
           >
             <BodySchema
-              key={`${property.get('name')}-properties`}
-              properties={property.get('properties')}
+              key={`${property.name}-properties`}
+              properties={property.properties}
               styleVariation={nextStyleVariation}
             />
           </ReactCSSTransitionGroup>
@@ -109,7 +108,7 @@ export default class BodySchema extends Component {
 }
 
 BodySchema.propTypes = {
-  properties: PropTypes.object,
+  properties: PropTypes.array,
   styleVariation: PropTypes.oneOf([
     'odd',
     'even'

@@ -92,6 +92,6 @@ export default class BodyContent extends Component {
 
 BodyContent.propTypes = {
   description: PropTypes.string,
-  schema: PropTypes.object,
-  example: PropTypes.string,
+  schema: PropTypes.array,
+  example: PropTypes.string
 };

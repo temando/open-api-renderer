@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import refParser from 'json-schema-ref-parser';
 import getUIReadySchema from './schemaParser';
 
@@ -26,13 +25,13 @@ export default async function getUIReadyDefinition(openApiV3) {
   // Construction navigation and services
   const { navigation, services } = getUINavigationAndServices(tags, paths);
 
-  const definition = new Immutable.Map({
+  const definition = {
     title: info.title,
     version: info.version,
     description: info.description,
-    navigation: new Immutable.OrderedMap(navigation),
-    services: new Immutable.OrderedMap(services),
-  });
+    navigation: navigation,
+    services: services
+  };
 
   return definition;
 }
@@ -64,9 +63,9 @@ function getUINavigationAndServices(tags, paths) {
           const link = pathKey + '/' + methodName;
           const navigationMethod = {
             title: method.summary,
-            link,
+            link
           };
-          navigationMethods[link] = new Immutable.OrderedMap(navigationMethod);
+          navigationMethods[link] = navigationMethod;
 
           const uiRequest = getUIRequest(method.description, method.requestBody);
           const uiResponses = getUIResponses(method.responses);
@@ -75,23 +74,23 @@ function getUINavigationAndServices(tags, paths) {
             link,
             summary: method.summary,
             description: method.description,
-            request: new Immutable.Map(uiRequest),
-            responses: new Immutable.Map(uiResponses),
+            request: uiRequest,
+            responses: uiResponses
           };
-          servicesMethods[link] = new Immutable.OrderedMap(servicesMethod);
+          servicesMethods[link] = servicesMethod;
         }
       }
     }
 
-    navigation[tag] = new Immutable.Map({
+    navigation[tag] = {
       title: tag,
-      methods: new Immutable.Map(navigationMethods),
-    });
+      methods: navigationMethods
+    };
 
-    services[tag] = new Immutable.Map({
+    services[tag] = {
       title: tag,
-      methods: new Immutable.Map(servicesMethods),
-    });
+      methods: servicesMethods
+    };
   });
 
   return { navigation, services };
@@ -107,7 +106,7 @@ function getUINavigationAndServices(tags, paths) {
  */
 function getUIRequest(description, requestBody = null) {
   const uiRequest = {
-    description,
+    description
   };
 
   if (requestBody) {
@@ -136,7 +135,7 @@ function getUIResponses(responses) {
 
     const uiResponse = {
       code: statusCode,
-      description: response.description,
+      description: response.description
     };
 
     if (response.content) {

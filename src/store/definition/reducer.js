@@ -3,7 +3,7 @@ import { ActionType } from './constants';
 let initialState = {
   parserType: 'open-api-v3',
   definition: null,
-  parsedDefinition: null,
+  parsedDefinition: null
 };
 
 export default function definitionReducer(state = initialState, action) {
@@ -12,12 +12,12 @@ export default function definitionReducer(state = initialState, action) {
     case ActionType.FETCH_DEFINITION_SUCCESS:
       return {
         ...state,
-        definition: payload,
+        definition: payload
       };
     case ActionType.PARSE_DEFINITION_SUCCESS:
       return {
         ...state,
-        parsedDefinition: payload,
+        parsedDefinition: payload
       };
     default:
       return state;

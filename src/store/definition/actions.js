@@ -8,7 +8,7 @@ export default function getDefinition(url, parserType) {
       .get(url)
       .timeout({
         response: 5000,
-        deadline: 60000,
+        deadline: 60000
       })
       .then((response) => {
         let definition = response.body;
@@ -42,29 +42,29 @@ export default function getDefinition(url, parserType) {
 function fetchDefinitionSuccess(definition) {
   return {
     type: ActionType.FETCH_DEFINITION_SUCCESS,
-    payload: definition,
-  }
+    payload: definition
+  };
 }
 
 function fetchDefinitionFailure(error) {
   console.error('Failed fetching definition', error);
   return {
     type: ActionType.FETCH_DEFINITION_FAILURE,
-    payload: error,
-  }
+    payload: error
+  };
 }
 
 function parseDefinitionSuccess(parsedDefinition) {
   return {
     type: ActionType.PARSE_DEFINITION_SUCCESS,
-    payload: parsedDefinition,
-  }
+    payload: parsedDefinition
+  };
 }
 
 function parseDefinitionFailure(error) {
   console.error('Failed parsing definition', error);
   return {
     type: ActionType.PARSE_DEFINITION_FAILURE,
-    payload: error,
-  }
+    payload: error
+  };
 }
