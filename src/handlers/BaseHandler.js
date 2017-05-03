@@ -36,8 +36,8 @@ class BaseHandler extends Component {
 const mapStateToProps = state => {
   return {
     parsedDefinition: state.data.parsedDefinition,
-    parserType: state.data.parserType,
-  }
+    parserType: state.data.parserType
+  };
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

@@ -1,42 +1,6 @@
 import Immutable from 'immutable';
 
 /**
- * Converts json schema object to new object ready to be consumed by React components
- *
- * @param {Object} jsonSchema
- *
- * @return {Immutable.Map}
- */
-export default function getUIReadySchema(jsonSchema) {
-  const schema = getPropertiesNode(jsonSchema.properties, jsonSchema.required);
-
-  return new Immutable.Map(schema);
-}
-
-/**
- * Construct UI ready properties object from given inputs.
- *
- * @param {Object} propertiesNode
- * @param {Array} requiredProperties
- *
- * @return {Immutable.Map}
- */
-function getPropertiesNode(propertiesNode, requiredProperties = []) {
-  const outputNode = {};
-
-  for (const key in propertiesNode) {
-    const property = propertiesNode[key];
-    const value = getPropertyNode(key, property, requiredProperties.includes(key));
-
-    if (value) {
-      outputNode[key] = value;
-    }
-  }
-
-  return new Immutable.Map(outputNode);
-}
-
-/**
  * Construct UI ready property object from given inputs
  *
  * @param {String} nodeName
@@ -52,7 +16,7 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     name: nodeName,
     description: propertyNode.description,
     type: nodeType,
-    required,
+    required
   };
 
   // TODO: work out how to handle array in the UI, and update the code here
@@ -67,4 +31,43 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
 
     return new Immutable.Map(outputNode);
   }
+  return null;
+}
+
+/**
+ * Construct UI ready properties object from given inputs.
+ *
+ * @param {Object} propertiesNode
+ * @param {Array} requiredProperties
+ *
+ * @return {Immutable.Map}
+ */
+function getPropertiesNode(propertiesNode, requiredProperties = []) {
+  const outputNode = {};
+
+  for (const key in propertiesNode) {
+    if (propertiesNode.hasOwnProperty(key)) {
+      const property = propertiesNode[key];
+      const value = getPropertyNode(key, property, requiredProperties.includes(key));
+
+      if (value) {
+        outputNode[key] = value;
+      }
+    }
+  }
+
+  return new Immutable.Map(outputNode);
+}
+
+/**
+ * Converts json schema object to new object ready to be consumed by React components
+ *
+ * @param {Object} jsonSchema
+ *
+ * @return {Immutable.Map}
+ */
+export default function getUIReadySchema(jsonSchema) {
+  const schema = getPropertiesNode(jsonSchema.properties, jsonSchema.required);
+
+  return new Immutable.Map(schema);
 }
