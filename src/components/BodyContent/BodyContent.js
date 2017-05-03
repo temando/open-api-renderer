@@ -77,6 +77,7 @@ export default class BodyContent extends Component {
         <BodySchema properties={schema} styleVariation="odd"/>
       );
     }
+    return null;
   }
 
   renderExample(example) {
@@ -87,11 +88,12 @@ export default class BodyContent extends Component {
         </div>
       );
     }
+    return null;
   }
 }
 
 BodyContent.propTypes = {
   description: PropTypes.string,
   schema: PropTypes.object,
-  example: PropTypes.string,
+  example: PropTypes.string
 };

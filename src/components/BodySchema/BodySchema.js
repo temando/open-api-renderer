@@ -39,12 +39,12 @@ export default class BodySchema extends Component {
               isLast = true;
             }
 
-            if (property.get('type') === 'object' && expandedProp.indexOf(property.get('name')) !== -1) {
+            if (property.get('type') === 'object' && expandedProp.indexOf(property.get('name')) !== -1 && property.get('properties') !== undefined) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property)
               });
-            } else if (property.get('type') === 'object') {
+            } else if (property.get('type') === 'object' && property.get('properties') !== undefined) {
               return this.renderPropertyRow(property, isLast, false);
             } else {
               return this.renderPropertyRow(property, isLast);
