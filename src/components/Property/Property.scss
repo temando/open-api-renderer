@@ -2,13 +2,12 @@
 
 $tree-line-width: 1px;
 $tree-border-style: $tree-line-width solid red;
-$tree-border-erase: $tree-line-width solid white;
 $line-height: 40px;
 $cell-padding: 10px;
 
 .property-name,
 .property-info {
-  vertical-align: middle;
+  vertical-align: top;
   padding: $cell-padding;
 }
 
@@ -23,7 +22,7 @@ $cell-padding: 10px;
 }
 
 .property-info {
-  width: 80%;
+  width: 75%;
 }
 
 .property+.property {
@@ -44,8 +43,13 @@ $cell-padding: 10px;
 
 /* Tree */
 
+.property+.property {
+  .property-name {
+    border-left: $tree-border-style;
+  }
+}
+
 .property-name {
-  border-left: $tree-border-style;
   span::before {
     content: '';
     display: inline-block;
@@ -65,29 +69,45 @@ $cell-padding: 10px;
 }
 
 .property {
-  &:only-of-type {
-    .property-name {
-      border: $tree-border-erase;
-    }
-  }
   &:first-child {
     .property-name::before {
       content: '';
-      border-left: $tree-border-erase;
+      border-left: $tree-border-style;
       position: absolute;
-      top: 0;
-      left: -$tree-line-width;
-      height: ($line-height + 2 * $cell-padding) / 2 + 1;
+      bottom: 0;
+      left: 0;
+      height: ($line-height + 2 * $cell-padding) / 2 - ($tree-line-width + 1);
     }
   }
   &:last-child, &.last {
+    .property-name {
+      border-left: none;
+    }
     .property-name::after {
       content: '';
-      border-left: $tree-border-erase;
+      border-left: $tree-border-style;
       position: absolute;
-      bottom: 0;
-      left: -$tree-line-width;
-      height: ($line-height + 2 * $cell-padding) / 2 - ($tree-line-width + 1);
+      top: 0;
+      left: 0;
+      height: ($line-height + 2 * $cell-padding) / 2 + 1;
+    }
+  }
+  &:only-of-type {
+    .property-name::before, .property-name::after {
+      border: none;
+    }
+  }
+}
+
+.property {
+  &:first-child {
+    .property-name::after {
+      border: none;
+    }
+  }
+  &:first-child.last {
+    .property-name::before {
+      border: none;
     }
   }
 }
