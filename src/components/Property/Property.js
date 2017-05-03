@@ -21,7 +21,7 @@ export default class Property extends Component {
       <tr
         className={classNames('property', {
           'property--isclickable': isClickable,
-          'last': isLast
+          last: isLast
         })}
         onClick={onClick}
       >
