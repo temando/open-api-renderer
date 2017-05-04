@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import refParser from 'json-schema-ref-parser';
 import getUIReadySchema from './schemaParser';
 
@@ -8,15 +7,15 @@ import getUIReadySchema from './schemaParser';
  * @param {Array} tags
  * @param {Object} paths
  *
- * @return {{navigation: {}, services: {}}}
+ * @return {{navigation: [], services: []}}
  */
 function getUINavigationAndServices(tags, paths) {
-  const navigation = {};
-  const services = {};
+  const navigation = [];
+  const services = [];
 
   tags.forEach((tag) => {
-    const navigationMethods = {};
-    const servicesMethods = {};
+    const navigationMethods = [];
+    const servicesMethods = [];
 
     for (const pathKey in paths) {
       if (paths.hasOwnProperty(pathKey)) {
@@ -33,7 +32,7 @@ function getUINavigationAndServices(tags, paths) {
                 title: method.summary,
                 link
               };
-              navigationMethods[link] = new Immutable.OrderedMap(navigationMethod);
+              navigationMethods.push(navigationMethod);
 
               const uiRequest = getUIRequest(method.description, method.requestBody);
               const uiResponses = getUIResponses(method.responses);
@@ -42,24 +41,24 @@ function getUINavigationAndServices(tags, paths) {
                 link,
                 summary: method.summary,
                 description: method.description,
-                request: new Immutable.Map(uiRequest),
-                responses: new Immutable.Map(uiResponses)
+                request: uiRequest,
+                responses: uiResponses
               };
-              servicesMethods[link] = new Immutable.OrderedMap(servicesMethod);
+              servicesMethods.push(servicesMethod);
             }
           }
         }
       }
     }
 
-    navigation[tag] = new Immutable.Map({
+    navigation.push({
       title: tag,
-      methods: new Immutable.Map(navigationMethods)
+      methods: navigationMethods
     });
 
-    services[tag] = new Immutable.Map({
+    services.push({
       title: tag,
-      methods: new Immutable.Map(servicesMethods)
+      methods: servicesMethods
     });
   });
 
@@ -95,10 +94,10 @@ function getUIRequest(description, requestBody = null) {
  *
  * @param {Object} responses
  *
- * @return {Object}
+ * @return {Array}
  */
 function getUIResponses(responses) {
-  const uiResponses = {};
+  const uiResponses = [];
 
   for (const statusCode in responses) {
     if (responses.hasOwnProperty(statusCode)) {
@@ -115,7 +114,7 @@ function getUIResponses(responses) {
         uiResponse.schema = getUIReadySchema(responseContent.schema);
       }
 
-      uiResponses[statusCode] = uiResponse;
+      uiResponses.push(uiResponse);
     }
   }
 
@@ -178,13 +177,13 @@ export default async function getUIReadyDefinition(openApiV3) {
   // Construction navigation and services
   const { navigation, services } = getUINavigationAndServices(tags, paths);
 
-  const definition = new Immutable.Map({
+  const definition = {
     title: info.title,
     version: info.version,
     description: info.description,
-    navigation: new Immutable.OrderedMap(navigation),
-    services: new Immutable.OrderedMap(services)
-  });
+    navigation: navigation,
+    services: services
+  };
 
   return definition;
 }
