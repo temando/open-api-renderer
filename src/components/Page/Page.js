@@ -16,25 +16,25 @@ export default class Page extends Component {
       return '';
     }
 
-    const navigation = definition.get('navigation');
-    const services = definition.get('services');
+    const navigation = definition.navigation;
+    const services = definition.services;
     return (
       <div className="page">
         <Navigation navigation={navigation} />
         <div className="page-main">
            <Header
-            definitionTitle={definition.get('title')}
-            version={definition.get('version')}
+            definitionTitle={definition.title}
+            version={definition.version}
           />
           <ContentContainer>
             {services && services.map((service) => {
               return (
                 <ServiceContainer
-                  key={service.get('title')}
+                  key={service.title}
                   service={service}
                 />
               );
-            }).toArray()}
+            })}
           </ContentContainer>
         </div>
       </div>
