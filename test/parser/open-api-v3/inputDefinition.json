@@ -1,0 +1,2389 @@
+{
+  "openapi": "3.0.0-RC0",
+  "servers": [
+    {
+      "url": "https://api.temando.io/v1"
+    }
+  ],
+  "info": {
+    "title": "Temando API",
+    "description": "Providing consumers with more choice and lowering the cost of shipping.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/products": {
+      "post": {
+        "summary": "Create a Product object in the account.",
+        "description": "Create a Product object in the account.",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Newly created Product with unique ID.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredProductSingle"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "description": "Request for creating product object.",
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get list of Products in the account document.",
+        "description": "Get list of Products in the account document.",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for the returned array of records",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit for the returned array of records.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all of the Products defined.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredProductCollection"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Get Product from account document.",
+        "description": "Get Product from account document.",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Product to fetch",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the Product specified by ID parameter",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredProductSingle"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The resource could not be found.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Product.",
+        "description": "Update Product in account document.",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Product to update",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the Product.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredProductSingle"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The resource could not be found.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "description": "The new data to store against the Product",
+              "schema": {
+                "$ref": "#/components/schemas/StoredProductSingle"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove Products.",
+        "description": "Remove Product from account document.",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Product to remove",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted the Product."
+          },
+          "404": {
+            "description": "The resource could not be found.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shipments/{id}": {
+      "get": {
+        "summary": "Get shipment from account document by id.",
+        "tags": [
+          "Shipment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of shipment to fetch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the shipment specified by id parameter",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredShipment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Shipment.",
+        "description": "Update Shipment in account document.",
+        "tags": [
+          "Shipment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of Shipment to update",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the Shipment.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredShipment"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Expired credentials.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "description": "The new data to store against the Shipment",
+              "schema": {
+                "$ref": "#/components/schemas/StoredShipment"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "JsonApiError": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "code": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "source": {
+            "type": "object"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "product"
+                ]
+              },
+              "attributes": {
+                "description": "This is the schema for representing product's attributes.",
+                "type": "object",
+                "required": [
+                  "merchantProductId",
+                  "name"
+                ],
+                "properties": {
+                  "merchantProductId": {
+                    "description": "The product unique identifier, provided by the merchant",
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "sku": {
+                    "type": "string",
+                    "description": "The sku of this product.",
+                    "maxLength": 100
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The description of this product.",
+                    "maxLength": 500
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "The category of this product."
+                  },
+                  "unitOfMeasure": {
+                    "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                    "type": "string",
+                    "enum": [
+                      "Bag",
+                      "Barrel",
+                      "Bolt",
+                      "Box",
+                      "Bunch",
+                      "Bundle",
+                      "Butt",
+                      "Canister",
+                      "Carton",
+                      "Case",
+                      "Centimeter",
+                      "Container",
+                      "Crate",
+                      "Cylinder",
+                      "Dozen",
+                      "Each",
+                      "Envelope",
+                      "Foot",
+                      "Kilogram",
+                      "Kilograms",
+                      "Liter",
+                      "Meter",
+                      "Number",
+                      "Package",
+                      "Packet",
+                      "Pair",
+                      "Pairs",
+                      "Pallet",
+                      "Piece",
+                      "Pieces",
+                      "Pound",
+                      "Proof Liter",
+                      "Roll",
+                      "Set",
+                      "Square Meter",
+                      "Square Yard",
+                      "Tube",
+                      "Yard"
+                    ]
+                  },
+                  "dimensions": {
+                    "description": "This is the schema for representing dimensions",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "length",
+                      "width",
+                      "height",
+                      "unitOfMeasurement"
+                    ],
+                    "properties": {
+                      "length": {
+                        "type": "number"
+                      },
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      },
+                      "unitOfMeasurement": {
+                        "description": "The distance unit the dimension's properties are in",
+                        "type": "string",
+                        "enum": [
+                          "mm",
+                          "millimeter",
+                          "millimetre",
+                          "cm",
+                          "centimeter",
+                          "centimetre",
+                          "m",
+                          "meter",
+                          "metre",
+                          "ft",
+                          "foot",
+                          "feet",
+                          "in",
+                          "inch",
+                          "yd",
+                          "yard"
+                        ]
+                      }
+                    }
+                  },
+                  "weight": {
+                    "type": "object",
+                    "required": [
+                      "value",
+                      "unitOfMeasurement"
+                    ],
+                    "properties": {
+                      "value": {
+                        "description": "The value of the weight unit",
+                        "type": "number"
+                      },
+                      "unitOfMeasurement": {
+                        "description": "The weight unit the value is",
+                        "enum": [
+                          "g",
+                          "gram",
+                          "oz",
+                          "ounce",
+                          "kg",
+                          "kilogram",
+                          "lb",
+                          "pound"
+                        ]
+                      }
+                    }
+                  },
+                  "monetaryValue": {
+                    "description": "This is the schema for an representing money",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "amount",
+                      "currency"
+                    ],
+                    "properties": {
+                      "amount": {
+                        "description": "The amount of the currency",
+                        "type": "number"
+                      },
+                      "currency": {
+                        "description": "The currency the money amount is",
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 3
+                      }
+                    }
+                  },
+                  "isFragile": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "isVirtual": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "isPrePackaged": {
+                    "description": "Whether the product has its own package",
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "canRotateVertical": {
+                    "description": "Whether the product can be rotated vertically",
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "countryOfOrigin": {
+                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2
+                  },
+                  "countryOfManufacture": {
+                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2
+                  },
+                  "classificationCodes": {
+                    "type": "object",
+                    "description": "Classification codes of this product for export.",
+                    "properties": {
+                      "eccn": {
+                        "type": "string",
+                        "description": "Export Control Classification Number (ECCN).",
+                        "minLength": 0,
+                        "maxLength": 5
+                      },
+                      "scheduleBinfo": {
+                        "type": "string",
+                        "description": "Classification code for exporting goods out of the United States.",
+                        "minLength": 0,
+                        "maxLength": 15
+                      },
+                      "hsCode": {
+                        "type": "string",
+                        "description": "Harmonized Commodity Description and Coding System.",
+                        "minLength": 2,
+                        "maxLength": 10
+                      }
+                    }
+                  },
+                  "customAttributes": {
+                    "default": [],
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9_-]+$"
+                        },
+                        "value": {
+                          "type": [
+                            "number",
+                            "integer",
+                            "string",
+                            "boolean"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "StoredProductCollection": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "attributes",
+                "id"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "product"
+                  ]
+                },
+                "id": {
+                  "description": "GUID of the object.",
+                  "type": "string"
+                },
+                "attributes": {
+                  "description": "This is the schema for representing product's attributes.",
+                  "type": "object",
+                  "required": [
+                    "merchantProductId",
+                    "name"
+                  ],
+                  "properties": {
+                    "merchantProductId": {
+                      "description": "The product unique identifier, provided by the merchant",
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "sku": {
+                      "type": "string",
+                      "description": "The sku of this product.",
+                      "maxLength": 100
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The description of this product.",
+                      "maxLength": 500
+                    },
+                    "category": {
+                      "type": "string",
+                      "description": "The category of this product."
+                    },
+                    "unitOfMeasure": {
+                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                      "type": "string",
+                      "enum": [
+                        "Bag",
+                        "Barrel",
+                        "Bolt",
+                        "Box",
+                        "Bunch",
+                        "Bundle",
+                        "Butt",
+                        "Canister",
+                        "Carton",
+                        "Case",
+                        "Centimeter",
+                        "Container",
+                        "Crate",
+                        "Cylinder",
+                        "Dozen",
+                        "Each",
+                        "Envelope",
+                        "Foot",
+                        "Kilogram",
+                        "Kilograms",
+                        "Liter",
+                        "Meter",
+                        "Number",
+                        "Package",
+                        "Packet",
+                        "Pair",
+                        "Pairs",
+                        "Pallet",
+                        "Piece",
+                        "Pieces",
+                        "Pound",
+                        "Proof Liter",
+                        "Roll",
+                        "Set",
+                        "Square Meter",
+                        "Square Yard",
+                        "Tube",
+                        "Yard"
+                      ]
+                    },
+                    "dimensions": {
+                      "description": "This is the schema for representing dimensions",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "length",
+                        "width",
+                        "height",
+                        "unitOfMeasurement"
+                      ],
+                      "properties": {
+                        "length": {
+                          "type": "number"
+                        },
+                        "width": {
+                          "type": "number"
+                        },
+                        "height": {
+                          "type": "number"
+                        },
+                        "unitOfMeasurement": {
+                          "description": "The distance unit the dimension's properties are in",
+                          "type": "string",
+                          "enum": [
+                            "mm",
+                            "millimeter",
+                            "millimetre",
+                            "cm",
+                            "centimeter",
+                            "centimetre",
+                            "m",
+                            "meter",
+                            "metre",
+                            "ft",
+                            "foot",
+                            "feet",
+                            "in",
+                            "inch",
+                            "yd",
+                            "yard"
+                          ]
+                        }
+                      }
+                    },
+                    "weight": {
+                      "type": "object",
+                      "required": [
+                        "value",
+                        "unitOfMeasurement"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The value of the weight unit",
+                          "type": "number"
+                        },
+                        "unitOfMeasurement": {
+                          "description": "The weight unit the value is",
+                          "enum": [
+                            "g",
+                            "gram",
+                            "oz",
+                            "ounce",
+                            "kg",
+                            "kilogram",
+                            "lb",
+                            "pound"
+                          ]
+                        }
+                      }
+                    },
+                    "monetaryValue": {
+                      "description": "This is the schema for an representing money",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "amount",
+                        "currency"
+                      ],
+                      "properties": {
+                        "amount": {
+                          "description": "The amount of the currency",
+                          "type": "number"
+                        },
+                        "currency": {
+                          "description": "The currency the money amount is",
+                          "type": "string",
+                          "maxLength": 3,
+                          "minLength": 3
+                        }
+                      }
+                    },
+                    "isFragile": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "isVirtual": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "isPrePackaged": {
+                      "description": "Whether the product has its own package",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "canRotateVertical": {
+                      "description": "Whether the product can be rotated vertically",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "countryOfOrigin": {
+                      "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                      "type": "string",
+                      "minLength": 2,
+                      "maxLength": 2
+                    },
+                    "countryOfManufacture": {
+                      "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                      "type": "string",
+                      "minLength": 2,
+                      "maxLength": 2
+                    },
+                    "classificationCodes": {
+                      "type": "object",
+                      "description": "Classification codes of this product for export.",
+                      "properties": {
+                        "eccn": {
+                          "type": "string",
+                          "description": "Export Control Classification Number (ECCN).",
+                          "minLength": 0,
+                          "maxLength": 5
+                        },
+                        "scheduleBinfo": {
+                          "type": "string",
+                          "description": "Classification code for exporting goods out of the United States.",
+                          "minLength": 0,
+                          "maxLength": 15
+                        },
+                        "hsCode": {
+                          "type": "string",
+                          "description": "Harmonized Commodity Description and Coding System.",
+                          "minLength": 2,
+                          "maxLength": 10
+                        }
+                      }
+                    },
+                    "customAttributes": {
+                      "default": [],
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "key",
+                          "value"
+                        ],
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_-]+$"
+                          },
+                          "value": {
+                            "type": [
+                              "number",
+                              "integer",
+                              "string",
+                              "boolean"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "StoredProductSingle": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "type",
+              "attributes",
+              "id"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "product"
+                ]
+              },
+              "id": {
+                "description": "GUID of the object.",
+                "type": "string"
+              },
+              "attributes": {
+                "description": "This is the schema for representing product's attributes.",
+                "type": "object",
+                "required": [
+                  "merchantProductId",
+                  "name"
+                ],
+                "properties": {
+                  "merchantProductId": {
+                    "description": "The product unique identifier, provided by the merchant",
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "sku": {
+                    "type": "string",
+                    "description": "The sku of this product.",
+                    "maxLength": 100
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The description of this product.",
+                    "maxLength": 500
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "The category of this product."
+                  },
+                  "unitOfMeasure": {
+                    "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                    "type": "string",
+                    "enum": [
+                      "Bag",
+                      "Barrel",
+                      "Bolt",
+                      "Box",
+                      "Bunch",
+                      "Bundle",
+                      "Butt",
+                      "Canister",
+                      "Carton",
+                      "Case",
+                      "Centimeter",
+                      "Container",
+                      "Crate",
+                      "Cylinder",
+                      "Dozen",
+                      "Each",
+                      "Envelope",
+                      "Foot",
+                      "Kilogram",
+                      "Kilograms",
+                      "Liter",
+                      "Meter",
+                      "Number",
+                      "Package",
+                      "Packet",
+                      "Pair",
+                      "Pairs",
+                      "Pallet",
+                      "Piece",
+                      "Pieces",
+                      "Pound",
+                      "Proof Liter",
+                      "Roll",
+                      "Set",
+                      "Square Meter",
+                      "Square Yard",
+                      "Tube",
+                      "Yard"
+                    ]
+                  },
+                  "dimensions": {
+                    "description": "This is the schema for representing dimensions",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "length",
+                      "width",
+                      "height",
+                      "unitOfMeasurement"
+                    ],
+                    "properties": {
+                      "length": {
+                        "type": "number"
+                      },
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      },
+                      "unitOfMeasurement": {
+                        "description": "The distance unit the dimension's properties are in",
+                        "type": "string",
+                        "enum": [
+                          "mm",
+                          "millimeter",
+                          "millimetre",
+                          "cm",
+                          "centimeter",
+                          "centimetre",
+                          "m",
+                          "meter",
+                          "metre",
+                          "ft",
+                          "foot",
+                          "feet",
+                          "in",
+                          "inch",
+                          "yd",
+                          "yard"
+                        ]
+                      }
+                    }
+                  },
+                  "weight": {
+                    "type": "object",
+                    "required": [
+                      "value",
+                      "unitOfMeasurement"
+                    ],
+                    "properties": {
+                      "value": {
+                        "description": "The value of the weight unit",
+                        "type": "number"
+                      },
+                      "unitOfMeasurement": {
+                        "description": "The weight unit the value is",
+                        "enum": [
+                          "g",
+                          "gram",
+                          "oz",
+                          "ounce",
+                          "kg",
+                          "kilogram",
+                          "lb",
+                          "pound"
+                        ]
+                      }
+                    }
+                  },
+                  "monetaryValue": {
+                    "description": "This is the schema for an representing money",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "amount",
+                      "currency"
+                    ],
+                    "properties": {
+                      "amount": {
+                        "description": "The amount of the currency",
+                        "type": "number"
+                      },
+                      "currency": {
+                        "description": "The currency the money amount is",
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 3
+                      }
+                    }
+                  },
+                  "isFragile": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "isVirtual": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "isPrePackaged": {
+                    "description": "Whether the product has its own package",
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "canRotateVertical": {
+                    "description": "Whether the product can be rotated vertically",
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "countryOfOrigin": {
+                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2
+                  },
+                  "countryOfManufacture": {
+                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2
+                  },
+                  "classificationCodes": {
+                    "type": "object",
+                    "description": "Classification codes of this product for export.",
+                    "properties": {
+                      "eccn": {
+                        "type": "string",
+                        "description": "Export Control Classification Number (ECCN).",
+                        "minLength": 0,
+                        "maxLength": 5
+                      },
+                      "scheduleBinfo": {
+                        "type": "string",
+                        "description": "Classification code for exporting goods out of the United States.",
+                        "minLength": 0,
+                        "maxLength": 15
+                      },
+                      "hsCode": {
+                        "type": "string",
+                        "description": "Harmonized Commodity Description and Coding System.",
+                        "minLength": 2,
+                        "maxLength": 10
+                      }
+                    }
+                  },
+                  "customAttributes": {
+                    "default": [],
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9_-]+$"
+                        },
+                        "value": {
+                          "type": [
+                            "number",
+                            "integer",
+                            "string",
+                            "boolean"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "StoredShipment": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "type",
+              "attributes",
+              "id"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "shipment"
+                ]
+              },
+              "id": {
+                "description": "Id of the shipment.",
+                "type": "string"
+              },
+              "attributes": {
+                "description": "The Shipment Creation Request Schema",
+                "type": "object",
+                "required": [
+                  "origin",
+                  "destination",
+                  "pickupAt",
+                  "packages"
+                ],
+                "properties": {
+                  "pickupAt": {
+                    "type": "string",
+                    "description": "The expected pickup time",
+                    "format": "date-time"
+                  },
+                  "expectedAt": {
+                    "type": "string",
+                    "description": "An expected delivery date-time",
+                    "format": "date-time"
+                  },
+                  "customerReference": {
+                    "description": "A consistent identifier that represents a clients customer",
+                    "type": "string"
+                  },
+                  "origin": {
+                    "type": "object",
+                    "required": [
+                      "address"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "description": "Merchant location name.",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "The type of location.",
+                        "enum": [
+                          "Store",
+                          "Warehouse",
+                          "Drop Shipper",
+                          "Collection Point",
+                          "Click & Collect",
+                          "Headquarters"
+                        ]
+                      },
+                      "address": {
+                        "description": "This is the schema for representing an address",
+                        "type": "object",
+                        "required": [
+                          "countryCode",
+                          "postalCode",
+                          "locality",
+                          "administrativeArea"
+                        ],
+                        "properties": {
+                          "isOrganisation": {
+                            "description": "Does this address belong to an organisation?",
+                            "type": "boolean"
+                          },
+                          "line": {
+                            "description": "(required - fulfill) Lines of the address",
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "countryCode": {
+                            "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                          },
+                          "postalCode": {
+                            "type": "string",
+                            "description": "The post or zip code of this address."
+                          },
+                          "locality": {
+                            "type": "string",
+                            "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                          },
+                          "dependentLocality": {
+                            "type": "string",
+                            "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                          },
+                          "administrativeArea": {
+                            "type": "string",
+                            "description": "The administrative area of this address, ie. state."
+                          },
+                          "longitude": {
+                            "type": "number",
+                            "description": "The longitude value of a geocoded address."
+                          },
+                          "latitude": {
+                            "type": "number",
+                            "description": "The latitude value of a geocoded address."
+                          }
+                        }
+                      },
+                      "contact": {
+                        "description": "This is the schema for representing entity",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "organisationName": {
+                            "type": "string",
+                            "description": "Organisation name of this entity."
+                          },
+                          "personFirstName": {
+                            "type": "string",
+                            "description": "First name of this entity."
+                          },
+                          "personLastName": {
+                            "type": "string",
+                            "description": "Last name of this entity."
+                          },
+                          "email": {
+                            "type": "string",
+                            "description": "Email of this entity.",
+                            "format": "email"
+                          },
+                          "phoneNumbers": {
+                            "type": "array",
+                            "description": "List of phone number(s) of this entity",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "faxNumber": {
+                            "type": "string"
+                          },
+                          "nationalIdentificationNumber": {
+                            "type": "string",
+                            "description": "National identification number of this entity, ie. INSEE code (France)"
+                          },
+                          "taxIdentificationNumber": {
+                            "type": "string",
+                            "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                          }
+                        }
+                      },
+                      "customAttributes": {
+                        "default": [],
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "key",
+                            "value"
+                          ],
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "pattern": "^[a-zA-Z0-9_-]+$"
+                            },
+                            "value": {
+                              "type": [
+                                "number",
+                                "integer",
+                                "string",
+                                "boolean"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    }
+                  },
+                  "destination": {
+                    "type": "object",
+                    "required": [
+                      "address"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "description": "Merchant location name.",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "The type of location.",
+                        "enum": [
+                          "Store",
+                          "Warehouse",
+                          "Drop Shipper",
+                          "Collection Point",
+                          "Click & Collect",
+                          "Headquarters"
+                        ]
+                      },
+                      "address": {
+                        "description": "This is the schema for representing an address",
+                        "type": "object",
+                        "required": [
+                          "countryCode",
+                          "postalCode",
+                          "locality",
+                          "administrativeArea"
+                        ],
+                        "properties": {
+                          "isOrganisation": {
+                            "description": "Does this address belong to an organisation?",
+                            "type": "boolean"
+                          },
+                          "line": {
+                            "description": "(required - fulfill) Lines of the address",
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "countryCode": {
+                            "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                          },
+                          "postalCode": {
+                            "type": "string",
+                            "description": "The post or zip code of this address."
+                          },
+                          "locality": {
+                            "type": "string",
+                            "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                          },
+                          "dependentLocality": {
+                            "type": "string",
+                            "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                          },
+                          "administrativeArea": {
+                            "type": "string",
+                            "description": "The administrative area of this address, ie. state."
+                          },
+                          "longitude": {
+                            "type": "number",
+                            "description": "The longitude value of a geocoded address."
+                          },
+                          "latitude": {
+                            "type": "number",
+                            "description": "The latitude value of a geocoded address."
+                          }
+                        }
+                      },
+                      "contact": {
+                        "description": "This is the schema for representing entity",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "organisationName": {
+                            "type": "string",
+                            "description": "Organisation name of this entity."
+                          },
+                          "personFirstName": {
+                            "type": "string",
+                            "description": "First name of this entity."
+                          },
+                          "personLastName": {
+                            "type": "string",
+                            "description": "Last name of this entity."
+                          },
+                          "email": {
+                            "type": "string",
+                            "description": "Email of this entity.",
+                            "format": "email"
+                          },
+                          "phoneNumbers": {
+                            "type": "array",
+                            "description": "List of phone number(s) of this entity",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "faxNumber": {
+                            "type": "string"
+                          },
+                          "nationalIdentificationNumber": {
+                            "type": "string",
+                            "description": "National identification number of this entity, ie. INSEE code (France)"
+                          },
+                          "taxIdentificationNumber": {
+                            "type": "string",
+                            "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                          }
+                        }
+                      },
+                      "customAttributes": {
+                        "default": [],
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "key",
+                            "value"
+                          ],
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "pattern": "^[a-zA-Z0-9_-]+$"
+                            },
+                            "value": {
+                              "type": [
+                                "number",
+                                "integer",
+                                "string",
+                                "boolean"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    }
+                  },
+                  "packages": {
+                    "type": "array",
+                    "items": {
+                      "description": "This is the schema for representing packages",
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "grossWeight",
+                        "dimensions"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "id of the package.",
+                          "type": "string"
+                        },
+                        "grossWeight": {
+                          "type": "object",
+                          "required": [
+                            "value",
+                            "unitOfMeasurement"
+                          ],
+                          "properties": {
+                            "value": {
+                              "description": "The value of the weight unit",
+                              "type": "number"
+                            },
+                            "unitOfMeasurement": {
+                              "description": "The weight unit the value is",
+                              "enum": [
+                                "g",
+                                "gram",
+                                "oz",
+                                "ounce",
+                                "kg",
+                                "kilogram",
+                                "lb",
+                                "pound"
+                              ]
+                            }
+                          }
+                        },
+                        "dimensions": {
+                          "description": "This is the schema for representing dimensions",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "length",
+                            "width",
+                            "height",
+                            "unitOfMeasurement"
+                          ],
+                          "properties": {
+                            "length": {
+                              "type": "number"
+                            },
+                            "width": {
+                              "type": "number"
+                            },
+                            "height": {
+                              "type": "number"
+                            },
+                            "unitOfMeasurement": {
+                              "description": "The distance unit the dimension's properties are in",
+                              "type": "string",
+                              "enum": [
+                                "mm",
+                                "millimeter",
+                                "millimetre",
+                                "cm",
+                                "centimeter",
+                                "centimetre",
+                                "m",
+                                "meter",
+                                "metre",
+                                "ft",
+                                "foot",
+                                "feet",
+                                "in",
+                                "inch",
+                                "yd",
+                                "yard"
+                              ]
+                            }
+                          }
+                        },
+                        "packageType": {
+                          "description": "Package type",
+                          "type": "string"
+                        },
+                        "items": {
+                          "type": "array",
+                          "description": "(required - international fulfill) list of items",
+                          "items": {
+                            "description": "This is the schema for representing item",
+                            "type": "object",
+                            "properties": {
+                              "product": {
+                                "description": "This is the schema for representing product's attributes.",
+                                "type": "object",
+                                "properties": {
+                                  "merchantProductId": {
+                                    "description": "The product unique identifier, provided by the merchant",
+                                    "type": "string",
+                                    "maxLength": 100
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "maxLength": 100
+                                  },
+                                  "sku": {
+                                    "type": "string",
+                                    "description": "The sku of this product.",
+                                    "maxLength": 100
+                                  },
+                                  "description": {
+                                    "type": "string",
+                                    "description": "The description of this product.",
+                                    "maxLength": 500
+                                  },
+                                  "category": {
+                                    "type": "string",
+                                    "description": "The category of this product."
+                                  },
+                                  "unitOfMeasure": {
+                                    "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                                    "type": "string",
+                                    "enum": [
+                                      "Bag",
+                                      "Barrel",
+                                      "Bolt",
+                                      "Box",
+                                      "Bunch",
+                                      "Bundle",
+                                      "Butt",
+                                      "Canister",
+                                      "Carton",
+                                      "Case",
+                                      "Centimeter",
+                                      "Container",
+                                      "Crate",
+                                      "Cylinder",
+                                      "Dozen",
+                                      "Each",
+                                      "Envelope",
+                                      "Foot",
+                                      "Kilogram",
+                                      "Kilograms",
+                                      "Liter",
+                                      "Meter",
+                                      "Number",
+                                      "Package",
+                                      "Packet",
+                                      "Pair",
+                                      "Pairs",
+                                      "Pallet",
+                                      "Piece",
+                                      "Pieces",
+                                      "Pound",
+                                      "Proof Liter",
+                                      "Roll",
+                                      "Set",
+                                      "Square Meter",
+                                      "Square Yard",
+                                      "Tube",
+                                      "Yard"
+                                    ]
+                                  },
+                                  "dimensions": {
+                                    "description": "This is the schema for representing dimensions",
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "length",
+                                      "width",
+                                      "height",
+                                      "unitOfMeasurement"
+                                    ],
+                                    "properties": {
+                                      "length": {
+                                        "type": "number"
+                                      },
+                                      "width": {
+                                        "type": "number"
+                                      },
+                                      "height": {
+                                        "type": "number"
+                                      },
+                                      "unitOfMeasurement": {
+                                        "description": "The distance unit the dimension's properties are in",
+                                        "type": "string",
+                                        "enum": [
+                                          "mm",
+                                          "millimeter",
+                                          "millimetre",
+                                          "cm",
+                                          "centimeter",
+                                          "centimetre",
+                                          "m",
+                                          "meter",
+                                          "metre",
+                                          "ft",
+                                          "foot",
+                                          "feet",
+                                          "in",
+                                          "inch",
+                                          "yd",
+                                          "yard"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "weight": {
+                                    "type": "object",
+                                    "required": [
+                                      "value",
+                                      "unitOfMeasurement"
+                                    ],
+                                    "properties": {
+                                      "value": {
+                                        "description": "The value of the weight unit",
+                                        "type": "number"
+                                      },
+                                      "unitOfMeasurement": {
+                                        "description": "The weight unit the value is",
+                                        "enum": [
+                                          "g",
+                                          "gram",
+                                          "oz",
+                                          "ounce",
+                                          "kg",
+                                          "kilogram",
+                                          "lb",
+                                          "pound"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "monetaryValue": {
+                                    "description": "This is the schema for an representing money",
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "amount",
+                                      "currency"
+                                    ],
+                                    "properties": {
+                                      "amount": {
+                                        "description": "The amount of the currency",
+                                        "type": "number"
+                                      },
+                                      "currency": {
+                                        "description": "The currency the money amount is",
+                                        "type": "string",
+                                        "maxLength": 3,
+                                        "minLength": 3
+                                      }
+                                    }
+                                  },
+                                  "isFragile": {
+                                    "type": "boolean",
+                                    "default": false
+                                  },
+                                  "isVirtual": {
+                                    "type": "boolean",
+                                    "default": false
+                                  },
+                                  "isPrePackaged": {
+                                    "description": "Whether the product has its own package",
+                                    "type": "boolean",
+                                    "default": false
+                                  },
+                                  "canRotateVertical": {
+                                    "description": "Whether the product can be rotated vertically",
+                                    "type": "boolean",
+                                    "default": true
+                                  },
+                                  "countryOfOrigin": {
+                                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 2
+                                  },
+                                  "countryOfManufacture": {
+                                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code.",
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 2
+                                  },
+                                  "classificationCodes": {
+                                    "type": "object",
+                                    "description": "Classification codes of this product for export.",
+                                    "properties": {
+                                      "eccn": {
+                                        "type": "string",
+                                        "description": "Export Control Classification Number (ECCN).",
+                                        "minLength": 0,
+                                        "maxLength": 5
+                                      },
+                                      "scheduleBinfo": {
+                                        "type": "string",
+                                        "description": "Classification code for exporting goods out of the United States.",
+                                        "minLength": 0,
+                                        "maxLength": 15
+                                      },
+                                      "hsCode": {
+                                        "type": "string",
+                                        "description": "Harmonized Commodity Description and Coding System.",
+                                        "minLength": 2,
+                                        "maxLength": 10
+                                      }
+                                    }
+                                  },
+                                  "customAttributes": {
+                                    "default": [],
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "key",
+                                        "value"
+                                      ],
+                                      "properties": {
+                                        "key": {
+                                          "type": "string",
+                                          "pattern": "^[a-zA-Z0-9_-]+$"
+                                        },
+                                        "value": {
+                                          "type": [
+                                            "number",
+                                            "integer",
+                                            "string",
+                                            "boolean"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  }
+                                }
+                              },
+                              "quantity": {
+                                "type": "number",
+                                "minimum": 1,
+                                "description": "Value of unit of quantity of this item"
+                              }
+                            }
+                          }
+                        },
+                        "documentation": {
+                          "type": "array",
+                          "items": {
+                            "description": "A generic document response.",
+                            "type": "object",
+                            "required": [
+                              "encoding",
+                              "mimeType",
+                              "type"
+                            ],
+                            "properties": {
+                              "description": {
+                                "description": "Short description of the document.",
+                                "type": "string"
+                              },
+                              "mimeType": {
+                                "description": "A standard mime-type representation of the file format.",
+                                "type": "string",
+                                "enum": [
+                                  "application/epl",
+                                  "application/epl2",
+                                  "application/zpl",
+                                  "application/pdf",
+                                  "image/png",
+                                  "image/jpg",
+                                  "image/gif",
+                                  "image/bmp"
+                                ]
+                              },
+                              "encoding": {
+                                "description": "The encoding of the data",
+                                "type": "string",
+                                "enum": [
+                                  "base64",
+                                  "plainText"
+                                ]
+                              },
+                              "size": {
+                                "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                                "type": "string",
+                                "enum": [
+                                  "A0",
+                                  "A1",
+                                  "A2",
+                                  "A3",
+                                  "A4",
+                                  "A5",
+                                  "A6",
+                                  "A7",
+                                  "A8",
+                                  "A9",
+                                  "A10"
+                                ]
+                              },
+                              "type": {
+                                "description": "The document type being generated",
+                                "type": "string",
+                                "enum": [
+                                  "manifestSummary",
+                                  "customerInvoice",
+                                  "cn22",
+                                  "cn23",
+                                  "packagingList",
+                                  "packageLabels",
+                                  "certificateOfOrigin",
+                                  "NAFTA",
+                                  "commercialInvoice",
+                                  "CODTurnInPage",
+                                  "proofOfDelivery"
+                                ]
+                              },
+                              "url": {
+                                "description": "The URL of a document stored on a remote HTTP server",
+                                "type": "string",
+                                "format": "uri"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "requiredCapabilities": {
+                    "description": "This is the schema for an representing capability",
+                    "type": "object",
+                    "properties": {
+                      "authorityToLeave": {
+                        "additionalProperties": false,
+                        "type": "boolean"
+                      },
+                      "signature": {
+                        "type": "object",
+                        "required": [
+                          "required"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "required": {
+                            "type": "boolean"
+                          },
+                          "onlyAdultCanSign": {
+                            "type": "boolean"
+                          },
+                          "onlyAddresseeCanSign": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "cashOnDelivery": {
+                        "type": "object",
+                        "required": [
+                          "shippingInclusive"
+                        ],
+                        "properties": {
+                          "charge": {
+                            "description": "This is the schema for an representing money",
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "amount",
+                              "currency"
+                            ],
+                            "properties": {
+                              "amount": {
+                                "description": "The amount of the currency",
+                                "type": "number"
+                              },
+                              "currency": {
+                                "description": "The currency the money amount is",
+                                "type": "string",
+                                "maxLength": 3,
+                                "minLength": 3
+                              }
+                            }
+                          },
+                          "shippingInclusive": {
+                            "description": "Identifies if the cash on delivery includes the shipping cost",
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "exportDeclaration": {
+                    "description": "Type of fulfillment being chosen for a given shipment",
+                    "type": "object",
+                    "properties": {
+                      "signatory": {
+                        "description": "The signatory on a shipments' export declaration",
+                        "type": "object",
+                        "required": [
+                          "name",
+                          "title"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name of signatory",
+                            "type": "string"
+                          },
+                          "title": {
+                            "description": "Title of signatory",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "exportReason": {
+                        "description": "A human readable description of the reason for the exportation",
+                        "type": "string"
+                      },
+                      "exportCategory": {
+                        "description": "A broad classification of the export reason",
+                        "type": "string"
+                      },
+                      "declaredValue": {
+                        "description": "This is the schema for an representing money",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "amount",
+                          "currency"
+                        ],
+                        "properties": {
+                          "amount": {
+                            "description": "The amount of the currency",
+                            "type": "number"
+                          },
+                          "currency": {
+                            "description": "The currency the money amount is",
+                            "type": "string",
+                            "maxLength": 3,
+                            "minLength": 3
+                          }
+                        }
+                      },
+                      "incoterm": {
+                        "description": "Incoterm 2010 rules, series of pre-defined commercial terms.",
+                        "enum": [
+                          "EXW",
+                          "FCA",
+                          "FAS",
+                          "FOB",
+                          "CPT",
+                          "CFR",
+                          "CIF",
+                          "CIP",
+                          "DAT",
+                          "DAP",
+                          "DDP"
+                        ]
+                      },
+                      "customAttributes": {
+                        "default": [],
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "key",
+                            "value"
+                          ],
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "pattern": "^[a-zA-Z0-9_-]+$"
+                            },
+                            "value": {
+                              "type": [
+                                "number",
+                                "integer",
+                                "string",
+                                "boolean"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    }
+                  },
+                  "documentation": {
+                    "type": "array",
+                    "items": {
+                      "description": "A generic document response.",
+                      "type": "object",
+                      "required": [
+                        "encoding",
+                        "mimeType",
+                        "type"
+                      ],
+                      "properties": {
+                        "description": {
+                          "description": "Short description of the document.",
+                          "type": "string"
+                        },
+                        "mimeType": {
+                          "description": "A standard mime-type representation of the file format.",
+                          "type": "string",
+                          "enum": [
+                            "application/epl",
+                            "application/epl2",
+                            "application/zpl",
+                            "application/pdf",
+                            "image/png",
+                            "image/jpg",
+                            "image/gif",
+                            "image/bmp"
+                          ]
+                        },
+                        "encoding": {
+                          "description": "The encoding of the data",
+                          "type": "string",
+                          "enum": [
+                            "base64",
+                            "plainText"
+                          ]
+                        },
+                        "size": {
+                          "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                          "type": "string",
+                          "enum": [
+                            "A0",
+                            "A1",
+                            "A2",
+                            "A3",
+                            "A4",
+                            "A5",
+                            "A6",
+                            "A7",
+                            "A8",
+                            "A9",
+                            "A10"
+                          ]
+                        },
+                        "type": {
+                          "description": "The document type being generated",
+                          "type": "string",
+                          "enum": [
+                            "manifestSummary",
+                            "customerInvoice",
+                            "cn22",
+                            "cn23",
+                            "packagingList",
+                            "packageLabels",
+                            "certificateOfOrigin",
+                            "NAFTA",
+                            "commercialInvoice",
+                            "CODTurnInPage",
+                            "proofOfDelivery"
+                          ]
+                        },
+                        "url": {
+                          "description": "The URL of a document stored on a remote HTTP server",
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  },
+                  "fulfill": {
+                    "type": "object",
+                    "properties": {
+                      "carrierBooking": {
+                        "description": "The carrier booking information object",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "integrationId",
+                          "integrationServiceId",
+                          "shippingTaxInclusiveCharge",
+                          "carrierName",
+                          "serviceName",
+                          "bookingReference",
+                          "trackingReference"
+                        ],
+                        "properties": {
+                          "integrationId": {
+                            "description": "The identifier of the integration to you want to communicate with",
+                            "type": "string"
+                          },
+                          "integrationServiceId": {
+                            "description": "A consistent identifier that represents a unique carrier service",
+                            "type": "string"
+                          },
+                          "shippingTaxInclusiveCharge": {
+                            "description": "This is the schema for an representing money",
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "amount",
+                              "currency"
+                            ],
+                            "properties": {
+                              "amount": {
+                                "description": "The amount of the currency",
+                                "type": "number"
+                              },
+                              "currency": {
+                                "description": "The currency the money amount is",
+                                "type": "string",
+                                "maxLength": 3,
+                                "minLength": 3
+                              }
+                            }
+                          },
+                          "carrierName": {
+                            "description": "A human understandable reference that represents a carrier",
+                            "type": "string"
+                          },
+                          "serviceName": {
+                            "description": "A human understandable reference that represents a carrier service",
+                            "type": "string"
+                          },
+                          "carrierSortCode": {
+                            "description": "An identifier used by a carrier to determinine shipment sorting",
+                            "type": "string"
+                          },
+                          "bookingReference": {
+                            "type": "string"
+                          },
+                          "trackingReference": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "id"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "order"
+                  ]
+                },
+                "id": {
+                  "description": "An Temando order identifier",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "description"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "securitySchemes": {},
+    "headers": {}
+  }
+}
