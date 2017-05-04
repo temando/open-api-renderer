@@ -16,12 +16,12 @@
   padding: 5px 20px;
   margin-top: 10px;
   cursor: pointer;
-  &.active {
-    background-color: $grey-dark;
-  };
   text-transform: uppercase;
   color: $blue;
   font-weight: bold;
+  &.active {
+    background-color: $grey-dark;
+  };
 }
 
 .nav-level2 {
