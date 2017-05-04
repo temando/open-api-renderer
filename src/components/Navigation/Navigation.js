@@ -32,9 +32,8 @@ export default class Navigation extends Component {
                       smooth
                       duration={300}
                       offset={-30}
-                      //containerId={item.title}
                     >
-                      {subitem.title}
+                      {subitem.type.toUpperCase()} - {subitem.title}
                     </Link>
                   );
                 })}

@@ -2,14 +2,69 @@ import refParser from 'json-schema-ref-parser';
 import getUIReadySchema from './schemaParser';
 
 /**
+ * Sort function
+ *
+ * @param {String} str1
+ * @param {String} str2
+ *
+ * @return {number}
+ */
+function sortByAlphabet(str1, str2) {
+  if (str1 < str2) {
+    return -1;
+  } else if (str1 > str2) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+/**
+ * Sort function
+ *
+ * @param {String} inMethod1
+ * @param {String} inMethod2
+ *
+ * @return {number}
+ */
+
+function defaultMethodSort(inMethod1, inMethod2) {
+  const methodWeights = {
+    GET: 1,
+    POST: 2,
+    PUT: 3,
+    DELETE: 4,
+    HEAD: 5,
+    OPTIONS: 6,
+    TRACE: 7,
+    CONNECT: 8
+  };
+
+  const method1 = inMethod1.toUpperCase();
+  const method2 = inMethod2.toUpperCase();
+
+  if (!methodWeights.hasOwnProperty(method1)) {
+    throw new Error(`Invalid method: ${method1}`);
+  }
+
+  if (!methodWeights.hasOwnProperty(method2)) {
+    throw new Error(`Invalid method: ${method2}`);
+  }
+
+  return methodWeights[method1] - methodWeights[method2];
+}
+
+/**
  * Construct navigation and services ready to be consumed by the UI
  *
  * @param {Array} tags
  * @param {Object} paths
+ * @param {Function} pathSortFunction
+ * @param {Function} methodSortFunction
  *
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices(tags, paths) {
+function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = defaultMethodSort) {
   const navigation = [];
   const services = [];
 
@@ -17,39 +72,43 @@ function getUINavigationAndServices(tags, paths) {
     const navigationMethods = [];
     const servicesMethods = [];
 
-    for (const pathKey in paths) {
-      if (paths.hasOwnProperty(pathKey)) {
-        const path = paths[pathKey];
+    const pathIds = Object.keys(paths).sort(pathSortFunction);
 
-        for (const methodName in path) {
-          if (path.hasOwnProperty(methodName)) {
-            const method = path[methodName];
-            const methodTags = method.tags;
+    pathIds.forEach(pathId => {
+      const path = paths[pathId];
+      const methodTypes = Object.keys(path).sort(methodSortFunction);
 
-            if (methodTags.includes(tag)) {
-              const link = pathKey + '/' + methodName;
-              const navigationMethod = {
-                title: method.summary,
-                link
-              };
-              navigationMethods.push(navigationMethod);
+      methodTypes.forEach(methodType => {
+        const method = path[methodType];
+        const methodTags = method.tags;
 
-              const uiRequest = getUIRequest(method.description, method.requestBody);
-              const uiResponses = getUIResponses(method.responses);
-              const servicesMethod = {
-                type: methodName,
-                link,
-                summary: method.summary,
-                description: method.description,
-                request: uiRequest,
-                responses: uiResponses
-              };
-              servicesMethods.push(servicesMethod);
-            }
+        if (methodTags.includes(tag)) {
+          const link = pathId + '/' + methodType;
+          const navigationMethod = {
+            type: methodType,
+            title: method.summary,
+            link
+          };
+          navigationMethods.push(navigationMethod);
+
+          const uiRequest = getUIRequest(method.description, method.requestBody);
+          const uiResponses = getUIResponses(method.responses);
+          const servicesMethod = {
+            type: methodType,
+            link,
+            summary: method.summary,
+            request: uiRequest,
+            responses: uiResponses
+          };
+
+          if (method.description) {
+            servicesMethod.description = method.description;
           }
+
+          servicesMethods.push(servicesMethod);
         }
-      }
-    }
+      });
+    });
 
     navigation.push({
       title: tag,
@@ -74,16 +133,25 @@ function getUINavigationAndServices(tags, paths) {
  * @return {Object}
  */
 function getUIRequest(description, requestBody = null) {
-  const uiRequest = {
-    description
-  };
+  const uiRequest = {};
+
+  if (description) {
+    uiRequest.description = description;
+  }
 
   if (requestBody) {
     // TODO: tidy this up
     const requestContent = requestBody.content['application/vnd.api+json'] || requestBody.content['application/json'];
 
-    uiRequest.schema = getUIReadySchema(requestContent.schema);
-    uiRequest.example = requestContent.examples;
+    const schema = getUIReadySchema(requestContent.schema);
+
+    if (schema) {
+      uiRequest.schema = schema;
+    }
+
+    if (requestContent.examples) {
+      uiRequest.example = requestContent.examples;
+    }
   }
 
   return uiRequest;

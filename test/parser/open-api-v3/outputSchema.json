@@ -1,0 +1,71 @@
+[
+  {
+    "name": "data",
+    "properties": [
+      {
+        "name": "type",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "attributes",
+        "properties": [
+          {
+            "description": "Pre-generated Invitation code",
+            "name": "invitationCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "One of predefined platforms",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name, eg: Company name",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Email of the default user",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "User password",
+            "name": "password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "IP address where the request came from",
+            "name": "ipAddress",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "This is the schema for representing addresses.",
+            "name": "billingAddress",
+            "properties": [
+              {
+                "description": "The post or zip code of this address.",
+                "name": "postalCode",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "required": false,
+            "type": "object"
+          }
+        ],
+        "required": true,
+        "type": "object"
+      }
+    ],
+    "required": true,
+    "type": "object"
+  }
+]
