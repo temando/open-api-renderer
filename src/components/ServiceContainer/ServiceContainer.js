@@ -9,8 +9,8 @@ import Method from '../Method/Method';
 export default class ServiceContainer extends Component {
   render() {
     const { service } = this.props;
-    const methods = service.get('methods');
-    const title = service.get('title');
+    const methods = service.methods;
+    const title = service.title;
 
     return (
       <Element className="service-container" name={title} id={title}>
@@ -18,11 +18,11 @@ export default class ServiceContainer extends Component {
         {methods.map((method) => {
           return (
             <Method
-              key={method.get('link')}
+              key={method.link}
               method={method}
             />
           );
-        }).toArray()}
+        })}
       </Element>
     );
   }
