@@ -43,10 +43,18 @@ $cell-padding: 10px;
 
 /* Tree */
 
-.property+.property {
+.property+.property, .body-schema-subset+.property {
   .property-name {
     border-left: $tree-border-style;
   }
+}
+
+.body-schema-subset > td {
+  border-left: $tree-border-style;
+}
+
+.property.last+.body-schema-subset > td {
+  border-left: none;
 }
 
 .property-name {
