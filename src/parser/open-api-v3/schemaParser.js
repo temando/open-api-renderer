@@ -12,10 +12,13 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
 
   const outputNode = {
     name: nodeName,
-    description: propertyNode.description,
     type: nodeType,
     required
   };
+
+  if (propertyNode.description) {
+    outputNode.description = propertyNode.description;
+  }
 
   // TODO: work out how to handle array in the UI, and update the code here
   if (nodeType === 'string' || nodeType === 'number') {

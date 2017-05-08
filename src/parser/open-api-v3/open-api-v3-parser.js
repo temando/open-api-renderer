@@ -1,15 +1,18 @@
 import refParser from 'json-schema-ref-parser';
 import getUIReadySchema from './schemaParser';
+import { sortByAlphabet, httpMethodSort } from '../sorting';
 
 /**
  * Construct navigation and services ready to be consumed by the UI
  *
  * @param {Array} tags
  * @param {Object} paths
+ * @param {Function} pathSortFunction
+ * @param {Function} methodSortFunction
  *
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices(tags, paths) {
+function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = httpMethodSort) {
   const navigation = [];
   const services = [];
 
@@ -17,39 +20,43 @@ function getUINavigationAndServices(tags, paths) {
     const navigationMethods = [];
     const servicesMethods = [];
 
-    for (const pathKey in paths) {
-      if (paths.hasOwnProperty(pathKey)) {
-        const path = paths[pathKey];
+    const pathIds = Object.keys(paths).sort(pathSortFunction);
 
-        for (const methodName in path) {
-          if (path.hasOwnProperty(methodName)) {
-            const method = path[methodName];
-            const methodTags = method.tags;
+    pathIds.forEach(pathId => {
+      const path = paths[pathId];
+      const methodTypes = Object.keys(path).sort(methodSortFunction);
 
-            if (methodTags.includes(tag)) {
-              const link = pathKey + '/' + methodName;
-              const navigationMethod = {
-                title: method.summary,
-                link
-              };
-              navigationMethods.push(navigationMethod);
+      methodTypes.forEach(methodType => {
+        const method = path[methodType];
+        const methodTags = method.tags;
 
-              const uiRequest = getUIRequest(method.description, method.requestBody);
-              const uiResponses = getUIResponses(method.responses);
-              const servicesMethod = {
-                type: methodName,
-                link,
-                summary: method.summary,
-                description: method.description,
-                request: uiRequest,
-                responses: uiResponses
-              };
-              servicesMethods.push(servicesMethod);
-            }
+        if (methodTags.includes(tag)) {
+          const link = pathId + '/' + methodType;
+          const navigationMethod = {
+            type: methodType,
+            title: method.summary,
+            link
+          };
+          navigationMethods.push(navigationMethod);
+
+          const uiRequest = getUIRequest(method.description, method.requestBody);
+          const uiResponses = getUIResponses(method.responses);
+          const servicesMethod = {
+            type: methodType,
+            link,
+            summary: method.summary,
+            request: uiRequest,
+            responses: uiResponses
+          };
+
+          if (method.description) {
+            servicesMethod.description = method.description;
           }
+
+          servicesMethods.push(servicesMethod);
         }
-      }
-    }
+      });
+    });
 
     navigation.push({
       title: tag,
@@ -66,6 +73,27 @@ function getUINavigationAndServices(tags, paths) {
 }
 
 /**
+ * Add media type info, e.g. schema and examples to UI object
+ * This method modifies the uiObject input
+ *
+ * @param {Object} uiObj
+ * @param {Object} mediaType Open API mediaType object
+ */
+function addMediaTypeInfoToUIObject(uiObj, mediaType) {
+  if (mediaType.schema) {
+    uiObj.schema = getUIReadySchema(mediaType.schema);
+  }
+
+  if (mediaType.example) {
+    uiObj.example = mediaType.example;
+  }
+
+  if (mediaType.examples) {
+    uiObj.examples = mediaType.examples;
+  }
+}
+
+/**
  * Construct request object ready to be consumed by the UI
  *
  * @param {String} description
@@ -74,20 +102,23 @@ function getUINavigationAndServices(tags, paths) {
  * @return {Object}
  */
 function getUIRequest(description, requestBody = null) {
-  const uiRequest = {
-    description
-  };
+  const uiRequest = {};
+
+  if (description) {
+    uiRequest.description = description;
+  }
 
   if (requestBody) {
-    // TODO: tidy this up
-    const requestContent = requestBody.content['application/vnd.api+json'] || requestBody.content['application/json'];
+    const mediaType = getMediaType(requestBody.content);
 
-    uiRequest.schema = getUIReadySchema(requestContent.schema);
-    uiRequest.example = requestContent.examples;
+    if (mediaType) {
+      addMediaTypeInfoToUIObject(uiRequest, mediaType);
+    }
   }
 
   return uiRequest;
 }
+
 
 /**
  * Construct responses object ready to be consumed by the UI
@@ -108,10 +139,10 @@ function getUIResponses(responses) {
         description: response.description
       };
 
-      if (response.content) {
-        // TODO: tidy this up
-        const responseContent = response.content['application/vnd.api+json'] || response.content['application/json'];
-        uiResponse.schema = getUIReadySchema(responseContent.schema);
+      const mediaType = getMediaType(response.content);
+
+      if (mediaType) {
+        addMediaTypeInfoToUIObject(uiResponse, mediaType);
       }
 
       uiResponses.push(uiResponse);
@@ -119,6 +150,31 @@ function getUIResponses(responses) {
   }
 
   return uiResponses;
+}
+
+/**
+ * Extracts the content for UI from the first available media type
+ *
+ * @param {Object} content Open API v3 Content Object
+ *
+ * @return
+ */
+function getMediaType(content) {
+  if (!content) {
+    return null;
+  }
+
+  const mediaTypeIds = Object.keys(content);
+
+  for (const mediaTypeId of mediaTypeIds) {
+    const mediaType = content[mediaTypeId];
+
+    if (mediaType.schema) {
+      return mediaType;
+    }
+  }
+
+  return null;
 }
 
 /**

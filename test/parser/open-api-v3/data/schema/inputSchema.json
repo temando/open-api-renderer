@@ -1,0 +1,98 @@
+{
+  "title": "Account",
+  "description": "Account registration schema",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "type",
+        "attributes"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "account"
+          ]
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "invitationCode",
+            "platform",
+            "name",
+            "email",
+            "privacyPolicyDate",
+            "tncAgreementDate",
+            "headquartersCountry",
+            "ipAddress"
+          ],
+          "properties": {
+            "invitationCode": {
+              "description": "Pre-generated Invitation code",
+              "type": "string"
+            },
+            "platform": {
+              "description": "One of predefined platforms",
+              "enum": [
+                "test",
+                "custom",
+                "magento"
+              ]
+            },
+            "name": {
+              "description": "Name, eg: Company name",
+              "type": "string"
+            },
+            "email": {
+              "description": "Email of the default user",
+              "type": "string",
+              "format": "email"
+            },
+            "password": {
+              "description": "User password",
+              "type": "string"
+            },
+            "ipAddress": {
+              "description": "IP address where the request came from",
+              "type": "string",
+              "anyOf": [
+                {
+                  "format": "ipv4"
+                },
+                {
+                  "format": "ipv6"
+                }
+              ]
+            },
+            "billingAddress": {
+              "description": "This is the schema for representing addresses.",
+              "type": "object",
+              "required": [
+                "countryCode"
+              ],
+              "properties": {
+                "line": {
+                  "description": "Lines of the address",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "postalCode": {
+                  "type": "string",
+                  "description": "The post or zip code of this address."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
