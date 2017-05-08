@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import inputSchema from './inputSchema.json';
-import expectedOutputSchema from './outputSchema.json';
+import inputSchema from './data/schema/inputSchema.json';
+import expectedOutputSchema from './data/schema/outputSchema.json';
 import getUIReadySchema from '../../../src/parser/open-api-v3/schemaParser';
 
 describe('getUIReadySchema', () => {

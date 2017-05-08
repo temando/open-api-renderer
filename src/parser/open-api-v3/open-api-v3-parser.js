@@ -1,58 +1,6 @@
 import refParser from 'json-schema-ref-parser';
 import getUIReadySchema from './schemaParser';
-
-/**
- * Sort function
- *
- * @param {String} str1
- * @param {String} str2
- *
- * @return {number}
- */
-function sortByAlphabet(str1, str2) {
-  if (str1 < str2) {
-    return -1;
-  } else if (str1 > str2) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
-
-/**
- * Sort function
- *
- * @param {String} inMethod1
- * @param {String} inMethod2
- *
- * @return {number}
- */
-
-function defaultMethodSort(inMethod1, inMethod2) {
-  const methodWeights = {
-    GET: 1,
-    POST: 2,
-    PUT: 3,
-    DELETE: 4,
-    HEAD: 5,
-    OPTIONS: 6,
-    TRACE: 7,
-    CONNECT: 8
-  };
-
-  const method1 = inMethod1.toUpperCase();
-  const method2 = inMethod2.toUpperCase();
-
-  if (!methodWeights.hasOwnProperty(method1)) {
-    throw new Error(`Invalid method: ${method1}`);
-  }
-
-  if (!methodWeights.hasOwnProperty(method2)) {
-    throw new Error(`Invalid method: ${method2}`);
-  }
-
-  return methodWeights[method1] - methodWeights[method2];
-}
+import { sortByAlphabet, httpMethodSort } from '../sorting';
 
 /**
  * Construct navigation and services ready to be consumed by the UI
@@ -64,7 +12,7 @@ function defaultMethodSort(inMethod1, inMethod2) {
  *
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = defaultMethodSort) {
+function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = httpMethodSort) {
   const navigation = [];
   const services = [];
 
@@ -125,6 +73,27 @@ function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphab
 }
 
 /**
+ * Add media type info, e.g. schema and examples to UI object
+ * This method modifies the uiObject input
+ *
+ * @param {Object} uiObj
+ * @param {Object} mediaType Open API mediaType object
+ */
+function addMediaTypeInfoToUIObject(uiObj, mediaType) {
+  if (mediaType.schema) {
+    uiObj.schema = getUIReadySchema(mediaType.schema);
+  }
+
+  if (mediaType.example) {
+    uiObj.example = mediaType.example;
+  }
+
+  if (mediaType.examples) {
+    uiObj.examples = mediaType.examples;
+  }
+}
+
+/**
  * Construct request object ready to be consumed by the UI
  *
  * @param {String} description
@@ -140,22 +109,16 @@ function getUIRequest(description, requestBody = null) {
   }
 
   if (requestBody) {
-    // TODO: tidy this up
-    const requestContent = requestBody.content['application/vnd.api+json'] || requestBody.content['application/json'];
+    const mediaType = getMediaType(requestBody.content);
 
-    const schema = getUIReadySchema(requestContent.schema);
-
-    if (schema) {
-      uiRequest.schema = schema;
-    }
-
-    if (requestContent.examples) {
-      uiRequest.example = requestContent.examples;
+    if (mediaType) {
+      addMediaTypeInfoToUIObject(uiRequest, mediaType);
     }
   }
 
   return uiRequest;
 }
+
 
 /**
  * Construct responses object ready to be consumed by the UI
@@ -176,10 +139,10 @@ function getUIResponses(responses) {
         description: response.description
       };
 
-      if (response.content) {
-        // TODO: tidy this up
-        const responseContent = response.content['application/vnd.api+json'] || response.content['application/json'];
-        uiResponse.schema = getUIReadySchema(responseContent.schema);
+      const mediaType = getMediaType(response.content);
+
+      if (mediaType) {
+        addMediaTypeInfoToUIObject(uiResponse, mediaType);
       }
 
       uiResponses.push(uiResponse);
@@ -187,6 +150,31 @@ function getUIResponses(responses) {
   }
 
   return uiResponses;
+}
+
+/**
+ * Extracts the content for UI from the first available media type
+ *
+ * @param {Object} content Open API v3 Content Object
+ *
+ * @return
+ */
+function getMediaType(content) {
+  if (!content) {
+    return null;
+  }
+
+  const mediaTypeIds = Object.keys(content);
+
+  for (const mediaTypeId of mediaTypeIds) {
+    const mediaType = content[mediaTypeId];
+
+    if (mediaType.schema) {
+      return mediaType;
+    }
+  }
+
+  return null;
 }
 
 /**

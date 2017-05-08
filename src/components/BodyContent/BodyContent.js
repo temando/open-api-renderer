@@ -20,15 +20,15 @@ export default class BodyContent extends Component {
   }
 
   render() {
-    const { description, schema, example } = this.props;
+    const { description, schema, example, examples } = this.props;
 
     const { tab } = this.state;
     return (
       <div className="body-content">
         <div className="body-content-description">{description}</div>
-        {schema && this.renderTabs(schema, example)}
+        {schema && this.renderTabs(schema, example || examples)}
         {tab === 'schema' && this.renderSchema(schema)}
-        {tab === 'example' && this.renderExample(example)}
+        {tab === 'example' && this.renderExample(example, examples)}
       </div>
     );
   }
@@ -80,11 +80,18 @@ export default class BodyContent extends Component {
     return null;
   }
 
-  renderExample(example) {
-    if (example) {
+  renderExample(example, examples) {
+    // TODO: Improve example visualisation
+    let displayText = example;
+
+    if (!displayText && examples) {
+      displayText = JSON.stringify(examples);
+    }
+
+    if (displayText) {
       return (
         <div className="body-content-example">
-          {example}
+          {displayText}
         </div>
       );
     }
@@ -95,5 +102,6 @@ export default class BodyContent extends Component {
 BodyContent.propTypes = {
   description: PropTypes.string,
   schema: PropTypes.array,
-  example: PropTypes.string
+  example: PropTypes.string,
+  examples: PropTypes.array
 };
