@@ -1,10 +1,8 @@
 import { readdirSync, readJSONSync } from 'fs-extra';
 import { expect } from 'chai';
-// import inputShippingDefinition from './data/definition/inputs/shipping.json';
-// import expectedOutputShippingDefinition from './data/definition/outputs/shipping.json';
 import getUIReadyDefinition from '../../../src/parser/open-api-v3/open-api-v3-parser';
 
-describe.only('getUIReadyDefinition', () => {
+describe('getUIReadyDefinition', () => {
   const dataDirectory = __dirname + '/data/definition';
   const dataFiles = readdirSync(dataDirectory + '/inputs');
 
