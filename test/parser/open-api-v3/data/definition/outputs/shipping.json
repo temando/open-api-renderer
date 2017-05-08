@@ -1,0 +1,2924 @@
+{
+  "title": "Temando API",
+  "version": "1.0.0",
+  "description": "Providing consumers with more choice and lowering the cost of shipping.",
+  "navigation": [
+    {
+      "title": "Product",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Get list of Products in the account document.",
+          "link": "/products/get"
+        },
+        {
+          "type": "post",
+          "title": "Create a Product object in the account.",
+          "link": "/products/post"
+        },
+        {
+          "type": "get",
+          "title": "Get Product from account document.",
+          "link": "/products/{id}/get"
+        },
+        {
+          "type": "put",
+          "title": "Update Product.",
+          "link": "/products/{id}/put"
+        },
+        {
+          "type": "delete",
+          "title": "Remove Products.",
+          "link": "/products/{id}/delete"
+        }
+      ]
+    },
+    {
+      "title": "Shipment",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Get shipment from account document by id.",
+          "link": "/shipments/{id}/get"
+        },
+        {
+          "type": "put",
+          "title": "Update Shipment.",
+          "link": "/shipments/{id}/put"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "Product",
+      "methods": [
+        {
+          "type": "get",
+          "link": "/products/get",
+          "summary": "Get list of Products in the account document.",
+          "request": {
+            "description": "Get list of Products in the account document."
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "List of all of the Products defined.",
+              "schema": []
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Get list of Products in the account document."
+        },
+        {
+          "type": "post",
+          "link": "/products/post",
+          "summary": "Create a Product object in the account.",
+          "request": {
+            "description": "Create a Product object in the account.",
+            "schema": [
+              {
+                "name": "data",
+                "type": "object",
+                "required": true,
+                "properties": [
+                  {
+                    "name": "type",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "attributes",
+                    "type": "object",
+                    "required": true,
+                    "description": "This is the schema for representing product's attributes.",
+                    "properties": [
+                      {
+                        "name": "merchantProductId",
+                        "type": "string",
+                        "required": true,
+                        "description": "The product unique identifier, provided by the merchant"
+                      },
+                      {
+                        "name": "name",
+                        "type": "string",
+                        "required": true
+                      },
+                      {
+                        "name": "sku",
+                        "type": "string",
+                        "required": false,
+                        "description": "The sku of this product."
+                      },
+                      {
+                        "name": "description",
+                        "type": "string",
+                        "required": false,
+                        "description": "The description of this product."
+                      },
+                      {
+                        "name": "category",
+                        "type": "string",
+                        "required": false,
+                        "description": "The category of this product."
+                      },
+                      {
+                        "name": "unitOfMeasure",
+                        "type": "string",
+                        "required": false,
+                        "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                      },
+                      {
+                        "name": "dimensions",
+                        "type": "object",
+                        "required": false,
+                        "description": "This is the schema for representing dimensions",
+                        "properties": [
+                          {
+                            "name": "length",
+                            "type": "number",
+                            "required": true
+                          },
+                          {
+                            "name": "width",
+                            "type": "number",
+                            "required": true
+                          },
+                          {
+                            "name": "height",
+                            "type": "number",
+                            "required": true
+                          },
+                          {
+                            "name": "unitOfMeasurement",
+                            "type": "string",
+                            "required": true,
+                            "description": "The distance unit the dimension's properties are in"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "weight",
+                        "type": "object",
+                        "required": false,
+                        "properties": [
+                          {
+                            "name": "value",
+                            "type": "number",
+                            "required": true,
+                            "description": "The value of the weight unit"
+                          },
+                          {
+                            "name": "unitOfMeasurement",
+                            "type": "string",
+                            "required": true,
+                            "description": "The weight unit the value is"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "monetaryValue",
+                        "type": "object",
+                        "required": false,
+                        "description": "This is the schema for an representing money",
+                        "properties": [
+                          {
+                            "name": "amount",
+                            "type": "number",
+                            "required": true,
+                            "description": "The amount of the currency"
+                          },
+                          {
+                            "name": "currency",
+                            "type": "string",
+                            "required": true,
+                            "description": "The currency the money amount is"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "countryOfOrigin",
+                        "type": "string",
+                        "required": false,
+                        "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                      },
+                      {
+                        "name": "countryOfManufacture",
+                        "type": "string",
+                        "required": false,
+                        "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                      },
+                      {
+                        "name": "classificationCodes",
+                        "type": "object",
+                        "required": false,
+                        "description": "Classification codes of this product for export.",
+                        "properties": [
+                          {
+                            "name": "eccn",
+                            "type": "string",
+                            "required": false,
+                            "description": "Export Control Classification Number (ECCN)."
+                          },
+                          {
+                            "name": "scheduleBinfo",
+                            "type": "string",
+                            "required": false,
+                            "description": "Classification code for exporting goods out of the United States."
+                          },
+                          {
+                            "name": "hsCode",
+                            "type": "string",
+                            "required": false,
+                            "description": "Harmonized Commodity Description and Coding System."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "201",
+              "description": "Newly created Product with unique ID.",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "GUID of the object."
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "description": "This is the schema for representing product's attributes.",
+                      "properties": [
+                        {
+                          "name": "merchantProductId",
+                          "type": "string",
+                          "required": true,
+                          "description": "The product unique identifier, provided by the merchant"
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "sku",
+                          "type": "string",
+                          "required": false,
+                          "description": "The sku of this product."
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false,
+                          "description": "The description of this product."
+                        },
+                        {
+                          "name": "category",
+                          "type": "string",
+                          "required": false,
+                          "description": "The category of this product."
+                        },
+                        {
+                          "name": "unitOfMeasure",
+                          "type": "string",
+                          "required": false,
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                        },
+                        {
+                          "name": "dimensions",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for representing dimensions",
+                          "properties": [
+                            {
+                              "name": "length",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "width",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "height",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The distance unit the dimension's properties are in"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "weight",
+                          "type": "object",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "value",
+                              "type": "number",
+                              "required": true,
+                              "description": "The value of the weight unit"
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The weight unit the value is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "monetaryValue",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for an representing money",
+                          "properties": [
+                            {
+                              "name": "amount",
+                              "type": "number",
+                              "required": true,
+                              "description": "The amount of the currency"
+                            },
+                            {
+                              "name": "currency",
+                              "type": "string",
+                              "required": true,
+                              "description": "The currency the money amount is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "countryOfOrigin",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "countryOfManufacture",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "classificationCodes",
+                          "type": "object",
+                          "required": false,
+                          "description": "Classification codes of this product for export.",
+                          "properties": [
+                            {
+                              "name": "eccn",
+                              "type": "string",
+                              "required": false,
+                              "description": "Export Control Classification Number (ECCN)."
+                            },
+                            {
+                              "name": "scheduleBinfo",
+                              "type": "string",
+                              "required": false,
+                              "description": "Classification code for exporting goods out of the United States."
+                            },
+                            {
+                              "name": "hsCode",
+                              "type": "string",
+                              "required": false,
+                              "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Create a Product object in the account."
+        },
+        {
+          "type": "get",
+          "link": "/products/{id}/get",
+          "summary": "Get Product from account document.",
+          "request": {
+            "description": "Get Product from account document."
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "Return the Product specified by ID parameter",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "GUID of the object."
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "description": "This is the schema for representing product's attributes.",
+                      "properties": [
+                        {
+                          "name": "merchantProductId",
+                          "type": "string",
+                          "required": true,
+                          "description": "The product unique identifier, provided by the merchant"
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "sku",
+                          "type": "string",
+                          "required": false,
+                          "description": "The sku of this product."
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false,
+                          "description": "The description of this product."
+                        },
+                        {
+                          "name": "category",
+                          "type": "string",
+                          "required": false,
+                          "description": "The category of this product."
+                        },
+                        {
+                          "name": "unitOfMeasure",
+                          "type": "string",
+                          "required": false,
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                        },
+                        {
+                          "name": "dimensions",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for representing dimensions",
+                          "properties": [
+                            {
+                              "name": "length",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "width",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "height",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The distance unit the dimension's properties are in"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "weight",
+                          "type": "object",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "value",
+                              "type": "number",
+                              "required": true,
+                              "description": "The value of the weight unit"
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The weight unit the value is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "monetaryValue",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for an representing money",
+                          "properties": [
+                            {
+                              "name": "amount",
+                              "type": "number",
+                              "required": true,
+                              "description": "The amount of the currency"
+                            },
+                            {
+                              "name": "currency",
+                              "type": "string",
+                              "required": true,
+                              "description": "The currency the money amount is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "countryOfOrigin",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "countryOfManufacture",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "classificationCodes",
+                          "type": "object",
+                          "required": false,
+                          "description": "Classification codes of this product for export.",
+                          "properties": [
+                            {
+                              "name": "eccn",
+                              "type": "string",
+                              "required": false,
+                              "description": "Export Control Classification Number (ECCN)."
+                            },
+                            {
+                              "name": "scheduleBinfo",
+                              "type": "string",
+                              "required": false,
+                              "description": "Classification code for exporting goods out of the United States."
+                            },
+                            {
+                              "name": "hsCode",
+                              "type": "string",
+                              "required": false,
+                              "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "404",
+              "description": "The resource could not be found.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Get Product from account document."
+        },
+        {
+          "type": "put",
+          "link": "/products/{id}/put",
+          "summary": "Update Product.",
+          "request": {
+            "description": "Update Product in account document.",
+            "schema": [
+              {
+                "name": "data",
+                "type": "object",
+                "required": true,
+                "properties": [
+                  {
+                    "name": "type",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "GUID of the object."
+                  },
+                  {
+                    "name": "attributes",
+                    "type": "object",
+                    "required": true,
+                    "description": "This is the schema for representing product's attributes.",
+                    "properties": [
+                      {
+                        "name": "merchantProductId",
+                        "type": "string",
+                        "required": true,
+                        "description": "The product unique identifier, provided by the merchant"
+                      },
+                      {
+                        "name": "name",
+                        "type": "string",
+                        "required": true
+                      },
+                      {
+                        "name": "sku",
+                        "type": "string",
+                        "required": false,
+                        "description": "The sku of this product."
+                      },
+                      {
+                        "name": "description",
+                        "type": "string",
+                        "required": false,
+                        "description": "The description of this product."
+                      },
+                      {
+                        "name": "category",
+                        "type": "string",
+                        "required": false,
+                        "description": "The category of this product."
+                      },
+                      {
+                        "name": "unitOfMeasure",
+                        "type": "string",
+                        "required": false,
+                        "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                      },
+                      {
+                        "name": "dimensions",
+                        "type": "object",
+                        "required": false,
+                        "description": "This is the schema for representing dimensions",
+                        "properties": [
+                          {
+                            "name": "length",
+                            "type": "number",
+                            "required": true
+                          },
+                          {
+                            "name": "width",
+                            "type": "number",
+                            "required": true
+                          },
+                          {
+                            "name": "height",
+                            "type": "number",
+                            "required": true
+                          },
+                          {
+                            "name": "unitOfMeasurement",
+                            "type": "string",
+                            "required": true,
+                            "description": "The distance unit the dimension's properties are in"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "weight",
+                        "type": "object",
+                        "required": false,
+                        "properties": [
+                          {
+                            "name": "value",
+                            "type": "number",
+                            "required": true,
+                            "description": "The value of the weight unit"
+                          },
+                          {
+                            "name": "unitOfMeasurement",
+                            "type": "string",
+                            "required": true,
+                            "description": "The weight unit the value is"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "monetaryValue",
+                        "type": "object",
+                        "required": false,
+                        "description": "This is the schema for an representing money",
+                        "properties": [
+                          {
+                            "name": "amount",
+                            "type": "number",
+                            "required": true,
+                            "description": "The amount of the currency"
+                          },
+                          {
+                            "name": "currency",
+                            "type": "string",
+                            "required": true,
+                            "description": "The currency the money amount is"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "countryOfOrigin",
+                        "type": "string",
+                        "required": false,
+                        "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                      },
+                      {
+                        "name": "countryOfManufacture",
+                        "type": "string",
+                        "required": false,
+                        "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                      },
+                      {
+                        "name": "classificationCodes",
+                        "type": "object",
+                        "required": false,
+                        "description": "Classification codes of this product for export.",
+                        "properties": [
+                          {
+                            "name": "eccn",
+                            "type": "string",
+                            "required": false,
+                            "description": "Export Control Classification Number (ECCN)."
+                          },
+                          {
+                            "name": "scheduleBinfo",
+                            "type": "string",
+                            "required": false,
+                            "description": "Classification code for exporting goods out of the United States."
+                          },
+                          {
+                            "name": "hsCode",
+                            "type": "string",
+                            "required": false,
+                            "description": "Harmonized Commodity Description and Coding System."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "Successfully updated the Product.",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "GUID of the object."
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "description": "This is the schema for representing product's attributes.",
+                      "properties": [
+                        {
+                          "name": "merchantProductId",
+                          "type": "string",
+                          "required": true,
+                          "description": "The product unique identifier, provided by the merchant"
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "sku",
+                          "type": "string",
+                          "required": false,
+                          "description": "The sku of this product."
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false,
+                          "description": "The description of this product."
+                        },
+                        {
+                          "name": "category",
+                          "type": "string",
+                          "required": false,
+                          "description": "The category of this product."
+                        },
+                        {
+                          "name": "unitOfMeasure",
+                          "type": "string",
+                          "required": false,
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                        },
+                        {
+                          "name": "dimensions",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for representing dimensions",
+                          "properties": [
+                            {
+                              "name": "length",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "width",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "height",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The distance unit the dimension's properties are in"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "weight",
+                          "type": "object",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "value",
+                              "type": "number",
+                              "required": true,
+                              "description": "The value of the weight unit"
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The weight unit the value is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "monetaryValue",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for an representing money",
+                          "properties": [
+                            {
+                              "name": "amount",
+                              "type": "number",
+                              "required": true,
+                              "description": "The amount of the currency"
+                            },
+                            {
+                              "name": "currency",
+                              "type": "string",
+                              "required": true,
+                              "description": "The currency the money amount is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "countryOfOrigin",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "countryOfManufacture",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "classificationCodes",
+                          "type": "object",
+                          "required": false,
+                          "description": "Classification codes of this product for export.",
+                          "properties": [
+                            {
+                              "name": "eccn",
+                              "type": "string",
+                              "required": false,
+                              "description": "Export Control Classification Number (ECCN)."
+                            },
+                            {
+                              "name": "scheduleBinfo",
+                              "type": "string",
+                              "required": false,
+                              "description": "Classification code for exporting goods out of the United States."
+                            },
+                            {
+                              "name": "hsCode",
+                              "type": "string",
+                              "required": false,
+                              "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "404",
+              "description": "The resource could not be found.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Update Product in account document."
+        },
+        {
+          "type": "delete",
+          "link": "/products/{id}/delete",
+          "summary": "Remove Products.",
+          "request": {
+            "description": "Remove Product from account document."
+          },
+          "responses": [
+            {
+              "code": "204",
+              "description": "Successfully deleted the Product."
+            },
+            {
+              "code": "404",
+              "description": "The resource could not be found.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Remove Product from account document."
+        }
+      ]
+    },
+    {
+      "title": "Shipment",
+      "methods": [
+        {
+          "type": "get",
+          "link": "/shipments/{id}/get",
+          "summary": "Get shipment from account document by id.",
+          "request": {},
+          "responses": [
+            {
+              "code": "200",
+              "description": "Return the shipment specified by id parameter",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "Id of the shipment."
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "description": "The Shipment Creation Request Schema",
+                      "properties": [
+                        {
+                          "name": "pickupAt",
+                          "type": "string",
+                          "required": true,
+                          "description": "The expected pickup time"
+                        },
+                        {
+                          "name": "expectedAt",
+                          "type": "string",
+                          "required": false,
+                          "description": "An expected delivery date-time"
+                        },
+                        {
+                          "name": "customerReference",
+                          "type": "string",
+                          "required": false,
+                          "description": "A consistent identifier that represents a clients customer"
+                        },
+                        {
+                          "name": "origin",
+                          "type": "object",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "name",
+                              "type": "string",
+                              "required": false,
+                              "description": "Merchant location name."
+                            },
+                            {
+                              "name": "type",
+                              "type": "string",
+                              "required": false,
+                              "description": "The type of location."
+                            },
+                            {
+                              "name": "address",
+                              "type": "object",
+                              "required": true,
+                              "description": "This is the schema for representing an address",
+                              "properties": [
+                                {
+                                  "name": "countryCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                },
+                                {
+                                  "name": "postalCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The post or zip code of this address."
+                                },
+                                {
+                                  "name": "locality",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                                },
+                                {
+                                  "name": "dependentLocality",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                                },
+                                {
+                                  "name": "administrativeArea",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The administrative area of this address, ie. state."
+                                },
+                                {
+                                  "name": "longitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The longitude value of a geocoded address."
+                                },
+                                {
+                                  "name": "latitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The latitude value of a geocoded address."
+                                }
+                              ]
+                            },
+                            {
+                              "name": "contact",
+                              "type": "object",
+                              "required": false,
+                              "description": "This is the schema for representing entity",
+                              "properties": [
+                                {
+                                  "name": "organisationName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Organisation name of this entity."
+                                },
+                                {
+                                  "name": "personFirstName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "First name of this entity."
+                                },
+                                {
+                                  "name": "personLastName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Last name of this entity."
+                                },
+                                {
+                                  "name": "email",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Email of this entity."
+                                },
+                                {
+                                  "name": "faxNumber",
+                                  "type": "string",
+                                  "required": false
+                                },
+                                {
+                                  "name": "nationalIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "National identification number of this entity, ie. INSEE code (France)"
+                                },
+                                {
+                                  "name": "taxIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "destination",
+                          "type": "object",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "name",
+                              "type": "string",
+                              "required": false,
+                              "description": "Merchant location name."
+                            },
+                            {
+                              "name": "type",
+                              "type": "string",
+                              "required": false,
+                              "description": "The type of location."
+                            },
+                            {
+                              "name": "address",
+                              "type": "object",
+                              "required": true,
+                              "description": "This is the schema for representing an address",
+                              "properties": [
+                                {
+                                  "name": "countryCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                },
+                                {
+                                  "name": "postalCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The post or zip code of this address."
+                                },
+                                {
+                                  "name": "locality",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                                },
+                                {
+                                  "name": "dependentLocality",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                                },
+                                {
+                                  "name": "administrativeArea",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The administrative area of this address, ie. state."
+                                },
+                                {
+                                  "name": "longitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The longitude value of a geocoded address."
+                                },
+                                {
+                                  "name": "latitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The latitude value of a geocoded address."
+                                }
+                              ]
+                            },
+                            {
+                              "name": "contact",
+                              "type": "object",
+                              "required": false,
+                              "description": "This is the schema for representing entity",
+                              "properties": [
+                                {
+                                  "name": "organisationName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Organisation name of this entity."
+                                },
+                                {
+                                  "name": "personFirstName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "First name of this entity."
+                                },
+                                {
+                                  "name": "personLastName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Last name of this entity."
+                                },
+                                {
+                                  "name": "email",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Email of this entity."
+                                },
+                                {
+                                  "name": "faxNumber",
+                                  "type": "string",
+                                  "required": false
+                                },
+                                {
+                                  "name": "nationalIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "National identification number of this entity, ie. INSEE code (France)"
+                                },
+                                {
+                                  "name": "taxIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "requiredCapabilities",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for an representing capability",
+                          "properties": [
+                            {
+                              "name": "signature",
+                              "type": "object",
+                              "required": false
+                            },
+                            {
+                              "name": "cashOnDelivery",
+                              "type": "object",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "charge",
+                                  "type": "object",
+                                  "required": false,
+                                  "description": "This is the schema for an representing money",
+                                  "properties": [
+                                    {
+                                      "name": "amount",
+                                      "type": "number",
+                                      "required": true,
+                                      "description": "The amount of the currency"
+                                    },
+                                    {
+                                      "name": "currency",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "The currency the money amount is"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "exportDeclaration",
+                          "type": "object",
+                          "required": false,
+                          "description": "Type of fulfillment being chosen for a given shipment",
+                          "properties": [
+                            {
+                              "name": "signatory",
+                              "type": "object",
+                              "required": false,
+                              "description": "The signatory on a shipments' export declaration",
+                              "properties": [
+                                {
+                                  "name": "name",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "Name of signatory"
+                                },
+                                {
+                                  "name": "title",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "Title of signatory"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "exportReason",
+                              "type": "string",
+                              "required": false,
+                              "description": "A human readable description of the reason for the exportation"
+                            },
+                            {
+                              "name": "exportCategory",
+                              "type": "string",
+                              "required": false,
+                              "description": "A broad classification of the export reason"
+                            },
+                            {
+                              "name": "declaredValue",
+                              "type": "object",
+                              "required": false,
+                              "description": "This is the schema for an representing money",
+                              "properties": [
+                                {
+                                  "name": "amount",
+                                  "type": "number",
+                                  "required": true,
+                                  "description": "The amount of the currency"
+                                },
+                                {
+                                  "name": "currency",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The currency the money amount is"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "incoterm",
+                              "type": "string",
+                              "required": false,
+                              "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                            }
+                          ]
+                        },
+                        {
+                          "name": "fulfill",
+                          "type": "object",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "carrierBooking",
+                              "type": "object",
+                              "required": false,
+                              "description": "The carrier booking information object",
+                              "properties": [
+                                {
+                                  "name": "integrationId",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The identifier of the integration to you want to communicate with"
+                                },
+                                {
+                                  "name": "integrationServiceId",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A consistent identifier that represents a unique carrier service"
+                                },
+                                {
+                                  "name": "shippingTaxInclusiveCharge",
+                                  "type": "object",
+                                  "required": true,
+                                  "description": "This is the schema for an representing money",
+                                  "properties": [
+                                    {
+                                      "name": "amount",
+                                      "type": "number",
+                                      "required": true,
+                                      "description": "The amount of the currency"
+                                    },
+                                    {
+                                      "name": "currency",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "The currency the money amount is"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "carrierName",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A human understandable reference that represents a carrier"
+                                },
+                                {
+                                  "name": "serviceName",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A human understandable reference that represents a carrier service"
+                                },
+                                {
+                                  "name": "carrierSortCode",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "An identifier used by a carrier to determinine shipment sorting"
+                                },
+                                {
+                                  "name": "bookingReference",
+                                  "type": "string",
+                                  "required": true
+                                },
+                                {
+                                  "name": "trackingReference",
+                                  "type": "string",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Bad Request.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "401",
+              "description": "Authentication failed.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "404",
+              "description": "Not Found.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "500",
+              "description": "Unexpected error.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "put",
+          "link": "/shipments/{id}/put",
+          "summary": "Update Shipment.",
+          "request": {
+            "description": "Update Shipment in account document.",
+            "schema": [
+              {
+                "name": "data",
+                "type": "object",
+                "required": true,
+                "properties": [
+                  {
+                    "name": "type",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "Id of the shipment."
+                  },
+                  {
+                    "name": "attributes",
+                    "type": "object",
+                    "required": true,
+                    "description": "The Shipment Creation Request Schema",
+                    "properties": [
+                      {
+                        "name": "pickupAt",
+                        "type": "string",
+                        "required": true,
+                        "description": "The expected pickup time"
+                      },
+                      {
+                        "name": "expectedAt",
+                        "type": "string",
+                        "required": false,
+                        "description": "An expected delivery date-time"
+                      },
+                      {
+                        "name": "customerReference",
+                        "type": "string",
+                        "required": false,
+                        "description": "A consistent identifier that represents a clients customer"
+                      },
+                      {
+                        "name": "origin",
+                        "type": "object",
+                        "required": true,
+                        "properties": [
+                          {
+                            "name": "name",
+                            "type": "string",
+                            "required": false,
+                            "description": "Merchant location name."
+                          },
+                          {
+                            "name": "type",
+                            "type": "string",
+                            "required": false,
+                            "description": "The type of location."
+                          },
+                          {
+                            "name": "address",
+                            "type": "object",
+                            "required": true,
+                            "description": "This is the schema for representing an address",
+                            "properties": [
+                              {
+                                "name": "countryCode",
+                                "type": "string",
+                                "required": true,
+                                "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                              },
+                              {
+                                "name": "postalCode",
+                                "type": "string",
+                                "required": true,
+                                "description": "The post or zip code of this address."
+                              },
+                              {
+                                "name": "locality",
+                                "type": "string",
+                                "required": true,
+                                "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                              },
+                              {
+                                "name": "dependentLocality",
+                                "type": "string",
+                                "required": false,
+                                "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                              },
+                              {
+                                "name": "administrativeArea",
+                                "type": "string",
+                                "required": true,
+                                "description": "The administrative area of this address, ie. state."
+                              },
+                              {
+                                "name": "longitude",
+                                "type": "number",
+                                "required": false,
+                                "description": "The longitude value of a geocoded address."
+                              },
+                              {
+                                "name": "latitude",
+                                "type": "number",
+                                "required": false,
+                                "description": "The latitude value of a geocoded address."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "contact",
+                            "type": "object",
+                            "required": false,
+                            "description": "This is the schema for representing entity",
+                            "properties": [
+                              {
+                                "name": "organisationName",
+                                "type": "string",
+                                "required": false,
+                                "description": "Organisation name of this entity."
+                              },
+                              {
+                                "name": "personFirstName",
+                                "type": "string",
+                                "required": false,
+                                "description": "First name of this entity."
+                              },
+                              {
+                                "name": "personLastName",
+                                "type": "string",
+                                "required": false,
+                                "description": "Last name of this entity."
+                              },
+                              {
+                                "name": "email",
+                                "type": "string",
+                                "required": false,
+                                "description": "Email of this entity."
+                              },
+                              {
+                                "name": "faxNumber",
+                                "type": "string",
+                                "required": false
+                              },
+                              {
+                                "name": "nationalIdentificationNumber",
+                                "type": "string",
+                                "required": false,
+                                "description": "National identification number of this entity, ie. INSEE code (France)"
+                              },
+                              {
+                                "name": "taxIdentificationNumber",
+                                "type": "string",
+                                "required": false,
+                                "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "destination",
+                        "type": "object",
+                        "required": true,
+                        "properties": [
+                          {
+                            "name": "name",
+                            "type": "string",
+                            "required": false,
+                            "description": "Merchant location name."
+                          },
+                          {
+                            "name": "type",
+                            "type": "string",
+                            "required": false,
+                            "description": "The type of location."
+                          },
+                          {
+                            "name": "address",
+                            "type": "object",
+                            "required": true,
+                            "description": "This is the schema for representing an address",
+                            "properties": [
+                              {
+                                "name": "countryCode",
+                                "type": "string",
+                                "required": true,
+                                "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                              },
+                              {
+                                "name": "postalCode",
+                                "type": "string",
+                                "required": true,
+                                "description": "The post or zip code of this address."
+                              },
+                              {
+                                "name": "locality",
+                                "type": "string",
+                                "required": true,
+                                "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                              },
+                              {
+                                "name": "dependentLocality",
+                                "type": "string",
+                                "required": false,
+                                "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                              },
+                              {
+                                "name": "administrativeArea",
+                                "type": "string",
+                                "required": true,
+                                "description": "The administrative area of this address, ie. state."
+                              },
+                              {
+                                "name": "longitude",
+                                "type": "number",
+                                "required": false,
+                                "description": "The longitude value of a geocoded address."
+                              },
+                              {
+                                "name": "latitude",
+                                "type": "number",
+                                "required": false,
+                                "description": "The latitude value of a geocoded address."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "contact",
+                            "type": "object",
+                            "required": false,
+                            "description": "This is the schema for representing entity",
+                            "properties": [
+                              {
+                                "name": "organisationName",
+                                "type": "string",
+                                "required": false,
+                                "description": "Organisation name of this entity."
+                              },
+                              {
+                                "name": "personFirstName",
+                                "type": "string",
+                                "required": false,
+                                "description": "First name of this entity."
+                              },
+                              {
+                                "name": "personLastName",
+                                "type": "string",
+                                "required": false,
+                                "description": "Last name of this entity."
+                              },
+                              {
+                                "name": "email",
+                                "type": "string",
+                                "required": false,
+                                "description": "Email of this entity."
+                              },
+                              {
+                                "name": "faxNumber",
+                                "type": "string",
+                                "required": false
+                              },
+                              {
+                                "name": "nationalIdentificationNumber",
+                                "type": "string",
+                                "required": false,
+                                "description": "National identification number of this entity, ie. INSEE code (France)"
+                              },
+                              {
+                                "name": "taxIdentificationNumber",
+                                "type": "string",
+                                "required": false,
+                                "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "requiredCapabilities",
+                        "type": "object",
+                        "required": false,
+                        "description": "This is the schema for an representing capability",
+                        "properties": [
+                          {
+                            "name": "signature",
+                            "type": "object",
+                            "required": false
+                          },
+                          {
+                            "name": "cashOnDelivery",
+                            "type": "object",
+                            "required": false,
+                            "properties": [
+                              {
+                                "name": "charge",
+                                "type": "object",
+                                "required": false,
+                                "description": "This is the schema for an representing money",
+                                "properties": [
+                                  {
+                                    "name": "amount",
+                                    "type": "number",
+                                    "required": true,
+                                    "description": "The amount of the currency"
+                                  },
+                                  {
+                                    "name": "currency",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "The currency the money amount is"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "exportDeclaration",
+                        "type": "object",
+                        "required": false,
+                        "description": "Type of fulfillment being chosen for a given shipment",
+                        "properties": [
+                          {
+                            "name": "signatory",
+                            "type": "object",
+                            "required": false,
+                            "description": "The signatory on a shipments' export declaration",
+                            "properties": [
+                              {
+                                "name": "name",
+                                "type": "string",
+                                "required": true,
+                                "description": "Name of signatory"
+                              },
+                              {
+                                "name": "title",
+                                "type": "string",
+                                "required": true,
+                                "description": "Title of signatory"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "exportReason",
+                            "type": "string",
+                            "required": false,
+                            "description": "A human readable description of the reason for the exportation"
+                          },
+                          {
+                            "name": "exportCategory",
+                            "type": "string",
+                            "required": false,
+                            "description": "A broad classification of the export reason"
+                          },
+                          {
+                            "name": "declaredValue",
+                            "type": "object",
+                            "required": false,
+                            "description": "This is the schema for an representing money",
+                            "properties": [
+                              {
+                                "name": "amount",
+                                "type": "number",
+                                "required": true,
+                                "description": "The amount of the currency"
+                              },
+                              {
+                                "name": "currency",
+                                "type": "string",
+                                "required": true,
+                                "description": "The currency the money amount is"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "incoterm",
+                            "type": "string",
+                            "required": false,
+                            "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "fulfill",
+                        "type": "object",
+                        "required": false,
+                        "properties": [
+                          {
+                            "name": "carrierBooking",
+                            "type": "object",
+                            "required": false,
+                            "description": "The carrier booking information object",
+                            "properties": [
+                              {
+                                "name": "integrationId",
+                                "type": "string",
+                                "required": true,
+                                "description": "The identifier of the integration to you want to communicate with"
+                              },
+                              {
+                                "name": "integrationServiceId",
+                                "type": "string",
+                                "required": true,
+                                "description": "A consistent identifier that represents a unique carrier service"
+                              },
+                              {
+                                "name": "shippingTaxInclusiveCharge",
+                                "type": "object",
+                                "required": true,
+                                "description": "This is the schema for an representing money",
+                                "properties": [
+                                  {
+                                    "name": "amount",
+                                    "type": "number",
+                                    "required": true,
+                                    "description": "The amount of the currency"
+                                  },
+                                  {
+                                    "name": "currency",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "The currency the money amount is"
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "carrierName",
+                                "type": "string",
+                                "required": true,
+                                "description": "A human understandable reference that represents a carrier"
+                              },
+                              {
+                                "name": "serviceName",
+                                "type": "string",
+                                "required": true,
+                                "description": "A human understandable reference that represents a carrier service"
+                              },
+                              {
+                                "name": "carrierSortCode",
+                                "type": "string",
+                                "required": false,
+                                "description": "An identifier used by a carrier to determinine shipment sorting"
+                              },
+                              {
+                                "name": "bookingReference",
+                                "type": "string",
+                                "required": true
+                              },
+                              {
+                                "name": "trackingReference",
+                                "type": "string",
+                                "required": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "Successfully updated the Shipment.",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "Id of the shipment."
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "description": "The Shipment Creation Request Schema",
+                      "properties": [
+                        {
+                          "name": "pickupAt",
+                          "type": "string",
+                          "required": true,
+                          "description": "The expected pickup time"
+                        },
+                        {
+                          "name": "expectedAt",
+                          "type": "string",
+                          "required": false,
+                          "description": "An expected delivery date-time"
+                        },
+                        {
+                          "name": "customerReference",
+                          "type": "string",
+                          "required": false,
+                          "description": "A consistent identifier that represents a clients customer"
+                        },
+                        {
+                          "name": "origin",
+                          "type": "object",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "name",
+                              "type": "string",
+                              "required": false,
+                              "description": "Merchant location name."
+                            },
+                            {
+                              "name": "type",
+                              "type": "string",
+                              "required": false,
+                              "description": "The type of location."
+                            },
+                            {
+                              "name": "address",
+                              "type": "object",
+                              "required": true,
+                              "description": "This is the schema for representing an address",
+                              "properties": [
+                                {
+                                  "name": "countryCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                },
+                                {
+                                  "name": "postalCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The post or zip code of this address."
+                                },
+                                {
+                                  "name": "locality",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                                },
+                                {
+                                  "name": "dependentLocality",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                                },
+                                {
+                                  "name": "administrativeArea",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The administrative area of this address, ie. state."
+                                },
+                                {
+                                  "name": "longitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The longitude value of a geocoded address."
+                                },
+                                {
+                                  "name": "latitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The latitude value of a geocoded address."
+                                }
+                              ]
+                            },
+                            {
+                              "name": "contact",
+                              "type": "object",
+                              "required": false,
+                              "description": "This is the schema for representing entity",
+                              "properties": [
+                                {
+                                  "name": "organisationName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Organisation name of this entity."
+                                },
+                                {
+                                  "name": "personFirstName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "First name of this entity."
+                                },
+                                {
+                                  "name": "personLastName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Last name of this entity."
+                                },
+                                {
+                                  "name": "email",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Email of this entity."
+                                },
+                                {
+                                  "name": "faxNumber",
+                                  "type": "string",
+                                  "required": false
+                                },
+                                {
+                                  "name": "nationalIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "National identification number of this entity, ie. INSEE code (France)"
+                                },
+                                {
+                                  "name": "taxIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "destination",
+                          "type": "object",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "name",
+                              "type": "string",
+                              "required": false,
+                              "description": "Merchant location name."
+                            },
+                            {
+                              "name": "type",
+                              "type": "string",
+                              "required": false,
+                              "description": "The type of location."
+                            },
+                            {
+                              "name": "address",
+                              "type": "object",
+                              "required": true,
+                              "description": "This is the schema for representing an address",
+                              "properties": [
+                                {
+                                  "name": "countryCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                },
+                                {
+                                  "name": "postalCode",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The post or zip code of this address."
+                                },
+                                {
+                                  "name": "locality",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The locality (i.e city, township) of this address. Some countries do not use this field; their address lines are sufficient to locate an address within a sub-administrative area."
+                                },
+                                {
+                                  "name": "dependentLocality",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "The dependent locality (i.e neighbourhood) of this address. When representing a double-dependent locality in Great Britain, includes both the double-dependent locality and the dependent locality,"
+                                },
+                                {
+                                  "name": "administrativeArea",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The administrative area of this address, ie. state."
+                                },
+                                {
+                                  "name": "longitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The longitude value of a geocoded address."
+                                },
+                                {
+                                  "name": "latitude",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "The latitude value of a geocoded address."
+                                }
+                              ]
+                            },
+                            {
+                              "name": "contact",
+                              "type": "object",
+                              "required": false,
+                              "description": "This is the schema for representing entity",
+                              "properties": [
+                                {
+                                  "name": "organisationName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Organisation name of this entity."
+                                },
+                                {
+                                  "name": "personFirstName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "First name of this entity."
+                                },
+                                {
+                                  "name": "personLastName",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Last name of this entity."
+                                },
+                                {
+                                  "name": "email",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Email of this entity."
+                                },
+                                {
+                                  "name": "faxNumber",
+                                  "type": "string",
+                                  "required": false
+                                },
+                                {
+                                  "name": "nationalIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "National identification number of this entity, ie. INSEE code (France)"
+                                },
+                                {
+                                  "name": "taxIdentificationNumber",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "requiredCapabilities",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for an representing capability",
+                          "properties": [
+                            {
+                              "name": "signature",
+                              "type": "object",
+                              "required": false
+                            },
+                            {
+                              "name": "cashOnDelivery",
+                              "type": "object",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "charge",
+                                  "type": "object",
+                                  "required": false,
+                                  "description": "This is the schema for an representing money",
+                                  "properties": [
+                                    {
+                                      "name": "amount",
+                                      "type": "number",
+                                      "required": true,
+                                      "description": "The amount of the currency"
+                                    },
+                                    {
+                                      "name": "currency",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "The currency the money amount is"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "exportDeclaration",
+                          "type": "object",
+                          "required": false,
+                          "description": "Type of fulfillment being chosen for a given shipment",
+                          "properties": [
+                            {
+                              "name": "signatory",
+                              "type": "object",
+                              "required": false,
+                              "description": "The signatory on a shipments' export declaration",
+                              "properties": [
+                                {
+                                  "name": "name",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "Name of signatory"
+                                },
+                                {
+                                  "name": "title",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "Title of signatory"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "exportReason",
+                              "type": "string",
+                              "required": false,
+                              "description": "A human readable description of the reason for the exportation"
+                            },
+                            {
+                              "name": "exportCategory",
+                              "type": "string",
+                              "required": false,
+                              "description": "A broad classification of the export reason"
+                            },
+                            {
+                              "name": "declaredValue",
+                              "type": "object",
+                              "required": false,
+                              "description": "This is the schema for an representing money",
+                              "properties": [
+                                {
+                                  "name": "amount",
+                                  "type": "number",
+                                  "required": true,
+                                  "description": "The amount of the currency"
+                                },
+                                {
+                                  "name": "currency",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The currency the money amount is"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "incoterm",
+                              "type": "string",
+                              "required": false,
+                              "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                            }
+                          ]
+                        },
+                        {
+                          "name": "fulfill",
+                          "type": "object",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "carrierBooking",
+                              "type": "object",
+                              "required": false,
+                              "description": "The carrier booking information object",
+                              "properties": [
+                                {
+                                  "name": "integrationId",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The identifier of the integration to you want to communicate with"
+                                },
+                                {
+                                  "name": "integrationServiceId",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A consistent identifier that represents a unique carrier service"
+                                },
+                                {
+                                  "name": "shippingTaxInclusiveCharge",
+                                  "type": "object",
+                                  "required": true,
+                                  "description": "This is the schema for an representing money",
+                                  "properties": [
+                                    {
+                                      "name": "amount",
+                                      "type": "number",
+                                      "required": true,
+                                      "description": "The amount of the currency"
+                                    },
+                                    {
+                                      "name": "currency",
+                                      "type": "string",
+                                      "required": true,
+                                      "description": "The currency the money amount is"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "carrierName",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A human understandable reference that represents a carrier"
+                                },
+                                {
+                                  "name": "serviceName",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A human understandable reference that represents a carrier service"
+                                },
+                                {
+                                  "name": "carrierSortCode",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "An identifier used by a carrier to determinine shipment sorting"
+                                },
+                                {
+                                  "name": "bookingReference",
+                                  "type": "string",
+                                  "required": true
+                                },
+                                {
+                                  "name": "trackingReference",
+                                  "type": "string",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "401",
+              "description": "Authentication failed.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "403",
+              "description": "Expired credentials.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "description": "Update Shipment in account document."
+        }
+      ]
+    }
+  ]
+}
