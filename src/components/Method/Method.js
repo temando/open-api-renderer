@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import PropTypes from 'prop-types';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 import BodySchema from '../BodySchema/BodySchema';
 import BodyContent from '../BodyContent/BodyContent';
@@ -23,13 +24,15 @@ export default class Method extends Component {
     const request = method.request;
     const responses = method.responses;
     return (
-      <Element className="method" name={method.link}>
-        <h3>{method.summary}</h3>
-        <div className="method-description">{method.description}</div>
-        {parameters && this.renderParameters(parameters)}
-        {request && this.renderRequest(request)}
-        {responses && this.renderResponses(responses)}
-      </Element>
+      <ScrollableAnchor id={method.link}>
+        <Element className="method" name={method.link}>
+          <h3>{method.summary}</h3>
+          <div className="method-description">{method.description}</div>
+          {parameters && this.renderParameters(parameters)}
+          {request && this.renderRequest(request)}
+          {responses && this.renderResponses(responses)}
+        </Element>
+      </ScrollableAnchor>
     );
   }
 
