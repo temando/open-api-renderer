@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { configureAnchors } from 'react-scrollable-anchor'
 import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 
@@ -15,6 +16,7 @@ class BaseHandler extends Component {
     const openApiUrl = this.props.location.query.url;
     const parserType = this.props.parserType;
     this.props.getDefinition(openApiUrl, parserType);
+    configureAnchors({ offset: 10 });
   }
 
   render() {
@@ -23,7 +25,7 @@ class BaseHandler extends Component {
       <DocumentTitle title="Open API v3 renderer">
         <div className="main">
           {!definition && "Welcome to Temando's new Open API Renderer. Watch this space!"}
-          {definition && <Page definition={definition}/>}
+          {definition && <Page definition={definition} location={this.props.location} />}
         </div>
       </DocumentTitle>
     );
