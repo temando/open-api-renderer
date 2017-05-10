@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Element } from 'react-scroll';
 import PropTypes from 'prop-types';
 import ScrollableAnchor from 'react-scrollable-anchor';
 
@@ -25,13 +24,13 @@ export default class Method extends Component {
     const responses = method.responses;
     return (
       <ScrollableAnchor id={method.link}>
-        <Element className="method" name={method.link}>
+        <div className="method">
           <h3>{method.summary}</h3>
           <div className="method-description">{method.description}</div>
           {parameters && this.renderParameters(parameters)}
           {request && this.renderRequest(request)}
           {responses && this.renderResponses(responses)}
-        </Element>
+        </div>
       </ScrollableAnchor>
     );
   }

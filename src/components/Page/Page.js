@@ -20,7 +20,7 @@ export default class Page extends Component {
     const services = definition.services;
     return (
       <div className="page">
-        <Navigation navigation={navigation} />
+        <Navigation navigation={navigation} location={this.props.location} />
         <div className="page-main">
            <Header
             definitionTitle={definition.title}
