@@ -44,7 +44,7 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
         outputNode.subtype = arrayItemType;
       }
     }
-    
+
     return outputNode;
   }
 
