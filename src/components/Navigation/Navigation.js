@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-scroll';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import './Navigation.scss';
@@ -12,29 +12,26 @@ export default class Navigation extends Component {
         {navigation && navigation.map((item) => {
           return (
             <div key={item.title}>
-              <Link
+              <a
                 className="nav-level1"
-                to={item.title}
-                spy
-                smooth
-                duration={300}
+                key={item.title}
+                href={`#${item.title}`}
               >
                 {item.title}
-              </Link>
+              </a>
               <div>
                 {item.methods.map((subitem) => {
+                  const isActive = (`#${subitem.link}` === this.props.location.hash);
                   return (
-                    <Link
-                      className="nav-level2"
+                    <a
+                      className={classNames('nav-level2', {
+                        active: isActive
+                      })}
                       key={subitem.link}
-                      to={subitem.link}
-                      spy
-                      smooth
-                      duration={300}
-                      offset={-30}
+                      href={`#${subitem.link}`}
                     >
                       {subitem.type.toUpperCase()} - {subitem.title}
-                    </Link>
+                    </a>
                   );
                 })}
               </div>
