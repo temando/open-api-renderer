@@ -51,6 +51,13 @@
             "name": "billingAddress",
             "properties": [
               {
+                "description": "Lines of the address",
+                "name": "line",
+                "required": false,
+                "type": "array",
+                "subtype": "string"
+              },
+              {
                 "description": "The post or zip code of this address.",
                 "name": "postalCode",
                 "required": false,
