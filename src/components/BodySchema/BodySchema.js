@@ -38,7 +38,14 @@ export default class BodySchema extends Component {
             if (properties.length === iterator) {
               isLast = true;
             }
-            if (property.type === 'object' && expandedProp.indexOf(property.name) !== -1 && property.properties !== undefined) {
+            if (property.type === 'array' && expandedProp.indexOf(property.name) !== -1 && property.properties !== undefined) {
+              return createFragment({
+                property: this.renderPropertyRow(property, isLast, true),
+                subset: this.renderSubsetProperties(property, true)
+              });
+            } else if (property.type === 'array' && property.properties !== undefined) {
+              return this.renderPropertyRow(property, isLast, false);
+            } else if (property.type === 'object' && expandedProp.indexOf(property.name) !== -1 && property.properties !== undefined) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property)
@@ -69,7 +76,7 @@ export default class BodySchema extends Component {
     );
   }
 
-  renderSubsetProperties(property) {
+  renderSubsetProperties(property, isArray = false) {
     const { styleVariation } = this.props;
     let nextStyleVariation = 'even';
     if (styleVariation === 'even') {
@@ -85,11 +92,13 @@ export default class BodySchema extends Component {
             transitionAppear
             transitionAppearTimeout={500}
           >
+            {isArray && <div>Array [</div>}
             <BodySchema
               key={`${property.name}-properties`}
               properties={property.properties}
               styleVariation={nextStyleVariation}
             />
+            {isArray && <div>]</div>}
           </ReactCSSTransitionGroup>
         </td>
       </tr>
