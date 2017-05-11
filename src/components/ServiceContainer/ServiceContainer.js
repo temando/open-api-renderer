@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Element } from 'react-scroll';
+import ScrollableAnchor from 'react-scrollable-anchor';
 import PropTypes from 'prop-types';
 
 import Method from '../Method/Method';
@@ -13,17 +13,19 @@ export default class ServiceContainer extends Component {
     const title = service.title;
 
     return (
-      <Element className="service-container" name={title} id={title}>
-        <h2>{title}</h2>
-        {methods.map((method) => {
-          return (
-            <Method
-              key={method.link}
-              method={method}
-            />
-          );
-        })}
-      </Element>
+      <ScrollableAnchor id={title}>
+        <div className="service-container">
+          <h2>{title}</h2>
+          {methods.map((method) => {
+            return (
+              <Method
+                key={method.link}
+                method={method}
+              />
+            );
+          })}
+        </div>
+      </ScrollableAnchor>
     );
   }
 }
