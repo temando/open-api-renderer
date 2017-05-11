@@ -20,7 +20,6 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     outputNode.description = propertyNode.description;
   }
 
-  // TODO: work out how to handle array in the UI, and update the code here
   if (nodeType === 'string' || nodeType === 'number') {
     return outputNode;
   } else if (nodeType === 'object') {
@@ -31,7 +30,24 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     }
 
     return outputNode;
+  } else if (nodeType === 'array') {
+    if (propertyNode.items) {
+      const arrayItemType = propertyNode.items.type;
+
+      if (arrayItemType === 'object') {
+        const propertiesNode = getPropertiesNode(propertyNode.items.properties, propertyNode.items.required);
+
+        if (propertiesNode !== undefined && propertiesNode.length > 0) {
+          outputNode.properties = propertiesNode;
+        }
+      } else {
+        outputNode.subtype = arrayItemType;
+      }
+    }
+    
+    return outputNode;
   }
+
   return null;
 }
 
