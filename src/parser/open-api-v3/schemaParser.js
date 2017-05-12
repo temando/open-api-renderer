@@ -1,3 +1,5 @@
+const literalTypes = ['string', 'integer', 'number', 'boolean'];
+
 /**
  * Construct UI ready property object from given inputs
  *
@@ -20,7 +22,7 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     outputNode.description = propertyNode.description;
   }
 
-  if (nodeType === 'string' || nodeType === 'number') {
+  if (literalTypes.indexOf(nodeType) >= 0) {
     return outputNode;
   } else if (nodeType === 'object') {
     const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required);
