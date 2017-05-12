@@ -64,7 +64,187 @@
             {
               "code": "200",
               "description": "List of all of the Products defined.",
-              "schema": []
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "array",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "GUID of the object."
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "description": "This is the schema for representing product's attributes.",
+                      "properties": [
+                        {
+                          "name": "merchantProductId",
+                          "type": "string",
+                          "required": true,
+                          "description": "The product unique identifier, provided by the merchant"
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "sku",
+                          "type": "string",
+                          "required": false,
+                          "description": "The sku of this product."
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false,
+                          "description": "The description of this product."
+                        },
+                        {
+                          "name": "category",
+                          "type": "string",
+                          "required": false,
+                          "description": "The category of this product."
+                        },
+                        {
+                          "name": "unitOfMeasure",
+                          "type": "string",
+                          "required": false,
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                        },
+                        {
+                          "name": "dimensions",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for representing dimensions",
+                          "properties": [
+                            {
+                              "name": "length",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "width",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "height",
+                              "type": "number",
+                              "required": true
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The distance unit the dimension's properties are in"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "weight",
+                          "type": "object",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "value",
+                              "type": "number",
+                              "required": true,
+                              "description": "The value of the weight unit"
+                            },
+                            {
+                              "name": "unitOfMeasurement",
+                              "type": "string",
+                              "required": true,
+                              "description": "The weight unit the value is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "monetaryValue",
+                          "type": "object",
+                          "required": false,
+                          "description": "This is the schema for an representing money",
+                          "properties": [
+                            {
+                              "name": "amount",
+                              "type": "number",
+                              "required": true,
+                              "description": "The amount of the currency"
+                            },
+                            {
+                              "name": "currency",
+                              "type": "string",
+                              "required": true,
+                              "description": "The currency the money amount is"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "countryOfOrigin",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "countryOfManufacture",
+                          "type": "string",
+                          "required": false,
+                          "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                        },
+                        {
+                          "name": "classificationCodes",
+                          "type": "object",
+                          "required": false,
+                          "description": "Classification codes of this product for export.",
+                          "properties": [
+                            {
+                              "name": "eccn",
+                              "type": "string",
+                              "required": false,
+                              "description": "Export Control Classification Number (ECCN)."
+                            },
+                            {
+                              "name": "scheduleBinfo",
+                              "type": "string",
+                              "required": false,
+                              "description": "Classification code for exporting goods out of the United States."
+                            },
+                            {
+                              "name": "hsCode",
+                              "type": "string",
+                              "required": false,
+                              "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        },
+                        {
+                          "name": "customAttributes",
+                          "type": "array",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "key",
+                              "type": "string",
+                              "required": true
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             },
             {
               "code": "422",
@@ -278,6 +458,18 @@
                             "description": "Harmonized Commodity Description and Coding System."
                           }
                         ]
+                      },
+                      {
+                        "name": "customAttributes",
+                        "type": "array",
+                        "required": false,
+                        "properties": [
+                          {
+                            "name": "key",
+                            "type": "string",
+                            "required": true
+                          }
+                        ]
                       }
                     ]
                   }
@@ -450,6 +642,18 @@
                               "type": "string",
                               "required": false,
                               "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        },
+                        {
+                          "name": "customAttributes",
+                          "type": "array",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "key",
+                              "type": "string",
+                              "required": true
                             }
                           ]
                         }
@@ -680,6 +884,18 @@
                               "type": "string",
                               "required": false,
                               "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        },
+                        {
+                          "name": "customAttributes",
+                          "type": "array",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "key",
+                              "type": "string",
+                              "required": true
                             }
                           ]
                         }
@@ -953,6 +1169,18 @@
                             "description": "Harmonized Commodity Description and Coding System."
                           }
                         ]
+                      },
+                      {
+                        "name": "customAttributes",
+                        "type": "array",
+                        "required": false,
+                        "properties": [
+                          {
+                            "name": "key",
+                            "type": "string",
+                            "required": true
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1125,6 +1353,18 @@
                               "type": "string",
                               "required": false,
                               "description": "Harmonized Commodity Description and Coding System."
+                            }
+                          ]
+                        },
+                        {
+                          "name": "customAttributes",
+                          "type": "array",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "key",
+                              "type": "string",
+                              "required": true
                             }
                           ]
                         }
@@ -1415,6 +1655,13 @@
                               "description": "This is the schema for representing an address",
                               "properties": [
                                 {
+                                  "name": "line",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "(required - fulfill) Lines of the address",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "countryCode",
                                   "type": "string",
                                   "required": true,
@@ -1489,6 +1736,13 @@
                                   "description": "Email of this entity."
                                 },
                                 {
+                                  "name": "phoneNumbers",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "List of phone number(s) of this entity",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "faxNumber",
                                   "type": "string",
                                   "required": false
@@ -1504,6 +1758,18 @@
                                   "type": "string",
                                   "required": false,
                                   "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "customAttributes",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "key",
+                                  "type": "string",
+                                  "required": true
                                 }
                               ]
                             }
@@ -1533,6 +1799,13 @@
                               "description": "This is the schema for representing an address",
                               "properties": [
                                 {
+                                  "name": "line",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "(required - fulfill) Lines of the address",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "countryCode",
                                   "type": "string",
                                   "required": true,
@@ -1607,6 +1880,13 @@
                                   "description": "Email of this entity."
                                 },
                                 {
+                                  "name": "phoneNumbers",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "List of phone number(s) of this entity",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "faxNumber",
                                   "type": "string",
                                   "required": false
@@ -1622,6 +1902,303 @@
                                   "type": "string",
                                   "required": false,
                                   "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "customAttributes",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "key",
+                                  "type": "string",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "packages",
+                          "type": "array",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "id",
+                              "type": "string",
+                              "required": true,
+                              "description": "id of the package."
+                            },
+                            {
+                              "name": "grossWeight",
+                              "type": "object",
+                              "required": true,
+                              "properties": [
+                                {
+                                  "name": "value",
+                                  "type": "number",
+                                  "required": true,
+                                  "description": "The value of the weight unit"
+                                },
+                                {
+                                  "name": "unitOfMeasurement",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The weight unit the value is"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dimensions",
+                              "type": "object",
+                              "required": true,
+                              "description": "This is the schema for representing dimensions",
+                              "properties": [
+                                {
+                                  "name": "length",
+                                  "type": "number",
+                                  "required": true
+                                },
+                                {
+                                  "name": "width",
+                                  "type": "number",
+                                  "required": true
+                                },
+                                {
+                                  "name": "height",
+                                  "type": "number",
+                                  "required": true
+                                },
+                                {
+                                  "name": "unitOfMeasurement",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The distance unit the dimension's properties are in"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "packageType",
+                              "type": "string",
+                              "required": false,
+                              "description": "Package type"
+                            },
+                            {
+                              "name": "items",
+                              "type": "array",
+                              "required": false,
+                              "description": "(required - international fulfill) list of items",
+                              "properties": [
+                                {
+                                  "name": "product",
+                                  "type": "object",
+                                  "required": false,
+                                  "description": "This is the schema for representing product's attributes.",
+                                  "properties": [
+                                    {
+                                      "name": "merchantProductId",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The product unique identifier, provided by the merchant"
+                                    },
+                                    {
+                                      "name": "name",
+                                      "type": "string",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "sku",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The sku of this product."
+                                    },
+                                    {
+                                      "name": "description",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The description of this product."
+                                    },
+                                    {
+                                      "name": "category",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The category of this product."
+                                    },
+                                    {
+                                      "name": "unitOfMeasure",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                                    },
+                                    {
+                                      "name": "dimensions",
+                                      "type": "object",
+                                      "required": false,
+                                      "description": "This is the schema for representing dimensions",
+                                      "properties": [
+                                        {
+                                          "name": "length",
+                                          "type": "number",
+                                          "required": true
+                                        },
+                                        {
+                                          "name": "width",
+                                          "type": "number",
+                                          "required": true
+                                        },
+                                        {
+                                          "name": "height",
+                                          "type": "number",
+                                          "required": true
+                                        },
+                                        {
+                                          "name": "unitOfMeasurement",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "The distance unit the dimension's properties are in"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "weight",
+                                      "type": "object",
+                                      "required": false,
+                                      "properties": [
+                                        {
+                                          "name": "value",
+                                          "type": "number",
+                                          "required": true,
+                                          "description": "The value of the weight unit"
+                                        },
+                                        {
+                                          "name": "unitOfMeasurement",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "The weight unit the value is"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "monetaryValue",
+                                      "type": "object",
+                                      "required": false,
+                                      "description": "This is the schema for an representing money",
+                                      "properties": [
+                                        {
+                                          "name": "amount",
+                                          "type": "number",
+                                          "required": true,
+                                          "description": "The amount of the currency"
+                                        },
+                                        {
+                                          "name": "currency",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "The currency the money amount is"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "countryOfOrigin",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                    },
+                                    {
+                                      "name": "countryOfManufacture",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                    },
+                                    {
+                                      "name": "classificationCodes",
+                                      "type": "object",
+                                      "required": false,
+                                      "description": "Classification codes of this product for export.",
+                                      "properties": [
+                                        {
+                                          "name": "eccn",
+                                          "type": "string",
+                                          "required": false,
+                                          "description": "Export Control Classification Number (ECCN)."
+                                        },
+                                        {
+                                          "name": "scheduleBinfo",
+                                          "type": "string",
+                                          "required": false,
+                                          "description": "Classification code for exporting goods out of the United States."
+                                        },
+                                        {
+                                          "name": "hsCode",
+                                          "type": "string",
+                                          "required": false,
+                                          "description": "Harmonized Commodity Description and Coding System."
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "customAttributes",
+                                      "type": "array",
+                                      "required": false,
+                                      "properties": [
+                                        {
+                                          "name": "key",
+                                          "type": "string",
+                                          "required": true
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "quantity",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "Value of unit of quantity of this item"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "documentation",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "description",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Short description of the document."
+                                },
+                                {
+                                  "name": "mimeType",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A standard mime-type representation of the file format."
+                                },
+                                {
+                                  "name": "encoding",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The encoding of the data"
+                                },
+                                {
+                                  "name": "size",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                                },
+                                {
+                                  "name": "type",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The document type being generated"
+                                },
+                                {
+                                  "name": "url",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "The URL of a document stored on a remote HTTP server"
                                 }
                               ]
                             }
@@ -1730,6 +2307,61 @@
                               "type": "string",
                               "required": false,
                               "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                            },
+                            {
+                              "name": "customAttributes",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "key",
+                                  "type": "string",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "documentation",
+                          "type": "array",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "description",
+                              "type": "string",
+                              "required": false,
+                              "description": "Short description of the document."
+                            },
+                            {
+                              "name": "mimeType",
+                              "type": "string",
+                              "required": true,
+                              "description": "A standard mime-type representation of the file format."
+                            },
+                            {
+                              "name": "encoding",
+                              "type": "string",
+                              "required": true,
+                              "description": "The encoding of the data"
+                            },
+                            {
+                              "name": "size",
+                              "type": "string",
+                              "required": false,
+                              "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                            },
+                            {
+                              "name": "type",
+                              "type": "string",
+                              "required": true,
+                              "description": "The document type being generated"
+                            },
+                            {
+                              "name": "url",
+                              "type": "string",
+                              "required": false,
+                              "description": "The URL of a document stored on a remote HTTP server"
                             }
                           ]
                         },
@@ -1809,6 +2441,24 @@
                           ]
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "name": "included",
+                  "type": "array",
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "An Temando order identifier"
                     }
                   ]
                 }
@@ -1979,6 +2629,13 @@
                             "description": "This is the schema for representing an address",
                             "properties": [
                               {
+                                "name": "line",
+                                "type": "array",
+                                "required": false,
+                                "description": "(required - fulfill) Lines of the address",
+                                "subtype": "string"
+                              },
+                              {
                                 "name": "countryCode",
                                 "type": "string",
                                 "required": true,
@@ -2053,6 +2710,13 @@
                                 "description": "Email of this entity."
                               },
                               {
+                                "name": "phoneNumbers",
+                                "type": "array",
+                                "required": false,
+                                "description": "List of phone number(s) of this entity",
+                                "subtype": "string"
+                              },
+                              {
                                 "name": "faxNumber",
                                 "type": "string",
                                 "required": false
@@ -2068,6 +2732,18 @@
                                 "type": "string",
                                 "required": false,
                                 "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "customAttributes",
+                            "type": "array",
+                            "required": false,
+                            "properties": [
+                              {
+                                "name": "key",
+                                "type": "string",
+                                "required": true
                               }
                             ]
                           }
@@ -2097,6 +2773,13 @@
                             "description": "This is the schema for representing an address",
                             "properties": [
                               {
+                                "name": "line",
+                                "type": "array",
+                                "required": false,
+                                "description": "(required - fulfill) Lines of the address",
+                                "subtype": "string"
+                              },
+                              {
                                 "name": "countryCode",
                                 "type": "string",
                                 "required": true,
@@ -2171,6 +2854,13 @@
                                 "description": "Email of this entity."
                               },
                               {
+                                "name": "phoneNumbers",
+                                "type": "array",
+                                "required": false,
+                                "description": "List of phone number(s) of this entity",
+                                "subtype": "string"
+                              },
+                              {
                                 "name": "faxNumber",
                                 "type": "string",
                                 "required": false
@@ -2186,6 +2876,303 @@
                                 "type": "string",
                                 "required": false,
                                 "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "customAttributes",
+                            "type": "array",
+                            "required": false,
+                            "properties": [
+                              {
+                                "name": "key",
+                                "type": "string",
+                                "required": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "packages",
+                        "type": "array",
+                        "required": true,
+                        "properties": [
+                          {
+                            "name": "id",
+                            "type": "string",
+                            "required": true,
+                            "description": "id of the package."
+                          },
+                          {
+                            "name": "grossWeight",
+                            "type": "object",
+                            "required": true,
+                            "properties": [
+                              {
+                                "name": "value",
+                                "type": "number",
+                                "required": true,
+                                "description": "The value of the weight unit"
+                              },
+                              {
+                                "name": "unitOfMeasurement",
+                                "type": "string",
+                                "required": true,
+                                "description": "The weight unit the value is"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "dimensions",
+                            "type": "object",
+                            "required": true,
+                            "description": "This is the schema for representing dimensions",
+                            "properties": [
+                              {
+                                "name": "length",
+                                "type": "number",
+                                "required": true
+                              },
+                              {
+                                "name": "width",
+                                "type": "number",
+                                "required": true
+                              },
+                              {
+                                "name": "height",
+                                "type": "number",
+                                "required": true
+                              },
+                              {
+                                "name": "unitOfMeasurement",
+                                "type": "string",
+                                "required": true,
+                                "description": "The distance unit the dimension's properties are in"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "packageType",
+                            "type": "string",
+                            "required": false,
+                            "description": "Package type"
+                          },
+                          {
+                            "name": "items",
+                            "type": "array",
+                            "required": false,
+                            "description": "(required - international fulfill) list of items",
+                            "properties": [
+                              {
+                                "name": "product",
+                                "type": "object",
+                                "required": false,
+                                "description": "This is the schema for representing product's attributes.",
+                                "properties": [
+                                  {
+                                    "name": "merchantProductId",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "The product unique identifier, provided by the merchant"
+                                  },
+                                  {
+                                    "name": "name",
+                                    "type": "string",
+                                    "required": false
+                                  },
+                                  {
+                                    "name": "sku",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "The sku of this product."
+                                  },
+                                  {
+                                    "name": "description",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "The description of this product."
+                                  },
+                                  {
+                                    "name": "category",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "The category of this product."
+                                  },
+                                  {
+                                    "name": "unitOfMeasure",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                                  },
+                                  {
+                                    "name": "dimensions",
+                                    "type": "object",
+                                    "required": false,
+                                    "description": "This is the schema for representing dimensions",
+                                    "properties": [
+                                      {
+                                        "name": "length",
+                                        "type": "number",
+                                        "required": true
+                                      },
+                                      {
+                                        "name": "width",
+                                        "type": "number",
+                                        "required": true
+                                      },
+                                      {
+                                        "name": "height",
+                                        "type": "number",
+                                        "required": true
+                                      },
+                                      {
+                                        "name": "unitOfMeasurement",
+                                        "type": "string",
+                                        "required": true,
+                                        "description": "The distance unit the dimension's properties are in"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "weight",
+                                    "type": "object",
+                                    "required": false,
+                                    "properties": [
+                                      {
+                                        "name": "value",
+                                        "type": "number",
+                                        "required": true,
+                                        "description": "The value of the weight unit"
+                                      },
+                                      {
+                                        "name": "unitOfMeasurement",
+                                        "type": "string",
+                                        "required": true,
+                                        "description": "The weight unit the value is"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "monetaryValue",
+                                    "type": "object",
+                                    "required": false,
+                                    "description": "This is the schema for an representing money",
+                                    "properties": [
+                                      {
+                                        "name": "amount",
+                                        "type": "number",
+                                        "required": true,
+                                        "description": "The amount of the currency"
+                                      },
+                                      {
+                                        "name": "currency",
+                                        "type": "string",
+                                        "required": true,
+                                        "description": "The currency the money amount is"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "countryOfOrigin",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                  },
+                                  {
+                                    "name": "countryOfManufacture",
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                  },
+                                  {
+                                    "name": "classificationCodes",
+                                    "type": "object",
+                                    "required": false,
+                                    "description": "Classification codes of this product for export.",
+                                    "properties": [
+                                      {
+                                        "name": "eccn",
+                                        "type": "string",
+                                        "required": false,
+                                        "description": "Export Control Classification Number (ECCN)."
+                                      },
+                                      {
+                                        "name": "scheduleBinfo",
+                                        "type": "string",
+                                        "required": false,
+                                        "description": "Classification code for exporting goods out of the United States."
+                                      },
+                                      {
+                                        "name": "hsCode",
+                                        "type": "string",
+                                        "required": false,
+                                        "description": "Harmonized Commodity Description and Coding System."
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "customAttributes",
+                                    "type": "array",
+                                    "required": false,
+                                    "properties": [
+                                      {
+                                        "name": "key",
+                                        "type": "string",
+                                        "required": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "quantity",
+                                "type": "number",
+                                "required": false,
+                                "description": "Value of unit of quantity of this item"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "documentation",
+                            "type": "array",
+                            "required": false,
+                            "properties": [
+                              {
+                                "name": "description",
+                                "type": "string",
+                                "required": false,
+                                "description": "Short description of the document."
+                              },
+                              {
+                                "name": "mimeType",
+                                "type": "string",
+                                "required": true,
+                                "description": "A standard mime-type representation of the file format."
+                              },
+                              {
+                                "name": "encoding",
+                                "type": "string",
+                                "required": true,
+                                "description": "The encoding of the data"
+                              },
+                              {
+                                "name": "size",
+                                "type": "string",
+                                "required": false,
+                                "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                              },
+                              {
+                                "name": "type",
+                                "type": "string",
+                                "required": true,
+                                "description": "The document type being generated"
+                              },
+                              {
+                                "name": "url",
+                                "type": "string",
+                                "required": false,
+                                "description": "The URL of a document stored on a remote HTTP server"
                               }
                             ]
                           }
@@ -2294,6 +3281,61 @@
                             "type": "string",
                             "required": false,
                             "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                          },
+                          {
+                            "name": "customAttributes",
+                            "type": "array",
+                            "required": false,
+                            "properties": [
+                              {
+                                "name": "key",
+                                "type": "string",
+                                "required": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "documentation",
+                        "type": "array",
+                        "required": false,
+                        "properties": [
+                          {
+                            "name": "description",
+                            "type": "string",
+                            "required": false,
+                            "description": "Short description of the document."
+                          },
+                          {
+                            "name": "mimeType",
+                            "type": "string",
+                            "required": true,
+                            "description": "A standard mime-type representation of the file format."
+                          },
+                          {
+                            "name": "encoding",
+                            "type": "string",
+                            "required": true,
+                            "description": "The encoding of the data"
+                          },
+                          {
+                            "name": "size",
+                            "type": "string",
+                            "required": false,
+                            "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                          },
+                          {
+                            "name": "type",
+                            "type": "string",
+                            "required": true,
+                            "description": "The document type being generated"
+                          },
+                          {
+                            "name": "url",
+                            "type": "string",
+                            "required": false,
+                            "description": "The URL of a document stored on a remote HTTP server"
                           }
                         ]
                       },
@@ -2375,6 +3417,24 @@
                     ]
                   }
                 ]
+              },
+              {
+                "name": "included",
+                "type": "array",
+                "required": false,
+                "properties": [
+                  {
+                    "name": "type",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "An Temando order identifier"
+                  }
+                ]
               }
             ]
           },
@@ -2447,6 +3507,13 @@
                               "description": "This is the schema for representing an address",
                               "properties": [
                                 {
+                                  "name": "line",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "(required - fulfill) Lines of the address",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "countryCode",
                                   "type": "string",
                                   "required": true,
@@ -2521,6 +3588,13 @@
                                   "description": "Email of this entity."
                                 },
                                 {
+                                  "name": "phoneNumbers",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "List of phone number(s) of this entity",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "faxNumber",
                                   "type": "string",
                                   "required": false
@@ -2536,6 +3610,18 @@
                                   "type": "string",
                                   "required": false,
                                   "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "customAttributes",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "key",
+                                  "type": "string",
+                                  "required": true
                                 }
                               ]
                             }
@@ -2565,6 +3651,13 @@
                               "description": "This is the schema for representing an address",
                               "properties": [
                                 {
+                                  "name": "line",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "(required - fulfill) Lines of the address",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "countryCode",
                                   "type": "string",
                                   "required": true,
@@ -2639,6 +3732,13 @@
                                   "description": "Email of this entity."
                                 },
                                 {
+                                  "name": "phoneNumbers",
+                                  "type": "array",
+                                  "required": false,
+                                  "description": "List of phone number(s) of this entity",
+                                  "subtype": "string"
+                                },
+                                {
                                   "name": "faxNumber",
                                   "type": "string",
                                   "required": false
@@ -2654,6 +3754,303 @@
                                   "type": "string",
                                   "required": false,
                                   "description": "Tax identification number of this entity, ie. TFN (Australia), TIN (France)"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "customAttributes",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "key",
+                                  "type": "string",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "packages",
+                          "type": "array",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "id",
+                              "type": "string",
+                              "required": true,
+                              "description": "id of the package."
+                            },
+                            {
+                              "name": "grossWeight",
+                              "type": "object",
+                              "required": true,
+                              "properties": [
+                                {
+                                  "name": "value",
+                                  "type": "number",
+                                  "required": true,
+                                  "description": "The value of the weight unit"
+                                },
+                                {
+                                  "name": "unitOfMeasurement",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The weight unit the value is"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "dimensions",
+                              "type": "object",
+                              "required": true,
+                              "description": "This is the schema for representing dimensions",
+                              "properties": [
+                                {
+                                  "name": "length",
+                                  "type": "number",
+                                  "required": true
+                                },
+                                {
+                                  "name": "width",
+                                  "type": "number",
+                                  "required": true
+                                },
+                                {
+                                  "name": "height",
+                                  "type": "number",
+                                  "required": true
+                                },
+                                {
+                                  "name": "unitOfMeasurement",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The distance unit the dimension's properties are in"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "packageType",
+                              "type": "string",
+                              "required": false,
+                              "description": "Package type"
+                            },
+                            {
+                              "name": "items",
+                              "type": "array",
+                              "required": false,
+                              "description": "(required - international fulfill) list of items",
+                              "properties": [
+                                {
+                                  "name": "product",
+                                  "type": "object",
+                                  "required": false,
+                                  "description": "This is the schema for representing product's attributes.",
+                                  "properties": [
+                                    {
+                                      "name": "merchantProductId",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The product unique identifier, provided by the merchant"
+                                    },
+                                    {
+                                      "name": "name",
+                                      "type": "string",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "sku",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The sku of this product."
+                                    },
+                                    {
+                                      "name": "description",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The description of this product."
+                                    },
+                                    {
+                                      "name": "category",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The category of this product."
+                                    },
+                                    {
+                                      "name": "unitOfMeasure",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                                    },
+                                    {
+                                      "name": "dimensions",
+                                      "type": "object",
+                                      "required": false,
+                                      "description": "This is the schema for representing dimensions",
+                                      "properties": [
+                                        {
+                                          "name": "length",
+                                          "type": "number",
+                                          "required": true
+                                        },
+                                        {
+                                          "name": "width",
+                                          "type": "number",
+                                          "required": true
+                                        },
+                                        {
+                                          "name": "height",
+                                          "type": "number",
+                                          "required": true
+                                        },
+                                        {
+                                          "name": "unitOfMeasurement",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "The distance unit the dimension's properties are in"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "weight",
+                                      "type": "object",
+                                      "required": false,
+                                      "properties": [
+                                        {
+                                          "name": "value",
+                                          "type": "number",
+                                          "required": true,
+                                          "description": "The value of the weight unit"
+                                        },
+                                        {
+                                          "name": "unitOfMeasurement",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "The weight unit the value is"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "monetaryValue",
+                                      "type": "object",
+                                      "required": false,
+                                      "description": "This is the schema for an representing money",
+                                      "properties": [
+                                        {
+                                          "name": "amount",
+                                          "type": "number",
+                                          "required": true,
+                                          "description": "The amount of the currency"
+                                        },
+                                        {
+                                          "name": "currency",
+                                          "type": "string",
+                                          "required": true,
+                                          "description": "The currency the money amount is"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "countryOfOrigin",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                    },
+                                    {
+                                      "name": "countryOfManufacture",
+                                      "type": "string",
+                                      "required": false,
+                                      "description": "An ISO 3166-1 alpha-2 compliant two-letter country code."
+                                    },
+                                    {
+                                      "name": "classificationCodes",
+                                      "type": "object",
+                                      "required": false,
+                                      "description": "Classification codes of this product for export.",
+                                      "properties": [
+                                        {
+                                          "name": "eccn",
+                                          "type": "string",
+                                          "required": false,
+                                          "description": "Export Control Classification Number (ECCN)."
+                                        },
+                                        {
+                                          "name": "scheduleBinfo",
+                                          "type": "string",
+                                          "required": false,
+                                          "description": "Classification code for exporting goods out of the United States."
+                                        },
+                                        {
+                                          "name": "hsCode",
+                                          "type": "string",
+                                          "required": false,
+                                          "description": "Harmonized Commodity Description and Coding System."
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "customAttributes",
+                                      "type": "array",
+                                      "required": false,
+                                      "properties": [
+                                        {
+                                          "name": "key",
+                                          "type": "string",
+                                          "required": true
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "quantity",
+                                  "type": "number",
+                                  "required": false,
+                                  "description": "Value of unit of quantity of this item"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "documentation",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "description",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "Short description of the document."
+                                },
+                                {
+                                  "name": "mimeType",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "A standard mime-type representation of the file format."
+                                },
+                                {
+                                  "name": "encoding",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The encoding of the data"
+                                },
+                                {
+                                  "name": "size",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                                },
+                                {
+                                  "name": "type",
+                                  "type": "string",
+                                  "required": true,
+                                  "description": "The document type being generated"
+                                },
+                                {
+                                  "name": "url",
+                                  "type": "string",
+                                  "required": false,
+                                  "description": "The URL of a document stored on a remote HTTP server"
                                 }
                               ]
                             }
@@ -2762,6 +4159,61 @@
                               "type": "string",
                               "required": false,
                               "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                            },
+                            {
+                              "name": "customAttributes",
+                              "type": "array",
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "key",
+                                  "type": "string",
+                                  "required": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "documentation",
+                          "type": "array",
+                          "required": false,
+                          "properties": [
+                            {
+                              "name": "description",
+                              "type": "string",
+                              "required": false,
+                              "description": "Short description of the document."
+                            },
+                            {
+                              "name": "mimeType",
+                              "type": "string",
+                              "required": true,
+                              "description": "A standard mime-type representation of the file format."
+                            },
+                            {
+                              "name": "encoding",
+                              "type": "string",
+                              "required": true,
+                              "description": "The encoding of the data"
+                            },
+                            {
+                              "name": "size",
+                              "type": "string",
+                              "required": false,
+                              "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                            },
+                            {
+                              "name": "type",
+                              "type": "string",
+                              "required": true,
+                              "description": "The document type being generated"
+                            },
+                            {
+                              "name": "url",
+                              "type": "string",
+                              "required": false,
+                              "description": "The URL of a document stored on a remote HTTP server"
                             }
                           ]
                         },
@@ -2841,6 +4293,24 @@
                           ]
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "name": "included",
+                  "type": "array",
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "An Temando order identifier"
                     }
                   ]
                 }
