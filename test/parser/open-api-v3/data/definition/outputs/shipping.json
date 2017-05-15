@@ -191,6 +191,28 @@
                           ]
                         },
                         {
+                          "name": "isFragile",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isVirtual",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isPrePackaged",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product has its own package"
+                        },
+                        {
+                          "name": "canRotateVertical",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product can be rotated vertically"
+                        },
+                        {
                           "name": "countryOfOrigin",
                           "type": "string",
                           "required": false,
@@ -422,6 +444,28 @@
                         ]
                       },
                       {
+                        "name": "isFragile",
+                        "type": "boolean",
+                        "required": false
+                      },
+                      {
+                        "name": "isVirtual",
+                        "type": "boolean",
+                        "required": false
+                      },
+                      {
+                        "name": "isPrePackaged",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether the product has its own package"
+                      },
+                      {
+                        "name": "canRotateVertical",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether the product can be rotated vertically"
+                      },
+                      {
                         "name": "countryOfOrigin",
                         "type": "string",
                         "required": false,
@@ -606,6 +650,28 @@
                               "description": "The currency the money amount is"
                             }
                           ]
+                        },
+                        {
+                          "name": "isFragile",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isVirtual",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isPrePackaged",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product has its own package"
+                        },
+                        {
+                          "name": "canRotateVertical",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product can be rotated vertically"
                         },
                         {
                           "name": "countryOfOrigin",
@@ -848,6 +914,28 @@
                               "description": "The currency the money amount is"
                             }
                           ]
+                        },
+                        {
+                          "name": "isFragile",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isVirtual",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isPrePackaged",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product has its own package"
+                        },
+                        {
+                          "name": "canRotateVertical",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product can be rotated vertically"
                         },
                         {
                           "name": "countryOfOrigin",
@@ -1133,6 +1221,28 @@
                         ]
                       },
                       {
+                        "name": "isFragile",
+                        "type": "boolean",
+                        "required": false
+                      },
+                      {
+                        "name": "isVirtual",
+                        "type": "boolean",
+                        "required": false
+                      },
+                      {
+                        "name": "isPrePackaged",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether the product has its own package"
+                      },
+                      {
+                        "name": "canRotateVertical",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether the product can be rotated vertically"
+                      },
+                      {
                         "name": "countryOfOrigin",
                         "type": "string",
                         "required": false,
@@ -1317,6 +1427,28 @@
                               "description": "The currency the money amount is"
                             }
                           ]
+                        },
+                        {
+                          "name": "isFragile",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isVirtual",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "isPrePackaged",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product has its own package"
+                        },
+                        {
+                          "name": "canRotateVertical",
+                          "type": "boolean",
+                          "required": false,
+                          "description": "Whether the product can be rotated vertically"
                         },
                         {
                           "name": "countryOfOrigin",
@@ -1655,6 +1787,12 @@
                               "description": "This is the schema for representing an address",
                               "properties": [
                                 {
+                                  "name": "isOrganisation",
+                                  "type": "boolean",
+                                  "required": false,
+                                  "description": "Does this address belong to an organisation?"
+                                },
+                                {
                                   "name": "line",
                                   "type": "array",
                                   "required": false,
@@ -1798,6 +1936,12 @@
                               "required": true,
                               "description": "This is the schema for representing an address",
                               "properties": [
+                                {
+                                  "name": "isOrganisation",
+                                  "type": "boolean",
+                                  "required": false,
+                                  "description": "Does this address belong to an organisation?"
+                                },
                                 {
                                   "name": "line",
                                   "type": "array",
@@ -2100,6 +2244,28 @@
                                       ]
                                     },
                                     {
+                                      "name": "isFragile",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "isVirtual",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "isPrePackaged",
+                                      "type": "boolean",
+                                      "required": false,
+                                      "description": "Whether the product has its own package"
+                                    },
+                                    {
+                                      "name": "canRotateVertical",
+                                      "type": "boolean",
+                                      "required": false,
+                                      "description": "Whether the product can be rotated vertically"
+                                    },
+                                    {
                                       "name": "countryOfOrigin",
                                       "type": "string",
                                       "required": false,
@@ -2211,9 +2377,31 @@
                           "description": "This is the schema for an representing capability",
                           "properties": [
                             {
+                              "name": "authorityToLeave",
+                              "type": "boolean",
+                              "required": false
+                            },
+                            {
                               "name": "signature",
                               "type": "object",
-                              "required": false
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "required",
+                                  "type": "boolean",
+                                  "required": true
+                                },
+                                {
+                                  "name": "onlyAdultCanSign",
+                                  "type": "boolean",
+                                  "required": false
+                                },
+                                {
+                                  "name": "onlyAddresseeCanSign",
+                                  "type": "boolean",
+                                  "required": false
+                                }
+                              ]
                             },
                             {
                               "name": "cashOnDelivery",
@@ -2239,6 +2427,12 @@
                                       "description": "The currency the money amount is"
                                     }
                                   ]
+                                },
+                                {
+                                  "name": "shippingInclusive",
+                                  "type": "boolean",
+                                  "required": true,
+                                  "description": "Identifies if the cash on delivery includes the shipping cost"
                                 }
                               ]
                             }
@@ -2629,6 +2823,12 @@
                             "description": "This is the schema for representing an address",
                             "properties": [
                               {
+                                "name": "isOrganisation",
+                                "type": "boolean",
+                                "required": false,
+                                "description": "Does this address belong to an organisation?"
+                              },
+                              {
                                 "name": "line",
                                 "type": "array",
                                 "required": false,
@@ -2772,6 +2972,12 @@
                             "required": true,
                             "description": "This is the schema for representing an address",
                             "properties": [
+                              {
+                                "name": "isOrganisation",
+                                "type": "boolean",
+                                "required": false,
+                                "description": "Does this address belong to an organisation?"
+                              },
                               {
                                 "name": "line",
                                 "type": "array",
@@ -3074,6 +3280,28 @@
                                     ]
                                   },
                                   {
+                                    "name": "isFragile",
+                                    "type": "boolean",
+                                    "required": false
+                                  },
+                                  {
+                                    "name": "isVirtual",
+                                    "type": "boolean",
+                                    "required": false
+                                  },
+                                  {
+                                    "name": "isPrePackaged",
+                                    "type": "boolean",
+                                    "required": false,
+                                    "description": "Whether the product has its own package"
+                                  },
+                                  {
+                                    "name": "canRotateVertical",
+                                    "type": "boolean",
+                                    "required": false,
+                                    "description": "Whether the product can be rotated vertically"
+                                  },
+                                  {
                                     "name": "countryOfOrigin",
                                     "type": "string",
                                     "required": false,
@@ -3185,9 +3413,31 @@
                         "description": "This is the schema for an representing capability",
                         "properties": [
                           {
+                            "name": "authorityToLeave",
+                            "type": "boolean",
+                            "required": false
+                          },
+                          {
                             "name": "signature",
                             "type": "object",
-                            "required": false
+                            "required": false,
+                            "properties": [
+                              {
+                                "name": "required",
+                                "type": "boolean",
+                                "required": true
+                              },
+                              {
+                                "name": "onlyAdultCanSign",
+                                "type": "boolean",
+                                "required": false
+                              },
+                              {
+                                "name": "onlyAddresseeCanSign",
+                                "type": "boolean",
+                                "required": false
+                              }
+                            ]
                           },
                           {
                             "name": "cashOnDelivery",
@@ -3213,6 +3463,12 @@
                                     "description": "The currency the money amount is"
                                   }
                                 ]
+                              },
+                              {
+                                "name": "shippingInclusive",
+                                "type": "boolean",
+                                "required": true,
+                                "description": "Identifies if the cash on delivery includes the shipping cost"
                               }
                             ]
                           }
@@ -3507,6 +3763,12 @@
                               "description": "This is the schema for representing an address",
                               "properties": [
                                 {
+                                  "name": "isOrganisation",
+                                  "type": "boolean",
+                                  "required": false,
+                                  "description": "Does this address belong to an organisation?"
+                                },
+                                {
                                   "name": "line",
                                   "type": "array",
                                   "required": false,
@@ -3650,6 +3912,12 @@
                               "required": true,
                               "description": "This is the schema for representing an address",
                               "properties": [
+                                {
+                                  "name": "isOrganisation",
+                                  "type": "boolean",
+                                  "required": false,
+                                  "description": "Does this address belong to an organisation?"
+                                },
                                 {
                                   "name": "line",
                                   "type": "array",
@@ -3952,6 +4220,28 @@
                                       ]
                                     },
                                     {
+                                      "name": "isFragile",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "isVirtual",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "isPrePackaged",
+                                      "type": "boolean",
+                                      "required": false,
+                                      "description": "Whether the product has its own package"
+                                    },
+                                    {
+                                      "name": "canRotateVertical",
+                                      "type": "boolean",
+                                      "required": false,
+                                      "description": "Whether the product can be rotated vertically"
+                                    },
+                                    {
                                       "name": "countryOfOrigin",
                                       "type": "string",
                                       "required": false,
@@ -4063,9 +4353,31 @@
                           "description": "This is the schema for an representing capability",
                           "properties": [
                             {
+                              "name": "authorityToLeave",
+                              "type": "boolean",
+                              "required": false
+                            },
+                            {
                               "name": "signature",
                               "type": "object",
-                              "required": false
+                              "required": false,
+                              "properties": [
+                                {
+                                  "name": "required",
+                                  "type": "boolean",
+                                  "required": true
+                                },
+                                {
+                                  "name": "onlyAdultCanSign",
+                                  "type": "boolean",
+                                  "required": false
+                                },
+                                {
+                                  "name": "onlyAddresseeCanSign",
+                                  "type": "boolean",
+                                  "required": false
+                                }
+                              ]
                             },
                             {
                               "name": "cashOnDelivery",
@@ -4091,6 +4403,12 @@
                                       "description": "The currency the money amount is"
                                     }
                                   ]
+                                },
+                                {
+                                  "name": "shippingInclusive",
+                                  "type": "boolean",
+                                  "required": true,
+                                  "description": "Identifies if the cash on delivery includes the shipping cost"
                                 }
                               ]
                             }
