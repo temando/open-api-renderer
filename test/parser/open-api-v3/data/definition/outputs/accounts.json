@@ -1,0 +1,638 @@
+{
+  "title": "Temando API",
+  "version": "1.0.0",
+  "description": "Providing consumers with more choice and lowering the cost of shipping.",
+  "navigation": [
+    {
+      "title": "Account",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Get all the users of a given account",
+          "link": "/accounts/{id}/users/get"
+        },
+        {
+          "type": "post",
+          "title": "Create a user under the given account",
+          "link": "/accounts/{id}/users/post"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "Account",
+      "methods": [
+        {
+          "type": "get",
+          "link": "/accounts/{id}/users/get",
+          "summary": "Get all the users of a given account",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "Id of the account",
+                "required": true,
+                "type": "string"
+              }
+            ],
+            "query": [
+              {
+                "name": "offset",
+                "description": "Offset for the result set",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "limit",
+                "description": "Limit for the result set",
+                "required": true,
+                "type": "string"
+              }
+            ]
+          },
+          "request": {
+            "description": "Get all the users of a given account"
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "Returns all the users of the given account",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "array",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "User id"
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "properties": [
+                        {
+                          "name": "firstName",
+                          "type": "string",
+                          "required": true,
+                          "description": "First name"
+                        },
+                        {
+                          "name": "lastName",
+                          "type": "string",
+                          "required": true,
+                          "description": "Last name"
+                        },
+                        {
+                          "name": "email",
+                          "type": "string",
+                          "required": true,
+                          "description": "Email of the user"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "examples": [
+                {
+                  "data": [
+                    {
+                      "id": "ff94475b-d40d-4821-ba8b-6225738ad6da",
+                      "type": "user",
+                      "attributes": {
+                        "email": "user1_email@mail.com",
+                        "firstName": "First name",
+                        "lastName": "Last name"
+                      }
+                    },
+                    {
+                      "id": "1d1e00fb-237e-4cd7-820c-80516c8705a0",
+                      "type": "user",
+                      "attributes": {
+                        "email": "user2_email@mail.com",
+                        "firstName": "First name",
+                        "lastName": "Last name"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "401",
+              "description": "Unauthorized error.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ],
+              "examples": [
+                {
+                  "errors": [
+                    {
+                      "status": "401",
+                      "title": "Identity has not been provided",
+                      "code": "UnauthorizedError"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "404",
+              "description": "Not found error.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ],
+              "examples": [
+                {
+                  "errors": [
+                    {
+                      "status": "404",
+                      "title": "User not found",
+                      "code": "NotFoundError"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "500",
+              "description": "Unexpected error.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Get all the users of a given account"
+        },
+        {
+          "type": "post",
+          "link": "/accounts/{id}/users/post",
+          "summary": "Create a user under the given account",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "Id of the account",
+                "required": true,
+                "type": "string"
+              }
+            ]
+          },
+          "request": {
+            "description": "Create a user under the given account",
+            "schema": [
+              {
+                "name": "data",
+                "type": "object",
+                "required": true,
+                "properties": [
+                  {
+                    "name": "type",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "attributes",
+                    "type": "object",
+                    "required": true,
+                    "properties": [
+                      {
+                        "name": "firstName",
+                        "type": "string",
+                        "required": true,
+                        "description": "First name"
+                      },
+                      {
+                        "name": "lastName",
+                        "type": "string",
+                        "required": true,
+                        "description": "Last name"
+                      },
+                      {
+                        "name": "password",
+                        "type": "string",
+                        "required": true,
+                        "description": "Password"
+                      },
+                      {
+                        "name": "email",
+                        "type": "string",
+                        "required": true,
+                        "description": "Email of the user"
+                      },
+                      {
+                        "name": "bearerToken",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer token of the account"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "User created successfully.",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true,
+                      "description": "User id"
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true
+                    }
+                  ]
+                }
+              ],
+              "examples": [
+                {
+                  "data": {
+                    "type": "user",
+                    "id": "2149f4c0-3545-48c6-af76-0d298baad70d",
+                    "attributes": {}
+                  }
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Bad request error.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ],
+              "examples": [
+                {
+                  "errors": [
+                    {
+                      "status": "400",
+                      "title": "Invalid account id",
+                      "code": "BadRequestError"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "401",
+              "description": "Unauthorized error.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ],
+              "examples": [
+                {
+                  "errors": [
+                    {
+                      "status": "401",
+                      "title": "Identity has not been provided",
+                      "code": "UnauthorizedError"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ],
+              "examples": [
+                {
+                  "errors": [
+                    {
+                      "status": "422",
+                      "title": "Validation Error",
+                      "code": "ValidationError",
+                      "detail": "data.data.attributes should have required property 'email'",
+                      "meta": {
+                        "validation": [
+                          {
+                            "keyword": "required",
+                            "dataPath": ".data.attributes",
+                            "schemaPath": "#/required",
+                            "params": {
+                              "missingProperty": "email"
+                            },
+                            "message": "should have required property 'email'"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "500",
+              "description": "Unexpected error.",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "meta",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "code",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "links",
+                  "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "object",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "description": "Create a user under the given account"
+        }
+      ]
+    }
+  ]
+}

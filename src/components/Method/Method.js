@@ -22,6 +22,7 @@ export default class Method extends Component {
     const parameters = method.parameters;
     const request = method.request;
     const responses = method.responses;
+
     return (
       <ScrollableAnchor id={method.link}>
         <div className="method">
@@ -38,12 +39,17 @@ export default class Method extends Component {
   renderParameters(parameters) {
     return (
       <div className="method-parameters">
-        <h4>Parameters</h4>
-        {parameters.query &&
-        <BodySchema properties={parameters.query}/>
-        }
         {parameters.path &&
-        <BodySchema properties={parameters.path}/>
+        <div>
+          <h4>Path Parameters</h4>
+          <BodySchema properties={parameters.path}/>
+        </div>
+        }
+        {parameters.query &&
+        <div>
+          <h4>Query Parameters</h4>
+          <BodySchema properties={parameters.query}/>
+        </div>
         }
       </div>
     );
@@ -52,12 +58,16 @@ export default class Method extends Component {
   renderRequest(request) {
     const { description, schema, example, examples } = request;
 
-    return (
-      <div className="method-request">
-        <h4>Request</h4>
-        <BodyContent description={description} schema={schema} example={example} examples={examples}/>
-      </div>
-    );
+    if (request.schema) {
+      return (
+        <div className="method-request">
+          <h4>Request Body</h4>
+          <BodyContent description={description} schema={schema} example={example} examples={examples}/>
+        </div>
+      );
+    }
+
+    return '';
   }
 
   renderResponses(responses) {
