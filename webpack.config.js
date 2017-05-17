@@ -1,31 +1,41 @@
-var path = require('path');
-var config = require('config');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpackMerge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const devConfig = require('./webpack.config.dev');
+const pkgJson = require('./package.json');
 
-module.exports = {
-  name: 'browser',
-  devtool: 'source-map',
-  entry: [
-    'webpack-dev-server/client?http://' + config.webpackHost + ':' + config.webpackPort,
-    path.join(__dirname, 'src/index.js')
-  ],
+const isProduction = PRODUCTION = process.env.NODE_ENV === 'prod';
+
+let webpackConfig = {
+  context: `${__dirname}/src`,
+  entry: {
+    bundle: [
+      './index.js'
+    ],
+
+    // Everything in the `dependencies` should be considered a `vendor` library
+    vendor: [].concat(Object.keys(pkgJson.dependencies))
+  },
   output: {
-    path: path.resolve(__dirname, 'src'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    path: `${__dirname}/dist`,
+    publicPath: '/',
+    filename: '[name].[chunkhash].js'
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'src'),
-    compress: false,
-    port: config.webpackPort,
-    historyApiFallback: true
-  },
+
   resolve: {
     modules: ['src/', 'node_modules'],
     extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css')
+    new ExtractTextPlugin('bundle.css'),
+    /**
+     * This renders out an `./dist/index.html` with all scripts, title etc. attached
+     */
+    new HtmlWebpackPlugin({
+      title: pkgJson.description || pkgJson.name,
+      filename: 'index.html',
+      template: './index.html'
+    })
   ],
   module: {
     loaders: [
@@ -61,4 +71,12 @@ module.exports = {
   node: {
     fs: 'empty'
   }
+};
+
+if (!isProduction) {
+  webpackConfig = webpackMerge(webpackConfig, devConfig());
+}
+
+module.exports = () => {
+  return webpackConfig;
 };
