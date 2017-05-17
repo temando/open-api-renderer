@@ -2,9 +2,10 @@
   "name": "open-api-renderer",
   "description": "Open API Renderer",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "lint": "node_modules/.bin/eslint .",
-    "test": "$(npm bin)/mocha --recursive --compilers js:babel-core/register --require babel-polyfill"
+    "start": "webpack-dev-server",
+    "lint": "node_modules/.bin/eslint src",
+    "test": "$(npm bin)/mocha --recursive --compilers js:babel-core/register --require babel-polyfill",
+    "build:prod": "rm -rf dist/* && NODE_ENV=prod webpack -p"
   },
   "repository": {
     "type": "git",
@@ -12,11 +13,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "config": "^1.25.1",
     "history": "^4.6.1",
     "json-schema-ref-parser": "^3.1.2",
     "prop-types": "^15.5.8",
-    "react": "^15.4.2",
+    "react": "^15.5.4",
     "react-addons-create-fragment": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-document-title": "^2.0.2",
@@ -44,12 +44,14 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "fs-extra": "^3.0.1",
+    "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.3.0",
     "node-sass": "^4.5.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.0",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0"
   }
 }
