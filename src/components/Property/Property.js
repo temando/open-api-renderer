@@ -9,6 +9,12 @@ import './Property.scss';
 export default class Property extends Component {
   render() {
     const { name, type, description, required, onClick, isOpen, isLast } = this.props;
+
+    let subtype;
+    if (type === 'array') {
+      subtype = this.props.subtype;
+    }
+
     let isClickable = false;
     if (isOpen !== undefined) {
       isClickable = true;
@@ -32,7 +38,7 @@ export default class Property extends Component {
         }
         </td>
         <td className="property-info">
-          <span>{type}</span>
+          <span>{type}</span>{subtype && <span> of {subtype}</span>}
           {required && <span className="property-required">Required</span>}
           {description && <div className="property-description">{description}</div>}
         </td>
@@ -44,6 +50,7 @@ export default class Property extends Component {
 Property.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
+  subtype: PropTypes.string,
   description: PropTypes.string,
   required: PropTypes.bool,
   onClick: PropTypes.func,
