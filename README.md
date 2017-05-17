@@ -11,38 +11,35 @@ It is built on [React](https://facebook.github.io/react/).
 
 > This project is in an early phase of development.
 
-## Getting started
+## Prerequisite
 
-[Node.js](https://nodejs.org) is required to build and manage this project.
+- [Node.js](https://nodejs.org) is required to build and manage this project.
+- It is assumed that you use [yarn](https://yarnpkg.com) to manage node.JS dependencies and to run scripts. You're welcome to use [npm](https://docs.npmjs.com/), in which case, just substitute `yarn` with `npm`.
 
-Run the following commands to preview the Open API renderer:
-
-```sh
-npm install
-npm run dev
-```
-
-Or using [`yarn`](https://yarnpkg.com):
+## Installation
 
 ```sh
 yarn
-yarn run dev
 ```
 
-The renderer is then available on <http://localhost:8200>. The port can be changed by updating `config/default.yml`.
+## Usage
 
-## Other commands
-
-### Linting
-
-To lint the project:
+To view the renderer on your local machine:
 
 ```sh
-npm run lint
+yarn run start
 ```
 
-Or using [`yarn`](https://yarnpkg.com):
+The renderer is then available on <http://localhost:8200>. The port can be changed by updating `webpack.config.dev`.
+
+You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=http://petstore.swagger.io/v3/swagger.json>
+
+## Deployment to production
+
+Run the following to generate the artifacts at `/dist`:
 
 ```sh
-yarn run lint
+yarn run build:prod
 ```
+
+Deploy the files at `/dist` to your server.
