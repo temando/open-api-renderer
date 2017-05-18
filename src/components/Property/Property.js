@@ -8,7 +8,7 @@ import './Property.scss';
 
 export default class Property extends Component {
   render() {
-    const { name, type, description, required, onClick, isOpen, isLast } = this.props;
+    const { name, type, description, required, enumValues, onClick, isOpen, isLast } = this.props;
 
     let subtype;
     if (type === 'array') {
@@ -41,9 +41,28 @@ export default class Property extends Component {
         <td className="property-info">
           <span>{type}</span>{subtype && <span> of {subtype}</span>}
           {required && <span className="property-required">Required</span>}
+          {enumValues && this.renderEnumValues(enumValues)}
           {description && <div className="property-description">{description}</div>}
         </td>
       </tr>
+    );
+  }
+
+  /**
+   * Render enum values
+   *
+   * @param {Array} values
+   */
+  renderEnumValues(values) {
+    return (
+      <div>
+        <span>Valid values:</span>
+        {values.map(value => {
+          return (
+            <span className="enum">{value}</span>
+          );
+        })}
+      </div>
     );
   }
 }
@@ -54,6 +73,7 @@ Property.propTypes = {
   subtype: PropTypes.string,
   description: PropTypes.string,
   required: PropTypes.bool,
+  enumValues: PropTypes.array,
   onClick: PropTypes.func,
   isOpen: PropTypes.bool,
   isLast: PropTypes.bool
