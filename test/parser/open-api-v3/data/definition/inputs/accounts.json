@@ -1,0 +1,462 @@
+{
+  "openapi": "3.0.0-RC0",
+  "servers": [
+    {
+      "url": "https://api.temando.io/v1"
+    }
+  ],
+  "info": {
+    "title": "Temando API",
+    "description": "Providing consumers with more choice and lowering the cost of shipping.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/accounts/{id}/users": {
+      "post": {
+        "summary": "Create a user under the given account",
+        "description": "Create a user under the given account",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the account",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User created successfully.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createUserResponse"
+                },
+                "examples": [
+                  {
+                    "data": {
+                      "type": "user",
+                      "id": "2149f4c0-3545-48c6-af76-0d298baad70d",
+                      "attributes": {}
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                },
+                "examples": [
+                  {
+                    "errors": [
+                      {
+                        "status": "400",
+                        "title": "Invalid account id",
+                        "code": "BadRequestError"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                },
+                "examples": [
+                  {
+                    "errors": [
+                      {
+                        "status": "401",
+                        "title": "Identity has not been provided",
+                        "code": "UnauthorizedError"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "422": {
+            "description": "The request schema did not meet the specification.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                },
+                "examples": [
+                  {
+                    "errors": [
+                      {
+                        "status": "422",
+                        "title": "Validation Error",
+                        "code": "ValidationError",
+                        "detail": "data.data.attributes should have required property 'email'",
+                        "meta": {
+                          "validation": [
+                            {
+                              "keyword": "required",
+                              "dataPath": ".data.attributes",
+                              "schemaPath": "#/required",
+                              "params": {
+                                "missingProperty": "email"
+                              },
+                              "message": "should have required property 'email'"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/createUserRequest"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all the users of a given account",
+        "description": "Get all the users of a given account",
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the account",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for the result set",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit for the result set",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns all the users of the given account",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getUsersResponse"
+                },
+                "examples": [
+                  {
+                    "data": [
+                      {
+                        "id": "ff94475b-d40d-4821-ba8b-6225738ad6da",
+                        "type": "user",
+                        "attributes": {
+                          "email": "user1_email@mail.com",
+                          "firstName": "First name",
+                          "lastName": "Last name"
+                        }
+                      },
+                      {
+                        "id": "1d1e00fb-237e-4cd7-820c-80516c8705a0",
+                        "type": "user",
+                        "attributes": {
+                          "email": "user2_email@mail.com",
+                          "firstName": "First name",
+                          "lastName": "Last name"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                },
+                "examples": [
+                  {
+                    "errors": [
+                      {
+                        "status": "401",
+                        "title": "Identity has not been provided",
+                        "code": "UnauthorizedError"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Not found error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                },
+                "examples": [
+                  {
+                    "errors": [
+                      {
+                        "status": "404",
+                        "title": "User not found",
+                        "code": "NotFoundError"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "createUserRequest": {
+        "title": "User",
+        "description": "Create user schema",
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "user"
+                ]
+              },
+              "attributes": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "password",
+                  "email",
+                  "bearerToken"
+                ],
+                "properties": {
+                  "firstName": {
+                    "description": "First name",
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "description": "Last name",
+                    "type": "string"
+                  },
+                  "password": {
+                    "description": "Password",
+                    "type": "string"
+                  },
+                  "email": {
+                    "description": "Email of the user",
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "bearerToken": {
+                    "description": "Bearer token of the account",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "createUserResponse": {
+        "title": "User response",
+        "description": "User response schema",
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "type",
+              "id",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "user"
+                ]
+              },
+              "id": {
+                "description": "User id",
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "getUsersResponse": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "id",
+                "attributes"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "user"
+                  ]
+                },
+                "id": {
+                  "description": "User id",
+                  "type": "string"
+                },
+                "attributes": {
+                  "type": "object",
+                  "required": [
+                    "email",
+                    "firstName",
+                    "lastName"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "firstName": {
+                      "description": "First name",
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "description": "Last name",
+                      "type": "string"
+                    },
+                    "email": {
+                      "description": "Email of the user",
+                      "type": "string",
+                      "format": "email"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "JsonApiError": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "code": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          },
+          "source": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "securitySchemes": {},
+    "headers": {}
+  }
+}
