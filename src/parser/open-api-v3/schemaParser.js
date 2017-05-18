@@ -23,8 +23,14 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
   }
 
   if (literalTypes.indexOf(nodeType) >= 0) {
+    // Literal types
+    if (propertyNode.enum) {
+      outputNode.enum = propertyNode.enum;
+    }
+
     return outputNode;
   } else if (nodeType === 'object') {
+    // Object type
     const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required);
 
     if (propertiesNode !== undefined && propertiesNode.length > 0) {
@@ -33,6 +39,7 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
 
     return outputNode;
   } else if (nodeType === 'array') {
+    // Array type
     if (propertyNode.items) {
       const arrayItemType = propertyNode.items.type;
 

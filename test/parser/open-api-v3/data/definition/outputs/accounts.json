@@ -67,7 +67,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "user"
+                      ]
                     },
                     {
                       "name": "id",
@@ -316,7 +319,10 @@
                   {
                     "name": "type",
                     "type": "string",
-                    "required": true
+                    "required": true,
+                    "enum": [
+                        "user"
+                      ]
                   },
                   {
                     "name": "attributes",
@@ -372,7 +378,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "user"
+                      ]
                     },
                     {
                       "name": "id",
