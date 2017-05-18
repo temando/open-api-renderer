@@ -57,6 +57,22 @@
           "type": "get",
           "link": "/products/get",
           "summary": "Get list of Products in the account document.",
+          "parameters": {
+            "query": [
+              {
+                "name": "offset",
+                "description": "Offset for the returned array of records",
+                "required": false,
+                "type": "number"
+              },
+              {
+                "name": "limit",
+                "description": "Limit for the returned array of records.",
+                "required": false,
+                "type": "number"
+              }
+            ]
+          },
           "request": {
             "description": "Get list of Products in the account document."
           },
@@ -321,6 +337,7 @@
           "type": "post",
           "link": "/products/post",
           "summary": "Create a Product object in the account.",
+          "parameters": {},
           "request": {
             "description": "Create a Product object in the account.",
             "schema": [
@@ -782,6 +799,16 @@
           "type": "get",
           "link": "/products/{id}/get",
           "summary": "Get Product from account document.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Product to fetch",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          },
           "request": {
             "description": "Get Product from account document."
           },
@@ -1092,6 +1119,16 @@
           "type": "put",
           "link": "/products/{id}/put",
           "summary": "Update Product.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Product to update",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          },
           "request": {
             "description": "Update Product in account document.",
             "schema": [
@@ -1605,6 +1642,16 @@
           "type": "delete",
           "link": "/products/{id}/delete",
           "summary": "Remove Products.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Product to remove",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          },
           "request": {
             "description": "Remove Product from account document."
           },
@@ -1717,6 +1764,16 @@
           "type": "get",
           "link": "/shipments/{id}/get",
           "summary": "Get shipment from account document by id.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of shipment to fetch",
+                "required": true,
+                "type": "string"
+              }
+            ]
+          },
           "request": {},
           "responses": [
             {
@@ -2756,6 +2813,16 @@
           "type": "put",
           "link": "/shipments/{id}/put",
           "summary": "Update Shipment.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Shipment to update",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          },
           "request": {
             "description": "Update Shipment in account document.",
             "schema": [

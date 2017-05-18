@@ -45,12 +45,18 @@ function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphab
             type: methodType,
             link,
             summary: method.summary,
+            parameters: uiParameters,
             request: uiRequest,
             responses: uiResponses
           };
 
           if (method.description) {
             servicesMethod.description = method.description;
+          }
+
+          const uiParameters = getUIParameters(method.parameters);
+          if (uiParameters) {
+            servicesMethod.parameters = uiParameters;
           }
 
           servicesMethods.push(servicesMethod);
@@ -90,6 +96,67 @@ function addMediaTypeInfoToUIObject(uiObj, mediaType) {
 
   if (mediaType.examples) {
     uiObj.examples = mediaType.examples;
+  }
+}
+
+/**
+ * Construct parameters object ready to be consumed by the UI
+ *
+ * @param {Array} parameters
+ *
+ * @return {Object}
+ */
+function getUIParameters(parameters) {
+  if (parameters) {
+    const uiParameters = {};
+
+    const pathParameters = getUIParametersForLocation(parameters, 'path');
+    if (pathParameters) {
+      uiParameters.path = pathParameters;
+    }
+
+    const queryParameters = getUIParametersForLocation(parameters, 'query');
+    if (queryParameters) {
+      uiParameters.query = queryParameters;
+    }
+
+    return uiParameters;
+  }
+
+  return null;
+}
+
+/**
+ * Construct a parameters array for a location, ready to be consumed by the UI
+ *
+ * @param {Array} parameters
+ * @param {String} location. Possible values: query, path, header, cookie
+ *
+ * @return {Array}
+ */
+function getUIParametersForLocation(parameters, location) {
+  const resultArray = parameters.map(parameter => {
+    if (parameter.in === location) {
+      const uiParameter = {
+        name: parameter.name,
+        description: parameter.description,
+        required: parameter.required
+      };
+
+      if (parameter.schema || parameter.schema.type) {
+        uiParameter.type = parameter.schema.type;
+      }
+
+      return uiParameter;
+    }
+
+    return null;
+  }).filter(parameter => parameter);
+
+  if (resultArray && resultArray.length > 0) {
+    return resultArray;
+  } else {
+    return null;
   }
 }
 
