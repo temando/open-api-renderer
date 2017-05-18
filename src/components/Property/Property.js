@@ -59,7 +59,7 @@ export default class Property extends Component {
         <span>Valid values:</span>
         {values.map(value => {
           return (
-            <span className="enum">{value}</span>
+            <span key={value} className="enum">{value}</span>
           );
         })}
       </div>
