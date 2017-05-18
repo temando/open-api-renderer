@@ -12,6 +12,9 @@
   a {
     text-decoration: none;
   }
+  .indicator {
+    float: right;
+  }
 }
 
 .nav-level1 {
@@ -46,4 +49,15 @@
   padding-left: 5px;
   //border: 1px solid red;
   text-indent: 0;
+}
+
+.nav-slide-toggle-appear,
+.nav-slide-toggle-enter {
+  max-height: 0;
+}
+
+.nav-slide-toggle-appear.nav-slide-toggle-appear-active,
+.nav-slide-toggle-enter.nav-slide-toggle-enter-active {
+  max-height: 1500px;
+  transition: max-height 500ms ease-in;
 }
