@@ -25,7 +25,7 @@ export default class BodyContent extends Component {
     const { tab } = this.state;
     return (
       <div className="body-content">
-        <div className="body-content-description">{description}</div>
+        {description && <div className="body-content-description">{description}</div>}
         {schema && this.renderTabs(schema, example || examples)}
         {tab === 'schema' && this.renderSchema(schema)}
         {tab === 'example' && this.renderExample(example, examples)}
