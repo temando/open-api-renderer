@@ -56,7 +56,7 @@ export default class Method extends Component {
   }
 
   renderRequest(request) {
-    const { description, schema, example, examples } = request;
+    const { schema, example, examples } = request;
 
     if (request.schema) {
       return (
