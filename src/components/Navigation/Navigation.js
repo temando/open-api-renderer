@@ -9,28 +9,29 @@ export default class Navigation extends Component {
     const { navigation } = this.props;
     return (
       <div className="nav">
-        {navigation && navigation.map((item) => {
+        {navigation && navigation.map((tag) => {
           return (
-            <div key={item.title}>
+            <div key={tag.title}>
               <a
                 className="nav-level1"
-                key={item.title}
-                href={`#${item.title}`}
+                key={tag.title}
+                href={`#${tag.title}`}
               >
-                {item.title}
+                {tag.title}
               </a>
               <div>
-                {item.methods.map((subitem) => {
-                  const isActive = (`#${subitem.link}` === this.props.location.hash);
+                {tag.methods.map((method) => {
+                  const isActive = (`#${method.link}` === this.props.location.hash);
                   return (
                     <a
                       className={classNames('nav-level2', {
                         active: isActive
                       })}
-                      key={subitem.link}
-                      href={`#${subitem.link}`}
+                      key={method.link}
+                      href={`#${method.link}`}
                     >
-                      {subitem.type.toUpperCase()} - {subitem.title}
+                      <span className="method-type">{method.type.toUpperCase()}</span>
+                      <span className="method-title">{method.title}</span>
                     </a>
                   );
                 })}

@@ -26,16 +26,17 @@ export default class Property extends Component {
     return (
       <tr
         className={classNames('property', {
-          'property--isclickable': isClickable,
           last: isLast
         })}
         onClick={onClick}
       >
-        <td className="property-name">
+        <td className={classNames('property-name', {
+          'property--isclickable': isClickable
+        })}>
           <span>{name}</span>
           {isClickable &&
-            <Indicator className="property-indicator" status={status} />
-        }
+            <Indicator className="property-indicator" status={status}/>
+          }
         </td>
         <td className="property-info">
           <span>{type}</span>{subtype && <span> of {subtype}</span>}
