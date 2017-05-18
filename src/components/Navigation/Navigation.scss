@@ -24,11 +24,12 @@
   font-weight: bold;
   &.active {
     background-color: $grey-dark;
-  };
+  }
+;
 }
 
 .nav-level2 {
-  display: block;
+  display: flex;
   padding: 5px 20px;
   text-indent: 10px;
   cursor: pointer;
@@ -36,4 +37,13 @@
   &.active {
     background-color: $grey-dark;
   }
+}
+
+.method-type {
+}
+
+.method-title {
+  padding-left: 5px;
+  //border: 1px solid red;
+  text-indent: 0;
 }

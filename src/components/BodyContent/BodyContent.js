@@ -20,12 +20,11 @@ export default class BodyContent extends Component {
   }
 
   render() {
-    const { description, schema, example, examples } = this.props;
+    const { schema, example, examples } = this.props;
 
     const { tab } = this.state;
     return (
       <div className="body-content">
-        {description && <div className="body-content-description">{description}</div>}
         {schema && this.renderTabs(schema, example || examples)}
         {tab === 'schema' && this.renderSchema(schema)}
         {tab === 'example' && this.renderExample(example, examples)}
@@ -100,7 +99,6 @@ export default class BodyContent extends Component {
 }
 
 BodyContent.propTypes = {
-  description: PropTypes.string,
   schema: PropTypes.array,
   example: PropTypes.string,
   examples: PropTypes.array
