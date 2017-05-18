@@ -16,10 +16,19 @@ export default class Navigation extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.navigation.map((tag) => {
+      tag.methods.map((method) => {
+        if (`#${method.link}` === this.props.location.hash) {
+          this.updateExpandedTags(tag.title);
+        }
+      });
+    });
+  }
+
   render() {
     const { navigation } = this.props;
     const { expandedTags } = this.state;
-    console.log(this.props.location);
 
     return (
       <div className="nav">
@@ -34,7 +43,7 @@ export default class Navigation extends Component {
                 className="nav-level1"
                 key={tag.title}
                 href={`#${tag.title}`}
-                onClick={this.onClick.bind(this, tag.title)}
+                onClick={this.updateExpandedTags.bind(this, tag.title)}
               >
                 {tag.title}
                 <Indicator className="property-indicator" status={status}/>
@@ -73,7 +82,7 @@ export default class Navigation extends Component {
     );
   }
 
-  onClick(tagTitle) {
+  updateExpandedTags(tagTitle) {
     const { expandedTags } = this.state;
     if (expandedTags.indexOf(tagTitle) !== -1) {
       const newExpanded = expandedTags.filter((prop) => prop !== tagTitle);
