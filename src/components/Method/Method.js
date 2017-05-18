@@ -62,7 +62,7 @@ export default class Method extends Component {
       return (
         <div className="method-request">
           <h4>Request Body</h4>
-          <BodyContent description={description} schema={schema} example={example} examples={examples}/>
+          <BodyContent schema={schema} example={example} examples={examples}/>
         </div>
       );
     }
