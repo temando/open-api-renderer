@@ -5,7 +5,10 @@
       {
         "name": "type",
         "required": true,
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "account"
+        ]
       },
       {
         "name": "attributes",
@@ -20,7 +23,12 @@
             "description": "One of predefined platforms",
             "name": "platform",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "test",
+              "custom",
+              "magento"
+            ]
           },
           {
             "description": "Name, eg: Company name",

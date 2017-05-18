@@ -89,7 +89,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "product"
+                      ]
                     },
                     {
                       "name": "id",
@@ -136,7 +139,47 @@
                           "name": "unitOfMeasure",
                           "type": "string",
                           "required": false,
-                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                          "enum": [
+                            "Bag",
+                            "Barrel",
+                            "Bolt",
+                            "Box",
+                            "Bunch",
+                            "Bundle",
+                            "Butt",
+                            "Canister",
+                            "Carton",
+                            "Case",
+                            "Centimeter",
+                            "Container",
+                            "Crate",
+                            "Cylinder",
+                            "Dozen",
+                            "Each",
+                            "Envelope",
+                            "Foot",
+                            "Kilogram",
+                            "Kilograms",
+                            "Liter",
+                            "Meter",
+                            "Number",
+                            "Package",
+                            "Packet",
+                            "Pair",
+                            "Pairs",
+                            "Pallet",
+                            "Piece",
+                            "Pieces",
+                            "Pound",
+                            "Proof Liter",
+                            "Roll",
+                            "Set",
+                            "Square Meter",
+                            "Square Yard",
+                            "Tube",
+                            "Yard"
+                          ]
                         },
                         {
                           "name": "dimensions",
@@ -163,7 +206,25 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The distance unit the dimension's properties are in"
+                              "description": "The distance unit the dimension's properties are in",
+                              "enum": [
+                                "mm",
+                                "millimeter",
+                                "millimetre",
+                                "cm",
+                                "centimeter",
+                                "centimetre",
+                                "m",
+                                "meter",
+                                "metre",
+                                "ft",
+                                "foot",
+                                "feet",
+                                "in",
+                                "inch",
+                                "yd",
+                                "yard"
+                              ]
                             }
                           ]
                         },
@@ -182,7 +243,17 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The weight unit the value is"
+                              "description": "The weight unit the value is",
+                              "enum": [
+                                "g",
+                                "gram",
+                                "oz",
+                                "ounce",
+                                "kg",
+                                "kilogram",
+                                "lb",
+                                "pound"
+                              ]
                             }
                           ]
                         },
@@ -349,7 +420,10 @@
                   {
                     "name": "type",
                     "type": "string",
-                    "required": true
+                    "required": true,
+                    "enum": [
+                      "product"
+                    ]
                   },
                   {
                     "name": "attributes",
@@ -390,7 +464,47 @@
                         "name": "unitOfMeasure",
                         "type": "string",
                         "required": false,
-                        "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                        "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                        "enum": [
+                          "Bag",
+                          "Barrel",
+                          "Bolt",
+                          "Box",
+                          "Bunch",
+                          "Bundle",
+                          "Butt",
+                          "Canister",
+                          "Carton",
+                          "Case",
+                          "Centimeter",
+                          "Container",
+                          "Crate",
+                          "Cylinder",
+                          "Dozen",
+                          "Each",
+                          "Envelope",
+                          "Foot",
+                          "Kilogram",
+                          "Kilograms",
+                          "Liter",
+                          "Meter",
+                          "Number",
+                          "Package",
+                          "Packet",
+                          "Pair",
+                          "Pairs",
+                          "Pallet",
+                          "Piece",
+                          "Pieces",
+                          "Pound",
+                          "Proof Liter",
+                          "Roll",
+                          "Set",
+                          "Square Meter",
+                          "Square Yard",
+                          "Tube",
+                          "Yard"
+                        ]
                       },
                       {
                         "name": "dimensions",
@@ -417,7 +531,25 @@
                             "name": "unitOfMeasurement",
                             "type": "string",
                             "required": true,
-                            "description": "The distance unit the dimension's properties are in"
+                            "description": "The distance unit the dimension's properties are in",
+                            "enum": [
+                              "mm",
+                              "millimeter",
+                              "millimetre",
+                              "cm",
+                              "centimeter",
+                              "centimetre",
+                              "m",
+                              "meter",
+                              "metre",
+                              "ft",
+                              "foot",
+                              "feet",
+                              "in",
+                              "inch",
+                              "yd",
+                              "yard"
+                            ]
                           }
                         ]
                       },
@@ -436,7 +568,17 @@
                             "name": "unitOfMeasurement",
                             "type": "string",
                             "required": true,
-                            "description": "The weight unit the value is"
+                            "description": "The weight unit the value is",
+                            "enum": [
+                              "g",
+                              "gram",
+                              "oz",
+                              "ounce",
+                              "kg",
+                              "kilogram",
+                              "lb",
+                              "pound"
+                            ]
                           }
                         ]
                       },
@@ -551,7 +693,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "product"
+                      ]
                     },
                     {
                       "name": "id",
@@ -598,7 +743,47 @@
                           "name": "unitOfMeasure",
                           "type": "string",
                           "required": false,
-                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                          "enum": [
+                            "Bag",
+                            "Barrel",
+                            "Bolt",
+                            "Box",
+                            "Bunch",
+                            "Bundle",
+                            "Butt",
+                            "Canister",
+                            "Carton",
+                            "Case",
+                            "Centimeter",
+                            "Container",
+                            "Crate",
+                            "Cylinder",
+                            "Dozen",
+                            "Each",
+                            "Envelope",
+                            "Foot",
+                            "Kilogram",
+                            "Kilograms",
+                            "Liter",
+                            "Meter",
+                            "Number",
+                            "Package",
+                            "Packet",
+                            "Pair",
+                            "Pairs",
+                            "Pallet",
+                            "Piece",
+                            "Pieces",
+                            "Pound",
+                            "Proof Liter",
+                            "Roll",
+                            "Set",
+                            "Square Meter",
+                            "Square Yard",
+                            "Tube",
+                            "Yard"
+                          ]
                         },
                         {
                           "name": "dimensions",
@@ -625,7 +810,25 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The distance unit the dimension's properties are in"
+                              "description": "The distance unit the dimension's properties are in",
+                              "enum": [
+                                "mm",
+                                "millimeter",
+                                "millimetre",
+                                "cm",
+                                "centimeter",
+                                "centimetre",
+                                "m",
+                                "meter",
+                                "metre",
+                                "ft",
+                                "foot",
+                                "feet",
+                                "in",
+                                "inch",
+                                "yd",
+                                "yard"
+                              ]
                             }
                           ]
                         },
@@ -644,7 +847,17 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The weight unit the value is"
+                              "description": "The weight unit the value is",
+                              "enum": [
+                                "g",
+                                "gram",
+                                "oz",
+                                "ounce",
+                                "kg",
+                                "kilogram",
+                                "lb",
+                                "pound"
+                              ]
                             }
                           ]
                         },
@@ -825,7 +1038,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "product"
+                      ]
                     },
                     {
                       "name": "id",
@@ -872,7 +1088,47 @@
                           "name": "unitOfMeasure",
                           "type": "string",
                           "required": false,
-                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                          "enum": [
+                            "Bag",
+                            "Barrel",
+                            "Bolt",
+                            "Box",
+                            "Bunch",
+                            "Bundle",
+                            "Butt",
+                            "Canister",
+                            "Carton",
+                            "Case",
+                            "Centimeter",
+                            "Container",
+                            "Crate",
+                            "Cylinder",
+                            "Dozen",
+                            "Each",
+                            "Envelope",
+                            "Foot",
+                            "Kilogram",
+                            "Kilograms",
+                            "Liter",
+                            "Meter",
+                            "Number",
+                            "Package",
+                            "Packet",
+                            "Pair",
+                            "Pairs",
+                            "Pallet",
+                            "Piece",
+                            "Pieces",
+                            "Pound",
+                            "Proof Liter",
+                            "Roll",
+                            "Set",
+                            "Square Meter",
+                            "Square Yard",
+                            "Tube",
+                            "Yard"
+                          ]
                         },
                         {
                           "name": "dimensions",
@@ -899,7 +1155,25 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The distance unit the dimension's properties are in"
+                              "description": "The distance unit the dimension's properties are in",
+                              "enum": [
+                                "mm",
+                                "millimeter",
+                                "millimetre",
+                                "cm",
+                                "centimeter",
+                                "centimetre",
+                                "m",
+                                "meter",
+                                "metre",
+                                "ft",
+                                "foot",
+                                "feet",
+                                "in",
+                                "inch",
+                                "yd",
+                                "yard"
+                              ]
                             }
                           ]
                         },
@@ -918,7 +1192,17 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The weight unit the value is"
+                              "description": "The weight unit the value is",
+                              "enum": [
+                                "g",
+                                "gram",
+                                "oz",
+                                "ounce",
+                                "kg",
+                                "kilogram",
+                                "lb",
+                                "pound"
+                              ]
                             }
                           ]
                         },
@@ -1140,7 +1424,10 @@
                   {
                     "name": "type",
                     "type": "string",
-                    "required": true
+                    "required": true,
+                    "enum": [
+                      "product"
+                    ]
                   },
                   {
                     "name": "id",
@@ -1187,7 +1474,47 @@
                         "name": "unitOfMeasure",
                         "type": "string",
                         "required": false,
-                        "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                        "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                        "enum": [
+                          "Bag",
+                          "Barrel",
+                          "Bolt",
+                          "Box",
+                          "Bunch",
+                          "Bundle",
+                          "Butt",
+                          "Canister",
+                          "Carton",
+                          "Case",
+                          "Centimeter",
+                          "Container",
+                          "Crate",
+                          "Cylinder",
+                          "Dozen",
+                          "Each",
+                          "Envelope",
+                          "Foot",
+                          "Kilogram",
+                          "Kilograms",
+                          "Liter",
+                          "Meter",
+                          "Number",
+                          "Package",
+                          "Packet",
+                          "Pair",
+                          "Pairs",
+                          "Pallet",
+                          "Piece",
+                          "Pieces",
+                          "Pound",
+                          "Proof Liter",
+                          "Roll",
+                          "Set",
+                          "Square Meter",
+                          "Square Yard",
+                          "Tube",
+                          "Yard"
+                        ]
                       },
                       {
                         "name": "dimensions",
@@ -1214,7 +1541,25 @@
                             "name": "unitOfMeasurement",
                             "type": "string",
                             "required": true,
-                            "description": "The distance unit the dimension's properties are in"
+                            "description": "The distance unit the dimension's properties are in",
+                            "enum": [
+                              "mm",
+                              "millimeter",
+                              "millimetre",
+                              "cm",
+                              "centimeter",
+                              "centimetre",
+                              "m",
+                              "meter",
+                              "metre",
+                              "ft",
+                              "foot",
+                              "feet",
+                              "in",
+                              "inch",
+                              "yd",
+                              "yard"
+                            ]
                           }
                         ]
                       },
@@ -1233,7 +1578,17 @@
                             "name": "unitOfMeasurement",
                             "type": "string",
                             "required": true,
-                            "description": "The weight unit the value is"
+                            "description": "The weight unit the value is",
+                            "enum": [
+                              "g",
+                              "gram",
+                              "oz",
+                              "ounce",
+                              "kg",
+                              "kilogram",
+                              "lb",
+                              "pound"
+                            ]
                           }
                         ]
                       },
@@ -1348,7 +1703,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "product"
+                      ]
                     },
                     {
                       "name": "id",
@@ -1395,7 +1753,47 @@
                           "name": "unitOfMeasure",
                           "type": "string",
                           "required": false,
-                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                          "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                          "enum": [
+                            "Bag",
+                            "Barrel",
+                            "Bolt",
+                            "Box",
+                            "Bunch",
+                            "Bundle",
+                            "Butt",
+                            "Canister",
+                            "Carton",
+                            "Case",
+                            "Centimeter",
+                            "Container",
+                            "Crate",
+                            "Cylinder",
+                            "Dozen",
+                            "Each",
+                            "Envelope",
+                            "Foot",
+                            "Kilogram",
+                            "Kilograms",
+                            "Liter",
+                            "Meter",
+                            "Number",
+                            "Package",
+                            "Packet",
+                            "Pair",
+                            "Pairs",
+                            "Pallet",
+                            "Piece",
+                            "Pieces",
+                            "Pound",
+                            "Proof Liter",
+                            "Roll",
+                            "Set",
+                            "Square Meter",
+                            "Square Yard",
+                            "Tube",
+                            "Yard"
+                          ]
                         },
                         {
                           "name": "dimensions",
@@ -1422,7 +1820,25 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The distance unit the dimension's properties are in"
+                              "description": "The distance unit the dimension's properties are in",
+                              "enum": [
+                                "mm",
+                                "millimeter",
+                                "millimetre",
+                                "cm",
+                                "centimeter",
+                                "centimetre",
+                                "m",
+                                "meter",
+                                "metre",
+                                "ft",
+                                "foot",
+                                "feet",
+                                "in",
+                                "inch",
+                                "yd",
+                                "yard"
+                              ]
                             }
                           ]
                         },
@@ -1441,7 +1857,17 @@
                               "name": "unitOfMeasurement",
                               "type": "string",
                               "required": true,
-                              "description": "The weight unit the value is"
+                              "description": "The weight unit the value is",
+                              "enum": [
+                                "g",
+                                "gram",
+                                "oz",
+                                "ounce",
+                                "kg",
+                                "kilogram",
+                                "lb",
+                                "pound"
+                              ]
                             }
                           ]
                         },
@@ -1788,7 +2214,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "shipment"
+                      ]
                     },
                     {
                       "name": "id",
@@ -1835,7 +2264,15 @@
                               "name": "type",
                               "type": "string",
                               "required": false,
-                              "description": "The type of location."
+                              "description": "The type of location.",
+                              "enum": [
+                                "Store",
+                                "Warehouse",
+                                "Drop Shipper",
+                                "Collection Point",
+                                "Click & Collect",
+                                "Headquarters"
+                              ]
                             },
                             {
                               "name": "address",
@@ -1985,7 +2422,15 @@
                               "name": "type",
                               "type": "string",
                               "required": false,
-                              "description": "The type of location."
+                              "description": "The type of location.",
+                              "enum": [
+                                "Store",
+                                "Warehouse",
+                                "Drop Shipper",
+                                "Collection Point",
+                                "Click & Collect",
+                                "Headquarters"
+                              ]
                             },
                             {
                               "name": "address",
@@ -2146,7 +2591,17 @@
                                   "name": "unitOfMeasurement",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The weight unit the value is"
+                                  "description": "The weight unit the value is",
+                                  "enum": [
+                                    "g",
+                                    "gram",
+                                    "oz",
+                                    "ounce",
+                                    "kg",
+                                    "kilogram",
+                                    "lb",
+                                    "pound"
+                                  ]
                                 }
                               ]
                             },
@@ -2175,7 +2630,25 @@
                                   "name": "unitOfMeasurement",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The distance unit the dimension's properties are in"
+                                  "description": "The distance unit the dimension's properties are in",
+                                  "enum": [
+                                    "mm",
+                                    "millimeter",
+                                    "millimetre",
+                                    "cm",
+                                    "centimeter",
+                                    "centimetre",
+                                    "m",
+                                    "meter",
+                                    "metre",
+                                    "ft",
+                                    "foot",
+                                    "feet",
+                                    "in",
+                                    "inch",
+                                    "yd",
+                                    "yard"
+                                  ]
                                 }
                               ]
                             },
@@ -2230,7 +2703,47 @@
                                       "name": "unitOfMeasure",
                                       "type": "string",
                                       "required": false,
-                                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                                      "enum": [
+                                        "Bag",
+                                        "Barrel",
+                                        "Bolt",
+                                        "Box",
+                                        "Bunch",
+                                        "Bundle",
+                                        "Butt",
+                                        "Canister",
+                                        "Carton",
+                                        "Case",
+                                        "Centimeter",
+                                        "Container",
+                                        "Crate",
+                                        "Cylinder",
+                                        "Dozen",
+                                        "Each",
+                                        "Envelope",
+                                        "Foot",
+                                        "Kilogram",
+                                        "Kilograms",
+                                        "Liter",
+                                        "Meter",
+                                        "Number",
+                                        "Package",
+                                        "Packet",
+                                        "Pair",
+                                        "Pairs",
+                                        "Pallet",
+                                        "Piece",
+                                        "Pieces",
+                                        "Pound",
+                                        "Proof Liter",
+                                        "Roll",
+                                        "Set",
+                                        "Square Meter",
+                                        "Square Yard",
+                                        "Tube",
+                                        "Yard"
+                                      ]
                                     },
                                     {
                                       "name": "dimensions",
@@ -2257,7 +2770,25 @@
                                           "name": "unitOfMeasurement",
                                           "type": "string",
                                           "required": true,
-                                          "description": "The distance unit the dimension's properties are in"
+                                          "description": "The distance unit the dimension's properties are in",
+                                          "enum": [
+                                            "mm",
+                                            "millimeter",
+                                            "millimetre",
+                                            "cm",
+                                            "centimeter",
+                                            "centimetre",
+                                            "m",
+                                            "meter",
+                                            "metre",
+                                            "ft",
+                                            "foot",
+                                            "feet",
+                                            "in",
+                                            "inch",
+                                            "yd",
+                                            "yard"
+                                          ]
                                         }
                                       ]
                                     },
@@ -2276,7 +2807,17 @@
                                           "name": "unitOfMeasurement",
                                           "type": "string",
                                           "required": true,
-                                          "description": "The weight unit the value is"
+                                          "description": "The weight unit the value is",
+                                          "enum": [
+                                            "g",
+                                            "gram",
+                                            "oz",
+                                            "ounce",
+                                            "kg",
+                                            "kilogram",
+                                            "lb",
+                                            "pound"
+                                          ]
                                         }
                                       ]
                                     },
@@ -2397,25 +2938,65 @@
                                   "name": "mimeType",
                                   "type": "string",
                                   "required": true,
-                                  "description": "A standard mime-type representation of the file format."
+                                  "description": "A standard mime-type representation of the file format.",
+                                  "enum": [
+                                    "application/epl",
+                                    "application/epl2",
+                                    "application/zpl",
+                                    "application/pdf",
+                                    "image/png",
+                                    "image/jpg",
+                                    "image/gif",
+                                    "image/bmp"
+                                  ]
                                 },
                                 {
                                   "name": "encoding",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The encoding of the data"
+                                  "description": "The encoding of the data",
+                                  "enum": [
+                                    "base64",
+                                    "plainText"
+                                  ]
                                 },
                                 {
                                   "name": "size",
                                   "type": "string",
                                   "required": false,
-                                  "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                                  "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                                  "enum": [
+                                    "A0",
+                                    "A1",
+                                    "A2",
+                                    "A3",
+                                    "A4",
+                                    "A5",
+                                    "A6",
+                                    "A7",
+                                    "A8",
+                                    "A9",
+                                    "A10"
+                                  ]
                                 },
                                 {
                                   "name": "type",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The document type being generated"
+                                  "description": "The document type being generated",
+                                  "enum": [
+                                    "manifestSummary",
+                                    "customerInvoice",
+                                    "cn22",
+                                    "cn23",
+                                    "packagingList",
+                                    "packageLabels",
+                                    "certificateOfOrigin",
+                                    "NAFTA",
+                                    "commercialInvoice",
+                                    "CODTurnInPage",
+                                    "proofOfDelivery"
+                                  ]
                                 },
                                 {
                                   "name": "url",
@@ -2557,7 +3138,20 @@
                               "name": "incoterm",
                               "type": "string",
                               "required": false,
-                              "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                              "description": "Incoterm 2010 rules, series of pre-defined commercial terms.",
+                              "enum": [
+                                "EXW",
+                                "FCA",
+                                "FAS",
+                                "FOB",
+                                "CPT",
+                                "CFR",
+                                "CIF",
+                                "CIP",
+                                "DAT",
+                                "DAP",
+                                "DDP"
+                              ]
                             },
                             {
                               "name": "customAttributes",
@@ -2588,25 +3182,65 @@
                               "name": "mimeType",
                               "type": "string",
                               "required": true,
-                              "description": "A standard mime-type representation of the file format."
+                              "description": "A standard mime-type representation of the file format.",
+                              "enum": [
+                                "application/epl",
+                                "application/epl2",
+                                "application/zpl",
+                                "application/pdf",
+                                "image/png",
+                                "image/jpg",
+                                "image/gif",
+                                "image/bmp"
+                              ]
                             },
                             {
                               "name": "encoding",
                               "type": "string",
                               "required": true,
-                              "description": "The encoding of the data"
+                              "description": "The encoding of the data",
+                              "enum": [
+                                "base64",
+                                "plainText"
+                              ]
                             },
                             {
                               "name": "size",
                               "type": "string",
                               "required": false,
-                              "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                              "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                              "enum": [
+                                "A0",
+                                "A1",
+                                "A2",
+                                "A3",
+                                "A4",
+                                "A5",
+                                "A6",
+                                "A7",
+                                "A8",
+                                "A9",
+                                "A10"
+                              ]
                             },
                             {
                               "name": "type",
                               "type": "string",
                               "required": true,
-                              "description": "The document type being generated"
+                              "description": "The document type being generated",
+                              "enum": [
+                                "manifestSummary",
+                                "customerInvoice",
+                                "cn22",
+                                "cn23",
+                                "packagingList",
+                                "packageLabels",
+                                "certificateOfOrigin",
+                                "NAFTA",
+                                "commercialInvoice",
+                                "CODTurnInPage",
+                                "proofOfDelivery"
+                              ]
                             },
                             {
                               "name": "url",
@@ -2703,7 +3337,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "order"
+                      ]
                     },
                     {
                       "name": "id",
@@ -2834,7 +3471,10 @@
                   {
                     "name": "type",
                     "type": "string",
-                    "required": true
+                    "required": true,
+                    "enum": [
+                      "shipment"
+                    ]
                   },
                   {
                     "name": "id",
@@ -2881,7 +3521,15 @@
                             "name": "type",
                             "type": "string",
                             "required": false,
-                            "description": "The type of location."
+                            "description": "The type of location.",
+                            "enum": [
+                              "Store",
+                              "Warehouse",
+                              "Drop Shipper",
+                              "Collection Point",
+                              "Click & Collect",
+                              "Headquarters"
+                            ]
                           },
                           {
                             "name": "address",
@@ -3031,7 +3679,15 @@
                             "name": "type",
                             "type": "string",
                             "required": false,
-                            "description": "The type of location."
+                            "description": "The type of location.",
+                            "enum": [
+                              "Store",
+                              "Warehouse",
+                              "Drop Shipper",
+                              "Collection Point",
+                              "Click & Collect",
+                              "Headquarters"
+                            ]
                           },
                           {
                             "name": "address",
@@ -3192,7 +3848,17 @@
                                 "name": "unitOfMeasurement",
                                 "type": "string",
                                 "required": true,
-                                "description": "The weight unit the value is"
+                                "description": "The weight unit the value is",
+                                "enum": [
+                                  "g",
+                                  "gram",
+                                  "oz",
+                                  "ounce",
+                                  "kg",
+                                  "kilogram",
+                                  "lb",
+                                  "pound"
+                                ]
                               }
                             ]
                           },
@@ -3221,7 +3887,25 @@
                                 "name": "unitOfMeasurement",
                                 "type": "string",
                                 "required": true,
-                                "description": "The distance unit the dimension's properties are in"
+                                "description": "The distance unit the dimension's properties are in",
+                                "enum": [
+                                  "mm",
+                                  "millimeter",
+                                  "millimetre",
+                                  "cm",
+                                  "centimeter",
+                                  "centimetre",
+                                  "m",
+                                  "meter",
+                                  "metre",
+                                  "ft",
+                                  "foot",
+                                  "feet",
+                                  "in",
+                                  "inch",
+                                  "yd",
+                                  "yard"
+                                ]
                               }
                             ]
                           },
@@ -3276,7 +3960,47 @@
                                     "name": "unitOfMeasure",
                                     "type": "string",
                                     "required": false,
-                                    "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                                    "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                                    "enum": [
+                                      "Bag",
+                                      "Barrel",
+                                      "Bolt",
+                                      "Box",
+                                      "Bunch",
+                                      "Bundle",
+                                      "Butt",
+                                      "Canister",
+                                      "Carton",
+                                      "Case",
+                                      "Centimeter",
+                                      "Container",
+                                      "Crate",
+                                      "Cylinder",
+                                      "Dozen",
+                                      "Each",
+                                      "Envelope",
+                                      "Foot",
+                                      "Kilogram",
+                                      "Kilograms",
+                                      "Liter",
+                                      "Meter",
+                                      "Number",
+                                      "Package",
+                                      "Packet",
+                                      "Pair",
+                                      "Pairs",
+                                      "Pallet",
+                                      "Piece",
+                                      "Pieces",
+                                      "Pound",
+                                      "Proof Liter",
+                                      "Roll",
+                                      "Set",
+                                      "Square Meter",
+                                      "Square Yard",
+                                      "Tube",
+                                      "Yard"
+                                    ]
                                   },
                                   {
                                     "name": "dimensions",
@@ -3303,7 +4027,25 @@
                                         "name": "unitOfMeasurement",
                                         "type": "string",
                                         "required": true,
-                                        "description": "The distance unit the dimension's properties are in"
+                                        "description": "The distance unit the dimension's properties are in",
+                                        "enum": [
+                                          "mm",
+                                          "millimeter",
+                                          "millimetre",
+                                          "cm",
+                                          "centimeter",
+                                          "centimetre",
+                                          "m",
+                                          "meter",
+                                          "metre",
+                                          "ft",
+                                          "foot",
+                                          "feet",
+                                          "in",
+                                          "inch",
+                                          "yd",
+                                          "yard"
+                                        ]
                                       }
                                     ]
                                   },
@@ -3322,7 +4064,17 @@
                                         "name": "unitOfMeasurement",
                                         "type": "string",
                                         "required": true,
-                                        "description": "The weight unit the value is"
+                                        "description": "The weight unit the value is",
+                                        "enum": [
+                                          "g",
+                                          "gram",
+                                          "oz",
+                                          "ounce",
+                                          "kg",
+                                          "kilogram",
+                                          "lb",
+                                          "pound"
+                                        ]
                                       }
                                     ]
                                   },
@@ -3443,25 +4195,65 @@
                                 "name": "mimeType",
                                 "type": "string",
                                 "required": true,
-                                "description": "A standard mime-type representation of the file format."
+                                "description": "A standard mime-type representation of the file format.",
+                                "enum": [
+                                  "application/epl",
+                                  "application/epl2",
+                                  "application/zpl",
+                                  "application/pdf",
+                                  "image/png",
+                                  "image/jpg",
+                                  "image/gif",
+                                  "image/bmp"
+                                ]
                               },
                               {
                                 "name": "encoding",
                                 "type": "string",
                                 "required": true,
-                                "description": "The encoding of the data"
+                                "description": "The encoding of the data",
+                                "enum": [
+                                  "base64",
+                                  "plainText"
+                                ]
                               },
                               {
                                 "name": "size",
                                 "type": "string",
                                 "required": false,
-                                "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                                "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                                "enum": [
+                                  "A0",
+                                  "A1",
+                                  "A2",
+                                  "A3",
+                                  "A4",
+                                  "A5",
+                                  "A6",
+                                  "A7",
+                                  "A8",
+                                  "A9",
+                                  "A10"
+                                ]
                               },
                               {
                                 "name": "type",
                                 "type": "string",
                                 "required": true,
-                                "description": "The document type being generated"
+                                "description": "The document type being generated",
+                                "enum": [
+                                  "manifestSummary",
+                                  "customerInvoice",
+                                  "cn22",
+                                  "cn23",
+                                  "packagingList",
+                                  "packageLabels",
+                                  "certificateOfOrigin",
+                                  "NAFTA",
+                                  "commercialInvoice",
+                                  "CODTurnInPage",
+                                  "proofOfDelivery"
+                                ]
                               },
                               {
                                 "name": "url",
@@ -3603,7 +4395,20 @@
                             "name": "incoterm",
                             "type": "string",
                             "required": false,
-                            "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                            "description": "Incoterm 2010 rules, series of pre-defined commercial terms.",
+                            "enum": [
+                              "EXW",
+                              "FCA",
+                              "FAS",
+                              "FOB",
+                              "CPT",
+                              "CFR",
+                              "CIF",
+                              "CIP",
+                              "DAT",
+                              "DAP",
+                              "DDP"
+                            ]
                           },
                           {
                             "name": "customAttributes",
@@ -3634,25 +4439,65 @@
                             "name": "mimeType",
                             "type": "string",
                             "required": true,
-                            "description": "A standard mime-type representation of the file format."
+                            "description": "A standard mime-type representation of the file format.",
+                            "enum": [
+                              "application/epl",
+                              "application/epl2",
+                              "application/zpl",
+                              "application/pdf",
+                              "image/png",
+                              "image/jpg",
+                              "image/gif",
+                              "image/bmp"
+                            ]
                           },
                           {
                             "name": "encoding",
                             "type": "string",
                             "required": true,
-                            "description": "The encoding of the data"
+                            "description": "The encoding of the data",
+                            "enum": [
+                              "base64",
+                              "plainText"
+                            ]
                           },
                           {
                             "name": "size",
                             "type": "string",
                             "required": false,
-                            "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                            "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                            "enum": [
+                              "A0",
+                              "A1",
+                              "A2",
+                              "A3",
+                              "A4",
+                              "A5",
+                              "A6",
+                              "A7",
+                              "A8",
+                              "A9",
+                              "A10"
+                            ]
                           },
                           {
                             "name": "type",
                             "type": "string",
                             "required": true,
-                            "description": "The document type being generated"
+                            "description": "The document type being generated",
+                            "enum": [
+                              "manifestSummary",
+                              "customerInvoice",
+                              "cn22",
+                              "cn23",
+                              "packagingList",
+                              "packageLabels",
+                              "certificateOfOrigin",
+                              "NAFTA",
+                              "commercialInvoice",
+                              "CODTurnInPage",
+                              "proofOfDelivery"
+                            ]
                           },
                           {
                             "name": "url",
@@ -3749,7 +4594,10 @@
                   {
                     "name": "type",
                     "type": "string",
-                    "required": true
+                    "required": true,
+                    "enum": [
+                      "order"
+                    ]
                   },
                   {
                     "name": "id",
@@ -3774,7 +4622,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "shipment"
+                      ]
                     },
                     {
                       "name": "id",
@@ -3821,7 +4672,15 @@
                               "name": "type",
                               "type": "string",
                               "required": false,
-                              "description": "The type of location."
+                              "description": "The type of location.",
+                              "enum": [
+                                "Store",
+                                "Warehouse",
+                                "Drop Shipper",
+                                "Collection Point",
+                                "Click & Collect",
+                                "Headquarters"
+                              ]
                             },
                             {
                               "name": "address",
@@ -3971,7 +4830,15 @@
                               "name": "type",
                               "type": "string",
                               "required": false,
-                              "description": "The type of location."
+                              "description": "The type of location.",
+                              "enum": [
+                                "Store",
+                                "Warehouse",
+                                "Drop Shipper",
+                                "Collection Point",
+                                "Click & Collect",
+                                "Headquarters"
+                              ]
                             },
                             {
                               "name": "address",
@@ -4132,7 +4999,17 @@
                                   "name": "unitOfMeasurement",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The weight unit the value is"
+                                  "description": "The weight unit the value is",
+                                  "enum": [
+                                    "g",
+                                    "gram",
+                                    "oz",
+                                    "ounce",
+                                    "kg",
+                                    "kilogram",
+                                    "lb",
+                                    "pound"
+                                  ]
                                 }
                               ]
                             },
@@ -4161,7 +5038,25 @@
                                   "name": "unitOfMeasurement",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The distance unit the dimension's properties are in"
+                                  "description": "The distance unit the dimension's properties are in",
+                                  "enum": [
+                                    "mm",
+                                    "millimeter",
+                                    "millimetre",
+                                    "cm",
+                                    "centimeter",
+                                    "centimetre",
+                                    "m",
+                                    "meter",
+                                    "metre",
+                                    "ft",
+                                    "foot",
+                                    "feet",
+                                    "in",
+                                    "inch",
+                                    "yd",
+                                    "yard"
+                                  ]
                                 }
                               ]
                             },
@@ -4216,7 +5111,47 @@
                                       "name": "unitOfMeasure",
                                       "type": "string",
                                       "required": false,
-                                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm"
+                                      "description": "The unit of measure that describes the product. Should be a value from Measures column at https://www.ups.com/worldshiphelp/WS12/ENU/AppHelp/Codes/Unit_of_Measure_Codes_for_Invoices.htm",
+                                      "enum": [
+                                        "Bag",
+                                        "Barrel",
+                                        "Bolt",
+                                        "Box",
+                                        "Bunch",
+                                        "Bundle",
+                                        "Butt",
+                                        "Canister",
+                                        "Carton",
+                                        "Case",
+                                        "Centimeter",
+                                        "Container",
+                                        "Crate",
+                                        "Cylinder",
+                                        "Dozen",
+                                        "Each",
+                                        "Envelope",
+                                        "Foot",
+                                        "Kilogram",
+                                        "Kilograms",
+                                        "Liter",
+                                        "Meter",
+                                        "Number",
+                                        "Package",
+                                        "Packet",
+                                        "Pair",
+                                        "Pairs",
+                                        "Pallet",
+                                        "Piece",
+                                        "Pieces",
+                                        "Pound",
+                                        "Proof Liter",
+                                        "Roll",
+                                        "Set",
+                                        "Square Meter",
+                                        "Square Yard",
+                                        "Tube",
+                                        "Yard"
+                                      ]
                                     },
                                     {
                                       "name": "dimensions",
@@ -4243,7 +5178,25 @@
                                           "name": "unitOfMeasurement",
                                           "type": "string",
                                           "required": true,
-                                          "description": "The distance unit the dimension's properties are in"
+                                          "description": "The distance unit the dimension's properties are in",
+                                          "enum": [
+                                            "mm",
+                                            "millimeter",
+                                            "millimetre",
+                                            "cm",
+                                            "centimeter",
+                                            "centimetre",
+                                            "m",
+                                            "meter",
+                                            "metre",
+                                            "ft",
+                                            "foot",
+                                            "feet",
+                                            "in",
+                                            "inch",
+                                            "yd",
+                                            "yard"
+                                          ]
                                         }
                                       ]
                                     },
@@ -4262,7 +5215,17 @@
                                           "name": "unitOfMeasurement",
                                           "type": "string",
                                           "required": true,
-                                          "description": "The weight unit the value is"
+                                          "description": "The weight unit the value is",
+                                          "enum": [
+                                            "g",
+                                            "gram",
+                                            "oz",
+                                            "ounce",
+                                            "kg",
+                                            "kilogram",
+                                            "lb",
+                                            "pound"
+                                          ]
                                         }
                                       ]
                                     },
@@ -4383,25 +5346,65 @@
                                   "name": "mimeType",
                                   "type": "string",
                                   "required": true,
-                                  "description": "A standard mime-type representation of the file format."
+                                  "description": "A standard mime-type representation of the file format.",
+                                  "enum": [
+                                    "application/epl",
+                                    "application/epl2",
+                                    "application/zpl",
+                                    "application/pdf",
+                                    "image/png",
+                                    "image/jpg",
+                                    "image/gif",
+                                    "image/bmp"
+                                  ]
                                 },
                                 {
                                   "name": "encoding",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The encoding of the data"
+                                  "description": "The encoding of the data",
+                                  "enum": [
+                                    "base64",
+                                    "plainText"
+                                  ]
                                 },
                                 {
                                   "name": "size",
                                   "type": "string",
                                   "required": false,
-                                  "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                                  "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                                  "enum": [
+                                    "A0",
+                                    "A1",
+                                    "A2",
+                                    "A3",
+                                    "A4",
+                                    "A5",
+                                    "A6",
+                                    "A7",
+                                    "A8",
+                                    "A9",
+                                    "A10"
+                                  ]
                                 },
                                 {
                                   "name": "type",
                                   "type": "string",
                                   "required": true,
-                                  "description": "The document type being generated"
+                                  "description": "The document type being generated",
+                                  "enum": [
+                                    "manifestSummary",
+                                    "customerInvoice",
+                                    "cn22",
+                                    "cn23",
+                                    "packagingList",
+                                    "packageLabels",
+                                    "certificateOfOrigin",
+                                    "NAFTA",
+                                    "commercialInvoice",
+                                    "CODTurnInPage",
+                                    "proofOfDelivery"
+                                  ]
                                 },
                                 {
                                   "name": "url",
@@ -4543,7 +5546,20 @@
                               "name": "incoterm",
                               "type": "string",
                               "required": false,
-                              "description": "Incoterm 2010 rules, series of pre-defined commercial terms."
+                              "description": "Incoterm 2010 rules, series of pre-defined commercial terms.",
+                              "enum": [
+                                "EXW",
+                                "FCA",
+                                "FAS",
+                                "FOB",
+                                "CPT",
+                                "CFR",
+                                "CIF",
+                                "CIP",
+                                "DAT",
+                                "DAP",
+                                "DDP"
+                              ]
                             },
                             {
                               "name": "customAttributes",
@@ -4574,25 +5590,65 @@
                               "name": "mimeType",
                               "type": "string",
                               "required": true,
-                              "description": "A standard mime-type representation of the file format."
+                              "description": "A standard mime-type representation of the file format.",
+                              "enum": [
+                                "application/epl",
+                                "application/epl2",
+                                "application/zpl",
+                                "application/pdf",
+                                "image/png",
+                                "image/jpg",
+                                "image/gif",
+                                "image/bmp"
+                              ]
                             },
                             {
                               "name": "encoding",
                               "type": "string",
                               "required": true,
-                              "description": "The encoding of the data"
+                              "description": "The encoding of the data",
+                              "enum": [
+                                "base64",
+                                "plainText"
+                              ]
                             },
                             {
                               "name": "size",
                               "type": "string",
                               "required": false,
-                              "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216"
+                              "description": "A standard ISO 216 paper size - https://en.wikipedia.org/wiki/ISO_216",
+                              "enum": [
+                                "A0",
+                                "A1",
+                                "A2",
+                                "A3",
+                                "A4",
+                                "A5",
+                                "A6",
+                                "A7",
+                                "A8",
+                                "A9",
+                                "A10"
+                              ]
                             },
                             {
                               "name": "type",
                               "type": "string",
                               "required": true,
-                              "description": "The document type being generated"
+                              "description": "The document type being generated",
+                              "enum": [
+                                "manifestSummary",
+                                "customerInvoice",
+                                "cn22",
+                                "cn23",
+                                "packagingList",
+                                "packageLabels",
+                                "certificateOfOrigin",
+                                "NAFTA",
+                                "commercialInvoice",
+                                "CODTurnInPage",
+                                "proofOfDelivery"
+                              ]
                             },
                             {
                               "name": "url",
@@ -4689,7 +5745,10 @@
                     {
                       "name": "type",
                       "type": "string",
-                      "required": true
+                      "required": true,
+                      "enum": [
+                        "order"
+                      ]
                     },
                     {
                       "name": "id",
