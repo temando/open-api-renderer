@@ -1,5 +1,11 @@
 @import '../../base.scss';
 
+$green: rgba(0, 170, 19, 0.08);
+$green-dark: #00aa13;
+$red: rgba(229, 57, 53, 0.06);
+$red-dark: #e53935;
+
+
 .response {
   margin-bottom: 5px;
   .body-content {
@@ -29,4 +35,14 @@
 .response-slide-toggle-enter.response-slide-toggle-enter-active {
   max-height: 1500px;
   transition: max-height 500ms ease-in;
+}
+
+.success {
+  color: $green-dark;
+  background-color: $green;
+}
+
+.error {
+  color: $red-dark;
+  background-color: $red;
 }
