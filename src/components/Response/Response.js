@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -25,10 +26,15 @@ export default class Response extends Component {
       status = 'open';
     }
 
+    const success = this.isSuccessCode(code);
+
     return (
       <div className="response">
-        <div className="response-info" onClick={this.onClick.bind(this)}>
-          <Indicator className="property-indicator" status={status} />
+        <div className={classNames('response-info', {
+          success: success,
+          error: !success
+        })} onClick={this.onClick.bind(this)}>
+          <Indicator className="property-indicator" status={status}/>
           <span className="response-code">{code}</span>
           <span>{description}</span>
         </div>
@@ -53,6 +59,10 @@ export default class Response extends Component {
     } else {
       this.setState({ isOpen: true });
     }
+  }
+
+  isSuccessCode(code) {
+    return parseInt(code, 10) >= 100 && parseInt(code, 10) <= 399;
   }
 }
 
