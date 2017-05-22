@@ -16,3 +16,6 @@ jspm_packages
 .npm
 temando
 dist
+
+# OSX
+.DS_Store
