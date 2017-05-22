@@ -39,15 +39,15 @@ export default class Response extends Component {
           <span>{description}</span>
         </div>
         {isOpen &&
-        <ReactCSSTransitionGroup
-          transitionName="response-slide-toggle"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-          transitionAppear
-          transitionAppearTimeout={500}
-        >
-          <BodyContent schema={schema} example={example} examples={examples}/>
-        </ReactCSSTransitionGroup>
+          <ReactCSSTransitionGroup
+            transitionName="response-slide-toggle"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+            transitionAppear
+            transitionAppearTimeout={500}
+          >
+            <BodyContent schema={schema} example={example} examples={examples}/>
+          </ReactCSSTransitionGroup>
         }
       </div>
     );
