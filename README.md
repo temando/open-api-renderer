@@ -34,7 +34,7 @@ yarn run start
 
 The renderer is then available on <http://localhost:8200>. The port can be changed by updating `webpack.config.dev`.
 
-You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=http://petstore.swagger.io/v3/swagger.json>
+You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json>
 
 ## Deployment to production
 
