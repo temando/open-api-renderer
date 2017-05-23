@@ -20,7 +20,9 @@ export default class CopyButton extends Component {
       <span data-balloon={this.state.tooltip} data-balloon-pos="up"
             onClick={this.onClick}
             onMouseOver={this.onMouseOver}
-      >Copy</span>
+      >
+        Copy
+      </span>
     );
   }
 
