@@ -12,7 +12,6 @@
     "url": "https://github.com/temando/open-api-renderer.git"
   },
   "dependencies": {
-    "balloon-css": "^0.4.0",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.6",
     "history": "^4.6.1",
@@ -40,6 +39,7 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-1": "^6.22.0",
+    "balloon-css": "^0.4.0",
     "chai": "^3.5.0",
     "css-loader": "^0.27.3",
     "eslint": "^3.18.0",
