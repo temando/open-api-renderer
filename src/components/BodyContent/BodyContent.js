@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import BodySchema from '../BodySchema/BodySchema';
+import Example from '../Example/Example';
 
 import './BodyContent.scss';
 
@@ -80,21 +81,9 @@ export default class BodyContent extends Component {
   }
 
   renderExample(example, examples) {
-    // TODO: Improve example visualisation
-    let displayText = example;
-
-    if (!displayText && examples) {
-      displayText = JSON.stringify(examples);
-    }
-
-    if (displayText) {
-      return (
-        <div className="body-content-example">
-          {displayText}
-        </div>
-      );
-    }
-    return null;
+    return (
+      <Example example={example} examples={examples}/>
+    );
   }
 }
 

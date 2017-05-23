@@ -6,6 +6,11 @@ const pkgJson = require('./package.json');
 
 const isProduction = PRODUCTION = process.env.NODE_ENV === 'prod';
 
+const extractSass = new ExtractTextPlugin({
+  filename: "bundle.css",
+  disable: !isProduction
+});
+
 let webpackConfig = {
   context: `${__dirname}/src`,
   entry: {
@@ -27,7 +32,7 @@ let webpackConfig = {
     extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css'),
+    extractSass,
     /**
      * This renders out an `./dist/index.html` with all scripts, title etc. attached
      */
@@ -38,28 +43,26 @@ let webpackConfig = {
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js?/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      }, {
+      },
+      {
         test: /\.json$/,
         loader: 'json-loader'
-      }, {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: extractSass.extract({
           use: [{
-            loader: 'css-loader', options: {
-              sourceMap: true
-            }
+            loader: "css-loader"
           }, {
-            loader: 'sass-loader', options: {
-              sourceMap: true
-            }
+            loader: "sass-loader"
           }],
-          allChunks: true
+          // use style-loader in development
+          fallback: "style-loader"
         })
       },
       {
