@@ -1,6 +1,6 @@
 import refParser from 'json-schema-ref-parser';
-import getUIReadySchema from './schemaParser';
-import { sortByAlphabet, httpMethodSort } from '../sorting';
+import getUIReadySchema from '../schemaParser';
+import { sortByAlphabet, httpMethodSort } from '../../sorting';
 
 /**
  * Construct navigation and services ready to be consumed by the UI
@@ -135,19 +135,30 @@ function getUIParameters(parameters) {
  * @return {Array}
  */
 function getUIParametersForLocation(parameters, location) {
+  if (!parameters) {
+    return null;
+  }
+
   const resultArray = parameters.map(parameter => {
     if (parameter.in === location) {
-      const uiParameter = {
-        name: parameter.name,
-        description: parameter.description,
-        required: parameter.required
-      };
+      try {
+        const uiParameter = {
+          name: parameter.name,
+          description: parameter.description,
+          required: parameter.required
+        };
 
-      if (parameter.schema || parameter.schema.type) {
-        uiParameter.type = parameter.schema.type;
+        if (parameter.type) {
+          uiParameter.type = parameter.type;
+        } else if (parameter.schema && parameter.schema.type) {
+          uiParameter.type = parameter.schema.type;
+        }
+
+        return uiParameter;
+      } catch (error) {
+        console.log(error);
+        console.log('Context', { parameters, parameter, location });
       }
-
-      return uiParameter;
     }
 
     return null;

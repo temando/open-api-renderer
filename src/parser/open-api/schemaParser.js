@@ -1,3 +1,5 @@
+import { resolveAllOf } from './allOfResolver';
+
 const literalTypes = ['string', 'integer', 'number', 'boolean'];
 
 /**
@@ -93,7 +95,8 @@ function getPropertiesNode(propertiesNode, requiredProperties = []) {
  * @return {Object}
  */
 export default function getUIReadySchema(jsonSchema) {
-  const schema = getPropertiesNode(jsonSchema.properties, jsonSchema.required);
+  const resolvedJsonSchema = resolveAllOf(jsonSchema);
+  const outputSchema = getPropertiesNode(resolvedJsonSchema.properties, resolvedJsonSchema.required);
 
-  return schema;
+  return outputSchema;
 }

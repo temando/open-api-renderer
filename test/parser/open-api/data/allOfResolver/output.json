@@ -1,0 +1,35 @@
+{
+  "items": {
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "description": "The type of container.",
+        "enum": [
+          "Box",
+          "Carton",
+          "Crate",
+          "Cylinder",
+          "Document Envelope",
+          "Flat Pack",
+          "Letter",
+          "Pallet",
+          "Parcel",
+          "Satchel/Bag",
+          "Other"
+        ]
+      },
+      "name": {
+        "description": "Merchant container name.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "type"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}
