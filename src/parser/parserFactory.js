@@ -1,4 +1,4 @@
-import getUIReadyDefinition from './open-api-v3/open-api-v3-parser';
+import getUIReadyDefinition from './open-api/v3/open-api-v3-parser';
 
 export default function getParserFunction(type) {
   if (type === 'open-api-v3') {
