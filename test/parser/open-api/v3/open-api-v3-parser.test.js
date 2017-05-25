@@ -1,6 +1,6 @@
 import { readdirSync, readJSONSync } from 'fs-extra';
 import { expect } from 'chai';
-import getUIReadyDefinition from '../../../src/parser/open-api-v3/open-api-v3-parser';
+import getUIReadyDefinition from '../../../../src/parser/open-api/v3/open-api-v3-parser';
 
 describe('getUIReadyDefinition', () => {
   const dataDirectory = __dirname + '/data/definition';
