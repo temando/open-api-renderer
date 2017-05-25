@@ -4,6 +4,7 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 
 import BodySchema from '../BodySchema/BodySchema';
 import BodyContent from '../BodyContent/BodyContent';
+import Description from '../Description/Description';
 import Response from '../Response/Response';
 
 import './Method.scss';
@@ -27,7 +28,7 @@ export default class Method extends Component {
       <ScrollableAnchor id={method.link}>
         <div className="method">
           <h3>{method.summary}</h3>
-          <div className="method-description">{method.description}</div>
+          {method.description && <Description description={method.description} />}
           {parameters && this.renderParameters(parameters)}
           {request && this.renderRequest(request)}
           {responses && this.renderResponses(responses)}

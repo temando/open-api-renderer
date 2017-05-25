@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
+import Description from '../Description/Description';
 import Indicator from '../Indicator/Indicator';
 
 import './Property.scss';
@@ -42,7 +43,7 @@ export default class Property extends Component {
           <span>{type}</span>{subtype && <span> of {subtype}</span>}
           {required && <span className="property-required">Required</span>}
           {enumValues && this.renderEnumValues(enumValues)}
-          {description && <div className="property-description">{description}</div>}
+          {description && <Description description={description} />}
         </td>
       </tr>
     );
