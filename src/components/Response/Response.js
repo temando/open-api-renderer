@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import BodyContent from '../BodyContent/BodyContent';
+import Description from '../Description/Description';
 import Indicator from '../Indicator/Indicator';
 
 import './Response.scss';
@@ -36,7 +37,7 @@ export default class Response extends Component {
         })} onClick={this.onClick.bind(this)}>
           <Indicator className="property-indicator" status={status}/>
           <span className="response-code">{code}</span>
-          <span>{description}</span>
+          {description && <Description isInline description={description} />}
         </div>
         {isOpen &&
           <ReactCSSTransitionGroup

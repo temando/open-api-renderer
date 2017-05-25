@@ -23,7 +23,8 @@ export default class Page extends Component {
         <Navigation navigation={navigation} location={this.props.location} />
         <div className="page-main">
            <Header
-            definitionTitle={definition.title}
+            title={definition.title}
+            description={definition.description}
             version={definition.version}
           />
           <ContentContainer>
