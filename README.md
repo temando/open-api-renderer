@@ -9,7 +9,7 @@ Open API Renderer is a project intended to visualise [Open API](https://www.open
 
 It is built on [React](https://facebook.github.io/react/).
 
-This project is inspired by [Redocs](https://github.com/Rebilly/ReDoc), which currently handles Open API v2 specs.
+This project is inspired by [ReDoc](https://github.com/Rebilly/ReDoc), which currently handles Open API v2 specs.
 
 > This project is in an early phase of development.
 
