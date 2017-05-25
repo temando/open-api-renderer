@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Description /> renders commonmark text as html 1`] = `
+<div
+  className="description"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<p>This method has some <code>var i = 0</code> <em>markdown</em>, including a <a href=\\"http://www.google.com\\">link</a>.</p>
+    ",
+    }
+  }
+/>
+`;
+
+exports[`<Description /> renders text inline if asked 1`] = `
+<div
+  className="description description-inline"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<p>This method has zero markdown.</p>
+    ",
+    }
+  }
+/>
+`;
+
+exports[`<Description /> renders text with no commonmark as html 1`] = `
+<div
+  className="description"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<p>This method has zero markdown.</p>
+    ",
+    }
+  }
+/>
+`;

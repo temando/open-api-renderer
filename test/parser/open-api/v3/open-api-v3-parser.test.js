@@ -1,5 +1,4 @@
 import { readdirSync, readJSONSync } from 'fs-extra';
-import { expect } from 'chai';
 import getUIReadyDefinition from '../../../../src/parser/open-api/v3/open-api-v3-parser';
 
 describe('getUIReadyDefinition', () => {
@@ -28,7 +27,7 @@ describe('getUIReadyDefinition', () => {
   tests.forEach(test => {
     it(`returns the correct result for ${test.dataFile}`, async () => {
       const outputDefinition = await getUIReadyDefinition(test.inputDefinition);
-      expect(outputDefinition).to.deep.equal(test.expectedOutputDefinition);
+      expect(outputDefinition).toEqual(test.expectedOutputDefinition);
     });
   });
 });
