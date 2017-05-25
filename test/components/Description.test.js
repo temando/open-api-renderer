@@ -1,30 +1,32 @@
 import React from 'react';
 import Description from './../../src/components/Description/Description';
-import { expect } from 'chai';
-import { render } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 describe('<Description />', () => {
   it('renders text with no commonmark as html', () => {
     const text = 'This method has zero markdown.';
-    const wrapper = render(<Description description={text} />);
+    const tree = renderer.create(
+      <Description description={text} />
+    ).toJSON();
 
-    expect(wrapper.find('p').length).to.equal(1);
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders commonmark text as html', () => {
     const text = 'This method has some `var i = 0` _markdown_, including a [link](http://www.google.com).';
-    const wrapper = render(<Description description={text} />);
+    const tree = renderer.create(
+      <Description description={text} />
+    ).toJSON();
 
-    expect(wrapper.find('p').length).to.equal(1);
-    expect(wrapper.find('code').length).to.equal(1);
-    expect(wrapper.find('em').length).to.equal(1);
-    expect(wrapper.find('a').length).to.equal(1);
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders text inline if asked', () => {
-    const text = 'This method has zero markdown';
-    const wrapper = render(<Description isInline description={text} />);
+    const text = 'This method has zero markdown.';
+    const tree = renderer.create(
+      <Description isInline description={text} />
+    ).toJSON();
 
-    expect(wrapper.find('.description-inline').length).to.equal(1);
+    expect(tree).toMatchSnapshot();
   });
 });
