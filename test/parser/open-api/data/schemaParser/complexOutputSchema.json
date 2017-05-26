@@ -1,0 +1,35 @@
+[
+  {
+    "name": "name",
+    "required": false,
+    "type": [
+      "string"
+    ]
+  },
+  {
+    "name": "customAttributes",
+    "required": false,
+    "type": [
+      "array"
+    ],
+    "properties": [
+      {
+        "name": "key",
+        "required": true,
+        "type": [
+          "string"
+        ]
+      },
+      {
+        "name": "value",
+        "required": true,
+        "type": [
+          "number",
+          "integer",
+          "string",
+          "boolean"
+        ]
+      }
+    ]
+  }
+]

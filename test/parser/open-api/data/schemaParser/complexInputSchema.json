@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "customAttributes": {
+      "additionalProperties": false,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "value"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "value": {
+            "type": [
+              "number",
+              "integer",
+              "string",
+              "boolean"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

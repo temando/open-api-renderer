@@ -33,7 +33,9 @@
                 "name": "id",
                 "description": "Id of the account",
                 "required": true,
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               }
             ],
             "query": [
@@ -41,13 +43,17 @@
                 "name": "offset",
                 "description": "Offset for the result set",
                 "required": true,
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               },
               {
                 "name": "limit",
                 "description": "Limit for the result set",
                 "required": true,
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               }
             ]
           },
@@ -61,12 +67,16 @@
               "schema": [
                 {
                   "name": "data",
-                  "type": "array",
+                  "type": [
+                    "array"
+                  ],
                   "required": true,
                   "properties": [
                     {
                       "name": "type",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true,
                       "enum": [
                         "user"
@@ -74,30 +84,40 @@
                     },
                     {
                       "name": "id",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true,
                       "description": "User id"
                     },
                     {
                       "name": "attributes",
-                      "type": "object",
+                      "type": [
+                        "object"
+                      ],
                       "required": true,
                       "properties": [
                         {
                           "name": "firstName",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true,
                           "description": "First name"
                         },
                         {
                           "name": "lastName",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true,
                           "description": "Last name"
                         },
                         {
                           "name": "email",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true,
                           "description": "Email of the user"
                         }
@@ -137,42 +157,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ],
@@ -194,42 +230,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ],
@@ -251,42 +303,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ]
@@ -304,7 +372,9 @@
                 "name": "id",
                 "description": "Id of the account",
                 "required": true,
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               }
             ]
           },
@@ -313,49 +383,65 @@
             "schema": [
               {
                 "name": "data",
-                "type": "object",
+                "type": [
+                  "object"
+                ],
                 "required": true,
                 "properties": [
                   {
                     "name": "type",
-                    "type": "string",
+                    "type": [
+                      "string"
+                    ],
                     "required": true,
                     "enum": [
-                        "user"
-                      ]
+                      "user"
+                    ]
                   },
                   {
                     "name": "attributes",
-                    "type": "object",
+                    "type": [
+                      "object"
+                    ],
                     "required": true,
                     "properties": [
                       {
                         "name": "firstName",
-                        "type": "string",
+                        "type": [
+                          "string"
+                        ],
                         "required": true,
                         "description": "First name"
                       },
                       {
                         "name": "lastName",
-                        "type": "string",
+                        "type": [
+                          "string"
+                        ],
                         "required": true,
                         "description": "Last name"
                       },
                       {
                         "name": "password",
-                        "type": "string",
+                        "type": [
+                          "string"
+                        ],
                         "required": true,
                         "description": "Password"
                       },
                       {
                         "name": "email",
-                        "type": "string",
+                        "type": [
+                          "string"
+                        ],
                         "required": true,
                         "description": "Email of the user"
                       },
                       {
                         "name": "bearerToken",
-                        "type": "string",
+                        "type": [
+                          "string"
+                        ],
                         "required": true,
                         "description": "Bearer token of the account"
                       }
@@ -372,12 +458,16 @@
               "schema": [
                 {
                   "name": "data",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": true,
                   "properties": [
                     {
                       "name": "type",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true,
                       "enum": [
                         "user"
@@ -385,13 +475,17 @@
                     },
                     {
                       "name": "id",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true,
                       "description": "User id"
                     },
                     {
                       "name": "attributes",
-                      "type": "object",
+                      "type": [
+                        "object"
+                      ],
                       "required": true
                     }
                   ]
@@ -413,42 +507,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ],
@@ -470,42 +580,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ],
@@ -527,42 +653,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ],
@@ -598,42 +740,58 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": "string",
+                  "type": [
+                    "string"
+                  ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": false
                 }
               ]
