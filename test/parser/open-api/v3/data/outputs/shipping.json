@@ -57,22 +57,6 @@
           "type": "get",
           "link": "/products/get",
           "summary": "Get list of Products in the account document.",
-          "parameters": {
-            "query": [
-              {
-                "name": "offset",
-                "description": "Offset for the returned array of records",
-                "required": false,
-                "type": "number"
-              },
-              {
-                "name": "limit",
-                "description": "Limit for the returned array of records.",
-                "required": false,
-                "type": "number"
-              }
-            ]
-          },
           "request": {
             "description": "Get list of Products in the account document."
           },
@@ -280,24 +264,28 @@
                         {
                           "name": "isFragile",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isVirtual",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isPrePackaged",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product has its own package"
+                          "description": "Whether the product has its own package",
+                          "defaultValue": false
                         },
                         {
                           "name": "canRotateVertical",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product can be rotated vertically"
+                          "description": "Whether the product can be rotated vertically",
+                          "defaultValue": true
                         },
                         {
                           "name": "countryOfOrigin",
@@ -341,6 +329,7 @@
                           "name": "customAttributes",
                           "type": "array",
                           "required": false,
+                          "defaultValue": [],
                           "properties": [
                             {
                               "name": "key",
@@ -402,13 +391,28 @@
               ]
             }
           ],
-          "description": "Get list of Products in the account document."
+          "description": "Get list of Products in the account document.",
+          "parameters": {
+            "query": [
+              {
+                "name": "offset",
+                "description": "Offset for the returned array of records",
+                "required": false,
+                "type": "number"
+              },
+              {
+                "name": "limit",
+                "description": "Limit for the returned array of records.",
+                "required": false,
+                "type": "number"
+              }
+            ]
+          }
         },
         {
           "type": "post",
           "link": "/products/post",
           "summary": "Create a Product object in the account.",
-          "parameters": {},
           "request": {
             "description": "Create a Product object in the account.",
             "schema": [
@@ -605,24 +609,28 @@
                       {
                         "name": "isFragile",
                         "type": "boolean",
-                        "required": false
+                        "required": false,
+                        "defaultValue": false
                       },
                       {
                         "name": "isVirtual",
                         "type": "boolean",
-                        "required": false
+                        "required": false,
+                        "defaultValue": false
                       },
                       {
                         "name": "isPrePackaged",
                         "type": "boolean",
                         "required": false,
-                        "description": "Whether the product has its own package"
+                        "description": "Whether the product has its own package",
+                        "defaultValue": false
                       },
                       {
                         "name": "canRotateVertical",
                         "type": "boolean",
                         "required": false,
-                        "description": "Whether the product can be rotated vertically"
+                        "description": "Whether the product can be rotated vertically",
+                        "defaultValue": true
                       },
                       {
                         "name": "countryOfOrigin",
@@ -666,6 +674,7 @@
                         "name": "customAttributes",
                         "type": "array",
                         "required": false,
+                        "defaultValue": [],
                         "properties": [
                           {
                             "name": "key",
@@ -884,24 +893,28 @@
                         {
                           "name": "isFragile",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isVirtual",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isPrePackaged",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product has its own package"
+                          "description": "Whether the product has its own package",
+                          "defaultValue": false
                         },
                         {
                           "name": "canRotateVertical",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product can be rotated vertically"
+                          "description": "Whether the product can be rotated vertically",
+                          "defaultValue": true
                         },
                         {
                           "name": "countryOfOrigin",
@@ -945,6 +958,7 @@
                           "name": "customAttributes",
                           "type": "array",
                           "required": false,
+                          "defaultValue": [],
                           "properties": [
                             {
                               "name": "key",
@@ -1006,22 +1020,13 @@
               ]
             }
           ],
-          "description": "Create a Product object in the account."
+          "description": "Create a Product object in the account.",
+          "parameters": {}
         },
         {
           "type": "get",
           "link": "/products/{id}/get",
           "summary": "Get Product from account document.",
-          "parameters": {
-            "path": [
-              {
-                "name": "id",
-                "description": "id of Product to fetch",
-                "required": true,
-                "type": "integer"
-              }
-            ]
-          },
           "request": {
             "description": "Get Product from account document."
           },
@@ -1229,24 +1234,28 @@
                         {
                           "name": "isFragile",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isVirtual",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isPrePackaged",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product has its own package"
+                          "description": "Whether the product has its own package",
+                          "defaultValue": false
                         },
                         {
                           "name": "canRotateVertical",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product can be rotated vertically"
+                          "description": "Whether the product can be rotated vertically",
+                          "defaultValue": true
                         },
                         {
                           "name": "countryOfOrigin",
@@ -1290,6 +1299,7 @@
                           "name": "customAttributes",
                           "type": "array",
                           "required": false,
+                          "defaultValue": [],
                           "properties": [
                             {
                               "name": "key",
@@ -1397,22 +1407,22 @@
               ]
             }
           ],
-          "description": "Get Product from account document."
+          "description": "Get Product from account document.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Product to fetch",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          }
         },
         {
           "type": "put",
           "link": "/products/{id}/put",
           "summary": "Update Product.",
-          "parameters": {
-            "path": [
-              {
-                "name": "id",
-                "description": "id of Product to update",
-                "required": true,
-                "type": "integer"
-              }
-            ]
-          },
           "request": {
             "description": "Update Product in account document.",
             "schema": [
@@ -1615,24 +1625,28 @@
                       {
                         "name": "isFragile",
                         "type": "boolean",
-                        "required": false
+                        "required": false,
+                        "defaultValue": false
                       },
                       {
                         "name": "isVirtual",
                         "type": "boolean",
-                        "required": false
+                        "required": false,
+                        "defaultValue": false
                       },
                       {
                         "name": "isPrePackaged",
                         "type": "boolean",
                         "required": false,
-                        "description": "Whether the product has its own package"
+                        "description": "Whether the product has its own package",
+                        "defaultValue": false
                       },
                       {
                         "name": "canRotateVertical",
                         "type": "boolean",
                         "required": false,
-                        "description": "Whether the product can be rotated vertically"
+                        "description": "Whether the product can be rotated vertically",
+                        "defaultValue": true
                       },
                       {
                         "name": "countryOfOrigin",
@@ -1676,6 +1690,7 @@
                         "name": "customAttributes",
                         "type": "array",
                         "required": false,
+                        "defaultValue": [],
                         "properties": [
                           {
                             "name": "key",
@@ -1894,24 +1909,28 @@
                         {
                           "name": "isFragile",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isVirtual",
                           "type": "boolean",
-                          "required": false
+                          "required": false,
+                          "defaultValue": false
                         },
                         {
                           "name": "isPrePackaged",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product has its own package"
+                          "description": "Whether the product has its own package",
+                          "defaultValue": false
                         },
                         {
                           "name": "canRotateVertical",
                           "type": "boolean",
                           "required": false,
-                          "description": "Whether the product can be rotated vertically"
+                          "description": "Whether the product can be rotated vertically",
+                          "defaultValue": true
                         },
                         {
                           "name": "countryOfOrigin",
@@ -1955,6 +1974,7 @@
                           "name": "customAttributes",
                           "type": "array",
                           "required": false,
+                          "defaultValue": [],
                           "properties": [
                             {
                               "name": "key",
@@ -2062,22 +2082,22 @@
               ]
             }
           ],
-          "description": "Update Product in account document."
+          "description": "Update Product in account document.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Product to update",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          }
         },
         {
           "type": "delete",
           "link": "/products/{id}/delete",
           "summary": "Remove Products.",
-          "parameters": {
-            "path": [
-              {
-                "name": "id",
-                "description": "id of Product to remove",
-                "required": true,
-                "type": "integer"
-              }
-            ]
-          },
           "request": {
             "description": "Remove Product from account document."
           },
@@ -2179,7 +2199,17 @@
               ]
             }
           ],
-          "description": "Remove Product from account document."
+          "description": "Remove Product from account document.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Product to remove",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          }
         }
       ]
     },
@@ -2190,16 +2220,6 @@
           "type": "get",
           "link": "/shipments/{id}/get",
           "summary": "Get shipment from account document by id.",
-          "parameters": {
-            "path": [
-              {
-                "name": "id",
-                "description": "id of shipment to fetch",
-                "required": true,
-                "type": "string"
-              }
-            ]
-          },
           "request": {},
           "responses": [
             {
@@ -2397,6 +2417,7 @@
                               "name": "customAttributes",
                               "type": "array",
                               "required": false,
+                              "defaultValue": [],
                               "properties": [
                                 {
                                   "name": "key",
@@ -2555,6 +2576,7 @@
                               "name": "customAttributes",
                               "type": "array",
                               "required": false,
+                              "defaultValue": [],
                               "properties": [
                                 {
                                   "name": "key",
@@ -2844,24 +2866,28 @@
                                     {
                                       "name": "isFragile",
                                       "type": "boolean",
-                                      "required": false
+                                      "required": false,
+                                      "defaultValue": false
                                     },
                                     {
                                       "name": "isVirtual",
                                       "type": "boolean",
-                                      "required": false
+                                      "required": false,
+                                      "defaultValue": false
                                     },
                                     {
                                       "name": "isPrePackaged",
                                       "type": "boolean",
                                       "required": false,
-                                      "description": "Whether the product has its own package"
+                                      "description": "Whether the product has its own package",
+                                      "defaultValue": false
                                     },
                                     {
                                       "name": "canRotateVertical",
                                       "type": "boolean",
                                       "required": false,
-                                      "description": "Whether the product can be rotated vertically"
+                                      "description": "Whether the product can be rotated vertically",
+                                      "defaultValue": true
                                     },
                                     {
                                       "name": "countryOfOrigin",
@@ -2905,6 +2931,7 @@
                                       "name": "customAttributes",
                                       "type": "array",
                                       "required": false,
+                                      "defaultValue": [],
                                       "properties": [
                                         {
                                           "name": "key",
@@ -3157,6 +3184,7 @@
                               "name": "customAttributes",
                               "type": "array",
                               "required": false,
+                              "defaultValue": [],
                               "properties": [
                                 {
                                   "name": "key",
@@ -3444,22 +3472,22 @@
                 }
               ]
             }
-          ]
+          ],
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of shipment to fetch",
+                "required": true,
+                "type": "string"
+              }
+            ]
+          }
         },
         {
           "type": "put",
           "link": "/shipments/{id}/put",
           "summary": "Update Shipment.",
-          "parameters": {
-            "path": [
-              {
-                "name": "id",
-                "description": "id of Shipment to update",
-                "required": true,
-                "type": "integer"
-              }
-            ]
-          },
           "request": {
             "description": "Update Shipment in account document.",
             "schema": [
@@ -3654,6 +3682,7 @@
                             "name": "customAttributes",
                             "type": "array",
                             "required": false,
+                            "defaultValue": [],
                             "properties": [
                               {
                                 "name": "key",
@@ -3812,6 +3841,7 @@
                             "name": "customAttributes",
                             "type": "array",
                             "required": false,
+                            "defaultValue": [],
                             "properties": [
                               {
                                 "name": "key",
@@ -4101,24 +4131,28 @@
                                   {
                                     "name": "isFragile",
                                     "type": "boolean",
-                                    "required": false
+                                    "required": false,
+                                    "defaultValue": false
                                   },
                                   {
                                     "name": "isVirtual",
                                     "type": "boolean",
-                                    "required": false
+                                    "required": false,
+                                    "defaultValue": false
                                   },
                                   {
                                     "name": "isPrePackaged",
                                     "type": "boolean",
                                     "required": false,
-                                    "description": "Whether the product has its own package"
+                                    "description": "Whether the product has its own package",
+                                    "defaultValue": false
                                   },
                                   {
                                     "name": "canRotateVertical",
                                     "type": "boolean",
                                     "required": false,
-                                    "description": "Whether the product can be rotated vertically"
+                                    "description": "Whether the product can be rotated vertically",
+                                    "defaultValue": true
                                   },
                                   {
                                     "name": "countryOfOrigin",
@@ -4162,6 +4196,7 @@
                                     "name": "customAttributes",
                                     "type": "array",
                                     "required": false,
+                                    "defaultValue": [],
                                     "properties": [
                                       {
                                         "name": "key",
@@ -4414,6 +4449,7 @@
                             "name": "customAttributes",
                             "type": "array",
                             "required": false,
+                            "defaultValue": [],
                             "properties": [
                               {
                                 "name": "key",
@@ -4805,6 +4841,7 @@
                               "name": "customAttributes",
                               "type": "array",
                               "required": false,
+                              "defaultValue": [],
                               "properties": [
                                 {
                                   "name": "key",
@@ -4963,6 +5000,7 @@
                               "name": "customAttributes",
                               "type": "array",
                               "required": false,
+                              "defaultValue": [],
                               "properties": [
                                 {
                                   "name": "key",
@@ -5252,24 +5290,28 @@
                                     {
                                       "name": "isFragile",
                                       "type": "boolean",
-                                      "required": false
+                                      "required": false,
+                                      "defaultValue": false
                                     },
                                     {
                                       "name": "isVirtual",
                                       "type": "boolean",
-                                      "required": false
+                                      "required": false,
+                                      "defaultValue": false
                                     },
                                     {
                                       "name": "isPrePackaged",
                                       "type": "boolean",
                                       "required": false,
-                                      "description": "Whether the product has its own package"
+                                      "description": "Whether the product has its own package",
+                                      "defaultValue": false
                                     },
                                     {
                                       "name": "canRotateVertical",
                                       "type": "boolean",
                                       "required": false,
-                                      "description": "Whether the product can be rotated vertically"
+                                      "description": "Whether the product can be rotated vertically",
+                                      "defaultValue": true
                                     },
                                     {
                                       "name": "countryOfOrigin",
@@ -5313,6 +5355,7 @@
                                       "name": "customAttributes",
                                       "type": "array",
                                       "required": false,
+                                      "defaultValue": [],
                                       "properties": [
                                         {
                                           "name": "key",
@@ -5565,6 +5608,7 @@
                               "name": "customAttributes",
                               "type": "array",
                               "required": false,
+                              "defaultValue": [],
                               "properties": [
                                 {
                                   "name": "key",
@@ -5830,7 +5874,17 @@
               ]
             }
           ],
-          "description": "Update Shipment in account document."
+          "description": "Update Shipment in account document.",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "id of Shipment to update",
+                "required": true,
+                "type": "integer"
+              }
+            ]
+          }
         }
       ]
     }
