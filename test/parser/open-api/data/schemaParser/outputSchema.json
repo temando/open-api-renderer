@@ -5,7 +5,9 @@
       {
         "name": "type",
         "required": true,
-        "type": "string",
+        "type": [
+          "string"
+        ],
         "enum": [
           "account"
         ]
@@ -17,13 +19,17 @@
             "description": "Pre-generated Invitation code",
             "name": "invitationCode",
             "required": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           {
             "description": "One of predefined platforms",
             "name": "platform",
             "required": true,
-            "type": "string",
+            "type": [
+              "string"
+            ],
             "enum": [
               "test",
               "custom",
@@ -34,25 +40,33 @@
             "description": "Name, eg: Company name",
             "name": "name",
             "required": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           {
             "description": "Email of the default user",
             "name": "email",
             "required": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           {
             "description": "User password",
             "name": "password",
             "required": false,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           {
             "description": "IP address where the request came from",
             "name": "ipAddress",
             "required": true,
-            "type": "string"
+            "type": [
+              "string"
+            ]
           },
           {
             "description": "This is the schema for representing addresses.",
@@ -62,25 +76,35 @@
                 "description": "Lines of the address",
                 "name": "line",
                 "required": false,
-                "type": "array",
+                "type": [
+                  "array"
+                ],
                 "subtype": "string"
               },
               {
                 "description": "The post or zip code of this address.",
                 "name": "postalCode",
                 "required": false,
-                "type": "string"
+                "type": [
+                  "string"
+                ]
               }
             ],
             "required": false,
-            "type": "object"
+            "type": [
+              "object"
+            ]
           }
         ],
         "required": true,
-        "type": "object"
+        "type": [
+          "object"
+        ]
       }
     ],
     "required": true,
-    "type": "object"
+    "type": [
+      "object"
+    ]
   }
 ]
