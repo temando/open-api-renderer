@@ -7,7 +7,7 @@ describe('<Description />', () => {
     const text = 'This method has zero markdown.';
     const tree = renderer.create(
       <Description description={text} />
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });
@@ -16,7 +16,7 @@ describe('<Description />', () => {
     const text = 'This method has some `var i = 0` _markdown_, including a [link](http://www.google.com).';
     const tree = renderer.create(
       <Description description={text} />
-    ).toJSON();
+    );
 
     expect(tree).toMatchSnapshot();
   });

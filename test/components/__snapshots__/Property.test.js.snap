@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Property /> can render a basic property 1`] = `
+<tr
+  className="property last"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      type
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span>
+      string
+    </span>
+    <span
+      className="property-required"
+    >
+      Required
+    </span>
+  </td>
+</tr>
+`;
+
+exports[`<Property /> can render a property with a subtype 1`] = `
+<tr
+  className="property"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      data
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span>
+      array
+    </span>
+    <span>
+       of 
+      object
+    </span>
+  </td>
+</tr>
+`;
+
+exports[`<Property /> can render a property with description 1`] = `
+<tr
+  className="property"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      type
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span>
+      string
+    </span>
+    <span
+      className="property-required"
+    >
+      Required
+    </span>
+    <Description
+      description="This is _markdown_ text"
+    />
+  </td>
+</tr>
+`;
+
+exports[`<Property /> can render a property with enum 1`] = `
+<tr
+  className="property"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      packagingType
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span>
+      string
+    </span>
+    <span
+      className="property-required"
+    >
+      Required
+    </span>
+    <div>
+      <span>
+        Valid values:
+      </span>
+      <span
+        className="enum"
+      >
+        box
+      </span>
+      <span
+        className="enum"
+      >
+        carton
+      </span>
+    </div>
+  </td>
+</tr>
+`;
+
+exports[`<Property /> can render a property with multiple types 1`] = `
+<tr
+  className="property"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      value
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span>
+      string, number
+    </span>
+  </td>
+</tr>
+`;

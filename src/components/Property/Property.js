@@ -9,10 +9,10 @@ import './Property.scss';
 
 export default class Property extends Component {
   render() {
-    const { name, type, description, required, enumValues, defaultValue, onClick, isOpen, isLast } = this.props;
+    const { name, type, description, isRequired, enumValues, defaultValue, onClick, isOpen, isLast } = this.props;
 
     let subtype;
-    if (type === 'array') {
+    if (type.includes('array')) {
       subtype = this.props.subtype;
     }
 
@@ -24,6 +24,7 @@ export default class Property extends Component {
     if (isOpen) {
       status = 'open';
     }
+
     return (
       <tr
         className={classNames('property', {
@@ -40,8 +41,8 @@ export default class Property extends Component {
           }
         </td>
         <td className="property-info">
-          <span>{type}</span>{subtype && <span> of {subtype}</span>}
-          {required && <span className="property-required">Required</span>}
+          <span>{type.join(', ')}</span>{subtype && <span> of {subtype}</span>}
+          {isRequired && <span className="property-required">Required</span>}
           {enumValues && this.renderEnumValues(enumValues)}
           {defaultValue && this.renderDefaultValue(defaultValue)}
           {description && <Description description={description}/>}
@@ -89,14 +90,14 @@ export default class Property extends Component {
 }
 
 Property.propTypes = {
-  name: PropTypes.string,
-  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtype: PropTypes.string,
   description: PropTypes.string,
-  required: PropTypes.bool,
   enumValues: PropTypes.array,
   defaultValue: PropTypes.any,
-  onClick: PropTypes.func,
+  isRequired: PropTypes.bool,
   isOpen: PropTypes.bool,
-  isLast: PropTypes.bool
+  isLast: PropTypes.bool,
+  onClick: PropTypes.func
 };
