@@ -93,7 +93,15 @@ Property.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtype: PropTypes.string,
+  title: PropTypes.string,
   description: PropTypes.string,
+  constraints: PropTypes.shape({
+    format: PropTypes.string,
+    minLength: PropTypes.number,
+    exclusiveMinimum: PropTypes.bool,
+    maxLength: PropTypes.number,
+    exclusiveMaximum: PropTypes.bool
+  }),
   enumValues: PropTypes.array,
   defaultValue: PropTypes.any,
   isRequired: PropTypes.bool,

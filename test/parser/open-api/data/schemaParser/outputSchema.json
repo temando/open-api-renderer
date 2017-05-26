@@ -45,12 +45,16 @@
             ]
           },
           {
+            "title": "Email Address",
             "description": "Email of the default user",
             "name": "email",
             "required": true,
             "type": [
               "string"
-            ]
+            ],
+            "constraints": {
+              "format": "email"
+            }
           },
           {
             "description": "User password",
@@ -58,7 +62,12 @@
             "required": false,
             "type": [
               "string"
-            ]
+            ],
+            "constraints": {
+              "format": "password",
+              "minLength": 6,
+              "maxLength": 13
+            }
           },
           {
             "description": "IP address where the request came from",
