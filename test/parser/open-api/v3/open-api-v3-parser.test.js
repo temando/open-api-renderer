@@ -2,7 +2,7 @@ import { readdirSync, readJSONSync } from 'fs-extra';
 import getUIReadyDefinition from '../../../../src/parser/open-api/v3/open-api-v3-parser';
 
 describe('getUIReadyDefinition', () => {
-  const dataDirectory = __dirname + '/data/definition';
+  const dataDirectory = __dirname + '/data';
   const dataFiles = readdirSync(dataDirectory + '/inputs');
 
   const tests = [];

@@ -24,6 +24,10 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     outputNode.description = propertyNode.description;
   }
 
+  if (propertyNode.default !== undefined) {
+    outputNode.defaultValue = propertyNode.default;
+  }
+
   if (literalTypes.indexOf(nodeType) >= 0) {
     // Literal types
     if (propertyNode.enum) {

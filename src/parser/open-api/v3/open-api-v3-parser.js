@@ -45,7 +45,6 @@ function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphab
             type: methodType,
             link,
             summary: method.summary,
-            parameters: uiParameters,
             request: uiRequest,
             responses: uiResponses
           };
@@ -152,6 +151,10 @@ function getUIParametersForLocation(parameters, location) {
           uiParameter.type = parameter.type;
         } else if (parameter.schema && parameter.schema.type) {
           uiParameter.type = parameter.schema.type;
+        }
+
+        if (parameter.schema && parameter.schema.default !== undefined) {
+          uiParameter.defaultValue = parameter.schema.default;
         }
 
         return uiParameter;
