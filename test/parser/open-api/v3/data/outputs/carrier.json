@@ -32,17 +32,23 @@
               "schema": [
                 {
                   "name": "data",
-                  "type": "array",
+                  "type": [
+                    "array"
+                  ],
                   "required": true,
                   "properties": [
                     {
                       "name": "id",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true
                     },
                     {
                       "name": "type",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true,
                       "enum": [
                         "carrier-integration"
@@ -50,37 +56,51 @@
                     },
                     {
                       "name": "attributes",
-                      "type": "object",
+                      "type": [
+                        "object"
+                      ],
                       "required": true,
                       "properties": [
                         {
                           "name": "name",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         },
                         {
                           "name": "description",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         },
                         {
                           "name": "logo",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         },
                         {
                           "name": "services",
-                          "type": "array",
+                          "type": [
+                            "array"
+                          ],
                           "required": true,
                           "properties": [
                             {
                               "name": "id",
-                              "type": "string",
+                              "type": [
+                                "string"
+                              ],
                               "required": true
                             },
                             {
                               "name": "name",
-                              "type": "string",
+                              "type": [
+                                "string"
+                              ],
                               "required": true
                             }
                           ]
@@ -97,17 +117,23 @@
               "schema": [
                 {
                   "name": "error",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": true,
                   "properties": [
                     {
                       "name": "code",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true
                     },
                     {
                       "name": "description",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true
                     }
                   ]
@@ -120,17 +146,23 @@
               "schema": [
                 {
                   "name": "error",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": true,
                   "properties": [
                     {
                       "name": "code",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true
                     },
                     {
                       "name": "description",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true
                     }
                   ]
@@ -143,54 +175,74 @@
               "schema": [
                 {
                   "name": "error",
-                  "type": "object",
+                  "type": [
+                    "object"
+                  ],
                   "required": true,
                   "properties": [
                     {
                       "name": "description",
-                      "type": "string",
+                      "type": [
+                        "string"
+                      ],
                       "required": true
                     },
                     {
                       "name": "code",
-                      "type": "integer",
+                      "type": [
+                        "integer"
+                      ],
                       "required": true
                     },
                     {
                       "name": "details",
-                      "type": "array",
+                      "type": [
+                        "array"
+                      ],
                       "required": true,
                       "properties": [
                         {
                           "name": "keyword",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         },
                         {
                           "name": "dataPath",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         },
                         {
                           "name": "schemaPath",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         },
                         {
                           "name": "params",
-                          "type": "object",
+                          "type": [
+                            "object"
+                          ],
                           "required": true,
                           "properties": [
                             {
                               "name": "format",
-                              "type": "string",
+                              "type": [
+                                "string"
+                              ],
                               "required": true
                             }
                           ]
                         },
                         {
                           "name": "message",
-                          "type": "string",
+                          "type": [
+                            "string"
+                          ],
                           "required": true
                         }
                       ]
@@ -207,21 +259,27 @@
                 "name": "offset",
                 "description": "Offset for the returned array of records",
                 "required": false,
-                "type": "number",
+                "type": [
+                  "number"
+                ],
                 "defaultValue": 0
               },
               {
                 "name": "limit",
                 "description": "Limit for the returned array of records.",
                 "required": false,
-                "type": "number",
+                "type": [
+                  "number"
+                ],
                 "defaultValue": 10
               },
               {
                 "name": "filter[registered]",
                 "description": "Filter by integrations already registered with.",
                 "required": false,
-                "type": "boolean",
+                "type": [
+                  "boolean"
+                ],
                 "defaultValue": false
               }
             ]

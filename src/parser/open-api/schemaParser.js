@@ -3,7 +3,7 @@ import { resolveAllOf } from './allOfResolver';
 const literalTypes = ['string', 'integer', 'number', 'boolean'];
 
 /**
- * Construct UI ready property object from given inputs
+ * Construct UI ready property object from given inputs.
  *
  * @param {String} nodeName
  * @param {Object} propertyNode
@@ -12,7 +12,11 @@ const literalTypes = ['string', 'integer', 'number', 'boolean'];
  * @return {Object}
  */
 function getPropertyNode(nodeName, propertyNode, required = false) {
-  const nodeType = propertyNode.type || 'string';
+  let nodeType = propertyNode.type || 'string';
+
+  if (!Array.isArray(nodeType)) {
+    nodeType = [ nodeType ];
+  }
 
   const outputNode = {
     name: nodeName,
@@ -28,15 +32,16 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     outputNode.defaultValue = propertyNode.default;
   }
 
-  if (literalTypes.indexOf(nodeType) >= 0) {
-    // Literal types
+  // Are all the possible types for this property literals?
+  // TODO: Currently do not handle multiple types that are not all literals
+  if (nodeType.every((type) => literalTypes.includes(type))) {
     if (propertyNode.enum) {
       outputNode.enum = propertyNode.enum;
     }
 
     return outputNode;
-  } else if (nodeType === 'object') {
-    // Object type
+  // Otherwise, let's see if there's an object in there..
+  } else if (nodeType.length === 1 && nodeType.includes('object')) {
     const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required);
 
     if (propertiesNode !== undefined && propertiesNode.length > 0) {
@@ -44,8 +49,8 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     }
 
     return outputNode;
-  } else if (nodeType === 'array') {
-    // Array type
+  // Is there an array?
+  } else if (nodeType.length === 1 && nodeType.includes('array')) {
     if (propertyNode.items) {
       const arrayItemType = propertyNode.items.type;
 

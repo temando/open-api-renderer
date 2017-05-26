@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import markdown from 'markdown-it';
+import PropTypes from 'prop-types';
 
 const cm = markdown('commonmark');
 
@@ -14,7 +15,9 @@ export default class Description extends Component {
     };
 
     return (
-      <div className={isInline ? 'description description-inline' : 'description'} dangerouslySetInnerHTML={text} />
+      <div className={classNames('description', {
+        'description-inline': isInline
+      })} dangerouslySetInnerHTML={text} />
     );
   }
 }

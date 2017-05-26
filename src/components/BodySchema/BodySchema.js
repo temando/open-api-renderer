@@ -69,10 +69,10 @@ export default class BodySchema extends Component {
         type={property.type}
         subtype={property.subtype}
         description={property.description}
-        required={property.required}
         enumValues={property.enum}
         defaultValue={property.defaultValue}
         onClick={this.onClick.bind(this, property.name)}
+        isRequired={property.required}
         isOpen={isOpen}
         isLast={isLast}
       />

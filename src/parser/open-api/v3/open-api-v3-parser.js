@@ -147,10 +147,13 @@ function getUIParametersForLocation(parameters, location) {
           required: parameter.required
         };
 
+        // TODO: We set the type to be an array because the Property component
+        // handles this. Property should eventually be split and this won't be
+        // necessary...
         if (parameter.type) {
-          uiParameter.type = parameter.type;
+          uiParameter.type = [ parameter.type ];
         } else if (parameter.schema && parameter.schema.type) {
-          uiParameter.type = parameter.schema.type;
+          uiParameter.type = [ parameter.schema.type ];
         }
 
         if (parameter.schema && parameter.schema.default !== undefined) {
