@@ -1,0 +1,233 @@
+{
+  "title": "Temando Carriers API",
+  "version": "0.0.1",
+  "description": "Manipulate Carriers and the Merchants' connections to them.",
+  "navigation": [
+    {
+      "title": "Carriers",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Returns a list of integrations available for registration",
+          "link": "/carriers/get"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "Carriers",
+      "methods": [
+        {
+          "type": "get",
+          "link": "/carriers/get",
+          "summary": "Returns a list of integrations available for registration",
+          "request": {
+            "description": "Returns a list of integrations available for registration"
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "Successful response",
+              "schema": [
+                {
+                  "name": "data",
+                  "type": "array",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "id",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "type",
+                      "type": "string",
+                      "required": true,
+                      "enum": [
+                        "carrier-integration"
+                      ]
+                    },
+                    {
+                      "name": "attributes",
+                      "type": "object",
+                      "required": true,
+                      "properties": [
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "logo",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "services",
+                          "type": "array",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "id",
+                              "type": "string",
+                              "required": true
+                            },
+                            {
+                              "name": "name",
+                              "type": "string",
+                              "required": true
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "401",
+              "description": "Authentication failed.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "403",
+              "description": "Expired credentials.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "422",
+              "description": "The request schema did not meet the specification.",
+              "schema": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "code",
+                      "type": "integer",
+                      "required": true
+                    },
+                    {
+                      "name": "details",
+                      "type": "array",
+                      "required": true,
+                      "properties": [
+                        {
+                          "name": "keyword",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "dataPath",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "schemaPath",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "params",
+                          "type": "object",
+                          "required": true,
+                          "properties": [
+                            {
+                              "name": "format",
+                              "type": "string",
+                              "required": true
+                            }
+                          ]
+                        },
+                        {
+                          "name": "message",
+                          "type": "string",
+                          "required": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "description": "Returns a list of integrations available for registration",
+          "parameters": {
+            "query": [
+              {
+                "name": "offset",
+                "description": "Offset for the returned array of records",
+                "required": false,
+                "type": "number",
+                "defaultValue": 0
+              },
+              {
+                "name": "limit",
+                "description": "Limit for the returned array of records.",
+                "required": false,
+                "type": "number",
+                "defaultValue": 10
+              },
+              {
+                "name": "filter[registered]",
+                "description": "Filter by integrations already registered with.",
+                "required": false,
+                "type": "boolean",
+                "defaultValue": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

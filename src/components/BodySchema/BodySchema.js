@@ -71,6 +71,7 @@ export default class BodySchema extends Component {
         description={property.description}
         required={property.required}
         enumValues={property.enum}
+        defaultValue={property.defaultValue}
         onClick={this.onClick.bind(this, property.name)}
         isOpen={isOpen}
         isLast={isLast}
