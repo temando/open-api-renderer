@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringProperty /> renders maxLength 1`] = `
+<span>
+  <span
+    className="string-constraints"
+  >
+    at most 10 chars
+  </span>
+</span>
+`;
+
+exports[`<StringProperty /> renders minLength 1`] = `
+<span>
+  <span
+    className="string-constraints"
+  >
+    at least 2 chars
+  </span>
+</span>
+`;
+
+exports[`<StringProperty /> renders minLength and maxLength 1`] = `
+<span>
+  <span
+    className="string-constraints"
+  >
+    4-10 chars
+  </span>
+</span>
+`;
+
+exports[`<StringProperty /> renders minLength and maxLength when they are the same value 1`] = `
+<span>
+  <span
+    className="string-constraints"
+  >
+    4 chars
+  </span>
+</span>
+`;
+
+exports[`<StringProperty /> renders pattern 1`] = `
+<span>
+  <span
+    className="string-constraints"
+  >
+    /^[a-zA-Z0-9_-]+$/
+  </span>
+</span>
+`;
+
+exports[`<StringProperty /> renders pattern, minLength and maxLength 1`] = `
+<span>
+  <span
+    className="string-constraints"
+  >
+    /^[a-z]/
+  </span>
+  <span
+    className="string-constraints"
+  >
+    4-10 chars
+  </span>
+</span>
+`;

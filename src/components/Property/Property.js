@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
+import ArrayProperty from '../ArrayProperty/ArrayProperty';
 import Description from '../Description/Description';
 import Indicator from '../Indicator/Indicator';
+import NumericProperty from '../NumericProperty/NumericProperty';
+import ObjectProperty from '../ObjectProperty/ObjectProperty';
+import StringProperty from '../StringProperty/StringProperty';
 
 import './Property.scss';
 
 export default class Property extends Component {
   render() {
-    const { name, type, description, isRequired, enumValues, defaultValue, onClick, isOpen, isLast } = this.props;
+    const {
+      name, type, description, constraints, isRequired, enumValues, defaultValue, onClick, isOpen, isLast
+    } = this.props;
 
     let subtype;
     if (type.includes('array')) {
@@ -20,6 +26,7 @@ export default class Property extends Component {
     if (isOpen !== undefined) {
       isClickable = true;
     }
+
     let status;
     if (isOpen) {
       status = 'open';
@@ -41,10 +48,18 @@ export default class Property extends Component {
           }
         </td>
         <td className="property-info">
-          <span>{type.join(', ')}</span>{subtype && <span> of {subtype}</span>}
+          <span className="property-type">
+            {!subtype ? type.join(', ') : <span className="property-subtype">{subtype}[]</span>}
+            {!subtype && constraints && constraints.format &&
+              <span className="property-format">&lt;{constraints.format}&gt;</span>}
+          </span>
           {isRequired && <span className="property-required">Required</span>}
+          {['number', 'integer'].some(t => type.includes(t)) && <NumericProperty constraints={constraints} />}
+          {type.includes('string') && <StringProperty constraints={constraints} />}
+          {type.includes('array') && <ArrayProperty constraints={constraints} />}
+          {type.includes('object') && <ObjectProperty constraints={constraints} />}
           {enumValues && this.renderEnumValues(enumValues)}
-          {defaultValue && this.renderDefaultValue(defaultValue)}
+          {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
           {description && <Description description={description}/>}
         </td>
       </tr>
@@ -97,10 +112,19 @@ Property.propTypes = {
   description: PropTypes.string,
   constraints: PropTypes.shape({
     format: PropTypes.string,
-    minLength: PropTypes.number,
-    exclusiveMinimum: PropTypes.bool,
+    exclusiveMinimum: PropTypes.number,
+    exclusiveMaximum: PropTypes.number,
+    maximum: PropTypes.number,
+    maxItems: PropTypes.number,
     maxLength: PropTypes.number,
-    exclusiveMaximum: PropTypes.bool
+    maxProperties: PropTypes.number,
+    minimum: PropTypes.number,
+    minItems: PropTypes.number,
+    minLength: PropTypes.number,
+    minProperties: PropTypes.number,
+    multipleOf: PropTypes.number,
+    pattern: PropTypes.string,
+    uniqueItems: PropTypes.bool
   }),
   enumValues: PropTypes.array,
   defaultValue: PropTypes.any,

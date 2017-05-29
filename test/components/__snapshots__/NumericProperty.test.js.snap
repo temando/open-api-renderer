@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NumericProperty /> renders a combination of constraints 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    multiple of 2
+  </span>
+  <span
+    className="numeric-constraints"
+  >
+    2…20
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders exclusiveMaximum 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    &lt; 2
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders exclusiveMinimum 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    &gt; 2
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders exclusiveMinimum and exclusiveMaximum 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    2…5
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders maximum 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    ≤ 2
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders minimum 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    ≥ 2
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders minimum and maximum 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    2…5
+  </span>
+</span>
+`;
+
+exports[`<NumericProperty /> renders multipleOf 1`] = `
+<span>
+  <span
+    className="numeric-constraints"
+  >
+    multiple of 2
+  </span>
+</span>
+`;
