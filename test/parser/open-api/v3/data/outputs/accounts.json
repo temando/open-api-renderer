@@ -119,7 +119,10 @@
                             "string"
                           ],
                           "required": true,
-                          "description": "Email of the user"
+                          "description": "Email of the user",
+                          "constraints": {
+                            "format": "email"
+                          }
                         }
                       ]
                     }
@@ -435,7 +438,10 @@
                           "string"
                         ],
                         "required": true,
-                        "description": "Email of the user"
+                        "description": "Email of the user",
+                        "constraints": {
+                          "format": "email"
+                        }
                       },
                       {
                         "name": "bearerToken",

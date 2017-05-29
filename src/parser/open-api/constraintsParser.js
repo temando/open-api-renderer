@@ -1,5 +1,5 @@
 // https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#schema-object
-const VALIDATION_KEYWORDS = [
+export const VALIDATION_KEYWORDS = [
   'format',
   'exclusiveMaximum',
   'exclusiveMinimum',
@@ -28,8 +28,19 @@ export function hasConstraints(property) {
   );
 }
 
+/**
+ * Given a property, extract all the constraints from it and return a new
+ * object with those constraints.
+ *
+ * @param {Object} property
+ * @return {Object}
+ */
 export function getConstraints(property) {
-  return {
+  return Object.keys(property).reduce((constraints, key) => {
+    if (VALIDATION_KEYWORDS.includes(key)) {
+      constraints[key] = property[key];
+    }
 
-  };
+    return constraints;
+  }, {});
 }

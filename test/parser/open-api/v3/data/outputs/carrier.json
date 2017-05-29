@@ -36,6 +36,9 @@
                     "array"
                   ],
                   "required": true,
+                  "constraints": {
+                    "minItems": 1
+                  },
                   "properties": [
                     {
                       "name": "id",
@@ -80,7 +83,10 @@
                           "type": [
                             "string"
                           ],
-                          "required": true
+                          "required": true,
+                          "constraints": {
+                            "format": "uri"
+                          }
                         },
                         {
                           "name": "services",
@@ -88,6 +94,9 @@
                             "array"
                           ],
                           "required": true,
+                          "constraints": {
+                            "uniqueItems": true
+                          },
                           "properties": [
                             {
                               "name": "id",

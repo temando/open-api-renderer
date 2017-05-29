@@ -75,14 +75,7 @@ export default class Method extends Component {
     return (
       <div className="method-responses">
         <h4>Responses</h4>
-        {responses.map((response) => {
-          return (
-            <Response
-              key={response.code}
-              response={response}
-            />
-          );
-        })}
+        {responses.map((r) => <Response key={r.code} response={r} />)}
       </div>
     );
   }

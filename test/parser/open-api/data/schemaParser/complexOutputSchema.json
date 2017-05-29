@@ -18,7 +18,10 @@
         "required": true,
         "type": [
           "string"
-        ]
+        ],
+        "constraints": {
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        }
       },
       {
         "name": "value",
