@@ -3,9 +3,15 @@ import ObjectProperty from './../../src/components/ObjectProperty/ObjectProperty
 import renderer from 'react-test-renderer';
 
 describe('<ObjectProperty />', () => {
-  it('renders nothing if there are no constraints', () => {
-    const tree = renderer.create(
+  it('renders nothing if there are no applicable constraints', () => {
+    let tree = renderer.create(
       <ObjectProperty />
+    ).toJSON();
+
+    expect(tree).toBeNull();
+
+    tree = renderer.create(
+      <ObjectProperty constraints={{minItems: 1}}/>
     ).toJSON();
 
     expect(tree).toBeNull();
