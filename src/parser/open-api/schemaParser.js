@@ -1,4 +1,5 @@
 import { resolveAllOf } from './allOfResolver';
+import { hasConstraints, getConstraints } from './constraints/constraintsParser';
 
 const literalTypes = ['string', 'integer', 'number', 'boolean'];
 
@@ -24,12 +25,20 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
     required
   };
 
+  if (propertyNode.title) {
+    outputNode.title = propertyNode.title;
+  }
+
   if (propertyNode.description) {
     outputNode.description = propertyNode.description;
   }
 
-  if (propertyNode.default !== undefined) {
+  if (propertyNode.default) {
     outputNode.defaultValue = propertyNode.default;
+  }
+
+  if (hasConstraints(propertyNode)) {
+    outputNode.constraints = getConstraints(propertyNode);
   }
 
   // Are all the possible types for this property literals?

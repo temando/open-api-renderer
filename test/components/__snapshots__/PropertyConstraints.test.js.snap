@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PropertyConstraints /> renders array constraints 1`] = `
+<span
+  className="property-constraints"
+>
+  <span>
+    <span
+      className="array-constraints"
+    >
+      unique items
+    </span>
+  </span>
+</span>
+`;
+
+exports[`<PropertyConstraints /> renders numeric constraints 1`] = `
+<span
+  className="property-constraints"
+/>
+`;
+
+exports[`<PropertyConstraints /> renders object constraints 1`] = `
+<span
+  className="property-constraints"
+>
+  <span>
+    <span
+      className="object-constraints"
+    >
+      at least 2 properties
+    </span>
+  </span>
+</span>
+`;
+
+exports[`<PropertyConstraints /> renders required constraint 1`] = `
+<span
+  className="property-constraints"
+>
+  <span
+    className="property-required"
+  >
+    required
+  </span>
+</span>
+`;
+
+exports[`<PropertyConstraints /> renders string constraints 1`] = `
+<span
+  className="property-constraints"
+>
+  <span>
+    <span
+      className="string-constraints"
+    >
+      /^[a-zA-Z0-9_-]+$/
+    </span>
+  </span>
+</span>
+`;
