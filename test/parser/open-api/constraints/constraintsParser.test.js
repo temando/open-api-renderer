@@ -1,4 +1,4 @@
-import { VALIDATION_KEYWORDS, hasConstraints, getConstraints } from '../../src/parser/open-api/constraintsParser';
+import { VALIDATION_KEYWORDS, hasConstraints, getConstraints } from '../../../../src/parser/open-api/constraints/constraintsParser';
 
 describe('VALIDATION_KEYWORDS', () => {
   test('keywords match what is supported by Open API', () => {

@@ -1,5 +1,5 @@
 import { resolveAllOf } from './allOfResolver';
-import { hasConstraints, getConstraints } from './constraintsParser';
+import { hasConstraints, getConstraints } from './constraints/constraintsParser';
 
 const literalTypes = ['string', 'integer', 'number', 'boolean'];
 
