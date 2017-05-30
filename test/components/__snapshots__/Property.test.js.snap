@@ -21,9 +21,13 @@ exports[`<Property /> can render a basic property 1`] = `
       string
     </span>
     <span
-      className="property-required"
+      className="property-constraints"
     >
-      Required
+      <span
+        className="property-required"
+      >
+        required
+      </span>
     </span>
   </td>
 </tr>
@@ -56,6 +60,9 @@ exports[`<Property /> can render a property with a format 1`] = `
         &gt;
       </span>
     </span>
+    <span
+      className="property-constraints"
+    />
   </td>
 </tr>
 `;
@@ -85,6 +92,9 @@ exports[`<Property /> can render a property with a subtype 1`] = `
         []
       </span>
     </span>
+    <span
+      className="property-constraints"
+    />
   </td>
 </tr>
 `;
@@ -109,13 +119,14 @@ exports[`<Property /> can render a property with description 1`] = `
     >
       string
     </span>
-    <span
-      className="property-required"
-    >
-      Required
-    </span>
-    <StringProperty
+    <PropertyConstraints
       constraints={undefined}
+      isRequired={true}
+      type={
+        Array [
+          "string",
+        ]
+      }
     />
     <Description
       description="This is _markdown_ text"
@@ -145,9 +156,13 @@ exports[`<Property /> can render a property with enum 1`] = `
       string
     </span>
     <span
-      className="property-required"
+      className="property-constraints"
     >
-      Required
+      <span
+        className="property-required"
+      >
+        required
+      </span>
     </span>
     <div>
       <span>
@@ -188,6 +203,9 @@ exports[`<Property /> can render a property with multiple types 1`] = `
     >
       string, number
     </span>
+    <span
+      className="property-constraints"
+    />
   </td>
 </tr>
 `;
@@ -212,16 +230,17 @@ exports[`<Property /> can render a property with numerical constraints 1`] = `
     >
       number
     </span>
-    <span
-      className="property-required"
-    >
-      Required
-    </span>
-    <NumericProperty
+    <PropertyConstraints
       constraints={
         Object {
           "multipleOf": 2,
         }
+      }
+      isRequired={true}
+      type={
+        Array [
+          "number",
+        ]
       }
     />
   </td>

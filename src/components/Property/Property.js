@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import ArrayProperty from '../ArrayProperty/ArrayProperty';
 import Description from '../Description/Description';
 import Indicator from '../Indicator/Indicator';
-import NumericProperty from '../NumericProperty/NumericProperty';
-import ObjectProperty from '../ObjectProperty/ObjectProperty';
-import StringProperty from '../StringProperty/StringProperty';
+import PropertyConstraints from '../PropertyConstraints/PropertyConstraints';
 
 import './Property.scss';
 
@@ -43,9 +40,7 @@ export default class Property extends Component {
           'property--isclickable': isClickable
         })}>
           <span>{name}</span>
-          {isClickable &&
-          <Indicator className="property-indicator" status={status}/>
-          }
+          {isClickable && <Indicator className="property-indicator" status={status}/>}
         </td>
         <td className="property-info">
           <span className="property-type">
@@ -53,11 +48,7 @@ export default class Property extends Component {
             {!subtype && constraints && constraints.format &&
               <span className="property-format">&lt;{constraints.format}&gt;</span>}
           </span>
-          {isRequired && <span className="property-required">Required</span>}
-          {['number', 'integer'].some(t => type.includes(t)) && <NumericProperty constraints={constraints} />}
-          {type.includes('string') && <StringProperty constraints={constraints} />}
-          {type.includes('array') && <ArrayProperty constraints={constraints} />}
-          {type.includes('object') && <ObjectProperty constraints={constraints} />}
+          <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {enumValues && this.renderEnumValues(enumValues)}
           {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
           {description && <Description description={description}/>}
@@ -96,9 +87,8 @@ export default class Property extends Component {
     }
 
     return (
-      <div>
-        <span>Default: </span>
-        <span className="default">{displayValue}</span>
+      <div className="default">
+        Default: <span>{displayValue}</span>
       </div>
     );
   }
