@@ -38,19 +38,20 @@ export default class BodySchema extends Component {
             if (properties.length === iterator) {
               isLast = true;
             }
-            if (property.type === 'array' && expandedProp.indexOf(property.name) !== -1 && property.properties !== undefined) {
+
+            if (property.type.includes('array') && expandedProp.includes(property.name) && property.properties !== undefined) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property, true)
               });
-            } else if (property.type === 'array' && property.properties !== undefined) {
+            } else if (property.type.includes('array') && property.properties !== undefined) {
               return this.renderPropertyRow(property, isLast, false);
-            } else if (property.type === 'object' && expandedProp.indexOf(property.name) !== -1 && property.properties !== undefined) {
+            } else if (property.type.includes('object') && expandedProp.includes(property.name) && property.properties !== undefined) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property)
               });
-            } else if (property.type === 'object' && property.properties !== undefined) {
+            } else if (property.type.includes('object') && property.properties !== undefined) {
               return this.renderPropertyRow(property, isLast, false);
             } else {
               return this.renderPropertyRow(property, isLast);
@@ -71,6 +72,7 @@ export default class BodySchema extends Component {
         description={property.description}
         enumValues={property.enum}
         defaultValue={property.defaultValue}
+        constraints={property.constraints}
         onClick={this.onClick.bind(this, property.name)}
         isRequired={property.required}
         isOpen={isOpen}
@@ -110,7 +112,7 @@ export default class BodySchema extends Component {
 
   onClick(propertyName) {
     const { expandedProp } = this.state;
-    if (expandedProp.indexOf(propertyName) !== -1) {
+    if (expandedProp.includes(propertyName)) {
       const newExpanded = expandedProp.filter((prop) => prop !== propertyName);
       this.setState({ expandedProp: newExpanded });
     } else {

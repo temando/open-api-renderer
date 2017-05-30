@@ -15,14 +15,54 @@ exports[`<Property /> can render a basic property 1`] = `
   <td
     className="property-info"
   >
-    <span>
+    <span
+      className="property-type"
+    >
       string
     </span>
     <span
-      className="property-required"
+      className="property-constraints"
     >
-      Required
+      <span
+        className="property-required"
+      >
+        required
+      </span>
     </span>
+  </td>
+</tr>
+`;
+
+exports[`<Property /> can render a property with a format 1`] = `
+<tr
+  className="property"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      value
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span
+      className="property-type"
+    >
+      string
+      <span
+        className="property-format"
+      >
+        &lt;
+        email
+        &gt;
+      </span>
+    </span>
+    <span
+      className="property-constraints"
+    />
   </td>
 </tr>
 `;
@@ -42,13 +82,19 @@ exports[`<Property /> can render a property with a subtype 1`] = `
   <td
     className="property-info"
   >
-    <span>
-      array
+    <span
+      className="property-type"
+    >
+      <span
+        className="property-subtype"
+      >
+        object
+        []
+      </span>
     </span>
-    <span>
-       of 
-      object
-    </span>
+    <span
+      className="property-constraints"
+    />
   </td>
 </tr>
 `;
@@ -68,14 +114,20 @@ exports[`<Property /> can render a property with description 1`] = `
   <td
     className="property-info"
   >
-    <span>
+    <span
+      className="property-type"
+    >
       string
     </span>
-    <span
-      className="property-required"
-    >
-      Required
-    </span>
+    <PropertyConstraints
+      constraints={undefined}
+      isRequired={true}
+      type={
+        Array [
+          "string",
+        ]
+      }
+    />
     <Description
       description="This is _markdown_ text"
     />
@@ -98,13 +150,19 @@ exports[`<Property /> can render a property with enum 1`] = `
   <td
     className="property-info"
   >
-    <span>
+    <span
+      className="property-type"
+    >
       string
     </span>
     <span
-      className="property-required"
+      className="property-constraints"
     >
-      Required
+      <span
+        className="property-required"
+      >
+        required
+      </span>
     </span>
     <div>
       <span>
@@ -140,9 +198,51 @@ exports[`<Property /> can render a property with multiple types 1`] = `
   <td
     className="property-info"
   >
-    <span>
+    <span
+      className="property-type"
+    >
       string, number
     </span>
+    <span
+      className="property-constraints"
+    />
+  </td>
+</tr>
+`;
+
+exports[`<Property /> can render a property with numerical constraints 1`] = `
+<tr
+  className="property"
+  onClick={undefined}
+>
+  <td
+    className="property-name"
+  >
+    <span>
+      type
+    </span>
+  </td>
+  <td
+    className="property-info"
+  >
+    <span
+      className="property-type"
+    >
+      number
+    </span>
+    <PropertyConstraints
+      constraints={
+        Object {
+          "multipleOf": 2,
+        }
+      }
+      isRequired={true}
+      type={
+        Array [
+          "number",
+        ]
+      }
+    />
   </td>
 </tr>
 `;

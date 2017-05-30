@@ -50,13 +50,17 @@
               "type": "string"
             },
             "email": {
+              "title": "Email Address",
               "description": "Email of the default user",
               "type": "string",
               "format": "email"
             },
             "password": {
               "description": "User password",
-              "type": "string"
+              "type": "string",
+              "format": "password",
+              "minLength": 6,
+              "maxLength": 13
             },
             "ipAddress": {
               "description": "IP address where the request came from",

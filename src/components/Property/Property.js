@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 
 import Description from '../Description/Description';
 import Indicator from '../Indicator/Indicator';
+import PropertyConstraints from '../PropertyConstraints/PropertyConstraints';
 
 import './Property.scss';
 
 export default class Property extends Component {
   render() {
-    const { name, type, description, isRequired, enumValues, defaultValue, onClick, isOpen, isLast } = this.props;
+    const {
+      name, type, description, constraints, isRequired, enumValues, defaultValue, onClick, isOpen, isLast
+    } = this.props;
 
     let subtype;
     if (type.includes('array')) {
@@ -20,6 +23,7 @@ export default class Property extends Component {
     if (isOpen !== undefined) {
       isClickable = true;
     }
+
     let status;
     if (isOpen) {
       status = 'open';
@@ -36,15 +40,17 @@ export default class Property extends Component {
           'property--isclickable': isClickable
         })}>
           <span>{name}</span>
-          {isClickable &&
-          <Indicator className="property-indicator" status={status}/>
-          }
+          {isClickable && <Indicator className="property-indicator" status={status}/>}
         </td>
         <td className="property-info">
-          <span>{type.join(', ')}</span>{subtype && <span> of {subtype}</span>}
-          {isRequired && <span className="property-required">Required</span>}
+          <span className="property-type">
+            {!subtype ? type.join(', ') : <span className="property-subtype">{subtype}[]</span>}
+            {!subtype && constraints && constraints.format &&
+              <span className="property-format">&lt;{constraints.format}&gt;</span>}
+          </span>
+          <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {enumValues && this.renderEnumValues(enumValues)}
-          {defaultValue && this.renderDefaultValue(defaultValue)}
+          {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
           {description && <Description description={description}/>}
         </td>
       </tr>
@@ -81,9 +87,8 @@ export default class Property extends Component {
     }
 
     return (
-      <div>
-        <span>Default: </span>
-        <span className="default">{displayValue}</span>
+      <div className="default">
+        Default: <span>{displayValue}</span>
       </div>
     );
   }
@@ -93,7 +98,24 @@ Property.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtype: PropTypes.string,
+  title: PropTypes.string,
   description: PropTypes.string,
+  constraints: PropTypes.shape({
+    format: PropTypes.string,
+    exclusiveMinimum: PropTypes.number,
+    exclusiveMaximum: PropTypes.number,
+    maximum: PropTypes.number,
+    maxItems: PropTypes.number,
+    maxLength: PropTypes.number,
+    maxProperties: PropTypes.number,
+    minimum: PropTypes.number,
+    minItems: PropTypes.number,
+    minLength: PropTypes.number,
+    minProperties: PropTypes.number,
+    multipleOf: PropTypes.number,
+    pattern: PropTypes.string,
+    uniqueItems: PropTypes.bool
+  }),
   enumValues: PropTypes.array,
   defaultValue: PropTypes.any,
   isRequired: PropTypes.bool,

@@ -49,11 +49,36 @@ describe('<Property />', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('can render a property with numerical constraints', () => {
+    const shallow = new ReactShallowRenderer();
+    const tree = shallow.render(
+      <Property
+        name={'type'}
+        type={['number']}
+        constraints={{multipleOf: 2}}
+        isRequired />
+    );
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('can render a property with multiple types', () => {
     const tree = renderer.create(
       <Property
         name={'value'}
         type={['string', 'number']}
+        isRequired={false} />
+    );
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can render a property with a format', () => {
+    const tree = renderer.create(
+      <Property
+        name={'value'}
+        constraints={{format: 'email'}}
+        type={['string']}
         isRequired={false} />
     );
 
