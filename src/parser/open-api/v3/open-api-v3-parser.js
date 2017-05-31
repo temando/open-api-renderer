@@ -1,6 +1,6 @@
-import refParser from 'json-schema-ref-parser';
-import getUIReadySchema from '../schemaParser';
-import { sortByAlphabet, httpMethodSort } from '../../sorting';
+import refParser from 'json-schema-ref-parser'
+import getUIReadySchema from '../schemaParser'
+import { sortByAlphabet, httpMethodSort } from '../../sorting'
 
 /**
  * Construct navigation and services ready to be consumed by the UI
@@ -12,69 +12,69 @@ import { sortByAlphabet, httpMethodSort } from '../../sorting';
  *
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = httpMethodSort) {
-  const navigation = [];
-  const services = [];
+function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = httpMethodSort) {
+  const navigation = []
+  const services = []
 
   tags.forEach((tag) => {
-    const navigationMethods = [];
-    const servicesMethods = [];
+    const navigationMethods = []
+    const servicesMethods = []
 
-    const pathIds = Object.keys(paths).sort(pathSortFunction);
+    const pathIds = Object.keys(paths).sort(pathSortFunction)
 
     pathIds.forEach(pathId => {
-      const path = paths[pathId];
-      const methodTypes = Object.keys(path).sort(methodSortFunction);
+      const path = paths[pathId]
+      const methodTypes = Object.keys(path).sort(methodSortFunction)
 
       methodTypes.forEach(methodType => {
-        const method = path[methodType];
-        const methodTags = method.tags;
+        const method = path[methodType]
+        const methodTags = method.tags
 
         if (methodTags.includes(tag)) {
-          const link = pathId + '/' + methodType;
+          const link = pathId + '/' + methodType
           const navigationMethod = {
             type: methodType,
             title: method.summary,
             link
-          };
-          navigationMethods.push(navigationMethod);
+          }
+          navigationMethods.push(navigationMethod)
 
-          const uiRequest = getUIRequest(method.description, method.requestBody);
-          const uiResponses = getUIResponses(method.responses);
+          const uiRequest = getUIRequest(method.description, method.requestBody)
+          const uiResponses = getUIResponses(method.responses)
           const servicesMethod = {
             type: methodType,
             link,
             summary: method.summary,
             request: uiRequest,
             responses: uiResponses
-          };
+          }
 
           if (method.description) {
-            servicesMethod.description = method.description;
+            servicesMethod.description = method.description
           }
 
-          const uiParameters = getUIParameters(method.parameters);
+          const uiParameters = getUIParameters(method.parameters)
           if (uiParameters) {
-            servicesMethod.parameters = uiParameters;
+            servicesMethod.parameters = uiParameters
           }
 
-          servicesMethods.push(servicesMethod);
+          servicesMethods.push(servicesMethod)
         }
-      });
-    });
+      })
+    })
 
     navigation.push({
       title: tag,
       methods: navigationMethods
-    });
+    })
 
     services.push({
       title: tag,
       methods: servicesMethods
-    });
-  });
+    })
+  })
 
-  return { navigation, services };
+  return { navigation, services }
 }
 
 /**
@@ -84,17 +84,17 @@ function getUINavigationAndServices(tags, paths, pathSortFunction = sortByAlphab
  * @param {Object} uiObj
  * @param {Object} mediaType Open API mediaType object
  */
-function addMediaTypeInfoToUIObject(uiObj, mediaType) {
+function addMediaTypeInfoToUIObject (uiObj, mediaType) {
   if (mediaType.schema) {
-    uiObj.schema = getUIReadySchema(mediaType.schema);
+    uiObj.schema = getUIReadySchema(mediaType.schema)
   }
 
   if (mediaType.example) {
-    uiObj.example = mediaType.example;
+    uiObj.example = mediaType.example
   }
 
   if (mediaType.examples) {
-    uiObj.examples = mediaType.examples;
+    uiObj.examples = mediaType.examples
   }
 }
 
@@ -105,24 +105,24 @@ function addMediaTypeInfoToUIObject(uiObj, mediaType) {
  *
  * @return {Object}
  */
-function getUIParameters(parameters) {
+function getUIParameters (parameters) {
   if (parameters) {
-    const uiParameters = {};
+    const uiParameters = {}
 
-    const pathParameters = getUIParametersForLocation(parameters, 'path');
+    const pathParameters = getUIParametersForLocation(parameters, 'path')
     if (pathParameters) {
-      uiParameters.path = pathParameters;
+      uiParameters.path = pathParameters
     }
 
-    const queryParameters = getUIParametersForLocation(parameters, 'query');
+    const queryParameters = getUIParametersForLocation(parameters, 'query')
     if (queryParameters) {
-      uiParameters.query = queryParameters;
+      uiParameters.query = queryParameters
     }
 
-    return uiParameters;
+    return uiParameters
   }
 
-  return null;
+  return null
 }
 
 /**
@@ -133,9 +133,9 @@ function getUIParameters(parameters) {
  *
  * @return {Array}
  */
-function getUIParametersForLocation(parameters, location) {
+function getUIParametersForLocation (parameters, location) {
   if (!parameters) {
-    return null;
+    return null
   }
 
   const resultArray = parameters.map(parameter => {
@@ -145,35 +145,35 @@ function getUIParametersForLocation(parameters, location) {
           name: parameter.name,
           description: parameter.description,
           required: parameter.required
-        };
+        }
 
         // TODO: We set the type to be an array because the Property component
         // handles this. Property should eventually be split and this won't be
         // necessary...
         if (parameter.type) {
-          uiParameter.type = [ parameter.type ];
+          uiParameter.type = [ parameter.type ]
         } else if (parameter.schema && parameter.schema.type) {
-          uiParameter.type = [ parameter.schema.type ];
+          uiParameter.type = [ parameter.schema.type ]
         }
 
         if (parameter.schema && parameter.schema.default !== undefined) {
-          uiParameter.defaultValue = parameter.schema.default;
+          uiParameter.defaultValue = parameter.schema.default
         }
 
-        return uiParameter;
+        return uiParameter
       } catch (error) {
-        console.log(error);
-        console.log('Context', { parameters, parameter, location });
+        console.log(error)
+        console.log('Context', { parameters, parameter, location })
       }
     }
 
-    return null;
-  }).filter(parameter => parameter);
+    return null
+  }).filter(parameter => parameter)
 
   if (resultArray && resultArray.length > 0) {
-    return resultArray;
+    return resultArray
   } else {
-    return null;
+    return null
   }
 }
 
@@ -185,24 +185,23 @@ function getUIParametersForLocation(parameters, location) {
  *
  * @return {Object}
  */
-function getUIRequest(description, requestBody = null) {
-  const uiRequest = {};
+function getUIRequest (description, requestBody = null) {
+  const uiRequest = {}
 
   if (description) {
-    uiRequest.description = description;
+    uiRequest.description = description
   }
 
   if (requestBody) {
-    const mediaType = getMediaType(requestBody.content);
+    const mediaType = getMediaType(requestBody.content)
 
     if (mediaType) {
-      addMediaTypeInfoToUIObject(uiRequest, mediaType);
+      addMediaTypeInfoToUIObject(uiRequest, mediaType)
     }
   }
 
-  return uiRequest;
+  return uiRequest
 }
-
 
 /**
  * Construct responses object ready to be consumed by the UI
@@ -211,29 +210,29 @@ function getUIRequest(description, requestBody = null) {
  *
  * @return {Array}
  */
-function getUIResponses(responses) {
-  const uiResponses = [];
+function getUIResponses (responses) {
+  const uiResponses = []
 
   for (const statusCode in responses) {
     if (responses.hasOwnProperty(statusCode)) {
-      const response = responses[statusCode];
+      const response = responses[statusCode]
 
       const uiResponse = {
         code: statusCode,
         description: response.description
-      };
-
-      const mediaType = getMediaType(response.content);
-
-      if (mediaType) {
-        addMediaTypeInfoToUIObject(uiResponse, mediaType);
       }
 
-      uiResponses.push(uiResponse);
+      const mediaType = getMediaType(response.content)
+
+      if (mediaType) {
+        addMediaTypeInfoToUIObject(uiResponse, mediaType)
+      }
+
+      uiResponses.push(uiResponse)
     }
   }
 
-  return uiResponses;
+  return uiResponses
 }
 
 /**
@@ -243,22 +242,22 @@ function getUIResponses(responses) {
  *
  * @return
  */
-function getMediaType(content) {
+function getMediaType (content) {
   if (!content) {
-    return null;
+    return null
   }
 
-  const mediaTypeIds = Object.keys(content);
+  const mediaTypeIds = Object.keys(content)
 
   for (const mediaTypeId of mediaTypeIds) {
-    const mediaType = content[mediaTypeId];
+    const mediaType = content[mediaTypeId]
 
     if (mediaType.schema) {
-      return mediaType;
+      return mediaType
     }
   }
 
-  return null;
+  return null
 }
 
 /**
@@ -268,29 +267,29 @@ function getMediaType(content) {
  *
  * @return {Array} of strings
  */
-function getTags(paths) {
-  const tagCollection = [];
+function getTags (paths) {
+  const tagCollection = []
 
   for (const pathKey in paths) {
     if (paths.hasOwnProperty(pathKey)) {
-      const path = paths[pathKey];
+      const path = paths[pathKey]
 
       for (const methodKey in path) {
         if (path.hasOwnProperty(methodKey)) {
-          const method = path[methodKey];
-          const tags = method.tags;
+          const method = path[methodKey]
+          const tags = method.tags
 
           tags.forEach(tag => {
             if (!tagCollection.includes(tag)) {
-              tagCollection.push(tag);
+              tagCollection.push(tag)
             }
-          });
+          })
         }
       }
     }
   }
 
-  return tagCollection.sort();
+  return tagCollection.sort()
 }
 
 /**
@@ -300,22 +299,22 @@ function getTags(paths) {
  *
  * @return {Object}
  */
-export default async function getUIReadyDefinition(openApiV3) {
-  let derefOpenApiV3;
+export default async function getUIReadyDefinition (openApiV3) {
+  let derefOpenApiV3
   try {
-    derefOpenApiV3 = await refParser.dereference(openApiV3);
+    derefOpenApiV3 = await refParser.dereference(openApiV3)
   } catch (error) {
-    throw new Error(`Unable to dereference input definition. Details: ${JSON.stringify(error)}`);
+    throw new Error(`Unable to dereference input definition. Details: ${JSON.stringify(error)}`)
   }
 
-  const info = derefOpenApiV3.info;
-  const paths = derefOpenApiV3.paths;
+  const info = derefOpenApiV3.info
+  const paths = derefOpenApiV3.paths
 
   // Get tags
-  const tags = getTags(paths);
+  const tags = getTags(paths)
 
   // Construction navigation and services
-  const { navigation, services } = getUINavigationAndServices(tags, paths);
+  const { navigation, services } = getUINavigationAndServices(tags, paths)
 
   const definition = {
     title: info.title,
@@ -323,7 +322,7 @@ export default async function getUIReadyDefinition(openApiV3) {
     description: info.description,
     navigation: navigation,
     services: services
-  };
+  }
 
-  return definition;
+  return definition
 }

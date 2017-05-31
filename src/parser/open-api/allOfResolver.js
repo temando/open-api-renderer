@@ -1,6 +1,6 @@
-import clone from 'lodash/clone';
-import cloneDeep from 'lodash/cloneDeep';
-import uniq from 'lodash/uniq';
+import clone from 'lodash/clone'
+import cloneDeep from 'lodash/cloneDeep'
+import uniq from 'lodash/uniq'
 
 /**
  * Resolve node with allOf
@@ -9,32 +9,32 @@ import uniq from 'lodash/uniq';
  *
  * @return {Object}
  */
-function resolveAllOfItem(node) {
-  const output = cloneDeep(node);
-  delete output.allOf;
+function resolveAllOfItem (node) {
+  const output = cloneDeep(node)
+  delete output.allOf
 
-  const allOfItems = node.allOf;
+  const allOfItems = node.allOf
   for (let i = 0; i < allOfItems.length; i++) {
-    const item = allOfItems[i];
+    const item = allOfItems[i]
 
     Object.keys(item).forEach(key => {
       if (!output.hasOwnProperty(key)) {
-        output[key] = cloneDeep(item[key]);
+        output[key] = cloneDeep(item[key])
       } else if (key === 'properties') {
-        const properties = item[key];
+        const properties = item[key]
 
         Object.keys(properties).forEach(name => {
-          output.properties[name] = cloneDeep(properties[name]);
-        });
+          output.properties[name] = cloneDeep(properties[name])
+        })
       } else if (key === 'required') {
         // Concatenate to existing list and remove duplicates
-        const requiredArray = uniq(output.required.concat(item[key]));
-        output.required = requiredArray.sort();
+        const requiredArray = uniq(output.required.concat(item[key]))
+        output.required = requiredArray.sort()
       }
-    });
+    })
   }
 
-  return output;
+  return output
 }
 
 /**
@@ -42,20 +42,20 @@ function resolveAllOfItem(node) {
  *
  * @param {Object} obj
  */
-function resolveAllOfRecursive(obj) {
+function resolveAllOfRecursive (obj) {
   Object.keys(obj).forEach(key => {
-    const item = obj[key];
+    const item = obj[key]
 
     if (item) {
       if (typeof item === 'object') {
-        resolveAllOfRecursive(item);
+        resolveAllOfRecursive(item)
       }
 
       if (item.allOf && Array.isArray(item.allOf)) {
-        obj[key] = resolveAllOfItem(item);
+        obj[key] = resolveAllOfItem(item)
       }
     }
-  });
+  })
 }
 
 /**
@@ -65,9 +65,9 @@ function resolveAllOfRecursive(obj) {
  *
  * @return {Object} definitions object that has allOf resolved
  */
-export function resolveAllOf(obj) {
-  const clonedObj = clone(obj);
-  resolveAllOfRecursive(clonedObj);
+export function resolveAllOf (obj) {
+  const clonedObj = clone(obj)
+  resolveAllOfRecursive(clonedObj)
 
-  return clonedObj;
+  return clonedObj
 }

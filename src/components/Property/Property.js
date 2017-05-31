@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
-import Description from '../Description/Description';
-import Indicator from '../Indicator/Indicator';
-import PropertyConstraints from '../PropertyConstraints/PropertyConstraints';
+import Description from '../Description/Description'
+import Indicator from '../Indicator/Indicator'
+import PropertyConstraints from '../PropertyConstraints/PropertyConstraints'
 
-import './Property.scss';
+import './Property.scss'
 
 export default class Property extends Component {
-  render() {
+  render () {
     const {
-      name, type, description, constraints, isRequired, enumValues, defaultValue, onClick, isOpen, isLast
-    } = this.props;
+      name, type, title, description, constraints, isRequired, enumValues, defaultValue, onClick, isOpen, isLast
+    } = this.props
 
-    let subtype;
+    let subtype
     if (type.includes('array')) {
-      subtype = this.props.subtype;
+      subtype = this.props.subtype
     }
 
-    let isClickable = false;
+    let isClickable = false
     if (isOpen !== undefined) {
-      isClickable = true;
+      isClickable = true
     }
 
-    let status;
+    let status
     if (isOpen) {
-      status = 'open';
+      status = 'open'
     }
 
     return (
@@ -40,21 +40,22 @@ export default class Property extends Component {
           'property--isclickable': isClickable
         })}>
           <span>{name}</span>
-          {isClickable && <Indicator className="property-indicator" status={status}/>}
+          {isClickable && <Indicator className='property-indicator' status={status} />}
         </td>
-        <td className="property-info">
-          <span className="property-type">
-            {!subtype ? type.join(', ') : <span className="property-subtype">{subtype}[]</span>}
+        <td className='property-info'>
+          {title && <span className='property-title'>{title}</span>}
+          <span className='property-type'>
+            {!subtype ? type.join(', ') : <span className='property-subtype'>{subtype}[]</span>}
             {!subtype && constraints && constraints.format &&
-              <span className="property-format">&lt;{constraints.format}&gt;</span>}
+              <span className='property-format'>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {enumValues && this.renderEnumValues(enumValues)}
           {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
-          {description && <Description description={description}/>}
+          {description && <Description description={description} />}
         </td>
       </tr>
-    );
+    )
   }
 
   /**
@@ -62,35 +63,35 @@ export default class Property extends Component {
    *
    * @param {Array} values
    */
-  renderEnumValues(values) {
+  renderEnumValues (values) {
     return (
       <div>
         <span>Valid values:</span>
         {values.map(value => {
           return (
-            <span key={value} className="enum">{value}</span>
-          );
+            <span key={value} className='enum'>{value}</span>
+          )
         })}
       </div>
-    );
+    )
   }
 
-  renderDefaultValue(value) {
-    let displayValue;
+  renderDefaultValue (value) {
+    let displayValue
 
     if (typeof value === 'number' || typeof value === 'string') {
-      displayValue = value;
+      displayValue = value
     } else if (typeof value === 'boolean') {
-      displayValue = value.toString();
+      displayValue = value.toString()
     } else if (Array.isArray(value)) {
-      displayValue = `[${value.join(', ')}]`;
+      displayValue = `[${value.join(', ')}]`
     }
 
     return (
-      <div className="default">
+      <div className='default'>
         Default: <span>{displayValue}</span>
       </div>
-    );
+    )
   }
 }
 
@@ -122,4 +123,4 @@ Property.propTypes = {
   isOpen: PropTypes.bool,
   isLast: PropTypes.bool,
   onClick: PropTypes.func
-};
+}

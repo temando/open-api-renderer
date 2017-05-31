@@ -6,34 +6,34 @@
  * @param {object} constraints
  * @return {array}
  */
-export function getConstraintHints(constraints) {
+export function getConstraintHints (constraints) {
   if (!constraints) {
-    return [];
+    return []
   }
 
-  const { exclusiveMinimum, exclusiveMaximum, maximum, minimum, multipleOf } = constraints;
-  const validations = [];
+  const { exclusiveMinimum, exclusiveMaximum, maximum, minimum, multipleOf } = constraints
+  const validations = []
 
   if (multipleOf) {
-    validations.push(`multiple of ${multipleOf}`);
+    validations.push(`multiple of ${multipleOf}`)
   }
 
   // We're following JSON-Schema Draft 6, which states that exclusive* are
   // integers, not boolean values. Also using `undefined` to prevent edge
   // cases where the value is 0 or 1.
   if (maximum !== undefined && minimum !== undefined) {
-    validations.push(`${minimum}…${maximum}`);
+    validations.push(`${minimum}…${maximum}`)
   } else if (exclusiveMaximum !== undefined && exclusiveMinimum !== undefined) {
-    validations.push(`${exclusiveMinimum}…${exclusiveMaximum}`);
+    validations.push(`${exclusiveMinimum}…${exclusiveMaximum}`)
   } else if (minimum !== undefined) {
-    validations.push(`≥ ${minimum}`);
+    validations.push(`≥ ${minimum}`)
   } else if (maximum !== undefined) {
-    validations.push(`≤ ${maximum}`);
+    validations.push(`≤ ${maximum}`)
   } else if (exclusiveMinimum !== undefined) {
-    validations.push(`> ${exclusiveMinimum}`);
+    validations.push(`> ${exclusiveMinimum}`)
   } else if (exclusiveMaximum !== undefined) {
-    validations.push(`< ${exclusiveMaximum}`);
+    validations.push(`< ${exclusiveMaximum}`)
   }
 
-  return validations;
+  return validations
 }

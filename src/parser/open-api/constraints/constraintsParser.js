@@ -14,7 +14,7 @@ export const VALIDATION_KEYWORDS = [
   'multipleOf',
   'pattern',
   'uniqueItems'
-];
+]
 
 /**
  * Determines if the given property contains any validation keywords
@@ -22,10 +22,10 @@ export const VALIDATION_KEYWORDS = [
  * @param {Object} property
  * @return {Boolean}
  */
-export function hasConstraints(property) {
+export function hasConstraints (property) {
   return Object.keys(property).some(
     (key) => VALIDATION_KEYWORDS.includes(key)
-  );
+  )
 }
 
 /**
@@ -35,12 +35,12 @@ export function hasConstraints(property) {
  * @param {Object} property
  * @return {Object}
  */
-export function getConstraints(property) {
+export function getConstraints (property) {
   return Object.keys(property).reduce((constraints, key) => {
     if (VALIDATION_KEYWORDS.includes(key)) {
-      constraints[key] = property[key];
+      constraints[key] = property[key]
     }
 
-    return constraints;
-  }, {});
+    return constraints
+  }, {})
 }
