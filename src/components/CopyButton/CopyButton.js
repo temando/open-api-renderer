@@ -1,49 +1,49 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import 'balloon-css';
+import 'balloon-css'
 
 export default class CopyButton extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.onClick = this.onClick.bind(this);
-    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onClick = this.onClick.bind(this)
+    this.onMouseOver = this.onMouseOver.bind(this)
 
     this.state = {
       tooltip: this.props.tooltip
-    };
+    }
   }
 
-  render() {
+  render () {
     return (
-      <span data-balloon={this.state.tooltip} data-balloon-pos="up"
-            onClick={this.onClick}
-            onMouseOver={this.onMouseOver}
+      <span data-balloon={this.state.tooltip} data-balloon-pos='up'
+        onClick={this.onClick}
+        onMouseOver={this.onMouseOver}
       >
         Copy
       </span>
-    );
+    )
   }
 
-  onClick(e) {
+  onClick (e) {
     this.setState({
       ...this.state,
       tooltip: 'Copied'
-    });
+    })
 
-    this.props.onCopyClick(e);
+    this.props.onCopyClick(e)
   }
 
-  onMouseOver(e) {
+  onMouseOver (e) {
     this.setState({
       ...this.state,
       tooltip: this.props.tooltip
-    });
+    })
   }
 }
 
 CopyButton.propTypes = {
   onCopyClick: PropTypes.func,
   tooltip: PropTypes.string
-};
+}

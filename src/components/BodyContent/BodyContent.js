@@ -1,52 +1,52 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
-import BodySchema from '../BodySchema/BodySchema';
-import Example from '../Example/Example';
+import BodySchema from '../BodySchema/BodySchema'
+import Example from '../Example/Example'
 
-import './BodyContent.scss';
+import './BodyContent.scss'
 
 export default class BodyContent extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.renderTabs = this.renderTabs.bind(this);
-    this.renderSchema = this.renderSchema.bind(this);
-    this.renderExample = this.renderExample.bind(this);
+    this.renderTabs = this.renderTabs.bind(this)
+    this.renderSchema = this.renderSchema.bind(this)
+    this.renderExample = this.renderExample.bind(this)
 
     this.state = {
       tab: 'schema'
-    };
+    }
   }
 
-  render() {
-    const { schema, example, examples } = this.props;
+  render () {
+    const { schema, example, examples } = this.props
 
-    const { tab } = this.state;
+    const { tab } = this.state
     return (
-      <div className="body-content">
+      <div className='body-content'>
         {schema && this.renderTabs(schema, example || examples)}
         {tab === 'schema' && this.renderSchema(schema)}
         {tab === 'example' && this.renderExample(example, examples)}
       </div>
-    );
+    )
   }
 
-  renderTabs(includeSchema, includeExample) {
-    const currentTab = this.state.tab;
+  renderTabs (includeSchema, includeExample) {
+    const currentTab = this.state.tab
     return (
-      <div className="body-content-tabs">
+      <div className='body-content-tabs'>
         {includeSchema && this.renderSchemaTab(currentTab)}
         {includeExample && this.renderExampleTab(currentTab)}
       </div>
-    );
+    )
   }
 
-  renderSchemaTab(currentTab) {
+  renderSchemaTab (currentTab) {
     return (
       <div
-        role="button"
+        role='button'
         onClick={() => this.setState({ tab: 'schema' })}
         className={classNames({
           active: (currentTab === 'schema')
@@ -54,13 +54,13 @@ export default class BodyContent extends Component {
       >
         Schema
       </div>
-    );
+    )
   }
 
-  renderExampleTab(currentTab) {
+  renderExampleTab (currentTab) {
     return (
       <div
-        role="button"
+        role='button'
         onClick={() => this.setState({ tab: 'example' })}
         className={classNames({
           active: (currentTab === 'example')
@@ -68,22 +68,22 @@ export default class BodyContent extends Component {
       >
         Example
       </div>
-    );
+    )
   }
 
-  renderSchema(schema) {
+  renderSchema (schema) {
     if (schema) {
       return (
-        <BodySchema properties={schema} styleVariation="odd"/>
-      );
+        <BodySchema properties={schema} styleVariation='odd' />
+      )
     }
-    return null;
+    return null
   }
 
-  renderExample(example, examples) {
+  renderExample (example, examples) {
     return (
-      <Example example={example} examples={examples}/>
-    );
+      <Example example={example} examples={examples} />
+    )
   }
 }
 
@@ -91,4 +91,4 @@ BodyContent.propTypes = {
   schema: PropTypes.array,
   example: PropTypes.string,
   examples: PropTypes.array
-};
+}

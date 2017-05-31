@@ -1,68 +1,68 @@
-import React, { Component } from 'react';
-import createFragment from 'react-addons-create-fragment';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import createFragment from 'react-addons-create-fragment'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
-import Property from '../Property/Property';
+import Property from '../Property/Property'
 
-import './BodySchema.scss';
+import './BodySchema.scss'
 
 export default class BodySchema extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.renderPropertyRow = this.renderPropertyRow.bind(this);
-    this.renderSubsetProperties = this.renderSubsetProperties.bind(this);
+    this.renderPropertyRow = this.renderPropertyRow.bind(this)
+    this.renderSubsetProperties = this.renderSubsetProperties.bind(this)
 
     this.state = {
       expandedProp: []
-    };
+    }
   }
 
-  render() {
-    const { properties, styleVariation } = this.props;
+  render () {
+    const { properties, styleVariation } = this.props
 
     if (!properties) {
-      return null;
+      return null
     }
 
-    const { expandedProp } = this.state;
-    let iterator = 0;
+    const { expandedProp } = this.state
+    let iterator = 0
     return (
       <table className={classNames('body-schema', `body-schema--${styleVariation}`)}>
         <tbody>
           {properties.map((property) => {
-            iterator = iterator + 1;
-            let isLast = false;
+            iterator = iterator + 1
+            let isLast = false
             if (properties.length === iterator) {
-              isLast = true;
+              isLast = true
             }
 
             if (property.type.includes('array') && expandedProp.includes(property.name) && property.properties !== undefined) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property, true)
-              });
+              })
             } else if (property.type.includes('array') && property.properties !== undefined) {
-              return this.renderPropertyRow(property, isLast, false);
+              return this.renderPropertyRow(property, isLast, false)
             } else if (property.type.includes('object') && expandedProp.includes(property.name) && property.properties !== undefined) {
               return createFragment({
                 property: this.renderPropertyRow(property, isLast, true),
                 subset: this.renderSubsetProperties(property)
-              });
+              })
             } else if (property.type.includes('object') && property.properties !== undefined) {
-              return this.renderPropertyRow(property, isLast, false);
+              return this.renderPropertyRow(property, isLast, false)
             } else {
-              return this.renderPropertyRow(property, isLast);
+              return this.renderPropertyRow(property, isLast)
             }
           })}
         </tbody>
       </table>
-    );
+    )
   }
 
-  renderPropertyRow(property, isLast, isOpen) {
+  renderPropertyRow (property, isLast, isOpen) {
     return (
       <Property
         key={property.name}
@@ -78,20 +78,20 @@ export default class BodySchema extends Component {
         isOpen={isOpen}
         isLast={isLast}
       />
-    );
+    )
   }
 
-  renderSubsetProperties(property, isArray = false) {
-    const { styleVariation } = this.props;
-    let nextStyleVariation = 'even';
+  renderSubsetProperties (property, isArray = false) {
+    const { styleVariation } = this.props
+    let nextStyleVariation = 'even'
     if (styleVariation === 'even') {
-      nextStyleVariation = 'odd';
+      nextStyleVariation = 'odd'
     }
     return (
-      <tr className="body-schema-subset">
-        <td colSpan="100">
+      <tr className='body-schema-subset'>
+        <td colSpan='100'>
           <ReactCSSTransitionGroup
-            transitionName="schema-slide-toggle"
+            transitionName='schema-slide-toggle'
             transitionEnterTimeout={500}
             transitionLeaveTimeout={500}
             transitionAppear
@@ -107,16 +107,16 @@ export default class BodySchema extends Component {
           </ReactCSSTransitionGroup>
         </td>
       </tr>
-    );
+    )
   }
 
-  onClick(propertyName) {
-    const { expandedProp } = this.state;
+  onClick (propertyName) {
+    const { expandedProp } = this.state
     if (expandedProp.includes(propertyName)) {
-      const newExpanded = expandedProp.filter((prop) => prop !== propertyName);
-      this.setState({ expandedProp: newExpanded });
+      const newExpanded = expandedProp.filter((prop) => prop !== propertyName)
+      this.setState({ expandedProp: newExpanded })
     } else {
-      this.setState({ expandedProp: [...expandedProp, propertyName]});
+      this.setState({ expandedProp: [...expandedProp, propertyName] })
     }
   }
 }
@@ -127,5 +127,4 @@ BodySchema.propTypes = {
     'odd',
     'even'
   ])
-};
-
+}

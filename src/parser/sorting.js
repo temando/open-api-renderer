@@ -7,7 +7,7 @@ const methodWeights = {
   OPTIONS: 6,
   TRACE: 7,
   CONNECT: 8
-};
+}
 
 /**
  * Sort function
@@ -17,13 +17,13 @@ const methodWeights = {
  *
  * @return {number}
  */
-export function sortByAlphabet(str1, str2) {
+export function sortByAlphabet (str1, str2) {
   if (str1 < str2) {
-    return -1;
+    return -1
   } else if (str1 > str2) {
-    return 1;
+    return 1
   } else {
-    return 0;
+    return 0
   }
 }
 
@@ -35,10 +35,9 @@ export function sortByAlphabet(str1, str2) {
  *
  * @return {number}
  */
-export function httpMethodSort(inMethod1, inMethod2) {
-  const method1 = inMethod1.toUpperCase();
-  const method2 = inMethod2.toUpperCase();
+export function httpMethodSort (inMethod1, inMethod2) {
+  const method1 = inMethod1.toUpperCase()
+  const method2 = inMethod2.toUpperCase()
 
-  return methodWeights[method1] - methodWeights[method2];
+  return methodWeights[method1] - methodWeights[method2]
 }
-
