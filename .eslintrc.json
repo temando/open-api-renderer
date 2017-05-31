@@ -8,9 +8,5 @@
     "browser": true,
     "node": true,
     "jest": true
-  },
-  "rules": {
-    // Temporary, components need to be rewritten to take advantage of this
-    "react/jsx-no-bind": 0
   }
 }
