@@ -43,7 +43,7 @@ export default class Navigation extends Component {
                 className='nav-level1'
                 key={tag.title}
                 href={`#${tag.title}`}
-                onClick={this.updateExpandedTags(tag.title)}
+                onClick={this.updateExpandedTags.bind(this, tag.title)}
               >
                 {tag.title}
                 <Indicator className='property-indicator' status={status} />
