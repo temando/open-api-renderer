@@ -2,14 +2,13 @@
 
 [![Travis CI](https://img.shields.io/travis/temando/open-api-renderer.svg)](https://travis-ci.org/temando/open-api-renderer)
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
-[![Github Forks](https://img.shields.io/github/forks/temando/open-api-renderer.svg?style=social&label=Fork)](https://github.com/temando/open-api-renderer/network)
-[![Github Issues](https://img.shields.io/github/issues-raw/temando/open-api-renderer.svg)](https://github.com/temando/open-api-renderer/issues)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Open API Renderer is a project intended to visualise [Open API](https://www.openapis.org) v3 [definition files](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md).
 
 It is built on [React](https://facebook.github.io/react/).
 
-This project is inspired by [ReDoc](https://github.com/Rebilly/ReDoc), which currently handles Open API v2 specs.
+This project is inspired by [ReDoc](https://github.com/Rebilly/ReDoc), which currently handles Swagger v2 specs.
 
 > This project is in an early phase of development.
 

@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import './ContentContainer.scss';
+import './ContentContainer.scss'
 
 export default class ContentContainer extends Component {
-  render() {
+  render () {
     return (
-      <div className="content-container">
+      <div className='content-container'>
         {this.props.children}
       </div>
-    );
+    )
   }
+}
+
+ContentContainer.propTypes = {
+  children: PropTypes.any
 }
