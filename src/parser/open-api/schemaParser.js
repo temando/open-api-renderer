@@ -1,7 +1,7 @@
-import { resolveAllOf } from './allOfResolver';
-import { hasConstraints, getConstraints } from './constraints/constraintsParser';
+import { resolveAllOf } from './allOfResolver'
+import { hasConstraints, getConstraints } from './constraints/constraintsParser'
 
-const literalTypes = ['string', 'integer', 'number', 'boolean'];
+const literalTypes = ['string', 'integer', 'number', 'boolean']
 
 /**
  * Construct UI ready property object from given inputs.
@@ -12,72 +12,72 @@ const literalTypes = ['string', 'integer', 'number', 'boolean'];
  *
  * @return {Object}
  */
-function getPropertyNode(nodeName, propertyNode, required = false) {
-  let nodeType = propertyNode.type || 'string';
+function getPropertyNode (nodeName, propertyNode, required = false) {
+  let nodeType = propertyNode.type || 'string'
 
   if (!Array.isArray(nodeType)) {
-    nodeType = [ nodeType ];
+    nodeType = [ nodeType ]
   }
 
   const outputNode = {
     name: nodeName,
     type: nodeType,
     required
-  };
+  }
 
   if (propertyNode.title) {
-    outputNode.title = propertyNode.title;
+    outputNode.title = propertyNode.title
   }
 
   if (propertyNode.description) {
-    outputNode.description = propertyNode.description;
+    outputNode.description = propertyNode.description
   }
 
   if (propertyNode.default) {
-    outputNode.defaultValue = propertyNode.default;
+    outputNode.defaultValue = propertyNode.default
   }
 
   if (hasConstraints(propertyNode)) {
-    outputNode.constraints = getConstraints(propertyNode);
+    outputNode.constraints = getConstraints(propertyNode)
   }
 
   // Are all the possible types for this property literals?
   // TODO: Currently do not handle multiple types that are not all literals
   if (nodeType.every((type) => literalTypes.includes(type))) {
     if (propertyNode.enum) {
-      outputNode.enum = propertyNode.enum;
+      outputNode.enum = propertyNode.enum
     }
 
-    return outputNode;
+    return outputNode
   // Otherwise, let's see if there's an object in there..
   } else if (nodeType.length === 1 && nodeType.includes('object')) {
-    const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required);
+    const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required)
 
     if (propertiesNode !== undefined && propertiesNode.length > 0) {
-      outputNode.properties = propertiesNode;
+      outputNode.properties = propertiesNode
     }
 
-    return outputNode;
+    return outputNode
   // Is there an array?
   } else if (nodeType.length === 1 && nodeType.includes('array')) {
     if (propertyNode.items) {
-      const arrayItemType = propertyNode.items.type;
+      const arrayItemType = propertyNode.items.type
 
       if (arrayItemType === 'object') {
-        const propertiesNode = getPropertiesNode(propertyNode.items.properties, propertyNode.items.required);
+        const propertiesNode = getPropertiesNode(propertyNode.items.properties, propertyNode.items.required)
 
         if (propertiesNode !== undefined && propertiesNode.length > 0) {
-          outputNode.properties = propertiesNode;
+          outputNode.properties = propertiesNode
         }
       } else {
-        outputNode.subtype = arrayItemType;
+        outputNode.subtype = arrayItemType
       }
     }
 
-    return outputNode;
+    return outputNode
   }
 
-  return null;
+  return null
 }
 
 /**
@@ -88,21 +88,21 @@ function getPropertyNode(nodeName, propertyNode, required = false) {
  *
  * @return {Object}
  */
-function getPropertiesNode(propertiesNode, requiredProperties = []) {
-  const outputNode = [];
+function getPropertiesNode (propertiesNode, requiredProperties = []) {
+  const outputNode = []
 
   for (const key in propertiesNode) {
     if (propertiesNode.hasOwnProperty(key)) {
-      const property = propertiesNode[key];
-      const value = getPropertyNode(key, property, requiredProperties.includes(key));
+      const property = propertiesNode[key]
+      const value = getPropertyNode(key, property, requiredProperties.includes(key))
 
       if (value) {
-        outputNode.push(value);
+        outputNode.push(value)
       }
     }
   }
 
-  return outputNode;
+  return outputNode
 }
 
 /**
@@ -112,9 +112,9 @@ function getPropertiesNode(propertiesNode, requiredProperties = []) {
  *
  * @return {Object}
  */
-export default function getUIReadySchema(jsonSchema) {
-  const resolvedJsonSchema = resolveAllOf(jsonSchema);
-  const outputSchema = getPropertiesNode(resolvedJsonSchema.properties, resolvedJsonSchema.required);
+export default function getUIReadySchema (jsonSchema) {
+  const resolvedJsonSchema = resolveAllOf(jsonSchema)
+  const outputSchema = getPropertiesNode(resolvedJsonSchema.properties, resolvedJsonSchema.required)
 
-  return outputSchema;
+  return outputSchema
 }

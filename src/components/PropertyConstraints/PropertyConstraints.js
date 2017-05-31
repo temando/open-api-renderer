@@ -1,24 +1,24 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
-import { getConstraintHints as getArrayHints } from './../../parser/open-api/constraints/array';
-import { getConstraintHints as getNumericHints } from './../../parser/open-api/constraints/numeric';
-import { getConstraintHints as getObjectHints } from './../../parser/open-api/constraints/object';
-import { getConstraintHints as getStringHints } from './../../parser/open-api/constraints/string';
+import { getConstraintHints as getArrayHints } from './../../parser/open-api/constraints/array'
+import { getConstraintHints as getNumericHints } from './../../parser/open-api/constraints/numeric'
+import { getConstraintHints as getObjectHints } from './../../parser/open-api/constraints/object'
+import { getConstraintHints as getStringHints } from './../../parser/open-api/constraints/string'
 
 export default class PropertyConstraints extends PureComponent {
-  render() {
-    const { type, isRequired, constraints } = this.props;
+  render () {
+    const { type, isRequired, constraints } = this.props
 
     return (
-      <span className="property-constraints">
-        {isRequired && <span className="property-required">required</span>}
+      <span className='property-constraints'>
+        {isRequired && <span className='property-required'>required</span>}
         {constraints && ['number', 'integer'].some(t => type.includes(t)) && this.renderConstraints(constraints, 'numeric')}
         {constraints && type.includes('string') && this.renderConstraints(constraints, 'string')}
         {constraints && type.includes('array') && this.renderConstraints(constraints, 'array')}
         {constraints && type.includes('object') && this.renderConstraints(constraints, 'object')}
       </span>
-    );
+    )
   }
 
   /**
@@ -27,26 +27,26 @@ export default class PropertyConstraints extends PureComponent {
    * @param {object} constraints
    * @param {string} type
    */
-  renderConstraints(constraints, type) {
-    let validations = [];
+  renderConstraints (constraints, type) {
+    let validations = []
 
     switch (type) {
-    case 'numeric':
-      validations = getNumericHints(constraints);
-      break;
-    case 'object':
-      validations = getObjectHints(constraints);
-      break;
-    case 'array':
-      validations = getArrayHints(constraints);
-      break;
-    case 'string':
-    default:
-      validations = getStringHints(constraints);
+      case 'numeric':
+        validations = getNumericHints(constraints)
+        break
+      case 'object':
+        validations = getObjectHints(constraints)
+        break
+      case 'array':
+        validations = getArrayHints(constraints)
+        break
+      case 'string':
+      default:
+        validations = getStringHints(constraints)
     }
 
     if (!validations.length) {
-      return null;
+      return null
     }
 
     return (
@@ -55,7 +55,7 @@ export default class PropertyConstraints extends PureComponent {
           <span key={constraint} className={`${type}-constraints`}>{constraint}</span>
         )}
       </span>
-    );
+    )
   }
 }
 
@@ -78,4 +78,4 @@ PropertyConstraints.propTypes = {
     pattern: PropTypes.string,
     uniqueItems: PropTypes.bool
   })
-};
+}

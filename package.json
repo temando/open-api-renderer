@@ -3,11 +3,12 @@
   "description": "Open API Renderer",
   "scripts": {
     "start": "webpack-dev-server",
-    "lint": "$(npm bin)/eslint src",
+    "lint": "eslint src",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "build:prod": "rm -rf dist/* && NODE_ENV=prod webpack -p"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/temando/open-api-renderer.git"
@@ -16,6 +17,7 @@
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.6",
     "history": "^4.6.1",
+    "js-yaml": "^3.8.4",
     "json-schema-ref-parser": "^3.1.2",
     "lodash": "^4.17.4",
     "markdown-it": "^8.3.1",
@@ -45,8 +47,14 @@
     "babel-preset-stage-1": "^6.22.0",
     "balloon-css": "^0.4.0",
     "css-loader": "^0.27.3",
-    "eslint": "^3.18.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "fs-extra": "^3.0.1",

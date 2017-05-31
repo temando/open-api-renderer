@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
-import ContentContainer from '../ContentContainer/ContentContainer';
-import ServiceContainer from '../ServiceContainer/ServiceContainer';
+import Header from '../Header/Header'
+import Navigation from '../Navigation/Navigation'
+import ContentContainer from '../ContentContainer/ContentContainer'
+import ServiceContainer from '../ServiceContainer/ServiceContainer'
 
-import './Page.scss';
+import './Page.scss'
 
 export default class Page extends Component {
-  render() {
-    const { definition } = this.props;
+  render () {
+    const { definition, location } = this.props
 
     if (!definition) {
-      return '';
+      return ''
     }
 
-    const navigation = definition.navigation;
-    const services = definition.services;
+    const navigation = definition.navigation
+    const services = definition.services
     return (
-      <div className="page">
-        <Navigation navigation={navigation} location={this.props.location} />
-        <div className="page-main">
-           <Header
+      <div className='page'>
+        <Navigation navigation={navigation} location={location} />
+        <div className='page-main'>
+          <Header
             title={definition.title}
             description={definition.description}
             version={definition.version}
@@ -34,15 +34,16 @@ export default class Page extends Component {
                   key={service.title}
                   service={service}
                 />
-              );
+              )
             })}
           </ContentContainer>
         </div>
       </div>
-    );
+    )
   }
 }
 
 Page.propTypes = {
-  definition: PropTypes.object
-};
+  definition: PropTypes.object,
+  location: PropTypes.object
+}
