@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import './ContentContainer.scss'
 
-export default class ContentContainer extends Component {
+export default class ContentContainer extends PureComponent {
   render () {
     return (
       <div className='content-container'>

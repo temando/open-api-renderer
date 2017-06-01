@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import './NavigationMethod.scss'
 
-export default class NavigationMethod extends Component {
+export default class NavigationMethod extends PureComponent {
   render () {
     const { method, isActive } = this.props
 
