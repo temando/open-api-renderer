@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import createFragment from 'react-addons-create-fragment'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import isEqual from 'lodash/isEqual'
 
 import Property from '../Property/Property'
 
@@ -11,13 +12,15 @@ export default class BodySchema extends Component {
   constructor (props) {
     super(props)
 
-    this.renderPropertyRow = this.renderPropertyRow.bind(this)
-    this.renderSubsetProperties = this.renderSubsetProperties.bind(this)
     this.onClick = this.onClick.bind(this)
 
     this.state = {
       expandedProp: []
     }
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    return !isEqual(nextState.expandedProp, this.state.expandedProp)
   }
 
   render () {

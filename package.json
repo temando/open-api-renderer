@@ -61,6 +61,7 @@
     "jest": "^20.0.4",
     "json-loader": "^0.5.4",
     "node-sass": "^4.5.1",
+    "react-addons-perf": "^15.4.2",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.0",
