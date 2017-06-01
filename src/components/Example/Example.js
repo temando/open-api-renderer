@@ -29,6 +29,8 @@ export default class Example extends Component {
       example = examples[0]
     }
 
+    const isSimple = typeof example === 'string'
+
     if (!example) {
       return null
     }
@@ -42,10 +44,12 @@ export default class Example extends Component {
           hovered: this.state.hovered
         })}>
           <CopyButton onCopyClick={this.onCopyClick} tooltip='Copy to Clipboard' />
-          <span onClick={() => this.setState({ collapseAll: false })}>Expand All</span>
-          <span onClick={() => this.setState({ collapseAll: true })}>Collapse All</span>
+          {!isSimple &&
+            <span onClick={() => this.setState({ collapseAll: false })}>Expand All</span>}
+          {!isSimple &&
+            <span onClick={() => this.setState({ collapseAll: true })}>Collapse All</span>}
         </div>
-        {typeof example === 'string'
+        {isSimple
           ? {example}
           : <ReactJson
             src={example}
