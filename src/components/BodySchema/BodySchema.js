@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import createFragment from 'react-addons-create-fragment'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -14,6 +13,7 @@ export default class BodySchema extends Component {
 
     this.renderPropertyRow = this.renderPropertyRow.bind(this)
     this.renderSubsetProperties = this.renderSubsetProperties.bind(this)
+    this.onClick = this.onClick.bind(this)
 
     this.state = {
       expandedProp: []
@@ -28,33 +28,29 @@ export default class BodySchema extends Component {
     }
 
     const { expandedProp } = this.state
-    let iterator = 0
+
     return (
       <table className={classNames('body-schema', `body-schema--${styleVariation}`)}>
         <tbody>
-          {properties.map((property) => {
-            iterator = iterator + 1
-            let isLast = false
-            if (properties.length === iterator) {
-              isLast = true
+          {properties.map((property, i) => {
+            const isLast = (properties.length === i + 1)
+
+            if (property.properties === undefined) {
+              return this.renderPropertyRow(property, isLast)
             }
 
-            if (property.type.includes('array') && expandedProp.includes(property.name) && property.properties !== undefined) {
-              return createFragment({
-                property: this.renderPropertyRow(property, isLast, true),
-                subset: this.renderSubsetProperties(property, true)
-              })
-            } else if (property.type.includes('array') && property.properties !== undefined) {
-              return this.renderPropertyRow(property, isLast, false)
-            } else if (property.type.includes('object') && expandedProp.includes(property.name) && property.properties !== undefined) {
-              return createFragment({
-                property: this.renderPropertyRow(property, isLast, true),
-                subset: this.renderSubsetProperties(property)
-              })
-            } else if (property.type.includes('object') && property.properties !== undefined) {
-              return this.renderPropertyRow(property, isLast, false)
-            } else {
-              return this.renderPropertyRow(property, isLast)
+            const isPropertyArray = property.type.includes('array')
+            const isPropertyObject = property.type.includes('object')
+
+            if (isPropertyArray || isPropertyObject) {
+              if (expandedProp.includes(property.name)) {
+                return createFragment({
+                  property: this.renderPropertyRow(property, isLast, true, true),
+                  subset: this.renderSubsetProperties(property, isPropertyArray)
+                })
+              }
+
+              return this.renderPropertyRow(property, isLast, false, true)
             }
           })}
         </tbody>
@@ -62,7 +58,7 @@ export default class BodySchema extends Component {
     )
   }
 
-  renderPropertyRow (property, isLast, isOpen) {
+  renderPropertyRow (property, isLast, isOpen = false, hasSubset = false) {
     return (
       <Property
         key={property.name}
@@ -73,7 +69,7 @@ export default class BodySchema extends Component {
         enumValues={property.enum}
         defaultValue={property.defaultValue}
         constraints={property.constraints}
-        onClick={this.onClick.bind(this, property.name)}
+        onClick={hasSubset ? this.onClick : undefined}
         isRequired={property.required}
         isOpen={isOpen}
         isLast={isLast}
@@ -83,35 +79,32 @@ export default class BodySchema extends Component {
 
   renderSubsetProperties (property, isArray = false) {
     const { styleVariation } = this.props
-    let nextStyleVariation = 'even'
-    if (styleVariation === 'even') {
-      nextStyleVariation = 'odd'
-    }
+    const nextStyleVariation = (styleVariation === 'even') ? 'odd' : 'even'
+
     return (
       <tr className='body-schema-subset'>
         <td colSpan='100'>
-          <ReactCSSTransitionGroup
-            transitionName='schema-slide-toggle'
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}
-            transitionAppear
-            transitionAppearTimeout={500}
-          >
-            {isArray && <div>Array [</div>}
-            <BodySchema
-              key={`${property.name}-properties`}
-              properties={property.properties}
-              styleVariation={nextStyleVariation}
-            />
-            {isArray && <div>]</div>}
-          </ReactCSSTransitionGroup>
+          {isArray && <div>Array [</div>}
+          <BodySchema
+            key={`${property.name}-properties`}
+            properties={property.properties}
+            styleVariation={nextStyleVariation}
+          />
+          {isArray && <div>]</div>}
         </td>
       </tr>
     )
   }
 
+  /**
+   * Responsible for updating the state of all properties that
+   * have been expanded by the user.
+   *
+   * @param {string} propertyName
+   */
   onClick (propertyName) {
     const { expandedProp } = this.state
+
     if (expandedProp.includes(propertyName)) {
       const newExpanded = expandedProp.filter((prop) => prop !== propertyName)
       this.setState({ expandedProp: newExpanded })

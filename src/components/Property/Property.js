@@ -9,19 +9,28 @@ import PropertyConstraints from '../PropertyConstraints/PropertyConstraints'
 import './Property.scss'
 
 export default class Property extends Component {
+  constructor (props) {
+    super(props)
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick () {
+    if (this.props.onClick) {
+      this.props.onClick(this.props.name)
+    }
+  }
+
   render () {
     const {
       name, type, title, description, constraints, isRequired, enumValues, defaultValue, onClick, isOpen, isLast
     } = this.props
 
+    const isClickable = onClick !== undefined
+
     let subtype
     if (type.includes('array')) {
       subtype = this.props.subtype
-    }
-
-    let isClickable = false
-    if (isOpen !== undefined) {
-      isClickable = true
     }
 
     let status
@@ -34,7 +43,7 @@ export default class Property extends Component {
         className={classNames('property', {
           last: isLast
         })}
-        onClick={onClick}
+        onClick={this.handleClick}
       >
         <td className={classNames('property-name', {
           'property--isclickable': isClickable

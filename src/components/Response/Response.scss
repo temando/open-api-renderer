@@ -14,27 +14,20 @@ $red-dark: #e53935;
 }
 
 .response-info {
-  cursor: pointer;
   border: 1px solid $grey-dark;
   padding: 10px;
+
   .indicator {
     margin-right: 10px;
   }
 }
 
+.is-clickable {
+  cursor: pointer;
+}
+
 .response-code {
   padding-right: 20px;
-}
-
-.response-slide-toggle-appear,
-.response-slide-toggle-enter {
-  max-height: 0;
-}
-
-.response-slide-toggle-appear.response-slide-toggle-appear-active,
-.response-slide-toggle-enter.response-slide-toggle-enter-active {
-  max-height: 1500px;
-  transition: max-height 500ms ease-in;
 }
 
 .success {

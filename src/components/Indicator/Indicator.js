@@ -11,11 +11,11 @@ export default class Indicator extends Component {
     const { status, className } = this.props
 
     return (
-      <div className={classNames('indicator', className, {
+      <span className={classNames('indicator', className, {
         [`indicator--${status}`]: status
       })}>
-        <img src={arrow} title='arrow' />
-      </div>
+        <img src={arrow} alt='' title='arrow' />
+      </span>
     )
   }
 }
