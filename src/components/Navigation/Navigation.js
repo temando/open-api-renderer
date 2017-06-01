@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import Indicator from '../Indicator/Indicator'
+import NavigationTag from '../NavigationTag/NavigationTag'
 
 import './Navigation.scss'
 
@@ -11,78 +9,47 @@ export default class Navigation extends Component {
   constructor (props) {
     super(props)
 
+    this.onClick = this.onClick.bind(this)
+
     this.state = {
       expandedTags: []
     }
   }
 
-  componentWillMount () {
-    this.props.navigation.map((tag) => {
-      tag.methods.map((method) => {
-        if (`#${method.link}` === this.props.location.hash) {
-          this.updateExpandedTags(tag.title)
-        }
-      })
-    })
-  }
-
   render () {
-    const { navigation } = this.props
+    const { navigation, location } = this.props
     const { expandedTags } = this.state
 
     return (
-      <div className='nav'>
+      <nav className='nav'>
         {navigation && navigation.map((tag) => {
           let status
-          if (expandedTags.indexOf(tag.title) === -1) {
+          if (expandedTags.includes(tag.title)) {
             status = 'right'
           }
+
           return (
-            <div key={tag.title}>
-              <a
-                className='nav-level1'
-                key={tag.title}
-                href={`#${tag.title}`}
-                onClick={this.updateExpandedTags.bind(this, tag.title)}
-              >
-                {tag.title}
-                <Indicator className='property-indicator' status={status} />
-              </a>
-              {expandedTags.indexOf(tag.title) !== -1 &&
-                <ReactCSSTransitionGroup
-                  transitionName='nav-slide-toggle'
-                  transitionEnterTimeout={500}
-                  transitionLeaveTimeout={500}
-                  transitionAppear
-                  transitionAppearTimeout={500}
-                >
-                  <div>
-                    {tag.methods.map((method) => {
-                      const isActive = (`#${method.link}` === this.props.location.hash)
-                      return (
-                        <a
-                          className={classNames('nav-level2', {
-                            active: isActive
-                          })}
-                          key={method.link}
-                          href={`#${method.link}`}
-                        >
-                          <span className='method-type'>{method.type.toUpperCase()}</span>
-                          <span className='method-title'>{method.title}</span>
-                        </a>
-                      )
-                    })}
-                  </div>
-                </ReactCSSTransitionGroup>
-              }
-            </div>
+            <NavigationTag
+              key={tag.title}
+              title={tag.title}
+              methods={tag.methods}
+              status={status}
+              onClick={this.onClick}
+              location={location}
+            />
           )
         })}
-      </div>
+      </nav>
     )
   }
 
-  updateExpandedTags (tagTitle) {
+  /**
+   * Responsible for updating the state of the navigation with all
+   * expanded tags.
+   *
+   * @param {string} tagTitle
+   */
+  onClick (tagTitle) {
     const { expandedTags } = this.state
 
     if (expandedTags.includes(tagTitle)) {
