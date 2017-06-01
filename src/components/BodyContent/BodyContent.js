@@ -13,7 +13,7 @@ export default class BodyContent extends Component {
 
     this.renderTabs = this.renderTabs.bind(this)
     this.renderSchema = this.renderSchema.bind(this)
-    this.renderExample = this.renderExample.bind(this)
+    this.renderExamples = this.renderExamples.bind(this)
 
     this.state = {
       tab: 'schema'
@@ -21,14 +21,14 @@ export default class BodyContent extends Component {
   }
 
   render () {
-    const { schema, example, examples } = this.props
+    const { schema, examples } = this.props
 
     const { tab } = this.state
     return (
       <div className='body-content'>
-        {schema && this.renderTabs(schema, example || examples)}
+        {schema && this.renderTabs(schema, examples)}
         {tab === 'schema' && this.renderSchema(schema)}
-        {tab === 'example' && this.renderExample(example, examples)}
+        {tab === 'example' && this.renderExamples(examples)}
       </div>
     )
   }
@@ -38,7 +38,7 @@ export default class BodyContent extends Component {
     return (
       <div className='body-content-tabs'>
         {includeSchema && this.renderSchemaTab(currentTab)}
-        {includeExample && this.renderExampleTab(currentTab)}
+        {includeExample && this.renderExamplesTab(currentTab)}
       </div>
     )
   }
@@ -57,7 +57,7 @@ export default class BodyContent extends Component {
     )
   }
 
-  renderExampleTab (currentTab) {
+  renderExamplesTab (currentTab) {
     return (
       <div
         role='button'
@@ -72,23 +72,23 @@ export default class BodyContent extends Component {
   }
 
   renderSchema (schema) {
-    if (schema) {
-      return (
-        <BodySchema properties={schema} styleVariation='odd' />
-      )
+    if (!schema) {
+      return null
     }
-    return null
+
+    return (
+      <BodySchema properties={schema} styleVariation='odd' />
+    )
   }
 
-  renderExample (example, examples) {
+  renderExamples (examples) {
     return (
-      <Example example={example} examples={examples} />
+      <Example examples={examples} />
     )
   }
 }
 
 BodyContent.propTypes = {
   schema: PropTypes.array,
-  example: PropTypes.string,
   examples: PropTypes.array
 }

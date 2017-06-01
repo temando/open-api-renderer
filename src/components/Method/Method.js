@@ -57,18 +57,18 @@ export default class Method extends Component {
   }
 
   renderRequest (request) {
-    const { schema, example, examples } = request
+    const { schema, examples } = request
 
-    if (request.schema) {
-      return (
-        <div className='method-request'>
-          <h4>Request Body</h4>
-          <BodyContent schema={schema} example={example} examples={examples} />
-        </div>
-      )
+    if (!schema) {
+      return null
     }
 
-    return ''
+    return (
+      <div className='method-request'>
+        <h4>Request Body</h4>
+        <BodyContent schema={schema} examples={examples} />
+      </div>
+    )
   }
 
   renderResponses (responses) {

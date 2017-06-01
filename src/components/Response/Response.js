@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import BodyContent from '../BodyContent/BodyContent'
 import Description from '../Description/Description'
@@ -13,6 +12,8 @@ export default class Response extends Component {
   constructor (props) {
     super(props)
 
+    this.onClick = this.onClick.bind(this)
+
     this.state = {
       isOpen: false
     }
@@ -20,35 +21,28 @@ export default class Response extends Component {
 
   render () {
     const { response } = this.props
-    const { code, description, schema, example, examples } = response
+    const { code, description, schema, examples } = response
     const { isOpen } = this.state
     let status
     if (isOpen) {
       status = 'open'
     }
 
-    const success = this.isSuccessCode(code)
+    const successCode = this.isSuccessCode(code)
+    const hasDetails = schema || examples
 
     return (
       <div className='response'>
         <div className={classNames('response-info', {
-          success: success,
-          error: !success
-        })} onClick={this.onClick.bind(this)}>
-          <Indicator className='property-indicator' status={status} />
+          success: successCode,
+          error: !successCode
+        })} onClick={hasDetails ? this.onClick : undefined}>
+          {hasDetails && <Indicator status={status} />}
           <span className='response-code'>{code}</span>
           {description && <Description isInline description={description} />}
         </div>
-        {isOpen &&
-          <ReactCSSTransitionGroup
-            transitionName='response-slide-toggle'
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}
-            transitionAppear
-            transitionAppearTimeout={500}
-          >
-            <BodyContent schema={schema} example={example} examples={examples} />
-          </ReactCSSTransitionGroup>
+        {hasDetails && isOpen &&
+          <BodyContent schema={schema} examples={examples} />
         }
       </div>
     )
@@ -68,5 +62,10 @@ export default class Response extends Component {
 }
 
 Response.propTypes = {
-  response: PropTypes.object
+  response: PropTypes.shape({
+    code: PropTypes.string,
+    description: PropTypes.string,
+    schema: PropTypes.array,
+    examples: PropTypes.array
+  })
 }

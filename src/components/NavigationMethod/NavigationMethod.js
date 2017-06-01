@@ -13,7 +13,6 @@ export default class NavigationMethod extends Component {
         className={classNames('nav-method', {
           active: isActive
         })}
-        key={method.link}
         href={`#${method.link}`}
       >
         <span className='method-type'>{method.type.toUpperCase()}</span>

@@ -86,15 +86,25 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
  */
 function addMediaTypeInfoToUIObject (uiObj, mediaType) {
   if (mediaType.schema) {
-    uiObj.schema = getUIReadySchema(mediaType.schema)
+    const schema = getUIReadySchema(mediaType.schema)
+
+    if (schema.length) {
+      uiObj.schema = schema
+    }
   }
 
+  let examples = []
+
   if (mediaType.example) {
-    uiObj.example = mediaType.example
+    examples.push(mediaType.example)
   }
 
   if (mediaType.examples) {
-    uiObj.examples = mediaType.examples
+    examples = examples.concat(...mediaType.examples)
+  }
+
+  if (examples.length) {
+    uiObj.examples = examples
   }
 }
 

@@ -61,7 +61,7 @@ export default class PropertyConstraints extends PureComponent {
 
 PropertyConstraints.propTypes = {
   type: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isRequired: PropTypes.bool.isRequired,
+  isRequired: PropTypes.bool,
   constraints: PropTypes.shape({
     format: PropTypes.string,
     exclusiveMinimum: PropTypes.number,
