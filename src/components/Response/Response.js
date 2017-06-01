@@ -35,7 +35,8 @@ export default class Response extends Component {
       <div className='response'>
         <div className={classNames('response-info', {
           success: successCode,
-          error: !successCode
+          error: !successCode,
+          'is-clickable': hasDetails
         })} onClick={hasDetails ? this.onClick : undefined}>
           {hasDetails && <Indicator status={status} />}
           <span className='response-code'>{code}</span>
