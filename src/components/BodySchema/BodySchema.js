@@ -96,8 +96,15 @@ export default class BodySchema extends Component {
     )
   }
 
+  /**
+   * Responsible for updating the state of all properties that
+   * have been expanded by the user.
+   *
+   * @param {string} propertyName
+   */
   onClick (propertyName) {
     const { expandedProp } = this.state
+
     if (expandedProp.includes(propertyName)) {
       const newExpanded = expandedProp.filter((prop) => prop !== propertyName)
       this.setState({ expandedProp: newExpanded })

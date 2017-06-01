@@ -1,0 +1,12 @@
+@import '../../base.scss';
+
+.nav-tag {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $blue;
+
+  &.active {
+    background-color: $grey-dark;
+  }
+}
