@@ -35,7 +35,7 @@ export default class NavigationTag extends Component {
     const isExpanded = (status === 'right')
 
     return (
-      <div key={title}>
+      <div>
         <a
           className='nav-tag'
           href={`#${title}`}

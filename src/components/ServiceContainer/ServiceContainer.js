@@ -16,14 +16,9 @@ export default class ServiceContainer extends Component {
       <ScrollableAnchor id={title}>
         <div className='service-container'>
           <h2>{title}</h2>
-          {methods.map((method) => {
-            return (
-              <Method
-                key={method.link}
-                method={method}
-              />
-            )
-          })}
+          {methods.map(
+            (method) => <Method key={method.link} method={method} />
+          )}
         </div>
       </ScrollableAnchor>
     )
