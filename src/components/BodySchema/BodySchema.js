@@ -58,7 +58,7 @@ export default class BodySchema extends Component {
     )
   }
 
-  renderPropertyRow (property, isLast, isOpen = undefined, hasSubset = false) {
+  renderPropertyRow (property, isLast, isOpen = false, hasSubset = false) {
     return (
       <Property
         key={property.name}
