@@ -92,13 +92,11 @@ function getPropertiesNode (propertiesNode, requiredProperties = []) {
   const outputNode = []
 
   for (const key in propertiesNode) {
-    if (propertiesNode.hasOwnProperty(key)) {
-      const property = propertiesNode[key]
-      const value = getPropertyNode(key, property, requiredProperties.includes(key))
+    const property = propertiesNode[key]
+    const value = getPropertyNode(key, property, requiredProperties.includes(key))
 
-      if (value) {
-        outputNode.push(value)
-      }
+    if (value) {
+      outputNode.push(value)
     }
   }
 
