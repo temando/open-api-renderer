@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "customAttributes": {
+      "description": "A generic key-value object for allowing custom attributes in a schema. Eg. { \"customKey\": \"value\" }.",
+      "type": "object",
+      "maxProperties": 5,
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      }
+    }
+  }
+}

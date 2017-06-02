@@ -1,0 +1,56 @@
+{
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "title": "Fooo",
+          "type": "string"
+        },
+        "bar": {
+          "title": "Bar"
+        }
+      },
+      "required": ["foo"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "title": "Fooo",
+          "type": "integer"
+        },
+        "bar": {
+          "title": "Bar"
+        }
+      },
+      "required": ["foo"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "title": "Fooo",
+          "type": "string"
+        },
+        "bar": {
+          "title": "Bar"
+        }
+      },
+      "required": ["bar"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "title": "Fooo",
+          "type": "integer"
+        },
+        "bar": {
+          "title": "Bar"
+        }
+      },
+      "required": ["bar"]
+    }
+  ]
+}
