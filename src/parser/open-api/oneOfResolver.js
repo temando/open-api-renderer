@@ -14,7 +14,7 @@ import toPath from 'lodash/toPath'
 function getOneOfPaths (obj) {
   let paths = []
   let walk = function (obj, path = '') {
-    for (var k in obj) {
+    for (let k in obj) {
       // Handle if `oneOf` is found at the first level.
       const currentPath = (path === '') ? k : `${path}.${k}`
 
@@ -42,7 +42,7 @@ function getOneOfPaths (obj) {
 function getStates (paths, obj) {
   let states = [ ...getStateAt(paths[0], obj) ]
 
-  for (var i = 1; i < paths.length; i++) {
+  for (let i = 1; i < paths.length; i++) {
     let state = states.shift()
 
     while (state) {
@@ -75,7 +75,7 @@ function getStateAt (path, obj) {
   const clonedObj = cloneDeep(obj)
   const states = get(clonedObj, path)
 
-  // Couldn't retrieve the state at this path, bail.
+  // Couldn't retrieve the states at this path, bail.
   if (states === undefined) {
     return []
   }
@@ -84,11 +84,11 @@ function getStateAt (path, obj) {
   return states.map((state) => {
     // No path, so add state to object directly
     if (parentPath === '') {
-      return permutate(clonedObj, state)
+      return merge(clonedObj, state)
     }
 
     // Replace the path with the state
-    update(clonedObj, parentPath, (value) => permutate(value, state))
+    update(clonedObj, parentPath, (value) => merge(value, state))
 
     return cloneDeep(clonedObj)
   })
@@ -109,19 +109,28 @@ function getParentPath (path) {
 }
 
 /**
- * Take a object and applies the state to it, returning
- * the resulting object
+ * Take a object and merge the state to it, returning the resulting object.
+ * Will remove the `oneOf` key from the given `obj`.
  *
  * @param {object} obj
  * @param {object} state
  * @return {object}
  */
-function permutate (obj, state) {
+function merge (obj, state) {
   delete obj.oneOf
 
   return { ...obj, ...state }
 }
 
+/**
+ * Resolves all `oneOf` definitions present in the given object.
+ * If none exist, the object is returned untouched. Otherwise
+ * an object with a `oneOf` property whose value is an array of
+ * states is returned
+ *
+ * @param {object} obj
+ * @return {object}
+ */
 export function resolveOneOf (obj) {
   const paths = getOneOfPaths(obj)
   if (paths.length === 0) {
