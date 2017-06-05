@@ -1,10 +1,14 @@
-import input from './data/allOfResolver/input.json';
-import expectedOutput from './data/allOfResolver/output.json';
-import { resolveAllOf } from '../../../src/parser/open-api/allOfResolver';
+import { getTestsFromFixtures } from '../../fixtureLoader'
+import { resolveAllOf } from '../../../src/parser/open-api/allOfResolver'
 
 describe('resolveAllOf', () => {
-  it('returns the correct result', () => {
-    const output = resolveAllOf(input);
-    expect(output).toEqual(expectedOutput);
-  });
-});
+  const dataDirectory = __dirname + '/data/allOfResolver'
+  const tests = getTestsFromFixtures(`${dataDirectory}/inputs`, `${dataDirectory}/outputs`)
+
+  tests.forEach(test => {
+    it(`returns the correct result for ${test.fileName}`, async () => {
+      const outputDefinition = resolveAllOf(test.input)
+      expect(outputDefinition).toEqual(test.expected)
+    })
+  })
+})

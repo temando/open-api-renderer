@@ -1,18 +1,14 @@
-import getUIReadySchema from '../../../src/parser/open-api/schemaParser';
-
-import inputSchema from './data/schemaParser/inputSchema.json';
-import expectedOutputSchema from './data/schemaParser/outputSchema.json';
-import complexInputSchema from './data/schemaParser/complexInputSchema.json';
-import complexExpectedOutputSchema from './data/schemaParser/complexOutputSchema.json';
+import { getTestsFromFixtures } from '../../fixtureLoader'
+import getUIReadySchema from '../../../src/parser/open-api/schemaParser'
 
 describe('getUIReadySchema', () => {
-  it('returns the correct result', () => {
-    const outputSchema = getUIReadySchema(inputSchema);
-    expect(outputSchema).toEqual(expectedOutputSchema);
-  });
+  const dataDirectory = __dirname + '/data/schemaParser'
+  const tests = getTestsFromFixtures(`${dataDirectory}/inputs`, `${dataDirectory}/outputs`)
 
-  it('returns the correct result', () => {
-    const outputSchema = getUIReadySchema(complexInputSchema);
-    expect(outputSchema).toEqual(complexExpectedOutputSchema);
-  });
-});
+  tests.forEach(test => {
+    it(`returns the correct result for ${test.fileName}`, async () => {
+      const outputDefinition = getUIReadySchema(test.input)
+      expect(outputDefinition).toEqual(test.expected)
+    })
+  })
+})
