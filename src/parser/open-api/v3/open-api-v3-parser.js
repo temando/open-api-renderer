@@ -16,18 +16,18 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
   const navigation = []
   const services = []
 
-  for (var i = 0; i < tags.length; i++) {
+  for (let i = 0; i < tags.length; i++) {
     const tag = tags[i]
     const navigationMethods = []
     const servicesMethods = []
     const pathIds = Object.keys(paths).sort(pathSortFunction)
 
-    for (var j = 0; j < pathIds.length; j++) {
+    for (let j = 0; j < pathIds.length; j++) {
       const pathId = pathIds[j]
       const path = paths[pathId]
       const methodTypes = Object.keys(path).sort(methodSortFunction)
 
-      for (var k = 0; k < methodTypes.length; k++) {
+      for (let k = 0; k < methodTypes.length; k++) {
         const methodType = methodTypes[k]
         const method = path[methodType]
 
