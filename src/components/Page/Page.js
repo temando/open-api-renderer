@@ -13,11 +13,11 @@ export default class Page extends Component {
     const { definition, location } = this.props
 
     if (!definition) {
-      return ''
+      return null
     }
 
-    const navigation = definition.navigation
-    const services = definition.services
+    const { navigation, services } = definition
+
     return (
       <div className='page'>
         <Navigation navigation={navigation} location={location} />
@@ -28,14 +28,10 @@ export default class Page extends Component {
             version={definition.version}
           />
           <ContentContainer>
-            {services && services.map((service) => {
-              return (
-                <ServiceContainer
-                  key={service.title}
-                  service={service}
-                />
-              )
-            })}
+            {services && services.map(
+              (service) =>
+                <ServiceContainer key={service.title} service={service} />
+            )}
           </ContentContainer>
         </div>
       </div>

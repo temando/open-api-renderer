@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import ScrollableAnchor from 'react-scrollable-anchor'
 import PropTypes from 'prop-types'
 
@@ -6,11 +6,10 @@ import Method from '../Method/Method'
 
 // import './ServiceContainer.scss';
 
-export default class ServiceContainer extends Component {
+export default class ServiceContainer extends PureComponent {
   render () {
     const { service } = this.props
-    const methods = service.methods
-    const title = service.title
+    const { title, methods } = service
 
     return (
       <ScrollableAnchor id={title}>

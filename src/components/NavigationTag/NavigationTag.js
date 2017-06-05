@@ -13,6 +13,13 @@ export default class NavigationTag extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    const isHashDiff = this.props.location.hash !== nextProps.location.hash
+    const isStatusDiff = this.props.status !== nextProps.status
+
+    return isHashDiff || isStatusDiff
+  }
+
   componentWillMount () {
     const { title, methods, location, onClick } = this.props
 
