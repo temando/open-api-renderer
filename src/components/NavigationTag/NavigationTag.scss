@@ -4,10 +4,10 @@
   display: block;
   text-transform: uppercase;
   font-weight: bold;
-  color: $blue;
+  color: white;
 
   &.active {
-    background-color: $grey-dark;
+    background-color: rgb(12, 18, 29);
   }
 
   &.is-open {

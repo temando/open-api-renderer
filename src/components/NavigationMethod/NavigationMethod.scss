@@ -5,10 +5,10 @@
   margin: 5px 0;
   padding: 5px;
   font-size: smaller;
-  color: black;
+  color: white;
 
   &.active {
-    background-color: $grey-dark;
+    background-color: black;
   }
 
   &.open {

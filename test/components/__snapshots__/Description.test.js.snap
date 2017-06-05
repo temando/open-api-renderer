@@ -5,8 +5,7 @@ exports[`<Description /> renders commonmark text as html 1`] = `
   className="description"
   dangerouslySetInnerHTML={
     Object {
-      "__html": "<p>This method has some <code>var i = 0</code> <em>markdown</em>, including a <a href=\\"http://www.google.com\\">link</a>.</p>
-    ",
+      "__html": "This method has some <code>var i = 0</code> <em>markdown</em>, including a <a href=\\"http://www.google.com\\">link</a>.",
     }
   }
 />
@@ -17,8 +16,7 @@ exports[`<Description /> renders text inline if asked 1`] = `
   className="description description-inline"
   dangerouslySetInnerHTML={
     Object {
-      "__html": "<p>This method has zero markdown.</p>
-    ",
+      "__html": "This method has zero markdown.",
     }
   }
 />
@@ -29,8 +27,7 @@ exports[`<Description /> renders text with no commonmark as html 1`] = `
   className="description"
   dangerouslySetInnerHTML={
     Object {
-      "__html": "<p>This method has zero markdown.</p>
-    ",
+      "__html": "This method has zero markdown.",
     }
   }
 />

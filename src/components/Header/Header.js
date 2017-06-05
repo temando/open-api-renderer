@@ -12,10 +12,10 @@ export default class Header extends PureComponent {
       <header id='header'>
         <h1>{title}</h1>
         <Description description={description} />
-        <dl>
-          <dt>Version</dt>
-          <dd>{version}</dd>
-        </dl>
+        <div>
+          <span>Version: </span>
+          <span>{version}</span>
+        </div>
       </header>
     )
   }
