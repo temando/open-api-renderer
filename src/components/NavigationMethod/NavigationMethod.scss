@@ -10,6 +10,14 @@
   &.active {
     background-color: $grey-dark;
   }
+
+  &.open {
+    display: block;
+  }
+
+  &.closed {
+    display: none;
+  }
 }
 
 .method-title {

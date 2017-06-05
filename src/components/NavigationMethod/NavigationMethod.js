@@ -6,12 +6,14 @@ import './NavigationMethod.scss'
 
 export default class NavigationMethod extends PureComponent {
   render () {
-    const { method, isActive } = this.props
+    const { method, isActive, isOpen } = this.props
 
     return (
       <a
         className={classNames('nav-method', {
-          active: isActive
+          active: isActive,
+          open: isOpen,
+          closed: !isOpen
         })}
         href={`#${method.link}`}
       >
@@ -24,5 +26,6 @@ export default class NavigationMethod extends PureComponent {
 
 NavigationMethod.propTypes = {
   method: PropTypes.object,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
+  isOpen: PropTypes.bool
 }
