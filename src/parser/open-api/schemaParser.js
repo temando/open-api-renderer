@@ -1,4 +1,5 @@
 import { resolveAllOf } from './allOfResolver'
+import { resolveOneOf } from './oneOfResolver'
 import { hasConstraints, getConstraints } from './constraints/constraintsParser'
 
 const literalTypes = ['string', 'integer', 'number', 'boolean']
@@ -111,8 +112,14 @@ function getPropertiesNode (propertiesNode, requiredProperties = []) {
  * @return {Object}
  */
 export default function getUIReadySchema (jsonSchema) {
-  const resolvedJsonSchema = resolveAllOf(jsonSchema)
-  const outputSchema = getPropertiesNode(resolvedJsonSchema.properties, resolvedJsonSchema.required)
+  let resolved = resolveAllOf(jsonSchema)
+  resolved = resolveOneOf(jsonSchema)
 
-  return outputSchema
+  if (Array.isArray(resolved.oneOf)) {
+    return resolved.oneOf.map(
+      (state) => getPropertiesNode(state.properties, state.required)
+    )
+  }
+
+  return getPropertiesNode(resolved.properties, resolved.required)
 }
