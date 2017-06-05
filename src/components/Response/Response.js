@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -8,7 +8,7 @@ import Indicator from '../Indicator/Indicator'
 
 import './Response.scss'
 
-export default class Response extends Component {
+export default class Response extends PureComponent {
   constructor (props) {
     super(props)
 

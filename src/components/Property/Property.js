@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -8,7 +8,7 @@ import PropertyConstraints from '../PropertyConstraints/PropertyConstraints'
 
 import './Property.scss'
 
-export default class Property extends Component {
+export default class Property extends PureComponent {
   constructor (props) {
     super(props)
 

@@ -11,10 +11,6 @@ export default class BodyContent extends Component {
   constructor (props) {
     super(props)
 
-    this.renderTabs = this.renderTabs.bind(this)
-    this.renderSchema = this.renderSchema.bind(this)
-    this.renderExamples = this.renderExamples.bind(this)
-
     this.state = {
       tab: 'schema'
     }

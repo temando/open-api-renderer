@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import isEqual from 'lodash/isEqual'
 
 import NavigationTag from '../NavigationTag/NavigationTag'
 
@@ -14,6 +15,13 @@ export default class Navigation extends Component {
     this.state = {
       expandedTags: []
     }
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    const isHashDiff = this.props.location.hash !== nextProps.location.hash
+    const isTagsDiff = !isEqual(nextState.expandedTags, this.state.expandedTags)
+
+    return isHashDiff || isTagsDiff
   }
 
   render () {

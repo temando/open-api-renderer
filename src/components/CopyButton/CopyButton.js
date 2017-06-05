@@ -27,19 +27,13 @@ export default class CopyButton extends Component {
   }
 
   onClick (e) {
-    this.setState({
-      ...this.state,
-      tooltip: 'Copied'
-    })
+    this.setState({ tooltip: 'Copied' })
 
     this.props.onCopyClick(e)
   }
 
   onMouseOver (e) {
-    this.setState({
-      ...this.state,
-      tooltip: this.props.tooltip
-    })
+    this.setState({ tooltip: this.props.tooltip })
   }
 }
 
