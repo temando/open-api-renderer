@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
 import Indicator from '../Indicator/Indicator'
 import NavigationMethod from '../NavigationMethod/NavigationMethod'
 
@@ -15,9 +14,9 @@ export default class NavigationTag extends Component {
 
   shouldComponentUpdate (nextProps, nextState) {
     const isHashDiff = this.props.location.hash !== nextProps.location.hash
-    const isStatusDiff = this.props.status !== nextProps.status
+    const isExpandedStatusDiff = this.props.shouldBeExpanded !== nextProps.shouldBeExpanded
 
-    return isHashDiff || isStatusDiff
+    return isHashDiff || isExpandedStatusDiff
   }
 
   componentWillMount () {
@@ -37,9 +36,25 @@ export default class NavigationTag extends Component {
   }
 
   render () {
-    const { title, status, methods, location } = this.props
+    const { title, shouldBeExpanded, methods, location } = this.props
 
-    const isExpanded = (status === 'right')
+    // If tag has any method that matches location hash, then it is considered active
+    let isActiveTag = false
+    if (methods) {
+      isActiveTag = methods.some(method => (`#${method.link}` === location.hash))
+    }
+
+    let isExpanded = false
+    if (shouldBeExpanded || isActiveTag) {
+      isExpanded = true
+    }
+
+    let indicatorDirection
+    if (isExpanded) {
+      indicatorDirection = 'bottom'
+    } else {
+      indicatorDirection = 'right'
+    }
 
     return (
       <div>
@@ -49,13 +64,13 @@ export default class NavigationTag extends Component {
           onClick={this.handleClick}
         >
           {title}
-          <Indicator status={status} />
+          <Indicator direction={indicatorDirection} />
         </a>
         <div className='nav-tag-methods'>
-          {isExpanded && methods && methods.map((method) => {
+          {methods && methods.map((method) => {
             const isActive = (`#${method.link}` === location.hash)
 
-            return <NavigationMethod key={method.link} method={method} isActive={isActive} />
+            return <NavigationMethod key={method.link} method={method} isActive={isActive} isOpen={isExpanded} />
           })}
         </div>
       </div>
@@ -66,7 +81,7 @@ export default class NavigationTag extends Component {
 NavigationTag.propTypes = {
   title: PropTypes.string.isRequired,
   methods: PropTypes.array,
-  status: PropTypes.string,
+  shouldBeExpanded: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   location: PropTypes.object
 }

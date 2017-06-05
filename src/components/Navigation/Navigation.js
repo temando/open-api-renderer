@@ -31,9 +31,9 @@ export default class Navigation extends Component {
     return (
       <nav className='nav'>
         {navigation && navigation.map((tag) => {
-          let status
+          let shouldBeExpanded = false
           if (expandedTags.includes(tag.title)) {
-            status = 'right'
+            shouldBeExpanded = true
           }
 
           return (
@@ -41,7 +41,7 @@ export default class Navigation extends Component {
               key={tag.title}
               title={tag.title}
               methods={tag.methods}
-              status={status}
+              shouldBeExpanded={shouldBeExpanded}
               onClick={this.onClick}
               location={location}
             />

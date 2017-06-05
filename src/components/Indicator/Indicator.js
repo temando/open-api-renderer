@@ -8,11 +8,11 @@ const arrow = require('./arrow.png')
 
 export default class Indicator extends PureComponent {
   render () {
-    const { status, className } = this.props
+    const { direction, className } = this.props
 
     return (
       <span className={classNames('indicator', className, {
-        [`indicator--${status}`]: status
+        [`indicator--${direction}`]: direction
       })}>
         <img src={arrow} alt='' title='arrow' />
       </span>
@@ -21,6 +21,6 @@ export default class Indicator extends PureComponent {
 }
 
 Indicator.propTypes = {
-  status: PropTypes.string,
+  direction: PropTypes.string,
   className: PropTypes.string
 }
