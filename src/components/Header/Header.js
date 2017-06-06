@@ -2,16 +2,18 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import Description from '../Description/Description'
+import DownloadButton from '../DownloadButton/DownloadButton'
 import './Header.scss'
 
 export default class Header extends PureComponent {
   render () {
-    const { title, version, description } = this.props
+    const { title, version, description, specUrl } = this.props
 
     return (
       <header id='header'>
         <h1>{title}</h1>
         <Description description={description} />
+        <div>Download OpenAPI specification: <DownloadButton url={specUrl} /></div>
         <dl>
           <dt>Version</dt>
           <dd>{version}</dd>
@@ -24,5 +26,6 @@ export default class Header extends PureComponent {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   version: PropTypes.string.isRequired,
-  description: PropTypes.string
+  description: PropTypes.string,
+  specUrl: PropTypes.string
 }
