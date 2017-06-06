@@ -1,0 +1,68 @@
+{
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bearerToken": {
+          "description": "A `bearerToken` from `account` creation.",
+          "type": "string"
+        },
+        "accountId": {
+          "description": "An `accountId` from `account` creation.",
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "email": {
+          "description": "A user's email address.",
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "description": "A user's password, in plaintext.",
+          "type": "string",
+          "format": "password"
+        },
+        "scope": {
+          "description": "A comma delimited list of scope names. If unknown, use `client`.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bearerToken",
+        "accountId"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bearerToken": {
+          "description": "A `bearerToken` from `account` creation.",
+          "type": "string"
+        },
+        "accountId": {
+          "description": "An `accountId` from `account` creation.",
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        },
+        "email": {
+          "description": "A user's email address.",
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "description": "A user's password, in plaintext.",
+          "type": "string",
+          "format": "password"
+        },
+        "scope": {
+          "description": "A comma delimited list of scope names. If unknown, use `client`.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    }
+  ]
+}

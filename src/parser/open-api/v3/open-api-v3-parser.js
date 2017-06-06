@@ -16,52 +16,55 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
   const navigation = []
   const services = []
 
-  tags.forEach((tag) => {
+  for (let i = 0; i < tags.length; i++) {
+    const tag = tags[i]
     const navigationMethods = []
     const servicesMethods = []
-
     const pathIds = Object.keys(paths).sort(pathSortFunction)
 
-    pathIds.forEach(pathId => {
+    for (let j = 0; j < pathIds.length; j++) {
+      const pathId = pathIds[j]
       const path = paths[pathId]
       const methodTypes = Object.keys(path).sort(methodSortFunction)
 
-      methodTypes.forEach(methodType => {
+      for (let k = 0; k < methodTypes.length; k++) {
+        const methodType = methodTypes[k]
         const method = path[methodType]
-        const methodTags = method.tags
 
-        if (methodTags.includes(tag)) {
-          const link = pathId + '/' + methodType
-          const navigationMethod = {
-            type: methodType,
-            title: method.summary,
-            link
-          }
-          navigationMethods.push(navigationMethod)
-
-          const uiRequest = getUIRequest(method.description, method.requestBody)
-          const uiResponses = getUIResponses(method.responses)
-          const servicesMethod = {
-            type: methodType,
-            link,
-            summary: method.summary,
-            request: uiRequest,
-            responses: uiResponses
-          }
-
-          if (method.description) {
-            servicesMethod.description = method.description
-          }
-
-          const uiParameters = getUIParameters(method.parameters)
-          if (uiParameters) {
-            servicesMethod.parameters = uiParameters
-          }
-
-          servicesMethods.push(servicesMethod)
+        if (!method.tags.includes(tag)) {
+          continue
         }
-      })
-    })
+
+        const link = pathId + '/' + methodType
+        const navigationMethod = {
+          type: methodType,
+          title: method.summary,
+          link
+        }
+        navigationMethods.push(navigationMethod)
+
+        const uiRequest = getUIRequest(method.description, method.requestBody)
+        const uiResponses = getUIResponses(method.responses)
+        const servicesMethod = {
+          type: methodType,
+          link,
+          summary: method.summary,
+          request: uiRequest,
+          responses: uiResponses
+        }
+
+        if (method.description) {
+          servicesMethod.description = method.description
+        }
+
+        const uiParameters = getUIParameters(method.parameters)
+        if (uiParameters) {
+          servicesMethod.parameters = uiParameters
+        }
+
+        servicesMethods.push(servicesMethod)
+      }
+    }
 
     navigation.push({
       title: tag,
@@ -72,7 +75,7 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
       title: tag,
       methods: servicesMethods
     })
-  })
+  }
 
   return { navigation, services }
 }
@@ -148,43 +151,30 @@ function getUIParametersForLocation (parameters, location) {
     return null
   }
 
-  const resultArray = parameters.map(parameter => {
-    if (parameter.in === location) {
-      try {
-        const uiParameter = {
-          name: parameter.name,
-          description: parameter.description,
-          required: parameter.required
-        }
-
-        // TODO: We set the type to be an array because the Property component
-        // handles this. Property should eventually be split and this won't be
-        // necessary...
-        if (parameter.type) {
-          uiParameter.type = [ parameter.type ]
-        } else if (parameter.schema && parameter.schema.type) {
-          uiParameter.type = [ parameter.schema.type ]
-        }
-
-        if (parameter.schema && parameter.schema.default !== undefined) {
-          uiParameter.defaultValue = parameter.schema.default
-        }
-
-        return uiParameter
-      } catch (error) {
-        console.log(error)
-        console.log('Context', { parameters, parameter, location })
-      }
+  const resultArray = parameters.filter(parameter => (parameter.in === location)).map(parameter => {
+    const uiParameter = {
+      name: parameter.name,
+      description: parameter.description,
+      required: parameter.required
     }
 
-    return null
-  }).filter(parameter => parameter)
+    // TODO: We set the type to be an array because the Property component
+    // handles this. Property should eventually be split and this won't be
+    // necessary...
+    if (parameter.type) {
+      uiParameter.type = [ parameter.type ]
+    } else if (parameter.schema && parameter.schema.type) {
+      uiParameter.type = [ parameter.schema.type ]
+    }
 
-  if (resultArray && resultArray.length > 0) {
-    return resultArray
-  } else {
-    return null
-  }
+    if (parameter.schema && parameter.schema.default !== undefined) {
+      uiParameter.defaultValue = parameter.schema.default
+    }
+
+    return uiParameter
+  })
+
+  return resultArray.length ? resultArray : null
 }
 
 /**
@@ -224,22 +214,20 @@ function getUIResponses (responses) {
   const uiResponses = []
 
   for (const statusCode in responses) {
-    if (responses.hasOwnProperty(statusCode)) {
-      const response = responses[statusCode]
+    const response = responses[statusCode]
 
-      const uiResponse = {
-        code: statusCode,
-        description: response.description
-      }
-
-      const mediaType = getMediaType(response.content)
-
-      if (mediaType) {
-        addMediaTypeInfoToUIObject(uiResponse, mediaType)
-      }
-
-      uiResponses.push(uiResponse)
+    const uiResponse = {
+      code: statusCode,
+      description: response.description
     }
+
+    const mediaType = getMediaType(response.content)
+
+    if (mediaType) {
+      addMediaTypeInfoToUIObject(uiResponse, mediaType)
+    }
+
+    uiResponses.push(uiResponse)
   }
 
   return uiResponses
@@ -281,21 +269,16 @@ function getTags (paths) {
   const tagCollection = []
 
   for (const pathKey in paths) {
-    if (paths.hasOwnProperty(pathKey)) {
-      const path = paths[pathKey]
+    const path = paths[pathKey]
 
-      for (const methodKey in path) {
-        if (path.hasOwnProperty(methodKey)) {
-          const method = path[methodKey]
-          const tags = method.tags
+    for (const methodKey in path) {
+      const method = path[methodKey]
 
-          tags.forEach(tag => {
-            if (!tagCollection.includes(tag)) {
-              tagCollection.push(tag)
-            }
-          })
+      method.tags.forEach(tag => {
+        if (!tagCollection.includes(tag)) {
+          tagCollection.push(tag)
         }
-      }
+      })
     }
   }
 
