@@ -9,19 +9,19 @@ import toPath from 'lodash/toPath'
  * If no `oneOf` keys were found, an empty array is returned.
  *
  * @param {object} obj
- * @return {array}
+ * @return {string[]}
  */
 function getOneOfPaths (obj) {
   let paths = []
   let walk = function (obj, path = '') {
-    for (let k in obj) {
+    for (let key in obj) {
       // Handle if `oneOf` is found at the first level.
-      const currentPath = (path === '') ? k : `${path}.${k}`
+      const currentPath = (path === '') ? key : `${path}.${key}`
 
-      if (k === 'oneOf') {
+      if (key === 'oneOf') {
         paths.push(currentPath)
-      } else if (typeof obj[k] === 'object' || Array.isArray(obj[k])) {
-        walk(obj[k], currentPath)
+      } else if (typeof obj[key] === 'object' || Array.isArray(obj[key])) {
+        walk(obj[key], currentPath)
       }
     }
   }
@@ -37,7 +37,7 @@ function getOneOfPaths (obj) {
  *
  * @param {string[]} paths
  * @param {object} obj
- * @return {array}
+ * @return {object[]}
  */
 function getStates (paths, obj) {
   let states = [ ...getStateAt(paths[0], obj) ]
@@ -50,7 +50,7 @@ function getStates (paths, obj) {
 
       // if there are no new states, put this one back and stop
       if (!newStates.length) {
-        states.push(state)
+        states.unshift(state)
         break
       }
 
@@ -69,7 +69,7 @@ function getStates (paths, obj) {
  *
  * @param {string} path
  * @param {object} obj
- * @return {array}
+ * @return {object[]}
  */
 function getStateAt (path, obj) {
   const clonedObj = cloneDeep(obj)

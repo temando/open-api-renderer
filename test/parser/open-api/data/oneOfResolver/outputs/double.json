@@ -11,33 +11,7 @@
           "title": "Bar"
         }
       },
-      "required": ["bar"]
-    },
-    {
-      "type": "object",
-      "properties": {
-        "foo": {
-          "title": "Fooo",
-          "type": "integer"
-        },
-        "bar": {
-          "title": "Bar"
-        }
-      },
       "required": ["foo"]
-    },
-    {
-      "type": "object",
-      "properties": {
-        "foo": {
-          "title": "Fooo",
-          "type": "integer"
-        },
-        "bar": {
-          "title": "Bar"
-        }
-      },
-      "required": ["bar"]
     },
     {
       "type": "object",
@@ -50,7 +24,33 @@
           "title": "Bar"
         }
       },
+      "required": ["bar"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "title": "Fooo",
+          "type": "integer"
+        },
+        "bar": {
+          "title": "Bar"
+        }
+      },
       "required": ["foo"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "title": "Fooo",
+          "type": "integer"
+        },
+        "bar": {
+          "title": "Bar"
+        }
+      },
+      "required": ["bar"]
     }
   ]
 }
