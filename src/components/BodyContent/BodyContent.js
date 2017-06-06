@@ -72,6 +72,14 @@ export default class BodyContent extends Component {
       return null
     }
 
+    // Peek at first item of `schema` to see if it's an array of possible
+    // schemas (eg. oneOf).
+    if (Array.isArray(schema[0])) {
+      return schema.map(
+        (schemaVariation, i) => <BodySchema key={i} properties={schemaVariation} styleVariation='odd' />
+      )
+    }
+
     return (
       <BodySchema properties={schema} styleVariation='odd' />
     )
