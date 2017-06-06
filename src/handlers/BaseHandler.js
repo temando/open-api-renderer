@@ -20,10 +20,10 @@ class BaseHandler extends Component {
 
   render () {
     const { parsedDefinition: definition, location } = this.props
-    const specUrl = this.props.location.query.url
+    const specUrl = location.query.url
 
     return (
-      <DocumentTitle title='Open API v3 renderer'>
+      <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
         <div className='main'>
           {!definition && "Welcome to Temando's new Open API Renderer. Watch this space!"}
           {definition && <Page definition={definition} location={location} specUrl={specUrl} />}
