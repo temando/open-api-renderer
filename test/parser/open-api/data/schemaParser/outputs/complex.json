@@ -1,0 +1,92 @@
+[
+  [
+    {
+      "name": "name",
+      "required": false,
+      "type": [
+        "string"
+      ]
+    },
+    {
+      "name": "isRequired",
+      "required": false,
+      "type": [
+        "boolean"
+      ]
+    },
+    {
+      "name": "customAttributes",
+      "properties": [
+        {
+          "constraints": {
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "name": "key",
+          "required": true,
+          "type": [
+            "string"
+          ]
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean"
+          ]
+        }
+      ],
+      "required": false,
+      "type": [
+        "array"
+      ]
+    }
+  ],
+  [
+    {
+      "name": "name",
+      "required": false,
+      "type": [
+        "string"
+      ]
+    },
+    {
+      "name": "isRequired",
+      "required": false,
+      "type": [
+        "integer"
+      ]
+    },
+    {
+      "name": "customAttributes",
+      "properties": [
+        {
+          "constraints": {
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "name": "key",
+          "required": true,
+          "type": [
+            "string"
+          ]
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean"
+          ]
+        }
+      ],
+      "required": false,
+      "type": [
+        "array"
+      ]
+    }
+  ]
+]

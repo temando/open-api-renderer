@@ -1,0 +1,56 @@
+{
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "customAttributes": {
+          "description": "A generic key-value object for allowing custom attributes in a schema. Eg. { \"customKey\": \"value\" }.",
+          "type": "object",
+          "maxProperties": 5,
+          "additionalProperties": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "customAttributes": {
+          "description": "A generic key-value object for allowing custom attributes in a schema. Eg. { \"customKey\": \"value\" }.",
+          "type": "object",
+          "maxProperties": 5,
+          "additionalProperties": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "customAttributes": {
+          "description": "A generic key-value object for allowing custom attributes in a schema. Eg. { \"customKey\": \"value\" }.",
+          "type": "object",
+          "maxProperties": 5,
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "customAttributes": {
+          "description": "A generic key-value object for allowing custom attributes in a schema. Eg. { \"customKey\": \"value\" }.",
+          "type": "object",
+          "maxProperties": 5,
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}

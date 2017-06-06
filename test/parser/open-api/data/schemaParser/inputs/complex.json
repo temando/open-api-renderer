@@ -4,6 +4,12 @@
     "name": {
       "type": "string"
     },
+    "isRequired": {
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "integer" }
+      ]
+    },
     "customAttributes": {
       "additionalProperties": false,
       "type": "array",
