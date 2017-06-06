@@ -113,7 +113,7 @@ function getPropertiesNode (propertiesNode, requiredProperties = []) {
  */
 export default function getUIReadySchema (jsonSchema) {
   let resolved = resolveAllOf(jsonSchema)
-  resolved = resolveOneOf(jsonSchema)
+  resolved = resolveOneOf(resolved)
 
   if (Array.isArray(resolved.oneOf)) {
     return resolved.oneOf.map(
