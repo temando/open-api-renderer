@@ -14,7 +14,6 @@ $red-dark: #e53935;
 }
 
 .response-info {
-  border: 1px solid $grey-dark;
   padding: 10px;
 
   .indicator {
@@ -31,11 +30,9 @@ $red-dark: #e53935;
 }
 
 .success {
-  color: $green-dark;
-  background-color: $green;
+  color: rgb(76, 204, 79);
 }
 
 .error {
-  color: $red-dark;
-  background-color: $red;
+  color: rgb(235, 15, 40);
 }

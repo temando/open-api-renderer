@@ -17,8 +17,7 @@ exports[`<Description /> renders text inline if asked 1`] = `
   className="description description-inline"
   dangerouslySetInnerHTML={
     Object {
-      "__html": "<p>This method has zero markdown.</p>
-    ",
+      "__html": "This method has zero markdown.",
     }
   }
 />

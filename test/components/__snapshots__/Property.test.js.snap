@@ -128,9 +128,12 @@ exports[`<Property /> can render a property with description 1`] = `
         ]
       }
     />
-    <Description
-      description="This is _markdown_ text"
-    />
+    <div>
+      <Description
+        description="This is _markdown_ text"
+        isInline={true}
+      />
+    </div>
   </td>
 </tr>
 `;

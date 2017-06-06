@@ -61,7 +61,7 @@ export default class Property extends PureComponent {
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {enumValues && this.renderEnumValues(enumValues)}
           {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
-          {description && <Description description={description} />}
+          {description && <div><Description isInline description={description} /></div>}
         </td>
       </tr>
     )

@@ -6,7 +6,7 @@ import './Header.scss'
 
 export default class Header extends PureComponent {
   render () {
-    const { title, description, version } = this.props
+    const { title, version, description } = this.props
 
     return (
       <header id='header'>
