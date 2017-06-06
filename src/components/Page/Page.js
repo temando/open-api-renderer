@@ -10,7 +10,7 @@ import './Page.scss'
 
 export default class Page extends Component {
   render () {
-    const { definition, location } = this.props
+    const { definition, location, specUrl } = this.props
 
     if (!definition) {
       return null
@@ -26,6 +26,7 @@ export default class Page extends Component {
             title={definition.title}
             description={definition.description}
             version={definition.version}
+            specUrl={specUrl}
           />
           <ContentContainer>
             {services && services.map(
@@ -41,5 +42,6 @@ export default class Page extends Component {
 
 Page.propTypes = {
   definition: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  specUrl: PropTypes.string
 }
