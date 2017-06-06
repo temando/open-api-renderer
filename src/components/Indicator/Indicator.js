@@ -11,11 +11,11 @@ export default class Indicator extends PureComponent {
     const { direction, className } = this.props
 
     return (
-      <span className={classNames('indicator', className, {
+      <div className={classNames('indicator', className, {
         [`indicator--${direction}`]: direction
       })}>
         <img src={arrow} alt='' title='arrow' />
-      </span>
+      </div>
     )
   }
 }

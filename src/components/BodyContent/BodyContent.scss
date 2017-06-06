@@ -16,17 +16,12 @@
 .body-content-tabs > div {
   display: inline-block;
   padding: 10px 20px;
-  border: 2px solid black;
   border-left: none;
-  background-color: $grey;
   cursor: pointer;
-  &:first-child {
-    border-left: 2px solid black;
-  }
 }
 
 .body-content-tabs > div.active {
-  background-color: white;
   font-weight: bold;
   border-bottom: none;
+  text-decoration: underline;
 }

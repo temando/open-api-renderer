@@ -9,8 +9,16 @@ const cm = markdown('commonmark')
 export default class Description extends PureComponent {
   render () {
     const { isInline, description } = this.props
-    const text = {
-      __html: cm.render(description)
+
+    let text
+    if (isInline) {
+      text = {
+        __html: cm.renderInline(description)
+      }
+    } else {
+      text = {
+        __html: cm.render(description)
+      }
     }
 
     return (
