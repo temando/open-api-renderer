@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 import BodySchema from '../BodySchema/BodySchema'
+import BodySchemaSwitcher from '../BodySchemaSwitcher/BodySchemaSwitcher'
 import Example from '../Example/Example'
 
 import './BodyContent.scss'
@@ -11,19 +12,22 @@ export default class BodyContent extends Component {
   constructor (props) {
     super(props)
 
+    this.setBodySchemaIndex = this.setBodySchemaIndex.bind(this)
+
     this.state = {
-      tab: 'schema'
+      tab: 'schema',
+      index: 0
     }
   }
 
   render () {
     const { schema, examples } = this.props
+    const { tab, index } = this.state
 
-    const { tab } = this.state
     return (
       <div className='body-content'>
         {schema && this.renderTabs(schema, examples)}
-        {tab === 'schema' && this.renderSchema(schema)}
+        {tab === 'schema' && this.renderSchema(schema, index)}
         {tab === 'example' && this.renderExamples(examples)}
       </div>
     )
@@ -67,9 +71,20 @@ export default class BodyContent extends Component {
     )
   }
 
-  renderSchema (schema) {
+  renderSchema (schema, index) {
     if (!schema) {
       return null
+    }
+
+    // Peek at first item of `schema` to see if it's an array of possible
+    // schemas (eg. oneOf).
+    if (Array.isArray(schema[0])) {
+      return (
+        <div className='body-content-switcher'>
+          <BodySchemaSwitcher options={schema} onChange={this.setBodySchemaIndex} />
+          <BodySchema properties={schema[index]} styleVariation='odd' />
+        </div>
+      )
     }
 
     return (
@@ -81,6 +96,14 @@ export default class BodyContent extends Component {
     return (
       <Example examples={examples} />
     )
+  }
+
+  setBodySchemaIndex (bodySchemaIndex) {
+    const { index } = this.state
+
+    if (bodySchemaIndex !== index) {
+      this.setState({ index: bodySchemaIndex })
+    }
   }
 }
 
