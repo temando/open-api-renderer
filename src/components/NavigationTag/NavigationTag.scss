@@ -9,4 +9,12 @@
   &.active {
     background-color: $grey-dark;
   }
+
+  &.is-open {
+    display: block;
+  }
+
+  &.is-closed {
+    display: none;
+  }
 }

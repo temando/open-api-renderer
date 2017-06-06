@@ -1,10 +1,6 @@
 import React, { PureComponent } from 'react'
-import ScrollableAnchor from 'react-scrollable-anchor'
 import PropTypes from 'prop-types'
-
 import Method from '../Method/Method'
-
-// import './ServiceContainer.scss';
 
 export default class ServiceContainer extends PureComponent {
   render () {
@@ -12,14 +8,12 @@ export default class ServiceContainer extends PureComponent {
     const { title, methods } = service
 
     return (
-      <ScrollableAnchor id={title}>
-        <div className='service-container'>
-          <h2>{title}</h2>
-          {methods.map(
-            (method) => <Method key={method.link} method={method} />
-          )}
-        </div>
-      </ScrollableAnchor>
+      <div className='service-container' id={title}>
+        <h2>{title}</h2>
+        {methods.map(
+          (method) => <Method key={method.link} method={method} />
+        )}
+      </div>
     )
   }
 }

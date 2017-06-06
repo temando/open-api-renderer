@@ -15,7 +15,7 @@ class BaseHandler extends Component {
     const openApiUrl = this.props.location.query.url
     const parserType = this.props.parserType
     this.props.getDefinition(openApiUrl, parserType)
-    configureAnchors({ offset: 10 })
+    configureAnchors({ offset: -10, scrollDuration: 100 })
   }
 
   render () {
