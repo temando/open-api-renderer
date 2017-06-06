@@ -4,7 +4,7 @@ import './DownloadButton.scss'
 export default class DownloadButton extends PureComponent {
   render () {
     return (
-      <a className='download-button' target='_blank' href={this.props.url}>Download</a>
+      <a className='download-button' rel='noopener noreferrer' target='_blank' href={this.props.url}>Download</a>
     )
   }
 }
