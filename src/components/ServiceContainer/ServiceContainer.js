@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Method from '../Method/Method'
 
+import './ServiceContainer.scss'
+
 export default class ServiceContainer extends PureComponent {
   render () {
     const { service } = this.props
