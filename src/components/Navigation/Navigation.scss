@@ -4,7 +4,7 @@
   width: 20%;
   height: 100%;
   vertical-align: top;
-  background-color: rgb(19, 32, 51);
+  background-color: $navigation-background;
   position: fixed;
   top: 0;
   box-sizing: border-box;
@@ -17,6 +17,6 @@
   }
 
   > div {
-    padding: 10px;
+    margin: 25px 20px;
   }
 }
