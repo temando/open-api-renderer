@@ -2,9 +2,8 @@
 
 .nav-tag {
   display: block;
-  text-transform: uppercase;
-  font-weight: bold;
   color: white;
+  margin-top: 15px;
 
   &.active {
     background-color: rgb(12, 18, 29);

@@ -30,7 +30,7 @@ $cell-padding: 10px;
 
 .property+.property {
   .property-info {
-    border-top: 1px solid rgb(132, 150, 168);
+    border-top: 1px solid $border-color;
   }
 }
 

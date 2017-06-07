@@ -2,8 +2,13 @@
 
 .method {
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid $border-color;
   margin-bottom: 30px;
+  margin-left: 10px;
+
+  .method-body {
+    margin-left: 20px;
+  }
 }
 
 h3 {
