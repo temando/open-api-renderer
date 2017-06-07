@@ -18,10 +18,12 @@ export default class Method extends PureComponent {
       <ScrollableAnchor id={method.link}>
         <div className='method'>
           <h3>{summary}</h3>
-          {description && <Description description={description} />}
-          {parameters && this.renderParameters(parameters)}
-          {request && this.renderRequest(request)}
-          {responses && this.renderResponses(responses)}
+          <div className='method-body'>
+            {description && <Description description={description} />}
+            {parameters && this.renderParameters(parameters)}
+            {request && this.renderRequest(request)}
+            {responses && this.renderResponses(responses)}
+          </div>
         </div>
       </ScrollableAnchor>
     )

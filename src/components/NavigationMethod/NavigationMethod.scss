@@ -2,13 +2,13 @@
 
 .nav-method {
   display: block;
-  margin: 5px 0;
-  padding: 5px;
+  margin: 10px 15px;
+  padding: 10px;
   font-size: smaller;
   color: white;
 
   &.active {
-    background-color: black;
+    background-color: $content-background;
   }
 
   &.open {
@@ -17,6 +17,10 @@
 
   &.closed {
     display: none;
+  }
+
+  &:first-child {
+    margin-top: 20px;
   }
 }
 
