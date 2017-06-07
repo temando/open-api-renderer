@@ -1,6 +1,20 @@
 {
   "name": "open-api-renderer",
   "description": "Open API Renderer",
+  "contributors": [
+    {
+      "name": "Brendan Abbott",
+      "email": "brendan.abbott@temando.com"
+    },
+    {
+      "name": "Florie Guibert",
+      "email": "florie.guibert@temando.com"
+    },
+    {
+      "name": "Khoa Tran",
+      "email": "khoa.tran@temando.com"
+    }
+  ],
   "scripts": {
     "start": "webpack-dev-server",
     "lint": "eslint src",
