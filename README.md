@@ -44,3 +44,11 @@ yarn run build:prod
 ```
 
 Deploy the files at `/dist` to your server.
+
+## Philosophy
+
+While this project is currently focused on visualising Open API V3 specifications, it is architected in such a way that the React components deal with a `UIReadySchema`, which is a generic specification (admittedly heavily based on Open API V3).
+
+The dream is that this renderer could visualise other formats by introducing new parsers which transform documents into the common `UIReadySchema` format. This approach allows us to build something sustainable and scalable, where the community can help contribute new parsers (among other things!) as required.
+
+The project is definitely in its infancy and we are not ready for that yet, but we hope by sharing this vision early, others can help us make it a reality. For contributing information, see [CONTRIBUTING.md](CONTRIBUTING.md).
