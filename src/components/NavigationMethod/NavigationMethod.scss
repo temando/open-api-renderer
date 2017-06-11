@@ -1,8 +1,8 @@
 @import '../../base.scss';
 
 .nav-method {
-  display: block;
-  margin: 10px 15px;
+  display: flex;
+  margin: 10px 5px;
   padding: 10px;
   font-size: smaller;
   color: white;
@@ -12,7 +12,7 @@
   }
 
   &.open {
-    display: block;
+    display: flex;
   }
 
   &.closed {
@@ -22,9 +22,16 @@
   &:first-child {
     margin-top: 20px;
   }
+
+  .method-type {
+    width: 55px;
+  }
+
+  .method-title {
+    padding-left: 5px;
+    width: calc(100% - 55px);
+    text-indent: 0;
+  }
 }
 
-.method-title {
-  padding-left: 5px;
-  text-indent: 0;
-}
+
