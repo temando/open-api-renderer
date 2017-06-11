@@ -2,7 +2,7 @@ import { resolveAllOf } from './allOfResolver'
 import { resolveOneOf } from './oneOfResolver'
 import { hasConstraints, getConstraints } from './constraints/constraintsParser'
 
-const literalTypes = ['string', 'integer', 'number', 'boolean']
+const literalTypes = [ 'string', 'integer', 'number', 'boolean' ]
 
 /**
  * Construct UI ready property object from given inputs.
@@ -50,7 +50,7 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
     }
 
     return outputNode
-  // Otherwise, let's see if there's an object in there..
+    // Otherwise, let's see if there's an object in there..
   } else if (nodeType.length === 1 && nodeType.includes('object')) {
     const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required)
 
@@ -59,7 +59,7 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
     }
 
     return outputNode
-  // Is there an array?
+    // Is there an array?
   } else if (nodeType.length === 1 && nodeType.includes('array')) {
     if (propertyNode.items) {
       const arrayItemType = propertyNode.items.type
@@ -93,7 +93,7 @@ function getPropertiesNode (propertiesNode, requiredProperties = []) {
   const outputNode = []
 
   for (const key in propertiesNode) {
-    const property = propertiesNode[key]
+    const property = propertiesNode[ key ]
     const value = getPropertyNode(key, property, requiredProperties.includes(key))
 
     if (value) {
@@ -117,9 +117,19 @@ export default function getUIReadySchema (jsonSchema) {
 
   if (Array.isArray(resolved.oneOf)) {
     return resolved.oneOf.map(
-      (state) => getPropertiesNode(state.properties, state.required)
+      (state) => {
+        if (state.type === 'array') {
+          return [ getPropertyNode('', state) ]
+        } else {
+          return getPropertiesNode(state.properties, state.required)
+        }
+      }
     )
   }
 
-  return getPropertiesNode(resolved.properties, resolved.required)
+  if (resolved.type === 'array') {
+    return [ getPropertyNode('', resolved) ]
+  } else {
+    return getPropertiesNode(resolved.properties, resolved.required)
+  }
 }

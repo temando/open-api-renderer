@@ -23,9 +23,12 @@ export default class Response extends PureComponent {
     const { response } = this.props
     const { code, description, schema, examples } = response
     const { isOpen } = this.state
-    let status
+
+    let indicatorDirection
     if (isOpen) {
-      status = 'open'
+      indicatorDirection = 'up'
+    } else {
+      indicatorDirection = 'down'
     }
 
     const successCode = this.isSuccessCode(code)
@@ -38,12 +41,12 @@ export default class Response extends PureComponent {
           error: !successCode,
           'is-clickable': hasDetails
         })} onClick={hasDetails ? this.onClick : undefined}>
-          {hasDetails && <Indicator status={status} />}
+          {hasDetails && <Indicator direction={indicatorDirection} />}
           <span className='response-code'>{code}</span>
           {description && <Description isInline description={description} />}
         </div>
         {hasDetails && isOpen &&
-          <BodyContent schema={schema} examples={examples} />
+        <BodyContent schema={schema} examples={examples} />
         }
       </div>
     )

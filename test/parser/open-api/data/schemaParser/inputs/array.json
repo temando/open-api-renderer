@@ -1,0 +1,33 @@
+{
+  "type": "array",
+  "items": {
+    "description": "A JSON API error object",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "detail": {
+        "type": "string"
+      },
+      "meta": {
+        "type": "object"
+      },
+      "code": {
+        "type": "string"
+      },
+      "links": {
+        "type": "object"
+      },
+      "source": {
+        "type": "object"
+      }
+    }
+  }
+}

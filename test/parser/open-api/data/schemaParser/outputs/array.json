@@ -1,0 +1,67 @@
+[
+  {
+    "name": "",
+    "required": false,
+    "type": [
+      "array"
+    ],
+    "properties": [
+      {
+        "name": "id",
+        "type": [
+          "string"
+        ],
+        "required": false
+      },
+      {
+        "name": "status",
+        "type": [
+          "string"
+        ],
+        "required": false
+      },
+      {
+        "name": "title",
+        "type": [
+          "string"
+        ],
+        "required": false
+      },
+      {
+        "name": "detail",
+        "type": [
+          "string"
+        ],
+        "required": false
+      },
+      {
+        "name": "meta",
+        "type": [
+          "object"
+        ],
+        "required": false
+      },
+      {
+        "name": "code",
+        "type": [
+          "string"
+        ],
+        "required": false
+      },
+      {
+        "name": "links",
+        "type": [
+          "object"
+        ],
+        "required": false
+      },
+      {
+        "name": "source",
+        "type": [
+          "object"
+        ],
+        "required": false
+      }
+    ]
+  }
+]
