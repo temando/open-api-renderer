@@ -1,18 +1,16 @@
 import refParser from 'json-schema-ref-parser'
 import getUIReadySchema from '../schemaParser'
-import { sortByAlphabet, httpMethodSort } from '../../sorting'
+import { sortByUIMethod } from '../../sorting'
 
 /**
  * Construct navigation and services ready to be consumed by the UI
  *
  * @param {Array} tags
  * @param {Object} paths
- * @param {Function} pathSortFunction
- * @param {Function} methodSortFunction
  *
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlphabet, methodSortFunction = httpMethodSort) {
+function getUINavigationAndServices (tags, paths) {
   const navigation = []
   const services = []
 
@@ -20,12 +18,12 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
     const tag = tags[i]
     const navigationMethods = []
     const servicesMethods = []
-    const pathIds = Object.keys(paths).sort(pathSortFunction)
+    const pathIds = Object.keys(paths)
 
     for (let j = 0; j < pathIds.length; j++) {
       const pathId = pathIds[j]
       const path = paths[pathId]
-      const methodTypes = Object.keys(path).sort(methodSortFunction)
+      const methodTypes = Object.keys(path)
 
       for (let k = 0; k < methodTypes.length; k++) {
         const methodType = methodTypes[k]
@@ -47,8 +45,8 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
         const uiResponses = getUIResponses(method.responses)
         const servicesMethod = {
           type: methodType,
+          title: method.summary,
           link,
-          summary: method.summary,
           request: uiRequest,
           responses: uiResponses
         }
@@ -68,16 +66,16 @@ function getUINavigationAndServices (tags, paths, pathSortFunction = sortByAlpha
 
     navigation.push({
       title: tag,
-      methods: navigationMethods
+      methods: navigationMethods.sort(sortByUIMethod)
     })
 
     services.push({
       title: tag,
-      methods: servicesMethods
+      methods: servicesMethods.sort(sortByUIMethod)
     })
   }
 
-  return { navigation, services }
+  return {navigation, services}
 }
 
 /**
@@ -162,9 +160,9 @@ function getUIParametersForLocation (parameters, location) {
     // handles this. Property should eventually be split and this won't be
     // necessary...
     if (parameter.type) {
-      uiParameter.type = [ parameter.type ]
+      uiParameter.type = [parameter.type]
     } else if (parameter.schema && parameter.schema.type) {
-      uiParameter.type = [ parameter.schema.type ]
+      uiParameter.type = [parameter.schema.type]
     }
 
     if (parameter.schema && parameter.schema.default !== undefined) {
@@ -307,7 +305,7 @@ export default async function getUIReadyDefinition (openApiV3) {
   const tags = getTags(paths)
 
   // Construction navigation and services
-  const { navigation, services } = getUINavigationAndServices(tags, paths)
+  const {navigation, services} = getUINavigationAndServices(tags, paths)
 
   const definition = {
     title: info.title,

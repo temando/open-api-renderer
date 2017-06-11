@@ -30,14 +30,32 @@ export function sortByAlphabet (str1, str2) {
 /**
  * Sort function
  *
- * @param {String} inMethod1
- * @param {String} inMethod2
+ * @param {String} type1
+ * @param {String} type2
  *
  * @return {number}
  */
-export function httpMethodSort (inMethod1, inMethod2) {
-  const method1 = inMethod1.toUpperCase()
-  const method2 = inMethod2.toUpperCase()
+export function sortByHttpMethod (type1, type2) {
+  const normalisedType1 = type1.toUpperCase()
+  const normalisedType2 = type2.toUpperCase()
 
-  return methodWeights[method1] - methodWeights[method2]
+  return methodWeights[normalisedType1] - methodWeights[normalisedType2]
+}
+
+/**
+ * Sort function
+ *
+ * @param {type, title} method1
+ * @param {type, title} method2
+ *
+ * return {number}
+ */
+export function sortByUIMethod (method1, method2) {
+  // Sort by method type first
+  if (method1.type !== method2.type) {
+    return sortByHttpMethod(method1.type, method2.type)
+  }
+
+  // Then by method title
+  return sortByAlphabet(method1.title, method2.title)
 }

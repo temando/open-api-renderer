@@ -26,7 +26,7 @@
         {
           "type": "get",
           "link": "/accounts/{id}/users/get",
-          "summary": "Get all the users of a given account",
+          "title": "Get all the users of a given account",
           "parameters": {
             "path": [
               {
@@ -368,7 +368,7 @@
         {
           "type": "post",
           "link": "/accounts/{id}/users/post",
-          "summary": "Create a user under the given account",
+          "title": "Create a user under the given account",
           "parameters": {
             "path": [
               {

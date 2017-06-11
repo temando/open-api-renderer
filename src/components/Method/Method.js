@@ -12,12 +12,12 @@ import './Method.scss'
 export default class Method extends PureComponent {
   render () {
     const { method } = this.props
-    const { summary, description, parameters, request, responses } = method
+    const { title, description, parameters, request, responses } = method
 
     return (
       <ScrollableAnchor id={method.link}>
         <div className='method'>
-          <h3>{summary}</h3>
+          <h3>{title}</h3>
           <div className='method-body'>
             {description && <Description description={description} />}
             {parameters && this.renderParameters(parameters)}
@@ -74,5 +74,13 @@ export default class Method extends PureComponent {
 }
 
 Method.propTypes = {
-  method: PropTypes.object
+  method: PropTypes.shape({
+    type: PropTypes.string,
+    title: PropTypes.string,
+    link: PropTypes.string,
+    description: PropTypes.string,
+    parameters: PropTypes.object,
+    request: PropTypes.object,
+    responses: PropTypes.array
+  })
 }
