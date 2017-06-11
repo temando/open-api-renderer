@@ -33,9 +33,11 @@ export default class Property extends PureComponent {
       subtype = this.props.subtype
     }
 
-    let status
+    let indicatorDirection
     if (isOpen) {
-      status = 'open'
+      indicatorDirection = 'up'
+    } else {
+      indicatorDirection = 'down'
     }
 
     return (
@@ -49,14 +51,14 @@ export default class Property extends PureComponent {
           'property--isclickable': isClickable
         })}>
           <span>{name}</span>
-          {isClickable && <Indicator className='property-indicator' status={status} />}
+          {isClickable && <Indicator className='property-indicator' direction={indicatorDirection} />}
         </td>
         <td className='property-info'>
           {title && <span className='property-title'>{title}</span>}
           <span className='property-type'>
             {!subtype ? type.join(', ') : <span className='property-subtype'>{subtype}[]</span>}
             {!subtype && constraints && constraints.format &&
-              <span className='property-format'>&lt;{constraints.format}&gt;</span>}
+            <span className='property-format'>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {enumValues && this.renderEnumValues(enumValues)}
