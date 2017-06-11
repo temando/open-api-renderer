@@ -7,10 +7,8 @@ describe('getUIReadySchema', () => {
 
   tests.forEach(test => {
     it(`returns the correct result for ${test.fileName}`, async () => {
-      if (test.fileName === 'array.json') {
-        const outputDefinition = getUIReadySchema(test.input)
-        expect(outputDefinition).toEqual(test.expected)
-      }
+      const outputDefinition = getUIReadySchema(test.input)
+      expect(outputDefinition).toEqual(test.expected)
     })
   })
 })
