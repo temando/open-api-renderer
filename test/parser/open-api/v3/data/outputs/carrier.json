@@ -21,7 +21,7 @@
         {
           "type": "get",
           "link": "/carriers/get",
-          "summary": "Returns a list of integrations available for registration",
+          "title": "Returns a list of integrations available for registration",
           "request": {
             "description": "Returns a list of integrations available for registration"
           },
