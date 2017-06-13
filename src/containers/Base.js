@@ -4,19 +4,21 @@ import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 
 import Page from '../components/Page/Page'
-import { getDefinition } from '../lib/getDefinition'
+import { getDefinition, parseDefinition } from '../lib/definitions'
 import '../general.scss'
 
 export default class Base extends Component {
   state = {
     parserType: 'open-api-v3',
-    definition: null
+    definition: null,
+    parsedDefinition: null
   }
 
   setDefinition = async ({ openApiUrl, parserType = this.state.parserType }) => {
-    const definition = await getDefinition(openApiUrl, parserType)
+    const definition = await getDefinition(openApiUrl)
+    const parsedDefinition = await parseDefinition(definition, parserType)
 
-    this.setState({ definition, parserType })
+    this.setState({ definition, parsedDefinition, parserType })
   }
 
   async componentDidMount () {

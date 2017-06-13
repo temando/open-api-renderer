@@ -1,8 +1,8 @@
 import request from 'superagent'
 import yaml from 'js-yaml'
-import getParserFunction from '../../parser/parserFactory'
+import getParserFunction from '../parser/parserFactory'
 
-export async function getDefinition (url, parserType) {
+export async function getDefinition (url) {
   if (!url) { throw new Error('Missing url') }
 
   const response = await request
@@ -21,11 +21,13 @@ export async function getDefinition (url, parserType) {
     definition = JSON.parse(response.text)
   }
 
-  if (definition) {
-    const parser = getParserFunction(parserType)
+  return definition
+}
 
-    const parsedDefinition = await parser(definition)
+export async function parseDefinition (definition, parserType) {
+  const parser = getParserFunction(parserType)
 
-    return parsedDefinition
-  }
+  const parsedDefinition = await parser(definition)
+
+  return parsedDefinition
 }
