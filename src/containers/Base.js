@@ -31,7 +31,7 @@ export default class Base extends Component {
   }
 
   render () {
-    const { definition, location } = this.state
+    const { parsedDefinition: definition, location } = this.state
     const specUrl = location.query.url
 
     // TODO: add input to add a url
