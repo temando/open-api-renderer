@@ -1,4 +1,4 @@
-import { VALIDATION_KEYWORDS, hasConstraints, getConstraints } from '../../../../src/parser/open-api/constraints/constraintsParser';
+import { VALIDATION_KEYWORDS, hasConstraints, getConstraints } from '../../../../src/parser/open-api/constraints/constraintsParser'
 
 describe('VALIDATION_KEYWORDS', () => {
   test('keywords match what is supported by Open API', () => {
@@ -17,40 +17,40 @@ describe('VALIDATION_KEYWORDS', () => {
       'multipleOf',
       'pattern',
       'uniqueItems'
-    ]);
-  });
-});
+    ])
+  })
+})
 
 describe('#hasConstraints', () => {
   test('returns true when the property contains constraints', () => {
     const property = {
       type: 'string',
       pattern: '^[a-zA-Z0-9_-]+$'
-    };
+    }
 
-    expect(hasConstraints(property)).toBeTruthy();
-  });
+    expect(hasConstraints(property)).toBeTruthy()
+  })
 
   test('returns false when the property has no constraints', () => {
     const property = {
       type: 'string'
-    };
+    }
 
-    expect(hasConstraints(property)).toBeFalsy();
-  });
-});
+    expect(hasConstraints(property)).toBeFalsy()
+  })
+})
 
 describe('#getConstraints', () => {
   test('can create a constraints object with appropriate constraints', () => {
     const property = {
       type: 'string',
       pattern: '^[a-zA-Z0-9_-]+$'
-    };
+    }
 
     const constraints = {
       pattern: '^[a-zA-Z0-9_-]+$'
-    };
+    }
 
-    expect(getConstraints(property)).toEqual(constraints);
-  });
-});
+    expect(getConstraints(property)).toEqual(constraints)
+  })
+})
