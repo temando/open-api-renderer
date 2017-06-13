@@ -34,6 +34,8 @@ function parseDefinitionFailure (error) {
 }
 
 export default function getDefinition (url, parserType) {
+  if (!url) { throw new Error('getDefinition called without a url') }
+
   return (dispatch) => {
     request
       .get(url)
