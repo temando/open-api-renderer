@@ -6,15 +6,23 @@ import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 
 import Page from '../components/Page/Page'
-import getDefinition from '../store/definition/actions'
+import { getDefinition } from '../lib/getDefinition'
 import '../general.scss'
 
 class Base extends Component {
-  componentDidMount () {
-    // TODO: refactor this to be more flexible, i.e. coming from multiple places
+  state = {
+    parserType: null,
+    parsedDefinition: null
+  }
+
+  async componentDidMount () {
     const openApiUrl = this.props.location.query.url
     const parserType = this.props.parserType
-    this.props.getDefinition(openApiUrl, parserType)
+
+    const parsedDefinition = await getDefinition(openApiUrl, parserType)
+
+    this.setState({ parsedDefinition })
+
     configureAnchors({ offset: -10, scrollDuration: 100 })
   }
 
