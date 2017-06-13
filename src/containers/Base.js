@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { configureAnchors } from 'react-scrollable-anchor'
 import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
@@ -9,21 +7,21 @@ import Page from '../components/Page/Page'
 import { getDefinition } from '../lib/getDefinition'
 import '../general.scss'
 
-class Base extends Component {
+export default class Base extends Component {
   state = {
-    parserType: null,
-    parsedDefinition: null
+    parserType: 'open-api-v3',
+    definition: null
   }
 
   setDefinition = async ({ openApiUrl, parserType = this.state.parserType }) => {
-    const parsedDefinition = await getDefinition(openApiUrl, parserType)
+    const definition = await getDefinition(openApiUrl, parserType)
 
-    this.setState({ parsedDefinition, parserType })
+    this.setState({ definition, parserType })
   }
 
   async componentDidMount () {
     const openApiUrl = this.props.location.query.url
-    const parserType = this.props.parserType
+    const parserType = this.state.parserType
 
     await this.setDefinition({ openApiUrl, parserType })
 
@@ -31,9 +29,10 @@ class Base extends Component {
   }
 
   render () {
-    const { parsedDefinition: definition, location } = this.props
+    const { definition, location } = this.state
     const specUrl = location.query.url
 
+    // TODO: add input to add a url
     return (
       <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
         <div className='main'>
@@ -45,26 +44,10 @@ class Base extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    parsedDefinition: state.data.parsedDefinition,
-    parserType: state.data.parserType
-  }
-}
-
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  getDefinition
-}, dispatch)
-
 Base.contextTypes = {
   router: PropTypes.object
 }
 
 Base.propTypes = {
-  location: PropTypes.object,
-  parserType: PropTypes.string,
-  parsedDefinition: PropTypes.object,
-  getDefinition: PropTypes.func
+  location: PropTypes.object
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Base)
