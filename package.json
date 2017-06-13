@@ -16,7 +16,8 @@
     }
   ],
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --config ./webpack.config.dev.js",
+    "dash": "webpack-dashboard -- yarn start",
     "lint": "eslint src",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -76,10 +77,12 @@
     "json-loader": "^0.5.4",
     "node-sass": "^4.5.1",
     "react-addons-perf": "^15.4.2",
+    "react-dev-utils": "^3.0.0",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.0",
     "webpack": "^2.3.2",
+    "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.2",
     "webpack-merge": "^4.1.0"
   }
