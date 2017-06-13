@@ -1,8 +1,9 @@
 import { getTestsFromFixtures } from '../../fixtureLoader'
 import getUIReadySchema from '../../../src/parser/open-api/schemaParser'
+import { join } from 'path'
 
 describe('getUIReadySchema', () => {
-  const dataDirectory = __dirname + '/data/schemaParser'
+  const dataDirectory = join(__dirname, '/data/schemaParser')
   const tests = getTestsFromFixtures(`${dataDirectory}/inputs`, `${dataDirectory}/outputs`)
 
   tests.forEach(test => {

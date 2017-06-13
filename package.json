@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "start": "webpack-dev-server",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "build:prod": "rm -rf dist/* && NODE_ENV=prod webpack -p"
