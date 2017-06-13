@@ -158,8 +158,8 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 ### [Media Type](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#media-type-object) object
 
 - [x] [schema](#schema-object)
-- [ ] [example](#example-object)
-- [ ] [examples](#examples-object)
+- [x] [example](#example-object)
+- [x] [examples](#example-object)
 - [ ] [encoding](#encoding-object)
 
 ### [Encoding](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#encoding-object) object
