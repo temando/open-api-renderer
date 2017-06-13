@@ -58,7 +58,8 @@ export default class Example extends Component {
             displayObjectSize={false}
             collapsed={this.state.collapseAll}
             enableClipboard={false}
-        />}
+          />
+        }
       </div>
     )
   }
