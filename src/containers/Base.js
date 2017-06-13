@@ -15,13 +15,17 @@ class Base extends Component {
     parsedDefinition: null
   }
 
+  setDefinition = async ({ openApiUrl, parserType = this.state.parserType }) => {
+    const parsedDefinition = await getDefinition(openApiUrl, parserType)
+
+    this.setState({ parsedDefinition, parserType })
+  }
+
   async componentDidMount () {
     const openApiUrl = this.props.location.query.url
     const parserType = this.props.parserType
 
-    const parsedDefinition = await getDefinition(openApiUrl, parserType)
-
-    this.setState({ parsedDefinition })
+    await this.setDefinition({ openApiUrl, parserType })
 
     configureAnchors({ offset: -10, scrollDuration: 100 })
   }
