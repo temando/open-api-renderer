@@ -9,7 +9,7 @@ import Page from '../components/Page/Page'
 import getDefinition from '../store/definition/actions'
 import '../general.scss'
 
-class BaseHandler extends Component {
+class Base extends Component {
   componentDidMount () {
     // TODO: refactor this to be more flexible, i.e. coming from multiple places
     const openApiUrl = this.props.location.query.url
@@ -44,15 +44,15 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   getDefinition
 }, dispatch)
 
-BaseHandler.contextTypes = {
+Base.contextTypes = {
   router: PropTypes.object
 }
 
-BaseHandler.propTypes = {
+Base.propTypes = {
   location: PropTypes.object,
   parserType: PropTypes.string,
   parsedDefinition: PropTypes.object,
   getDefinition: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BaseHandler)
+export default connect(mapStateToProps, mapDispatchToProps)(Base)

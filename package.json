@@ -80,13 +80,8 @@
     "react-dev-utils": "^3.0.0",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.3",
-<<<<<<< HEAD
-    "style-loader": "^0.16.0",
-    "webpack": "^2.3.2",
-=======
     "style-loader": "^0.18.2",
     "webpack": "^2.6.1",
->>>>>>> 63d0a1fd425c66b08de8fb78fae0476094369dad
     "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.2",
     "webpack-merge": "^4.1.0"
