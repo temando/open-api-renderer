@@ -1,8 +1,9 @@
 import { getTestsFromFixtures } from '../../fixtureLoader'
 import { resolveOneOf } from '../../../src/parser/open-api/oneOfResolver'
+import { join } from 'path'
 
 describe('resolveOneOf', () => {
-  const dataDirectory = __dirname + '/data/oneOfResolver'
+  const dataDirectory = join(__dirname, '/data/oneOfResolver')
   const tests = getTestsFromFixtures(`${dataDirectory}/inputs`, `${dataDirectory}/outputs`)
 
   tests.forEach(test => {
