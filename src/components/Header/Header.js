@@ -16,7 +16,7 @@ export default class Header extends PureComponent {
         <div>
           <DownloadButton url={specUrl}>Download this Open API definition.</DownloadButton>
         </div>
-        <dl>
+        <dl className='inline-pairs'>
           <dt>Version</dt>
           <dd>{version}</dd>
         </dl>

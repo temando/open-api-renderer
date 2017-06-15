@@ -1,0 +1,1857 @@
+{
+  "title": "Swagger Petstore",
+  "version": "1.0.0",
+  "description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
+  "navigation": [
+    {
+      "title": "pet",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Find pet by ID",
+          "link": "/pet/{petId}/get"
+        },
+        {
+          "type": "get",
+          "title": "Finds Pets by status",
+          "link": "/pet/findByStatus/get"
+        },
+        {
+          "type": "get",
+          "title": "Finds Pets by tags",
+          "link": "/pet/findByTags/get"
+        },
+        {
+          "type": "post",
+          "title": "Add a new pet to the store",
+          "link": "/pet/post"
+        },
+        {
+          "type": "post",
+          "title": "Updates a pet in the store with form data",
+          "link": "/pet/{petId}/post"
+        },
+        {
+          "type": "post",
+          "title": "uploads an image",
+          "link": "/pet/{petId}/uploadImage/post"
+        },
+        {
+          "type": "put",
+          "title": "Update an existing pet",
+          "link": "/pet/put"
+        },
+        {
+          "type": "delete",
+          "title": "Deletes a pet",
+          "link": "/pet/{petId}/delete"
+        }
+      ]
+    },
+    {
+      "title": "store",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Find purchase order by ID",
+          "link": "/store/order/{orderId}/get"
+        },
+        {
+          "type": "get",
+          "title": "Returns pet inventories by status",
+          "link": "/store/inventory/get"
+        },
+        {
+          "type": "post",
+          "title": "Place an order for a pet",
+          "link": "/store/order/post"
+        },
+        {
+          "type": "delete",
+          "title": "Delete purchase order by ID",
+          "link": "/store/order/{orderId}/delete"
+        }
+      ]
+    },
+    {
+      "title": "user",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Get user by user name",
+          "link": "/user/{username}/get"
+        },
+        {
+          "type": "get",
+          "title": "Logs out current logged in user session",
+          "link": "/user/logout/get"
+        },
+        {
+          "type": "get",
+          "title": "Logs user into the system",
+          "link": "/user/login/get"
+        },
+        {
+          "type": "post",
+          "title": "Create user",
+          "link": "/user/post"
+        },
+        {
+          "type": "post",
+          "title": "Creates list of users with given input array",
+          "link": "/user/createWithArray/post"
+        },
+        {
+          "type": "post",
+          "title": "Creates list of users with given input array",
+          "link": "/user/createWithList/post"
+        },
+        {
+          "type": "put",
+          "title": "Updated user",
+          "link": "/user/{username}/put"
+        },
+        {
+          "type": "delete",
+          "title": "Delete user",
+          "link": "/user/{username}/delete"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "pet",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Find pet by ID",
+          "link": "/pet/{petId}/get",
+          "request": {
+            "description": "Returns a single pet"
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int64"
+                  }
+                },
+                {
+                  "name": "category",
+                  "type": [
+                    "object"
+                  ],
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "id",
+                      "type": [
+                        "integer"
+                      ],
+                      "required": false,
+                      "constraints": {
+                        "format": "int64"
+                      }
+                    },
+                    {
+                      "name": "name",
+                      "type": [
+                        "string"
+                      ],
+                      "required": false
+                    }
+                  ]
+                },
+                {
+                  "name": "name",
+                  "type": [
+                    "string"
+                  ],
+                  "required": true
+                },
+                {
+                  "name": "photoUrls",
+                  "type": [
+                    "array"
+                  ],
+                  "required": true,
+                  "subtype": "string"
+                },
+                {
+                  "name": "tags",
+                  "type": [
+                    "array"
+                  ],
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "id",
+                      "type": [
+                        "integer"
+                      ],
+                      "required": false,
+                      "constraints": {
+                        "format": "int64"
+                      }
+                    },
+                    {
+                      "name": "name",
+                      "type": [
+                        "string"
+                      ],
+                      "required": false
+                    }
+                  ]
+                },
+                {
+                  "name": "status",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false,
+                  "description": "pet status in the store",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Invalid ID supplied"
+            },
+            {
+              "code": "404",
+              "description": "Pet not found"
+            }
+          ],
+          "description": "Returns a single pet",
+          "security": {
+            "api_key": {
+              "type": "apiKey",
+              "name": "api_key",
+              "in": "header",
+              "example": "api_key: credentials"
+            }
+          },
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "ID of pet to return",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "get",
+          "title": "Finds Pets by status",
+          "link": "/pet/findByStatus/get",
+          "request": {
+            "description": "Multiple status values can be provided with comma separated strings"
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "",
+                  "type": [
+                    "array"
+                  ],
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "id",
+                      "type": [
+                        "integer"
+                      ],
+                      "required": false,
+                      "constraints": {
+                        "format": "int64"
+                      }
+                    },
+                    {
+                      "name": "category",
+                      "type": [
+                        "object"
+                      ],
+                      "required": false,
+                      "properties": [
+                        {
+                          "name": "id",
+                          "type": [
+                            "integer"
+                          ],
+                          "required": false,
+                          "constraints": {
+                            "format": "int64"
+                          }
+                        },
+                        {
+                          "name": "name",
+                          "type": [
+                            "string"
+                          ],
+                          "required": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "name",
+                      "type": [
+                        "string"
+                      ],
+                      "required": true
+                    },
+                    {
+                      "name": "photoUrls",
+                      "type": [
+                        "array"
+                      ],
+                      "required": true,
+                      "subtype": "string"
+                    },
+                    {
+                      "name": "tags",
+                      "type": [
+                        "array"
+                      ],
+                      "required": false,
+                      "properties": [
+                        {
+                          "name": "id",
+                          "type": [
+                            "integer"
+                          ],
+                          "required": false,
+                          "constraints": {
+                            "format": "int64"
+                          }
+                        },
+                        {
+                          "name": "name",
+                          "type": [
+                            "string"
+                          ],
+                          "required": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "status",
+                      "type": [
+                        "string"
+                      ],
+                      "required": false,
+                      "description": "pet status in the store",
+                      "enum": [
+                        "available",
+                        "pending",
+                        "sold"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Invalid status value"
+            }
+          ],
+          "description": "Multiple status values can be provided with comma separated strings",
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {
+            "query": [
+              {
+                "name": "status",
+                "description": "Status values that need to be considered for filter",
+                "required": true,
+                "type": [
+                  "array"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "get",
+          "title": "Finds Pets by tags",
+          "link": "/pet/findByTags/get",
+          "request": {
+            "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing."
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "",
+                  "type": [
+                    "array"
+                  ],
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "id",
+                      "type": [
+                        "integer"
+                      ],
+                      "required": false,
+                      "constraints": {
+                        "format": "int64"
+                      }
+                    },
+                    {
+                      "name": "category",
+                      "type": [
+                        "object"
+                      ],
+                      "required": false,
+                      "properties": [
+                        {
+                          "name": "id",
+                          "type": [
+                            "integer"
+                          ],
+                          "required": false,
+                          "constraints": {
+                            "format": "int64"
+                          }
+                        },
+                        {
+                          "name": "name",
+                          "type": [
+                            "string"
+                          ],
+                          "required": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "name",
+                      "type": [
+                        "string"
+                      ],
+                      "required": true
+                    },
+                    {
+                      "name": "photoUrls",
+                      "type": [
+                        "array"
+                      ],
+                      "required": true,
+                      "subtype": "string"
+                    },
+                    {
+                      "name": "tags",
+                      "type": [
+                        "array"
+                      ],
+                      "required": false,
+                      "properties": [
+                        {
+                          "name": "id",
+                          "type": [
+                            "integer"
+                          ],
+                          "required": false,
+                          "constraints": {
+                            "format": "int64"
+                          }
+                        },
+                        {
+                          "name": "name",
+                          "type": [
+                            "string"
+                          ],
+                          "required": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "status",
+                      "type": [
+                        "string"
+                      ],
+                      "required": false,
+                      "description": "pet status in the store",
+                      "enum": [
+                        "available",
+                        "pending",
+                        "sold"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Invalid tag value"
+            }
+          ],
+          "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {
+            "query": [
+              {
+                "name": "tags",
+                "description": "Tags to filter by",
+                "required": true,
+                "type": [
+                  "array"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "title": "Add a new pet to the store",
+          "link": "/pet/post",
+          "request": {
+            "schema": [
+              {
+                "name": "id",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "category",
+                "type": [
+                  "object"
+                ],
+                "required": false,
+                "properties": [
+                  {
+                    "name": "id",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "constraints": {
+                      "format": "int64"
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  }
+                ]
+              },
+              {
+                "name": "name",
+                "type": [
+                  "string"
+                ],
+                "required": true
+              },
+              {
+                "name": "photoUrls",
+                "type": [
+                  "array"
+                ],
+                "required": true,
+                "subtype": "string"
+              },
+              {
+                "name": "tags",
+                "type": [
+                  "array"
+                ],
+                "required": false,
+                "properties": [
+                  {
+                    "name": "id",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "constraints": {
+                      "format": "int64"
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  }
+                ]
+              },
+              {
+                "name": "status",
+                "type": [
+                  "string"
+                ],
+                "required": false,
+                "description": "pet status in the store",
+                "enum": [
+                  "available",
+                  "pending",
+                  "sold"
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "405",
+              "description": "Invalid input"
+            }
+          ],
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {}
+        },
+        {
+          "type": "post",
+          "title": "Updates a pet in the store with form data",
+          "link": "/pet/{petId}/post",
+          "request": {
+            "schema": [
+              {
+                "name": "name",
+                "type": [
+                  "string"
+                ],
+                "required": false,
+                "description": "Updated name of the pet"
+              },
+              {
+                "name": "status",
+                "type": [
+                  "string"
+                ],
+                "required": false,
+                "description": "Updated status of the pet"
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "405",
+              "description": "Invalid input"
+            }
+          ],
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "ID of pet that needs to be updated",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "title": "uploads an image",
+          "link": "/pet/{petId}/uploadImage/post",
+          "request": {},
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "code",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int32"
+                  }
+                },
+                {
+                  "name": "type",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "message",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "ID of pet to update",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "put",
+          "title": "Update an existing pet",
+          "link": "/pet/put",
+          "request": {
+            "schema": [
+              {
+                "name": "id",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "category",
+                "type": [
+                  "object"
+                ],
+                "required": false,
+                "properties": [
+                  {
+                    "name": "id",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "constraints": {
+                      "format": "int64"
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  }
+                ]
+              },
+              {
+                "name": "name",
+                "type": [
+                  "string"
+                ],
+                "required": true
+              },
+              {
+                "name": "photoUrls",
+                "type": [
+                  "array"
+                ],
+                "required": true,
+                "subtype": "string"
+              },
+              {
+                "name": "tags",
+                "type": [
+                  "array"
+                ],
+                "required": false,
+                "properties": [
+                  {
+                    "name": "id",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "constraints": {
+                      "format": "int64"
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  }
+                ]
+              },
+              {
+                "name": "status",
+                "type": [
+                  "string"
+                ],
+                "required": false,
+                "description": "pet status in the store",
+                "enum": [
+                  "available",
+                  "pending",
+                  "sold"
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "400",
+              "description": "Invalid ID supplied"
+            },
+            {
+              "code": "404",
+              "description": "Pet not found"
+            },
+            {
+              "code": "405",
+              "description": "Validation exception"
+            }
+          ],
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {}
+        },
+        {
+          "type": "delete",
+          "title": "Deletes a pet",
+          "link": "/pet/{petId}/delete",
+          "request": {},
+          "responses": [
+            {
+              "code": "400",
+              "description": "Invalid ID supplied"
+            },
+            {
+              "code": "404",
+              "description": "Pet not found"
+            }
+          ],
+          "security": {
+            "petstore_auth": {
+              "name": "petstore_auth",
+              "type": "oauth2",
+              "flows": {
+                "implicit": {
+                  "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                  "scopes": {
+                    "write:pets": "modify pets in your account",
+                    "read:pets": "read your pets"
+                  }
+                }
+              },
+              "applicableScopes": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          },
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "Pet id to delete",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "store",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Find purchase order by ID",
+          "link": "/store/order/{orderId}/get",
+          "request": {
+            "description": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions"
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int64"
+                  }
+                },
+                {
+                  "name": "petId",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int64"
+                  }
+                },
+                {
+                  "name": "quantity",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int32"
+                  }
+                },
+                {
+                  "name": "shipDate",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "date-time"
+                  }
+                },
+                {
+                  "name": "status",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false,
+                  "description": "Order Status",
+                  "enum": [
+                    "placed",
+                    "approved",
+                    "delivered"
+                  ]
+                },
+                {
+                  "name": "complete",
+                  "type": [
+                    "boolean"
+                  ],
+                  "required": false
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Invalid ID supplied"
+            },
+            {
+              "code": "404",
+              "description": "Order not found"
+            }
+          ],
+          "description": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+          "parameters": {
+            "path": [
+              {
+                "name": "orderId",
+                "description": "ID of pet that needs to be fetched",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "get",
+          "title": "Returns pet inventories by status",
+          "link": "/store/inventory/get",
+          "request": {
+            "description": "Returns a map of status codes to quantities"
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation"
+            }
+          ],
+          "description": "Returns a map of status codes to quantities",
+          "security": {
+            "api_key": {
+              "type": "apiKey",
+              "name": "api_key",
+              "in": "header",
+              "example": "api_key: credentials"
+            }
+          },
+          "parameters": {}
+        },
+        {
+          "type": "post",
+          "title": "Place an order for a pet",
+          "link": "/store/order/post",
+          "request": {
+            "schema": [
+              {
+                "name": "id",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "petId",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "quantity",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int32"
+                }
+              },
+              {
+                "name": "shipDate",
+                "type": [
+                  "string"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "date-time"
+                }
+              },
+              {
+                "name": "status",
+                "type": [
+                  "string"
+                ],
+                "required": false,
+                "description": "Order Status",
+                "enum": [
+                  "placed",
+                  "approved",
+                  "delivered"
+                ]
+              },
+              {
+                "name": "complete",
+                "type": [
+                  "boolean"
+                ],
+                "required": false
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int64"
+                  }
+                },
+                {
+                  "name": "petId",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int64"
+                  }
+                },
+                {
+                  "name": "quantity",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int32"
+                  }
+                },
+                {
+                  "name": "shipDate",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "date-time"
+                  }
+                },
+                {
+                  "name": "status",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false,
+                  "description": "Order Status",
+                  "enum": [
+                    "placed",
+                    "approved",
+                    "delivered"
+                  ]
+                },
+                {
+                  "name": "complete",
+                  "type": [
+                    "boolean"
+                  ],
+                  "required": false
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Invalid Order"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "type": "delete",
+          "title": "Delete purchase order by ID",
+          "link": "/store/order/{orderId}/delete",
+          "request": {
+            "description": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors"
+          },
+          "responses": [
+            {
+              "code": "400",
+              "description": "Invalid ID supplied"
+            },
+            {
+              "code": "404",
+              "description": "Order not found"
+            }
+          ],
+          "description": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+          "parameters": {
+            "path": [
+              {
+                "name": "orderId",
+                "description": "ID of the order that needs to be deleted",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "user",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Get user by user name",
+          "link": "/user/{username}/get",
+          "request": {},
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "id",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int64"
+                  }
+                },
+                {
+                  "name": "username",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "firstName",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "lastName",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "email",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "password",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "phone",
+                  "type": [
+                    "string"
+                  ],
+                  "required": false
+                },
+                {
+                  "name": "userStatus",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "description": "User Status",
+                  "constraints": {
+                    "format": "int32"
+                  }
+                }
+              ]
+            },
+            {
+              "code": "400",
+              "description": "Invalid username supplied"
+            },
+            {
+              "code": "404",
+              "description": "User not found"
+            }
+          ],
+          "parameters": {
+            "path": [
+              {
+                "name": "username",
+                "description": "The name that needs to be fetched. Use user1 for testing. ",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "get",
+          "title": "Logs out current logged in user session",
+          "link": "/user/logout/get",
+          "request": {},
+          "responses": [
+            {
+              "code": "default",
+              "description": "successful operation"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "type": "get",
+          "title": "Logs user into the system",
+          "link": "/user/login/get",
+          "request": {},
+          "responses": [
+            {
+              "code": "200",
+              "description": "successful operation"
+            },
+            {
+              "code": "400",
+              "description": "Invalid username/password supplied"
+            }
+          ],
+          "parameters": {
+            "query": [
+              {
+                "name": "username",
+                "description": "The user name for login",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              },
+              {
+                "name": "password",
+                "description": "The password for login in clear text",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "title": "Create user",
+          "link": "/user/post",
+          "request": {
+            "description": "This can only be done by the logged in user.",
+            "schema": [
+              {
+                "name": "id",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "username",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "firstName",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "lastName",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "email",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "password",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "phone",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "userStatus",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "description": "User Status",
+                "constraints": {
+                  "format": "int32"
+                }
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "default",
+              "description": "successful operation"
+            }
+          ],
+          "description": "This can only be done by the logged in user.",
+          "parameters": {}
+        },
+        {
+          "type": "post",
+          "title": "Creates list of users with given input array",
+          "link": "/user/createWithArray/post",
+          "request": {
+            "schema": [
+              {
+                "name": "",
+                "type": [
+                  "array"
+                ],
+                "required": false,
+                "properties": [
+                  {
+                    "name": "id",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "constraints": {
+                      "format": "int64"
+                    }
+                  },
+                  {
+                    "name": "username",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "firstName",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "lastName",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "email",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "password",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "phone",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "userStatus",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "description": "User Status",
+                    "constraints": {
+                      "format": "int32"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "default",
+              "description": "successful operation"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "type": "post",
+          "title": "Creates list of users with given input array",
+          "link": "/user/createWithList/post",
+          "request": {
+            "schema": [
+              {
+                "name": "",
+                "type": [
+                  "array"
+                ],
+                "required": false,
+                "properties": [
+                  {
+                    "name": "id",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "constraints": {
+                      "format": "int64"
+                    }
+                  },
+                  {
+                    "name": "username",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "firstName",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "lastName",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "email",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "password",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "phone",
+                    "type": [
+                      "string"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "name": "userStatus",
+                    "type": [
+                      "integer"
+                    ],
+                    "required": false,
+                    "description": "User Status",
+                    "constraints": {
+                      "format": "int32"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "default",
+              "description": "successful operation"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "type": "put",
+          "title": "Updated user",
+          "link": "/user/{username}/put",
+          "request": {
+            "description": "This can only be done by the logged in user.",
+            "schema": [
+              {
+                "name": "id",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "constraints": {
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "username",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "firstName",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "lastName",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "email",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "password",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "phone",
+                "type": [
+                  "string"
+                ],
+                "required": false
+              },
+              {
+                "name": "userStatus",
+                "type": [
+                  "integer"
+                ],
+                "required": false,
+                "description": "User Status",
+                "constraints": {
+                  "format": "int32"
+                }
+              }
+            ]
+          },
+          "responses": [
+            {
+              "code": "400",
+              "description": "Invalid user supplied"
+            },
+            {
+              "code": "404",
+              "description": "User not found"
+            }
+          ],
+          "description": "This can only be done by the logged in user.",
+          "parameters": {
+            "path": [
+              {
+                "name": "username",
+                "description": "name that need to be updated",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "delete",
+          "title": "Delete user",
+          "link": "/user/{username}/delete",
+          "request": {
+            "description": "This can only be done by the logged in user."
+          },
+          "responses": [
+            {
+              "code": "400",
+              "description": "Invalid username supplied"
+            },
+            {
+              "code": "404",
+              "description": "User not found"
+            }
+          ],
+          "description": "This can only be done by the logged in user.",
+          "parameters": {
+            "path": [
+              {
+                "name": "username",
+                "description": "The name that needs to be deleted",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "security": {
+    "petstore_auth": {
+      "name": "petstore_auth",
+      "type": "oauth2",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+          "scopes": {
+            "write:pets": "modify pets in your account",
+            "read:pets": "read your pets"
+          }
+        }
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header",
+      "example": "api_key: credentials"
+    }
+  }
+}
