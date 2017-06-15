@@ -1,4 +1,5 @@
 import refParser from 'json-schema-ref-parser'
+import { getSecurity, getUISecurity } from './securityParser'
 import getUIReadySchema from '../schemaParser'
 import { sortByUIMethod } from '../../sorting'
 
@@ -7,10 +8,11 @@ import { sortByUIMethod } from '../../sorting'
  *
  * @param {Array} tags
  * @param {Object} paths
- *
+ * @param {Object} globalSecurity
+ * @param {Object} securityDefinitions
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices (tags, paths) {
+function getUINavigationAndServices (tags, paths, globalSecurity = [], securityDefinitions) {
   const navigation = []
   const services = []
 
@@ -53,6 +55,13 @@ function getUINavigationAndServices (tags, paths) {
 
         if (method.description) {
           servicesMethod.description = method.description
+        }
+
+        // Security can be declared per method, or globally for the entire API.
+        if (method.security) {
+          servicesMethod.security = getUISecurity(method.security, securityDefinitions)
+        } else if (globalSecurity.length) {
+          servicesMethod.security = getUISecurity(globalSecurity, securityDefinitions)
         }
 
         const uiParameters = getUIParameters(method.parameters)
@@ -113,7 +122,6 @@ function addMediaTypeInfoToUIObject (uiObj, mediaType) {
  * Construct parameters object ready to be consumed by the UI
  *
  * @param {Array} parameters
- *
  * @return {Object}
  */
 function getUIParameters (parameters) {
@@ -141,7 +149,6 @@ function getUIParameters (parameters) {
  *
  * @param {Array} parameters
  * @param {String} location. Possible values: query, path, header, cookie
- *
  * @return {Array}
  */
 function getUIParametersForLocation (parameters, location) {
@@ -180,7 +187,6 @@ function getUIParametersForLocation (parameters, location) {
  *
  * @param {String} description
  * @param {Object} requestBody
- *
  * @return {Object}
  */
 function getUIRequest (description, requestBody = null) {
@@ -205,7 +211,6 @@ function getUIRequest (description, requestBody = null) {
  * Construct responses object ready to be consumed by the UI
  *
  * @param {Object} responses
- *
  * @return {Array}
  */
 function getUIResponses (responses) {
@@ -235,8 +240,7 @@ function getUIResponses (responses) {
  * Extracts the content for UI from the first available media type
  *
  * @param {Object} content Open API v3 Content Object
- *
- * @return
+ * @return {Object|null}
  */
 function getMediaType (content) {
   if (!content) {
@@ -260,7 +264,6 @@ function getMediaType (content) {
  * Extract unique tags from paths object
  *
  * @param {Object} paths
- *
  * @return {Array} of strings
  */
 function getTags (paths) {
@@ -287,7 +290,6 @@ function getTags (paths) {
  * Converts openApiV3 object to new object ready to be consumed by the UI
  *
  * @param {Object} openApiV3
- *
  * @return {Object}
  */
 export default async function getUIReadyDefinition (openApiV3) {
@@ -304,15 +306,19 @@ export default async function getUIReadyDefinition (openApiV3) {
   // Get tags
   const tags = getTags(paths)
 
+  // Get security schemes
+  const security = getSecurity(derefOpenApiV3)
+
   // Construction navigation and services
-  const {navigation, services} = getUINavigationAndServices(tags, paths)
+  const {navigation, services} = getUINavigationAndServices(tags, paths, derefOpenApiV3.security || [], security)
 
   const definition = {
     title: info.title,
     version: info.version,
     description: info.description,
-    navigation: navigation,
-    services: services
+    navigation,
+    services,
+    security
   }
 
   return definition

@@ -9,7 +9,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: $body-font;
+  line-height: 1.4;
   color: white;
+}
+
+ul, ol {
+  margin: .5rem 0;
+  padding: 0
+
+  li {
+    margin-left: 1.5rem;
+  }
+}
+
+h3, h4, h5, h6 {
+  margin: 0;
 }
 
 a {
@@ -21,4 +35,24 @@ a {
     color: lighten($link-color, 20%);
     text-decoration: underline;
   }
+}
+
+.inline-pairs {
+  display: inline-flex;
+  margin: 1em 0;
+  padding: 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.inline-pairs dt,
+.inline-pairs dd {
+  margin: 0;
+  padding: .5rem;
+  border-top: 1px solid $border-color;
+}
+
+.inline-pairs dt {
+  min-width: 5rem;
+  padding-right: 1.5rem;
+  font-weight: bold;
 }
