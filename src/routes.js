@@ -1,9 +1,7 @@
 import React from 'react'
-import { Route } from 'react-router'
-import BaseHandler from './handlers/BaseHandler'
+import { Route } from 'react-router-dom'
+import Base from './containers/Base'
 
-const routes = (
-  <Route path='/' component={BaseHandler} />
+export const routes = (
+  <Route exact path='/' component={Base} />
 )
-
-export default routes
