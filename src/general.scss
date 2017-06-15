@@ -13,5 +13,12 @@ body {
 }
 
 a {
-  color: rgb(126, 211, 244);
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    transition: color .25s;
+    color: lighten($link-color, 20%);
+    text-decoration: underline;
+  }
 }
