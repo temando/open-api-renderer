@@ -6,31 +6,30 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const isProduction = process.env.NODE_ENV === 'prod'
 
 const extractSass = new ExtractTextPlugin({
-  filename: 'bundle.css',
+  filename: 'styles.css',
   disable: !isProduction
 })
 
 module.exports = {
   context: `${__dirname}/src`,
-  entry: {
-    // TODO: remove babel polyfill, use transforms
-    bundle: ['babel-polyfill', 'core-js/es7', './index.js'],
 
-    // Everything in the `dependencies` should be considered a `vendor` library
-    vendor: [
-      'core-js/es7'
-    ].concat(Object.keys(pkgJson.dependencies))
-  },
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
+
   plugins: [
     extractSass,
 
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
+      name: 'vendor',
+      minChunks: (m) => m.context && m.context.indexOf('node_modules') !== -1
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      minChunks: Infinity
     }),
 
     /**
@@ -88,7 +87,9 @@ module.exports = {
       // ASSETS
       {
         test: /\.(ttf|eot|svg|png|gif|jpg|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
+        loaders: [
+          { loader: 'url-loader', options: { limit: 8192 } }
+        ]
       }
     ]
   }

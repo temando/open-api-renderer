@@ -20,8 +20,11 @@
     "dash": "webpack-dashboard -- yarn start",
     "lint": "eslint src test",
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "build:prod": "rm -rf dist/* && NODE_ENV=prod webpack -p"
+    "build": "npm run build:app && npm run build:library",
+    "build:demo": "rimraf dist/demo/* && NODE_ENV=prod webpack -p --config webpack.config.demo.js",
+    "build:app": "rimraf dist/app/* && NODE_ENV=prod webpack -p --config webpack.config.app.js",
+    "build:library": "rimraf dist/library/* && NODE_ENV=prod webpack -p --config webpack.config.library.js",
+    "test:coverage": "jest --coverage"
   },
   "license": "MIT",
   "repository": {
@@ -77,8 +80,10 @@
     "react-addons-perf": "^15.4.2",
     "react-dev-utils": "^3.0.0",
     "react-test-renderer": "^15.5.4",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
     "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.2",
