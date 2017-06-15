@@ -13,7 +13,9 @@ export default class Header extends PureComponent {
       <header id='header'>
         <h1>{title}</h1>
         <Description description={description} />
-        <div>Download OpenAPI specification: <DownloadButton url={specUrl} /></div>
+        <div>
+          <DownloadButton url={specUrl}>Download this Open API definition.</DownloadButton>
+        </div>
         <dl>
           <dt>Version</dt>
           <dd>{version}</dd>
