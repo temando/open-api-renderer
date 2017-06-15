@@ -4,7 +4,7 @@
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Open API Renderer is a project intended to visualise [Open API](https://www.openapis.org) v3 [definition files](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md).
+Open API Renderer visualises [Open API](https://www.openapis.org) v3 [definitions](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md). The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the specification.
 
 It is built on [React](https://facebook.github.io/react/).
 

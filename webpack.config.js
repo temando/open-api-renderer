@@ -13,7 +13,8 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   context: `${__dirname}/src`,
   entry: {
-    bundle: ['core-js/es7', './index.js'],
+    // TODO: remove babel polyfill, use transforms
+    bundle: ['babel-polyfill', 'core-js/es7', './index.js'],
 
     // Everything in the `dependencies` should be considered a `vendor` library
     vendor: [
