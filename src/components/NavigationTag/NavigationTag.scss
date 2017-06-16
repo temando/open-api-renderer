@@ -2,8 +2,7 @@
 
 .nav-tag {
   display: block;
-  color: white;
-  margin-top: 15px;
+  color: #FFF;
 
   &.active {
     background-color: rgb(12, 18, 29);
@@ -16,4 +15,11 @@
   &.is-closed {
     display: none;
   }
+}
+
+.nav-tagHandle {
+  display: inline-block;
+  padding: .4rem;
+  margin-left: .5rem;
+  background-color: $content-background;
 }
