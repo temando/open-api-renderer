@@ -1,4 +1,3 @@
-import clone from 'lodash/clone'
 import cloneDeep from 'lodash/cloneDeep'
 import uniq from 'lodash/uniq'
 
@@ -66,7 +65,7 @@ function resolveAllOfRecursive (obj) {
  * @return {Object} definitions object that has allOf resolved
  */
 export function resolveAllOf (obj) {
-  const clonedObj = clone(obj)
+  const clonedObj = cloneDeep(obj)
   resolveAllOfRecursive(clonedObj)
 
   return clonedObj

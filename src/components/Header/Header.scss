@@ -1,5 +1,14 @@
 @import '../../base.scss';
 
-header {
+#header {
   padding: 0 20px;
+
+  h1 {
+    margin-bottom: .5rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin-right: .5rem;
+  }
 }
