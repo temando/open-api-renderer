@@ -1,9 +1,15 @@
-@import '../../base.scss';
-
 .nav-tag {
   display: block;
-  color: white;
-  margin-top: 15px;
+  padding: 1rem 1rem .5rem;
+  color: #FFF;
+
+  &:hover {
+    text-decoration: none;
+
+    span {
+      text-decoration: underline;
+    }
+  }
 
   &.active {
     background-color: rgb(12, 18, 29);

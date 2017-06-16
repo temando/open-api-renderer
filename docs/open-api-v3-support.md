@@ -30,7 +30,7 @@ This document outlines this project's support for visualising the [Open API V3][
 - [x] [paths](#paths-object)
 - [ ] [components](#components-object)
 - [x] [security](#security-requirement-object)
-- [ ] [tags](#tag-object)
+- [x] [tags](#tag-object)
 - [ ] [externalDocs](#external-documentation-object)
 
 ### [Info](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#info-object) object
@@ -207,8 +207,8 @@ See [parameter](#parameter-object) object.
 
 ### [Tag](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#tag-object) object
 
-- [ ] name
-- [ ] description
+- [x] name
+- [x] description
 - [ ] [externalDocs](#external-documentation-object)
 
 ### [Reference](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#reference-object) object

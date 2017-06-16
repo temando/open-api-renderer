@@ -89,17 +89,17 @@ function getUINavigationAndServices (tags, paths, globalSecurity = [], securityD
 
 /**
  * Add media type info, e.g. schema and examples to UI object
- * This method modifies the uiObject input
+ * This method mutates the `uiObject` parameter.
  *
- * @param {Object} uiObj
+ * @param {Object} uiObject
  * @param {Object} mediaType Open API mediaType object
  */
-function addMediaTypeInfoToUIObject (uiObj, mediaType) {
+function addMediaTypeInfoToUIObject (uiObject, mediaType) {
   if (mediaType.schema) {
     const schema = getUIReadySchema(mediaType.schema)
 
     if (schema.length) {
-      uiObj.schema = schema
+      uiObject.schema = schema
     }
   }
 
@@ -114,7 +114,7 @@ function addMediaTypeInfoToUIObject (uiObj, mediaType) {
   }
 
   if (examples.length) {
-    uiObj.examples = examples
+    uiObject.examples = examples
   }
 }
 
@@ -287,6 +287,34 @@ function getTags (paths) {
 }
 
 /**
+ * If tag definitions exist, extract this information and add it to the
+ * navigation array. This mutates the `navigation` parameter.
+ *
+ * @param {Array} navigation
+ * @param {Array} tagDefinitions
+ */
+function addTagDetailsToNavigation (navigation, tagDefinitions) {
+  const getTag = (tag) => tagDefinitions.find((def) => def.name === tag)
+
+  for (const navGroup of navigation) {
+    const tagDefinition = getTag(navGroup.title)
+
+    if (tagDefinition) {
+      navGroup.handle = navGroup.title
+      navGroup.title = tagDefinition.name
+
+      if (tagDefinition.description) {
+        navGroup.description = tagDefinition.description
+      }
+
+      if (tagDefinition.externalDocs) {
+        navGroup.externalDocs = tagDefinition.externalDocs
+      }
+    }
+  }
+}
+
+/**
  * Converts openApiV3 object to new object ready to be consumed by the UI
  *
  * @param {Object} openApiV3
@@ -303,7 +331,7 @@ export default async function getUIReadyDefinition (openApiV3) {
   const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
 
-  // Get tags
+  // Get tags from the paths
   const tags = getTags(paths)
 
   // Get security definitions
@@ -311,6 +339,11 @@ export default async function getUIReadyDefinition (openApiV3) {
 
   // Construction navigation and services
   const {navigation, services} = getUINavigationAndServices(tags, paths, derefOpenApiV3.security || [], security)
+
+  // If we have tag information, let's add it to the navigation
+  if (derefOpenApiV3.tags) {
+    addTagDetailsToNavigation(navigation, derefOpenApiV3.tags)
+  }
 
   const definition = {
     title: info.title,

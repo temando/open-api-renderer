@@ -1,11 +1,14 @@
 @import '../../base.scss';
 
+.nav-tag-methods {
+  margin-bottom: .5gqgrem
+}
+
 .nav-method {
   display: flex;
-  margin: 10px 5px;
-  padding: 10px;
+  padding: .7rem 1.5rem;
   font-size: smaller;
-  color: white;
+  color: #FFF;
 
   &.active {
     background-color: $content-background;
@@ -19,18 +22,12 @@
     display: none;
   }
 
-  &:first-child {
-    margin-top: 20px;
-  }
-
   .method-type {
     width: 55px;
   }
 
   .method-title {
-    padding-left: 5px;
     width: calc(100% - 55px);
-    text-indent: 0;
   }
 }
 

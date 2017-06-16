@@ -9,14 +9,14 @@
   top: 0;
   box-sizing: border-box;
   overflow-y: auto;
-  a {
-    text-decoration: none;
-  }
+
   .indicator {
     float: right;
+    display: block;
+    margin-top: 5px;
   }
 
-  > div {
-    margin: 25px 20px;
+  > div + div {
+    border-top: 1px solid darken(#FFF, 80%);
   }
 }
