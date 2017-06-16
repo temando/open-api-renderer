@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
+import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
 
 import './Page.scss'
@@ -16,7 +17,7 @@ export default class Page extends Component {
       return null
     }
 
-    const { navigation, services } = definition
+    const { navigation, services, security } = definition
 
     return (
       <div className='page'>
@@ -28,20 +29,35 @@ export default class Page extends Component {
             version={definition.version}
             specUrl={specUrl}
           />
+          {security && this.renderSecurity(security)}
           <ContentContainer>
             {services && services.map(
-              (service) =>
-                <ServiceContainer key={service.title} service={service} />
+              (service) => <ServiceContainer key={service.title} service={service} />
             )}
           </ContentContainer>
         </div>
       </div>
     )
   }
+
+  renderSecurity (security) {
+    return (
+      <ContentContainer>
+        <h2>Authentication</h2>
+        {Object.keys(security).map(
+          (id) => <SecurityContainer key={id} id={id} security={security[id]} />
+        )}
+      </ContentContainer>
+    )
+  }
 }
 
 Page.propTypes = {
-  definition: PropTypes.object,
+  definition: PropTypes.shape({
+    navigation: PropTypes.arrayOf(PropTypes.object),
+    services: PropTypes.arrayOf(PropTypes.object),
+    security: PropTypes.object
+  }),
   location: PropTypes.object,
   specUrl: PropTypes.string
 }
