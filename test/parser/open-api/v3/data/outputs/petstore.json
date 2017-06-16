@@ -5,6 +5,12 @@
   "navigation": [
     {
       "title": "pet",
+      "handle": "pet",
+      "description": "Everything about your Pets",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      },
       "methods": [
         {
           "type": "get",
@@ -50,6 +56,8 @@
     },
     {
       "title": "store",
+      "handle": "store",
+      "description": "Access to Petstore orders",
       "methods": [
         {
           "type": "get",
@@ -75,6 +83,12 @@
     },
     {
       "title": "user",
+      "handle": "user",
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      },
       "methods": [
         {
           "type": "get",

@@ -40,6 +40,8 @@ export default class Navigation extends Component {
             <NavigationTag
               key={tag.title}
               title={tag.title}
+              handle={tag.handle}
+              description={tag.description}
               methods={tag.methods}
               shouldBeExpanded={shouldBeExpanded}
               onClick={this.onClick}
