@@ -7,12 +7,9 @@ exports[`<NavigationTag /> renders with description 1`] = `
     href="#Pets"
     onClick={[Function]}
   >
-    Pets
-    <code
-      className="nav-tagHandle"
-    >
-      pets
-    </code>
+    <span>
+      Pets
+    </span>
     <div
       className="indicator indicator--right"
     >
@@ -45,7 +42,9 @@ exports[`<NavigationTag /> renders with methods 1`] = `
     href="#pets"
     onClick={[Function]}
   >
-    pets
+    <span>
+      pets
+    </span>
     <div
       className="indicator indicator--bottom"
     >
@@ -100,7 +99,9 @@ exports[`<NavigationTag /> renders with minimum props 1`] = `
     href="#pets"
     onClick={[Function]}
   >
-    pets
+    <span>
+      pets
+    </span>
     <div
       className="indicator indicator--right"
     >
