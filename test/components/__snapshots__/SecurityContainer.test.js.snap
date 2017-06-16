@@ -5,17 +5,17 @@ exports[`<SecurityContainer /> renders apiKey type 1`] = `
   className="security-container"
   id="api_key"
 >
+  <h3>
+    api_key
+     
+    <code
+      className="scheme"
+    >
+      type=
+      apiKey
+    </code>
+  </h3>
   <div>
-    <h3>
-      api_key
-       
-      <code
-        className="scheme"
-      >
-        type=
-        apiKey
-      </code>
-    </h3>
     <p>
       To use this authentication scheme, pass 
       <code>
@@ -33,17 +33,17 @@ exports[`<SecurityContainer /> renders http type 1`] = `
   className="security-container"
   id="JWT"
 >
+  <h3>
+    JWT
+     
+    <code
+      className="scheme"
+    >
+      type=
+      http
+    </code>
+  </h3>
   <div>
-    <h3>
-      JWT
-       
-      <code
-        className="scheme"
-      >
-        type=
-        http
-      </code>
-    </h3>
     <p>
       To use this authentication scheme, pass 
       <code>
@@ -61,17 +61,17 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
   className="security-container"
   id="oauth2"
 >
-  <div>
-    <h3>
+  <h3>
+    oauth2
+     
+    <code
+      className="scheme"
+    >
+      type=
       oauth2
-       
-      <code
-        className="scheme"
-      >
-        type=
-        oauth2
-      </code>
-    </h3>
+    </code>
+  </h3>
+  <div>
     <div
       className="flow-type"
     >
@@ -173,17 +173,17 @@ exports[`<SecurityContainer /> renders openIdConnect type 1`] = `
   className="security-container"
   id="openIdConnect"
 >
-  <div>
-    <h3>
+  <h3>
+    openIdConnect
+     
+    <code
+      className="scheme"
+    >
+      type=
       openIdConnect
-       
-      <code
-        className="scheme"
-      >
-        type=
-        openIdConnect
-      </code>
-    </h3>
+    </code>
+  </h3>
+  <div>
     <dl
       className="inline-pairs"
     >

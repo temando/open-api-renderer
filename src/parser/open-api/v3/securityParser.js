@@ -7,7 +7,7 @@
  * @param {Object} definition
  * @return {Object}
  */
-export function getSecurity (definition) {
+export function getSecurityDefinitions (definition) {
   let securityDefinitions = {}
 
   if (definition.components && definition.components.securitySchemes) {
