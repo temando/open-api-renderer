@@ -8,10 +8,13 @@ import './SecurityContainer.scss'
 export default class SecurityContainer extends PureComponent {
   render () {
     const { id, security } = this.props
+    const { name, type, description } = security
     const isSimple = ['apiKey', 'http'].includes(security.type)
 
     return (
       <section className='security-container' id={id}>
+        <h3>{name} <code className='scheme'>type={type}</code></h3>
+        {description && <Description description={description} />}
         {isSimple && this.renderSimple(security)}
         {security.type === 'oauth2' && this.renderOAuth2(security)}
         {security.type === 'openIdConnect' && this.renderOpenIdConnect(security)}
@@ -20,7 +23,7 @@ export default class SecurityContainer extends PureComponent {
   }
 
   renderSimple (security) {
-    const { name, type, description, example, bearerFormat } = security
+    const { example, bearerFormat } = security
     let usage
 
     if (security.in === 'query') {
@@ -31,20 +34,16 @@ export default class SecurityContainer extends PureComponent {
 
     return (
       <div>
-        <h3>{name} <code className='scheme'>type={type}</code></h3>
-        {description && <Description description={description} />}
         {usage}
       </div>
     )
   }
 
   renderOAuth2 (security) {
-    const { name, type, description, flows } = security
+    const { flows } = security
 
     return (
       <div>
-        <h3>{name} <code className='scheme'>type={type}</code></h3>
-        {description && <Description description={description} />}
         {Object.keys(flows).map((flowKey) => {
           const flow = flows[flowKey]
 
@@ -87,12 +86,10 @@ export default class SecurityContainer extends PureComponent {
   }
 
   renderOpenIdConnect (security) {
-    const { name, type, description, openIdConnectUrl } = security
+    const { openIdConnectUrl } = security
 
     return (
       <div>
-        <h3>{name} <code className='scheme'>type={type}</code></h3>
-        {description && <Description description={description} />}
         <dl className='inline-pairs'>
           <dt>OpenID Connect URL</dt>
           <dd>{openIdConnectUrl}</dd>

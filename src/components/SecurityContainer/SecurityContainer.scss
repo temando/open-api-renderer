@@ -16,11 +16,7 @@
     padding: 1rem 0;
 
     & + .flow-type {
-      border-bottom: 1px dotted $border-color
+      border-top: 1px dotted $border-color
     }
-  }
-
-  h3 {
-    margin-bottom: .5rem;
   }
 }

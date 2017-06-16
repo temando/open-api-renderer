@@ -1,7 +1,7 @@
-import { getSecurity, getUISecurity } from '../../../../src/parser/open-api/v3/securityParser'
+import { getSecurityDefinitions, getUISecurity } from '../../../../src/parser/open-api/v3/securityParser'
 import cloneDeep from 'lodash/cloneDeep'
 
-describe('getSecurity', () => {
+describe('#getSecurityDefinitions', () => {
   // Abbreviated Open API definition.
   const definition = { components: { securitySchemes: {} } }
 
@@ -13,7 +13,7 @@ describe('getSecurity', () => {
       in: 'header'
     }
 
-    const security = getSecurity(def)
+    const security = getSecurityDefinitions(def)
     expect(security).toHaveProperty('api_key.type', 'apiKey')
     expect(security).toHaveProperty('api_key.name', 'api_key')
     expect(security).toHaveProperty('api_key.example', 'api_key: credentials')
@@ -27,7 +27,7 @@ describe('getSecurity', () => {
       in: 'query'
     }
 
-    const security = getSecurity(def)
+    const security = getSecurityDefinitions(def)
     expect(security).toHaveProperty('api_key.type', 'apiKey')
     expect(security).toHaveProperty('api_key.name', 'api_key')
     expect(security).toHaveProperty('api_key.example', '?api_key=credentials')
@@ -40,7 +40,7 @@ describe('getSecurity', () => {
       scheme: 'basic'
     }
 
-    const security = getSecurity(def)
+    const security = getSecurityDefinitions(def)
     expect(security).toHaveProperty('basicAuth.type', 'http')
     expect(security).toHaveProperty('basicAuth.name', 'basicAuth')
     expect(security).toHaveProperty('basicAuth.example', 'Authorization: basic credentials')
@@ -54,7 +54,7 @@ describe('getSecurity', () => {
       bearerFormat: 'JWT'
     }
 
-    const security = getSecurity(def)
+    const security = getSecurityDefinitions(def)
     expect(security).toHaveProperty('JWT.type', 'http')
     expect(security).toHaveProperty('JWT.name', 'JWT')
     expect(security).toHaveProperty('JWT.example', 'Authorization: bearer credentials')
@@ -84,7 +84,7 @@ describe('getSecurity', () => {
       }
     }
 
-    const security = getSecurity(def)
+    const security = getSecurityDefinitions(def)
     expect(security).toHaveProperty('oauth2.type', 'oauth2')
     expect(security).toHaveProperty('oauth2.name', 'oauth2')
   })
@@ -96,13 +96,13 @@ describe('getSecurity', () => {
       openIdConnect: 'https://example.com/openIdConnect'
     }
 
-    const security = getSecurity(def)
+    const security = getSecurityDefinitions(def)
     expect(security).toHaveProperty('openIdConnect.type', 'openIdConnect')
     expect(security).toHaveProperty('openIdConnect.name', 'openIdConnect')
   })
 })
 
-describe('getUISecurity', () => {
+describe('#getUISecurity', () => {
   const securityDefs = {
     oauth2: {
       name: 'oauth2',

@@ -1,5 +1,5 @@
 import refParser from 'json-schema-ref-parser'
-import { getSecurity, getUISecurity } from './securityParser'
+import { getSecurityDefinitions, getUISecurity } from './securityParser'
 import getUIReadySchema from '../schemaParser'
 import { sortByUIMethod } from '../../sorting'
 
@@ -8,7 +8,7 @@ import { sortByUIMethod } from '../../sorting'
  *
  * @param {Array} tags
  * @param {Object} paths
- * @param {Object} globalSecurity
+ * @param {Array} globalSecurity
  * @param {Object} securityDefinitions
  * @return {{navigation: [], services: []}}
  */
@@ -306,8 +306,8 @@ export default async function getUIReadyDefinition (openApiV3) {
   // Get tags
   const tags = getTags(paths)
 
-  // Get security schemes
-  const security = getSecurity(derefOpenApiV3)
+  // Get security definitions
+  const security = getSecurityDefinitions(derefOpenApiV3)
 
   // Construction navigation and services
   const {navigation, services} = getUINavigationAndServices(tags, paths, derefOpenApiV3.security || [], security)
