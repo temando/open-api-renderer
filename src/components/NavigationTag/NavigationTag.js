@@ -42,7 +42,7 @@ export default class NavigationTag extends Component {
   }
 
   render () {
-    const { title, handle, description, shouldBeExpanded, methods, location } = this.props
+    const { title, description, shouldBeExpanded, methods, location } = this.props
 
     // If tag has any method that matches location hash, then it is considered active
     let isActiveTag = false
@@ -69,8 +69,7 @@ export default class NavigationTag extends Component {
           href={`#${title}`}
           onClick={this.handleClick}
         >
-          {title}
-          {handle && <code className='nav-tagHandle'>{handle}</code>}
+          <span>{title}</span>
           <Indicator direction={indicatorDirection} />
           {description && <Description description={description} />}
         </a>
@@ -88,7 +87,6 @@ export default class NavigationTag extends Component {
 
 NavigationTag.propTypes = {
   title: PropTypes.string.isRequired,
-  handle: PropTypes.string,
   description: PropTypes.string,
   methods: PropTypes.array,
   shouldBeExpanded: PropTypes.bool,
