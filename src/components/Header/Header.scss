@@ -2,28 +2,4 @@
 
 header {
   padding: 0 20px;
-
-  dl {
-    float: left;
-    margin: 1em 0;
-    padding: 0;
-    border-bottom: 1px solid $border-color;
-  }
-
-  dt {
-    clear: left;
-    float: left;
-    width: 100px;
-    margin: 0;
-    padding: 5px;
-    border-top: 1px solid $border-color;
-    font-weight: bold;
-  }
-
-  dd {
-    float: left;
-    margin: 0;
-    padding: 5px;
-    border-top: 1px solid $border-color;
-  }
 }
