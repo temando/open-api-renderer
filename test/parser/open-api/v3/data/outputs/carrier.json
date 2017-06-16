@@ -5,6 +5,8 @@
   "navigation": [
     {
       "title": "Carriers",
+      "handle": "Carriers",
+      "description": "Access to Carriers",
       "methods": [
         {
           "type": "get",

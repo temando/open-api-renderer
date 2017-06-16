@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import Indicator from '../Indicator/Indicator'
 import NavigationMethod from '../NavigationMethod/NavigationMethod'
+import Description from '../Description/Description'
 
 import './NavigationTag.scss'
 
@@ -22,6 +24,10 @@ export default class NavigationTag extends Component {
   componentWillMount () {
     const { title, methods, location, onClick } = this.props
 
+    if (!methods) {
+      return null
+    }
+
     const method = methods.find(
       (method) => (`#${method.link}` === location.hash)
     )
@@ -36,7 +42,7 @@ export default class NavigationTag extends Component {
   }
 
   render () {
-    const { title, shouldBeExpanded, methods, location } = this.props
+    const { title, description, shouldBeExpanded, methods, location } = this.props
 
     // If tag has any method that matches location hash, then it is considered active
     let isActiveTag = false
@@ -63,8 +69,9 @@ export default class NavigationTag extends Component {
           href={`#${title}`}
           onClick={this.handleClick}
         >
-          {title}
+          <span>{title}</span>
           <Indicator direction={indicatorDirection} />
+          {description && <Description description={description} />}
         </a>
         <div className='nav-tag-methods'>
           {methods && methods.map((method) => {
@@ -80,8 +87,9 @@ export default class NavigationTag extends Component {
 
 NavigationTag.propTypes = {
   title: PropTypes.string.isRequired,
+  description: PropTypes.string,
   methods: PropTypes.array,
   shouldBeExpanded: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  location: PropTypes.object
+  location: PropTypes.object.isRequired
 }
