@@ -9,14 +9,17 @@ import { getDefinition, parseDefinition } from '../lib/definitions'
 import '../general.scss'
 
 export default class Base extends Component {
-  state = {
-    parserType: 'open-api-v3',
-    definitionUrl: null,
-    definition: null,
-    parsedDefinition: null
+  constructor (props) {
+    super(props)
+    this.state = {
+      parserType: 'open-api-v3',
+      definitionUrl: null,
+      definition: null,
+      parsedDefinition: null
+    }
   }
 
-  setDefinition = async ({ definitionUrl, parserType = this.state.parserType }) => {
+  async setDefinition ({ definitionUrl, parserType = this.state.parserType }) {
     const definition = await getDefinition(definitionUrl)
     const parsedDefinition = await parseDefinition(definition, parserType)
 

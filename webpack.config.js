@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkgJson = require('./package.json')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const isProduction = process.env.NODE_ENV === 'prod'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const extractSass = new ExtractTextPlugin({
   filename: 'bundle.css',
@@ -13,13 +13,10 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   context: `${__dirname}/src`,
   entry: {
-    // TODO: remove babel polyfill, use transforms
-    bundle: ['babel-polyfill', 'core-js/es7', './index.js'],
+    bundle: ['babel-regenerator-runtime', './index.js'],
 
     // Everything in the `dependencies` should be considered a `vendor` library
-    vendor: [
-      'core-js/es7'
-    ].concat(Object.keys(pkgJson.dependencies))
+    vendor: Object.keys(pkgJson.dependencies)
   },
   output: {
     path: `${__dirname}/dist`,
@@ -42,10 +39,9 @@ module.exports = {
       template: './index.html'
     }),
 
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      DEBUG: false
     })
   ],
   resolve: {
@@ -61,8 +57,13 @@ module.exports = {
       // JS
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/]
+        exclude: [/node_modules/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
+        }
       },
 
       // JSON
