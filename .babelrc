@@ -7,9 +7,7 @@
           "last 2 versions"
         ]
       },
-      "modules": false,
-      "useBuiltIns": true,
-      "debug": true
+      "useBuiltIns": true
     }],
     "stage-3"
   ]
