@@ -37,21 +37,21 @@ This document outlines this project's support for visualising the [Open API V3][
 
 - [x] title
 - [x] description
-- [ ] termsOfService
-- [ ] [contact](#contact-object)
-- [ ] [license](#license-object)
+- [x] termsOfService
+- [x] [contact](#contact-object)
+- [x] [license](#license-object)
 - [x] version
 
 ### [Contact](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#contact-object)
 
-- [ ] name
-- [ ] url
-- [ ] email
+- [x] name
+- [x] url
+- [x] email
 
 ### [License](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#license-object) object
 
-- [ ] name
-- [ ] url
+- [x] name
+- [x] url
 
 ### [Server](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#server-object) object
 

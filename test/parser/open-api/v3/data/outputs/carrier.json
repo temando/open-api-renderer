@@ -2,6 +2,7 @@
   "title": "Temando Carriers API",
   "version": "0.0.1",
   "description": "Manipulate Carriers and the Merchants' connections to them.",
+  "info": {},
   "navigation": [
     {
       "title": "Carriers",

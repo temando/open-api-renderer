@@ -27,6 +27,7 @@ export default class Page extends Component {
             title={definition.title}
             description={definition.description}
             version={definition.version}
+            info={definition.info}
             specUrl={specUrl}
           />
           {security && this.renderSecurity(security)}
