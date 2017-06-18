@@ -345,10 +345,17 @@ export default async function getUIReadyDefinition (openApiV3) {
     addTagDetailsToNavigation(navigation, derefOpenApiV3.tags)
   }
 
+  // Additional information (if applicable)
+  const infoObj = { ...info }
+  delete infoObj.title
+  delete infoObj.version
+  delete infoObj.description
+
   const definition = {
     title: info.title,
     version: info.version,
     description: info.description,
+    info: infoObj,
     navigation,
     services,
     security

@@ -1,0 +1,319 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders contact information (email) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      Contact
+    </dt>
+    <dd>
+      <a
+        className="ext-link"
+        href="mailto:hello@example.org"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        hello@example.org
+      </a>
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders contact information (name) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      Contact
+    </dt>
+    <dd>
+      ACME Company
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders contact information (name, url) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      Contact
+    </dt>
+    <dd>
+      <a
+        className="ext-link"
+        href="http://example.org"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        ACME Company
+      </a>
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders contact information (name, url, email) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      Contact
+    </dt>
+    <dd>
+      <a
+        className="ext-link"
+        href="http://example.org"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        ACME Company
+      </a>
+      (hello@example.org)
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders contact information (url) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      Contact
+    </dt>
+    <dd>
+      <a
+        className="ext-link"
+        href="http://example.org"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        http://example.org
+      </a>
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders header with minimum props 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders license information (name) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      License
+    </dt>
+    <dd>
+      Apache 2.0
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders license information (name, url) 1`] = `
+<header
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className="inline-pairs"
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+    <dt>
+      License
+    </dt>
+    <dd>
+      <a
+        className="ext-link"
+        href="http://www.apache.org/licenses/LICENSE-2.0.html"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Apache 2.0
+      </a>
+    </dd>
+  </dl>
+  <nav>
+    <a
+      className="ext-link"
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
