@@ -21,7 +21,7 @@
     "lint": "eslint src test",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "build:prod": "rm -rf dist/* && NODE_ENV=prod webpack -p"
+    "build:prod": "rm -rf dist/* && NODE_ENV=production webpack -p"
   },
   "license": "MIT",
   "repository": {
@@ -53,10 +53,10 @@
     "babel-eslint": "^7.2.1",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-1": "^6.22.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-regenerator-runtime": "^6.5.0",
     "balloon-css": "^0.4.0",
     "css-loader": "^0.28.4",
     "eslint": "^4.0.0",
