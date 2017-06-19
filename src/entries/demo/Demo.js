@@ -1,6 +1,6 @@
 import React from 'react'
 import { parse as parseQuery } from 'qs'
-import OpenApiRenderer from '../OpenApiRenderer'
+import Lincoln from '../Lincoln'
 import './Demo.scss'
 
 const definitionUrl = parseQuery(location.search.split('?')[1]).url
@@ -30,7 +30,7 @@ export class Demo extends React.PureComponent {
           />
           <button onClick={this.useUrlInput}>READ</button>
         </div>
-        <OpenApiRenderer {...{ definitionUrl }} />
+        <Lincoln {...{ definitionUrl }} />
       </div>
     )
   }

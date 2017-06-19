@@ -3,7 +3,7 @@ const pkgJson = require('./package.json')
 
 module.exports = Object.assign({}, baseConfig, {
   entry: {
-    OpenApiRenderer: ['./entries/OpenApiRenderer.js']
+    Lincoln: ['./entries/Lincoln.js']
   },
 
   output: {

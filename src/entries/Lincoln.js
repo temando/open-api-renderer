@@ -4,7 +4,7 @@ import 'babel-polyfill'
 
 import Base from '../containers/Base'
 
-export default class OpenApiRenderer extends React.Component {
+export default class LincolnRenderer extends React.Component {
   render () {
     return <Router>
       <Route path='*' component={passProps(Base, this.props)} />
