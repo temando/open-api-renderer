@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SecurityContainer /> renders apiKey type 1`] = `
+<section
+  className="security-container"
+  id="api_key"
+>
+  <h3>
+    api_key
+     
+    <code
+      className="scheme"
+    >
+      type=
+      apiKey
+    </code>
+  </h3>
+  <div>
+    <p>
+      To use this authentication scheme, pass 
+      <code>
+        api_key: credentials
+      </code>
+      
+       as a request header.
+    </p>
+  </div>
+</section>
+`;
+
+exports[`<SecurityContainer /> renders http type 1`] = `
+<section
+  className="security-container"
+  id="JWT"
+>
+  <h3>
+    JWT
+     
+    <code
+      className="scheme"
+    >
+      type=
+      http
+    </code>
+  </h3>
+  <div>
+    <p>
+      To use this authentication scheme, pass 
+      <code>
+        Authorization: bearer credentials
+      </code>
+      , formatted as JWT
+       as a request header.
+    </p>
+  </div>
+</section>
+`;
+
+exports[`<SecurityContainer /> renders oauth2 type 1`] = `
+<section
+  className="security-container"
+  id="oauth2"
+>
+  <h3>
+    oauth2
+     
+    <code
+      className="scheme"
+    >
+      type=
+      oauth2
+    </code>
+  </h3>
+  <div>
+    <div
+      className="flow-type"
+    >
+      <h4>
+        <code>
+          implicit
+        </code>
+         flow
+      </h4>
+      <dl
+        className="inline-pairs"
+      >
+        <dt>
+          Authorization URL
+        </dt>
+        <dd>
+          https://example.com/api/oauth/dialog
+        </dd>
+      </dl>
+      <div
+        className="scopes"
+      >
+        <h5>
+          Available scopes
+        </h5>
+        <ul>
+          <li>
+            <strong>
+              write:pets
+            </strong>
+             
+            modify pets in your account
+          </li>
+          <li>
+            <strong>
+              read:pets
+            </strong>
+             
+            read your pets
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      className="flow-type"
+    >
+      <h4>
+        <code>
+          authorizationCode
+        </code>
+         flow
+      </h4>
+      <dl
+        className="inline-pairs"
+      >
+        <dt>
+          Authorization URL
+        </dt>
+        <dd>
+          https://example.com/api/oauth/dialog
+        </dd>
+        <dt>
+          Token URL
+        </dt>
+        <dd>
+          https://example.com/api/oauth/token
+        </dd>
+      </dl>
+      <div
+        className="scopes"
+      >
+        <h5>
+          Available scopes
+        </h5>
+        <ul>
+          <li>
+            <strong>
+              write:pets
+            </strong>
+             
+            modify pets in your account
+          </li>
+          <li>
+            <strong>
+              read:pets
+            </strong>
+             
+            read your pets
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`<SecurityContainer /> renders openIdConnect type 1`] = `
+<section
+  className="security-container"
+  id="openIdConnect"
+>
+  <h3>
+    openIdConnect
+     
+    <code
+      className="scheme"
+    >
+      type=
+      openIdConnect
+    </code>
+  </h3>
+  <div>
+    <dl
+      className="inline-pairs"
+    >
+      <dt>
+        OpenID Connect URL
+      </dt>
+      <dd />
+    </dl>
+  </div>
+</section>
+`;

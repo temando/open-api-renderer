@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationTag /> renders with description 1`] = `
+<div>
+  <a
+    className="nav-tag"
+    href="#Pets"
+    onClick={[Function]}
+  >
+    <span>
+      Pets
+    </span>
+    <div
+      className="indicator indicator--right"
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+    <div
+      className="description"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Access to Pets</p>
+        ",
+        }
+      }
+    />
+  </a>
+  <div
+    className="nav-tag-methods"
+  />
+</div>
+`;
+
+exports[`<NavigationTag /> renders with methods 1`] = `
+<div>
+  <a
+    className="nav-tag"
+    href="#pets"
+    onClick={[Function]}
+  >
+    <span>
+      pets
+    </span>
+    <div
+      className="indicator indicator--bottom"
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+  </a>
+  <div
+    className="nav-tag-methods"
+  >
+    <a
+      className="nav-method active open"
+      href="#pets"
+    >
+      <span
+        className="method-type"
+      >
+        GET
+      </span>
+      <span
+        className="method-title"
+      >
+        Get pets
+      </span>
+    </a>
+    <a
+      className="nav-method open"
+      href="#pets/:id"
+    >
+      <span
+        className="method-type"
+      >
+        GET
+      </span>
+      <span
+        className="method-title"
+      >
+        Get pets
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`<NavigationTag /> renders with minimum props 1`] = `
+<div>
+  <a
+    className="nav-tag"
+    href="#pets"
+    onClick={[Function]}
+  >
+    <span>
+      pets
+    </span>
+    <div
+      className="indicator indicator--right"
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+  </a>
+  <div
+    className="nav-tag-methods"
+  />
+</div>
+`;

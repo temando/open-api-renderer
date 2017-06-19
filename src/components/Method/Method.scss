@@ -1,16 +1,7 @@
 @import '../../base.scss';
 
 .method {
-  padding: 10px;
   border: 1px solid $border-color;
-  margin-bottom: 30px;
-  margin-left: 10px;
-
-  .method-body {
-    margin-left: 20px;
-  }
-}
-
-h3 {
-  margin: 0;
+  margin: 0 1rem 2rem 0;
+  padding: 1rem;
 }

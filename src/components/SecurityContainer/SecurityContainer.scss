@@ -1,0 +1,22 @@
+@import '../../base.scss';
+
+.security-container {
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid $border-color;
+
+  .scheme {
+    display: inline-block;
+    padding: .4rem;
+    margin-left: .5rem;
+    background-color: $navigation-background;
+  }
+
+  .flow-type {
+    padding: 1rem 0;
+
+    & + .flow-type {
+      border-top: 1px dotted $border-color
+    }
+  }
+}

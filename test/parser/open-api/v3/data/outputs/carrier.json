@@ -2,9 +2,12 @@
   "title": "Temando Carriers API",
   "version": "0.0.1",
   "description": "Manipulate Carriers and the Merchants' connections to them.",
+  "info": {},
   "navigation": [
     {
       "title": "Carriers",
+      "handle": "Carriers",
+      "description": "Access to Carriers",
       "methods": [
         {
           "type": "get",
@@ -14,6 +17,7 @@
       ]
     }
   ],
+  "security": {},
   "services": [
     {
       "title": "Carriers",
