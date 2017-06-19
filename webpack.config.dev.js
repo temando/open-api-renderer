@@ -22,5 +22,5 @@ module.exports = webpackMerge(appConfig, {
     stats: { chunkModules: false }
   },
 
-  output: { path: `${__dirname}/src` }
+  output: { path: `${__dirname}/src/entries` }
 })
