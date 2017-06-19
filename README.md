@@ -1,6 +1,6 @@
 # Lincoln
 
-<img src='assets/lincoln-logo-white.svg' alt='Lincoln' height="96" width="96" />
+<img src='assets/lincoln-logo-white.png' alt='Lincoln' height="96" width="96" />
 
 [![Travis CI](https://img.shields.io/travis/temando/open-api-renderer.svg)](https://travis-ci.org/temando/open-api-renderer)
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
