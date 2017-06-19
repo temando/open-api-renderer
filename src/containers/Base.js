@@ -18,9 +18,7 @@ export default class Base extends React.PureComponent {
     error: null
   }
 
-  constructor (props) {
-    super(props)
-
+  componentDidMount () {
     this.intitialize()
   }
 
@@ -92,12 +90,7 @@ const Failure = ({ error }) =>
   <Overlay>
     <h3>Failure to load definition</h3>
     <br />
-    <p style={{ // FIXME: better error display solution later
-      textAlign: 'left',
-      maxWidth: '50%',
-      margin: '0 auto',
-      fontFamily: 'monospace'
-    }}>{error.message}</p>
+    <p>{error.message}</p>
   </Overlay>
 
 Failure.propTypes = {
