@@ -41,8 +41,6 @@ export default class Base extends React.PureComponent {
     const { parserType } = this.state
     const { definitionUrl } = this.props
 
-    console.log({definitionUrl})
-
     if (!definitionUrl) { return true }
     if (definitionUrl === this.state.definitionUrl) { return false }
 

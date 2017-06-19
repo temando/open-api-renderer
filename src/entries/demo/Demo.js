@@ -19,8 +19,6 @@ export class Demo extends React.PureComponent {
   render () {
     const { definitionUrl } = this.state
 
-    console.log({def: definitionUrl})
-
     return (
       <div className='oapi-demo'>
         <div className='oapi-header'>
