@@ -6,9 +6,7 @@
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Meet Lincoln, a user interface for [OpenAPI](https://www.openapis.org) v3 [definitions](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md). The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the specification.
-
-It is built on [React](https://facebook.github.io/react/).
+Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) v3 [definitions](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md). The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the specification.
 
 This project is inspired by [ReDoc](https://github.com/Rebilly/ReDoc), which currently handles Swagger v2 specs.
 
@@ -27,7 +25,7 @@ yarn
 
 ## Usage
 
-To view the renderer on your local machine:
+To preview Lincoln on your local machine:
 
 ```sh
 yarn run start
@@ -37,15 +35,29 @@ Lincoln is now available on <http://localhost:8200>. The port can be changed by 
 
 You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json>
 
-## Deployment to production
+To use Lincoln in your React project:
 
-Run the following to generate the artifacts at `/dist`:
+```js
+import Lincoln from 'react-lincoln'
 
-```sh
-yarn run build:prod
+<Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json' />
 ```
 
-Deploy the files at `/dist` to your server.
+## Building & Deployment
+
+Run the following to build this project as React component:
+
+```sh
+yarn build:library
+```
+
+Run the following to build the demo, located in `/docs/demo`:
+
+```sh
+yarn build:demo
+```
+
+You can deploy the files at `/docs/demo` to your server.
 
 ## Philosophy
 
