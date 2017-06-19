@@ -10,6 +10,12 @@
     "description": "Manipulate Carriers and the Merchants' connections to them.",
     "version": "0.0.1"
   },
+  "tags": [
+    {
+      "name": "Carriers",
+      "description": "Access to Carriers"
+    }
+  ],
   "paths": {
     "/carriers": {
       "get": {

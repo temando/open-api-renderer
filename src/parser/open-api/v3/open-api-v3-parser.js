@@ -1,4 +1,5 @@
 import refParser from 'json-schema-ref-parser'
+import { getSecurityDefinitions, getUISecurity } from './securityParser'
 import getUIReadySchema from '../schemaParser'
 import { sortByUIMethod } from '../../sorting'
 
@@ -7,10 +8,11 @@ import { sortByUIMethod } from '../../sorting'
  *
  * @param {Array} tags
  * @param {Object} paths
- *
+ * @param {Array} globalSecurity
+ * @param {Object} securityDefinitions
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices (tags, paths) {
+function getUINavigationAndServices (tags, paths, globalSecurity = [], securityDefinitions) {
   const navigation = []
   const services = []
 
@@ -55,6 +57,13 @@ function getUINavigationAndServices (tags, paths) {
           servicesMethod.description = method.description
         }
 
+        // Security can be declared per method, or globally for the entire API.
+        if (method.security) {
+          servicesMethod.security = getUISecurity(method.security, securityDefinitions)
+        } else if (globalSecurity.length) {
+          servicesMethod.security = getUISecurity(globalSecurity, securityDefinitions)
+        }
+
         const uiParameters = getUIParameters(method.parameters)
         if (uiParameters) {
           servicesMethod.parameters = uiParameters
@@ -80,17 +89,17 @@ function getUINavigationAndServices (tags, paths) {
 
 /**
  * Add media type info, e.g. schema and examples to UI object
- * This method modifies the uiObject input
+ * This method mutates the `uiObject` parameter.
  *
- * @param {Object} uiObj
+ * @param {Object} uiObject
  * @param {Object} mediaType Open API mediaType object
  */
-function addMediaTypeInfoToUIObject (uiObj, mediaType) {
+function addMediaTypeInfoToUIObject (uiObject, mediaType) {
   if (mediaType.schema) {
     const schema = getUIReadySchema(mediaType.schema)
 
     if (schema.length) {
-      uiObj.schema = schema
+      uiObject.schema = schema
     }
   }
 
@@ -105,7 +114,7 @@ function addMediaTypeInfoToUIObject (uiObj, mediaType) {
   }
 
   if (examples.length) {
-    uiObj.examples = examples
+    uiObject.examples = examples
   }
 }
 
@@ -113,7 +122,6 @@ function addMediaTypeInfoToUIObject (uiObj, mediaType) {
  * Construct parameters object ready to be consumed by the UI
  *
  * @param {Array} parameters
- *
  * @return {Object}
  */
 function getUIParameters (parameters) {
@@ -141,7 +149,6 @@ function getUIParameters (parameters) {
  *
  * @param {Array} parameters
  * @param {String} location. Possible values: query, path, header, cookie
- *
  * @return {Array}
  */
 function getUIParametersForLocation (parameters, location) {
@@ -180,7 +187,6 @@ function getUIParametersForLocation (parameters, location) {
  *
  * @param {String} description
  * @param {Object} requestBody
- *
  * @return {Object}
  */
 function getUIRequest (description, requestBody = null) {
@@ -205,7 +211,6 @@ function getUIRequest (description, requestBody = null) {
  * Construct responses object ready to be consumed by the UI
  *
  * @param {Object} responses
- *
  * @return {Array}
  */
 function getUIResponses (responses) {
@@ -235,8 +240,7 @@ function getUIResponses (responses) {
  * Extracts the content for UI from the first available media type
  *
  * @param {Object} content Open API v3 Content Object
- *
- * @return
+ * @return {Object|null}
  */
 function getMediaType (content) {
   if (!content) {
@@ -260,7 +264,6 @@ function getMediaType (content) {
  * Extract unique tags from paths object
  *
  * @param {Object} paths
- *
  * @return {Array} of strings
  */
 function getTags (paths) {
@@ -284,10 +287,37 @@ function getTags (paths) {
 }
 
 /**
+ * If tag definitions exist, extract this information and add it to the
+ * navigation array. This mutates the `navigation` parameter.
+ *
+ * @param {Array} navigation
+ * @param {Array} tagDefinitions
+ */
+function addTagDetailsToNavigation (navigation, tagDefinitions) {
+  const getTag = (tag) => tagDefinitions.find((def) => def.name === tag)
+
+  for (const navGroup of navigation) {
+    const tagDefinition = getTag(navGroup.title)
+
+    if (tagDefinition) {
+      navGroup.handle = navGroup.title
+      navGroup.title = tagDefinition.name
+
+      if (tagDefinition.description) {
+        navGroup.description = tagDefinition.description
+      }
+
+      if (tagDefinition.externalDocs) {
+        navGroup.externalDocs = tagDefinition.externalDocs
+      }
+    }
+  }
+}
+
+/**
  * Converts openApiV3 object to new object ready to be consumed by the UI
  *
  * @param {Object} openApiV3
- *
  * @return {Object}
  */
 export default async function getUIReadyDefinition (openApiV3) {
@@ -301,18 +331,34 @@ export default async function getUIReadyDefinition (openApiV3) {
   const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
 
-  // Get tags
+  // Get tags from the paths
   const tags = getTags(paths)
 
+  // Get security definitions
+  const security = getSecurityDefinitions(derefOpenApiV3)
+
   // Construction navigation and services
-  const {navigation, services} = getUINavigationAndServices(tags, paths)
+  const {navigation, services} = getUINavigationAndServices(tags, paths, derefOpenApiV3.security || [], security)
+
+  // If we have tag information, let's add it to the navigation
+  if (derefOpenApiV3.tags) {
+    addTagDetailsToNavigation(navigation, derefOpenApiV3.tags)
+  }
+
+  // Additional information (if applicable)
+  const infoObj = { ...info }
+  delete infoObj.title
+  delete infoObj.version
+  delete infoObj.description
 
   const definition = {
     title: info.title,
     version: info.version,
     description: info.description,
-    navigation: navigation,
-    services: services
+    info: infoObj,
+    navigation,
+    services,
+    security
   }
 
   return definition
