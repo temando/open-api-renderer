@@ -1,12 +1,13 @@
 import React from 'react'
 import { parse as parseQuery } from 'qs'
 import OpenApiRenderer from '../OpenApiRenderer'
-
 import './styles.scss'
+
+const definitionUrl = parseQuery(location.search.split('?')[1]).url
 
 export class Demo extends React.PureComponent {
   state = {
-    definitionUrl: parseQuery(location.search.split('?')[1]).url
+    definitionUrl
   }
 
   useUrlInput = () => {
