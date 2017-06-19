@@ -20,7 +20,7 @@ export default class Base extends React.PureComponent {
 
   constructor (props) {
     super(props)
-    console.log({props})
+
     this.intitialize()
   }
 
@@ -52,10 +52,6 @@ export default class Base extends React.PureComponent {
 
     return true
   }
-
-  // shouldComponentUpdate () {
-  //   return this.intitialize()
-  // }
 
   render () {
     const { parsedDefinition: definition, definitionUrl, loading, error } = this.state
