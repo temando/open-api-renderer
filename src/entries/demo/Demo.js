@@ -31,11 +31,7 @@ export class Demo extends React.PureComponent {
             ref={this.setUrlInput}
           />
         </div>
-        {
-          definitionUrl
-            ? <OpenApiRenderer {...{ definitionUrl }} />
-            : 'Add a Open Api definition to render...'
-        }
+        <OpenApiRenderer {...{ definitionUrl }} />
       </div>
     )
   }
