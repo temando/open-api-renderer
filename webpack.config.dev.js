@@ -1,11 +1,9 @@
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const webpackMerge = require('webpack-merge')
-const baseConfig = require('./webpack.config')
+const appConfig = require('./webpack.config.app')
 
-console.log('\nwebpack.config.dev\n')
-
-module.exports = webpackMerge(baseConfig, {
+module.exports = webpackMerge(appConfig, {
   plugins: [
     new DashboardPlugin(),
     new WatchMissingNodeModulesPlugin(`${__dirname}/node_modules`)
@@ -22,5 +20,5 @@ module.exports = webpackMerge(baseConfig, {
     stats: { chunkModules: false }
   },
 
-  output: { path: `${__dirname}/src` }
+  output: { path: `${__dirname}/src/entries` }
 })
