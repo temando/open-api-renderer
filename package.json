@@ -1,10 +1,26 @@
 {
-  "name": "open-api-renderer",
-  "description": "Open API Renderer",
+  "name": "lincoln-ui",
+  "description": "Meet Lincoln, a user interface for OpenAPI v3 definitions.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/temando/open-api-renderer.git"
+  },
+  "bugs": "https://github.com/temando/open-api-renderer/issues",
+  "keywords": [
+    "OpenAPI",
+    "OpenAPI specification",
+    "swagger",
+    "react",
+    "API"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
   "contributors": [
     {
       "name": "Brendan Abbott",
-      "email": "brendan.abbott@temando.com"
+      "email": "brendan@bloodbone.ws"
     },
     {
       "name": "Florie Guibert",
@@ -32,11 +48,6 @@
     "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js",
     "build:library": "./scripts/build.bash",
     "test:coverage": "jest --coverage"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/temando/open-api-renderer.git"
   },
   "dependencies": {
     "classnames": "^2.2.5",
