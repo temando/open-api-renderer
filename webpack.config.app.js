@@ -2,7 +2,7 @@ const baseConfig = require('./webpack.config')
 
 module.exports = Object.assign({}, baseConfig, {
   entry: {
-    app: ['babel-polyfill', 'core-js/es7', './entries/app.js']
+    app: ['core-js/es7', './entries/app.js']
   },
 
   output: {

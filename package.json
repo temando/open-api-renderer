@@ -21,8 +21,8 @@
   ],
   "main": "./OpenApiRenderer.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config ./webpack.config.dev.js",
-    "start:demo": "webpack-dev-server --open --config ./webpack.config.dev.demo.js",
+    "start": "webpack-dev-server --config ./webpack.config.dev.js",
+    "start:demo": "webpack-dev-server --config ./webpack.config.dev.demo.js",
     "dash": "webpack-dashboard -- yarn start",
     "lint": "eslint src test",
     "test": "jest",

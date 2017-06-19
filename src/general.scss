@@ -1,6 +1,6 @@
 @import './base.scss';
 
-html, #app, .main {
+html, body > div, .main {
   height: 100%;
 }
 
@@ -10,6 +10,10 @@ body {
   padding: 0;
   font-family: $body-font;
   color: white;
+}
+
+.main {
+  background-color: $content-background;
 }
 
 a {

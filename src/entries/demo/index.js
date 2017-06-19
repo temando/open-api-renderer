@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import OpenApiRenderer from '../../../dist/library'
+import { Demo } from './Demo'
 
-ReactDOM.render(<OpenApiRenderer />, document.getElementById('app'))
+const dom = document.body.appendChild(document.createElement('div'))
+
+ReactDOM.render(<Demo />, dom)
