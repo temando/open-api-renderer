@@ -1,6 +1,6 @@
 @import './base.scss';
 
-html, #app, .main {
+html, body > div, .main {
   height: 100%;
 }
 
@@ -11,6 +11,10 @@ body {
   font-family: $body-font;
   line-height: 1.4;
   color: white;
+}
+
+.main {
+  background-color: $content-background;
 }
 
 ul, ol {
