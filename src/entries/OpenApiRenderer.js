@@ -7,7 +7,7 @@ import Base from '../containers/Base'
 export default class OpenApiRenderer extends React.Component {
   render () {
     return <Router>
-      <Route exact path='/' component={passProps(Base, this.props)} />
+      <Route path='*' component={passProps(Base, this.props)} />
     </Router>
   }
 }
