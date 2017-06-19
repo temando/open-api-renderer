@@ -83,16 +83,30 @@ const Definition = ({ definition, definitionUrl, location }) =>
     </Overlay>
     : <Page definition={definition} location={location} specUrl={definitionUrl} />
 
+Definition.propTypes = {
+  definition: PropTypes.object,
+  definitionUrl: PropTypes.string,
+  location: PropTypes.object
+}
+
 const Failure = ({ error }) =>
   <Overlay>
     <h3>Failure to load definition</h3>
     <p>{error.message}</p>
   </Overlay>
 
+Failure.propTypes = {
+  error: PropTypes.object
+}
+
 const Loading = ({ definitionUrl }) =>
   <Overlay>
     <em>Loading <b>{definitionUrl}</b>...</em>
   </Overlay>
+
+Loading.propTypes = {
+  definitionUrl: PropTypes.string
+}
 
 Base.contextTypes = {
   router: PropTypes.object

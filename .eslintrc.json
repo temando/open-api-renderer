@@ -4,9 +4,6 @@
     "standard",
     "standard-react"
   ],
-  "rules": {
-    "react/prop-types": 0
-  },
   "env": {
     "browser": true,
     "node": true,
