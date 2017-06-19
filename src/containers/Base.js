@@ -14,7 +14,7 @@ export default class Base extends React.PureComponent {
     definitionUrl: null,
     definition: null,
     parsedDefinition: null,
-    loading: true,
+    loading: false,
     error: null
   }
 
@@ -25,7 +25,7 @@ export default class Base extends React.PureComponent {
   }
 
   setDefinition = async ({ definitionUrl, parserType = this.state.parserType }) => {
-    this.setState({ loading: true, error: null })
+    this.setState({ loading: !!definitionUrl, error: null })
 
     try {
       const definition = await getDefinition(definitionUrl)
@@ -78,8 +78,7 @@ export default class Base extends React.PureComponent {
 const Definition = ({ definition, definitionUrl, location }) =>
   !definition
     ? <Overlay>
-      Invalid definition specified:
-      <p><b>{definitionUrl}</b></p>
+      <h3>Missing definition URL.</h3>
     </Overlay>
     : <Page definition={definition} location={location} specUrl={definitionUrl} />
 
@@ -92,7 +91,13 @@ Definition.propTypes = {
 const Failure = ({ error }) =>
   <Overlay>
     <h3>Failure to load definition</h3>
-    <p>{error.message}</p>
+    <br />
+    <p style={{ // FIXME: better error display solution later
+      textAlign: 'left',
+      maxWidth: '50%',
+      margin: '0 auto',
+      fontFamily: 'monospace'
+    }}>{error.message}</p>
   </Overlay>
 
 Failure.propTypes = {
