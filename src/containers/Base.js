@@ -1,53 +1,109 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { configureAnchors } from 'react-scrollable-anchor'
 import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
-import { parse as parseQuery } from 'qs'
 
 import Page from '../components/Page/Page'
+import Overlay from '../components/Overlay/Overlay'
 import { getDefinition, parseDefinition } from '../lib/definitions'
 import '../general.scss'
 
-export default class Base extends Component {
+export default class Base extends React.PureComponent {
   state = {
     parserType: 'open-api-v3',
     definitionUrl: null,
     definition: null,
-    parsedDefinition: null
+    parsedDefinition: null,
+    loading: false,
+    error: null
+  }
+
+  componentDidMount () {
+    this.intitialize()
   }
 
   setDefinition = async ({ definitionUrl, parserType = this.state.parserType }) => {
-    const definition = await getDefinition(definitionUrl)
-    const parsedDefinition = await parseDefinition(definition, parserType)
+    this.setState({ loading: !!definitionUrl, error: null })
 
-    this.setState({ definitionUrl, definition, parsedDefinition, parserType })
+    try {
+      const definition = await getDefinition(definitionUrl)
+      const parsedDefinition = await parseDefinition(definition, parserType)
+
+      this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
+    } catch (err) {
+      return this.setState({ loading: false, error: err })
+    }
   }
 
-  async componentDidMount () {
-    const { location } = this.props
+  intitialize = async () => {
     const { parserType } = this.state
+    const { definitionUrl } = this.props
 
-    const definitionUrl = parseQuery(location.search.split('?')[1]).url
+    if (!definitionUrl) { return true }
+    if (definitionUrl === this.state.definitionUrl) { return false }
 
     await this.setDefinition({ definitionUrl, parserType })
 
     configureAnchors({ offset: -10, scrollDuration: 100 })
+
+    return true
   }
 
   render () {
-    const { parsedDefinition: definition, definitionUrl } = this.state
+    const { parsedDefinition: definition, definitionUrl, loading, error } = this.state
     const { location } = this.props
 
-    // TODO: add input to add a url
+    let element
+
+    if (loading) {
+      element = <Loading {...{definitionUrl}} />
+    } else if (error) {
+      element = <Failure {...{error}} />
+    } else {
+      element = <Definition {...{ location, definition, definitionUrl }} />
+    }
+
     return (
       <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
         <div className='main'>
-          {!definition && "Welcome to Temando's new Open API Renderer. Watch this space!"}
-          {definition && <Page definition={definition} location={location} specUrl={definitionUrl} />}
+          {element}
         </div>
       </DocumentTitle>
     )
   }
+}
+
+const Definition = ({ definition, definitionUrl, location }) =>
+  !definition
+    ? <Overlay>
+      <h3>Missing definition URL.</h3>
+    </Overlay>
+    : <Page definition={definition} location={location} specUrl={definitionUrl} />
+
+Definition.propTypes = {
+  definition: PropTypes.object,
+  definitionUrl: PropTypes.string,
+  location: PropTypes.object
+}
+
+const Failure = ({ error }) =>
+  <Overlay>
+    <h3>Failure to load definition</h3>
+    <br />
+    <p>{error.message}</p>
+  </Overlay>
+
+Failure.propTypes = {
+  error: PropTypes.object
+}
+
+const Loading = ({ definitionUrl }) =>
+  <Overlay>
+    <em>Loading <b>{definitionUrl}</b>...</em>
+  </Overlay>
+
+Loading.propTypes = {
+  definitionUrl: PropTypes.string
 }
 
 Base.contextTypes = {
