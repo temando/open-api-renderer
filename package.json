@@ -13,8 +13,13 @@
     {
       "name": "Khoa Tran",
       "email": "khoa.tran@temando.com"
+    },
+    {
+      "name": "nfour",
+      "email": "novus.nfour@gmail.com"
     }
   ],
+  "main": "./OpenApiRenderer.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.dev.js",
     "dash": "webpack-dashboard -- yarn start",
@@ -23,7 +28,8 @@
     "build": "npm run build:app && npm run build:library",
     "build:demo": "rimraf dist/demo/* && NODE_ENV=prod webpack -p --config webpack.config.demo.js",
     "build:app": "rimraf dist/app/* && NODE_ENV=prod webpack -p --config webpack.config.app.js",
-    "build:library": "rimraf dist/library/* && NODE_ENV=prod webpack -p --config webpack.config.library.js",
+    "webpack:library": "rimraf dist/library/* && NODE_ENV=prod webpack -p --config webpack.config.library.js",
+    "build:library": "./scripts/build.bash",
     "test:coverage": "jest --coverage"
   },
   "license": "MIT",
