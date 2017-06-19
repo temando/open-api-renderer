@@ -6,7 +6,7 @@ module.exports = Object.assign({}, appConfig, {
   },
 
   output: {
-    path: `${__dirname}/dist/demo`,
+    path: `${__dirname}/docs/demo`,
     publicPath: '/',
     filename: '[name].[chunkhash].js'
   }

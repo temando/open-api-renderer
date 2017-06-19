@@ -27,7 +27,7 @@
     "lint": "eslint src test",
     "test": "jest",
     "build": "npm run build:app && npm run build:library",
-    "build:demo": "rimraf dist/demo/* && NODE_ENV=prod webpack -p --config webpack.config.demo.js",
+    "build:demo": "rimraf docs/demo/* && NODE_ENV=production webpack -p --config webpack.config.demo.js",
     "build:app": "rimraf dist/app/* && NODE_ENV=prod webpack -p --config webpack.config.app.js",
     "webpack:library": "rimraf dist/library/* && NODE_ENV=prod webpack -p --config webpack.config.library.js",
     "build:library": "./scripts/build.bash",
