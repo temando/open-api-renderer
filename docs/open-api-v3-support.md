@@ -29,29 +29,29 @@ This document outlines this project's support for visualising the [Open API V3][
 - [ ] [servers](#servers-object)
 - [x] [paths](#paths-object)
 - [ ] [components](#components-object)
-- [ ] [security](#security-requirement-object)
-- [ ] [tags](#tag-object)
+- [x] [security](#security-requirement-object)
+- [x] [tags](#tag-object)
 - [ ] [externalDocs](#external-documentation-object)
 
 ### [Info](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#info-object) object
 
 - [x] title
 - [x] description
-- [ ] termsOfService
-- [ ] [contact](#contact-object)
-- [ ] [license](#license-object)
+- [x] termsOfService
+- [x] [contact](#contact-object)
+- [x] [license](#license-object)
 - [x] version
 
 ### [Contact](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#contact-object)
 
-- [ ] name
-- [ ] url
-- [ ] email
+- [x] name
+- [x] url
+- [x] email
 
 ### [License](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#license-object) object
 
-- [ ] name
-- [ ] url
+- [x] name
+- [x] url
 
 ### [Server](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#server-object) object
 
@@ -97,16 +97,16 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 - [x] [patch](#operation-object)
 - [x] [trace](#operation-object)
 - [ ] [server](#server-object)
-- [x] [parameters](#parameter-object)
+- [ ] [parameters](#parameter-object)
 
 ### [Operation](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#operation-object) object
 
 - [x] tags - Currently *required* for this project.
-- [ ] summary
+- [x] summary
 - [x] description
 - [ ] [externalDocs](#external-documentation-object)
 - [ ] operationId
-- [ ] [parameters](#parameter-object)
+- [x] [parameters](#parameter-object)
 - [x] [requestBody](#request-body-object)
 - [x] [responses](#responses-object)
 - [ ] [callbacks](#callback-object)
@@ -207,8 +207,8 @@ See [parameter](#parameter-object) object.
 
 ### [Tag](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#tag-object) object
 
-- [ ] name
-- [ ] description
+- [x] name
+- [x] description
 - [ ] [externalDocs](#external-documentation-object)
 
 ### [Reference](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#reference-object) object
@@ -282,33 +282,37 @@ The OpenAPI specification also supports several additional properties from JSON 
 
 ### [Security Scheme](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#security-scheme-object) object
 
-- [ ] type
-- [ ] description
-- [ ] name
-- [ ] in
-- [ ] scheme
-- [ ] bearerFormat
-- [ ] [flows](#oauth-flows-object)
-- [ ] openIdConnectUrl
+- [x] type
+  - [x] apiKey
+  - [x] http
+  - [x] oauth2
+  - [x] openIdConnect
+- [x] description
+- [x] name
+- [x] in
+- [x] scheme
+- [x] bearerFormat
+- [x] [flows](#oauth-flows-object)
+- [x] openIdConnectUrl
 
 ### [OAuth Flows](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#oauth-flows-object) object
 
-- [ ] [implict](#oauth-flow-object)
-- [ ] [password](#oauth-flow-object)
-- [ ] [clientCredentials](#oauth-flow-object)
-- [ ] [authorizationCode](#oauth-flow-object)
+- [x] [implict](#oauth-flow-object)
+- [x] [password](#oauth-flow-object)
+- [x] [clientCredentials](#oauth-flow-object)
+- [x] [authorizationCode](#oauth-flow-object)
 
 ### [OAuth Flow](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#oauth-flow-object) object
 
-- [ ] authorizationUrl
-- [ ] tokenUrl
-- [ ] refreshUrl
-- [ ] scopes
+- [x] authorizationUrl
+- [x] tokenUrl
+- [x] refreshUrl
+- [x] scopes
 
 ### [Security Requirement](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#security-requirement-object) object
 
-- [ ] oauth2
-- [ ] openIdConnect
+- [x] oauth2
+- [x] openIdConnect
 - [ ] "other"
 
 ### [Specification Extensions](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#specification-extensions)

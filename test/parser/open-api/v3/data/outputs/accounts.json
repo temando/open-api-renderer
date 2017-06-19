@@ -2,6 +2,7 @@
   "title": "Temando API",
   "version": "1.0.0",
   "description": "Providing consumers with more choice and lowering the cost of shipping.",
+  "info": {},
   "navigation": [
     {
       "title": "Account",
@@ -19,6 +20,7 @@
       ]
     }
   ],
+  "security": {},
   "services": [
     {
       "title": "Account",
