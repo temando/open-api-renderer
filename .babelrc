@@ -12,12 +12,21 @@
       "stage-2"
     ],
     "env": {
-      "PRODUCTION": {
-        "presets": [ "babili" ]
+      "production": {
+        "presets": [
+          [
+            "babili",
+            {
+              "mangle": false
+            }
+          ]
+        ]
       }
     },
     "plugins": [
       ["transform-runtime", {
+        "helpers": true,
+        "polyfill": false,
         "regenerator": true,
         "module-name": "babel-runtime"
       }]

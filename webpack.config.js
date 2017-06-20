@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkgJson = require('./package.json')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const isProduction = process.env.NODE_ENV === 'prod'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const extractSass = new ExtractTextPlugin({
   filename: 'styles.css',
