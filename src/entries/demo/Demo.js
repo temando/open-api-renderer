@@ -7,30 +7,38 @@ const definitionUrl = parseQuery(location.search.split('?')[1]).url
 
 export class Demo extends React.PureComponent {
   state = {
-    definitionUrl
+    definitionUrl,
+    navSort: false
   }
 
   useUrlInput = () => {
     this.setState({ definitionUrl: this.urlInput.value })
   }
 
-  setUrlInput = (input) => { this.urlInput = input }
+  setUrlInput = (input) => {
+    this.urlInput = input
+  }
 
   render () {
-    const { definitionUrl } = this.state
+    const { definitionUrl, navSort } = this.state
 
     return (
       <div className='oapi-demo'>
-        <div className='oapi-header'>
-          <input
-            name='urlInput'
-            type='text'
-            defaultValue={this.state.definitionUrl}
-            ref={this.setUrlInput}
-          />
-          <button onClick={this.useUrlInput}>READ</button>
-        </div>
-        <Lincoln {...{ definitionUrl }} />
+        <header className='oapi-header'>
+          <h1>Lincoln</h1>
+          <small>An Open API v3 renderer.</small>
+          <form>
+            <label htmlFor='url'>Definition URL</label>
+            <input
+              name='url'
+              type='url'
+              defaultValue={this.state.definitionUrl}
+              ref={this.setUrlInput}
+            />
+            <button onClick={this.useUrlInput}>RENDER</button>
+          </form>
+        </header>
+        <Lincoln {...{definitionUrl, navSort}} />
       </div>
     )
   }

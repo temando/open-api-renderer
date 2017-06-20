@@ -14,7 +14,6 @@ const methodWeights = {
  *
  * @param {String} str1
  * @param {String} str2
- *
  * @return {number}
  */
 export function sortByAlphabet (str1, str2) {
@@ -32,7 +31,6 @@ export function sortByAlphabet (str1, str2) {
  *
  * @param {String} type1
  * @param {String} type2
- *
  * @return {number}
  */
 export function sortByHttpMethod (type1, type2) {
@@ -47,8 +45,7 @@ export function sortByHttpMethod (type1, type2) {
  *
  * @param {type, title} method1
  * @param {type, title} method2
- *
- * return {number}
+ * @return {number}
  */
 export function sortByUIMethod (method1, method2) {
   // Sort by method type first
@@ -58,4 +55,21 @@ export function sortByUIMethod (method1, method2) {
 
   // Then by method title
   return sortByAlphabet(method1.title, method2.title)
+}
+
+/**
+ * Returns the appropriate sorting function to be used when
+ * constructing the navigation.
+ *
+ * @param {string} navSort `alpha` or `false`.
+ */
+export function getSortingFunction (navSort) {
+  switch (navSort) {
+    case 'alpha':
+      return sortByUIMethod
+
+    case false:
+    default:
+      return false
+  }
 }
