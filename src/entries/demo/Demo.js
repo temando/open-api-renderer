@@ -1,7 +1,11 @@
 import React from 'react'
 import { parse as parseQuery } from 'qs'
+import jss from 'jss'
+import preset from 'jss-preset-default'
 import Lincoln from '../Lincoln'
 import './Demo.scss'
+
+jss.setup(preset())
 
 const definitionUrl = parseQuery(location.search.split('?')[1]).url
 

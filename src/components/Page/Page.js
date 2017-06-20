@@ -6,6 +6,9 @@ import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
+import injectSheet from 'react-jss'
+import { styles } from './Page.jss'
+import { Paper } from 'material-ui'
 
 import './Page.scss'
 
@@ -22,7 +25,11 @@ export default class Page extends Component {
     return (
       <div className='page'>
         <Navigation navigation={navigation} location={location} />
+<<<<<<< HEAD
         <div className='page-main'>
+=======
+        <Paper className={classes.main}>
+>>>>>>> a1b9783... Get MUI working with JSS, solving the deps
           <Header
             title={definition.title}
             description={definition.description}
@@ -36,7 +43,7 @@ export default class Page extends Component {
               (service) => <ServiceContainer key={service.title} service={service} />
             )}
           </ContentContainer>
-        </div>
+        </Paper>
       </div>
     )
   }
