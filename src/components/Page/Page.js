@@ -21,7 +21,7 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <Paper className={classes.page}>
+      <div className={classes.page}>
         <Navigation navigation={navigation} location={location} />
         <div className={classes.main}>
           <Header
@@ -38,7 +38,7 @@ export default class Page extends Component {
             )}
           </ContentContainer>
         </div>
-      </Paper>
+      </div>
     )
   }
 

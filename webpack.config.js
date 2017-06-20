@@ -91,7 +91,7 @@ module.exports = {
 
       // ASSETS
       {
-        test: /\.(ttf|eot|svg|png|gif|jpg|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loaders: [
           { loader: 'url-loader', options: { limit: 8192 } }
         ]

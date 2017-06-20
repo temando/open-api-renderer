@@ -6,3 +6,5 @@ export const theme = createMuiTheme({
     type: 'dark'
   })
 })
+
+console.log({theme})
