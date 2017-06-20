@@ -5,7 +5,6 @@ import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
-import { Paper } from 'material-ui'
 import injectSheet from 'react-jss'
 import { styles } from './Page.jss'
 
