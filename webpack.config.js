@@ -4,7 +4,7 @@ const pkgJson = require('./package.json')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
-
+console.log({isProduction})
 const extractSass = new ExtractTextPlugin({
   filename: 'styles.css',
   disable: !isProduction
