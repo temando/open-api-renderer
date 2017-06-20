@@ -2282,13 +2282,13 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _array = __webpack_require__(298);
+var _array = __webpack_require__(299);
 
-var _numeric = __webpack_require__(300);
+var _numeric = __webpack_require__(301);
 
-var _object = __webpack_require__(301);
+var _object = __webpack_require__(302);
 
-var _string = __webpack_require__(302);
+var _string = __webpack_require__(303);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2975,7 +2975,8 @@ var Base = function (_React$PureComponent) {
       var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(_ref3) {
         var definitionUrl = _ref3.definitionUrl,
             _ref3$parserType = _ref3.parserType,
-            parserType = _ref3$parserType === undefined ? _this.state.parserType : _ref3$parserType;
+            parserType = _ref3$parserType === undefined ? _this.state.parserType : _ref3$parserType,
+            navSort = _ref3.navSort;
         var definition, parsedDefinition;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
@@ -2990,7 +2991,7 @@ var Base = function (_React$PureComponent) {
               case 4:
                 definition = _context.sent;
                 _context.next = 7;
-                return (0, _definitions.parseDefinition)(definition, parserType);
+                return (0, _definitions.parseDefinition)(definition, parserType, navSort);
 
               case 7:
                 parsedDefinition = _context.sent;
@@ -3017,13 +3018,14 @@ var Base = function (_React$PureComponent) {
         return _ref2.apply(this, arguments);
       };
     }(), _this.intitialize = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
-      var parserType, definitionUrl;
+      var parserType, _this$props, definitionUrl, navSort;
+
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               parserType = _this.state.parserType;
-              definitionUrl = _this.props.definitionUrl;
+              _this$props = _this.props, definitionUrl = _this$props.definitionUrl, navSort = _this$props.navSort;
 
               if (definitionUrl) {
                 _context2.next = 4;
@@ -3042,7 +3044,7 @@ var Base = function (_React$PureComponent) {
 
             case 6:
               _context2.next = 8;
-              return _this.setDefinition({ definitionUrl: definitionUrl, parserType: parserType });
+              return _this.setDefinition({ definitionUrl: definitionUrl, parserType: parserType, navSort: navSort });
 
             case 8:
 
@@ -3087,7 +3089,7 @@ var Base = function (_React$PureComponent) {
 
       return _react2.default.createElement(
         _reactDocumentTitle2.default,
-        { title: definition ? definition.title : 'Open API v3 renderer' },
+        { title: definition ? definition.title : 'Lincoln Renderer' },
         _react2.default.createElement(
           'div',
           { className: 'main' },
@@ -3101,6 +3103,16 @@ var Base = function (_React$PureComponent) {
 
 exports.default = Base;
 
+
+Base.contextTypes = {
+  router: _propTypes2.default.object
+};
+
+Base.propTypes = {
+  location: _propTypes2.default.object,
+  definitionUrl: _propTypes2.default.string,
+  navSort: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool])
+};
 
 var Definition = function Definition(_ref5) {
   var definition = _ref5.definition,
@@ -3143,7 +3155,7 @@ var Failure = function Failure(_ref6) {
     _react2.default.createElement(
       'h3',
       null,
-      'Failure to load definition'
+      'Failed to load definition.'
     ),
     _react2.default.createElement('br', null),
     _react2.default.createElement(
@@ -3179,14 +3191,6 @@ var Loading = function Loading(_ref7) {
 
 Loading.propTypes = {
   definitionUrl: _propTypes2.default.string
-};
-
-Base.contextTypes = {
-  router: _propTypes2.default.object
-};
-
-Base.propTypes = {
-  location: _propTypes2.default.object
 };
 
 /***/ }),
@@ -3323,7 +3327,8 @@ var Demo = exports.Demo = function (_React$PureComponent) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Demo.__proto__ || Object.getPrototypeOf(Demo)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      definitionUrl: definitionUrl
+      definitionUrl: definitionUrl,
+      navSort: false
     }, _this.useUrlInput = function () {
       _this.setState({ definitionUrl: _this.urlInput.value });
     }, _this.setUrlInput = function (input) {
@@ -3334,7 +3339,9 @@ var Demo = exports.Demo = function (_React$PureComponent) {
   (0, _createClass3.default)(Demo, [{
     key: 'render',
     value: function render() {
-      var definitionUrl = this.state.definitionUrl;
+      var _state = this.state,
+          definitionUrl = _state.definitionUrl,
+          navSort = _state.navSort;
 
 
       return _react2.default.createElement(
@@ -3374,7 +3381,7 @@ var Demo = exports.Demo = function (_React$PureComponent) {
             )
           )
         ),
-        _react2.default.createElement(_Lincoln2.default, { definitionUrl: definitionUrl })
+        _react2.default.createElement(_Lincoln2.default, { definitionUrl: definitionUrl, navSort: navSort })
       );
     }
   }]);
@@ -3451,21 +3458,22 @@ var getDefinition = exports.getDefinition = function () {
 }();
 
 var parseDefinition = exports.parseDefinition = function () {
-  var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(definition, parserType) {
-    var parser, parsedDefinition;
+  var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(definition, parserType, navSortType) {
+    var parser, sortFunc, parsedDefinition;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             parser = (0, _parserFactory2.default)(parserType);
-            _context2.next = 3;
-            return parser(definition);
+            sortFunc = (0, _sorting.getSortingFunction)(navSortType);
+            _context2.next = 4;
+            return parser(definition, sortFunc);
 
-          case 3:
+          case 4:
             parsedDefinition = _context2.sent;
             return _context2.abrupt('return', parsedDefinition);
 
-          case 5:
+          case 6:
           case 'end':
             return _context2.stop();
         }
@@ -3473,7 +3481,7 @@ var parseDefinition = exports.parseDefinition = function () {
     }, _callee2, this);
   }));
 
-  return function parseDefinition(_x2, _x3) {
+  return function parseDefinition(_x2, _x3, _x4) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -3486,15 +3494,107 @@ var _jsYaml = __webpack_require__(182);
 
 var _jsYaml2 = _interopRequireDefault(_jsYaml);
 
-var _parserFactory = __webpack_require__(307);
+var _parserFactory = __webpack_require__(308);
 
 var _parserFactory2 = _interopRequireDefault(_parserFactory);
+
+var _sorting = __webpack_require__(297);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 
 /***/ 297:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sortByAlphabet = sortByAlphabet;
+exports.sortByHttpMethod = sortByHttpMethod;
+exports.sortByUIMethod = sortByUIMethod;
+exports.getSortingFunction = getSortingFunction;
+var methodWeights = {
+  GET: 1,
+  POST: 2,
+  PUT: 3,
+  DELETE: 4,
+  HEAD: 5,
+  OPTIONS: 6,
+  TRACE: 7,
+  CONNECT: 8
+
+  /**
+   * Sort function
+   *
+   * @param {String} str1
+   * @param {String} str2
+   * @return {number}
+   */
+};function sortByAlphabet(str1, str2) {
+  if (str1 < str2) {
+    return -1;
+  } else if (str1 > str2) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+/**
+ * Sort function
+ *
+ * @param {String} type1
+ * @param {String} type2
+ * @return {number}
+ */
+function sortByHttpMethod(type1, type2) {
+  var normalisedType1 = type1.toUpperCase();
+  var normalisedType2 = type2.toUpperCase();
+
+  return methodWeights[normalisedType1] - methodWeights[normalisedType2];
+}
+
+/**
+ * Sort function
+ *
+ * @param {type, title} method1
+ * @param {type, title} method2
+ * @return {number}
+ */
+function sortByUIMethod(method1, method2) {
+  // Sort by method type first
+  if (method1.type !== method2.type) {
+    return sortByHttpMethod(method1.type, method2.type);
+  }
+
+  // Then by method title
+  return sortByAlphabet(method1.title, method2.title);
+}
+
+/**
+ * Returns the appropriate sorting function to be used when
+ * constructing the navigation.
+ *
+ * @param {string} navSort `alpha` or `false`.
+ */
+function getSortingFunction(navSort) {
+  switch (navSort) {
+    case 'alpha':
+      return sortByUIMethod;
+
+    case false:
+    default:
+      return false;
+  }
+}
+
+/***/ }),
+
+/***/ 298:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3601,7 +3701,7 @@ function resolveAllOf(obj) {
 
 /***/ }),
 
-/***/ 298:
+/***/ 299:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3652,7 +3752,7 @@ function getConstraintHints(constraints) {
 
 /***/ }),
 
-/***/ 299:
+/***/ 300:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3697,7 +3797,7 @@ function getConstraints(property) {
 
 /***/ }),
 
-/***/ 300:
+/***/ 301:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3754,7 +3854,7 @@ function getConstraintHints(constraints) {
 
 /***/ }),
 
-/***/ 301:
+/***/ 302:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3800,7 +3900,7 @@ function getConstraintHints(constraints) {
 
 /***/ }),
 
-/***/ 302:
+/***/ 303:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3851,7 +3951,7 @@ function getConstraintHints(constraints) {
 
 /***/ }),
 
-/***/ 303:
+/***/ 304:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4042,7 +4142,7 @@ function resolveOneOf(obj) {
 
 /***/ }),
 
-/***/ 304:
+/***/ 305:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4053,11 +4153,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getUIReadySchema;
 
-var _allOfResolver = __webpack_require__(297);
+var _allOfResolver = __webpack_require__(298);
 
-var _oneOfResolver = __webpack_require__(303);
+var _oneOfResolver = __webpack_require__(304);
 
-var _constraintsParser = __webpack_require__(299);
+var _constraintsParser = __webpack_require__(300);
 
 var literalTypes = ['string', 'integer', 'number', 'boolean'];
 
@@ -4197,7 +4297,7 @@ function getUIReadySchema(jsonSchema) {
 
 /***/ }),
 
-/***/ 305:
+/***/ 306:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4227,13 +4327,11 @@ var _jsonSchemaRefParser = __webpack_require__(431);
 
 var _jsonSchemaRefParser2 = _interopRequireDefault(_jsonSchemaRefParser);
 
-var _securityParser = __webpack_require__(306);
+var _securityParser = __webpack_require__(307);
 
-var _schemaParser = __webpack_require__(304);
+var _schemaParser = __webpack_require__(305);
 
 var _schemaParser2 = _interopRequireDefault(_schemaParser);
-
-var _sorting = __webpack_require__(308);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4242,13 +4340,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  *
  * @param {Array} tags
  * @param {Object} paths
- * @param {Array} globalSecurity
+ * @param {Array} apiSecurity
  * @param {Object} securityDefinitions
+ * @param {Function} sortFunc
  * @return {{navigation: [], services: []}}
  */
 function getUINavigationAndServices(tags, paths) {
-  var globalSecurity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  var apiSecurity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   var securityDefinitions = arguments[3];
+  var sortFunc = arguments[4];
 
   var navigation = [];
   var services = [];
@@ -4297,8 +4397,8 @@ function getUINavigationAndServices(tags, paths) {
         // Security can be declared per method, or globally for the entire API.
         if (method.security) {
           servicesMethod.security = (0, _securityParser.getUISecurity)(method.security, securityDefinitions);
-        } else if (globalSecurity.length) {
-          servicesMethod.security = (0, _securityParser.getUISecurity)(globalSecurity, securityDefinitions);
+        } else if (apiSecurity.length) {
+          servicesMethod.security = (0, _securityParser.getUISecurity)(apiSecurity, securityDefinitions);
         }
 
         var uiParameters = getUIParameters(method.parameters);
@@ -4312,12 +4412,12 @@ function getUINavigationAndServices(tags, paths) {
 
     navigation.push({
       title: tag,
-      methods: navigationMethods.sort(_sorting.sortByUIMethod)
+      methods: typeof sortFunc === 'function' ? navigationMethods.sort(sortFunc) : navigationMethods
     });
 
     services.push({
       title: tag,
-      methods: servicesMethods.sort(_sorting.sortByUIMethod)
+      methods: typeof sortFunc === 'function' ? servicesMethods.sort(sortFunc) : servicesMethods
     });
   }
 
@@ -4603,15 +4703,16 @@ function addTagDetailsToNavigation(navigation, tagDefinitions) {
 }
 
 /**
- * Converts openApiV3 object to new object ready to be consumed by the UI
+ * Converts openApiV3 object to new object ready to be consumed by the UI.
  *
  * @param {Object} openApiV3
+ * @param {Function} sortFunc
  * @return {Object}
  */
 
 exports.default = function () {
-  var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(openApiV3) {
-    var derefOpenApiV3, info, paths, tags, security, _getUINavigationAndSe, navigation, services, infoObj, definition;
+  var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(openApiV3, sortFunc) {
+    var derefOpenApiV3, info, paths, apiSecurity, tags, securityDefinitions, _getUINavigationAndSe, navigation, services, infoObj, definition;
 
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
@@ -4635,6 +4736,7 @@ exports.default = function () {
           case 10:
             info = derefOpenApiV3.info;
             paths = derefOpenApiV3.paths;
+            apiSecurity = derefOpenApiV3.security || [];
 
             // Get tags from the paths
 
@@ -4642,11 +4744,11 @@ exports.default = function () {
 
             // Get security definitions
 
-            security = (0, _securityParser.getSecurityDefinitions)(derefOpenApiV3);
+            securityDefinitions = (0, _securityParser.getSecurityDefinitions)(derefOpenApiV3);
 
             // Construction navigation and services
 
-            _getUINavigationAndSe = getUINavigationAndServices(tags, paths, derefOpenApiV3.security || [], security), navigation = _getUINavigationAndSe.navigation, services = _getUINavigationAndSe.services;
+            _getUINavigationAndSe = getUINavigationAndServices(tags, paths, apiSecurity, securityDefinitions, sortFunc), navigation = _getUINavigationAndSe.navigation, services = _getUINavigationAndSe.services;
 
             // If we have tag information, let's add it to the navigation
 
@@ -4668,11 +4770,11 @@ exports.default = function () {
               info: infoObj,
               navigation: navigation,
               services: services,
-              security: security
+              security: securityDefinitions
             };
             return _context.abrupt('return', definition);
 
-          case 22:
+          case 23:
           case 'end':
             return _context.stop();
         }
@@ -4680,7 +4782,7 @@ exports.default = function () {
     }, _callee, this, [[1, 7]]);
   }));
 
-  function getUIReadyDefinition(_x3) {
+  function getUIReadyDefinition(_x3, _x4) {
     return _ref.apply(this, arguments);
   }
 
@@ -4689,7 +4791,7 @@ exports.default = function () {
 
 /***/ }),
 
-/***/ 306:
+/***/ 307:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4777,7 +4879,7 @@ function getUISecurity(security, definitions) {
 
 /***/ }),
 
-/***/ 307:
+/***/ 308:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4788,7 +4890,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getParserFunction;
 
-var _openApiV3Parser = __webpack_require__(305);
+var _openApiV3Parser = __webpack_require__(306);
 
 var _openApiV3Parser2 = _interopRequireDefault(_openApiV3Parser);
 
@@ -4802,81 +4904,6 @@ function getParserFunction(type) {
   var errorMsg = 'Invalid parser type: ' + type;
   console.error(errorMsg);
   throw new Error(errorMsg);
-}
-
-/***/ }),
-
-/***/ 308:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.sortByAlphabet = sortByAlphabet;
-exports.sortByHttpMethod = sortByHttpMethod;
-exports.sortByUIMethod = sortByUIMethod;
-var methodWeights = {
-  GET: 1,
-  POST: 2,
-  PUT: 3,
-  DELETE: 4,
-  HEAD: 5,
-  OPTIONS: 6,
-  TRACE: 7,
-  CONNECT: 8
-
-  /**
-   * Sort function
-   *
-   * @param {String} str1
-   * @param {String} str2
-   *
-   * @return {number}
-   */
-};function sortByAlphabet(str1, str2) {
-  if (str1 < str2) {
-    return -1;
-  } else if (str1 > str2) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
-
-/**
- * Sort function
- *
- * @param {String} type1
- * @param {String} type2
- *
- * @return {number}
- */
-function sortByHttpMethod(type1, type2) {
-  var normalisedType1 = type1.toUpperCase();
-  var normalisedType2 = type2.toUpperCase();
-
-  return methodWeights[normalisedType1] - methodWeights[normalisedType2];
-}
-
-/**
- * Sort function
- *
- * @param {type, title} method1
- * @param {type, title} method2
- *
- * return {number}
- */
-function sortByUIMethod(method1, method2) {
-  // Sort by method type first
-  if (method1.type !== method2.type) {
-    return sortByHttpMethod(method1.type, method2.type);
-  }
-
-  // Then by method title
-  return sortByAlphabet(method1.title, method2.title);
 }
 
 /***/ }),
