@@ -23,13 +23,9 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <div className='page'>
+      <div className={classes.page}>
         <Navigation navigation={navigation} location={location} />
-<<<<<<< HEAD
-        <div className='page-main'>
-=======
         <Paper className={classes.main}>
->>>>>>> a1b9783... Get MUI working with JSS, solving the deps
           <Header
             title={definition.title}
             description={definition.description}
@@ -43,7 +39,7 @@ export default class Page extends Component {
               (service) => <ServiceContainer key={service.title} service={service} />
             )}
           </ContentContainer>
-        </Paper>
+        </div>
       </div>
     )
   }

@@ -7,8 +7,4 @@ export const theme = createMuiTheme({
   })
 })
 
-export const colors = {
-  navigationBackground: '#444'
-}
-
 console.log({theme})
