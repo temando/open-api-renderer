@@ -54,6 +54,7 @@
     "js-yaml": "^3.8.4",
     "json-schema-ref-parser": "^3.1.2",
     "jss": "^7.1.7",
+    "jss-preset-default": "^2.0.0",
     "lodash": "^4.17.4",
     "markdown-it": "^8.3.1",
     "material-ui": "next",

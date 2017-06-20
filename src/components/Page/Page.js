@@ -7,6 +7,7 @@ import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
 import injectSheet from 'react-jss'
 import { styles } from './Page.jss'
+import { Paper } from 'material-ui'
 
 @injectSheet(styles)
 export default class Page extends Component {
@@ -22,7 +23,7 @@ export default class Page extends Component {
     return (
       <div className={classes.page}>
         <Navigation navigation={navigation} location={location} />
-        <div className={classes.main}>
+        <Paper className={classes.main}>
           <Header
             title={definition.title}
             description={definition.description}
@@ -36,7 +37,7 @@ export default class Page extends Component {
               (service) => <ServiceContainer key={service.title} service={service} />
             )}
           </ContentContainer>
-        </div>
+        </Paper>
       </div>
     )
   }
