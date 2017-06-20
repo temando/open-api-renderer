@@ -95,7 +95,7 @@
     "style-loader": "^0.18.2",
     "transform-runtime": "^0.0.0",
     "url-loader": "^0.5.9",
-    "webpack": "^2.6.1",
+    "webpack": "^3.0.0",
     "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.2",
     "webpack-merge": "^4.1.0"

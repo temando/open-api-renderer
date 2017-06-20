@@ -45,7 +45,9 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
-    })
+    }),
+
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
   resolve: {
     modules: ['src/', 'node_modules'],
