@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
+import { Paper } from 'material-ui'
+import injectSheet from 'react-jss'
+import { styles } from './Page.jss'
 
-import './Page.scss'
-
+@injectSheet(styles)
 export default class Page extends Component {
   render () {
-    const { definition, location, specUrl } = this.props
+    const { definition, location, specUrl, classes } = this.props
 
     if (!definition) {
       return null
@@ -20,9 +21,9 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <div className='page'>
+      <Paper className={classes.page}>
         <Navigation navigation={navigation} location={location} />
-        <div className='page-main'>
+        <div className={classes.main}>
           <Header
             title={definition.title}
             description={definition.description}
@@ -37,7 +38,7 @@ export default class Page extends Component {
             )}
           </ContentContainer>
         </div>
-      </div>
+      </Paper>
     )
   }
 
@@ -60,5 +61,6 @@ Page.propTypes = {
     security: PropTypes.object
   }),
   location: PropTypes.object,
-  specUrl: PropTypes.string
+  specUrl: PropTypes.string,
+  classes: PropTypes.object
 }
