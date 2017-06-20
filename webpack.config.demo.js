@@ -1,6 +1,6 @@
-const appConfig = require('./webpack.config.app')
+const baseConfig = require('./webpack.config')
 
-module.exports = Object.assign({}, appConfig, {
+module.exports = Object.assign({}, baseConfig, {
   entry: {
     demo: ['./entries/demo/index.js']
   },
