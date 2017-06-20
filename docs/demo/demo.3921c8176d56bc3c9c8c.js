@@ -3023,7 +3023,7 @@ Base.contextTypes = {
 Base.propTypes = {
   location: _propTypes2.default.object,
   definitionUrl: _propTypes2.default.string,
-  navSort: _propTypes2.default.string
+  navSort: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool])
 };
 
 var Definition = function Definition(_ref5) {
@@ -3033,10 +3033,22 @@ var Definition = function Definition(_ref5) {
   return !definition ? _react2.default.createElement(
     _Overlay2.default,
     null,
+    _react2.default.createElement('img', { src: 'assets/lincoln-logo-white.svg', alt: '' }),
     _react2.default.createElement(
       'h3',
       null,
-      'Missing definition URL.'
+      'Render your Open API definition by adding the CORS-enabled URL above.'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'You can also set this with the ',
+      _react2.default.createElement(
+        'code',
+        null,
+        '?url'
+      ),
+      ' query parameter.'
     )
   ) : _react2.default.createElement(_Page2.default, { definition: definition, location: location, specUrl: definitionUrl });
 };
@@ -3248,18 +3260,37 @@ var Demo = exports.Demo = function (_React$PureComponent) {
         'div',
         { className: 'oapi-demo' },
         _react2.default.createElement(
-          'div',
+          'header',
           { className: 'oapi-header' },
-          _react2.default.createElement('input', {
-            name: 'urlInput',
-            type: 'text',
-            defaultValue: this.state.definitionUrl,
-            ref: this.setUrlInput
-          }),
           _react2.default.createElement(
-            'button',
-            { onClick: this.useUrlInput },
-            'READ'
+            'h1',
+            null,
+            'Lincoln'
+          ),
+          _react2.default.createElement(
+            'small',
+            null,
+            'An Open API v3 renderer.'
+          ),
+          _react2.default.createElement(
+            'form',
+            null,
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'url' },
+              'Definition URL'
+            ),
+            _react2.default.createElement('input', {
+              name: 'url',
+              type: 'url',
+              defaultValue: this.state.definitionUrl,
+              ref: this.setUrlInput
+            }),
+            _react2.default.createElement(
+              'button',
+              { onClick: this.useUrlInput },
+              'RENDER'
+            )
           )
         ),
         _react2.default.createElement(_Lincoln2.default, { definitionUrl: definitionUrl, navSort: navSort })

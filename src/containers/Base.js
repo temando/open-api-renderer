@@ -89,7 +89,9 @@ Base.propTypes = {
 const Definition = ({ definition, definitionUrl, location }) =>
   !definition
     ? <Overlay>
-      <h3>Missing definition URL.</h3>
+      <img src='assets/lincoln-logo-white.svg' alt='' />
+      <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
+      <p>You can also set this with the <code>?url</code> query parameter.</p>
     </Overlay>
     : <Page definition={definition} location={location} specUrl={definitionUrl} />
 

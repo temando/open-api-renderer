@@ -10,4 +10,16 @@
 
   padding: 15% 0 0;
   text-align: center;
+  text-shadow: 1px 2px 2px rgba(#000, 0.5);
+
+  h3 {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  img {
+    width: 250px;
+    height: 250px;
+    opacity: .4
+  }
 }
