@@ -1,3 +1,34 @@
 {
-  "presets" : ["react",  "es2015", "stage-1"]
+   "presets" : [
+      "react",
+      ["env", {
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        },
+        "useBuiltIns": true
+      }],
+      "stage-2"
+    ],
+    "env": {
+      "production": {
+        "presets": [
+          [
+            "babili",
+            {
+              "mangle": false
+            }
+          ]
+        ]
+      }
+    },
+    "plugins": [
+      ["transform-runtime", {
+        "helpers": true,
+        "polyfill": false,
+        "regenerator": true,
+        "module-name": "babel-runtime"
+      }]
+    ]
 }
