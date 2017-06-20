@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
+import { Paper } from 'material-ui'
 
 import './Page.scss'
 
@@ -20,7 +20,7 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <div className='page'>
+      <Paper className='page'>
         <Navigation navigation={navigation} location={location} />
         <div className='page-main'>
           <Header
@@ -37,7 +37,7 @@ export default class Page extends Component {
             )}
           </ContentContainer>
         </div>
-      </div>
+      </Paper>
     )
   }
 
