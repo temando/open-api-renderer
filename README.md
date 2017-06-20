@@ -25,6 +25,20 @@ yarn
 
 ## Usage
 
+### Lincoln as a component
+
+To use Lincoln in your React project:
+
+```js
+import Lincoln from 'react-lincoln'
+
+<Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json' />
+```
+
+> This represents a future state, Lincoln is not published to NPM yet.
+
+### Lincoln demo
+
 To preview Lincoln on your local machine:
 
 ```sh
@@ -35,23 +49,15 @@ Lincoln is now available on <http://localhost:8200>. The port can be changed by 
 
 You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json>
 
-To use Lincoln in your React project:
-
-```js
-import Lincoln from 'react-lincoln'
-
-<Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json' />
-```
-
 ## Building & Deployment
 
-Run the following to build this project as React component:
+To build this project as React component:
 
 ```sh
 yarn build:library
 ```
 
-Run the following to build the demo, located in `/docs/demo`:
+To build the demo located in `/docs/demo`:
 
 ```sh
 yarn build:demo
