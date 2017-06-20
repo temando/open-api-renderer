@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
-import injectSheet from 'react-jss'
-import { styles } from './Page.jss'
 import { Paper } from 'material-ui'
-import injectSheet from 'react-jss'
-import { styles } from './Page.jss'
 
 @injectSheet(styles)
 export default class Page extends Component {
@@ -24,7 +19,7 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <Paper className={classes.page}>
+      <Paper className='page'>
         <Navigation navigation={navigation} location={location} />
         <div className={classes.main}>
           <Header
