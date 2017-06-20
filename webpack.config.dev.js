@@ -1,9 +1,9 @@
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const webpackMerge = require('webpack-merge')
-const appConfig = require('./webpack.config.app')
+const demoConfig = require('./webpack.config.demo')
 
-module.exports = webpackMerge(appConfig, {
+module.exports = webpackMerge(demoConfig, {
   plugins: [
     new DashboardPlugin(),
     new WatchMissingNodeModulesPlugin(`${__dirname}/node_modules`)
