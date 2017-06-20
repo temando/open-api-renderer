@@ -3,7 +3,7 @@ const pkgJson = require('./package.json')
 
 module.exports = Object.assign({}, baseConfig, {
   entry: {
-    OpenApiRenderer: ['babel-polyfill', 'core-js/es7', './entries/OpenApiRenderer.js']
+    OpenApiRenderer: ['./entries/OpenApiRenderer.js']
   },
 
   output: {

@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkgJson = require('./package.json')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const isProduction = process.env.NODE_ENV === 'prod'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const extractSass = new ExtractTextPlugin({
   filename: 'styles.css',
@@ -45,7 +45,9 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
-    })
+    }),
+
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
   resolve: {
     modules: ['src/', 'node_modules'],
@@ -60,8 +62,11 @@ module.exports = {
       // JS
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/]
+        exclude: [/node_modules/],
+        use: {
+          loader: 'babel-loader',
+          options: { cacheDirectory: true }
+        }
       },
 
       // JSON
