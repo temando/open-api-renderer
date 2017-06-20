@@ -1,3 +1,4 @@
+@import '../../base.scss';
 @import '../../general.scss';
 
 $headerHeight: 40px;
@@ -13,7 +14,7 @@ $headerColor: rgba(255, 255, 255, 0.5);
     height: $headerHeight;
     background: #234f69;
     z-index: 999;
-    font-family: "Lato";
+    font-family: $body-font;
     text-align: right;
 
     padding: $headerVPadding 25px;
