@@ -1,10 +1,26 @@
 {
-  "name": "open-api-renderer",
-  "description": "Open API Renderer",
+  "name": "react-lincoln",
+  "description": "Meet Lincoln, a React component for rendering OpenAPI v3 definitions.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/temando/open-api-renderer.git"
+  },
+  "bugs": "https://github.com/temando/open-api-renderer/issues",
+  "keywords": [
+    "OpenAPI",
+    "OpenAPI specification",
+    "swagger",
+    "react",
+    "API"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
   "contributors": [
     {
       "name": "Brendan Abbott",
-      "email": "brendan.abbott@temando.com"
+      "email": "brendan@bloodbone.ws"
     },
     {
       "name": "Florie Guibert",
@@ -19,24 +35,17 @@
       "email": "novus.nfour@gmail.com"
     }
   ],
-  "main": "./OpenApiRenderer.js",
+  "main": "./Lincoln.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.dev.js",
-    "start:demo": "webpack-dev-server --config ./webpack.config.dev.demo.js",
+    "build": "npm run build:demo && npm run build:library",
+    "build:demo": "rimraf docs/demo/* && NODE_ENV=production webpack --config webpack.config.demo.js",
+    "build:library": "./scripts/build.bash",
     "dash": "webpack-dashboard -- yarn start",
     "lint": "eslint src test",
+    "start": "webpack-dev-server --config ./webpack.config.dev.demo.js",
     "test": "jest",
-    "build": "npm run build:app && npm run build:library",
-    "build:demo": "rimraf docs/demo/* && NODE_ENV=production webpack --config webpack.config.demo.js",
-    "build:app": "rimraf dist/app/* && NODE_ENV=production webpack --config webpack.config.app.js",
-    "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js",
-    "build:library": "./scripts/build.bash",
-    "test:coverage": "jest --coverage"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/temando/open-api-renderer.git"
+    "test:coverage": "jest --coverage",
+    "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",

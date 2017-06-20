@@ -1,12 +1,12 @@
-# Open API Renderer
+# Lincoln
+
+<img src='assets/lincoln-logo-white.png' alt='Lincoln' height="96" width="96" />
 
 [![Travis CI](https://img.shields.io/travis/temando/open-api-renderer.svg)](https://travis-ci.org/temando/open-api-renderer)
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Open API Renderer visualises [Open API](https://www.openapis.org) v3 [definitions](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md). The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the specification.
-
-It is built on [React](https://facebook.github.io/react/).
+Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) v3 [definitions](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/README.md). The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the specification.
 
 This project is inspired by [ReDoc](https://github.com/Rebilly/ReDoc), which currently handles Swagger v2 specs.
 
@@ -15,7 +15,7 @@ This project is inspired by [ReDoc](https://github.com/Rebilly/ReDoc), which cur
 ## Prerequisite
 
 - [Node.js](https://nodejs.org) is required to build and manage this project.
-- It is assumed that you use [yarn](https://yarnpkg.com) to manage node.JS dependencies and to run scripts. You're welcome to use [npm](https://docs.npmjs.com/), in which case, just substitute `yarn` with `npm`.
+- It is assumed that you use [yarn](https://yarnpkg.com) to manage Node.js dependencies and to run scripts. You're welcome to use [npm](https://docs.npmjs.com/), in which case, just substitute `yarn` with `npm`.
 
 ## Installation
 
@@ -25,25 +25,45 @@ yarn
 
 ## Usage
 
-To view the renderer on your local machine:
+### Lincoln as a component
+
+To use Lincoln in your React project:
+
+```js
+import Lincoln from 'react-lincoln'
+
+<Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json' />
+```
+
+> This represents a future state, Lincoln is not published to NPM yet.
+
+### Lincoln demo
+
+To preview Lincoln on your local machine:
 
 ```sh
 yarn run start
 ```
 
-The renderer is then available on <http://localhost:8200>. The port can be changed by updating `webpack.config.dev`.
+Lincoln is now available on <http://localhost:8200>. The port can be changed by updating `webpack.config.dev`.
 
 You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json>
 
-## Deployment to production
+## Building & Deployment
 
-Run the following to generate the artifacts at `/dist`:
+To build this project as React component:
 
 ```sh
-yarn run build:prod
+yarn build:library
 ```
 
-Deploy the files at `/dist` to your server.
+To build the demo located in `/docs/demo`:
+
+```sh
+yarn build:demo
+```
+
+You can deploy the files at `/docs/demo` to your server.
 
 ## Philosophy
 

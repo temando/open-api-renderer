@@ -16,6 +16,5 @@ module.exports = {
     'jsx',
     'json'
   ],
-  testEnvironment: 'node',
   verbose: true
 }
