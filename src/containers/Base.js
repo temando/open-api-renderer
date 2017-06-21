@@ -2,6 +2,8 @@ import React from 'react'
 import { configureAnchors } from 'react-scrollable-anchor'
 import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
+import { MuiThemeProvider } from 'material-ui/styles'
+import { theme } from '../theme'
 
 import Page from '../components/Page/Page'
 import Overlay from '../components/Overlay/Overlay'
@@ -64,11 +66,13 @@ export default class Base extends React.PureComponent {
     }
 
     return (
-      <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
-        <div className='main'>
-          {element}
-        </div>
-      </DocumentTitle>
+      <MuiThemeProvider theme={theme}>
+        <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
+          <div className='main'>
+            {element}
+          </div>
+        </DocumentTitle>
+      </MuiThemeProvider>
     )
   }
 }
