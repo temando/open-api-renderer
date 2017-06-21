@@ -16,7 +16,5 @@ module.exports = Object.assign({}, baseConfig, {
 
   externals: Object.keys(pkgJson.dependencies),
 
-  plugins: [
-    baseConfig.plugins[0]
-  ]
+  plugins: []
 })
