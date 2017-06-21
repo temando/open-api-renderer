@@ -1,14 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkgJson = require('./package.json')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
-const isProduction = process.env.NODE_ENV === 'production'
-console.log({isProduction})
-const extractSass = new ExtractTextPlugin({
-  filename: 'styles.css',
-  disable: !isProduction
-})
 
 module.exports = {
   context: `${__dirname}/src`,
@@ -20,8 +12,6 @@ module.exports = {
   },
 
   plugins: [
-    extractSass,
-
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: (m) => m.context && m.context.indexOf('node_modules') !== -1
@@ -78,15 +68,7 @@ module.exports = {
       // SASS/CSS
       {
         test: /\.(css|scss)$/,
-        use: extractSass.extract({
-          use: [{
-            loader: 'css-loader'
-          }, {
-            loader: 'sass-loader'
-          }],
-          // use style-loader in development
-          fallback: 'style-loader'
-        })
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
 
       // ASSETS
