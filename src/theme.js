@@ -6,8 +6,5 @@ export const theme = createMuiTheme({
     type: 'dark'
   })
 })
-<<<<<<< HEAD
 
 console.log({theme})
-=======
->>>>>>> e614871... Get MUI wired up, using dark theme
