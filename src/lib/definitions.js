@@ -1,6 +1,7 @@
 import request from 'superagent'
 import yaml from 'js-yaml'
 import getParserFunction from '../parser/parserFactory'
+import { getSortingFunction } from './sorting'
 
 export async function getDefinition (url) {
   if (!url) { throw new Error('Missing url') }
@@ -24,10 +25,10 @@ export async function getDefinition (url) {
   return definition
 }
 
-export async function parseDefinition (definition, parserType) {
+export async function parseDefinition ({ definition, parserType, navSortType }) {
   const parser = getParserFunction(parserType)
-
-  const parsedDefinition = await parser(definition)
+  const sortFunc = getSortingFunction(navSortType)
+  const parsedDefinition = await parser(definition, sortFunc)
 
   return parsedDefinition
 }

@@ -1,18 +1,18 @@
 import refParser from 'json-schema-ref-parser'
 import { getSecurityDefinitions, getUISecurity } from './securityParser'
 import getUIReadySchema from '../schemaParser'
-import { sortByUIMethod } from '../../sorting'
 
 /**
  * Construct navigation and services ready to be consumed by the UI
  *
  * @param {Array} tags
  * @param {Object} paths
- * @param {Array} globalSecurity
+ * @param {Array} apiSecurity
  * @param {Object} securityDefinitions
+ * @param {Function} sortFunc
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices (tags, paths, globalSecurity = [], securityDefinitions) {
+function getUINavigationAndServices ({ tags, paths, apiSecurity = [], securityDefinitions, sortFunc }) {
   const navigation = []
   const services = []
 
@@ -60,8 +60,8 @@ function getUINavigationAndServices (tags, paths, globalSecurity = [], securityD
         // Security can be declared per method, or globally for the entire API.
         if (method.security) {
           servicesMethod.security = getUISecurity(method.security, securityDefinitions)
-        } else if (globalSecurity.length) {
-          servicesMethod.security = getUISecurity(globalSecurity, securityDefinitions)
+        } else if (apiSecurity.length) {
+          servicesMethod.security = getUISecurity(apiSecurity, securityDefinitions)
         }
 
         const uiParameters = getUIParameters(method.parameters)
@@ -75,12 +75,12 @@ function getUINavigationAndServices (tags, paths, globalSecurity = [], securityD
 
     navigation.push({
       title: tag,
-      methods: navigationMethods.sort(sortByUIMethod)
+      methods: typeof sortFunc === 'function' ? navigationMethods.sort(sortFunc) : navigationMethods
     })
 
     services.push({
       title: tag,
-      methods: servicesMethods.sort(sortByUIMethod)
+      methods: typeof sortFunc === 'function' ? servicesMethods.sort(sortFunc) : servicesMethods
     })
   }
 
@@ -315,12 +315,13 @@ function addTagDetailsToNavigation (navigation, tagDefinitions) {
 }
 
 /**
- * Converts openApiV3 object to new object ready to be consumed by the UI
+ * Converts openApiV3 object to new object ready to be consumed by the UI.
  *
  * @param {Object} openApiV3
+ * @param {Function} sortFunc
  * @return {Object}
  */
-export default async function getUIReadyDefinition (openApiV3) {
+export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   let derefOpenApiV3
   try {
     derefOpenApiV3 = await refParser.dereference(openApiV3)
@@ -330,15 +331,22 @@ export default async function getUIReadyDefinition (openApiV3) {
 
   const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
+  const apiSecurity = derefOpenApiV3.security || []
 
   // Get tags from the paths
   const tags = getTags(paths)
 
   // Get security definitions
-  const security = getSecurityDefinitions(derefOpenApiV3)
+  const securityDefinitions = getSecurityDefinitions(derefOpenApiV3)
 
   // Construction navigation and services
-  const {navigation, services} = getUINavigationAndServices(tags, paths, derefOpenApiV3.security || [], security)
+  const {navigation, services} = getUINavigationAndServices({
+    tags,
+    paths,
+    apiSecurity,
+    securityDefinitions,
+    sortFunc
+  })
 
   // If we have tag information, let's add it to the navigation
   if (derefOpenApiV3.tags) {
@@ -358,7 +366,7 @@ export default async function getUIReadyDefinition (openApiV3) {
     info: infoObj,
     navigation,
     services,
-    security
+    security: securityDefinitions
   }
 
   return definition
