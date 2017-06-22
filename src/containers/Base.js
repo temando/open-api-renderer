@@ -9,6 +9,7 @@ import Page from '../components/Page/Page'
 import Overlay from '../components/Overlay/Overlay'
 import { getDefinition, parseDefinition } from '../lib/definitions'
 import '../general.scss'
+import lincolnLogo from '../assets/lincoln-logo-white.svg'
 
 export default class Base extends React.PureComponent {
   state = {
@@ -80,7 +81,7 @@ export default class Base extends React.PureComponent {
 const Definition = ({ definition, definitionUrl, location }) =>
   !definition
     ? <Overlay>
-      <img src='assets/lincoln-logo-white.svg' alt='' />
+      <img src={lincolnLogo} alt='' />
       <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
       <p>You can also set this with the <code>?url</code> query parameter.</p>
     </Overlay>
