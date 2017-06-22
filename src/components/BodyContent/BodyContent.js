@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import injectSheet from 'react-jss'
 import BodySchema from '../BodySchema/BodySchema'
 import BodySchemaSwitcher from '../BodySchemaSwitcher/BodySchemaSwitcher'
 import Example from '../Example/Example'
+import injectSheet from 'react-jss'
 import { styles } from './BodyContent.style'
 
 @injectSheet(styles)

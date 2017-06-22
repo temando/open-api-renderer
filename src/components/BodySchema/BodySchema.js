@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import createFragment from 'react-addons-create-fragment'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
 import Property from '../Property/Property'
+import injectSheet from 'react-jss'
+import { styles } from './BodySchema.style'
 
-import './BodySchema.scss'
-
+@injectSheet(styles)
 export default class BodySchema extends Component {
   constructor (props) {
     super(props)
@@ -19,16 +19,15 @@ export default class BodySchema extends Component {
   }
 
   render () {
-    const { properties, styleVariation } = this.props
+    const { properties, styleVariation, classes } = this.props
 
     if (!properties) {
       return null
     }
-
     const { expandedProp } = this.state
 
     return (
-      <table className={classNames('body-schema', `body-schema--${styleVariation}`)}>
+      <table className={classNames(classes.bodySchema, classes[styleVariation])}>
         <tbody>
           {properties.map((property, i) => {
             const isLast = (properties.length === i + 1)
@@ -79,11 +78,13 @@ export default class BodySchema extends Component {
     const { styleVariation } = this.props
     const nextStyleVariation = (styleVariation === 'even') ? 'odd' : 'even'
 
+    // FIXME: this is not componentized
     return (
       <tr className='body-schema-subset'>
         <td colSpan='100'>
           {isArray && <div>Array [</div>}
           <BodySchema
+            {...this.props}
             key={`${property.name}-properties`}
             properties={property.properties}
             styleVariation={nextStyleVariation}
@@ -117,5 +118,6 @@ BodySchema.propTypes = {
   styleVariation: PropTypes.oneOf([
     'odd',
     'even'
-  ])
+  ]),
+  classes: PropTypes.object
 }
