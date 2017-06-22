@@ -8,7 +8,7 @@ export default class ContentContainer extends Component {
     const { classes } = this.props
 
     return (
-      <div className={classes.root}>
+      <div className={classes.contentContainer}>
         {this.props.children}
       </div>
     )

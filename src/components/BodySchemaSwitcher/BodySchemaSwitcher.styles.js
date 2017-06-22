@@ -1,7 +1,7 @@
 import { applyTheme } from '../../theme'
 
 export const styles = applyTheme(({ shades }) => ({
-  select: {
+  'select': {
     background: 'transparent',
     color: 'white',
     border: '1px solid white',

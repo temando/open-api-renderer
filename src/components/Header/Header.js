@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 
 import Description from '../Description/Description'
 import ExternalLink from '../ExternalLink/ExternalLink'
-import './Header.scss'
+import { styles } from './Header.styles'
 
+@styles
 export default class Header extends PureComponent {
   render () {
     const { title, version, description, info, specUrl } = this.props
