@@ -1,4 +1,4 @@
-import request from 'superagent'
+import fetch from 'isomorphic-fetch'
 
 const VALIDATOR_HOST = 'https://openapi-converter.herokuapp.com'
 
@@ -8,14 +8,14 @@ const VALIDATOR_HOST = 'https://openapi-converter.herokuapp.com'
  */
 export async function validateDefinition (definitionUrl) {
   const url = `${VALIDATOR_HOST}/api/v1/validate`
-  const response = await request.get(`${url}?url=${definitionUrl}`)
-    .timeout({
-      response: 5000,
-      deadline: 60000
-    })
+  const result = await fetch(`${url}?url=${definitionUrl}`)
 
-  if (!response.body.status) {
-    throw new Error(`The definition did not validate, see ${VALIDATOR_HOST}.`)
+  if (result.ok) {
+    const response = await result.json()
+
+    if (response.status === false) {
+      throw new Error(`The definition did not validate, see ${VALIDATOR_HOST}.`)
+    }
   }
 
   return true
