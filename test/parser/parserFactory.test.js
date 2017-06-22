@@ -1,4 +1,4 @@
-import getParserFunction from '../../src/parser/parserFactory'
+import { getParserFunction } from '../../src/parser/parserFactory'
 
 describe('getParserFunction', () => {
   it('handles open api v3', () => {

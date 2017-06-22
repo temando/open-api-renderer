@@ -110,7 +110,9 @@ function addMediaTypeInfoToUIObject (uiObject, mediaType) {
   }
 
   if (mediaType.examples) {
-    examples = examples.concat(...mediaType.examples)
+    examples = examples.concat(...Object.keys(mediaType.examples).map(
+      (example) => mediaType.examples[example]
+    ))
   }
 
   if (examples.length) {

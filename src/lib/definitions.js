@@ -1,6 +1,6 @@
 import request from 'superagent'
 import yaml from 'js-yaml'
-import getParserFunction from '../parser/parserFactory'
+import { getParserFunction, getValidatorFunction } from '../parser/parserFactory'
 import { getSortingFunction } from './sorting'
 
 export async function getDefinition (url) {
@@ -23,6 +23,12 @@ export async function getDefinition (url) {
   }
 
   return definition
+}
+
+export function validateDefinition (definition, parserType) {
+  const validator = getValidatorFunction(parserType)
+
+  return validator(definition)
 }
 
 export async function parseDefinition ({ definition, parserType, navSortType }) {

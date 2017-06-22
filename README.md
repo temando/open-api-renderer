@@ -47,16 +47,17 @@ yarn run start
 
 Lincoln is now available on <http://localhost:8200>. The port can be changed by updating `webpack.config.dev`.
 
-You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json>
+You need to specify a url for the `Open API v3` file, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC2.json>
 
 ## Configuration
 
 The following configuration options apply to the Lincoln component:
 
-| property        | required | type   | description                                                                                                         |
-| --------------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------- |
-| `definitionUrl` | ✔        | string | CORS-enabled URL to Open API v3 definition to render. Supports JSON or YAML.                                        |
-| `navSort`       |          | enum   | `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`. |
+| property        | required | type    | description                                                                                                         |
+| --------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
+| `definitionUrl` | ✔        | string  | CORS-enabled URL to Open API v3 definition to render. Supports JSON or YAML.                                        |
+| `navSort`       |          | enum    | `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`. |
+| `validate`      |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.    |
 
 ## Building & Deployment
 
