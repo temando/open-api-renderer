@@ -19,6 +19,6 @@ export const theme = {
  * FIXME: This only exists because react-jss doesnt do themes yet
  * as a central place to refactor
  */
-export function applyTheme (styles) {
+export function createSheet (styles) {
   return (...args) => injectSheet(styles(theme))(...args)
 }

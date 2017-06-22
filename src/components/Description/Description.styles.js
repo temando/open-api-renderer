@@ -1,8 +1,8 @@
 
-import { applyTheme } from '../../theme'
+import { createSheet } from '../../theme'
 
-export const styles = applyTheme(({ shades }) => ({
-  description: {
+export const styles = createSheet(({ shades }) => ({
+  'description': {
     '&$inline': {
       '&, & p': {
         display: 'inline'
@@ -12,5 +12,5 @@ export const styles = applyTheme(({ shades }) => ({
       margin: '.5rem 0'
     }
   },
-  inline: {}
+  'inline': {}
 }))

@@ -1,7 +1,7 @@
-import { applyTheme } from '../../theme'
+import { createSheet } from '../../theme'
 
-export const styles = applyTheme(({ shades }) => ({
-  root: {
+export const styles = createSheet(({ shades }) => ({
+  'contentContainer': {
     padding: '20px'
   }
 }))

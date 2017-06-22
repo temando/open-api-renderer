@@ -1,6 +1,6 @@
-import { applyTheme } from '../../theme'
+import { createSheet } from '../../theme'
 
-export const styles = applyTheme(({ shades }) => ({
+export const styles = createSheet(({ shades }) => ({
   'page': {
     width: '100%',
     height: '100%'

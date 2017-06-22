@@ -1,6 +1,6 @@
-import { applyTheme } from '../../theme'
+import { createSheet } from '../../theme'
 
-export const styles = applyTheme(({ backgrounds }) => ({
+export const styles = createSheet(({ backgrounds }) => ({
   'overlay': {
     position: 'fixed',
     top: '0',
