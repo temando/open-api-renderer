@@ -28,7 +28,7 @@ export default class Base extends React.PureComponent {
 
     try {
       const definition = await getDefinition(definitionUrl)
-      const parsedDefinition = await parseDefinition(definition, parserType, navSort)
+      const parsedDefinition = await parseDefinition({ definition, parserType, navSort })
 
       this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
     } catch (err) {

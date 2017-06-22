@@ -25,7 +25,7 @@ export async function getDefinition (url) {
   return definition
 }
 
-export async function parseDefinition (definition, parserType, navSortType) {
+export async function parseDefinition ({ definition, parserType, navSortType }) {
   const parser = getParserFunction(parserType)
   const sortFunc = getSortingFunction(navSortType)
   const parsedDefinition = await parser(definition, sortFunc)

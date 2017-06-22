@@ -12,7 +12,7 @@ import getUIReadySchema from '../schemaParser'
  * @param {Function} sortFunc
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices (tags, paths, apiSecurity = [], securityDefinitions, sortFunc) {
+function getUINavigationAndServices ({ tags, paths, apiSecurity = [], securityDefinitions, sortFunc }) {
   const navigation = []
   const services = []
 
@@ -340,7 +340,13 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   const securityDefinitions = getSecurityDefinitions(derefOpenApiV3)
 
   // Construction navigation and services
-  const {navigation, services} = getUINavigationAndServices(tags, paths, apiSecurity, securityDefinitions, sortFunc)
+  const {navigation, services} = getUINavigationAndServices({
+    tags,
+    paths,
+    apiSecurity,
+    securityDefinitions,
+    sortFunc
+  })
 
   // If we have tag information, let's add it to the navigation
   if (derefOpenApiV3.tags) {
