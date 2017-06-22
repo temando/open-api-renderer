@@ -4,10 +4,9 @@ import PropTypes from 'prop-types'
 import BodySchema from '../BodySchema/BodySchema'
 import BodySchemaSwitcher from '../BodySchemaSwitcher/BodySchemaSwitcher'
 import Example from '../Example/Example'
-import injectSheet from 'react-jss'
-import { styles } from './BodyContent.style'
+import { styles } from './BodyContent.styles'
 
-@injectSheet(styles)
+@styles
 export default class BodyContent extends Component {
   constructor (props) {
     super(props)

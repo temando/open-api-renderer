@@ -1,4 +1,5 @@
 import c from 'color'
+import injectSheet from 'react-jss'
 
 export const theme = {
   backgrounds: {
@@ -18,4 +19,6 @@ export const theme = {
  * FIXME: This only exists because react-jss doesnt do themes yet
  * as a central place to refactor
  */
-export function applyTheme (styles) { return styles(theme) }
+export function applyTheme (styles) {
+  return (...args) => injectSheet(styles(theme))(...args)
+}

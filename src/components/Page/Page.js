@@ -5,10 +5,9 @@ import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
-import injectSheet from 'react-jss'
 import { styles } from './Page.styles'
 
-@injectSheet(styles)
+@styles
 export default class Page extends Component {
   render () {
     const { definition, location, specUrl, classes } = this.props

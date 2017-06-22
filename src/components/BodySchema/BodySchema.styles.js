@@ -13,17 +13,5 @@ export const styles = applyTheme(({ shades }) => ({
   },
   odd: {
     backgroundColor: 'rgb(14, 24, 39)'
-  },
-
-  '@global': {
-    '.schema-slide-toggle-appear, .schema-slide-toggle-enter': {
-      maxHeight: '0',
-
-      '&.schema-slide-toggle-appear-active, &.schema-slide-toggle-enter-active': {
-        maxHeight: '1500px',
-        transition: 'max-height 500ms ease-in'
-      }
-    }
-
   }
 }))

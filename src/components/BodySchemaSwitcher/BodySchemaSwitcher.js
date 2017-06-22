@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import injectSheet from 'react-jss'
-import { styles } from './BodySchemaSwitcher.style'
+import { styles } from './BodySchemaSwitcher.styles'
 
-@injectSheet(styles)
+@styles
 export default class BodySchemaSwitcher extends Component {
   constructor (props) {
     super(props)

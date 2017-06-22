@@ -3,10 +3,9 @@ import createFragment from 'react-addons-create-fragment'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Property from '../Property/Property'
-import injectSheet from 'react-jss'
-import { styles } from './BodySchema.style'
+import { styles } from './BodySchema.styles'
 
-@injectSheet(styles)
+@styles
 export default class BodySchema extends Component {
   constructor (props) {
     super(props)
