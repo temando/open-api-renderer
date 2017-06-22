@@ -1,7 +1,7 @@
 import { applyTheme } from '../../theme'
 
 export const styles = applyTheme(({ shades }) => ({
-  root: {
+  'bodyContent': {
     display: 'table',
     width: '100%',
     border: '2px solid black',
@@ -9,7 +9,7 @@ export const styles = applyTheme(({ shades }) => ({
     boxSizing: 'border-box'
   },
 
-  tabs: {
+  'tabs': {
     position: 'relative',
     top: '2px',
 
@@ -27,5 +27,5 @@ export const styles = applyTheme(({ shades }) => ({
     }
   },
 
-  active: {}
+  'active': {}
 }))
