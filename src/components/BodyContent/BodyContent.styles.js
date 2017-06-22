@@ -19,11 +19,13 @@ export const styles = applyTheme(({ shades }) => ({
       borderLeft: 'none',
       cursor: 'pointer',
 
-      '&.active': {
+      '&$active': {
         fontWeight: 'bold',
         borderBottom: 'none',
         textDecoration: 'underline'
       }
     }
-  }
+  },
+
+  active: {}
 }))
