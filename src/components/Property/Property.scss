@@ -8,7 +8,7 @@ $cell-padding: 10px;
 .property-name,
 .property-info {
   vertical-align: middle;
-  padding: $cell-padding;
+  padding-right: $cell-padding;
 }
 
 .property-name {
@@ -17,7 +17,6 @@ $cell-padding: 10px;
   position: relative;
   span {
     display: inline-block;
-    padding-left: $cell-padding;
     padding-right: $cell-padding;
     line-height: $line-height;
     vertical-align: middle;
@@ -47,8 +46,13 @@ $cell-padding: 10px;
 /* Tree */
 
 .property+.property, .body-schema-subset+.property {
-  .property-name {
+  .property-name::after {
+    content: '';
     border-left: $tree-border-style;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
   }
 }
 
@@ -61,63 +65,56 @@ $cell-padding: 10px;
 }
 
 .property-name {
+  &::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    border-top: $tree-border-style;
+    width: 2 * $cell-padding;
+  }
   span:first-child::before {
     content: '';
     display: inline-block;
     width: $cell-padding;
-    height: $tree-line-width + 6;
+    height: $tree-line-width + 7;
     vertical-align: middle;
     border-left: $tree-border-style;
-  }
-  span:first-child::after {
-    content: '';
-    border-top: $tree-border-style;
-    width: 2 * $cell-padding;
-    position: absolute;
-    left: 0;
-    top: ($line-height + 2 * $cell-padding) / 2 + 1;
+    position: relative;
+    bottom: 2px;
   }
 }
 
 .property {
   &:first-child {
-    .property-name::before {
+    .property-name::after {
       content: '';
       border-left: $tree-border-style;
       position: absolute;
       bottom: 0;
       left: 0;
-      height: ($line-height + 2 * $cell-padding) / 2 - ($tree-line-width + 1);
+      height: 52%;
     }
   }
   &:last-child, &.last {
-    .property-name {
-      border-left: none;
-    }
     .property-name::after {
       content: '';
       border-left: $tree-border-style;
       position: absolute;
       top: 0;
       left: 0;
-      height: ($line-height + 2 * $cell-padding) / 2 + 1;
+      height: 49%;
     }
   }
   &:only-of-type {
-    .property-name::before, .property-name::after {
+    .property-name::after {
       border: none;
     }
   }
 }
 
 .property {
-  &:first-child {
-    .property-name::after {
-      border: none;
-    }
-  }
   &:first-child.last {
-    .property-name::before {
+    .property-name::after {
       border: none;
     }
   }
