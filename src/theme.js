@@ -1,10 +1,21 @@
-import { createMuiTheme } from 'material-ui/styles'
-import createPalette from 'material-ui/styles/palette'
+import c from 'color'
 
-export const theme = createMuiTheme({
-  palette: createPalette({
-    type: 'dark'
-  })
-})
+export const theme = {
+  backgrounds: {
+    default: '#fff',
+    nav: '#eee',
+    header: '#ddd'
+  },
 
-console.log({theme})
+  shades: {
+    default: '#aaa'
+  },
+
+  link: '#adf'
+}
+
+/**
+ * FIXME: This only exists because react-jss doesnt do themes yet
+ * as a central place to refactor
+ */
+export function applyTheme (styles) { return styles(theme) }

@@ -1,8 +1,6 @@
-const colors = {
-  background: '#444'
-}
+import { applyTheme } from '../../theme'
 
-export const styles = {
+export const styles = applyTheme(({ shades }) => ({
   page: {
     width: '100%',
     height: '100%'
@@ -12,6 +10,6 @@ export const styles = {
     paddingLeft: '10px',
     width: '80%',
     boxSizing: 'border-box',
-    border: `1px solid ${colors.background}`
+    border: `1px solid ${shades.default}`
   }
-}
+}))

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "color": "^1.0.3",
     "copy-to-clipboard": "^3.0.6",
     "history": "^4.6.1",
     "js-yaml": "^3.8.4",

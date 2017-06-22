@@ -5,7 +5,8 @@ import Navigation from '../Navigation/Navigation'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
-import { Paper } from 'material-ui'
+import injectSheet from 'react-jss'
+import { styles } from './Page.styles'
 
 @injectSheet(styles)
 export default class Page extends Component {
@@ -19,7 +20,7 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <Paper className='page'>
+      <div className='page'>
         <Navigation navigation={navigation} location={location} />
         <div className={classes.main}>
           <Header
@@ -36,7 +37,7 @@ export default class Page extends Component {
             )}
           </ContentContainer>
         </div>
-      </Paper>
+      </div>
     )
   }
 

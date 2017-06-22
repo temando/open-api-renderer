@@ -67,13 +67,11 @@ export default class Base extends React.PureComponent {
     }
 
     return (
-      <MuiThemeProvider theme={theme}>
-        <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
-          <div className='main'>
-            {element}
-          </div>
-        </DocumentTitle>
-      </MuiThemeProvider>
+      <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
+        <div className='main'>
+          {element}
+        </div>
+      </DocumentTitle>
     )
   }
 }
