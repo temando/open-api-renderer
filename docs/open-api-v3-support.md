@@ -197,7 +197,7 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 - [ ] operationRef
 - [ ] operationId
 - [ ] parameters
-- [ ] [headers](#header-object)
+- [ ] requestBody
 - [ ] description
 - [ ] [server](#server-object)
 
@@ -321,4 +321,4 @@ No extension properties are supported at this time.
 
 [cm]: http://spec.commonmark.org/0.27/
 [jsschema]: http://json-schema.org/latest/json-schema-validation.html#rfc.section.6
-[oa3]: https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md
+[oa3]: https://github.com/OAI/OpenAPI-Specification/blob/3.0.0-rc2/versions/3.0.md
