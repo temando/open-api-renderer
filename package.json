@@ -57,7 +57,6 @@
     "jss": "^7.1.7",
     "lodash": "^4.17.4",
     "markdown-it": "^8.3.1",
-    "material-ui": "next",
     "prop-types": "^15.5.8",
     "qs": "^6.4.0",
     "react": "^15.5.4",
@@ -69,8 +68,7 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-scrollable-anchor": "^0.4.2",
-    "superagent": "^3.5.2",
-    "typeface-roboto": "^0.0.22"
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
