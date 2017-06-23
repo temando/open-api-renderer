@@ -9,8 +9,6 @@ describe('Lincoln', () => {
       component = <Lincoln foo='bar' />
     }).not.toThrow()
 
-    console.log(component.props)
-
     expect(component.props).toEqual({ foo: 'bar' })
   })
 })

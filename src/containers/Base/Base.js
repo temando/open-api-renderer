@@ -23,6 +23,20 @@ export default class Base extends React.PureComponent {
     this.intialise()
   }
 
+  intialise = async () => {
+    const { parserType } = this.state
+    const { definitionUrl, navSort, validate } = this.props
+
+    if (!definitionUrl) { return true }
+    if (definitionUrl === this.state.definitionUrl) { return false }
+
+    await this.setDefinition({ definitionUrl, parserType, navSort, validate })
+
+    configureAnchors({ offset: -10, scrollDuration: 100 })
+
+    return true
+  }
+
   setDefinition = async ({ definitionUrl, navSort, validate, parserType = this.state.parserType }) => {
     this.setState({ loading: !!definitionUrl, error: null })
 
@@ -39,20 +53,6 @@ export default class Base extends React.PureComponent {
     } catch (err) {
       return this.setState({ loading: false, error: err })
     }
-  }
-
-  intialise = async () => {
-    const { parserType } = this.state
-    const { definitionUrl, navSort, validate } = this.props
-
-    if (!definitionUrl) { return true }
-    if (definitionUrl === this.state.definitionUrl) { return false }
-
-    await this.setDefinition({ definitionUrl, parserType, navSort, validate })
-
-    configureAnchors({ offset: -10, scrollDuration: 100 })
-
-    return true
   }
 
   render () {
