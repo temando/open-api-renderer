@@ -1,6 +1,6 @@
 import React from 'react'
 
-describe('The built library', () => {
+describe('Lincoln', () => {
   it('imports as commonjs', () => {
     const Lincoln = require('../../dist/library').default
 

@@ -22,12 +22,12 @@ export default class Base extends React.PureComponent {
     this.intitialize()
   }
 
-  setDefinition = async ({ definitionUrl, parserType = this.state.parserType }) => {
+  setDefinition = async ({ definitionUrl, parserType = this.state.parserType, navSort }) => {
     this.setState({ loading: !!definitionUrl, error: null })
 
     try {
       const definition = await getDefinition(definitionUrl)
-      const parsedDefinition = await parseDefinition(definition, parserType)
+      const parsedDefinition = await parseDefinition({ definition, parserType, navSort })
 
       this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
     } catch (err) {
@@ -37,12 +37,12 @@ export default class Base extends React.PureComponent {
 
   intitialize = async () => {
     const { parserType } = this.state
-    const { definitionUrl } = this.props
+    const { definitionUrl, navSort } = this.props
 
     if (!definitionUrl) { return true }
     if (definitionUrl === this.state.definitionUrl) { return false }
 
-    await this.setDefinition({ definitionUrl, parserType })
+    await this.setDefinition({ definitionUrl, parserType, navSort })
 
     configureAnchors({ offset: -10, scrollDuration: 100 })
 
@@ -64,13 +64,26 @@ export default class Base extends React.PureComponent {
     }
 
     return (
-      <DocumentTitle title={definition ? definition.title : 'Open API v3 renderer'}>
+      <DocumentTitle title={definition ? definition.title : 'Lincoln Renderer'}>
         <div className='main'>
           {element}
         </div>
       </DocumentTitle>
     )
   }
+}
+
+Base.contextTypes = {
+  router: PropTypes.object
+}
+
+Base.propTypes = {
+  location: PropTypes.object,
+  definitionUrl: PropTypes.string,
+  navSort: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ])
 }
 
 const Definition = ({ definition, definitionUrl, location }) =>
@@ -90,7 +103,7 @@ Definition.propTypes = {
 
 const Failure = ({ error }) =>
   <Overlay>
-    <h3>Failure to load definition</h3>
+    <h3>Failed to load definition.</h3>
     <br />
     <p>{error.message}</p>
   </Overlay>
@@ -106,12 +119,4 @@ const Loading = ({ definitionUrl }) =>
 
 Loading.propTypes = {
   definitionUrl: PropTypes.string
-}
-
-Base.contextTypes = {
-  router: PropTypes.object
-}
-
-Base.propTypes = {
-  location: PropTypes.object
 }
