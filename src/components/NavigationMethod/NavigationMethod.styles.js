@@ -7,11 +7,9 @@ export const styles = createSheet(({ shades }) => ({
     fontSize: 'smaller',
     color: '#FFF'
   },
-
   active: {
     backgroundColor: 'transparent' // FIXME:
   },
-
   open: {
     display: 'flex'
   },
