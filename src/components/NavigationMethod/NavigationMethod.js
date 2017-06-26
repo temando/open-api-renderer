@@ -2,23 +2,24 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import './NavigationMethod.scss'
+import { styles } from './NavigationMethod.styles'
 
+@styles
 export default class NavigationMethod extends PureComponent {
   render () {
-    const { method, isActive, isOpen } = this.props
+    const { method, isActive, isOpen, classes } = this.props
 
     return (
       <a
-        className={classNames('nav-method', {
-          active: isActive,
-          open: isOpen,
-          closed: !isOpen
+        className={classNames(classes.navigationMethod, {
+          [classes.active]: isActive,
+          [classes.open]: isOpen,
+          [classes.closed]: !isOpen
         })}
         href={`#${method.link}`}
       >
-        <span className='method-type'>{method.type.toUpperCase()}</span>
-        <span className='method-title'>{method.title}</span>
+        <span className={classes.type}>{method.type.toUpperCase()}</span>
+        <span className={classes.title}>{method.title}</span>
       </a>
     )
   }
@@ -27,5 +28,6 @@ export default class NavigationMethod extends PureComponent {
 NavigationMethod.propTypes = {
   method: PropTypes.object,
   isActive: PropTypes.bool,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+  classes: PropTypes.object
 }
