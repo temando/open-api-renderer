@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Method from '../Method/Method'
+import { styles } from './ServiceContainer.styles'
 
-import './ServiceContainer.scss'
-
+@styles
 export default class ServiceContainer extends PureComponent {
   render () {
-    const { service } = this.props
+    const { service, classes } = this.props
     const { title, methods } = service
 
     return (
-      <div className='service-container' id={title}>
+      <div className={classes.serviceContainer} id={title}>
         <h2>{title}</h2>
         {methods.map(
           (method) => <Method key={method.link} method={method} />
@@ -21,5 +21,6 @@ export default class ServiceContainer extends PureComponent {
 }
 
 ServiceContainer.propTypes = {
-  service: PropTypes.object
+  service: PropTypes.object,
+  classes: PropTypes.object
 }

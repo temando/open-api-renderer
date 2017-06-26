@@ -1,19 +1,18 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-
 import Description from '../Description/Description'
+import { styles } from './SecurityContainer.styles'
 
-import './SecurityContainer.scss'
-
+@styles
 export default class SecurityContainer extends PureComponent {
   render () {
-    const { id, security } = this.props
+    const { id, security, classes } = this.props
     const { name, type, description } = security
     const isSimple = ['apiKey', 'http'].includes(security.type)
 
     return (
-      <section className='security-container' id={id}>
-        <h3>{name} <code className='scheme'>type={type}</code></h3>
+      <section className={classes.securityContainer} id={id}>
+        <h3>{name} <code className={classes.scheme}>type={type}</code></h3>
         {description && <Description description={description} />}
         {isSimple && this.renderSimple(security)}
         {security.type === 'oauth2' && this.renderOAuth2(security)}
@@ -40,6 +39,7 @@ export default class SecurityContainer extends PureComponent {
   }
 
   renderOAuth2 (security) {
+    const { classes } = this.props
     const { flows } = security
 
     return (
@@ -48,9 +48,9 @@ export default class SecurityContainer extends PureComponent {
           const flow = flows[flowKey]
 
           return (
-            <div className='flow-type' key={flowKey}>
+            <div className={classes.flowType} key={flowKey}>
               <h4><code>{flowKey}</code> flow</h4>
-              <dl className='inline-pairs'>
+              <dl className={classes.inlinePairs}>
                 {flow.authorizationUrl && [
                   <dt key='auth'>Authorization URL</dt>,
                   <dd key='auth-value'>{flow.authorizationUrl}</dd>
@@ -64,7 +64,7 @@ export default class SecurityContainer extends PureComponent {
                   <dd key='refresh-value'>{flow.refreshUrl}</dd>
                 ]}
               </dl>
-              <div className='scopes'>
+              <div className={classes.scopes}>
                 <h5>Available scopes</h5>
                 {this.renderScopes(flow.scopes)}
               </div>
@@ -86,11 +86,12 @@ export default class SecurityContainer extends PureComponent {
   }
 
   renderOpenIdConnect (security) {
+    const { classes } = this.props
     const { openIdConnectUrl } = security
 
     return (
       <div>
-        <dl className='inline-pairs'>
+        <dl className={classes.inlinePairs}>
           <dt>OpenID Connect URL</dt>
           <dd>{openIdConnectUrl}</dd>
         </dl>
@@ -101,5 +102,6 @@ export default class SecurityContainer extends PureComponent {
 
 SecurityContainer.propTypes = {
   id: PropTypes.string,
-  security: PropTypes.object
+  security: PropTypes.object,
+  classes: PropTypes.object
 }
