@@ -1,25 +1,25 @@
 import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ shades }) => ({
-  navigationMethod: {
+  'navigationMethod': {
     display: 'flex',
     padding: '.7rem 1.5rem',
     fontSize: 'smaller',
     color: '#FFF'
   },
-  active: {
+  'active': {
     backgroundColor: 'transparent' // FIXME:
   },
-  open: {
+  'open': {
     display: 'flex'
   },
-  closed: {
+  'closed': {
     display: 'none'
   },
-  type: {
+  'type': {
     width: '55px'
   },
-  title: {
+  'title': {
     width: 'calc(100% - 55px)'
   }
 }))
