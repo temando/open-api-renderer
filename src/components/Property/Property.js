@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
 import Description from '../Description/Description'
 import Indicator from '../Indicator/Indicator'
 import PropertyConstraints from '../PropertyConstraints/PropertyConstraints'
+import { styles } from './Property.styles'
 
-import './Property.scss'
-
+@styles
 export default class Property extends PureComponent {
   constructor (props) {
     super(props)
@@ -23,7 +22,9 @@ export default class Property extends PureComponent {
 
   render () {
     const {
-      name, type, title, description, constraints, isRequired, enumValues, defaultValue, onClick, isOpen, isLast
+      name, type, title, description, constraints, isRequired,
+      enumValues, defaultValue, onClick, isOpen, isLast,
+      classes
     } = this.props
 
     const isClickable = onClick !== undefined
@@ -42,23 +43,23 @@ export default class Property extends PureComponent {
 
     return (
       <tr
-        className={classNames('property', {
-          last: isLast
+        className={classNames(classes.property, {
+          [classes.last]: isLast
         })}
         onClick={this.handleClick}
       >
-        <td className={classNames('property-name', {
-          'property--isclickable': isClickable
+        <td className={classNames(classes.name, {
+          [classes.isClickable]: isClickable
         })}>
           <span>{name}</span>
-          {isClickable && <Indicator className='property-indicator' direction={indicatorDirection} />}
+          {isClickable && <Indicator className={classes.indicator} direction={indicatorDirection} />}
         </td>
-        <td className='property-info'>
-          {title && <span className='property-title'>{title}</span>}
-          <span className='property-type'>
-            {!subtype ? type.join(', ') : <span className='property-subtype'>{subtype}[]</span>}
+        <td className={classes.info}>
+          {title && <span className={classes.title}>{title}</span>}
+          <span className={classes.type}>
+            {!subtype ? type.join(', ') : <span className={classes.subType}>{subtype}[]</span>}
             {!subtype && constraints && constraints.format &&
-            <span className='property-format'>&lt;{constraints.format}&gt;</span>}
+            <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {enumValues && this.renderEnumValues(enumValues)}
@@ -75,12 +76,14 @@ export default class Property extends PureComponent {
    * @param {Array} values
    */
   renderEnumValues (values) {
+    const { classes } = this.props
+
     return (
       <div>
         <span>Valid values:</span>
         {values.map(value => {
           return (
-            <span key={value} className='enum'>{value}</span>
+            <span key={value} className={classes.enum}>{value}</span>
           )
         })}
       </div>
@@ -133,5 +136,6 @@ Property.propTypes = {
   isRequired: PropTypes.bool,
   isOpen: PropTypes.bool,
   isLast: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  classes: PropTypes.object
 }
