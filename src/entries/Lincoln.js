@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Base from '../containers/Base'
+import Base from '../containers/Base/Base'
 
 export default class LincolnRenderer extends React.Component {
   render () {

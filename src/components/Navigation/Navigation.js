@@ -28,7 +28,7 @@ export default class Navigation extends Component {
     const { expandedTags } = this.state
 
     return (
-      <nav className={classes.nav}>
+      <nav className={classes.navigation}>
         {navigation && navigation.map((tag) => {
           let shouldBeExpanded = false
           if (expandedTags.includes(tag.title)) {

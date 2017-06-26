@@ -2,7 +2,7 @@ import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 
 export const styles = createSheet(({ shades }) => ({
-  nav: {
+  navigation: {
     width: '20%',
     height: '100%',
     verticalAlign: 'top',
@@ -21,5 +21,4 @@ export const styles = createSheet(({ shades }) => ({
       borderTop: '1px solid #444'
     }
   }
-
 }))
