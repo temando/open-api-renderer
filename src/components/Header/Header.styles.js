@@ -12,5 +12,23 @@ export const styles = createSheet(({ shades }) => ({
       display: 'inline-block',
       marginRight: '.5rem'
     }
+  },
+
+  'inlinePairs': {
+    display: 'inline-flex',
+    margin: '1em 0',
+    padding: '0',
+    borderBottom: '1px solid $border-color',
+
+    '& dt, & dd': {
+      margin: '0',
+      padding: '.5rem',
+      borderTop: '1px solid $border-color'
+    },
+
+    '& dt': {
+      paddingRight: '1.5rem',
+      fontWeight: 'bold'
+    }
   }
 }))

@@ -8,13 +8,13 @@ import { styles } from './Header.styles'
 @styles
 export default class Header extends PureComponent {
   render () {
-    const { title, version, description, info, specUrl } = this.props
+    const { title, version, description, info, specUrl, classes } = this.props
 
     return (
-      <header id='header'>
+      <header id='header' className={classes.header}>
         <h1>{title}</h1>
 
-        <dl className='inline-pairs'>
+        <dl className={classes.inlinePairs}>
           <dt>Version</dt>
           <dd>{version}</dd>
           {info && info.contact && this.renderContact(info.contact)}
@@ -90,5 +90,6 @@ Header.propTypes = {
     license: PropTypes.object,
     termsOfService: PropTypes.string
   }),
-  specUrl: PropTypes.string.isRequired
+  specUrl: PropTypes.string.isRequired,
+  classes: PropTypes.object
 }

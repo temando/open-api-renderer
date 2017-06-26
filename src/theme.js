@@ -2,8 +2,8 @@ import injectSheet, { jss } from 'react-jss'
 
 export const theme = {
   backgrounds: {
-    default: '#fff',
-    nav: '#eee',
+    default: 'rgb(14, 24, 39)',
+    nav: 'rgb(19, 32, 51)',
     header: '#ddd'
   },
 
@@ -11,7 +11,11 @@ export const theme = {
     default: '#aaa'
   },
 
-  link: '#adf'
+  borders: {
+    default: 'rgba(255, 255, 255, 0.3)'
+  },
+
+  link: 'rgb(126, 211, 244)'
 }
 
 /**

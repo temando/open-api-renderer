@@ -1,14 +1,15 @@
+import c from 'color'
 import { createSheet } from '../../theme'
-import { styles as nav } from '../../components/Navigation/Navigation.styles'
+import { styles as base } from '../../containers/Base/Base.styles'
 
 const headerHeight = '50px'
 const headerBackground = '#234f69'
-const headerColor = `lighten(${headerBackground}, 40%)`
-const headerBorder = `darken(${headerColor}, 20%)`
+const headerColor = `${c(headerBackground).lighten(0.75)}`
+const headerBorder = `${c(headerColor).darken(0.2)}`
 
 export const styles = createSheet(({ shades }) => ({
   demo: {
-    [`& .${nav.classes.navigation}`]: {
+    [`& .${base.classes.base}`]: {
       marginTop: `${headerHeight}`
     }
   },
@@ -19,11 +20,10 @@ export const styles = createSheet(({ shades }) => ({
     top: '0',
     left: '0',
     display: 'flex',
-    height: '$headerHeight',
+    height: `${headerHeight}`,
     alignItems: 'baseline',
     background: `${headerBackground}`,
     zIndex: '999',
-    fontFamily: '$body-font',
 
     padding: '.4rem 1rem',
 
@@ -92,5 +92,4 @@ export const styles = createSheet(({ shades }) => ({
       }
     }
   }
-
 }))

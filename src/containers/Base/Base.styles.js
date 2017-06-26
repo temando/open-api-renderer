@@ -1,11 +1,13 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ shades }) => ({
-  base: {},
+export const styles = createSheet(({ backgrounds, link }) => ({
+  base: {
+    backgroundColor: `${backgrounds.default}`,
+    height: '100%'
+  },
 
   '@global': {
-
-    'html, body > div, $main': {
+    'html, body > div': {
       height: '100%'
     },
 
@@ -13,13 +15,9 @@ export const styles = createSheet(({ shades }) => ({
       height: '100%',
       margin: '0',
       padding: '0',
-      fontFamily: '$body-font',
+      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
       lineHeight: '1.4',
       color: 'white'
-    },
-
-    '$main': {
-      backgroundColor: '$content-background'
     },
 
     'ul, ol': {
@@ -36,35 +34,14 @@ export const styles = createSheet(({ shades }) => ({
     },
 
     'a': {
-      color: '$link-color',
+      color: `${link}`,
       textDecoration: 'none',
 
       '&:hover': {
         transition: 'color .25s',
-        color: `lighten($link-color, 20%)`,
+        color: `lighten(${link}, 20%)`,
         textDecoration: 'underline'
       }
     }
-
-    // .inline-pairs {
-    //   display: 'inline-flex',
-    //   margin: '1em 0',
-    //   padding: '0',
-    //   border-bottom: '1px solid $border-color',
-    // }
-
-    // .inline-pairs dt,
-    // .inline-pairs dd {
-    //   margin: '0',
-    //   padding: '.5rem',
-    //   border-top: '1px solid $border-color',
-    // }
-
-    // .inline-pairs dt {
-    //   padding-right: '1.5rem',
-    //   font-weight: 'bold',
-    // }
-
   }
-
 }))

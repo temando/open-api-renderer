@@ -8,7 +8,7 @@ import arrow from './arrow.png'
 export default class Indicator extends PureComponent {
   render () {
     const { direction, className, classes } = this.props
-    console.log({direction}, classes[direction])
+
     return (
       <div className={classNames(
         classes.indicator,
