@@ -1,5 +1,4 @@
-import c from 'color'
-import injectSheet from 'react-jss'
+import injectSheet, { jss } from 'react-jss'
 
 export const theme = {
   backgrounds: {
@@ -20,5 +19,11 @@ export const theme = {
  * as a central place to refactor
  */
 export function createSheet (styles) {
-  return (...args) => injectSheet(styles(theme))(...args)
+  const sheet = jss.createStyleSheet(styles(theme))
+
+  const decorator = (...args) => injectSheet(sheet)(...args)
+
+  Object.assign(decorator, sheet)
+
+  return decorator
 }
