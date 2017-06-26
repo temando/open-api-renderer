@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(() => ({
   'bodyContent': {
     display: 'table',
     width: '100%',

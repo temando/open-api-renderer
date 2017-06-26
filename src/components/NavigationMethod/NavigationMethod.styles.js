@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(({ backgrounds }) => ({
   'navigationMethod': {
     display: 'flex',
     padding: '.7rem 1.5rem',
@@ -8,7 +8,7 @@ export const styles = createSheet(({ shades }) => ({
     color: '#FFF'
   },
   'active': {
-    backgroundColor: 'transparent' // FIXME:
+    backgroundColor: `${backgrounds.default}`
   },
   'open': {
     display: 'flex'

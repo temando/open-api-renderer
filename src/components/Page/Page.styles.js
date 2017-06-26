@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(({ borders }) => ({
   'page': {
     width: '100%',
     height: '100%'
@@ -10,6 +10,6 @@ export const styles = createSheet(({ shades }) => ({
     paddingLeft: '10px',
     width: '80%',
     boxSizing: 'border-box',
-    border: `1px solid ${shades.default}`
+    border: `1px solid ${borders.default}`
   }
 }))

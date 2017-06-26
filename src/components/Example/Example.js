@@ -35,7 +35,7 @@ export default class Example extends Component {
     }
 
     return (
-      <div className={classes.root}
+      <div className={classes.example}
         onMouseEnter={() => this.setState({ hovered: true })}
         onMouseLeave={() => this.setState({ hovered: false })}
       >

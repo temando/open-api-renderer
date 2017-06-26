@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(({ borders }) => ({
   'header': {
     padding: '0 20px',
 
@@ -18,12 +18,12 @@ export const styles = createSheet(({ shades }) => ({
     display: 'inline-flex',
     margin: '1em 0',
     padding: '0',
-    borderBottom: '1px solid $border-color',
+    borderBottom: `1px solid ${borders.default}`,
 
     '& dt, & dd': {
       margin: '0',
       padding: '.5rem',
-      borderTop: '1px solid $border-color'
+      borderTop: `1px solid ${borders.default}`
     },
 
     '& dt': {

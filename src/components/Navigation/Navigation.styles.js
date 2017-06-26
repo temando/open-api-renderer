@@ -1,12 +1,12 @@
 import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(({ backgrounds }) => ({
   navigation: {
     width: '20%',
     height: '100%',
     verticalAlign: 'top',
-    backgroundColor: 'transparent', // FIXME:
+    backgroundColor: `${backgrounds.nav}`,
     position: 'fixed',
     boxSizing: 'border-box',
     overflowY: 'auto',

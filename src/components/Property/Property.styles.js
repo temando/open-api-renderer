@@ -1,9 +1,13 @@
 import { createSheet } from '../../theme'
 
-// TODO: replace variables
+const treeLineWidth = '1px'
+const treeBorderStyle = `${treeLineWidth} solid red`
+const lineHeight = '40px'
+const cellPadding = '10px'
+
 const nameAndInfo = {
   verticalAlign: 'middle',
-  paddingRight: '$cell-padding'
+  paddingRight: `${cellPadding}`
 }
 
 const enumAndDefault = {
@@ -13,7 +17,7 @@ const enumAndDefault = {
   border: '1px solid grey'
 }
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(({ borders }) => ({
   'name': {
     ...nameAndInfo,
     width: '1%',
@@ -24,23 +28,23 @@ export const styles = createSheet(({ shades }) => ({
       content: '',
       display: 'inline-block',
       verticalAlign: 'middle',
-      borderTop: '$tree-border-style',
+      borderTop: `${treeBorderStyle}`,
       width: '2 * $cell-padding'
     },
 
     '& span': {
       display: 'inline-block',
-      paddingRight: '$cell-padding',
-      lineHeight: '$line-height',
+      paddingRight: `${cellPadding}`,
+      lineHeight,
       verticalAlign: 'middle',
 
       '&:first-child::before': {
         content: '',
         display: 'inline-block',
-        width: '$cell-padding',
-        height: '$tree-line-width + 7',
+        width: `${cellPadding}`,
+        height: `8px`,
         verticalAlign: 'middle',
-        borderLeft: '$tree-border-style',
+        borderLeft: `${treeBorderStyle}`,
         position: 'relative',
         bottom: '2px'
       }
@@ -56,7 +60,7 @@ export const styles = createSheet(({ shades }) => ({
     '&:first-child': {
       '& $name::after': {
         content: '""',
-        borderLeft: '$tree-border-style',
+        borderLeft: `${treeBorderStyle}`,
         position: 'absolute',
         bottom: '0',
         left: '0',
@@ -66,7 +70,7 @@ export const styles = createSheet(({ shades }) => ({
     '&:last-child, &$last': {
       '& $name::after': {
         content: '""',
-        borderLeft: '$tree-border-style',
+        borderLeft: `${treeBorderStyle}`,
         position: 'absolute',
         top: '0',
         left: '0',
@@ -85,7 +89,7 @@ export const styles = createSheet(({ shades }) => ({
     },
     '& + &': {
       '& $info': {
-        borderTop: '1px solid $border-color'
+        borderTop: `1px solid ${borders.default}`
       }
     }
   },
@@ -109,7 +113,7 @@ export const styles = createSheet(({ shades }) => ({
     // '$property + $property, .body-schema-subset + $property': {
     //   '& $name::after': {
     //     content: '""',
-    //     borderLeft: '$tree-border-style',
+    //     borderLeft: `${treeBorderStyle}`,
     //     position: 'absolute',
     //     bottom: '0',
     //     left: '0',
@@ -118,7 +122,7 @@ export const styles = createSheet(({ shades }) => ({
     // },
 
     '.body-schema-subset > td': {
-      borderLeft: '$tree-border-style'
+      borderLeft: `${treeBorderStyle}`
     }
 
     // '$last + .body-schema-subset > td': {

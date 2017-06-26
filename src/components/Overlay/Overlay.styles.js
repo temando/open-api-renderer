@@ -7,7 +7,7 @@ export const styles = createSheet(({ backgrounds }) => ({
     left: '0',
     width: '100%',
     height: '100%',
-    backgroundColor: backgrounds.default,
+    backgroundColor: `${backgrounds.default}`,
 
     padding: '15% 0 0',
     textAlign: 'center',
