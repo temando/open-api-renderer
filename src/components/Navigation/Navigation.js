@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
-
 import NavigationTag from '../NavigationTag/NavigationTag'
+import { styles } from './Navigation.styles'
 
-import './Navigation.scss'
-
+@styles
 export default class Navigation extends Component {
   constructor (props) {
     super(props)
@@ -25,11 +24,11 @@ export default class Navigation extends Component {
   }
 
   render () {
-    const { navigation, location } = this.props
+    const { navigation, location, classes } = this.props
     const { expandedTags } = this.state
 
     return (
-      <nav className='nav'>
+      <nav className={classes.nav}>
         {navigation && navigation.map((tag) => {
           let shouldBeExpanded = false
           if (expandedTags.includes(tag.title)) {
@@ -72,5 +71,6 @@ export default class Navigation extends Component {
 
 Navigation.propTypes = {
   navigation: PropTypes.array,
-  location: PropTypes.object
+  location: PropTypes.object,
+  classes: PropTypes.object
 }
