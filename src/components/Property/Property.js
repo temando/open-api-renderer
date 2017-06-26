@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Description from '../Description/Description'
 import Indicator from '../Indicator/Indicator'
-import PropertyConstraints from '../PropertyConstraints/PropertyConstraints'
+import PropertyConstraints from './PropertyConstraints/PropertyConstraints'
 import { styles } from './Property.styles'
 
 @styles

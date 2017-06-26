@@ -1,5 +1,6 @@
 import { createSheet } from '../../theme'
 
+// TODO: replace variables
 const nameAndInfo = {
   verticalAlign: 'middle',
   paddingRight: '$cell-padding'
@@ -129,7 +130,8 @@ export const styles = createSheet(({ shades }) => ({
   'default': { ...enumAndDefault },
   'indicator': {},
   'format': {},
-  'subType': {}
+  'subType': {},
+  'constraints': {}
 }))
 
 // TODO: compare this to ensure it matches scss

@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { styles } from '../Property.styles'
+import { getConstraintHints as getArrayHints } from '../../../parser/open-api/constraints/array'
+import { getConstraintHints as getNumericHints } from '../../../parser/open-api/constraints/numeric'
+import { getConstraintHints as getObjectHints } from '../../../parser/open-api/constraints/object'
+import { getConstraintHints as getStringHints } from '../../../parser/open-api/constraints/string'
 
-import { getConstraintHints as getArrayHints } from './../../parser/open-api/constraints/array'
-import { getConstraintHints as getNumericHints } from './../../parser/open-api/constraints/numeric'
-import { getConstraintHints as getObjectHints } from './../../parser/open-api/constraints/object'
-import { getConstraintHints as getStringHints } from './../../parser/open-api/constraints/string'
-
+@styles
 export default class PropertyConstraints extends PureComponent {
   render () {
-    const { type, isRequired, constraints } = this.props
+    const { type, isRequired, constraints, classes } = this.props
 
     return (
-      <span className='property-constraints'>
-        {isRequired && <span className='property-required'>required</span>}
+      <span className={classes.constraints}>
+        {isRequired && <span className={classes.required}>required</span>}
         {constraints && ['number', 'integer'].some(t => type.includes(t)) && this.renderConstraints(constraints, 'numeric')}
         {constraints && type.includes('string') && this.renderConstraints(constraints, 'string')}
         {constraints && type.includes('array') && this.renderConstraints(constraints, 'array')}
@@ -29,6 +30,8 @@ export default class PropertyConstraints extends PureComponent {
    */
   renderConstraints (constraints, type) {
     let validations = []
+
+    const { classes } = this.props
 
     switch (type) {
       case 'numeric':
@@ -52,7 +55,7 @@ export default class PropertyConstraints extends PureComponent {
     return (
       <span>
         {validations.map(constraint =>
-          <span key={constraint} className={`${type}-constraints`}>{constraint}</span>
+          <span key={constraint} className={classes[`${type}_constraint`]}>{constraint}</span>
         )}
       </span>
     )
@@ -62,6 +65,7 @@ export default class PropertyConstraints extends PureComponent {
 PropertyConstraints.propTypes = {
   type: PropTypes.arrayOf(PropTypes.string).isRequired,
   isRequired: PropTypes.bool,
+  classes: PropTypes.object,
   constraints: PropTypes.shape({
     format: PropTypes.string,
     exclusiveMinimum: PropTypes.number,
