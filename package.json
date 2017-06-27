@@ -51,7 +51,7 @@
     "classnames": "^2.2.5",
     "color": "^1.0.3",
     "copy-to-clipboard": "^3.0.6",
-    "history": "^4.6.1",
+    "isomorphic-fetch": "^2.2.1",
     "js-yaml": "^3.8.4",
     "json-schema-ref-parser": "^3.1.2",
     "jss": "^7.1.7",
@@ -65,8 +65,7 @@
     "react-dom": "^15.5.4",
     "react-json-view": "^1.8.4",
     "react-jss": "^6.1.1",
-    "react-scrollable-anchor": "^0.4.2",
-    "superagent": "^3.5.2"
+    "react-scrollable-anchor": "^0.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

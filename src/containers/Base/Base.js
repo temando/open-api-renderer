@@ -4,7 +4,7 @@ import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 import Page from '../../components/Page/Page'
 import Overlay from '../../components/Overlay/Overlay'
-import { getDefinition, parseDefinition } from '../../lib/definitions'
+import { getDefinition, parseDefinition, validateDefinition } from '../../lib/definitions'
 import lincolnLogo from '../../assets/lincoln-logo-white.svg'
 import { styles } from './Base.styles'
 
@@ -22,32 +22,35 @@ export default class Base extends React.PureComponent {
   }
 
   componentDidMount () {
-    this.intitialize()
+    this.intialise()
   }
 
-  setDefinition = async ({ definitionUrl, parserType = this.state.parserType, navSort }) => {
+  intialise = async () => {
+    const { parserType } = this.state
+    const { definitionUrl, navSort, validate } = this.props
+
+    if (!definitionUrl) { return true }
+    if (definitionUrl === this.state.definitionUrl) { return false }
+
+    await this.setDefinition({ definitionUrl, parserType, navSort, validate })
+
+    return true
+  }
+
+  setDefinition = async ({ definitionUrl, navSort, validate, parserType = this.state.parserType }) => {
     this.setState({ loading: !!definitionUrl, error: null })
 
     try {
-      const definition = await getDefinition(definitionUrl)
+      const [ definition ] = await Promise.all([
+        getDefinition(definitionUrl),
+        validate && validateDefinition(definitionUrl, parserType)
+      ])
       const parsedDefinition = await parseDefinition({ definition, parserType, navSort })
 
       this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
     } catch (err) {
       return this.setState({ loading: false, error: err })
     }
-  }
-
-  intitialize = async () => {
-    const { parserType } = this.state
-    const { definitionUrl, navSort } = this.props
-
-    if (!definitionUrl) { return true }
-    if (definitionUrl === this.state.definitionUrl) { return false }
-
-    await this.setDefinition({ definitionUrl, parserType, navSort })
-
-    return true
   }
 
   render () {
@@ -85,7 +88,13 @@ Base.propTypes = {
   navSort: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool
-  ])
+  ]),
+  validate: PropTypes.bool
+}
+
+Base.defaultProps = {
+  navSort: false,
+  validate: false
 }
 
 const Definition = ({ definition, definitionUrl, hash }) =>

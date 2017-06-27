@@ -16,8 +16,7 @@ const hash = window.location.hash
 @styles
 export class Demo extends React.PureComponent {
   state = {
-    definitionUrl,
-    navSort: false
+    definitionUrl
   }
 
   useUrlInput = () => {
@@ -30,7 +29,7 @@ export class Demo extends React.PureComponent {
 
   render () {
     const { classes } = this.props
-    const { definitionUrl, navSort } = this.state
+    const { definitionUrl } = this.state
 
     return (
       <div className={classes.demo}>
@@ -48,7 +47,7 @@ export class Demo extends React.PureComponent {
             <button onClick={this.useUrlInput}>RENDER</button>
           </form>
         </header>
-        <Lincoln {...{ definitionUrl, hash, navSort }} />
+        <Lincoln {...{ definitionUrl, hash }} />
       </div>
     )
   }
