@@ -1,7 +1,6 @@
 import React from 'react'
 import Property from './../../src/components/Property/Property'
 import renderer from 'react-test-renderer'
-import ReactShallowRenderer from 'react-test-renderer/shallow'
 
 describe('<Property />', () => {
   it('can render a basic property', () => {
@@ -37,8 +36,7 @@ describe('<Property />', () => {
   })
 
   it('can render a property with description', () => {
-    const shallow = new ReactShallowRenderer()
-    const tree = shallow.render(
+    const tree = renderer.create(
       <Property
         name={'type'}
         type={['string']}
@@ -50,8 +48,7 @@ describe('<Property />', () => {
   })
 
   it('can render a property with numerical constraints', () => {
-    const shallow = new ReactShallowRenderer()
-    const tree = shallow.render(
+    const tree = renderer.create(
       <Property
         name={'type'}
         type={['number']}

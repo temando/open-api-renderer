@@ -2,11 +2,11 @@
 
 exports[`<PropertyConstraints /> renders array constraints 1`] = `
 <span
-  className="property-constraints"
+  className={undefined}
 >
   <span>
     <span
-      className="array-constraints"
+      className={undefined}
     >
       unique items
     </span>
@@ -16,17 +16,17 @@ exports[`<PropertyConstraints /> renders array constraints 1`] = `
 
 exports[`<PropertyConstraints /> renders numeric constraints 1`] = `
 <span
-  className="property-constraints"
+  className={undefined}
 />
 `;
 
 exports[`<PropertyConstraints /> renders object constraints 1`] = `
 <span
-  className="property-constraints"
+  className={undefined}
 >
   <span>
     <span
-      className="object-constraints"
+      className={undefined}
     >
       at least 2 properties
     </span>
@@ -36,10 +36,10 @@ exports[`<PropertyConstraints /> renders object constraints 1`] = `
 
 exports[`<PropertyConstraints /> renders required constraint 1`] = `
 <span
-  className="property-constraints"
+  className={undefined}
 >
   <span
-    className="property-required"
+    className={undefined}
   >
     required
   </span>
@@ -48,11 +48,11 @@ exports[`<PropertyConstraints /> renders required constraint 1`] = `
 
 exports[`<PropertyConstraints /> renders string constraints 1`] = `
 <span
-  className="property-constraints"
+  className={undefined}
 >
   <span>
     <span
-      className="string-constraints"
+      className={undefined}
     >
       /^[a-zA-Z0-9_-]+$/
     </span>

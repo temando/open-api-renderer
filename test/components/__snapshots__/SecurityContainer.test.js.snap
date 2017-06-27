@@ -2,14 +2,14 @@
 
 exports[`<SecurityContainer /> renders apiKey type 1`] = `
 <section
-  className="security-container"
+  className={undefined}
   id="api_key"
 >
   <h3>
     api_key
      
     <code
-      className="scheme"
+      className={undefined}
     >
       type=
       apiKey
@@ -30,14 +30,14 @@ exports[`<SecurityContainer /> renders apiKey type 1`] = `
 
 exports[`<SecurityContainer /> renders http type 1`] = `
 <section
-  className="security-container"
+  className={undefined}
   id="JWT"
 >
   <h3>
     JWT
      
     <code
-      className="scheme"
+      className={undefined}
     >
       type=
       http
@@ -58,14 +58,14 @@ exports[`<SecurityContainer /> renders http type 1`] = `
 
 exports[`<SecurityContainer /> renders oauth2 type 1`] = `
 <section
-  className="security-container"
+  className={undefined}
   id="oauth2"
 >
   <h3>
     oauth2
      
     <code
-      className="scheme"
+      className={undefined}
     >
       type=
       oauth2
@@ -73,7 +73,7 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
   </h3>
   <div>
     <div
-      className="flow-type"
+      className={undefined}
     >
       <h4>
         <code>
@@ -82,7 +82,7 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
          flow
       </h4>
       <dl
-        className="inline-pairs"
+        className={undefined}
       >
         <dt>
           Authorization URL
@@ -92,7 +92,7 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
         </dd>
       </dl>
       <div
-        className="scopes"
+        className={undefined}
       >
         <h5>
           Available scopes
@@ -116,7 +116,7 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
       </div>
     </div>
     <div
-      className="flow-type"
+      className={undefined}
     >
       <h4>
         <code>
@@ -125,7 +125,7 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
          flow
       </h4>
       <dl
-        className="inline-pairs"
+        className={undefined}
       >
         <dt>
           Authorization URL
@@ -141,7 +141,7 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
         </dd>
       </dl>
       <div
-        className="scopes"
+        className={undefined}
       >
         <h5>
           Available scopes
@@ -170,14 +170,14 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
 
 exports[`<SecurityContainer /> renders openIdConnect type 1`] = `
 <section
-  className="security-container"
+  className={undefined}
   id="openIdConnect"
 >
   <h3>
     openIdConnect
      
     <code
-      className="scheme"
+      className={undefined}
     >
       type=
       openIdConnect
@@ -185,7 +185,7 @@ exports[`<SecurityContainer /> renders openIdConnect type 1`] = `
   </h3>
   <div>
     <dl
-      className="inline-pairs"
+      className={undefined}
     >
       <dt>
         OpenID Connect URL

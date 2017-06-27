@@ -8,7 +8,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     'balloon-css': 'identity-obj-proxy',
-    '\\.style\\.js$': 'identity-obj-proxy',
+    '\\.styles$': '<rootDir>/src/__mocks__/stylesMock.js',
     '\\.(css|scss)$': 'identity-obj-proxy',
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/src/__mocks__/fileMock.js'
   },

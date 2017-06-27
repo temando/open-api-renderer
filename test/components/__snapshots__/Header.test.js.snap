@@ -2,13 +2,14 @@
 
 exports[`<Header /> renders contact information (email) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -21,7 +22,6 @@ exports[`<Header /> renders contact information (email) 1`] = `
     </dt>
     <dd>
       <a
-        className="ext-link"
         href="mailto:hello@example.org"
         rel="noopener noreferrer"
         target="_blank"
@@ -32,7 +32,6 @@ exports[`<Header /> renders contact information (email) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -45,13 +44,14 @@ exports[`<Header /> renders contact information (email) 1`] = `
 
 exports[`<Header /> renders contact information (name) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -68,7 +68,6 @@ exports[`<Header /> renders contact information (name) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -81,13 +80,14 @@ exports[`<Header /> renders contact information (name) 1`] = `
 
 exports[`<Header /> renders contact information (name, url) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -100,7 +100,6 @@ exports[`<Header /> renders contact information (name, url) 1`] = `
     </dt>
     <dd>
       <a
-        className="ext-link"
         href="http://example.org"
         rel="noopener noreferrer"
         target="_blank"
@@ -111,7 +110,6 @@ exports[`<Header /> renders contact information (name, url) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -124,13 +122,14 @@ exports[`<Header /> renders contact information (name, url) 1`] = `
 
 exports[`<Header /> renders contact information (name, url, email) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -143,7 +142,6 @@ exports[`<Header /> renders contact information (name, url, email) 1`] = `
     </dt>
     <dd>
       <a
-        className="ext-link"
         href="http://example.org"
         rel="noopener noreferrer"
         target="_blank"
@@ -155,7 +153,6 @@ exports[`<Header /> renders contact information (name, url, email) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -168,13 +165,14 @@ exports[`<Header /> renders contact information (name, url, email) 1`] = `
 
 exports[`<Header /> renders contact information (url) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -187,7 +185,6 @@ exports[`<Header /> renders contact information (url) 1`] = `
     </dt>
     <dd>
       <a
-        className="ext-link"
         href="http://example.org"
         rel="noopener noreferrer"
         target="_blank"
@@ -198,7 +195,6 @@ exports[`<Header /> renders contact information (url) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -211,13 +207,14 @@ exports[`<Header /> renders contact information (url) 1`] = `
 
 exports[`<Header /> renders header with minimum props 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -228,7 +225,6 @@ exports[`<Header /> renders header with minimum props 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -241,13 +237,14 @@ exports[`<Header /> renders header with minimum props 1`] = `
 
 exports[`<Header /> renders license information (name) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -264,7 +261,6 @@ exports[`<Header /> renders license information (name) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"
@@ -277,13 +273,14 @@ exports[`<Header /> renders license information (name) 1`] = `
 
 exports[`<Header /> renders license information (name, url) 1`] = `
 <header
+  className={undefined}
   id="header"
 >
   <h1>
     Swagger Petstore
   </h1>
   <dl
-    className="inline-pairs"
+    className={undefined}
   >
     <dt>
       Version
@@ -296,7 +293,6 @@ exports[`<Header /> renders license information (name, url) 1`] = `
     </dt>
     <dd>
       <a
-        className="ext-link"
         href="http://www.apache.org/licenses/LICENSE-2.0.html"
         rel="noopener noreferrer"
         target="_blank"
@@ -307,7 +303,6 @@ exports[`<Header /> renders license information (name, url) 1`] = `
   </dl>
   <nav>
     <a
-      className="ext-link"
       href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
       rel="noopener noreferrer"
       target="_blank"

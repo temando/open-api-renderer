@@ -1,5 +1,5 @@
 import React from 'react'
-import PropertyConstraints from './../../src/components/PropertyConstraints/PropertyConstraints'
+import PropertyConstraints from './../../src/components/Property/PropertyConstraints/PropertyConstraints'
 import renderer from 'react-test-renderer'
 
 describe('<PropertyConstraints />', () => {

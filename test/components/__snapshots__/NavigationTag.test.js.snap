@@ -3,7 +3,7 @@
 exports[`<NavigationTag /> renders with description 1`] = `
 <div>
   <a
-    className="nav-tag"
+    className={undefined}
     href="#Pets"
     onClick={[Function]}
   >
@@ -11,7 +11,7 @@ exports[`<NavigationTag /> renders with description 1`] = `
       Pets
     </span>
     <div
-      className="indicator indicator--right"
+      className=""
     >
       <img
         alt=""
@@ -20,7 +20,7 @@ exports[`<NavigationTag /> renders with description 1`] = `
       />
     </div>
     <div
-      className="description"
+      className=""
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Access to Pets</p>
@@ -30,7 +30,7 @@ exports[`<NavigationTag /> renders with description 1`] = `
     />
   </a>
   <div
-    className="nav-tag-methods"
+    className={undefined}
   />
 </div>
 `;
@@ -38,7 +38,7 @@ exports[`<NavigationTag /> renders with description 1`] = `
 exports[`<NavigationTag /> renders with methods 1`] = `
 <div>
   <a
-    className="nav-tag"
+    className={undefined}
     href="#pets"
     onClick={[Function]}
   >
@@ -46,7 +46,7 @@ exports[`<NavigationTag /> renders with methods 1`] = `
       pets
     </span>
     <div
-      className="indicator indicator--bottom"
+      className=""
     >
       <img
         alt=""
@@ -56,34 +56,34 @@ exports[`<NavigationTag /> renders with methods 1`] = `
     </div>
   </a>
   <div
-    className="nav-tag-methods"
+    className={undefined}
   >
     <a
-      className="nav-method active open"
+      className=""
       href="#pets"
     >
       <span
-        className="method-type"
+        className={undefined}
       >
         GET
       </span>
       <span
-        className="method-title"
+        className={undefined}
       >
         Get pets
       </span>
     </a>
     <a
-      className="nav-method open"
+      className=""
       href="#pets/:id"
     >
       <span
-        className="method-type"
+        className={undefined}
       >
         GET
       </span>
       <span
-        className="method-title"
+        className={undefined}
       >
         Get pets
       </span>
@@ -95,7 +95,7 @@ exports[`<NavigationTag /> renders with methods 1`] = `
 exports[`<NavigationTag /> renders with minimum props 1`] = `
 <div>
   <a
-    className="nav-tag"
+    className={undefined}
     href="#pets"
     onClick={[Function]}
   >
@@ -103,7 +103,7 @@ exports[`<NavigationTag /> renders with minimum props 1`] = `
       pets
     </span>
     <div
-      className="indicator indicator--right"
+      className=""
     >
       <img
         alt=""
@@ -113,7 +113,7 @@ exports[`<NavigationTag /> renders with minimum props 1`] = `
     </div>
   </a>
   <div
-    className="nav-tag-methods"
+    className={undefined}
   />
 </div>
 `;

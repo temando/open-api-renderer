@@ -28,7 +28,7 @@ export default class Example extends Component {
       example = examples[0]
     }
 
-    const isSimple = typeof example === 'string'
+    const isJson = typeof example !== 'string'
 
     if (!example) {
       return null
@@ -43,21 +43,22 @@ export default class Example extends Component {
           [classes.hovered]: this.state.hovered
         })}>
           <CopyButton onCopyClick={this.onCopyClick} tooltip='Copy to Clipboard' />
-          {!isSimple &&
+          {!isJson &&
             <span onClick={() => this.setState({ collapseAll: false })}>Expand All</span>}
-          {!isSimple &&
+          {!isJson &&
             <span onClick={() => this.setState({ collapseAll: true })}>Collapse All</span>}
         </div>
-        {isSimple
-          ? {example}
-          : <ReactJson
-            src={example}
-            theme='chalk'
-            displayDataTypes={false}
-            displayObjectSize={false}
-            collapsed={this.state.collapseAll}
-            enableClipboard={false}
-          />
+        {
+          isJson
+            ? <ReactJson
+              src={example}
+              theme='chalk'
+              displayDataTypes={false}
+              displayObjectSize={false}
+              collapsed={this.state.collapseAll}
+              enableClipboard={false}
+            />
+            : example
         }
       </div>
     )
