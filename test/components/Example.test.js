@@ -1,19 +1,20 @@
 import React from 'react'
 import Example from './../../src/components/Example/Example'
-import ReactShallowRenderer from 'react-test-renderer/shallow'
+import renderer from 'react-test-renderer'
+
+jest.mock('react-json-view', () => '')
 
 describe('<Example />', () => {
-  const shallow = new ReactShallowRenderer()
   it('renders nothing when there is no examples passed', () => {
-    const tree = shallow.render(
+    const tree = renderer.create(
       <Example examples={[]} />
     )
 
-    expect(tree).toBeNull()
+    expect(tree).toMatchSnapshot()
   })
 
   it('renders a string example', () => {
-    let tree = shallow.render(
+    let tree = renderer.create(
       <Example examples={['<message>hi</message>']} />
     )
 
@@ -21,7 +22,7 @@ describe('<Example />', () => {
   })
 
   it('renders a JSON example', () => {
-    const tree = shallow.render(
+    const tree = renderer.create(
       <Example examples={[{'message': 'hi'}]} />
     )
 

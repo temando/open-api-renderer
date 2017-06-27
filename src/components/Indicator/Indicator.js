@@ -1,19 +1,20 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { styles } from './Indicator.styles'
+import arrow from './arrow.png'
 
-import './Indicator.scss'
-
-const arrow = require('./arrow.png')
-
+@styles
 export default class Indicator extends PureComponent {
   render () {
-    const { direction, className } = this.props
+    const { direction, className, classes } = this.props
 
     return (
-      <div className={classNames('indicator', className, {
-        [`indicator--${direction}`]: direction
-      })}>
+      <div className={classNames(
+        classes.indicator,
+        className,
+        classes[direction]
+      )}>
         <img src={arrow} alt='' title='arrow' />
       </div>
     )
@@ -22,5 +23,6 @@ export default class Indicator extends PureComponent {
 
 Indicator.propTypes = {
   direction: PropTypes.string,
+  classes: PropTypes.object,
   className: PropTypes.string
 }

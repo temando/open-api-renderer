@@ -2,13 +2,13 @@ import React from 'react'
 import { configureAnchors } from 'react-scrollable-anchor'
 import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
+import Page from '../../components/Page/Page'
+import Overlay from '../../components/Overlay/Overlay'
+import { getDefinition, parseDefinition } from '../../lib/definitions'
+import lincolnLogo from '../../assets/lincoln-logo-white.svg'
+import { styles } from './Base.styles'
 
-import Page from '../components/Page/Page'
-import Overlay from '../components/Overlay/Overlay'
-import { getDefinition, parseDefinition } from '../lib/definitions'
-import '../general.scss'
-import lincolnLogo from '../assets/lincoln-logo-white.svg'
-
+@styles
 export default class Base extends React.PureComponent {
   state = {
     parserType: 'open-api-v3',
@@ -51,8 +51,8 @@ export default class Base extends React.PureComponent {
   }
 
   render () {
+    const { location, classes } = this.props
     const { parsedDefinition: definition, definitionUrl, loading, error } = this.state
-    const { location } = this.props
 
     let element
 
@@ -66,7 +66,7 @@ export default class Base extends React.PureComponent {
 
     return (
       <DocumentTitle title={definition ? definition.title : 'Lincoln Renderer'}>
-        <div className='main'>
+        <div className={classes.base}>
           {element}
         </div>
       </DocumentTitle>
@@ -79,6 +79,7 @@ Base.contextTypes = {
 }
 
 Base.propTypes = {
+  classes: PropTypes.object,
   location: PropTypes.object,
   definitionUrl: PropTypes.string,
   navSort: PropTypes.oneOfType([

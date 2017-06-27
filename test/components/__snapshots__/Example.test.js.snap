@@ -2,29 +2,22 @@
 
 exports[`<Example /> renders a JSON example 1`] = `
 <div
-  className="body-content-example"
+  className={undefined}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <div
-    className="action-buttons"
+    className=""
   >
-    <CopyButton
-      onCopyClick={[Function]}
-      tooltip="Copy to Clipboard"
-    />
     <span
       onClick={[Function]}
+      onMouseOver={[Function]}
+      title="Copy to Clipboard"
     >
-      Expand All
-    </span>
-    <span
-      onClick={[Function]}
-    >
-      Collapse All
+      Copy
     </span>
   </div>
-  <t
+  <
     collapsed={false}
     displayDataTypes={false}
     displayObjectSize={false}
@@ -41,20 +34,33 @@ exports[`<Example /> renders a JSON example 1`] = `
 
 exports[`<Example /> renders a string example 1`] = `
 <div
-  className="body-content-example"
+  className={undefined}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <div
-    className="action-buttons"
+    className=""
   >
-    <CopyButton
-      onCopyClick={[Function]}
-      tooltip="Copy to Clipboard"
-    />
+    <span
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      title="Copy to Clipboard"
+    >
+      Copy
+    </span>
+    <span
+      onClick={[Function]}
+    >
+      Expand All
+    </span>
+    <span
+      onClick={[Function]}
+    >
+      Collapse All
+    </span>
   </div>
-  Object {
-    "example": "<message>hi</message>",
-  }
+  &lt;message&gt;hi&lt;/message&gt;
 </div>
 `;
+
+exports[`<Example /> renders nothing when there is no examples passed 1`] = `null`;

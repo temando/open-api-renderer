@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { styles } from './ContentContainer.styles'
 
-import './ContentContainer.scss'
-
+@styles
 export default class ContentContainer extends Component {
   render () {
+    const { classes } = this.props
+
     return (
-      <div className='content-container'>
+      <div className={classes.contentContainer}>
         {this.props.children}
       </div>
     )
@@ -14,5 +16,6 @@ export default class ContentContainer extends Component {
 }
 
 ContentContainer.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  classes: PropTypes.object
 }

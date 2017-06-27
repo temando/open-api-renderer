@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
 import BodySchema from '../BodySchema/BodySchema'
 import BodySchemaSwitcher from '../BodySchemaSwitcher/BodySchemaSwitcher'
 import Example from '../Example/Example'
+import { styles } from './BodyContent.styles'
 
-import './BodyContent.scss'
-
+@styles
 export default class BodyContent extends Component {
   constructor (props) {
     super(props)
@@ -21,11 +20,11 @@ export default class BodyContent extends Component {
   }
 
   render () {
-    const { schema, examples } = this.props
+    const { schema, examples, classes } = this.props
     const { tab, index } = this.state
 
     return (
-      <div className='body-content'>
+      <div className={classes.bodyContent}>
         {schema && this.renderTabs(schema, examples)}
         {tab === 'schema' && this.renderSchema(schema, index)}
         {tab === 'example' && this.renderExamples(examples)}
@@ -35,8 +34,10 @@ export default class BodyContent extends Component {
 
   renderTabs (includeSchema, includeExample) {
     const currentTab = this.state.tab
+    const { classes } = this.props
+
     return (
-      <div className='body-content-tabs'>
+      <div className={classes.tabs}>
         {includeSchema && this.renderSchemaTab(currentTab)}
         {includeExample && this.renderExamplesTab(currentTab)}
       </div>
@@ -109,5 +110,6 @@ export default class BodyContent extends Component {
 
 BodyContent.propTypes = {
   schema: PropTypes.array,
-  examples: PropTypes.array
+  examples: PropTypes.array,
+  classes: PropTypes.object
 }

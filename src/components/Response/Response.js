@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-
 import BodyContent from '../BodyContent/BodyContent'
 import Description from '../Description/Description'
 import Indicator from '../Indicator/Indicator'
+import { styles } from './Response.styles'
 
-import './Response.scss'
-
+@styles
 export default class Response extends PureComponent {
   constructor (props) {
     super(props)
@@ -20,7 +19,7 @@ export default class Response extends PureComponent {
   }
 
   render () {
-    const { response } = this.props
+    const { response, classes } = this.props
     const { code, description, schema, examples } = response
     const { isOpen } = this.state
 
@@ -35,14 +34,14 @@ export default class Response extends PureComponent {
     const hasDetails = schema || examples
 
     return (
-      <div className='response'>
-        <div className={classNames('response-info', {
-          success: successCode,
-          error: !successCode,
-          'is-clickable': hasDetails
+      <div className={classes.response}>
+        <div className={classNames(classes.info, {
+          [classes.success]: successCode,
+          [classes.error]: !successCode,
+          [classes.isClickable]: hasDetails
         })} onClick={hasDetails ? this.onClick : undefined}>
           {hasDetails && <Indicator direction={indicatorDirection} />}
-          <span className='response-code'>{code}</span>
+          <span className={classes.code}>{code}</span>
           {description && <Description isInline description={description} />}
         </div>
         {hasDetails && isOpen &&
@@ -71,5 +70,6 @@ Response.propTypes = {
     description: PropTypes.string,
     schema: PropTypes.array,
     examples: PropTypes.array
-  })
+  }),
+  classes: PropTypes.object
 }

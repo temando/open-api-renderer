@@ -3,11 +3,10 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import ReactJson from 'react-json-view'
 import copy from 'copy-to-clipboard'
-
 import CopyButton from '../CopyButton/CopyButton'
+import { styles } from './Example.styles'
 
-import './Example.scss'
-
+@styles
 export default class Example extends Component {
   constructor (props) {
     super(props)
@@ -21,7 +20,7 @@ export default class Example extends Component {
   }
 
   render () {
-    const { examples } = this.props
+    const { examples, classes } = this.props
     let example
 
     // TODO: Handle multiple examples
@@ -29,36 +28,37 @@ export default class Example extends Component {
       example = examples[0]
     }
 
-    const isSimple = typeof example === 'string'
+    const isJson = typeof example !== 'string'
 
     if (!example) {
       return null
     }
 
     return (
-      <div className='body-content-example'
+      <div className={classes.example}
         onMouseEnter={() => this.setState({ hovered: true })}
         onMouseLeave={() => this.setState({ hovered: false })}
       >
-        <div className={classNames('action-buttons', {
-          hovered: this.state.hovered
+        <div className={classNames(classes.buttons, {
+          [classes.hovered]: this.state.hovered
         })}>
           <CopyButton onCopyClick={this.onCopyClick} tooltip='Copy to Clipboard' />
-          {!isSimple &&
+          {!isJson &&
             <span onClick={() => this.setState({ collapseAll: false })}>Expand All</span>}
-          {!isSimple &&
+          {!isJson &&
             <span onClick={() => this.setState({ collapseAll: true })}>Collapse All</span>}
         </div>
-        {isSimple
-          ? {example}
-          : <ReactJson
-            src={example}
-            theme='chalk'
-            displayDataTypes={false}
-            displayObjectSize={false}
-            collapsed={this.state.collapseAll}
-            enableClipboard={false}
-          />
+        {
+          isJson
+            ? <ReactJson
+              src={example}
+              theme='chalk'
+              displayDataTypes={false}
+              displayObjectSize={false}
+              collapsed={this.state.collapseAll}
+              enableClipboard={false}
+            />
+            : example
         }
       </div>
     )
@@ -70,5 +70,6 @@ export default class Example extends Component {
 }
 
 Example.propTypes = {
-  examples: PropTypes.array
+  examples: PropTypes.array,
+  classes: PropTypes.object
 }

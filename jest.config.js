@@ -7,8 +7,8 @@ module.exports = {
     'node_modules'
   ],
   moduleNameMapper: {
-    'balloon-css': '<rootDir>/src/__mocks__/styleMock.js',
-    '\\.(css|scss)$': '<rootDir>/src/__mocks__/styleMock.js',
+    '\\.styles$': '<rootDir>/src/__mocks__/stylesMock.js',
+    '\\.(css|scss)$': 'identity-obj-proxy',
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/src/__mocks__/fileMock.js'
   },
   moduleFileExtensions: [

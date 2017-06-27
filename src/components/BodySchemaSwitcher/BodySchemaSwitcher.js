@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { styles } from './BodySchemaSwitcher.styles'
 
-import './BodySchemaSwitcher.scss'
-
+@styles
 export default class BodySchemaSwitcher extends Component {
   constructor (props) {
     super(props)
@@ -17,12 +17,12 @@ export default class BodySchemaSwitcher extends Component {
   }
 
   render () {
-    const { options } = this.props
+    const { options, classes } = this.props
 
     return (
-      <form className='body-schema-switcher-form'>
+      <form>
         <label>This schema can be fulfilled by multiple options: </label>
-        <select onChange={this.handleChange}>
+        <select className={classes.select} onChange={this.handleChange}>
           {options.map(
             (option, i) => <option key={i} value={i}>{`Option ${i + 1}`}</option>
           )}
@@ -34,5 +34,6 @@ export default class BodySchemaSwitcher extends Component {
 
 BodySchemaSwitcher.propTypes = {
   options: PropTypes.array.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  classes: PropTypes.object
 }

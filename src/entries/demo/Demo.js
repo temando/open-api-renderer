@@ -1,10 +1,16 @@
 import React from 'react'
 import { parse as parseQuery } from 'qs'
+import jss from 'jss'
+import preset from 'jss-preset-default'
 import Lincoln from '../Lincoln'
-import './Demo.scss'
+import { styles } from './Demo.styles'
+import PropTypes from 'prop-types'
+
+jss.setup(preset())
 
 const definitionUrl = parseQuery(location.search.split('?')[1]).url
 
+@styles
 export class Demo extends React.PureComponent {
   state = {
     definitionUrl,
@@ -20,11 +26,12 @@ export class Demo extends React.PureComponent {
   }
 
   render () {
+    const { classes } = this.props
     const { definitionUrl, navSort } = this.state
 
     return (
-      <div className='oapi-demo'>
-        <header className='oapi-header'>
+      <div className={classes.demo}>
+        <header className={classes.header}>
           <h1>Lincoln</h1>
           <small>An Open API v3 renderer.</small>
           <form>
@@ -42,4 +49,8 @@ export class Demo extends React.PureComponent {
       </div>
     )
   }
+}
+
+Demo.propTypes = {
+  classes: PropTypes.object
 }

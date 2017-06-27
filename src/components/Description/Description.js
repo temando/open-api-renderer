@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import markdown from 'markdown-it'
 import PropTypes from 'prop-types'
-import './Description.scss'
+import { styles } from './Description.styles'
 
 const cm = markdown('commonmark')
 
+@styles
 export default class Description extends PureComponent {
   render () {
-    const { isInline, description } = this.props
+    const { isInline, description, classes } = this.props
 
     let text
     if (isInline) {
@@ -22,8 +23,8 @@ export default class Description extends PureComponent {
     }
 
     return (
-      <div className={classNames('description', {
-        'description-inline': isInline
+      <div className={classNames(classes.description, {
+        [classes.inline]: isInline
       })} dangerouslySetInnerHTML={text} />
     )
   }
@@ -31,5 +32,6 @@ export default class Description extends PureComponent {
 
 Description.propTypes = {
   description: PropTypes.string.isRequired,
-  isInline: PropTypes.bool
+  isInline: PropTypes.bool,
+  classes: PropTypes.object
 }
