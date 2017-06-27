@@ -10,10 +10,9 @@ exports[`<Example /> renders a JSON example 1`] = `
     className=""
   >
     <span
-      data-balloon="Copy to Clipboard"
-      data-balloon-pos="up"
       onClick={[Function]}
       onMouseOver={[Function]}
+      title="Copy to Clipboard"
     >
       Copy
     </span>
@@ -43,10 +42,9 @@ exports[`<Example /> renders a string example 1`] = `
     className=""
   >
     <span
-      data-balloon="Copy to Clipboard"
-      data-balloon-pos="up"
       onClick={[Function]}
       onMouseOver={[Function]}
+      title="Copy to Clipboard"
     >
       Copy
     </span>
