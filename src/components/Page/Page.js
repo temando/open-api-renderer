@@ -10,7 +10,7 @@ import { styles } from './Page.styles'
 @styles
 export default class Page extends Component {
   render () {
-    const { definition, location, specUrl, classes } = this.props
+    const { definition, hash, specUrl, classes } = this.props
 
     if (!definition) {
       return null
@@ -20,7 +20,7 @@ export default class Page extends Component {
 
     return (
       <div className='page'>
-        <Navigation navigation={navigation} location={location} />
+        <Navigation navigation={navigation} hash={hash} />
         <div className={classes.main}>
           <Header
             title={definition.title}
@@ -58,7 +58,7 @@ Page.propTypes = {
     services: PropTypes.arrayOf(PropTypes.object),
     security: PropTypes.object
   }),
-  location: PropTypes.object,
+  hash: PropTypes.string.isRequired,
   specUrl: PropTypes.string,
   classes: PropTypes.object
 }

@@ -14,21 +14,21 @@ export default class NavigationTag extends Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    const isHashDiff = this.props.location.hash !== nextProps.location.hash
+    const isHashDiff = this.props.hash !== nextProps.hash
     const isExpandedStatusDiff = this.props.shouldBeExpanded !== nextProps.shouldBeExpanded
 
     return isHashDiff || isExpandedStatusDiff
   }
 
   componentWillMount () {
-    const { title, methods, location, onClick } = this.props
+    const { title, methods, hash, onClick } = this.props
 
     if (!methods) {
       return null
     }
 
     const method = methods.find(
-      (method) => (`#${method.link}` === location.hash)
+      (method) => (`#${method.link}` === hash)
     )
 
     if (method) {
@@ -41,12 +41,12 @@ export default class NavigationTag extends Component {
   }
 
   render () {
-    const { title, description, shouldBeExpanded, methods, location, classes } = this.props
+    const { title, description, shouldBeExpanded, methods, hash, classes } = this.props
 
-    // If tag has any method that matches location hash, then it is considered active
+    // If tag has any method that matches hash, then it is considered active
     let isActiveTag = false
     if (methods) {
-      isActiveTag = methods.some(method => (`#${method.link}` === location.hash))
+      isActiveTag = methods.some(method => (`#${method.link}` === hash))
     }
 
     let isExpanded = false
@@ -74,7 +74,7 @@ export default class NavigationTag extends Component {
         </a>
         <div className={classes.navigationTagMethods}>
           {methods && methods.map((method) => {
-            const isActive = (`#${method.link}` === location.hash)
+            const isActive = (`#${method.link}` === hash)
 
             return <NavigationMethod key={method.link} method={method} isActive={isActive} isOpen={isExpanded} />
           })}
@@ -90,6 +90,6 @@ NavigationTag.propTypes = {
   methods: PropTypes.array,
   shouldBeExpanded: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
+  hash: PropTypes.string.isRequired,
   classes: PropTypes.object
 }

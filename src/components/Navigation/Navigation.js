@@ -17,14 +17,14 @@ export default class Navigation extends Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    const isHashDiff = this.props.location.hash !== nextProps.location.hash
+    const isHashDiff = this.props.hash !== nextProps.hash
     const isTagsDiff = !isEqual(nextState.expandedTags, this.state.expandedTags)
 
     return isHashDiff || isTagsDiff
   }
 
   render () {
-    const { navigation, location, classes } = this.props
+    const { navigation, hash, classes } = this.props
     const { expandedTags } = this.state
 
     return (
@@ -43,7 +43,7 @@ export default class Navigation extends Component {
               methods={tag.methods}
               shouldBeExpanded={shouldBeExpanded}
               onClick={this.onClick}
-              location={location}
+              hash={hash}
             />
           )
         })}
@@ -71,6 +71,6 @@ export default class Navigation extends Component {
 
 Navigation.propTypes = {
   navigation: PropTypes.array,
-  location: PropTypes.object,
+  hash: PropTypes.string,
   classes: PropTypes.object
 }

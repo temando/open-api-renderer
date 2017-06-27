@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 jss.setup(preset())
 
-const definitionUrl = parseQuery(location.search.split('?')[1]).url
+const definitionUrl = parseQuery(window.location.search.split('?')[1]).url
 
 @styles
 export class Demo extends React.PureComponent {

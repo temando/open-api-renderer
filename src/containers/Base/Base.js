@@ -51,7 +51,7 @@ export default class Base extends React.PureComponent {
   }
 
   render () {
-    const { location, classes } = this.props
+    const { hash, classes } = this.props
     const { parsedDefinition: definition, definitionUrl, loading, error } = this.state
 
     let element
@@ -61,7 +61,7 @@ export default class Base extends React.PureComponent {
     } else if (error) {
       element = <Failure {...{error}} />
     } else {
-      element = <Definition {...{ location, definition, definitionUrl }} />
+      element = <Definition {...{ hash, definition, definitionUrl }} />
     }
 
     return (
@@ -80,7 +80,7 @@ Base.contextTypes = {
 
 Base.propTypes = {
   classes: PropTypes.object,
-  location: PropTypes.object,
+  hash: PropTypes.string.isRequired,
   definitionUrl: PropTypes.string,
   navSort: PropTypes.oneOfType([
     PropTypes.string,
@@ -88,19 +88,19 @@ Base.propTypes = {
   ])
 }
 
-const Definition = ({ definition, definitionUrl, location }) =>
+const Definition = ({ definition, definitionUrl, hash }) =>
   !definition
     ? <Overlay>
       <img src={lincolnLogo} alt='' />
       <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
       <p>You can also set this with the <code>?url</code> query parameter.</p>
     </Overlay>
-    : <Page definition={definition} location={location} specUrl={definitionUrl} />
+    : <Page definition={definition} hash={hash} specUrl={definitionUrl} />
 
 Definition.propTypes = {
   definition: PropTypes.object,
-  definitionUrl: PropTypes.string,
-  location: PropTypes.object
+  definitionUrl: PropTypes.string.isRequired,
+  hash: PropTypes.string.isRequired
 }
 
 const Failure = ({ error }) =>
