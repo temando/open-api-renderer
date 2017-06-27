@@ -4,7 +4,7 @@ import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 import Page from '../../components/Page/Page'
 import Overlay from '../../components/Overlay/Overlay'
-import { getDefinition, parseDefinition, validateDefinition } from '../lib/definitions'
+import { getDefinition, parseDefinition, validateDefinition } from '../../lib/definitions'
 import lincolnLogo from '../../assets/lincoln-logo-white.svg'
 import { styles } from './Base.styles'
 
@@ -41,12 +41,10 @@ export default class Base extends React.PureComponent {
     this.setState({ loading: !!definitionUrl, error: null })
 
     try {
-      const promises = [ getDefinition(definitionUrl) ]
-      if (validate) {
-        promises.push(validateDefinition(definitionUrl, parserType))
-      }
-
-      const [ definition ] = await Promise.all(promises)
+      const [ definition ] = await Promise.all([
+        getDefinition(definitionUrl),
+        validate && validateDefinition(definitionUrl, parserType)
+      ])
       const parsedDefinition = await parseDefinition({ definition, parserType, navSort })
 
       this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
