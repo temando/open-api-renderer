@@ -27,5 +27,7 @@ export const styles = createSheet(() => ({
     }
   },
 
-  'active': {}
+  'active': {
+
+  }
 }))
