@@ -2,13 +2,16 @@ import React from 'react'
 import { parse as parseQuery } from 'qs'
 import jss from 'jss'
 import preset from 'jss-preset-default'
+import PropTypes from 'prop-types'
+import { configureAnchors } from 'react-scrollable-anchor'
 import Lincoln from '../Lincoln'
 import { styles } from './Demo.styles'
-import PropTypes from 'prop-types'
 
 jss.setup(preset())
+configureAnchors({ offset: -52, scrollDuration: 200, keepLastAnchorHash: true })
 
 const definitionUrl = parseQuery(window.location.search.split('?')[1]).url
+const hash = window.location.hash
 
 @styles
 export class Demo extends React.PureComponent {
@@ -45,7 +48,7 @@ export class Demo extends React.PureComponent {
             <button onClick={this.useUrlInput}>RENDER</button>
           </form>
         </header>
-        <Lincoln {...{ definitionUrl, navSort }} />
+        <Lincoln {...{ definitionUrl, hash, navSort }} />
       </div>
     )
   }

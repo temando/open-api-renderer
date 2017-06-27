@@ -8,6 +8,8 @@ import { getDefinition, parseDefinition } from '../../lib/definitions'
 import lincolnLogo from '../../assets/lincoln-logo-white.svg'
 import { styles } from './Base.styles'
 
+configureAnchors({ offset: 10, scrollDuration: 200, keepLastAnchorHash: true })
+
 @styles
 export default class Base extends React.PureComponent {
   state = {
@@ -45,13 +47,11 @@ export default class Base extends React.PureComponent {
 
     await this.setDefinition({ definitionUrl, parserType, navSort })
 
-    configureAnchors({ offset: -10, scrollDuration: 100 })
-
     return true
   }
 
   render () {
-    const { hash, classes } = this.props
+    const { hash = '', classes } = this.props
     const { parsedDefinition: definition, definitionUrl, loading, error } = this.state
 
     let element
@@ -99,8 +99,8 @@ const Definition = ({ definition, definitionUrl, hash }) =>
 
 Definition.propTypes = {
   definition: PropTypes.object,
-  definitionUrl: PropTypes.string.isRequired,
-  hash: PropTypes.string.isRequired
+  definitionUrl: PropTypes.string,
+  hash: PropTypes.string
 }
 
 const Failure = ({ error }) =>
