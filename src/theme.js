@@ -1,22 +1,30 @@
 import injectSheet, { jss } from 'react-jss'
+import c from 'color'
 
-export const theme = {
-  backgrounds: {
-    default: 'rgb(14, 24, 39)',
-    nav: 'rgb(19, 32, 51)',
-    header: '#ddd'
-  },
+const dry = {}
 
-  shades: {
-    default: '#aaa'
-  },
+export const theme = (() => {
+  const backgrounds = {
+    default: dry.bg = c('#fff'),
+    nav: c('#fff'),
+    header: c('#fff')
+  }
 
-  borders: {
-    default: 'rgba(255, 255, 255, 0.3)'
-  },
+  const text = {
+    default: c('#222'),
+    link: c('#69e')
+  }
 
-  link: 'rgb(126, 211, 244)'
-}
+  const shades = {
+    default: dry.shade = c(dry.bg).darken(0.2)
+  }
+
+  const borders = {
+    default: dry.shade
+  }
+
+  return { backgrounds, text, shades, borders }
+})()
 
 /**
  * FIXME: This only exists because react-jss doesnt do themes yet

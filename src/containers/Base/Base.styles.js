@@ -1,8 +1,9 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ backgrounds, link }) => ({
+export const styles = createSheet((theme) => ({
   base: {
-    backgroundColor: `${backgrounds.default}`,
+    backgroundColor: `${theme.backgrounds.default}`,
+    color: `${theme.text.default}`,
     height: '100%'
   },
 
@@ -34,12 +35,12 @@ export const styles = createSheet(({ backgrounds, link }) => ({
     },
 
     'a': {
-      color: `${link}`,
+      color: `${theme.text.link}`,
       textDecoration: 'none',
 
       '&:hover': {
         transition: 'color .25s',
-        color: `lighten(${link}, 20%)`,
+        color: `lighten(${theme.text.link}, 20%)`,
         textDecoration: 'underline'
       }
     }
