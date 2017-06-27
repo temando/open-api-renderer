@@ -36,8 +36,6 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     })
-
-    // new webpack.optimize.ModuleConcatenationPlugin()
   ],
   resolve: {
     modules: ['src/', 'node_modules'],
@@ -67,8 +65,8 @@ module.exports = {
 
       // SASS/CSS
       {
-        test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       },
 
       // ASSETS

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import 'balloon-css'
-
 export default class CopyButton extends Component {
   constructor (props) {
     super(props)
@@ -17,7 +15,8 @@ export default class CopyButton extends Component {
 
   render () {
     return (
-      <span data-balloon={this.state.tooltip} data-balloon-pos='up'
+      <span
+        title={this.state.tooltip}
         onClick={this.onClick}
         onMouseOver={this.onMouseOver}
       >
