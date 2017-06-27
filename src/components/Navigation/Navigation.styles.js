@@ -19,6 +19,10 @@ export const styles = createSheet(({ backgrounds }) => ({
 
     '& > div + div': {
       borderTop: '1px solid #444'
+    },
+
+    '& > a': {
+      padding: '.7rem 1rem'
     }
   }
 }))
