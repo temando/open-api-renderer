@@ -77,7 +77,6 @@ export default class BodySchema extends Component {
     const { styleVariation, classes } = this.props
     const nextStyleVariation = (styleVariation === 'even') ? 'odd' : 'even'
 
-    // FIXME: this is not componentized
     return (
       <tr className={classes.subset}>
         <td colSpan='100'>

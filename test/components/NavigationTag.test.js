@@ -3,13 +3,11 @@ import NavigationTag from './../../src/components/NavigationTag/NavigationTag'
 import renderer from 'react-test-renderer'
 
 describe('<NavigationTag />', () => {
-  const location = {
-    hash: '#pets'
-  }
+  const hash = '#pets'
 
   it('renders with minimum props', () => {
     const tree = renderer.create(
-      <NavigationTag title='pets' onClick={jest.fn()} location={location} />
+      <NavigationTag title='pets' onClick={jest.fn()} hash={hash} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -28,7 +26,7 @@ describe('<NavigationTag />', () => {
     }]
 
     const tree = renderer.create(
-      <NavigationTag title='pets' onClick={jest.fn()} location={location} methods={methods} />
+      <NavigationTag title='pets' onClick={jest.fn()} hash={hash} methods={methods} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -36,7 +34,7 @@ describe('<NavigationTag />', () => {
 
   it('renders with description', () => {
     const tree = renderer.create(
-      <NavigationTag title='Pets' handle='pets' description='Access to Pets' onClick={jest.fn()} location={location} />
+      <NavigationTag title='Pets' handle='pets' description='Access to Pets' onClick={jest.fn()} hash={hash} />
     )
 
     expect(tree).toMatchSnapshot()
