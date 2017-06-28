@@ -7,7 +7,8 @@ export const theme = (() => {
   const backgrounds = {
     default: dry.bg = c('#fff'),
     nav: c('#fff'),
-    header: c('#fff')
+    header: c('#fff'),
+    schema: c('#F0F0F0')
   }
 
   const text = {
