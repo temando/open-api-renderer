@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 
-const treeLineWidth = '1px'
-const treeBorderStyle = `${treeLineWidth} solid red`
+export const treeLineWidth = '1px'
+export const treeBorderStyle = `${treeLineWidth} solid red`
 const lineHeight = '40px'
 const cellPadding = '10px'
 
@@ -25,11 +25,11 @@ export const styles = createSheet(({ borders }) => ({
     position: 'relative',
 
     '&::before': {
-      content: '',
+      content: '""',
       display: 'inline-block',
       verticalAlign: 'middle',
       borderTop: `${treeBorderStyle}`,
-      width: '2 * $cell-padding'
+      width: '20px'
     },
 
     '& span': {
@@ -39,7 +39,7 @@ export const styles = createSheet(({ borders }) => ({
       verticalAlign: 'middle',
 
       '&:first-child::before': {
-        content: '',
+        content: '""',
         display: 'inline-block',
         width: `${cellPadding}`,
         height: `8px`,
@@ -90,6 +90,14 @@ export const styles = createSheet(({ borders }) => ({
     '& + &': {
       '& $info': {
         borderTop: `1px solid ${borders.default}`
+      },
+      '& $name::after': {
+        content: '""',
+        borderLeft: `${treeBorderStyle}`,
+        position: 'absolute',
+        bottom: '0',
+        left: '0',
+        height: '100%'
       }
     }
   },
@@ -108,28 +116,6 @@ export const styles = createSheet(({ borders }) => ({
 
   /* Tree */
 
-  '@global': {
-    // TODO: refactor so that these fancy rules are not needed
-    // '$property + $property, .body-schema-subset + $property': {
-    //   '& $name::after': {
-    //     content: '""',
-    //     borderLeft: `${treeBorderStyle}`,
-    //     position: 'absolute',
-    //     bottom: '0',
-    //     left: '0',
-    //     height: '100%'
-    //   }
-    // },
-
-    '.body-schema-subset > td': {
-      borderLeft: `${treeBorderStyle}`
-    }
-
-    // '$last + .body-schema-subset > td': {
-    //   borderLeft: 'none'
-    // }
-  },
-
   'enum': { ...enumAndDefault },
   'default': { ...enumAndDefault },
   'indicator': {},
@@ -137,5 +123,3 @@ export const styles = createSheet(({ borders }) => ({
   'subType': {},
   'constraints': {}
 }))
-
-// TODO: compare this to ensure it matches scss

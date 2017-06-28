@@ -125,6 +125,152 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
 
 /***/ }),
 
+/***/ 109:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.styles = exports.treeBorderStyle = exports.treeLineWidth = undefined;
+
+var _extends2 = __webpack_require__(59);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _theme = __webpack_require__(12);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var treeLineWidth = exports.treeLineWidth = '1px';
+var treeBorderStyle = exports.treeBorderStyle = treeLineWidth + ' solid red';
+var lineHeight = '40px';
+var cellPadding = '10px';
+
+var nameAndInfo = {
+  verticalAlign: 'middle',
+  paddingRight: '' + cellPadding
+};
+
+var enumAndDefault = {
+  display: 'inline-block',
+  padding: '0 5px',
+  margin: '2px 3px',
+  border: '1px solid grey'
+};
+
+var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
+  var borders = _ref.borders;
+  return {
+    'name': (0, _extends3.default)({}, nameAndInfo, {
+      width: '1%',
+      whiteSpace: 'nowrap',
+      position: 'relative',
+
+      '&::before': {
+        content: '""',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        borderTop: '' + treeBorderStyle,
+        width: '20px'
+      },
+
+      '& span': {
+        display: 'inline-block',
+        paddingRight: '' + cellPadding,
+        lineHeight: lineHeight,
+        verticalAlign: 'middle',
+
+        '&:first-child::before': {
+          content: '""',
+          display: 'inline-block',
+          width: '' + cellPadding,
+          height: '8px',
+          verticalAlign: 'middle',
+          borderLeft: '' + treeBorderStyle,
+          position: 'relative',
+          bottom: '2px'
+        }
+      }
+    }),
+
+    'info': (0, _extends3.default)({}, nameAndInfo, {
+      width: '75%'
+    }),
+
+    'property': {
+      '&:first-child': {
+        '& $name::after': {
+          content: '""',
+          borderLeft: '' + treeBorderStyle,
+          position: 'absolute',
+          bottom: '0',
+          left: '0',
+          height: '52%'
+        }
+      },
+      '&:last-child, &$last': {
+        '& $name::after': {
+          content: '""',
+          borderLeft: '' + treeBorderStyle,
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          height: '49%'
+        }
+      },
+      '&:only-of-type': {
+        '& $name::after': {
+          border: 'none'
+        }
+      },
+      '&:first-child$last': {
+        '& $name::after': {
+          border: 'none'
+        }
+      },
+      '& + &': {
+        '& $info': {
+          borderTop: '1px solid ' + borders.default
+        },
+        '& $name::after': {
+          content: '""',
+          borderLeft: '' + treeBorderStyle,
+          position: 'absolute',
+          bottom: '0',
+          left: '0',
+          height: '100%'
+        }
+      }
+    },
+
+    'required': {
+      marginLeft: '10px',
+      color: 'red'
+    },
+
+    'isClickable': {
+      cursor: 'pointer',
+      fontWeight: 'bold'
+    },
+
+    'last': {},
+
+    /* Tree */
+
+    'enum': (0, _extends3.default)({}, enumAndDefault),
+    'default': (0, _extends3.default)({}, enumAndDefault),
+    'indicator': {},
+    'format': {},
+    'subType': {},
+    'constraints': {}
+  };
+});
+
+/***/ }),
+
 /***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -178,7 +324,7 @@ var theme = exports.theme = {
 
 /***/ }),
 
-/***/ 163:
+/***/ 164:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -219,7 +365,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _BodySchema = __webpack_require__(164);
+var _BodySchema = __webpack_require__(165);
 
 var _BodySchema2 = _interopRequireDefault(_BodySchema);
 
@@ -374,7 +520,7 @@ BodyContent.propTypes = {
 
 /***/ }),
 
-/***/ 164:
+/***/ 165:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -523,14 +669,16 @@ var BodySchema = (0, _BodySchema.styles)(_class = function (_Component) {
     key: 'renderSubsetProperties',
     value: function renderSubsetProperties(property) {
       var isArray = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var styleVariation = this.props.styleVariation;
+      var _props2 = this.props,
+          styleVariation = _props2.styleVariation,
+          classes = _props2.classes;
 
       var nextStyleVariation = styleVariation === 'even' ? 'odd' : 'even';
 
       // FIXME: this is not componentized
       return _react2.default.createElement(
         'tr',
-        { className: 'body-schema-subset' },
+        { className: classes.subset },
         _react2.default.createElement(
           'td',
           { colSpan: '100' },
@@ -587,167 +735,6 @@ BodySchema.propTypes = {
   styleVariation: _propTypes2.default.oneOf(['odd', 'even']),
   classes: _propTypes2.default.object
 };
-
-/***/ }),
-
-/***/ 165:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.styles = undefined;
-
-var _extends2 = __webpack_require__(59);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _theme = __webpack_require__(12);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var treeLineWidth = '1px';
-var treeBorderStyle = treeLineWidth + ' solid red';
-var lineHeight = '40px';
-var cellPadding = '10px';
-
-var nameAndInfo = {
-  verticalAlign: 'middle',
-  paddingRight: '' + cellPadding
-};
-
-var enumAndDefault = {
-  display: 'inline-block',
-  padding: '0 5px',
-  margin: '2px 3px',
-  border: '1px solid grey'
-};
-
-var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
-  var borders = _ref.borders;
-  return {
-    'name': (0, _extends3.default)({}, nameAndInfo, {
-      width: '1%',
-      whiteSpace: 'nowrap',
-      position: 'relative',
-
-      '&::before': {
-        content: '',
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        borderTop: '' + treeBorderStyle,
-        width: '2 * $cell-padding'
-      },
-
-      '& span': {
-        display: 'inline-block',
-        paddingRight: '' + cellPadding,
-        lineHeight: lineHeight,
-        verticalAlign: 'middle',
-
-        '&:first-child::before': {
-          content: '',
-          display: 'inline-block',
-          width: '' + cellPadding,
-          height: '8px',
-          verticalAlign: 'middle',
-          borderLeft: '' + treeBorderStyle,
-          position: 'relative',
-          bottom: '2px'
-        }
-      }
-    }),
-
-    'info': (0, _extends3.default)({}, nameAndInfo, {
-      width: '75%'
-    }),
-
-    'property': {
-      '&:first-child': {
-        '& $name::after': {
-          content: '""',
-          borderLeft: '' + treeBorderStyle,
-          position: 'absolute',
-          bottom: '0',
-          left: '0',
-          height: '52%'
-        }
-      },
-      '&:last-child, &$last': {
-        '& $name::after': {
-          content: '""',
-          borderLeft: '' + treeBorderStyle,
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          height: '49%'
-        }
-      },
-      '&:only-of-type': {
-        '& $name::after': {
-          border: 'none'
-        }
-      },
-      '&:first-child$last': {
-        '& $name::after': {
-          border: 'none'
-        }
-      },
-      '& + &': {
-        '& $info': {
-          borderTop: '1px solid ' + borders.default
-        }
-      }
-    },
-
-    'required': {
-      marginLeft: '10px',
-      color: 'red'
-    },
-
-    'isClickable': {
-      cursor: 'pointer',
-      fontWeight: 'bold'
-    },
-
-    'last': {},
-
-    /* Tree */
-
-    '@global': {
-      // TODO: refactor so that these fancy rules are not needed
-      // '$property + $property, .body-schema-subset + $property': {
-      //   '& $name::after': {
-      //     content: '""',
-      //     borderLeft: `${treeBorderStyle}`,
-      //     position: 'absolute',
-      //     bottom: '0',
-      //     left: '0',
-      //     height: '100%'
-      //   }
-      // },
-
-      '.body-schema-subset > td': {
-        borderLeft: '' + treeBorderStyle
-
-        // '$last + .body-schema-subset > td': {
-        //   borderLeft: 'none'
-        // }
-      } },
-
-    'enum': (0, _extends3.default)({}, enumAndDefault),
-    'default': (0, _extends3.default)({}, enumAndDefault),
-    'indicator': {},
-    'format': {},
-    'subType': {},
-    'constraints': {}
-  };
-});
-
-// TODO: compare this to ensure it matches scss
 
 /***/ }),
 
@@ -898,9 +885,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(26);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(12);
 
+var _Property = __webpack_require__(109);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var styles = exports.styles = (0, _theme.createSheet)(function () {
+  var _subset;
+
   return {
     'bodySchema': {
       width: '100%',
@@ -914,7 +911,20 @@ var styles = exports.styles = (0, _theme.createSheet)(function () {
     },
     'odd': {
       backgroundColor: 'rgb(14, 24, 39)'
-    }
+    },
+
+    'subset': (_subset = {}, (0, _defineProperty3.default)(_subset, '& + .' + _Property.styles.classes.property + ':not(.' + _Property.styles.classes.last + ')', (0, _defineProperty3.default)({}, '& .' + _Property.styles.classes.name + '::after', {
+      content: '""',
+      borderLeft: '' + _Property.treeBorderStyle,
+      position: 'absolute',
+      bottom: '0',
+      left: '0',
+      height: '100%'
+    })), (0, _defineProperty3.default)(_subset, '& > td', {
+      borderLeft: '' + _Property.treeBorderStyle
+    }), (0, _defineProperty3.default)(_subset, '.' + _Property.styles.classes.last + ' + & > td', {
+      borderLeft: 'none'
+    }), _subset)
   };
 });
 
@@ -1285,7 +1295,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -1839,15 +1849,15 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactScrollableAnchor = __webpack_require__(159);
+var _reactScrollableAnchor = __webpack_require__(160);
 
 var _reactScrollableAnchor2 = _interopRequireDefault(_reactScrollableAnchor);
 
-var _BodySchema = __webpack_require__(164);
+var _BodySchema = __webpack_require__(165);
 
 var _BodySchema2 = _interopRequireDefault(_BodySchema);
 
-var _BodyContent = __webpack_require__(163);
+var _BodyContent = __webpack_require__(164);
 
 var _BodyContent2 = _interopRequireDefault(_BodyContent);
 
@@ -2179,7 +2189,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -2226,7 +2236,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -2888,7 +2898,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -2934,7 +2944,7 @@ var _PropertyConstraints = __webpack_require__(315);
 
 var _PropertyConstraints2 = _interopRequireDefault(_PropertyConstraints);
 
-var _Property = __webpack_require__(165);
+var _Property = __webpack_require__(109);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3172,7 +3182,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Property = __webpack_require__(165);
+var _Property = __webpack_require__(109);
 
 var _array = __webpack_require__(329);
 
@@ -3307,7 +3317,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -3341,7 +3351,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _BodyContent = __webpack_require__(163);
+var _BodyContent = __webpack_require__(164);
 
 var _BodyContent2 = _interopRequireDefault(_BodyContent);
 
@@ -3459,7 +3469,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -3968,7 +3978,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactScrollableAnchor = __webpack_require__(159);
+var _reactScrollableAnchor = __webpack_require__(160);
 
 var _reactDocumentTitle = __webpack_require__(653);
 
@@ -4064,7 +4074,7 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
                 _this.stopListeningToHistory = history.listen(function (location) {
                   var hash = location.hash;
 
-                  console.log(hash, location.hash);
+
                   if (_this.props.hash === hash) {
                     return;
                   }
@@ -4202,8 +4212,8 @@ Base.propTypes = {
   definitionUrl: _propTypes2.default.string,
   navSort: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]),
   validate: _propTypes2.default.bool,
-  history: _propTypes2.default.object,
-  listenToHash: _propTypes2.default.bool
+  history: _propTypes2.default.object, // eslint-disable-line
+  listenToHash: _propTypes2.default.bool // eslint-disable-line
 };
 
 Base.defaultProps = {
@@ -4401,7 +4411,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactScrollableAnchor = __webpack_require__(159);
+var _reactScrollableAnchor = __webpack_require__(160);
 
 var _Lincoln = __webpack_require__(323);
 
@@ -4508,7 +4518,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -6292,7 +6302,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(31);
+var _defineProperty2 = __webpack_require__(26);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
