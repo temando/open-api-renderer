@@ -8,7 +8,6 @@ export const styles = createSheet(() => ({
   'navigationTag': {
     display: 'block',
     padding: '1rem 1rem .5rem',
-    color: '#FFF',
 
     '&:hover': {
       textDecoration: 'none',

@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 
-export const styles = createSheet(({ backgrounds }) => ({
+export const styles = createSheet(({ backgrounds, borders, text }) => ({
   navigation: {
     width: '20%',
     height: '100%',
@@ -18,7 +18,11 @@ export const styles = createSheet(({ backgrounds }) => ({
     },
 
     '& > div + div': {
-      borderTop: '1px solid #444'
+      borderTop: `1px solid ${borders.default}`
+    },
+
+    '& a': {
+      color: `${text.default}`
     }
   }
 }))

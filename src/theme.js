@@ -11,7 +11,7 @@ export const theme = (() => {
   }
 
   const text = {
-    default: c('#222'),
+    default: c('#4c555a'),
     link: c('#69e')
   }
 

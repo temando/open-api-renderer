@@ -4,7 +4,6 @@ export const styles = createSheet(() => ({
   'bodyContent': {
     display: 'table',
     width: '100%',
-    border: '2px solid black',
     padding: '10px',
     boxSizing: 'border-box'
   },

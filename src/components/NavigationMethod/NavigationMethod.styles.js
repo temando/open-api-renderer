@@ -4,8 +4,7 @@ export const styles = createSheet(({ backgrounds }) => ({
   'navigationMethod': {
     display: 'flex',
     padding: '.7rem 1.5rem',
-    fontSize: 'smaller',
-    color: '#FFF'
+    fontSize: 'smaller'
   },
   'active': {
     backgroundColor: `${backgrounds.default}`

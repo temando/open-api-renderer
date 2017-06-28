@@ -5,13 +5,16 @@ export const styles = createSheet(() => ({
     width: '100%',
     borderSpacing: '0',
     padding: '10px 50px 10px 20px',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    // color: '#d0d4d7',
+    borderRadius: '10px'
   },
 
   'even': {
-    backgroundColor: 'rgb(27, 37, 52)'
+    // backgroundColor: '#2D3134'
+    backgroundColor: '#FFF'
   },
   'odd': {
-    backgroundColor: 'rgb(14, 24, 39)'
+    backgroundColor: '#F0F0F0'
   }
 }))

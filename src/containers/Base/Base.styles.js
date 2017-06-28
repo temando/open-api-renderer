@@ -17,8 +17,7 @@ export const styles = createSheet((theme) => ({
       margin: '0',
       padding: '0',
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
-      lineHeight: '1.4',
-      color: 'white'
+      lineHeight: '1.4'
     },
 
     'ul, ol': {
@@ -31,7 +30,8 @@ export const styles = createSheet((theme) => ({
     },
 
     'h3, h4, h5, h6': {
-      margin: '0'
+      margin: '0',
+      fontWeight: '400'
     },
 
     'a': {
