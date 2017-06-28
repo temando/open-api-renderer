@@ -675,7 +675,6 @@ var BodySchema = (0, _BodySchema.styles)(_class = function (_Component) {
 
       var nextStyleVariation = styleVariation === 'even' ? 'odd' : 'even';
 
-      // FIXME: this is not componentized
       return _react2.default.createElement(
         'tr',
         { className: classes.subset },
@@ -4035,14 +4034,14 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
       useStateHash: false,
       history: null
     }, _this.intialise = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-      var parserType, _this$props, definitionUrl, navSort, validate, inputHistory, listenToHash, history;
+      var parserType, _this$props, definitionUrl, navSort, validate, inputHistory, _this$props$listenToH, listenToHash, history;
 
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               parserType = _this.state.parserType;
-              _this$props = _this.props, definitionUrl = _this$props.definitionUrl, navSort = _this$props.navSort, validate = _this$props.validate, inputHistory = _this$props.history, listenToHash = _this$props.listenToHash;
+              _this$props = _this.props, definitionUrl = _this$props.definitionUrl, navSort = _this$props.navSort, validate = _this$props.validate, inputHistory = _this$props.history, _this$props$listenToH = _this$props.listenToHash, listenToHash = _this$props$listenToH === undefined ? true : _this$props$listenToH;
 
               if (definitionUrl) {
                 _context.next = 4;
@@ -4069,18 +4068,18 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
                 history = inputHistory || (0, _history.createBrowserHistory)();
 
 
-                _this.setState({ history: history });
-
                 _this.stopListeningToHistory = history.listen(function (location) {
                   var hash = location.hash;
 
 
-                  if (_this.props.hash === hash) {
+                  if (_this.state.useStateHash && _this.state.hash === hash || _this.props.hash === hash) {
                     return;
                   }
 
                   _this.setState({ useStateHash: true, hash: hash });
                 });
+
+                _this.setState({ history: history });
               }
 
               return _context.abrupt('return', true);
@@ -4174,7 +4173,7 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
 
 
       var hash = useStateHash ? stateHash : propsHash;
-
+      console.log({ hash: hash });
       var element = void 0;
 
       if (loading) {
