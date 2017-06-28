@@ -43,13 +43,12 @@ export default class Property extends PureComponent {
 
     return (
       <tr
-        className={classNames(classes.property, 'property', {
-          [classes.last]: isLast,
-          'last': isLast
+        className={classNames(classes.property, {
+          [classes.last]: isLast
         })}
         onClick={this.handleClick}
       >
-        <td className={classNames(classes.name, 'name', {
+        <td className={classNames(classes.name, {
           [classes.isClickable]: isClickable
         })}>
           <span>{name}</span>

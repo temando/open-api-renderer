@@ -17,7 +17,7 @@ export const styles = createSheet(() => ({
   },
 
   'subset': {
-    [`& + .${property.classes.property}`]: {
+    [`& + .${property.classes.property}:not(.${property.classes.last})`]: {
       [`& .${property.classes.name}::after`]: {
         content: '""',
         borderLeft: `${treeBorderStyle}`,
