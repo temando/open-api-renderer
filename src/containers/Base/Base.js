@@ -122,8 +122,8 @@ Base.propTypes = {
     PropTypes.bool
   ]),
   validate: PropTypes.bool,
-  history: PropTypes.object,
-  listenToHash: PropTypes.bool
+  history: PropTypes.object, // eslint-disable-line
+  listenToHash: PropTypes.bool // eslint-disable-line
 }
 
 Base.defaultProps = {
