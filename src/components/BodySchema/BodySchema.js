@@ -74,12 +74,12 @@ export default class BodySchema extends Component {
   }
 
   renderSubsetProperties (property, isArray = false) {
-    const { styleVariation } = this.props
+    const { styleVariation, classes } = this.props
     const nextStyleVariation = (styleVariation === 'even') ? 'odd' : 'even'
 
     // FIXME: this is not componentized
     return (
-      <tr className='body-schema-subset'>
+      <tr className={classes.subset}>
         <td colSpan='100'>
           {isArray && <div>Array [</div>}
           <BodySchema

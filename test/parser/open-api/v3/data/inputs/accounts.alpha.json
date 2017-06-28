@@ -37,15 +37,15 @@
                 "schema": {
                   "$ref": "#/components/schemas/createUserResponse"
                 },
-                "examples": [
-                  {
+                "examples": {
+                  "successfulUser": {
                     "data": {
                       "type": "user",
                       "id": "2149f4c0-3545-48c6-af76-0d298baad70d",
                       "attributes": {}
                     }
                   }
-                ]
+                }
               }
             }
           },
@@ -56,17 +56,15 @@
                 "schema": {
                   "$ref": "#/components/schemas/JsonApiError"
                 },
-                "examples": [
-                  {
-                    "errors": [
-                      {
-                        "status": "400",
-                        "title": "Invalid account id",
-                        "code": "BadRequestError"
-                      }
-                    ]
-                  }
-                ]
+                "example": {
+                  "errors": [
+                    {
+                      "status": "400",
+                      "title": "Invalid account id",
+                      "code": "BadRequestError"
+                    }
+                  ]
+                }
               }
             }
           },
@@ -77,17 +75,15 @@
                 "schema": {
                   "$ref": "#/components/schemas/JsonApiError"
                 },
-                "examples": [
-                  {
-                    "errors": [
-                      {
-                        "status": "401",
-                        "title": "Identity has not been provided",
-                        "code": "UnauthorizedError"
-                      }
-                    ]
-                  }
-                ]
+                "example": {
+                  "errors": [
+                    {
+                      "status": "401",
+                      "title": "Identity has not been provided",
+                      "code": "UnauthorizedError"
+                    }
+                  ]
+                }
               }
             }
           },
@@ -98,31 +94,29 @@
                 "schema": {
                   "$ref": "#/components/schemas/JsonApiError"
                 },
-                "examples": [
-                  {
-                    "errors": [
-                      {
-                        "status": "422",
-                        "title": "Validation Error",
-                        "code": "ValidationError",
-                        "detail": "data.data.attributes should have required property 'email'",
-                        "meta": {
-                          "validation": [
-                            {
-                              "keyword": "required",
-                              "dataPath": ".data.attributes",
-                              "schemaPath": "#/required",
-                              "params": {
-                                "missingProperty": "email"
-                              },
-                              "message": "should have required property 'email'"
-                            }
-                          ]
-                        }
+                "example": {
+                  "errors": [
+                    {
+                      "status": "422",
+                      "title": "Validation Error",
+                      "code": "ValidationError",
+                      "detail": "data.data.attributes should have required property 'email'",
+                      "meta": {
+                        "validation": [
+                          {
+                            "keyword": "required",
+                            "dataPath": ".data.attributes",
+                            "schemaPath": "#/required",
+                            "params": {
+                              "missingProperty": "email"
+                            },
+                            "message": "should have required property 'email'"
+                          }
+                        ]
                       }
-                    ]
-                  }
-                ]
+                    }
+                  ]
+                }
               }
             }
           },
@@ -190,30 +184,28 @@
                 "schema": {
                   "$ref": "#/components/schemas/getUsersResponse"
                 },
-                "examples": [
-                  {
-                    "data": [
-                      {
-                        "id": "ff94475b-d40d-4821-ba8b-6225738ad6da",
-                        "type": "user",
-                        "attributes": {
-                          "email": "user1_email@mail.com",
-                          "firstName": "First name",
-                          "lastName": "Last name"
-                        }
-                      },
-                      {
-                        "id": "1d1e00fb-237e-4cd7-820c-80516c8705a0",
-                        "type": "user",
-                        "attributes": {
-                          "email": "user2_email@mail.com",
-                          "firstName": "First name",
-                          "lastName": "Last name"
-                        }
+                "example": {
+                  "data": [
+                    {
+                      "id": "ff94475b-d40d-4821-ba8b-6225738ad6da",
+                      "type": "user",
+                      "attributes": {
+                        "email": "user1_email@mail.com",
+                        "firstName": "First name",
+                        "lastName": "Last name"
                       }
-                    ]
-                  }
-                ]
+                    },
+                    {
+                      "id": "1d1e00fb-237e-4cd7-820c-80516c8705a0",
+                      "type": "user",
+                      "attributes": {
+                        "email": "user2_email@mail.com",
+                        "firstName": "First name",
+                        "lastName": "Last name"
+                      }
+                    }
+                  ]
+                }
               }
             }
           },
@@ -224,17 +216,15 @@
                 "schema": {
                   "$ref": "#/components/schemas/JsonApiError"
                 },
-                "examples": [
-                  {
-                    "errors": [
-                      {
-                        "status": "401",
-                        "title": "Identity has not been provided",
-                        "code": "UnauthorizedError"
-                      }
-                    ]
-                  }
-                ]
+                "example": {
+                  "errors": [
+                    {
+                      "status": "401",
+                      "title": "Identity has not been provided",
+                      "code": "UnauthorizedError"
+                    }
+                  ]
+                }
               }
             }
           },
@@ -245,17 +235,15 @@
                 "schema": {
                   "$ref": "#/components/schemas/JsonApiError"
                 },
-                "examples": [
-                  {
-                    "errors": [
-                      {
-                        "status": "404",
-                        "title": "User not found",
-                        "code": "NotFoundError"
-                      }
-                    ]
-                  }
-                ]
+                "example": {
+                  "errors": [
+                    {
+                      "status": "404",
+                      "title": "User not found",
+                      "code": "NotFoundError"
+                    }
+                  ]
+                }
               }
             }
           },

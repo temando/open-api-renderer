@@ -1,19 +1,8 @@
 {
-  "openapi": "3.0.0-RC1",
+  "openapi": "3.0.0-rc2",
   "servers": [
     {
       "url": "http://petstore.swagger.io/v2"
-    }
-  ],
-  "x-origin": [
-    {
-      "url": "http://petstore.swagger.io/v2/swagger.json",
-      "format": "swagger",
-      "version": "2.0",
-      "converter": {
-        "url": "https://github.com/mermade/swagger2openapi",
-        "version": "1.2.1"
-      }
     }
   ],
   "info": {
@@ -60,9 +49,7 @@
         "summary": "Add a new pet to the store",
         "description": "",
         "operationId": "addPet",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "405": {
             "description": "Invalid input"
@@ -77,7 +64,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/requestBody1"
+          "$ref": "#/components/requestBodies/Pet"
         }
       },
       "put": {
@@ -87,9 +74,7 @@
         "summary": "Update an existing pet",
         "description": "",
         "operationId": "updatePet",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "400": {
             "description": "Invalid ID supplied"
@@ -110,7 +95,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/requestBody1"
+          "$ref": "#/components/requestBodies/Pet"
         }
       }
     },
@@ -128,6 +113,7 @@
             "in": "query",
             "description": "Status values that need to be considered for filter",
             "required": true,
+            "explode": true,
             "schema": {
               "type": "array",
               "items": {
@@ -192,6 +178,7 @@
             "in": "query",
             "description": "Tags to filter by",
             "required": true,
+            "explode": true,
             "schema": {
               "type": "array",
               "items": {
@@ -282,9 +269,7 @@
         },
         "security": [
           {
-            "api_key": [
-              
-            ]
+            "api_key": []
           }
         ]
       },
@@ -328,13 +313,11 @@
                 "properties": {
                   "name": {
                     "description": "Updated name of the pet",
-                    "type": "string",
-                    "required": false
+                    "type": "string"
                   },
                   "status": {
                     "description": "Updated status of the pet",
-                    "type": "string",
-                    "required": false
+                    "type": "string"
                   }
                 }
               }
@@ -447,9 +430,7 @@
         "summary": "Returns pet inventories by status",
         "description": "Returns a map of status codes to quantities",
         "operationId": "getInventory",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -468,9 +449,7 @@
         },
         "security": [
           {
-            "api_key": [
-              
-            ]
+            "api_key": []
           }
         ]
       }
@@ -483,9 +462,7 @@
         "summary": "Place an order for a pet",
         "description": "",
         "operationId": "placeOrder",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -509,12 +486,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "description": "order placed for purchasing the pet",
               "schema": {
                 "$ref": "#/components/schemas/Order"
               }
             }
-          }
+          },
+          "description": "order placed for purchasing the pet",
+          "required": true
         }
       }
     },
@@ -602,9 +580,7 @@
         "summary": "Create user",
         "description": "This can only be done by the logged in user.",
         "operationId": "createUser",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "default": {
             "description": "successful operation"
@@ -613,12 +589,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "description": "Created user object",
               "schema": {
                 "$ref": "#/components/schemas/User"
               }
             }
-          }
+          },
+          "description": "Created user object",
+          "required": true
         }
       }
     },
@@ -630,16 +607,14 @@
         "summary": "Creates list of users with given input array",
         "description": "",
         "operationId": "createUsersWithArrayInput",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "default": {
             "description": "successful operation"
           }
         },
         "requestBody": {
-          "$ref": "#/components/requestBodies/requestBody2"
+          "$ref": "#/components/requestBodies/UserArray"
         }
       }
     },
@@ -651,16 +626,14 @@
         "summary": "Creates list of users with given input array",
         "description": "",
         "operationId": "createUsersWithListInput",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "default": {
             "description": "successful operation"
           }
         },
         "requestBody": {
-          "$ref": "#/components/requestBodies/requestBody2"
+          "$ref": "#/components/requestBodies/UserArray"
         }
       }
     },
@@ -688,8 +661,7 @@
             "description": "The password for login in clear text",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "password"
+              "type": "string"
             }
           }
         ],
@@ -739,9 +711,7 @@
         "summary": "Logs out current logged in user session",
         "description": "",
         "operationId": "logoutUser",
-        "parameters": [
-          
-        ],
+        "parameters": [],
         "responses": {
           "default": {
             "description": "successful operation"
@@ -821,12 +791,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "description": "Updated user object",
               "schema": {
                 "$ref": "#/components/schemas/User"
               }
             }
-          }
+          },
+          "description": "Updated user object",
+          "required": true
         }
       },
       "delete": {
@@ -1034,36 +1005,29 @@
         }
       }
     },
-    "responses": {
-      
-    },
-    "parameters": {
-      
-    },
-    "examples": {
-      
-    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
     "requestBodies": {
-      "requestBody1": {
+      "Pet": {
         "content": {
           "application/json": {
-            "description": "Pet object that needs to be added to the store",
             "schema": {
               "$ref": "#/components/schemas/Pet"
             }
           },
           "application/xml": {
-            "description": "Pet object that needs to be added to the store",
             "schema": {
               "$ref": "#/components/schemas/Pet"
             }
           }
-        }
+        },
+        "description": "Pet object that needs to be added to the store",
+        "required": true
       },
-      "requestBody2": {
+      "UserArray": {
         "content": {
           "application/json": {
-            "description": "List of user object",
             "schema": {
               "type": "array",
               "items": {
@@ -1071,7 +1035,9 @@
               }
             }
           }
-        }
+        },
+        "description": "List of user object",
+        "required": true
       }
     },
     "securitySchemes": {
@@ -1093,8 +1059,6 @@
         "in": "header"
       }
     },
-    "headers": {
-      
-    }
+    "headers": {}
   }
 }
