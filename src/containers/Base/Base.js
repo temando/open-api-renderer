@@ -38,7 +38,7 @@ export default class Base extends React.PureComponent {
     const { parserType } = this.state
     const {
       definitionUrl, navSort, validate,
-      history: inputHistory, listenToHash
+      history: inputHistory, listenToHash = true
     } = this.props
 
     if (!definitionUrl) { return true }
@@ -49,15 +49,15 @@ export default class Base extends React.PureComponent {
     if (listenToHash) {
       const history = inputHistory || createBrowserHistory()
 
-      this.setState({ history })
-
       this.stopListeningToHistory = history.listen((location) => {
         const { hash } = location
 
-        if (this.props.hash === hash) { return }
+        if ((this.state.useStateHash && this.state.hash === hash) || this.props.hash === hash) { return }
 
         this.setState({ useStateHash: true, hash })
       })
+
+      this.setState({ history })
     }
 
     return true
@@ -88,7 +88,7 @@ export default class Base extends React.PureComponent {
     } = this.state
 
     const hash = useStateHash ? stateHash : propsHash
-
+    console.log({hash})
     let element
 
     if (loading) {
