@@ -24,7 +24,7 @@ export const styles = createSheet(({ backgrounds, borders, text }) => ({
     '& a': {
       color: `${text.default}`,
       padding: '.7rem 1rem',
-      borderTop: '1px solid #444'
+      borderTop: `1px solid ${borders.default.alpha(0.35)}`
     }
   }
 }))
