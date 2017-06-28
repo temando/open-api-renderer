@@ -53,7 +53,7 @@ export default class Base extends React.PureComponent {
 
       this.stopListeningToHistory = history.listen((location) => {
         const { hash } = location
-        console.log(hash, location.hash)
+
         if (this.props.hash === hash) { return }
 
         this.setState({ useStateHash: true, hash })
