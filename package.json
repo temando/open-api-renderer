@@ -81,6 +81,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-regenerator-runtime": "^6.5.0",
     "babel-runtime": "^6.23.0",
+    "benchmark": "^2.1.4",
     "css-loader": "^0.28.4",
     "eslint": "^4.1.0",
     "eslint-config-standard": "^10.2.1",
