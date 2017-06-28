@@ -101,7 +101,7 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 
 ### [Operation](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#operation-object) object
 
-- [x] tags - Currently *required* for this project.
+- [x] tags
 - [x] summary
 - [x] description
 - [ ] [externalDocs](#external-documentation-object)

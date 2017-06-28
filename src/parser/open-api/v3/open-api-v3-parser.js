@@ -1,9 +1,35 @@
 import refParser from 'json-schema-ref-parser'
 import { getSecurityDefinitions, getUISecurity } from './securityParser'
+import { getNavigationMethod, getServicesMethod } from './navigationParser'
 import getUIReadySchema from '../schemaParser'
 
 /**
  * Construct navigation and services ready to be consumed by the UI
+ *
+ * @param {Object} paths
+ * @param {Array} apiSecurity
+ * @param {Object} securityDefinitions
+ * @return {{navigation: [], services: []}}
+ */
+function getUINavigationAndServices ({ paths, apiSecurity = [], securityDefinitions }) {
+  const { navigationMethods: navigation, servicesMethods } =
+    buildNavigationAndServices(paths, apiSecurity, securityDefinitions)
+
+  // Need to wrap up the methods to be individual services blocks.
+  // This simplifies the component logic.
+  const services = servicesMethods.map(method => {
+    return {
+      title: method.title,
+      methods: [ method ]
+    }
+  })
+
+  return {navigation, services}
+}
+
+/**
+ * Construct navigation and services ready to be consumed by the UI using tags.
+ * This will group the paths by the logical tags.
  *
  * @param {Array} tags
  * @param {Object} paths
@@ -12,79 +38,86 @@ import getUIReadySchema from '../schemaParser'
  * @param {Function} sortFunc
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices ({ tags, paths, apiSecurity = [], securityDefinitions, sortFunc }) {
+function getUINavigationAndServicesByTags ({ tags, paths, apiSecurity = [], securityDefinitions, sortFunc }) {
   const navigation = []
   const services = []
+  const isFunc = typeof sortFunc === 'function'
 
-  for (let i = 0; i < tags.length; i++) {
+  for (let i = 0, tagLength = tags.length; i < tagLength; i++) {
     const tag = tags[i]
-    const navigationMethods = []
-    const servicesMethods = []
-    const pathIds = Object.keys(paths)
-
-    for (let j = 0; j < pathIds.length; j++) {
-      const pathId = pathIds[j]
-      const path = paths[pathId]
-      const methodTypes = Object.keys(path)
-
-      for (let k = 0; k < methodTypes.length; k++) {
-        const methodType = methodTypes[k]
-        const method = path[methodType]
-
-        if (!method.tags.includes(tag)) {
-          continue
-        }
-
-        const link = pathId + '/' + methodType
-        const navigationMethod = {
-          type: methodType,
-          title: method.summary,
-          link
-        }
-        navigationMethods.push(navigationMethod)
-
-        const uiRequest = getUIRequest(method.description, method.requestBody)
-        const uiResponses = getUIResponses(method.responses)
-        const servicesMethod = {
-          type: methodType,
-          title: method.summary,
-          link,
-          request: uiRequest,
-          responses: uiResponses
-        }
-
-        if (method.description) {
-          servicesMethod.description = method.description
-        }
-
-        // Security can be declared per method, or globally for the entire API.
-        if (method.security) {
-          servicesMethod.security = getUISecurity(method.security, securityDefinitions)
-        } else if (apiSecurity.length) {
-          servicesMethod.security = getUISecurity(apiSecurity, securityDefinitions)
-        }
-
-        const uiParameters = getUIParameters(method.parameters)
-        if (uiParameters) {
-          servicesMethod.parameters = uiParameters
-        }
-
-        servicesMethods.push(servicesMethod)
-      }
-    }
+    const exclusionFunc = (method) => method.tags.includes(tag) === false
+    const { navigationMethods, servicesMethods } =
+      buildNavigationAndServices(paths, apiSecurity, securityDefinitions, exclusionFunc)
 
     navigation.push({
       title: tag,
-      methods: typeof sortFunc === 'function' ? navigationMethods.sort(sortFunc) : navigationMethods
+      methods: isFunc ? navigationMethods.sort(sortFunc) : navigationMethods
     })
 
     services.push({
       title: tag,
-      methods: typeof sortFunc === 'function' ? servicesMethods.sort(sortFunc) : servicesMethods
+      methods: isFunc ? servicesMethods.sort(sortFunc) : servicesMethods
     })
   }
 
-  return {navigation, services}
+  return { navigation, services }
+}
+
+/**
+ * Build the navigation and services from the given paths.
+ * Optionally run an `exclusionFunc` which if returns true, will skip
+ * the path from being included in the result.
+ *
+ * @param {Object} paths
+ * @param {Array} apiSecurity
+ * @param {Object} securityDefinitions
+ * @param {Function} exclusionFunc
+ * @return {{navigation: [], services: []}}
+ */
+function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, exclusionFunc) {
+  const pathIds = Object.keys(paths)
+  const navigationMethods = []
+  const servicesMethods = []
+  const isFunc = typeof exclusionFunc === 'function'
+
+  for (let j = 0, pathIdLength = pathIds.length; j < pathIdLength; j++) {
+    const pathId = pathIds[j]
+    const path = paths[pathId]
+    const methodTypes = Object.keys(path)
+
+    for (let k = 0, methodLength = methodTypes.length; k < methodLength; k++) {
+      const methodType = methodTypes[k]
+      const method = Object.assign({ type: methodType }, path[methodType])
+
+      // Should this be included in the output?
+      if (isFunc && exclusionFunc(method)) {
+        continue
+      }
+
+      // Add the navigation item
+      navigationMethods.push(getNavigationMethod(pathId, method))
+
+      // Construct the full method object
+      const servicesMethod = getServicesMethod({
+        path: pathId,
+        method,
+        request: getUIRequest(method.description, method.requestBody),
+        params: getUIParameters(method.parameters),
+        responses: getUIResponses(method.responses)
+      })
+
+      // Security can be declared per method, or globally for the entire API.
+      if (method.security) {
+        servicesMethod.security = getUISecurity(method.security, securityDefinitions)
+      } else if (apiSecurity.length) {
+        servicesMethod.security = getUISecurity(apiSecurity, securityDefinitions)
+      }
+
+      servicesMethods.push(servicesMethod)
+    }
+  }
+
+  return { navigationMethods, servicesMethods }
 }
 
 /**
@@ -277,6 +310,10 @@ function getTags (paths) {
     for (const methodKey in path) {
       const method = path[methodKey]
 
+      if (Array.isArray(method.tags) === false) {
+        continue
+      }
+
       method.tags.forEach(tag => {
         if (!tagCollection.includes(tag)) {
           tagCollection.push(tag)
@@ -334,23 +371,16 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
   const apiSecurity = derefOpenApiV3.security || []
-
-  // Get tags from the paths
-  const tags = getTags(paths)
-
-  // Get security definitions
   const securityDefinitions = getSecurityDefinitions(derefOpenApiV3)
 
-  // Construction navigation and services
-  const {navigation, services} = getUINavigationAndServices({
-    tags,
-    paths,
-    apiSecurity,
-    securityDefinitions,
-    sortFunc
-  })
+  // Construct navigation and services, which differs depending on
+  // if the definition utilises tags or not.
+  const tags = getTags(paths)
+  const {navigation, services} = (tags.length)
+    ? getUINavigationAndServicesByTags({ tags, paths, apiSecurity, securityDefinitions, sortFunc })
+    : getUINavigationAndServices({ paths, apiSecurity, securityDefinitions })
 
-  // If we have tag information, let's add it to the navigation
+  // If we have top-level tag descriptions, add it to the navigation
   if (derefOpenApiV3.tags) {
     addTagDetailsToNavigation(navigation, derefOpenApiV3.tags)
   }

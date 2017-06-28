@@ -1,0 +1,62 @@
+{
+  "title": "Simple API overview",
+  "version": "v2",
+  "info": {},
+  "navigation": [
+    {
+      "type": "get",
+      "title": "List API versions",
+      "link": "//get"
+    },
+    {
+      "type": "get",
+      "title": "Show API version details",
+      "link": "/v2/get"
+    }
+  ],
+  "services": [
+    {
+      "title": "List API versions",
+      "methods": [
+        {
+          "type": "get",
+          "title": "List API versions",
+          "link": "//get",
+          "request": {},
+          "responses": [
+            {
+              "code": "200",
+              "description": "200 response"
+            },
+            {
+              "code": "300",
+              "description": "300 response"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Show API version details",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Show API version details",
+          "link": "/v2/get",
+          "request": {},
+          "responses": [
+            {
+              "code": "200",
+              "description": "200 response"
+            },
+            {
+              "code": "203",
+              "description": "203 response"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "security": {}
+}
