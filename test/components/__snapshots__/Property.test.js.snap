@@ -2,11 +2,11 @@
 
 exports[`<Property /> can render a basic property 1`] = `
 <tr
-  className="undefined"
+  className="property undefined last"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       type
@@ -35,11 +35,11 @@ exports[`<Property /> can render a basic property 1`] = `
 
 exports[`<Property /> can render a property with a format 1`] = `
 <tr
-  className=""
+  className="property"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       value
@@ -69,11 +69,11 @@ exports[`<Property /> can render a property with a format 1`] = `
 
 exports[`<Property /> can render a property with a subtype 1`] = `
 <tr
-  className=""
+  className="property"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       data
@@ -101,11 +101,11 @@ exports[`<Property /> can render a property with a subtype 1`] = `
 
 exports[`<Property /> can render a property with description 1`] = `
 <tr
-  className=""
+  className="property"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       type
@@ -144,11 +144,11 @@ exports[`<Property /> can render a property with description 1`] = `
 
 exports[`<Property /> can render a property with enum 1`] = `
 <tr
-  className=""
+  className="property"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       packagingType
@@ -192,11 +192,11 @@ exports[`<Property /> can render a property with enum 1`] = `
 
 exports[`<Property /> can render a property with multiple types 1`] = `
 <tr
-  className=""
+  className="property"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       value
@@ -219,11 +219,11 @@ exports[`<Property /> can render a property with multiple types 1`] = `
 
 exports[`<Property /> can render a property with numerical constraints 1`] = `
 <tr
-  className=""
+  className="property"
   onClick={[Function]}
 >
   <td
-    className=""
+    className="name"
   >
     <span>
       type
