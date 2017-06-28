@@ -1,11 +1,9 @@
 import injectSheet, { jss } from 'react-jss'
 import c from 'color'
 
-const dry = {}
-
 export const theme = (() => {
   const backgrounds = {
-    default: dry.bg = c('#fff'),
+    default: c('#fff'),
     nav: c('#fff'),
     header: c('#fff'),
     schema: c('#F0F0F0')
@@ -17,11 +15,11 @@ export const theme = (() => {
   }
 
   const shades = {
-    default: dry.shade = c(dry.bg).darken(0.2)
+    default: c(backgrounds.default).darken(0.2)
   }
 
   const borders = {
-    default: dry.shade
+    default: shades.default
   }
 
   return { backgrounds, text, shades, borders }
