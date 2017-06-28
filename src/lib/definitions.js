@@ -30,9 +30,9 @@ export function validateDefinition (definition, parserType) {
   return validator(definition)
 }
 
-export async function parseDefinition ({ definition, parserType, navSortType }) {
+export async function parseDefinition ({ definition, parserType, navSort }) {
   const parser = getParserFunction(parserType)
-  const sortFunc = getSortingFunction(navSortType)
+  const sortFunc = getSortingFunction(navSort)
   const parsedDefinition = await parser(definition, sortFunc)
 
   return parsedDefinition

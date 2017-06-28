@@ -7,6 +7,9 @@ import Overlay from '../../components/Overlay/Overlay'
 import { getDefinition, parseDefinition, validateDefinition } from '../../lib/definitions'
 import lincolnLogo from '../../assets/lincoln-logo-white.svg'
 import { styles } from './Base.styles'
+import { createBrowserHistory } from 'history'
+
+configureAnchors({ offset: 10, scrollDuration: 200, keepLastAnchorHash: true })
 
 @styles
 export default class Base extends React.PureComponent {
@@ -16,23 +19,46 @@ export default class Base extends React.PureComponent {
     definition: null,
     parsedDefinition: null,
     loading: false,
-    error: null
+    error: null,
+    useStateHash: false,
+    history: null
   }
+
+  stopListeningToHistory;
 
   componentDidMount () {
     this.intialise()
   }
 
+  componentWillUnmount () {
+    if (this.stopListeningToHistory) { this.stopListeningToHistory() }
+  }
+
   intialise = async () => {
     const { parserType } = this.state
-    const { definitionUrl, navSort, validate } = this.props
+    const {
+      definitionUrl, navSort, validate, listenToHash,
+      history: inputHistory
+    } = this.props
 
     if (!definitionUrl) { return true }
     if (definitionUrl === this.state.definitionUrl) { return false }
 
     await this.setDefinition({ definitionUrl, parserType, navSort, validate })
 
-    configureAnchors({ offset: -10, scrollDuration: 100 })
+    if (listenToHash) {
+      const history = inputHistory || createBrowserHistory()
+
+      this.stopListeningToHistory = history.listen((location) => {
+        const { hash } = location
+
+        if ((this.state.useStateHash && this.state.hash === hash) || this.props.hash === hash) { return }
+
+        this.setState({ useStateHash: true, hash })
+      })
+
+      this.setState({ history })
+    }
 
     return true
   }
@@ -54,9 +80,13 @@ export default class Base extends React.PureComponent {
   }
 
   render () {
-    const { location, classes } = this.props
-    const { parsedDefinition: definition, definitionUrl, loading, error } = this.state
+    const { hash: propsHash, classes } = this.props
+    const {
+      parsedDefinition: definition, definitionUrl, loading, error,
+      useStateHash, hash: stateHash
+    } = this.state
 
+    const hash = useStateHash ? stateHash : propsHash
     let element
 
     if (loading) {
@@ -64,7 +94,7 @@ export default class Base extends React.PureComponent {
     } else if (error) {
       element = <Failure {...{error}} />
     } else {
-      element = <Definition {...{ location, definition, definitionUrl }} />
+      element = <Definition {...{ hash, definition, definitionUrl }} />
     }
 
     return (
@@ -83,41 +113,49 @@ Base.contextTypes = {
 
 Base.propTypes = {
   classes: PropTypes.object,
-  location: PropTypes.object,
+  hash: PropTypes.string.isRequired,
   definitionUrl: PropTypes.string,
   navSort: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool
   ]),
-  validate: PropTypes.bool
+  validate: PropTypes.bool,
+  history: PropTypes.object, // eslint-disable-line
+  listenToHash: PropTypes.bool // eslint-disable-line
 }
 
 Base.defaultProps = {
+  hash: '',
   navSort: false,
-  validate: false
+  validate: false,
+  listenToHash: true
 }
 
-const Definition = ({ definition, definitionUrl, location }) =>
+const Definition = ({ definition, definitionUrl, hash }) =>
   !definition
     ? <Overlay>
       <img src={lincolnLogo} alt='' />
       <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
       <p>You can also set this with the <code>?url</code> query parameter.</p>
     </Overlay>
-    : <Page definition={definition} location={location} specUrl={definitionUrl} />
+    : <Page definition={definition} hash={hash} specUrl={definitionUrl} />
 
 Definition.propTypes = {
   definition: PropTypes.object,
   definitionUrl: PropTypes.string,
-  location: PropTypes.object
+  hash: PropTypes.string
 }
 
-const Failure = ({ error }) =>
-  <Overlay>
+const Failure = ({ error }) => {
+  console.error('definition error')
+  console.error(error)
+
+  return <Overlay>
     <h3>Failed to load definition.</h3>
     <br />
     <p>{error.message}</p>
   </Overlay>
+}
 
 Failure.propTypes = {
   error: PropTypes.object

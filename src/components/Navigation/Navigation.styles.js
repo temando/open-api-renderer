@@ -22,7 +22,9 @@ export const styles = createSheet(({ backgrounds, borders, text }) => ({
     },
 
     '& a': {
-      color: `${text.default}`
+      color: `${text.default}`,
+      padding: '.7rem 1rem',
+      borderTop: '1px solid #444'
     }
   }
 }))
