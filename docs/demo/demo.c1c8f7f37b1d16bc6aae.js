@@ -4034,14 +4034,14 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
       useStateHash: false,
       history: null
     }, _this.intialise = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-      var parserType, _this$props, definitionUrl, navSort, validate, inputHistory, _this$props$listenToH, listenToHash, history;
+      var parserType, _this$props, definitionUrl, navSort, validate, listenToHash, inputHistory, history;
 
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               parserType = _this.state.parserType;
-              _this$props = _this.props, definitionUrl = _this$props.definitionUrl, navSort = _this$props.navSort, validate = _this$props.validate, inputHistory = _this$props.history, _this$props$listenToH = _this$props.listenToHash, listenToHash = _this$props$listenToH === undefined ? true : _this$props$listenToH;
+              _this$props = _this.props, definitionUrl = _this$props.definitionUrl, navSort = _this$props.navSort, validate = _this$props.validate, listenToHash = _this$props.listenToHash, inputHistory = _this$props.history;
 
               if (definitionUrl) {
                 _context.next = 4;
@@ -4160,8 +4160,7 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          _props$hash = _props.hash,
-          propsHash = _props$hash === undefined ? '' : _props$hash,
+          propsHash = _props.hash,
           classes = _props.classes;
       var _state = this.state,
           definition = _state.parsedDefinition,
@@ -4173,7 +4172,6 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
 
 
       var hash = useStateHash ? stateHash : propsHash;
-      console.log({ hash: hash });
       var element = void 0;
 
       if (loading) {
@@ -4216,8 +4214,10 @@ Base.propTypes = {
 };
 
 Base.defaultProps = {
+  hash: '',
   navSort: false,
-  validate: false
+  validate: false,
+  listenToHash: true
 };
 
 var Definition = function Definition(_ref7) {
@@ -4725,14 +4725,14 @@ var parseDefinition = exports.parseDefinition = function () {
   var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(_ref3) {
     var definition = _ref3.definition,
         parserType = _ref3.parserType,
-        navSortType = _ref3.navSortType;
+        navSort = _ref3.navSort;
     var parser, sortFunc, parsedDefinition;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             parser = (0, _parserFactory.getParserFunction)(parserType);
-            sortFunc = (0, _sorting.getSortingFunction)(navSortType);
+            sortFunc = (0, _sorting.getSortingFunction)(navSort);
             _context2.next = 4;
             return parser(definition, sortFunc);
 

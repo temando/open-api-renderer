@@ -37,8 +37,8 @@ export default class Base extends React.PureComponent {
   intialise = async () => {
     const { parserType } = this.state
     const {
-      definitionUrl, navSort, validate,
-      history: inputHistory, listenToHash = true
+      definitionUrl, navSort, validate, listenToHash,
+      history: inputHistory
     } = this.props
 
     if (!definitionUrl) { return true }
@@ -80,15 +80,13 @@ export default class Base extends React.PureComponent {
   }
 
   render () {
-    const { hash: propsHash = '', classes } = this.props
+    const { hash: propsHash, classes } = this.props
     const {
-      parsedDefinition: definition, definitionUrl,
-      loading, error,
+      parsedDefinition: definition, definitionUrl, loading, error,
       useStateHash, hash: stateHash
     } = this.state
 
     const hash = useStateHash ? stateHash : propsHash
-    console.log({hash})
     let element
 
     if (loading) {
@@ -127,8 +125,10 @@ Base.propTypes = {
 }
 
 Base.defaultProps = {
+  hash: '',
   navSort: false,
-  validate: false
+  validate: false,
+  listenToHash: true
 }
 
 const Definition = ({ definition, definitionUrl, hash }) =>
