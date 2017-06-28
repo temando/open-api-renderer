@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 
-const treeLineWidth = '1px'
-const treeBorderStyle = `${treeLineWidth} solid red`
+export const treeLineWidth = '1px'
+export const treeBorderStyle = `${treeLineWidth} solid red`
 const lineHeight = '40px'
 const cellPadding = '10px'
 
@@ -115,27 +115,6 @@ export const styles = createSheet(({ borders }) => ({
   'last': {},
 
   /* Tree */
-
-  '@global': {
-    '.body-schema-subset + .property': {
-      '& .name::after': {
-        content: '""',
-        borderLeft: `${treeBorderStyle}`,
-        position: 'absolute',
-        bottom: '0',
-        left: '0',
-        height: '100%'
-      }
-    },
-
-    '.body-schema-subset > td': {
-      borderLeft: `${treeBorderStyle}`
-    },
-
-    '.last + .body-schema-subset > td': {
-      borderLeft: 'none'
-    }
-  },
 
   'enum': { ...enumAndDefault },
   'default': { ...enumAndDefault },
