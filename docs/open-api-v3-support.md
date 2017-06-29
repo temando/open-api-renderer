@@ -251,7 +251,7 @@ The OpenAPI specification also supports several additional properties from JSON 
 - [ ] not
 - [x] items
 - [x] properties
-- [ ] additionalProperties
+- [x] additionalProperties
 - [x] description
 - [x] format
 - [x] default

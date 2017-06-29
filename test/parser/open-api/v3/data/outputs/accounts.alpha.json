@@ -98,6 +98,7 @@
                         "object"
                       ],
                       "required": true,
+                      "additionalProperties": false,
                       "properties": [
                         {
                           "name": "firstName",
@@ -409,6 +410,7 @@
                       "object"
                     ],
                     "required": true,
+                    "additionalProperties": false,
                     "properties": [
                       {
                         "name": "firstName",

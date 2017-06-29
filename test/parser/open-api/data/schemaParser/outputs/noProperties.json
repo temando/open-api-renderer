@@ -1,0 +1,14 @@
+[
+  {
+    "additionalProperties": {
+      "name": "additionalProperties",
+      "type": [
+        "integer"
+      ],
+      "required": false,
+      "constraints": {
+        "format": "int32"
+      }
+    }
+  }
+]
