@@ -1,4 +1,5 @@
-import { clone } from '../../lib/clone'
+import clone from 'lodash/clone'
+import cloneDeep from 'lodash/cloneDeep'
 import uniq from 'lodash/uniq'
 
 /**
@@ -9,7 +10,7 @@ import uniq from 'lodash/uniq'
  * @return {Object}
  */
 function resolveAllOfItem (node) {
-  const output = clone(node)
+  const output = { ...node }
   delete output.allOf
 
   const allOfItems = node.allOf
@@ -18,12 +19,12 @@ function resolveAllOfItem (node) {
 
     Object.keys(item).forEach(key => {
       if (!output.hasOwnProperty(key)) {
-        output[key] = clone(item[key])
+        output[key] = [ ...item[key] ]
       } else if (key === 'properties') {
         const properties = item[key]
 
         Object.keys(properties).forEach(name => {
-          output.properties[name] = clone(properties[name])
+          output.properties[name] = { ...properties[name] }
         })
       } else if (key === 'required') {
         // Concatenate to existing list and remove duplicates
