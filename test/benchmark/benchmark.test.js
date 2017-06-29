@@ -1,33 +1,21 @@
-import { Suite } from 'benchmark'
 import { parseDefinition } from '../../src/lib/definitions'
 import definition from './definition'
+import { Benchmark } from './Benchmark'
+import { join } from 'path'
 
 describe('Benchmark', () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
-  global.support = { browser: false }
+  global.jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
+
+  const benchDir = join(__dirname, 'snapshots')
 
   it('lib/parseDefinition', async () => {
-    await new Promise((resolve) => {
-      new Suite('parseDefinition')
-        .add('parseDefinition', (deferred) => {
-          new Date().getTime()
-          return deferred.resolve()
-        })
-        .on('cycle', (event) => {
-          console.log(String(event.target))
-        })
-        .on('complete', resolve)
-        .run({ defer: true })
-    })
+    const bench = await new Benchmark('parseDefinition')
+      .run(async () => {
+        await parseDefinition({ definition, parserType: 'open-api-v3' })
+      })
 
-    // suite.add('parseDefinition', async () => {
-    //   await parseDefinition({ definition, parserType: 'open-api-v3' })
-    // })
+    console.log(bench.serialize())
 
-    // suite.run({ async: true })
-
-    // await finished
-
-    // console.log(`Result: ${suite.filter('fastest').map('name')}`)
+    await bench.saveSnapshot(join(benchDir, bench.key))
   })
 })
