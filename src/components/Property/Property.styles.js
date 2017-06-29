@@ -1,4 +1,5 @@
 import { createSheet } from '../../theme'
+import c from 'color'
 
 export const treeLineWidth = '1px'
 export const treeBorderStyle = `${treeLineWidth} solid red`
@@ -17,7 +18,7 @@ const enumAndDefault = {
   border: '1px solid grey'
 }
 
-export const styles = createSheet(({ borders }) => ({
+export const styles = createSheet(({ borders, backgrounds, text }) => ({
   'name': {
     ...nameAndInfo,
     width: '1%',
@@ -54,6 +55,20 @@ export const styles = createSheet(({ borders }) => ({
   'info': {
     ...nameAndInfo,
     width: '75%'
+  },
+
+  'constraints': {
+    display: 'inline-block',
+    marginLeft: '5px',
+    fontSize: '.9rem',
+    '& > span > span': {
+      padding: '2px',
+      backgroundColor: `${c(borders.default).lighten(0.1)}`
+    }
+  },
+
+  'type': {
+    color: `${c(text.default).lighten(0.3)}`
   },
 
   'property': {
@@ -114,12 +129,9 @@ export const styles = createSheet(({ borders }) => ({
 
   'last': {},
 
-  /* Tree */
-
   'enum': { ...enumAndDefault },
   'default': { ...enumAndDefault },
   'indicator': {},
   'format': {},
-  'subType': {},
-  'constraints': {}
+  'subType': {}
 }))

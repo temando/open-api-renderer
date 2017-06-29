@@ -80,14 +80,14 @@ export default class BodySchema extends Component {
     return (
       <tr className={classes.subset}>
         <td colSpan='100'>
-          {isArray && <div>Array [</div>}
+          {isArray && <div className={classes.array}>Array [</div>}
           <BodySchema
             {...this.props}
             key={`${property.name}-properties`}
             properties={property.properties}
             styleVariation={nextStyleVariation}
           />
-          {isArray && <div>]</div>}
+          {isArray && <div className={classes.array}>]</div>}
         </td>
       </tr>
     )

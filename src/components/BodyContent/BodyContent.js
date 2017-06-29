@@ -38,19 +38,20 @@ export default class BodyContent extends Component {
 
     return (
       <div className={classes.tabs}>
-        {includeSchema && this.renderSchemaTab(currentTab)}
+        {includeSchema && includeExample && this.renderSchemaTab(currentTab)}
         {includeExample && this.renderExamplesTab(currentTab)}
       </div>
     )
   }
 
   renderSchemaTab (currentTab) {
+    const { classes } = this.props
     return (
       <div
         role='button'
         onClick={() => this.setState({ tab: 'schema' })}
         className={classNames({
-          active: (currentTab === 'schema')
+          [classes.active]: (currentTab === 'schema')
         })}
       >
         Schema
@@ -59,12 +60,13 @@ export default class BodyContent extends Component {
   }
 
   renderExamplesTab (currentTab) {
+    const { classes } = this.props
     return (
       <div
         role='button'
         onClick={() => this.setState({ tab: 'example' })}
         className={classNames({
-          active: (currentTab === 'example')
+          [classes.active]: (currentTab === 'example')
         })}
       >
         Example

@@ -1,6 +1,7 @@
 import { createSheet } from '../../theme'
+import c from 'color'
 
-export const styles = createSheet(() => ({
+export const styles = createSheet(({ text }) => ({
   'bodyContent': {
     display: 'table',
     width: '100%',
@@ -9,24 +10,18 @@ export const styles = createSheet(() => ({
   },
 
   'tabs': {
-    position: 'relative',
-    top: '2px',
-
     '& > div': {
       display: 'inline-block',
       padding: '10px 20px 10px 0',
-      borderLeft: 'none',
       cursor: 'pointer',
 
-      '&$active': {
-        fontWeight: 'bold',
-        borderBottom: 'none',
-        textDecoration: 'underline'
+      '&:not($active)': {
+        color: `${c(text.default).lighten(0.5)}`
       }
     }
   },
 
   'active': {
-
+    textDecoration: 'underline'
   }
 }))

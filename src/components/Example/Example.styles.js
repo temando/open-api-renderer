@@ -9,12 +9,12 @@ export const styles = createSheet(() => ({
   },
 
   'buttons': {
-    opacity: '0',
+    opacity: '0.5',
     position: 'relative',
     textAlign: 'right',
     paddingRight: '10px',
+    marginBottom: '10px',
 
-    '&:$hovered': { opacity: '1' },
     '& > span': {
       color: 'white',
       padding: '2px 10px',
@@ -22,5 +22,10 @@ export const styles = createSheet(() => ({
     }
   },
 
-  hovered: {}
+  hovered: {
+    '&$buttons': {
+      transition: 'all .2s',
+      opacity: '1'
+    }
+  }
 }))

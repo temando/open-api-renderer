@@ -40,9 +40,9 @@ export default class Response extends PureComponent {
           [classes.error]: !successCode,
           [classes.isClickable]: hasDetails
         })} onClick={hasDetails ? this.onClick : undefined}>
-          {hasDetails && <Indicator direction={indicatorDirection} />}
           <span className={classes.code}>{code}</span>
           {description && <Description isInline description={description} />}
+          {hasDetails && <Indicator direction={indicatorDirection} />}
         </div>
         {hasDetails && isOpen &&
         <BodyContent schema={schema} examples={examples} />

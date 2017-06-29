@@ -6,6 +6,7 @@ const headerHeight = '50px'
 const headerBackground = '#234f69'
 const headerColor = `${c(headerBackground).lighten(0.75)}`
 const headerBorder = `${c(headerColor).darken(0.2)}`
+const headerTitleColor = c('#FFF')
 
 export const styles = createSheet(({ shades }) => ({
   demo: {
@@ -24,6 +25,7 @@ export const styles = createSheet(({ shades }) => ({
     alignItems: 'baseline',
     background: `${headerBackground}`,
     zIndex: '999',
+    color: `${headerTitleColor}`,
 
     padding: '.4rem 1rem',
 

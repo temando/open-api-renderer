@@ -36,5 +36,10 @@ export const styles = createSheet(({ backgrounds }) => ({
     [`.${property.classes.last} + & > td`]: {
       borderLeft: 'none'
     }
+  },
+
+  'array': {
+    fontFamily: 'monospace',
+    marginLeft: '20px'
   }
 }))

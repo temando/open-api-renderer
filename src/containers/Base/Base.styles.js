@@ -1,4 +1,5 @@
 import { createSheet } from '../../theme'
+import c from 'color'
 
 export const styles = createSheet((theme) => ({
   base: {
@@ -40,7 +41,7 @@ export const styles = createSheet((theme) => ({
 
       '&:hover': {
         transition: 'color .25s',
-        color: `lighten(${theme.text.link}, 20%)`,
+        color: `${c(theme.text.link).lighten(0.1)}`,
         textDecoration: 'underline'
       }
     }
