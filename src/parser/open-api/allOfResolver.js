@@ -1,5 +1,4 @@
 import { clone } from '../../lib/clone'
-import uniq from 'lodash/uniq'
 
 /**
  * Resolve node with allOf
@@ -10,29 +9,27 @@ import uniq from 'lodash/uniq'
  */
 function resolveAllOfItem (node) {
   const output = clone(node)
-  delete output.allOf
 
-  const allOfItems = node.allOf
-  for (let i = 0; i < allOfItems.length; i++) {
-    const item = allOfItems[i]
+  for (let i = 0, nodeAllOfLength = node.allOf.length; i < nodeAllOfLength; i++) {
+    const item = node.allOf[i]
 
     Object.keys(item).forEach(key => {
       if (!output.hasOwnProperty(key)) {
-        output[key] = clone(item[key])
+        output[key] = item[key]
       } else if (key === 'properties') {
-        const properties = item[key]
-
-        Object.keys(properties).forEach(name => {
-          output.properties[name] = clone(properties[name])
-        })
+        output.properties = Object.assign(output.properties, item[key])
       } else if (key === 'required') {
-        // Concatenate to existing list and remove duplicates
-        const requiredArray = uniq(output.required.concat(item[key]))
-        output.required = requiredArray.sort()
+        output.required = output.required.concat(item[key])
       }
     })
   }
 
+  // Filter out duplicates.
+  if (output.required) {
+    output.required = Array.from(new Set([...output.required]))
+  }
+
+  delete output.allOf
   return output
 }
 
@@ -45,14 +42,12 @@ function resolveAllOfRecursive (obj) {
   Object.keys(obj).forEach(key => {
     const item = obj[key]
 
-    if (item) {
-      if (typeof item === 'object') {
-        resolveAllOfRecursive(item)
-      }
+    if (typeof item === 'object') {
+      resolveAllOfRecursive(item)
+    }
 
-      if (item.allOf && Array.isArray(item.allOf)) {
-        obj[key] = resolveAllOfItem(item)
-      }
+    if (item.allOf && Array.isArray(item.allOf)) {
+      obj[key] = resolveAllOfItem(item)
     }
   })
 }
@@ -65,8 +60,7 @@ function resolveAllOfRecursive (obj) {
  * @return {Object} definitions object that has allOf resolved
  */
 export function resolveAllOf (obj) {
-  const clonedObj = clone(obj)
-  resolveAllOfRecursive(clonedObj)
+  resolveAllOfRecursive(obj)
 
-  return clonedObj
+  return obj
 }
