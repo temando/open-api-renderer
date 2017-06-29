@@ -44,7 +44,7 @@
     "lint": "eslint src test",
     "start": "webpack-dev-server --config ./webpack.config.dev.js",
     "test": "jest",
-    "test:bench": "jest -c test/benchmark/jest.config.js test/benchmark",
+    "test:bench": "node -r babel-register test/benchmark/parser.js",
     "test:coverage": "jest --coverage",
     "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js"
   },
