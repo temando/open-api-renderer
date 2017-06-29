@@ -17,7 +17,7 @@ import { join } from 'path'
 
     console.log(bench.serialize())
 
-    await bench.saveSnapshot(join(benchDir, bench.key))
+    await bench.saveSnapshot(join(benchDir, `${Date.now()}-${bench.key}`))
   }
 
   {
@@ -26,6 +26,6 @@ import { join } from 'path'
 
     console.log(bench.serialize())
 
-    await bench.saveSnapshot(join(benchDir, bench.key))
+    await bench.saveSnapshot(join(benchDir, `${Date.now()}-${bench.key}`))
   }
 })()
