@@ -72,8 +72,7 @@ function getStates (paths, obj) {
  * @return {object[]}
  */
 function getStateAt (path, obj) {
-  const clonedObj = clone(obj)
-  const states = get(clonedObj, path)
+  const states = get(obj, path)
 
   // Couldn't retrieve the states at this path, bail.
   if (states === undefined) {
@@ -84,13 +83,13 @@ function getStateAt (path, obj) {
   return states.map((state) => {
     // No path, so add state to object directly
     if (parentPath === '') {
-      return merge(clonedObj, state)
+      return merge(obj, state)
     }
 
     // Replace the path with the state
-    update(clonedObj, parentPath, (value) => merge(value, state))
+    update(obj, parentPath, (value) => merge(value, state))
 
-    return clone(clonedObj)
+    return clone(obj)
   })
 }
 
