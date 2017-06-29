@@ -5,7 +5,6 @@ import { join } from 'path'
 
 // Big:
 // http://open-api.s3-website-ap-southeast-2.amazonaws.com/v3/RC2/pcanary-open-api-v3.0.0-RC2.json
-
 (async () => {
   const benchDir = join(__dirname, 'snapshots')
   const createRunner = (definition) => async () => {
@@ -18,7 +17,7 @@ import { join } from 'path'
 
     console.log(bench.serialize())
 
-    await bench.saveSnapshot(join(benchDir, `${Date.now()}-${bench.key}`))
+    await bench.saveSnapshot(join(benchDir, bench.key))
   }
 
   {
@@ -27,6 +26,6 @@ import { join } from 'path'
 
     console.log(bench.serialize())
 
-    await bench.saveSnapshot(join(benchDir, `${Date.now()}-${bench.key}`))
+    await bench.saveSnapshot(join(benchDir, bench.key))
   }
 })()
