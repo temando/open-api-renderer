@@ -90,18 +90,15 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
  * @return {Object}
  */
 function getPropertiesNode (propertiesNode, requiredProperties = []) {
-  const outputNode = []
-
-  for (const key in propertiesNode) {
-    const property = propertiesNode[ key ]
-    const value = getPropertyNode(key, property, requiredProperties.includes(key))
-
-    if (value) {
-      outputNode.push(value)
-    }
+  if (!propertiesNode) {
+    return []
   }
 
-  return outputNode
+  return Object.keys(propertiesNode)
+    .map(
+      (key) => getPropertyNode(key, propertiesNode[key], requiredProperties.includes(key))
+    )
+    .filter(Boolean)
 }
 
 /**

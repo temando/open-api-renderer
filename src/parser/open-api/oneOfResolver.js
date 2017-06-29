@@ -14,7 +14,7 @@ import toPath from 'lodash/toPath'
 function getOneOfPaths (obj) {
   let paths = []
   let walk = function (obj, path = '') {
-    for (let key in obj) {
+    Object.keys(obj).forEach((key) => {
       // Handle if `oneOf` is found at the first level.
       const currentPath = (path === '') ? key : `${path}.${key}`
 
@@ -23,7 +23,7 @@ function getOneOfPaths (obj) {
       } else if (typeof obj[key] === 'object' || Array.isArray(obj[key])) {
         walk(obj[key], currentPath)
       }
-    }
+    })
   }
 
   walk(obj)
@@ -42,7 +42,7 @@ function getOneOfPaths (obj) {
 function getStates (paths, obj) {
   let states = [ ...getStateAt(paths[0], obj) ]
 
-  for (let i = 1; i < paths.length; i++) {
+  for (let i = 1, pathsLength = paths.length; i < pathsLength; i++) {
     let state = states.shift()
 
     while (state) {
