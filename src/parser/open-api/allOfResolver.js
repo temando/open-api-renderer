@@ -10,7 +10,6 @@ import uniq from 'lodash/uniq'
  */
 function resolveAllOfItem (node) {
   const output = clone(node)
-  delete output.allOf
 
   const allOfItems = node.allOf
   for (let i = 0; i < allOfItems.length; i++) {
@@ -18,12 +17,12 @@ function resolveAllOfItem (node) {
 
     Object.keys(item).forEach(key => {
       if (!output.hasOwnProperty(key)) {
-        output[key] = clone(item[key])
+        output[key] = item[key]
       } else if (key === 'properties') {
         const properties = item[key]
 
         Object.keys(properties).forEach(name => {
-          output.properties[name] = clone(properties[name])
+          output.properties[name] = properties[name]
         })
       } else if (key === 'required') {
         // Concatenate to existing list and remove duplicates
@@ -33,6 +32,7 @@ function resolveAllOfItem (node) {
     })
   }
 
+  delete output.allOf
   return output
 }
 
@@ -65,8 +65,7 @@ function resolveAllOfRecursive (obj) {
  * @return {Object} definitions object that has allOf resolved
  */
 export function resolveAllOf (obj) {
-  const clonedObj = clone(obj)
-  resolveAllOfRecursive(clonedObj)
+  resolveAllOfRecursive(obj)
 
-  return clonedObj
+  return obj
 }
