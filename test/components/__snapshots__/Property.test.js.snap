@@ -128,15 +128,19 @@ exports[`<Property /> can render a property with description 1`] = `
         required
       </span>
     </span>
-    <div>
-      <div
-        className="undefined"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "This is <em>markdown</em> text",
+    <div
+      className={undefined}
+    >
+      <div>
+        <div
+          className="undefined"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "This is <em>markdown</em> text",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
   </td>
 </tr>
@@ -171,20 +175,24 @@ exports[`<Property /> can render a property with enum 1`] = `
         required
       </span>
     </span>
-    <div>
-      <span>
-        Valid values:
-      </span>
-      <span
-        className={undefined}
-      >
-        box
-      </span>
-      <span
-        className={undefined}
-      >
-        carton
-      </span>
+    <div
+      className={undefined}
+    >
+      <div>
+        <span>
+          Valid values:
+        </span>
+        <span
+          className={undefined}
+        >
+          box
+        </span>
+        <span
+          className={undefined}
+        >
+          carton
+        </span>
+      </div>
     </div>
   </td>
 </tr>

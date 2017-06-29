@@ -18,7 +18,7 @@ export default class BodySchema extends Component {
   }
 
   render () {
-    const { properties, styleVariation, classes } = this.props
+    const { properties, styleVariation, classes, hasTabs } = this.props
 
     if (!properties) {
       return null
@@ -26,7 +26,9 @@ export default class BodySchema extends Component {
     const { expandedProp } = this.state
 
     return (
-      <table className={classNames(classes.bodySchema, classes[styleVariation])}>
+      <table className={classNames(classes.bodySchema, classes[styleVariation], {
+        [classes.hasTabs]: hasTabs
+      })}>
         <tbody>
           {properties.map((property, i) => {
             const isLast = (properties.length === i + 1)
@@ -117,5 +119,6 @@ BodySchema.propTypes = {
     'odd',
     'even'
   ]),
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  hasTabs: PropTypes.bool
 }

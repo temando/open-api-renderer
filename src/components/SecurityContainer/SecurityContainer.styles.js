@@ -2,8 +2,7 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ backgrounds, borders }) => ({
   'securityContainer': {
-    padding: '1rem 0',
-    marginBottom: '2rem',
+    padding: '1rem 2rem',
     borderBottom: `1px solid ${borders.default}`
 
   },

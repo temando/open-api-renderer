@@ -29,8 +29,9 @@ export default class Method extends PureComponent {
   }
 
   renderParameters (parameters) {
+    const { classes } = this.props
     return (
-      <div className='method-parameters'>
+      <div className={classes.parameters}>
         {parameters.path &&
         <div>
           <h4>Path Parameters</h4>

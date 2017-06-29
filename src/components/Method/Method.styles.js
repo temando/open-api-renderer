@@ -5,7 +5,7 @@ export const styles = createSheet(({ borders, text }) => ({
   method: {
     borderBottom: `1px solid ${borders.default}`,
     margin: '0 1rem 2rem 0',
-    padding: '1rem',
+    padding: '1rem 2rem',
 
     '& > h3': {
       marginBottom: '15px'
@@ -16,7 +16,7 @@ export const styles = createSheet(({ borders, text }) => ({
       textTransform: 'uppercase',
       color: `${c(text.default).lighten(0.5)}`,
       borderBottom: `1px solid ${borders.default}`,
-      marginTop: '10px'
+      marginTop: '20px'
     }
   }
 }))

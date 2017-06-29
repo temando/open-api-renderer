@@ -62,9 +62,13 @@ export default class Property extends PureComponent {
             <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
-          {enumValues && this.renderEnumValues(enumValues)}
-          {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
-          {description && <div><Description isInline description={description} /></div>}
+          {(enumValues || defaultValue || description) &&
+            <div className={classes.additionalInfo}>
+              {enumValues && this.renderEnumValues(enumValues)}
+              {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
+              {description && <div><Description isInline description={description} /></div>}
+            </div>
+          }
         </td>
       </tr>
     )

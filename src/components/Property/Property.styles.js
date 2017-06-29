@@ -57,18 +57,20 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
     width: '75%'
   },
 
+  'additionalInfo': {
+    fontSize: 'smaller',
+    color: `${c(text.default).lighten(0.5)}`,
+    padding: '5px 0'
+  },
+
   'constraints': {
-    display: 'inline-block',
     marginLeft: '5px',
     fontSize: '.9rem',
     '& > span > span': {
       padding: '2px',
-      backgroundColor: `${c(borders.default).lighten(0.1)}`
+      backgroundColor: `${c(borders.default).lighten(0.1)}`,
+      marginLeft: '5px'
     }
-  },
-
-  'type': {
-    color: `${c(text.default).lighten(0.3)}`
   },
 
   'property': {

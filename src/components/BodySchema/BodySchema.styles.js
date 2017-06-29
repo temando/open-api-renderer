@@ -41,5 +41,8 @@ export const styles = createSheet(({ backgrounds }) => ({
   'array': {
     fontFamily: 'monospace',
     marginLeft: '20px'
+  },
+  'hasTabs': {
+    borderTopLeftRadius: 0
   }
 }))
