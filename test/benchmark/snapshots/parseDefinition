@@ -1,3 +1,0 @@
-parseDefinition x 106 ops/sec ±2.00% (77 runs sampled)
-parseDefinition x 127 ops/sec ±2.01% (78 runs sampled)
-parseDefinition x 124 ops/sec ±1.99% (79 runs sampled)
