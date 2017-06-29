@@ -72,7 +72,7 @@ function getStates (paths, obj) {
  * @return {object[]}
  */
 function getStateAt (path, obj) {
-  const clonedObj = cloneDeep(obj)
+  const clonedObj = { ...obj }
   const states = get(clonedObj, path)
 
   // Couldn't retrieve the states at this path, bail.
@@ -90,7 +90,7 @@ function getStateAt (path, obj) {
     // Replace the path with the state
     update(clonedObj, parentPath, (value) => merge(value, state))
 
-    return cloneDeep(clonedObj)
+    return { ...clonedObj }
   })
 }
 

@@ -1,3 +1,3 @@
-parseDefinition-temandoFull x 0.06 ops/sec ±35.02% (2 runs sampled)
-parseDefinition-temandoFull x 0.06 ops/sec ±8.66% (3 runs sampled)
-parseDefinition-temandoFull x 0.06 ops/sec ±4.58% (4 runs sampled)
+parseDefinition-temandoFull x 5.93 ops/sec ±3.41% (29 runs sampled)
+parseDefinition-temandoFull x 6.01 ops/sec ±3.30% (30 runs sampled)
+parseDefinition-temandoFull x 6.09 ops/sec ±3.20% (31 runs sampled)
