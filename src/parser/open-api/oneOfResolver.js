@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep'
+import { clone } from '../../lib/clone'
 import get from 'lodash/get'
 import update from 'lodash/update'
 import toPath from 'lodash/toPath'
@@ -72,7 +72,7 @@ function getStates (paths, obj) {
  * @return {object[]}
  */
 function getStateAt (path, obj) {
-  const clonedObj = { ...obj }
+  const clonedObj = clone(obj)
   const states = get(clonedObj, path)
 
   // Couldn't retrieve the states at this path, bail.
@@ -90,7 +90,7 @@ function getStateAt (path, obj) {
     // Replace the path with the state
     update(clonedObj, parentPath, (value) => merge(value, state))
 
-    return { ...clonedObj }
+    return clone(clonedObj)
   })
 }
 
