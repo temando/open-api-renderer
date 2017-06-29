@@ -1,0 +1,3 @@
+parseDefinition-petStore x 248 ops/sec ±2.81% (76 runs sampled)
+parseDefinition-petStore x 239 ops/sec ±2.80% (77 runs sampled)
+parseDefinition-petStore x 237 ops/sec ±2.77% (78 runs sampled)

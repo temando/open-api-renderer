@@ -16,5 +16,9 @@ module.exports = {
     'jsx',
     'json'
   ],
-  verbose: true
+  verbose: true,
+  testPathIgnorePatterns: [
+    'node_modules',
+    'benchmark'
+  ]
 }
