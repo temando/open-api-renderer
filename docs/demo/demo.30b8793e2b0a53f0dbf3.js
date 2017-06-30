@@ -33,7 +33,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -199,7 +199,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
     }),
 
     'info': (0, _extends3.default)({}, nameAndInfo, {
-      width: '75%'
+      width: '75%',
+      paddingTop: '5px'
     }),
 
     'additionalInfo': {
@@ -322,7 +323,11 @@ var theme = exports.theme = function () {
 
   var text = {
     default: (0, _color2.default)('#4c555a'),
-    link: (0, _color2.default)('#69e')
+    link: (0, _color2.default)('#69e'),
+    get: (0, _color2.default)('#17c680'),
+    post: (0, _color2.default)('#2a9bdd'),
+    put: (0, _color2.default)('#c428d6'),
+    delete: (0, _color2.default)('#dd133f')
   };
 
   var shades = {
@@ -391,7 +396,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -607,7 +612,7 @@ var _reactAddonsCreateFragment = __webpack_require__(653);
 
 var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -822,7 +827,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -858,7 +863,7 @@ var NavigationMethod = (0, _NavigationMethod.styles)(_class = function (_PureCom
         },
         _react2.default.createElement(
           'span',
-          { className: classes.type },
+          { className: (0, _classnames2.default)(classes.type, '' + method.type) },
           method.type.toUpperCase()
         ),
         _react2.default.createElement(
@@ -1510,7 +1515,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -2043,6 +2048,10 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _classnames = __webpack_require__(24);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _reactScrollableAnchor = __webpack_require__(161);
 
 var _reactScrollableAnchor2 = _interopRequireDefault(_reactScrollableAnchor);
@@ -2082,6 +2091,7 @@ var Method = (0, _Method.styles)(_class = function (_PureComponent) {
           method = _props.method,
           classes = _props.classes;
       var title = method.title,
+          type = method.type,
           description = method.description,
           parameters = method.parameters,
           request = method.request,
@@ -2097,7 +2107,12 @@ var Method = (0, _Method.styles)(_class = function (_PureComponent) {
           _react2.default.createElement(
             'h3',
             null,
-            title
+            title,
+            _react2.default.createElement(
+              'span',
+              { className: (0, _classnames2.default)(classes.type, '' + method.type) },
+              type
+            )
           ),
           _react2.default.createElement(
             'div',
@@ -2229,7 +2244,25 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       padding: '1rem 2rem',
 
       '& > h3': {
-        marginBottom: '15px'
+        marginBottom: '15px',
+        '& > span': {
+          fontFamily: 'monospace',
+          textTransform: 'uppercase',
+          marginLeft: '10px',
+
+          '&.get': {
+            color: '' + text.get
+          },
+          '&.post': {
+            color: '' + text.post
+          },
+          '&.put': {
+            color: '' + text.put
+          },
+          '&.delete': {
+            color: '' + text.delete
+          }
+        }
       },
 
       '& h4': {
@@ -2473,7 +2506,8 @@ exports.styles = undefined;
 var _theme = __webpack_require__(12);
 
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
-  var backgrounds = _ref.backgrounds;
+  var backgrounds = _ref.backgrounds,
+      text = _ref.text;
   return {
     'navigationMethod': {
       display: 'flex',
@@ -2490,7 +2524,19 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       display: 'none'
     },
     'type': {
-      width: '55px'
+      width: '55px',
+      '&.get': {
+        color: '' + text.get
+      },
+      '&.post': {
+        color: '' + text.post
+      },
+      '&.put': {
+        color: '' + text.put
+      },
+      '&.delete': {
+        color: '' + text.delete
+      }
     },
     'title': {
       width: 'calc(100% - 55px)'
@@ -2541,7 +2587,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -3064,7 +3110,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -3517,7 +3563,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -3663,7 +3709,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       }
     },
     'info': (0, _defineProperty3.default)({
-      padding: '10px'
+      padding: '10px',
+      fontSize: '0.9rem'
 
     }, '& ' + _Indicator.styles.classes.indicator, {
       marginRight: '10px'
@@ -6628,7 +6675,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(27);
+var _classnames = __webpack_require__(24);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 

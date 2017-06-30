@@ -50,7 +50,8 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
 
   'info': {
     ...nameAndInfo,
-    width: '75%'
+    width: '75%',
+    paddingTop: '5px'
   },
 
   'additionalInfo': {

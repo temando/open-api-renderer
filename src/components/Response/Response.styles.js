@@ -10,6 +10,7 @@ export const styles = createSheet(({ shades }) => ({
   },
   'info': {
     padding: '10px',
+    fontSize: '0.9rem',
 
     [`& ${indicator.classes.indicator}`]: {
       marginRight: '10px'

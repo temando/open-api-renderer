@@ -11,7 +11,11 @@ export const theme = (() => {
 
   const text = {
     default: c('#4c555a'),
-    link: c('#69e')
+    link: c('#69e'),
+    get: c('#17c680'),
+    post: c('#2a9bdd'),
+    put: c('#c428d6'),
+    delete: c('#dd133f')
   }
 
   const shades = {

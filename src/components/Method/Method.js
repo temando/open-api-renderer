@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import ScrollableAnchor from 'react-scrollable-anchor'
 import BodySchema from '../BodySchema/BodySchema'
 import BodyContent from '../BodyContent/BodyContent'
@@ -11,12 +12,15 @@ import { styles } from './Method.styles'
 export default class Method extends PureComponent {
   render () {
     const { method, classes } = this.props
-    const { title, description, parameters, request, responses } = method
+    const { title, type, description, parameters, request, responses } = method
 
     return (
       <ScrollableAnchor id={method.link}>
         <div className={classes.method}>
-          <h3>{title}</h3>
+          <h3>
+            {title}
+            <span className={classNames(classes.type, `${method.type}`)}>{type}</span>
+          </h3>
           <div>
             {description && <Description description={description} />}
             {parameters && this.renderParameters(parameters)}

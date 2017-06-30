@@ -63,7 +63,7 @@ exports[`<NavigationTag /> renders with methods 1`] = `
       href="#pets"
     >
       <span
-        className={undefined}
+        className="get"
       >
         GET
       </span>
@@ -78,7 +78,7 @@ exports[`<NavigationTag /> renders with methods 1`] = `
       href="#pets/:id"
     >
       <span
-        className={undefined}
+        className="get"
       >
         GET
       </span>
