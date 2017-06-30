@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep'
+import { clone } from '../../lib/clone'
 import get from 'lodash/get'
 import update from 'lodash/update'
 import toPath from 'lodash/toPath'
@@ -14,7 +14,7 @@ import toPath from 'lodash/toPath'
 function getOneOfPaths (obj) {
   let paths = []
   let walk = function (obj, path = '') {
-    for (let key in obj) {
+    Object.keys(obj).forEach((key) => {
       // Handle if `oneOf` is found at the first level.
       const currentPath = (path === '') ? key : `${path}.${key}`
 
@@ -23,7 +23,7 @@ function getOneOfPaths (obj) {
       } else if (typeof obj[key] === 'object' || Array.isArray(obj[key])) {
         walk(obj[key], currentPath)
       }
-    }
+    })
   }
 
   walk(obj)
@@ -42,7 +42,7 @@ function getOneOfPaths (obj) {
 function getStates (paths, obj) {
   let states = [ ...getStateAt(paths[0], obj) ]
 
-  for (let i = 1; i < paths.length; i++) {
+  for (let i = 1, pathsLength = paths.length; i < pathsLength; i++) {
     let state = states.shift()
 
     while (state) {
@@ -72,8 +72,7 @@ function getStates (paths, obj) {
  * @return {object[]}
  */
 function getStateAt (path, obj) {
-  const clonedObj = cloneDeep(obj)
-  const states = get(clonedObj, path)
+  const states = get(obj, path)
 
   // Couldn't retrieve the states at this path, bail.
   if (states === undefined) {
@@ -84,13 +83,13 @@ function getStateAt (path, obj) {
   return states.map((state) => {
     // No path, so add state to object directly
     if (parentPath === '') {
-      return merge(clonedObj, state)
+      return merge(obj, state)
     }
 
     // Replace the path with the state
-    update(clonedObj, parentPath, (value) => merge(value, state))
+    update(obj, parentPath, (value) => merge(value, state))
 
-    return cloneDeep(clonedObj)
+    return clone(obj)
   })
 }
 
