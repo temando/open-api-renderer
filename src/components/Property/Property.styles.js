@@ -127,7 +127,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
 
   'isClickable': {
     cursor: 'pointer',
-    fontWeight: 'bold'
+    fontWeight: 600
   },
 
   'last': {},

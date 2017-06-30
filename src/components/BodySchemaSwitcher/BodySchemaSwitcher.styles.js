@@ -4,7 +4,7 @@ export const styles = createSheet(({ text }) => ({
   'schemaSwitcher': {
     marginBottom: '10px'
   },
-  
+
   'select': {
     background: 'transparent',
     color: `${text.default}`,

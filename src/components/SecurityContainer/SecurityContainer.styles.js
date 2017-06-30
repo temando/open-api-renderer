@@ -22,5 +22,9 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
   },
 
   inlinePairs: {},
-  scopes: {}
+  scopes: {
+    '& > li > span': {
+      fontWeight: 600
+    }
+  }
 }))

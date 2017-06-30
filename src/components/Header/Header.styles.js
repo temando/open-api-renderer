@@ -28,7 +28,7 @@ export const styles = createSheet(({ borders }) => ({
 
     '& dt': {
       paddingRight: '1.5rem',
-      fontWeight: 'bold'
+      fontWeight: 600
     }
   }
 }))
