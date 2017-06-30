@@ -7,7 +7,8 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
     borderSpacing: '0',
     padding: '10px 50px 10px 20px',
     boxSizing: 'border-box',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    fontSize: '14.5px'
   },
 
   'even': {

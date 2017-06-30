@@ -43,9 +43,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
         width: `${cellPadding}`,
         height: `8px`,
         verticalAlign: 'middle',
-        borderLeft: `1px solid ${borders.default}`,
-        position: 'relative',
-        bottom: '2px'
+        borderLeft: `1px solid ${borders.default}`
       }
     }
   },
@@ -56,7 +54,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   },
 
   'additionalInfo': {
-    fontSize: 'smaller',
+    fontSize: '0.9em',
     color: `${c(text.default).lighten(0.5)}`,
     padding: '5px 0',
 
@@ -83,7 +81,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
         position: 'absolute',
         bottom: '0',
         left: '0',
-        height: '52%'
+        height: '51%'
       }
     },
     '&:last-child, &$last': {
@@ -93,7 +91,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
         position: 'absolute',
         top: '0',
         left: '0',
-        height: '49%'
+        height: '50%'
       }
     },
     '&:only-of-type': {

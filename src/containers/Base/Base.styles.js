@@ -18,7 +18,8 @@ export const styles = createSheet((theme) => ({
       margin: '0',
       padding: '0',
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
-      lineHeight: '1.4'
+      lineHeight: '1.4',
+      fontSize: '1em'
     },
 
     'ul, ol': {

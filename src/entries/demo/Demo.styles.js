@@ -30,7 +30,7 @@ export const styles = createSheet(({ shades }) => ({
     padding: '.4rem 1rem',
 
     borderBottom: '1px solid #222',
-    boxShadow: '0 1px 20px #000',
+    boxShadow: '0 1px 20px #8e8e8e',
 
     '&, & *': {
       boxSizing: 'border-box'

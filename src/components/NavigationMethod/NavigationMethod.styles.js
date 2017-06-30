@@ -7,7 +7,7 @@ export const styles = createSheet(({ backgrounds }) => ({
     fontSize: 'smaller'
   },
   'active': {
-    backgroundColor: `${backgrounds.default}`
+    backgroundColor: `${backgrounds.schema}`
   },
   'open': {
     display: 'flex'

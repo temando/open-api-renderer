@@ -20,7 +20,7 @@ export default class BodySchemaSwitcher extends Component {
     const { options, classes } = this.props
 
     return (
-      <form>
+      <form className={classes.schemaSwitcher}>
         <label>This schema can be fulfilled by multiple options: </label>
         <select className={classes.select} onChange={this.handleChange}>
           {options.map(

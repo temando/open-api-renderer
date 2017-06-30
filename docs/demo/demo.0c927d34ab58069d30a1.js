@@ -193,9 +193,7 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
           width: '' + cellPadding,
           height: '8px',
           verticalAlign: 'middle',
-          borderLeft: '1px solid ' + borders.default,
-          position: 'relative',
-          bottom: '2px'
+          borderLeft: '1px solid ' + borders.default
         }
       }
     }),
@@ -205,7 +203,7 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
     }),
 
     'additionalInfo': {
-      fontSize: 'smaller',
+      fontSize: '0.9em',
       color: '' + (0, _color2.default)(text.default).lighten(0.5),
       padding: '5px 0',
 
@@ -232,7 +230,7 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
           position: 'absolute',
           bottom: '0',
           left: '0',
-          height: '52%'
+          height: '51%'
         }
       },
       '&:last-child, &$last': {
@@ -242,7 +240,7 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
           position: 'absolute',
           top: '0',
           left: '0',
-          height: '49%'
+          height: '50%'
         }
       },
       '&:only-of-type': {
@@ -923,7 +921,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (theme) {
         margin: '0',
         padding: '0',
         fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
-        lineHeight: '1.4'
+        lineHeight: '1.4',
+        fontSize: '1em'
       },
 
       'ul, ol': {
@@ -1063,7 +1062,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       borderSpacing: '0',
       padding: '10px 50px 10px 20px',
       boxSizing: 'border-box',
-      borderRadius: '10px'
+      borderRadius: '10px',
+      fontSize: '14.5px'
     },
 
     'even': {
@@ -1168,7 +1168,7 @@ var BodySchemaSwitcher = (0, _BodySchemaSwitcher.styles)(_class = function (_Com
 
       return _react2.default.createElement(
         'form',
-        null,
+        { className: classes.schemaSwitcher },
         _react2.default.createElement(
           'label',
           null,
@@ -1215,12 +1215,17 @@ exports.styles = undefined;
 
 var _theme = __webpack_require__(12);
 
-var styles = exports.styles = (0, _theme.createSheet)(function () {
+var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
+  var text = _ref.text;
   return {
+    'schemaSwitcher': {
+      marginBottom: '10px'
+    },
+
     'select': {
       background: 'transparent',
-      color: 'white',
-      border: '1px solid white',
+      color: '' + text.default,
+      border: '1px solid ' + text.default,
       borderRadius: '5px',
       marginLeft: '15px',
       fontSize: 'medium'
@@ -2476,7 +2481,7 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       fontSize: 'smaller'
     },
     'active': {
-      backgroundColor: '' + backgrounds.default
+      backgroundColor: '' + backgrounds.schema
     },
     'open': {
       display: 'flex'
@@ -3670,10 +3675,14 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       paddingRight: '20px'
     },
     'success': {
-      color: 'rgb(76, 204, 79)'
+      '& $code': {
+        color: 'rgb(76, 204, 79)'
+      }
     },
     'error': {
-      color: 'rgb(235, 15, 40)'
+      '& $code': {
+        color: 'rgb(235, 15, 40)'
+      }
     }
   };
 });
@@ -4726,7 +4735,7 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       padding: '.4rem 1rem',
 
       borderBottom: '1px solid #222',
-      boxShadow: '0 1px 20px #000',
+      boxShadow: '0 1px 20px #8e8e8e',
 
       '&, & *': {
         boxSizing: 'border-box'
