@@ -12,6 +12,21 @@ export default class Property extends PureComponent {
     super(props)
 
     this.handleClick = this.handleClick.bind(this)
+    this.displayAllEnums = this.displayAllEnums.bind(this)
+
+    this.state = {
+      enumValues: (props.enumValues ? props.enumValues : null)
+    }
+  }
+
+  componentWillMount () {
+    const enumValues = this.state.enumValues
+    if (enumValues && enumValues.length > 20) {
+      let updatedValues = enumValues.slice()
+      updatedValues.length = 20
+      console.log(this.props.enumValues.length)
+      this.setState({ enumValues: updatedValues })
+    }
   }
 
   handleClick () {
@@ -81,17 +96,29 @@ export default class Property extends PureComponent {
    */
   renderEnumValues (values) {
     const { classes } = this.props
+    const valuesToDisplay = this.state.enumValues
+    let isEnumReduced = false
+    if (values.length !== valuesToDisplay.length) {
+      isEnumReduced = true
+    }
 
     return (
       <div>
         <span>Valid values:</span>
-        {values.map(value => {
+        {valuesToDisplay.map(value => {
           return (
             <span key={value} className={classes.enum}>{value}</span>
           )
         })}
+        {isEnumReduced &&
+          <a onClick={this.displayAllEnums}>...</a>
+        }
       </div>
     )
+  }
+
+  displayAllEnums () {
+    this.setState({ enumValues: this.props.enumValues })
   }
 
   renderDefaultValue (value) {

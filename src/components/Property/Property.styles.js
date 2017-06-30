@@ -60,7 +60,11 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   'additionalInfo': {
     fontSize: 'smaller',
     color: `${c(text.default).lighten(0.5)}`,
-    padding: '5px 0'
+    padding: '5px 0',
+
+    '& a': {
+      cursor: 'pointer'
+    }
   },
 
   'constraints': {
