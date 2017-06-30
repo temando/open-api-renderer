@@ -2,7 +2,9 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(() => ({
   'navigationTagMethods': {
-    marginBottom: '.5rem'
+    '&$expanded': {
+      marginBottom: '.5rem'
+    }
   },
 
   'navigationTag': {
@@ -14,5 +16,7 @@ export const styles = createSheet(() => ({
 
       '& span': { textDecoration: 'underline' }
     }
-  }
+  },
+
+  'expanded': {}
 }))

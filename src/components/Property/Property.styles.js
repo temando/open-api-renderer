@@ -1,8 +1,6 @@
 import { createSheet } from '../../theme'
 import c from 'color'
 
-export const treeLineWidth = '1px'
-export const treeBorderStyle = `${treeLineWidth} solid red`
 const lineHeight = '40px'
 const cellPadding = '10px'
 
@@ -29,7 +27,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
       content: '""',
       display: 'inline-block',
       verticalAlign: 'middle',
-      borderTop: `${treeBorderStyle}`,
+      borderTop: `1px solid ${borders.default}`,
       width: '20px'
     },
 
@@ -45,7 +43,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
         width: `${cellPadding}`,
         height: `8px`,
         verticalAlign: 'middle',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'relative',
         bottom: '2px'
       }
@@ -81,7 +79,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
     '&:first-child': {
       '& $name::after': {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '0',
@@ -91,7 +89,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
     '&:last-child, &$last': {
       '& $name::after': {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         top: '0',
         left: '0',
@@ -114,7 +112,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
       },
       '& $name::after': {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '0',

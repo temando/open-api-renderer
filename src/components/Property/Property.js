@@ -24,7 +24,6 @@ export default class Property extends PureComponent {
     if (enumValues && enumValues.length > 20) {
       let updatedValues = enumValues.slice()
       updatedValues.length = 20
-      console.log(this.props.enumValues.length)
       this.setState({ enumValues: updatedValues })
     }
   }

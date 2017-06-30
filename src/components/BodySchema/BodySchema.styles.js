@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
-import { treeBorderStyle, styles as property } from '../Property/Property.styles'
+import { styles as property } from '../Property/Property.styles'
 
-export const styles = createSheet(({ backgrounds }) => ({
+export const styles = createSheet(({ backgrounds, borders }) => ({
   'bodySchema': {
     width: '100%',
     borderSpacing: '0',
@@ -21,7 +21,7 @@ export const styles = createSheet(({ backgrounds }) => ({
     [`& + .${property.classes.property}:not(.${property.classes.last})`]: {
       [`& .${property.classes.name}::after`]: {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '0',
@@ -30,7 +30,7 @@ export const styles = createSheet(({ backgrounds }) => ({
     },
 
     [`& > td`]: {
-      borderLeft: `${treeBorderStyle}`
+      borderLeft: `1px solid ${borders.default}`
     },
 
     [`.${property.classes.last} + & > td`]: {
