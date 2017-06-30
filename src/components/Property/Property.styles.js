@@ -1,7 +1,6 @@
 import { createSheet } from '../../theme'
+import c from 'color'
 
-export const treeLineWidth = '1px'
-export const treeBorderStyle = `${treeLineWidth} solid red`
 const lineHeight = '40px'
 const cellPadding = '10px'
 
@@ -17,7 +16,7 @@ const enumAndDefault = {
   border: '1px solid grey'
 }
 
-export const styles = createSheet(({ borders }) => ({
+export const styles = createSheet(({ borders, backgrounds, text }) => ({
   'name': {
     ...nameAndInfo,
     width: '1%',
@@ -28,7 +27,7 @@ export const styles = createSheet(({ borders }) => ({
       content: '""',
       display: 'inline-block',
       verticalAlign: 'middle',
-      borderTop: `${treeBorderStyle}`,
+      borderTop: `1px solid ${borders.default}`,
       width: '20px'
     },
 
@@ -44,37 +43,56 @@ export const styles = createSheet(({ borders }) => ({
         width: `${cellPadding}`,
         height: `8px`,
         verticalAlign: 'middle',
-        borderLeft: `${treeBorderStyle}`,
-        position: 'relative',
-        bottom: '2px'
+        borderLeft: `1px solid ${borders.default}`
       }
     }
   },
 
   'info': {
     ...nameAndInfo,
-    width: '75%'
+    width: '75%',
+    paddingTop: '5px'
+  },
+
+  'additionalInfo': {
+    fontSize: '0.9em',
+    color: `${c(text.default).lighten(0.5)}`,
+    padding: '5px 0',
+
+    '& a': {
+      cursor: 'pointer'
+    }
+  },
+
+  'constraints': {
+    marginLeft: '5px',
+    fontSize: '.9rem',
+    '& > span > span': {
+      padding: '2px',
+      backgroundColor: `${c(borders.default).lighten(0.1)}`,
+      marginLeft: '5px'
+    }
   },
 
   'property': {
     '&:first-child': {
       '& $name::after': {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '0',
-        height: '52%'
+        height: '51%'
       }
     },
     '&:last-child, &$last': {
       '& $name::after': {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         top: '0',
         left: '0',
-        height: '49%'
+        height: '50%'
       }
     },
     '&:only-of-type': {
@@ -93,7 +111,7 @@ export const styles = createSheet(({ borders }) => ({
       },
       '& $name::after': {
         content: '""',
-        borderLeft: `${treeBorderStyle}`,
+        borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '0',
@@ -109,17 +127,14 @@ export const styles = createSheet(({ borders }) => ({
 
   'isClickable': {
     cursor: 'pointer',
-    fontWeight: 'bold'
+    fontWeight: 600
   },
 
   'last': {},
-
-  /* Tree */
 
   'enum': { ...enumAndDefault },
   'default': { ...enumAndDefault },
   'indicator': {},
   'format': {},
-  'subType': {},
-  'constraints': {}
+  'subType': {}
 }))

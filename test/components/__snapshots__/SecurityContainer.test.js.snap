@@ -99,16 +99,16 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
         </h5>
         <ul>
           <li>
-            <strong>
+            <span>
               write:pets
-            </strong>
+            </span>
              
             modify pets in your account
           </li>
           <li>
-            <strong>
+            <span>
               read:pets
-            </strong>
+            </span>
              
             read your pets
           </li>
@@ -148,16 +148,16 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
         </h5>
         <ul>
           <li>
-            <strong>
+            <span>
               write:pets
-            </strong>
+            </span>
              
             modify pets in your account
           </li>
           <li>
-            <strong>
+            <span>
               read:pets
-            </strong>
+            </span>
              
             read your pets
           </li>

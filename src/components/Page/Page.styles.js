@@ -7,7 +7,6 @@ export const styles = createSheet(({ borders }) => ({
   },
   'main': {
     marginLeft: '20%',
-    paddingLeft: '10px',
     width: '80%',
     boxSizing: 'border-box',
     border: `1px solid ${borders.default}`

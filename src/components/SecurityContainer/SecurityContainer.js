@@ -79,7 +79,7 @@ export default class SecurityContainer extends PureComponent {
     return (
       <ul>
         {Object.keys(scopes).map(
-          (scope) => <li key={scope}><strong>{scope}</strong> {scopes[scope]}</li>)
+          (scope) => <li key={scope}><span>{scope}</span> {scopes[scope]}</li>)
         }
       </ul>
     )

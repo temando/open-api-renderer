@@ -10,6 +10,7 @@ export const styles = createSheet(({ shades }) => ({
   },
   'info': {
     padding: '10px',
+    fontSize: '0.9rem',
 
     [`& ${indicator.classes.indicator}`]: {
       marginRight: '10px'
@@ -22,9 +23,13 @@ export const styles = createSheet(({ shades }) => ({
     paddingRight: '20px'
   },
   'success': {
-    color: 'rgb(76, 204, 79)'
+    '& $code': {
+      color: 'rgb(76, 204, 79)'
+    }
   },
   'error': {
-    color: 'rgb(235, 15, 40)'
+    '& $code': {
+      color: 'rgb(235, 15, 40)'
+    }
   }
 }))

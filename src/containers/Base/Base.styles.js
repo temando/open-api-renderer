@@ -1,8 +1,10 @@
 import { createSheet } from '../../theme'
+import c from 'color'
 
-export const styles = createSheet(({ backgrounds, link }) => ({
+export const styles = createSheet((theme) => ({
   base: {
-    backgroundColor: `${backgrounds.default}`,
+    backgroundColor: `${theme.backgrounds.default}`,
+    color: `${theme.text.default}`,
     height: '100%'
   },
 
@@ -17,7 +19,7 @@ export const styles = createSheet(({ backgrounds, link }) => ({
       padding: '0',
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
       lineHeight: '1.4',
-      color: 'white'
+      fontSize: '1em'
     },
 
     'ul, ol': {
@@ -30,16 +32,17 @@ export const styles = createSheet(({ backgrounds, link }) => ({
     },
 
     'h3, h4, h5, h6': {
-      margin: '0'
+      margin: '0',
+      fontWeight: '400'
     },
 
     'a': {
-      color: `${link}`,
+      color: `${theme.text.link}`,
       textDecoration: 'none',
 
       '&:hover': {
         transition: 'color .25s',
-        color: `lighten(${link}, 20%)`,
+        color: `${c(theme.text.link).lighten(0.1)}`,
         textDecoration: 'underline'
       }
     }

@@ -17,7 +17,7 @@ export default class NavigationMethod extends PureComponent {
         })}
         href={`#${method.link}`}
       >
-        <span className={classes.type}>{method.type.toUpperCase()}</span>
+        <span className={classNames(classes.type, `${method.type}`)}>{method.type.toUpperCase()}</span>
         <span className={classes.title}>{method.title}</span>
       </a>
     )

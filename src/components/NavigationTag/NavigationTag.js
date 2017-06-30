@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import Indicator from '../Indicator/Indicator'
 import NavigationMethod from '../NavigationMethod/NavigationMethod'
 import Description from '../Description/Description'
@@ -72,7 +73,9 @@ export default class NavigationTag extends Component {
           <Indicator direction={indicatorDirection} />
           {description && <Description description={description} />}
         </a>
-        <div className={classes.navigationTagMethods}>
+        <div className={classNames(classes.navigationTagMethods, {
+          [classes.expanded]: isExpanded
+        })}>
           {methods && methods.map((method) => {
             const isActive = (`#${method.link}` === hash)
 

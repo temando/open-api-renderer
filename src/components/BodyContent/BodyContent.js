@@ -25,7 +25,7 @@ export default class BodyContent extends Component {
 
     return (
       <div className={classes.bodyContent}>
-        {schema && this.renderTabs(schema, examples)}
+        {schema && examples && this.renderTabs(schema, examples)}
         {tab === 'schema' && this.renderSchema(schema, index)}
         {tab === 'example' && this.renderExamples(examples)}
       </div>
@@ -45,12 +45,13 @@ export default class BodyContent extends Component {
   }
 
   renderSchemaTab (currentTab) {
+    const { classes } = this.props
     return (
       <div
         role='button'
         onClick={() => this.setState({ tab: 'schema' })}
         className={classNames({
-          active: (currentTab === 'schema')
+          [classes.active]: (currentTab === 'schema')
         })}
       >
         Schema
@@ -59,12 +60,13 @@ export default class BodyContent extends Component {
   }
 
   renderExamplesTab (currentTab) {
+    const { classes } = this.props
     return (
       <div
         role='button'
         onClick={() => this.setState({ tab: 'example' })}
         className={classNames({
-          active: (currentTab === 'example')
+          [classes.active]: (currentTab === 'example')
         })}
       >
         Example
@@ -73,6 +75,9 @@ export default class BodyContent extends Component {
   }
 
   renderSchema (schema, index) {
+    const { examples } = this.props
+    const hasTabs = (schema !== undefined && examples !== undefined)
+
     if (!schema) {
       return null
     }
@@ -83,13 +88,13 @@ export default class BodyContent extends Component {
       return (
         <div className='body-content-switcher'>
           <BodySchemaSwitcher options={schema} onChange={this.setBodySchemaIndex} />
-          <BodySchema properties={schema[index]} styleVariation='odd' />
+          <BodySchema properties={schema[index]} styleVariation='odd' hasTabs={hasTabs} />
         </div>
       )
     }
 
     return (
-      <BodySchema properties={schema} styleVariation='odd' />
+      <BodySchema properties={schema} styleVariation='odd' hasTabs={hasTabs} />
     )
   }
 

@@ -1,31 +1,28 @@
 import { createSheet } from '../../theme'
+import c from 'color'
 
-export const styles = createSheet(() => ({
+export const styles = createSheet(({ text, backgrounds }) => ({
   'bodyContent': {
     display: 'table',
     width: '100%',
-    border: '2px solid black',
     padding: '10px',
     boxSizing: 'border-box'
   },
 
   'tabs': {
-    position: 'relative',
-    top: '2px',
-
     '& > div': {
       display: 'inline-block',
-      padding: '10px 20px 10px 0',
-      borderLeft: 'none',
+      padding: '10px 20px',
       cursor: 'pointer',
 
-      '&$active': {
-        fontWeight: 'bold',
-        borderBottom: 'none',
-        textDecoration: 'underline'
+      '&:not($active)': {
+        color: `${c(text.default).lighten(0.5)}`
       }
     }
   },
 
-  'active': {}
+  'active': {
+    backgroundColor: `${backgrounds.schema}`,
+    borderRadius: '10px 10px 0 0'
+  }
 }))
