@@ -196,14 +196,9 @@ exports[`<BodySchema /> can render a BodySchema with a subset and additional pro
 <table
   className=""
 >
-  <caption
-    className={undefined}
-  >
-    Additional properties are possible, as described below:
-  </caption>
   <tbody>
     <tr
-      className=""
+      className="undefined"
       onClick={[Function]}
     >
       <td
@@ -249,14 +244,9 @@ exports[`<BodySchema /> can render a BodySchema with a subset and no additional 
 <table
   className=""
 >
-  <caption
-    className={undefined}
-  >
-    These are the only possible properties:
-  </caption>
   <tbody>
     <tr
-      className=""
+      className="undefined"
       onClick={[Function]}
     >
       <td
@@ -335,14 +325,9 @@ exports[`<BodySchema /> can render a basic BodySchema with additional properties
 <table
   className=""
 >
-  <caption
-    className={undefined}
-  >
-    Additional properties are possible, as described below:
-  </caption>
   <tbody>
     <tr
-      className=""
+      className="undefined"
       onClick={[Function]}
     >
       <td

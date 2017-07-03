@@ -45,12 +45,5 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
   },
   'hasTabs': {
     borderTopLeftRadius: 0
-  },
-
-  'additionalProperties': {
-    padding: '0 0 5px 20px',
-    fontStyle: 'italic',
-    textAlign: 'left',
-    fontSize: 'smaller'
   }
 }))

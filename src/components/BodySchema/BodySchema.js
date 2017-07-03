@@ -31,15 +31,12 @@ export default class BodySchema extends Component {
     }
 
     const { expandedProps } = this.state
-    const hasAdditionalProperties = properties.find(
-      (property) => property.additionalProperties !== undefined
-    )
+    const hasAdditionalProperties = additionalProperties !== undefined
 
     return (
       <table className={classNames(classes.bodySchema, classes[styleVariation], {
         [classes.hasTabs]: hasTabs
       })}>
-        {hasAdditionalProperties && this.renderAdditionalPropertiesNotice(hasAdditionalProperties.additionalProperties)}
         <tbody>
           {properties.map((property, i) => {
             // We will never be last if there is additionalProperties to follow
@@ -63,26 +60,6 @@ export default class BodySchema extends Component {
           {additionalProperties && this.renderProperties(additionalProperties, expandedProps, true, true)}
         </tbody>
       </table>
-    )
-  }
-
-  /**
-   * Displays a notice to users about additional properties that are possible within
-   * the child of this schema.
-   *
-   * @param {Object|Boolean} additionalProperties
-   */
-  renderAdditionalPropertiesNotice (additionalProperties) {
-    const { classes } = this.props
-
-    if (additionalProperties === false) {
-      return (
-        <caption className={classes.additionalProperties}>These are the only possible properties:</caption>
-      )
-    }
-
-    return (
-      <caption className={classes.additionalProperties}>Additional properties are possible, as described below:</caption>
     )
   }
 
