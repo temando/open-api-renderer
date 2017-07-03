@@ -3,8 +3,9 @@ import { dereference } from '@jdw/jst'
 import { getSecurityDefinitions, getUISecurity } from './securityParser'
 import { getNavigationMethod, getServicesMethod } from './navigationParser'
 import getUIReadySchema from '../schemaParser'
+import memoize from 'fast-memoize'
 
-let cache = new WeakMap()
+const getUIReadySchemaMemoized = memoize(getUIReadySchema)
 
 /**
  * Construct navigation and services ready to be consumed by the UI
@@ -136,13 +137,7 @@ function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, ex
  */
 function addMediaTypeInfoToUIObject (uiObject, mediaType) {
   if (mediaType.schema) {
-    let schema
-    if (cache.has(mediaType.schema)) {
-      schema = cache.get(mediaType.schema)
-    } else {
-      schema = getUIReadySchema(mediaType.schema)
-      cache.set(mediaType.schema, schema)
-    }
+    const schema = getUIReadySchemaMemoized(mediaType.schema)
 
     if (schema.length) {
       uiObject.schema = schema
@@ -430,7 +425,6 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
     security: securityDefinitions
   }
   console.timeEnd('build definition')
-  cache = new WeakMap()
 
   return definition
 }
