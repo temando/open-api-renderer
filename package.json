@@ -45,6 +45,7 @@
     "start": "webpack-dev-server --config ./webpack.config.dev.js",
     "test": "jest",
     "test:bench": "node -r babel-register test/benchmark/parser.js",
+    "test:bench-simple": "node -r babel-register test/benchmark/parser-simple.js",
     "test:coverage": "jest --coverage",
     "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js"
   },
