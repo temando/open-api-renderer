@@ -46,7 +46,7 @@ export default class Property extends PureComponent {
     // If enumValues only has one single value, append the single value to name, and not display enum values
     if (enumValues && enumValues.length === 1) {
       name = `${name} = "${enumValues[0]}"`
-      enumValues.length = 0;
+      enumValues.length = 0
     }
 
     const isClickable = onClick !== undefined
@@ -83,7 +83,7 @@ export default class Property extends PureComponent {
             <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
-          {(enumValues && enumValues.length > 0 || defaultValue || description) &&
+          {((enumValues && enumValues.length > 0) || defaultValue || description) &&
             <div className={classes.additionalInfo}>
               {enumValues && this.renderEnumValues(enumValues)}
               {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
