@@ -45,5 +45,11 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
   },
   'hasTabs': {
     borderTopLeftRadius: 0
+  },
+
+  '@media (max-width: 800px)': {
+    'bodySchema': {
+      paddingRight: '10px'
+    }
   }
 }))

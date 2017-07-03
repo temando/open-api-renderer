@@ -93,5 +93,38 @@ export const styles = createSheet(({ shades }) => ({
         borderColor: '#FFF'
       }
     }
+  },
+
+  '@media (max-width: 800px)': {
+    'demo': {
+      [`& .${base.classes.base}`]: {
+        marginTop: '100px'
+      }
+    },
+
+    'header': {
+      display: 'block',
+      height: '100px',
+      zIndex: '100',
+
+      '& h1': {
+        display: 'inline',
+        paddingLeft: '30px'
+      },
+
+      '& form': {
+        display: 'flex',
+        marginLeft: 0,
+        textAlign: 'left',
+
+        '& label': {
+          padding: '10px 0'
+        },
+
+        '& input': {
+          flexShrink: 10
+        }
+      }
+    }
   }
 }))

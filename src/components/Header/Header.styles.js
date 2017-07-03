@@ -30,5 +30,11 @@ export const styles = createSheet(({ borders }) => ({
       paddingRight: '1.5rem',
       fontWeight: 600
     }
+  },
+
+  '@media (max-width: 800px)': {
+    'inlinePairs': {
+      display: 'block'
+    }
   }
 }))

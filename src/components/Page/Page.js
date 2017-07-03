@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
+import NavigationIcon from '../NavigationIcon/NavigationIcon'
 import ContentContainer from '../ContentContainer/ContentContainer'
 import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
@@ -9,8 +11,20 @@ import { styles } from './Page.styles'
 
 @styles
 export default class Page extends Component {
+  constructor (props) {
+    super(props)
+
+    this.onToggleNavigation = this.onToggleNavigation.bind(this)
+    this.onClickNavItem = this.onClickNavItem.bind(this)
+
+    this.state = {
+      isNavOpen: false
+    }
+  }
+
   render () {
     const { definition, hash, specUrl, classes } = this.props
+    const { isNavOpen } = this.state
 
     if (!definition) {
       return null
@@ -19,9 +33,12 @@ export default class Page extends Component {
     const { navigation, services, security } = definition
 
     return (
-      <div className='page'>
-        <Navigation navigation={navigation} hash={hash} />
-        <div className={classes.main}>
+      <div className={classes.page}>
+        <NavigationIcon onClick={this.onToggleNavigation} />
+        <Navigation navigation={navigation} hash={hash} isNavOpen={isNavOpen} onClickNavItem={this.onClickNavItem} />
+        <div className={classNames(classes.main, {
+          [classes.isHidden]: isNavOpen
+        })}>
           <Header
             title={definition.title}
             description={definition.description}
@@ -49,6 +66,19 @@ export default class Page extends Component {
         )}
       </ContentContainer>
     )
+  }
+
+  onToggleNavigation () {
+    const { isNavOpen } = this.state
+    if (isNavOpen) {
+      this.setState({ isNavOpen: false })
+    } else {
+      this.setState({ isNavOpen: true })
+    }
+  }
+
+  onClickNavItem () {
+    this.setState({ isNavOpen: false })
   }
 }
 

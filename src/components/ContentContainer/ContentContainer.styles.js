@@ -7,5 +7,16 @@ export const styles = createSheet(() => ({
     '& h2': {
       paddingLeft: '2rem'
     }
+  },
+
+  '@media (max-width: 800px)': {
+    'contentContainer': {
+      padding: '10px 0',
+
+      '& h2': {
+        paddingLeft: '1rem',
+        margin: 0
+      }
+    }
   }
 }))

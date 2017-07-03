@@ -24,5 +24,11 @@ export const styles = createSheet(({ text, backgrounds }) => ({
   'active': {
     backgroundColor: `${backgrounds.schema}`,
     borderRadius: '10px 10px 0 0'
+  },
+
+  '@media (max-width: 800px)': {
+    'bodyContent': {
+      padding: '10px 0'
+    }
   }
 }))

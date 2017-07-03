@@ -4,6 +4,7 @@ import c from 'color'
 
 export const styles = createSheet(({ backgrounds, borders, text }) => ({
   navigation: {
+    display: 'table-cell',
     width: '20%',
     height: '100%',
     verticalAlign: 'top',
@@ -29,6 +30,21 @@ export const styles = createSheet(({ backgrounds, borders, text }) => ({
         color: `${c(text.default).lighten(0.1)}`,
         transition: 'all .2s'
       }
+    }
+  },
+
+  '@media (max-width: 800px)': {
+    'navigation': {
+      display: 'block',
+      width: '100%',
+      height: 'auto',
+      right: '100%',
+      zIndex: '99',
+      transition: 'right .5s'
+    },
+    'isOpen': {
+      position: 'relative',
+      right: 0
     }
   }
 }))

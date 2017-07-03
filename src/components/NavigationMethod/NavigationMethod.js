@@ -6,7 +6,7 @@ import { styles } from './NavigationMethod.styles'
 @styles
 export default class NavigationMethod extends PureComponent {
   render () {
-    const { method, isActive, isOpen, classes } = this.props
+    const { method, isActive, isOpen, classes, onClick } = this.props
 
     return (
       <a
@@ -16,6 +16,7 @@ export default class NavigationMethod extends PureComponent {
           [classes.closed]: !isOpen
         })}
         href={`#${method.link}`}
+        onClick={onClick}
       >
         <span className={classNames(classes.type, `${method.type}`)}>{method.type.toUpperCase()}</span>
         <span className={classes.title}>{method.title}</span>
@@ -28,5 +29,6 @@ NavigationMethod.propTypes = {
   method: PropTypes.object,
   isActive: PropTypes.bool,
   isOpen: PropTypes.bool,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  onClick: PropTypes.func
 }

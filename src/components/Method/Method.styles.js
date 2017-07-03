@@ -36,5 +36,11 @@ export const styles = createSheet(({ borders, text }) => ({
       borderBottom: `1px solid ${borders.default}`,
       marginTop: '20px'
     }
+  },
+
+  '@media (max-width: 800px)': {
+    'method': {
+      padding: '1rem'
+    }
   }
 }))

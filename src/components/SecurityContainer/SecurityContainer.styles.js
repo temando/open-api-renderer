@@ -26,5 +26,11 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
     '& > li > span': {
       fontWeight: 600
     }
+  },
+
+  '@media (max-width: 800px)': {
+    'securityContainer': {
+      padding: '1rem'
+    }
   }
 }))
