@@ -1,8 +1,10 @@
 import refParser from 'json-schema-ref-parser'
-import { dereference } from '@jdw/jst';
+import { dereference } from '@jdw/jst'
 import { getSecurityDefinitions, getUISecurity } from './securityParser'
 import { getNavigationMethod, getServicesMethod } from './navigationParser'
 import getUIReadySchema from '../schemaParser'
+
+let cache = new WeakMap()
 
 /**
  * Construct navigation and services ready to be consumed by the UI
@@ -43,10 +45,11 @@ function getUINavigationAndServicesByTags ({ tags, paths, apiSecurity = [], secu
   const navigation = []
   const services = []
   const isFunc = typeof sortFunc === 'function'
-  console.time('getUINavigationAndServicesByTags -- loop');
+  console.time('getUINavigationAndServicesByTags -- loop')
   for (let i = 0, tagLength = tags.length; i < tagLength; i++) {
     const tag = tags[i]
     const exclusionFunc = (method) => method.tags.includes(tag) === false
+    console.log(`processing ${tag}`)
     const { navigationMethods, servicesMethods } =
       buildNavigationAndServices(paths, apiSecurity, securityDefinitions, exclusionFunc)
 
@@ -60,7 +63,7 @@ function getUINavigationAndServicesByTags ({ tags, paths, apiSecurity = [], secu
       methods: isFunc ? servicesMethods.sort(sortFunc) : servicesMethods
     })
   }
-  console.timeEnd('getUINavigationAndServicesByTags -- loop');
+  console.timeEnd('getUINavigationAndServicesByTags -- loop')
   return { navigation, services }
 }
 
@@ -80,7 +83,7 @@ function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, ex
   const navigationMethods = []
   const servicesMethods = []
   const isFunc = typeof exclusionFunc === 'function'
-  console.time('buildNavigationAndServices');
+  console.time('buildNavigationAndServices')
   for (let j = 0, pathIdLength = pathIds.length; j < pathIdLength; j++) {
     const pathId = pathIds[j]
     const path = paths[pathId]
@@ -97,6 +100,8 @@ function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, ex
 
       // Add the navigation item
       navigationMethods.push(getNavigationMethod(pathId, method))
+
+      // console.log(`processing ${methodType} ${pathId}`)
 
       // Construct the full method object
       const servicesMethod = getServicesMethod({
@@ -118,7 +123,7 @@ function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, ex
     }
   }
   // console.log(paths);
-  console.timeEnd('buildNavigationAndServices');
+  console.timeEnd('buildNavigationAndServices')
   return { navigationMethods, servicesMethods }
 }
 
@@ -131,7 +136,13 @@ function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, ex
  */
 function addMediaTypeInfoToUIObject (uiObject, mediaType) {
   if (mediaType.schema) {
-    const schema = getUIReadySchema(mediaType.schema)
+    let schema
+    if (cache.has(mediaType.schema)) {
+      schema = cache.get(mediaType.schema)
+    } else {
+      schema = getUIReadySchema(mediaType.schema)
+      cache.set(mediaType.schema, schema)
+    }
 
     if (schema.length) {
       uiObject.schema = schema
@@ -365,50 +376,50 @@ function addTagDetailsToNavigation (navigation, tagDefinitions) {
 export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   let derefOpenApiV3
   try {
-    console.time('dereference');
-    derefOpenApiV3 = dereference(openApiV3);
-    // derefOpenApiV3 = await refParser.dereference(openApiV3);
-    console.timeEnd('dereference');
+    console.time('dereference')
+    derefOpenApiV3 = dereference(openApiV3)
+    // derefOpenApiV3 = await refParser.dereference(openApiV3)
+    console.timeEnd('dereference')
   } catch (error) {
     throw new Error(`Unable to dereference input definition. Details: ${JSON.stringify(error)}`)
   }
 
-  console.time('extract info');
+  console.time('extract info')
   const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
   const apiSecurity = derefOpenApiV3.security || []
   const securityDefinitions = getSecurityDefinitions(derefOpenApiV3)
-  console.timeEnd('extract info');
+  console.timeEnd('extract info')
 
   // Construct navigation and services, which differs depending on
   // if the definition utilises tags or not.
-  console.time('getTags');
+  console.time('getTags')
   const tags = getTags(paths)
-  console.timeEnd('getTags');
+  console.timeEnd('getTags')
 
-//  console.log({ tags, paths, apiSecurity, securityDefinitions, sortFunc });
-  console.time('build navigation and services');
+  // console.log({ tags, paths, apiSecurity, securityDefinitions, sortFunc });
+  console.time('build navigation and services')
   const {navigation, services} = (tags.length)
     ? getUINavigationAndServicesByTags({ tags, paths, apiSecurity, securityDefinitions, sortFunc })
     : getUINavigationAndServices({ paths, apiSecurity, securityDefinitions })
-  console.timeEnd('build navigation and services');
+  console.timeEnd('build navigation and services')
 
-  console.time('build tag description');
+  console.time('build tag description')
   // If we have top-level tag descriptions, add it to the navigation
   if (derefOpenApiV3.tags) {
     addTagDetailsToNavigation(navigation, derefOpenApiV3.tags)
   }
   console.timeEnd('build tag description')
 
-  console.time('build additional information');
+  console.time('build additional information')
   // Additional information (if applicable)
   const infoObj = { ...info }
   delete infoObj.title
   delete infoObj.version
   delete infoObj.description
-  console.timeEnd('build additional information');
+  console.timeEnd('build additional information')
 
-  console.time('build definition');
+  console.time('build definition')
   const definition = {
     title: info.title,
     version: info.version,
@@ -417,7 +428,9 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
     navigation,
     services,
     security: securityDefinitions
-  };
-  console.timeEnd('build definition');
+  }
+  console.timeEnd('build definition')
+  cache = new WeakMap()
+
   return definition
 }

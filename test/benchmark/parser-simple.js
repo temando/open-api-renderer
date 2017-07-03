@@ -1,15 +1,7 @@
-import { parseDefinition } from '../../src/lib/definitions';
-import * as definitions from './definitions';
-import { join } from 'path';
+import { parseDefinition } from '../../src/lib/definitions'
 
-const swagger = require('./definitions/temandoFull.json');
-const suite = async () => {
-  return await parseDefinition({ definition: swagger, parserType: 'open-api-v3' });
-};
+const swagger = require('./definitions/temandoFull.json')
 
-suite().then((data) => {
-  console.log(data);
-}).catch((err) => {
-  console.error(err);
-});
-
+parseDefinition({ definition: swagger, parserType: 'open-api-v3' })
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err))

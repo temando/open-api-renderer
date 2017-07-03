@@ -87,9 +87,10 @@ function getStateAt (path, obj) {
     }
 
     // Replace the path with the state
-    update(obj, parentPath, (value) => merge(value, state))
+    const stateObj = clone(obj)
+    update(stateObj, parentPath, (value) => merge(value, state))
 
-    return clone(obj)
+    return stateObj
   })
 }
 
