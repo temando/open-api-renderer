@@ -36,10 +36,18 @@ export default class Property extends PureComponent {
 
   render () {
     const {
-      name, type, title, description, constraints, isRequired,
+      type, description, constraints, isRequired,
       enumValues, defaultValue, onClick, isOpen, isLast,
       classes
     } = this.props
+
+    let name = this.props.name
+
+    // If enumValues only has one single value, append the single value to name, and not display enum values
+    if (enumValues && enumValues.length === 1) {
+      name = `${name} = "${enumValues[0]}"`
+      enumValues.length = 0;
+    }
 
     const isClickable = onClick !== undefined
 
@@ -69,14 +77,13 @@ export default class Property extends PureComponent {
           {isClickable && <Indicator className={classes.indicator} direction={indicatorDirection} />}
         </td>
         <td className={classes.info}>
-          {title && <span className={classes.title}>{title}</span>}
           <span className={classes.type}>
             {!subtype ? type.join(', ') : <span className={classes.subType}>{subtype}[]</span>}
             {!subtype && constraints && constraints.format &&
             <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
-          {(enumValues || defaultValue || description) &&
+          {(enumValues && enumValues.length > 0 || defaultValue || description) &&
             <div className={classes.additionalInfo}>
               {enumValues && this.renderEnumValues(enumValues)}
               {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
@@ -143,7 +150,6 @@ Property.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtype: PropTypes.string,
-  title: PropTypes.string,
   description: PropTypes.string,
   constraints: PropTypes.shape({
     format: PropTypes.string,
