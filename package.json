@@ -70,6 +70,7 @@
     "react-scrollable-anchor": "^0.4.2"
   },
   "devDependencies": {
+    "@jdw/jst": "file:../../jdwije/jst",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.1",
     "babel-jest": "^20.0.3",
