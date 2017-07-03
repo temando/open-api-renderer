@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BodySchema /> can render a BodySchema with a subset 1`] = `
+<table
+  className=""
+>
+  <tbody>
+    <tr
+      className="undefined"
+      onClick={[Function]}
+    >
+      <td
+        className=""
+      >
+        <span>
+          customAttributes
+        </span>
+        <div
+          className=""
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+            title="arrow"
+          />
+        </div>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          array
+        </span>
+        <span
+          className={undefined}
+        >
+          <span
+            className={undefined}
+          >
+            required
+          </span>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`<BodySchema /> can render a BodySchema with a subset 2`] = `
+<table
+  className=""
+>
+  <tbody>
+    <tr
+      className="undefined"
+      onClick={[Function]}
+    >
+      <td
+        className=""
+      >
+        <span>
+          customAttributes
+        </span>
+        <div
+          className=""
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+            title="arrow"
+          />
+        </div>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          array
+        </span>
+        <span
+          className={undefined}
+        >
+          <span
+            className={undefined}
+          >
+            required
+          </span>
+        </span>
+      </td>
+    </tr>
+    <tr
+      className={undefined}
+    >
+      <td
+        colSpan="100"
+      >
+        <div
+          className={undefined}
+        >
+          Array [
+        </div>
+        <table
+          className=""
+        >
+          <tbody>
+            <tr
+              className="undefined"
+              onClick={[Function]}
+            >
+              <td
+                className=""
+              >
+                <span>
+                  key
+                </span>
+              </td>
+              <td
+                className={undefined}
+              >
+                <span
+                  className={undefined}
+                >
+                  string
+                </span>
+                <span
+                  className={undefined}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          className={undefined}
+        >
+          ]
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`<BodySchema /> can render a BodySchema with a subset 3`] = `
+<table
+  className=""
+>
+  <tbody>
+    <tr
+      className="undefined"
+      onClick={[Function]}
+    >
+      <td
+        className=""
+      >
+        <span>
+          customAttributes
+        </span>
+        <div
+          className=""
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+            title="arrow"
+          />
+        </div>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          array
+        </span>
+        <span
+          className={undefined}
+        >
+          <span
+            className={undefined}
+          >
+            required
+          </span>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`<BodySchema /> can render a BodySchema with a subset and additional properties 1`] = `
+<table
+  className=""
+>
+  <caption
+    className={undefined}
+  >
+    Additional properties are possible, as described below:
+  </caption>
+  <tbody>
+    <tr
+      className=""
+      onClick={[Function]}
+    >
+      <td
+        className=""
+      >
+        <span>
+          customAttributes
+        </span>
+        <div
+          className=""
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+            title="arrow"
+          />
+        </div>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          array
+        </span>
+        <span
+          className={undefined}
+        >
+          <span
+            className={undefined}
+          >
+            required
+          </span>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`<BodySchema /> can render a BodySchema with a subset and no additional properties 1`] = `
+<table
+  className=""
+>
+  <caption
+    className={undefined}
+  >
+    These are the only possible properties:
+  </caption>
+  <tbody>
+    <tr
+      className=""
+      onClick={[Function]}
+    >
+      <td
+        className=""
+      >
+        <span>
+          customAttributes
+        </span>
+        <div
+          className=""
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+            title="arrow"
+          />
+        </div>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          array
+        </span>
+        <span
+          className={undefined}
+        >
+          <span
+            className={undefined}
+          >
+            required
+          </span>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`<BodySchema /> can render a basic BodySchema 1`] = `
+<table
+  className=""
+>
+  <tbody>
+    <tr
+      className="undefined"
+      onClick={[Function]}
+    >
+      <td
+        className=""
+      >
+        <span>
+          key
+        </span>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          string
+        </span>
+        <span
+          className={undefined}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`<BodySchema /> can render a basic BodySchema with additional properties 1`] = `
+<table
+  className=""
+>
+  <caption
+    className={undefined}
+  >
+    Additional properties are possible, as described below:
+  </caption>
+  <tbody>
+    <tr
+      className=""
+      onClick={[Function]}
+    >
+      <td
+        className="undefined"
+      >
+        <span>
+          additionalProperties
+        </span>
+      </td>
+      <td
+        className={undefined}
+      >
+        <span
+          className={undefined}
+        >
+          integer
+          <span
+            className={undefined}
+          >
+            &lt;
+            int32
+            &gt;
+          </span>
+        </span>
+        <span
+          className={undefined}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

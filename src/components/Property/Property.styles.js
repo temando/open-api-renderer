@@ -75,7 +75,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   },
 
   'property': {
-    '&:first-child': {
+    '&:first-of-type': {
       '& $name::after': {
         content: '""',
         borderLeft: `1px solid ${borders.default}`,
@@ -128,6 +128,10 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   'isClickable': {
     cursor: 'pointer',
     fontWeight: 600
+  },
+
+  'isAdditional': {
+    fontStyle: 'italic'
   },
 
   'last': {},
