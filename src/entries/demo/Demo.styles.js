@@ -28,11 +28,13 @@ export const styles = createSheet(({ shades }) => ({
       padding: '2em 2em',
       fontFamily: 'monospace',
       border: '0',
+      borderBottom: '1px solid rgba(0,0,0,0.25)',
       width: '50%',
       background: 'rgba(0,0,0, 0.15)',
       boxShadow: '0 4px 22px rgba(0,0,0,0.09)',
       height: '50%',
-      color: '#ccc'
+      color: '#ccc',
+      resize: 'none'
     },
 
     '& button': {
