@@ -4,8 +4,10 @@ import jss from 'jss'
 import preset from 'jss-preset-default'
 import PropTypes from 'prop-types'
 import { configureAnchors } from 'react-scrollable-anchor'
+import YAML from 'js-yaml'
 import Lincoln from '../Lincoln'
 import { styles } from './Demo.styles'
+import Overlay from '../../components/Overlay/Overlay'
 
 jss.setup(preset())
 configureAnchors({ offset: -52, scrollDuration: 200, keepLastAnchorHash: true })
@@ -16,7 +18,9 @@ const hash = window.location.hash
 @styles
 export class Demo extends React.PureComponent {
   state = {
-    definitionUrl
+    definitionUrl,
+    showDialog: false,
+    inputBody: ''
   }
 
   useUrlInput = () => {
@@ -27,13 +31,31 @@ export class Demo extends React.PureComponent {
     this.urlInput = input
   }
 
+  openInputDialog = () => {
+    this.setState({ showDialog: true })
+  }
+
   render () {
     const { classes } = this.props
-    const { definitionUrl } = this.state
+    const { definitionUrl, showDialog, inputBody } = this.state
     const initialSchemaTreeDepth = 1
 
     return (
       <div className={classes.demo}>
+        {
+          // showDialog &&
+          <div className={classes.dialog}>
+            <Overlay>
+              <textarea
+                value={inputBody}
+                onChange={(event) =>
+                  this.setState({ inputBody: event.target.value })
+                }
+              />
+              <div><button className={classes.button} onClick={this.readDefinition}>RENDER</button></div>
+            </Overlay>
+          </div>
+        }
         <header className={classes.header}>
           <h1>Lincoln</h1>
           <small>An Open API v3 renderer.</small>
@@ -45,8 +67,9 @@ export class Demo extends React.PureComponent {
               defaultValue={this.state.definitionUrl}
               ref={this.setUrlInput}
             />
-            <button onClick={this.useUrlInput}>RENDER</button>
+            <button className={classes.button} onClick={this.useUrlInput}>RENDER</button>
           </form>
+          <button className={classes.button} onClick={this.openInputDialog}>INPUT</button>
         </header>
         <Lincoln {...{ definitionUrl, hash, initialSchemaTreeDepth }} />
       </div>
