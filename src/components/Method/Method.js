@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import ScrollableAnchor from 'react-scrollable-anchor'
-import BodySchema from '../BodySchema/BodySchema'
 import BodyContent from '../BodyContent/BodyContent'
 import Description from '../Description/Description'
+import Parameters from '../Parameters/Parameters'
 import Response from '../Response/Response'
 import { styles } from './Method.styles'
 
@@ -23,32 +23,12 @@ export default class Method extends PureComponent {
           </h3>
           <div>
             {description && <Description description={description} />}
-            {parameters && this.renderParameters(parameters)}
+            {parameters && <Parameters parameters={parameters} classes={classes} /> }
             {request && this.renderRequest(request)}
             {responses && this.renderResponses(responses)}
           </div>
         </div>
       </ScrollableAnchor>
-    )
-  }
-
-  renderParameters (parameters) {
-    const { classes } = this.props
-    return (
-      <div className={classes.parameters}>
-        {parameters.path &&
-        <div>
-          <h4>Path Parameters</h4>
-          <BodySchema properties={parameters.path} />
-        </div>
-        }
-        {parameters.query &&
-        <div>
-          <h4>Query Parameters</h4>
-          <BodySchema properties={parameters.query} />
-        </div>
-        }
-      </div>
     )
   }
 
