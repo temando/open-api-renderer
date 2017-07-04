@@ -21,7 +21,7 @@ export const styles = createSheet(({ shades }) => ({
       zIndex: '2',
       transition: 'background 0.5s',
       background: headerBackground,
-      paddingTop: '5%'
+      paddingTop: '70px'
     },
 
     '& textarea': {
@@ -40,7 +40,8 @@ export const styles = createSheet(({ shades }) => ({
     '& button': {
       marginTop: '1em',
       padding: '0.8em 1.4em 0.7em',
-      fontSize: '115%'
+      fontSize: '96%',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.1)'
     }
   },
 
