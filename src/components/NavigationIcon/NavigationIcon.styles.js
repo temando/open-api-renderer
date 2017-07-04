@@ -1,11 +1,11 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ backgrounds }) => ({
+export const styles = createSheet(({ backgrounds, sizes }) => ({
   navigationIcon: {
     display: 'none'
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'navigationIcon': {
       display: 'inline-block',
       width: '24px',

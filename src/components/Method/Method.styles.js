@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 import c from 'color'
 
-export const styles = createSheet(({ borders, text }) => ({
+export const styles = createSheet(({ borders, text, sizes }) => ({
   method: {
     borderBottom: `1px solid ${borders.default}`,
     margin: '0 1rem 2rem 0',
@@ -38,7 +38,7 @@ export const styles = createSheet(({ borders, text }) => ({
     }
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'method': {
       padding: '1rem'
     }

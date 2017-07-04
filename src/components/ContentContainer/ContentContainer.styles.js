@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(() => ({
+export const styles = createSheet(({ sizes }) => ({
   'contentContainer': {
     padding: '20px 0',
 
@@ -9,7 +9,7 @@ export const styles = createSheet(() => ({
     }
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'contentContainer': {
       padding: '10px 0',
 

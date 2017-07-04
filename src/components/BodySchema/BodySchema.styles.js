@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 import { styles as property } from '../Property/Property.styles'
 
-export const styles = createSheet(({ backgrounds, borders }) => ({
+export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   'bodySchema': {
     width: '100%',
     borderSpacing: '0',
@@ -47,7 +47,7 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
     borderTopLeftRadius: 0
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'bodySchema': {
       paddingRight: '10px'
     }

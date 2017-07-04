@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ borders }) => ({
+export const styles = createSheet(({ borders, sizes }) => ({
   'header': {
     padding: '0 20px',
 
@@ -32,7 +32,7 @@ export const styles = createSheet(({ borders }) => ({
     }
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'inlinePairs': {
       display: 'block'
     }

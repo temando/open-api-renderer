@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ borders }) => ({
+export const styles = createSheet(({ borders, sizes }) => ({
   'page': {
     display: 'table',
     width: '100%',
@@ -13,7 +13,7 @@ export const styles = createSheet(({ borders }) => ({
     border: `1px solid ${borders.default}`
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'page': {
       display: 'block'
     },

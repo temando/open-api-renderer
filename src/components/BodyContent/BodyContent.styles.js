@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 import c from 'color'
 
-export const styles = createSheet(({ text, backgrounds }) => ({
+export const styles = createSheet(({ text, backgrounds, sizes }) => ({
   'bodyContent': {
     display: 'table',
     width: '100%',
@@ -26,7 +26,7 @@ export const styles = createSheet(({ text, backgrounds }) => ({
     borderRadius: '10px 10px 0 0'
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'bodyContent': {
       padding: '10px 0'
     }

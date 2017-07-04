@@ -1,6 +1,6 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ backgrounds, borders }) => ({
+export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   'securityContainer': {
     padding: '1rem 2rem',
     borderBottom: `1px solid ${borders.default}`
@@ -28,7 +28,7 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
     }
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'securityContainer': {
       padding: '1rem'
     }

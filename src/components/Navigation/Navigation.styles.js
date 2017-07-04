@@ -2,7 +2,7 @@ import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 import c from 'color'
 
-export const styles = createSheet(({ backgrounds, borders, text }) => ({
+export const styles = createSheet(({ backgrounds, borders, text, sizes }) => ({
   navigation: {
     display: 'table-cell',
     width: '20%',
@@ -33,7 +33,7 @@ export const styles = createSheet(({ backgrounds, borders, text }) => ({
     }
   },
 
-  '@media (max-width: 800px)': {
+  [`@media (max-width: ${sizes.breakpoint})`]: {
     'navigation': {
       display: 'block',
       width: '100%',
