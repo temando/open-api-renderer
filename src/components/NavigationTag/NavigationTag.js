@@ -94,5 +94,6 @@ NavigationTag.propTypes = {
   shouldBeExpanded: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   hash: PropTypes.string.isRequired,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  onClickMethod: PropTypes.func
 }

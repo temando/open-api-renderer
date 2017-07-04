@@ -852,14 +852,16 @@ var NavigationMethod = (0, _NavigationMethod.styles)(_class = function (_PureCom
           method = _props.method,
           isActive = _props.isActive,
           isOpen = _props.isOpen,
-          classes = _props.classes;
+          classes = _props.classes,
+          onClick = _props.onClick;
 
 
       return _react2.default.createElement(
         'a',
         {
           className: (0, _classnames2.default)(classes.navigationMethod, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.active, isActive), (0, _defineProperty3.default)(_classNames, classes.open, isOpen), (0, _defineProperty3.default)(_classNames, classes.closed, !isOpen), _classNames)),
-          href: '#' + method.link
+          href: '#' + method.link,
+          onClick: onClick
         },
         _react2.default.createElement(
           'span',
@@ -884,7 +886,8 @@ NavigationMethod.propTypes = {
   method: _propTypes2.default.object,
   isActive: _propTypes2.default.bool,
   isOpen: _propTypes2.default.bool,
-  classes: _propTypes2.default.object
+  classes: _propTypes2.default.object,
+  onClick: _propTypes2.default.func
 };
 
 /***/ }),
@@ -2410,6 +2413,7 @@ var Navigation = (0, _Navigation.styles)(_class = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).call(this, props));
 
     _this.onClick = _this.onClick.bind(_this);
+    _this.onClickMethod = _this.onClickMethod.bind(_this);
 
     _this.state = {
       expandedTags: []
@@ -2446,7 +2450,7 @@ var Navigation = (0, _Navigation.styles)(_class = function (_Component) {
           // Handle a navigation that doesn't require tags.
           if (!tag.methods) {
             var isActive = '#' + tag.link === location.hash;
-            return _react2.default.createElement(_NavigationMethod2.default, { key: tag.link, method: tag, isActive: isActive, isOpen: true });
+            return _react2.default.createElement(_NavigationMethod2.default, { key: tag.link, method: tag, isActive: isActive, onClick: _this2.onClickMethod, isOpen: true });
           }
 
           // Otherwise the navigation is grouped by tag.
@@ -2457,6 +2461,7 @@ var Navigation = (0, _Navigation.styles)(_class = function (_Component) {
             methods: tag.methods,
             shouldBeExpanded: expandedTags.includes(tag.title),
             onClick: _this2.onClick,
+            onClickMethod: _this2.onClickMethod,
             hash: hash
           });
         })
@@ -2485,6 +2490,13 @@ var Navigation = (0, _Navigation.styles)(_class = function (_Component) {
         this.setState({ expandedTags: [].concat((0, _toConsumableArray3.default)(expandedTags), [tagTitle]) });
       }
     }
+  }, {
+    key: 'onClickMethod',
+    value: function onClickMethod() {
+      var onClickNavItem = this.props.onClickNavItem;
+
+      onClickNavItem();
+    }
   }]);
   return Navigation;
 }(_react.Component)) || _class;
@@ -2496,7 +2508,8 @@ Navigation.propTypes = {
   navigation: _propTypes2.default.array,
   hash: _propTypes2.default.string,
   classes: _propTypes2.default.object,
-  isNavOpen: _propTypes2.default.bool
+  isNavOpen: _propTypes2.default.bool,
+  onClickNavItem: _propTypes2.default.func
 };
 
 /***/ }),
@@ -2870,7 +2883,8 @@ var NavigationTag = (0, _NavigationTag.styles)(_class = function (_Component) {
           shouldBeExpanded = _props2.shouldBeExpanded,
           methods = _props2.methods,
           hash = _props2.hash,
-          classes = _props2.classes;
+          classes = _props2.classes,
+          onClickMethod = _props2.onClickMethod;
 
       // If tag has any method that matches hash, then it is considered active
 
@@ -2917,7 +2931,7 @@ var NavigationTag = (0, _NavigationTag.styles)(_class = function (_Component) {
           methods && methods.map(function (method) {
             var isActive = '#' + method.link === hash;
 
-            return _react2.default.createElement(_NavigationMethod2.default, { key: method.link, method: method, isActive: isActive, isOpen: isExpanded });
+            return _react2.default.createElement(_NavigationMethod2.default, { key: method.link, method: method, isActive: isActive, isOpen: isExpanded, onClick: onClickMethod });
           })
         )
       );
@@ -2936,7 +2950,8 @@ NavigationTag.propTypes = {
   shouldBeExpanded: _propTypes2.default.bool,
   onClick: _propTypes2.default.func.isRequired,
   hash: _propTypes2.default.string.isRequired,
-  classes: _propTypes2.default.object
+  classes: _propTypes2.default.object,
+  onClickMethod: _propTypes2.default.func
 };
 
 /***/ }),
@@ -3182,6 +3197,7 @@ var Page = (0, _Page.styles)(_class = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props));
 
     _this.onToggleNavigation = _this.onToggleNavigation.bind(_this);
+    _this.onClickNavItem = _this.onClickNavItem.bind(_this);
 
     _this.state = {
       isNavOpen: false
@@ -3213,7 +3229,7 @@ var Page = (0, _Page.styles)(_class = function (_Component) {
         'div',
         { className: classes.page },
         _react2.default.createElement(_NavigationIcon2.default, { onClick: this.onToggleNavigation }),
-        _react2.default.createElement(_Navigation2.default, { navigation: navigation, hash: hash, isNavOpen: isNavOpen }),
+        _react2.default.createElement(_Navigation2.default, { navigation: navigation, hash: hash, isNavOpen: isNavOpen, onClickNavItem: this.onClickNavItem }),
         _react2.default.createElement(
           'div',
           { className: (0, _classnames2.default)(classes.main, (0, _defineProperty3.default)({}, classes.isHidden, isNavOpen)) },
@@ -3261,6 +3277,11 @@ var Page = (0, _Page.styles)(_class = function (_Component) {
       } else {
         this.setState({ isNavOpen: true });
       }
+    }
+  }, {
+    key: 'onClickNavItem',
+    value: function onClickNavItem() {
+      this.setState({ isNavOpen: false });
     }
   }]);
   return Page;
