@@ -50,6 +50,7 @@ export class Demo extends React.PureComponent {
                 onChange={(event) =>
                   this.setState({ inputBody: event.target.value })
                 }
+                placeholder='Definition body...'
               />
               <div><button className={classes.button} onClick={this.readDefinition}>RENDER</button></div>
             </Overlay>
