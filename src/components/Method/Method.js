@@ -23,7 +23,7 @@ export default class Method extends PureComponent {
           </h3>
           <div>
             {description && <Description description={description} />}
-            {parameters && <Parameters parameters={parameters} classes={classes} /> }
+            {parameters && <Parameters parameters={parameters} /> }
             {request && this.renderRequest(request)}
             {responses && this.renderResponses(responses)}
           </div>
