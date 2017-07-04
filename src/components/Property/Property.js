@@ -36,10 +36,18 @@ export default class Property extends PureComponent {
 
   render () {
     const {
-      name, type, title, description, constraints, isRequired,
-      enumValues, defaultValue, onClick, isOpen, isLast,
+      type, title, description, constraints, isRequired,
+      defaultValue, onClick, isOpen, isLast,
       classes
     } = this.props
+
+    let {name, enumValues} = this.props
+
+    // If enumValues only has one single value, append the single value to name, and not display enum values
+    if (enumValues && enumValues.length === 1) {
+      name = `${name} = "${enumValues[0]}"`
+      enumValues = []
+    }
 
     const isClickable = onClick !== undefined
 
@@ -76,7 +84,7 @@ export default class Property extends PureComponent {
             <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
-          {(enumValues || defaultValue || description) &&
+          {((enumValues && enumValues.length) || defaultValue || description) &&
             <div className={classes.additionalInfo}>
               {enumValues && this.renderEnumValues(enumValues)}
               {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
