@@ -251,6 +251,7 @@
               "description": "Invalid input"
             }
           ],
+          "parameters": {},
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -269,8 +270,7 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {}
+          }
         },
         {
           "type": "put",
@@ -384,6 +384,7 @@
               "description": "Validation exception"
             }
           ],
+          "parameters": {},
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -402,8 +403,7 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {}
+          }
         },
         {
           "type": "get",
@@ -524,6 +524,18 @@
             }
           ],
           "description": "Multiple status values can be provided with comma separated strings",
+          "parameters": {
+            "query": [
+              {
+                "name": "status",
+                "description": "Status values that need to be considered for filter",
+                "required": true,
+                "type": [
+                  "array"
+                ]
+              }
+            ]
+          },
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -542,18 +554,6 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {
-            "query": [
-              {
-                "name": "status",
-                "description": "Status values that need to be considered for filter",
-                "required": true,
-                "type": [
-                  "array"
-                ]
-              }
-            ]
           }
         },
         {
@@ -675,6 +675,18 @@
             }
           ],
           "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+          "parameters": {
+            "query": [
+              {
+                "name": "tags",
+                "description": "Tags to filter by",
+                "required": true,
+                "type": [
+                  "array"
+                ]
+              }
+            ]
+          },
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -693,18 +705,6 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {
-            "query": [
-              {
-                "name": "tags",
-                "description": "Tags to filter by",
-                "required": true,
-                "type": [
-                  "array"
-                ]
-              }
-            ]
           }
         },
         {
@@ -821,14 +821,6 @@
             }
           ],
           "description": "Returns a single pet",
-          "security": {
-            "api_key": {
-              "type": "apiKey",
-              "name": "api_key",
-              "in": "header",
-              "example": "api_key: credentials"
-            }
-          },
           "parameters": {
             "path": [
               {
@@ -840,6 +832,14 @@
                 ]
               }
             ]
+          },
+          "security": {
+            "api_key": {
+              "type": "apiKey",
+              "name": "api_key",
+              "in": "header",
+              "example": "api_key: credentials"
+            }
           }
         },
         {
@@ -872,6 +872,18 @@
               "description": "Invalid input"
             }
           ],
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "ID of pet that needs to be updated",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          },
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -890,18 +902,6 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {
-            "path": [
-              {
-                "name": "petId",
-                "description": "ID of pet that needs to be updated",
-                "required": true,
-                "type": [
-                  "integer"
-                ]
-              }
-            ]
           }
         },
         {
@@ -919,6 +919,27 @@
               "description": "Pet not found"
             }
           ],
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "Pet id to delete",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ],
+            "header": [
+              {
+                "name": "api_key",
+                "required": false,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          },
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -937,18 +958,6 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {
-            "path": [
-              {
-                "name": "petId",
-                "description": "Pet id to delete",
-                "required": true,
-                "type": [
-                  "integer"
-                ]
-              }
-            ]
           }
         },
         {
@@ -988,6 +997,18 @@
               ]
             }
           ],
+          "parameters": {
+            "path": [
+              {
+                "name": "petId",
+                "description": "ID of pet to update",
+                "required": true,
+                "type": [
+                  "integer"
+                ]
+              }
+            ]
+          },
           "security": {
             "petstore_auth": {
               "type": "oauth2",
@@ -1006,18 +1027,6 @@
                 "read:pets"
               ]
             }
-          },
-          "parameters": {
-            "path": [
-              {
-                "name": "petId",
-                "description": "ID of pet to update",
-                "required": true,
-                "type": [
-                  "integer"
-                ]
-              }
-            ]
           }
         }
       ]
@@ -1039,6 +1048,7 @@
             }
           ],
           "description": "Returns a map of status codes to quantities",
+          "parameters": {},
           "security": {
             "api_key": {
               "type": "apiKey",
@@ -1046,8 +1056,7 @@
               "in": "header",
               "example": "api_key: credentials"
             }
-          },
-          "parameters": {}
+          }
         },
         {
           "type": "post",
