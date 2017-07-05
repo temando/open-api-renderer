@@ -170,11 +170,7 @@ const Definition = ({ definition, definitionUrl, hash, initialSchemaTreeDepth })
       <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
       <p>You can also set this with the <code>?url</code> query parameter.</p>
     </Overlay>
-<<<<<<< HEAD
-    : <Page definition={definition} hash={hash} specUrl={definitionUrl} initialSchemaTreeDepth={initialSchemaTreeDepth} />
-=======
     : <Page definition={definition} hash={hash} definitionUrl={definitionUrl} initialSchemaTreeDepth={initialSchemaTreeDepth} />
->>>>>>> Refactor state management
 
 Definition.propTypes = {
   definition: PropTypes.object,

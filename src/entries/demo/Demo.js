@@ -35,12 +35,8 @@ export class Demo extends React.PureComponent {
 
   render () {
     const { classes } = this.props
-<<<<<<< HEAD
-    const { definitionUrl, definition, showDialog, inputBody } = this.state
-    const initialSchemaTreeDepth = 1
-=======
     const { definitionUrl, showDialog, definition, useDefinition } = this.state
->>>>>>> Update demo
+    const initialSchemaTreeDepth = 1
 
     return (
       <div className={classes.demo}>
