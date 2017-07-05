@@ -68,7 +68,6 @@ export default class Base extends React.PureComponent {
     let { definition } = props
 
     if (definitionUrl && !definition) {
-      if (!definitionUrl) { return }
       if (definitionUrl === this.state.definitionUrl) { return }
 
       definition = await this.fetchDefinition({ definitionUrl, parserType, validate })
