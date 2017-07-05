@@ -11,7 +11,7 @@ import { styles } from './Method.styles'
 @styles
 export default class Method extends PureComponent {
   render () {
-    const { method, classes } = this.props
+    const { method, classes, initialSchemaTreeDepth } = this.props
     const { title, type, description, parameters, request, responses } = method
 
     return (
@@ -23,16 +23,16 @@ export default class Method extends PureComponent {
           </h3>
           <div>
             {description && <Description description={description} />}
-            {parameters && <Parameters parameters={parameters} /> }
-            {request && this.renderRequest(request)}
-            {responses && this.renderResponses(responses)}
+            {parameters && <Parameters parameters={parameters} initialSchemaTreeDepth={initialSchemaTreeDepth} />}
+            {request && this.renderRequest(request, initialSchemaTreeDepth)}
+            {responses && this.renderResponses(responses, initialSchemaTreeDepth)}
           </div>
         </div>
       </ScrollableAnchor>
     )
   }
 
-  renderRequest (request) {
+  renderRequest (request, initialSchemaTreeDepth) {
     const { schema, examples } = request
 
     if (!schema) {
@@ -42,16 +42,16 @@ export default class Method extends PureComponent {
     return (
       <div className='method-request'>
         <h4>Request Body</h4>
-        <BodyContent schema={schema} examples={examples} />
+        <BodyContent schema={schema} examples={examples} initialSchemaTreeDepth={initialSchemaTreeDepth} />
       </div>
     )
   }
 
-  renderResponses (responses) {
+  renderResponses (responses, initialSchemaTreeDepth) {
     return (
       <div className='method-responses'>
         <h4>Responses</h4>
-        {responses.map((r) => <Response key={r.code} response={r} />)}
+        {responses.map((r) => <Response key={r.code} response={r} initialSchemaTreeDepth={initialSchemaTreeDepth} />)}
       </div>
     )
   }
@@ -67,5 +67,6 @@ Method.propTypes = {
     request: PropTypes.object,
     responses: PropTypes.array
   }),
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  initialSchemaTreeDepth: PropTypes.number
 }

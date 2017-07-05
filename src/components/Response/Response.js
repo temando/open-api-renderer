@@ -19,7 +19,7 @@ export default class Response extends PureComponent {
   }
 
   render () {
-    const { response, classes } = this.props
+    const { response, classes, initialSchemaTreeDepth } = this.props
     const { code, description, schema, examples } = response
     const { isOpen } = this.state
 
@@ -45,7 +45,7 @@ export default class Response extends PureComponent {
           {hasDetails && <Indicator direction={indicatorDirection} />}
         </div>
         {hasDetails && isOpen &&
-        <BodyContent schema={schema} examples={examples} />
+        <BodyContent schema={schema} examples={examples} initialSchemaTreeDepth={initialSchemaTreeDepth} />
         }
       </div>
     )
@@ -71,5 +71,6 @@ Response.propTypes = {
     schema: PropTypes.array,
     examples: PropTypes.array
   }),
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  initialSchemaTreeDepth: PropTypes.number
 }
