@@ -86,8 +86,8 @@ export class Demo extends React.PureComponent {
         </header>
         {
           useDefinition
-            ? <Lincoln {...{ definition, hash, wew: 'lad' }} />
-            : <Lincoln {...{ definitionUrl, hash, lad: 'wew' }} />
+            ? <Lincoln {...{ definition, hash }} />
+            : <Lincoln {...{ definitionUrl, hash }} />
         }
       </div>
     )
