@@ -20,24 +20,22 @@ export class Demo extends React.PureComponent {
   state = {
     definitionUrl,
     showDialog: false,
-    inputBody: '',
-    definition: null
+    definition: '',
+    useDefinition: false
   }
 
   useUrlInput = () => this.setState({ definitionUrl: this.urlInput.value })
   setUrlInput = (input) => { this.urlInput = input }
-  updateDefinition = (event) => this.setState({ inputBody: event.target.value })
+  updateDefinition = (event) => this.setState({ useDefinition: false, definition: event.target.value })
   toggleDialog = () => this.setState({ showDialog: !this.state.showDialog })
 
   renderInputDefinition = () => {
-    const { inputBody } = this.state
-
-    this.setState({ definition: inputBody, definitionUrl: '', showDialog: false })
+    this.setState({ useDefinition: true, definitionUrl: '', showDialog: false })
   }
 
   render () {
     const { classes } = this.props
-    const { definitionUrl, definition, showDialog, inputBody } = this.state
+    const { definitionUrl, showDialog, definition, useDefinition } = this.state
 
     return (
       <div className={classes.demo}>
@@ -46,9 +44,9 @@ export class Demo extends React.PureComponent {
           <div className={classes.dialog}>
             <Overlay>
               <textarea
-                value={inputBody}
+                value={definition}
                 onChange={this.updateDefinition}
-                placeholder='Definition body...'
+                placeholder='Definition body (YAML or JSON)...'
               />
               <div>
                 <button
@@ -87,9 +85,9 @@ export class Demo extends React.PureComponent {
           >TEXT INPUT</button>
         </header>
         {
-          definitionUrl
-            ? <Lincoln {...{ definitionUrl, hash }} />
-            : <Lincoln {...{ definition, hash }} />
+          useDefinition
+            ? <Lincoln {...{ definition, hash, wew: 'lad' }} />
+            : <Lincoln {...{ definitionUrl, hash, lad: 'wew' }} />
         }
       </div>
     )
