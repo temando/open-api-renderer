@@ -32,7 +32,7 @@ export class Demo extends React.PureComponent {
   renderInputDefinition = () => {
     const { inputBody } = this.state
 
-    this.setState({ definition: inputBody, showDialog: false })
+    this.setState({ definition: inputBody, definitionUrl: '', showDialog: false })
   }
 
   render () {
@@ -87,9 +87,9 @@ export class Demo extends React.PureComponent {
           >TEXT INPUT</button>
         </header>
         {
-          definition
-            ? <Lincoln {...{ definition, hash }} />
-            : <Lincoln {...{ definitionUrl, hash }} />
+          definitionUrl
+            ? <Lincoln {...{ definitionUrl, hash }} />
+            : <Lincoln {...{ definition, hash }} />
         }
       </div>
     )
