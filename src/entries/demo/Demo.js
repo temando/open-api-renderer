@@ -4,7 +4,6 @@ import jss from 'jss'
 import preset from 'jss-preset-default'
 import PropTypes from 'prop-types'
 import { configureAnchors } from 'react-scrollable-anchor'
-import YAML from 'js-yaml'
 import cn from 'classnames'
 import Lincoln from '../Lincoln'
 import { styles } from './Demo.styles'
@@ -20,7 +19,7 @@ const hash = window.location.hash
 export class Demo extends React.PureComponent {
   state = {
     definitionUrl,
-    showDialog: true,
+    showDialog: false,
     inputBody: '',
     definition: null
   }
