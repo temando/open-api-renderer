@@ -38,9 +38,10 @@ export default class Base extends React.PureComponent {
     const { parserType } = this.state
     const {
       definitionUrl, navSort, validate, listenToHash,
-      definition,
       history: inputHistory
     } = this.props
+
+    let { definition } = this.props
 
     if (definitionUrl) {
       /**
@@ -48,15 +49,13 @@ export default class Base extends React.PureComponent {
        */
       if (!definitionUrl) { return true }
       if (definitionUrl === this.state.definitionUrl) { return false }
-    } else
-    if (definition) {
-      /**
-       * Render from supplied definition
-       */
 
+      definition = await this.fetchDefinition(definitionUrl)
     }
 
-    await this.setDefinition({ definitionUrl, parserType, navSort, validate })
+    if (!definition) { return false }
+
+    await this.setDefinition({ definitionUrl, definition, parserType, navSort, validate })
 
     if (listenToHash) {
       const history = inputHistory || createBrowserHistory()
@@ -75,14 +74,22 @@ export default class Base extends React.PureComponent {
     return true
   }
 
-  setDefinition = async ({ definitionUrl, navSort, validate, parserType = this.state.parserType }) => {
-    this.setState({ loading: !!definitionUrl, error: null })
+  fetchDefinition = async (definitionUrl) => {
+    this.setState({ loading: true, error: null })
+
+    const [ definition ] = await getDefinition(definitionUrl)
+
+    return definition
+  }
+
+  setDefinition = async ({ definitionUrl = '', definition, navSort, validate, parserType = this.state.parserType }) => {
+    this.setState({ loading: true, error: null })
 
     try {
-      const [ definition ] = await Promise.all([
-        getDefinition(definitionUrl),
-        validate && validateDefinition(definitionUrl, parserType)
-      ])
+      if (validate) {
+        await validateDefinition(parserType)
+      }
+
       const parsedDefinition = await parseDefinition({ definition, parserType, navSort })
 
       this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
