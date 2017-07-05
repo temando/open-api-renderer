@@ -4388,7 +4388,7 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
                 _this.setState({ loading: true, error: null });
 
                 _context2.next = 3;
-                return Promise.all((0, _definitions.getDefinition)(definitionUrl), validate && (0, _definitions.validateDefinition)(parserType));
+                return Promise.all([(0, _definitions.getDefinition)(definitionUrl), validate && (0, _definitions.validateDefinition)(parserType)]);
 
               case 3:
                 _ref5 = _context2.sent;
@@ -4555,7 +4555,7 @@ Definition.propTypes = {
 var Failure = function Failure(_ref8) {
   var error = _ref8.error;
 
-  console.error('definition error');
+  console.error('[Definition Error]');
   console.error(error);
 
   return _react2.default.createElement(
