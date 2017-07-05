@@ -38,11 +38,23 @@ export default class Base extends React.PureComponent {
     const { parserType } = this.state
     const {
       definitionUrl, navSort, validate, listenToHash,
+      definition,
       history: inputHistory
     } = this.props
 
-    if (!definitionUrl) { return true }
-    if (definitionUrl === this.state.definitionUrl) { return false }
+    if (definitionUrl) {
+      /**
+       * Render from a URL
+       */
+      if (!definitionUrl) { return true }
+      if (definitionUrl === this.state.definitionUrl) { return false }
+    } else
+    if (definition) {
+      /**
+       * Render from supplied definition
+       */
+
+    }
 
     await this.setDefinition({ definitionUrl, parserType, navSort, validate })
 
@@ -115,6 +127,7 @@ Base.propTypes = {
   classes: PropTypes.object,
   hash: PropTypes.string.isRequired,
   definitionUrl: PropTypes.string,
+  definition: PropTypes.string,
   navSort: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool
