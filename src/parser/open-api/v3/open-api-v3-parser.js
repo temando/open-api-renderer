@@ -162,16 +162,15 @@ function addMediaTypeInfoToUIObject (uiObject, mediaType) {
 function getUIParameters (parameters) {
   if (parameters) {
     const uiParameters = {}
+    const parameterTypes = ['path', 'query', 'header', 'cookie']
 
-    const pathParameters = getUIParametersForLocation(parameters, 'path')
-    if (pathParameters) {
-      uiParameters.path = pathParameters
-    }
+    parameterTypes.forEach(parameterType => {
+      const uiParameter = getUIParametersForLocation(parameters, parameterType)
 
-    const queryParameters = getUIParametersForLocation(parameters, 'query')
-    if (queryParameters) {
-      uiParameters.query = queryParameters
-    }
+      if (uiParameter) {
+        uiParameters[parameterType] = uiParameter
+      }
+    })
 
     return uiParameters
   }
