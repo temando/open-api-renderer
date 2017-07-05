@@ -33,6 +33,11 @@ To use Lincoln in your React project:
 import Lincoln from 'react-lincoln'
 
 <Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json' />
+// or
+
+import definition from './myApi.yml'
+
+<Lincoln definition={definition} />
 ```
 
 > This represents a future state, Lincoln is not published to NPM yet.
