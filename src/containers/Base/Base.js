@@ -95,10 +95,10 @@ export default class Base extends React.PureComponent {
   fetchDefinition = async ({ definitionUrl, validate, parserType = this.state.parserType }) => {
     this.setState({ loading: true, error: null })
 
-    const [ definition ] = await Promise.all(
+    const [ definition ] = await Promise.all([
       getDefinition(definitionUrl),
       validate && validateDefinition(parserType)
-    )
+    ])
 
     return definition
   }
@@ -177,7 +177,7 @@ Definition.propTypes = {
 }
 
 const Failure = ({ error }) => {
-  console.error('definition error')
+  console.error('[Definition Error]')
   console.error(error)
 
   return <Overlay>
