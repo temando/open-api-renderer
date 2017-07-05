@@ -16,6 +16,11 @@ export const styles = createSheet(({ shades }) => ({
     }
   },
 
+  form: {
+    transition: 'all 0.5s',
+    opacity: 1
+  },
+
   dialog: {
     [`& .${Overlay.classes.overlay}`]: {
       zIndex: '2',
@@ -41,7 +46,8 @@ export const styles = createSheet(({ shades }) => ({
       marginTop: '1em',
       padding: '0.8em 1.4em 0.7em',
       fontSize: '96%',
-      boxShadow: '0 2px 12px rgba(0,0,0,0.1)'
+      boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
+      marginRight: '1em'
     }
   },
 
@@ -59,6 +65,15 @@ export const styles = createSheet(({ shades }) => ({
       color: '#FFF',
       borderColor: '#FFF'
     }
+  },
+
+  closeButton: {
+    color: '#b63b3b',
+    borderColor: '#b63b3b'
+  },
+
+  inputButton: {
+    marginLeft: '1em'
   },
 
   header: {
