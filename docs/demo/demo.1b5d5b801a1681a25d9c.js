@@ -338,7 +338,11 @@ var theme = exports.theme = function () {
     default: shades.default
   };
 
-  return { backgrounds: backgrounds, text: text, shades: shades, borders: borders };
+  var sizes = {
+    breakpoint: '800px'
+  };
+
+  return { backgrounds: backgrounds, text: text, shades: shades, borders: borders, sizes: sizes };
 }();
 
 /**
@@ -370,7 +374,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -582,7 +586,7 @@ var _extends2 = __webpack_require__(60);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -797,7 +801,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -1021,6 +1025,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
 
 var _color = __webpack_require__(33);
@@ -1031,8 +1039,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
   var text = _ref.text,
-      backgrounds = _ref.backgrounds;
-  return {
+      backgrounds = _ref.backgrounds,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     'bodyContent': {
       display: 'table',
       width: '100%',
@@ -1055,14 +1064,13 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
     'active': {
       backgroundColor: '' + backgrounds.schema,
       borderRadius: '10px 10px 0 0'
-    },
-
-    '@media (max-width: 800px)': {
-      'bodyContent': {
-        padding: '10px 0'
-      }
     }
-  };
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'bodyContent': {
+      padding: '10px 0'
+    }
+  });
 });
 
 /***/ }),
@@ -1078,7 +1086,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -1092,8 +1100,9 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
   var _subset;
 
   var backgrounds = _ref.backgrounds,
-      borders = _ref.borders;
-  return {
+      borders = _ref.borders,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     'bodySchema': {
       width: '100%',
       borderSpacing: '0',
@@ -1129,14 +1138,13 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
     },
     'hasTabs': {
       borderTopLeftRadius: 0
-    },
-
-    '@media (max-width: 800px)': {
-      'bodySchema': {
-        paddingRight: '10px'
-      }
     }
-  };
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'bodySchema': {
+      paddingRight: '10px'
+    }
+  });
 });
 
 /***/ }),
@@ -1364,29 +1372,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
 
-var styles = exports.styles = (0, _theme.createSheet)(function () {
-  return {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
+  var sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     'contentContainer': {
       padding: '20px 0',
 
       '& h2': {
         paddingLeft: '2rem'
       }
-    },
+    }
 
-    '@media (max-width: 800px)': {
-      'contentContainer': {
-        padding: '10px 0',
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'contentContainer': {
+      padding: '10px 0',
 
-        '& h2': {
-          paddingLeft: '1rem',
-          margin: 0
-        }
+      '& h2': {
+        paddingLeft: '1rem',
+        margin: 0
       }
     }
-  };
+  });
 });
 
 /***/ }),
@@ -1538,7 +1552,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -2020,11 +2034,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
-  var borders = _ref.borders;
-  return {
+  var borders = _ref.borders,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     'header': {
       padding: '0 20px',
 
@@ -2054,14 +2075,13 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
         paddingRight: '1.5rem',
         fontWeight: 600
       }
-    },
-
-    '@media (max-width: 800px)': {
-      'inlinePairs': {
-        display: 'block'
-      }
     }
-  };
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'inlinePairs': {
+      display: 'block'
+    }
+  });
 });
 
 /***/ }),
@@ -2281,6 +2301,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
 
 var _color = __webpack_require__(33);
@@ -2291,8 +2315,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
   var borders = _ref.borders,
-      text = _ref.text;
-  return {
+      text = _ref.text,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     method: {
       borderBottom: '1px solid ' + borders.default,
       margin: '0 1rem 2rem 0',
@@ -2327,14 +2352,13 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
         borderBottom: '1px solid ' + borders.default,
         marginTop: '20px'
       }
-    },
-
-    '@media (max-width: 800px)': {
-      'method': {
-        padding: '1rem'
-      }
     }
-  };
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'method': {
+      padding: '1rem'
+    }
+  });
 });
 
 /***/ }),
@@ -2354,7 +2378,7 @@ var _toConsumableArray2 = __webpack_require__(61);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -2525,7 +2549,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -2544,8 +2568,9 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
 
   var backgrounds = _ref.backgrounds,
       borders = _ref.borders,
-      text = _ref.text;
-  return {
+      text = _ref.text,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     navigation: (_navigation = {
       display: 'table-cell',
       width: '20%',
@@ -2569,23 +2594,22 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
         color: '' + (0, _color2.default)(text.default).lighten(0.1),
         transition: 'all .2s'
       }
-    }), _navigation),
+    }), _navigation)
 
-    '@media (max-width: 800px)': {
-      'navigation': {
-        display: 'block',
-        width: '100%',
-        height: 'auto',
-        right: '100%',
-        zIndex: '99',
-        transition: 'right .5s'
-      },
-      'isOpen': {
-        position: 'relative',
-        right: 0
-      }
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'navigation': {
+      display: 'block',
+      width: '100%',
+      height: 'auto',
+      right: '100%',
+      zIndex: '99',
+      transition: 'right .5s'
+    },
+    'isOpen': {
+      position: 'relative',
+      right: 0
     }
-  };
+  });
 });
 
 /***/ }),
@@ -2685,29 +2709,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
-  var backgrounds = _ref.backgrounds;
-  return {
+  var backgrounds = _ref.backgrounds,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     navigationIcon: {
       display: 'none'
-    },
-
-    '@media (max-width: 800px)': {
-      'navigationIcon': {
-        display: 'inline-block',
-        width: '24px',
-        height: '24px',
-        color: '' + backgrounds.default,
-        position: 'fixed',
-        top: '15px',
-        left: '15px',
-        cursor: 'pointer',
-        zIndex: '1000'
-      }
     }
-  };
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'navigationIcon': {
+      display: 'inline-block',
+      width: '24px',
+      height: '24px',
+      color: '' + backgrounds.default,
+      position: 'fixed',
+      top: '15px',
+      left: '15px',
+      cursor: 'pointer',
+      zIndex: '1000'
+    }
+  });
 });
 
 /***/ }),
@@ -2777,7 +2807,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -3126,7 +3156,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -3314,11 +3344,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
-  var borders = _ref.borders;
-  return {
+  var borders = _ref.borders,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     'page': {
       display: 'table',
       width: '100%',
@@ -3329,29 +3366,28 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       width: '80%',
       boxSizing: 'border-box',
       border: '1px solid ' + borders.default
+    }
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'page': {
+      display: 'block'
     },
 
-    '@media (max-width: 800px)': {
-      'page': {
-        display: 'block'
-      },
+    'main': {
+      display: 'block',
+      width: '100%',
+      position: 'relative',
+      left: 0,
+      opacity: 1,
+      transition: 'left .5s, opacity 2s'
+    },
 
-      'main': {
-        display: 'block',
-        width: '100%',
-        position: 'relative',
-        left: 0,
-        opacity: 1,
-        transition: 'left .5s, opacity 2s'
-      },
-
-      'isHidden': {
-        left: '100%',
-        position: 'fixed',
-        opacity: 0
-      }
+    'isHidden': {
+      left: '100%',
+      position: 'fixed',
+      opacity: 0
     }
-  };
+  });
 });
 
 /***/ }),
@@ -3367,7 +3403,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -3455,19 +3491,26 @@ var Property = (0, _Property.styles)(_class = function (_PureComponent) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          name = _props.name,
           type = _props.type,
           title = _props.title,
           description = _props.description,
           constraints = _props.constraints,
           isRequired = _props.isRequired,
-          enumValues = _props.enumValues,
           defaultValue = _props.defaultValue,
           onClick = _props.onClick,
           isOpen = _props.isOpen,
           isLast = _props.isLast,
           classes = _props.classes;
+      var _props2 = this.props,
+          name = _props2.name,
+          enumValues = _props2.enumValues;
 
+      // If enumValues only has one single value, append the single value to name, and not display enum values
+
+      if (enumValues && enumValues.length === 1) {
+        name = name + ' = "' + enumValues[0] + '"';
+        enumValues = [];
+      }
 
       var isClickable = onClick !== undefined;
 
@@ -3525,7 +3568,7 @@ var Property = (0, _Property.styles)(_class = function (_PureComponent) {
             )
           ),
           _react2.default.createElement(_PropertyConstraints2.default, { constraints: constraints, type: type, isRequired: isRequired }),
-          (enumValues || defaultValue || description) && _react2.default.createElement(
+          (enumValues && enumValues.length || defaultValue || description) && _react2.default.createElement(
             'div',
             { className: classes.additionalInfo },
             enumValues && this.renderEnumValues(enumValues),
@@ -3820,7 +3863,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -3972,7 +4015,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -4293,12 +4336,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
+var _defineProperty2 = __webpack_require__(12);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _theme = __webpack_require__(11);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
   var backgrounds = _ref.backgrounds,
-      borders = _ref.borders;
-  return {
+      borders = _ref.borders,
+      sizes = _ref.sizes;
+  return (0, _defineProperty3.default)({
     'securityContainer': {
       padding: '1rem 2rem',
       borderBottom: '1px solid ' + borders.default
@@ -4324,14 +4374,13 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       '& > li > span': {
         fontWeight: 600
       }
-    },
-
-    '@media (max-width: 800px)': {
-      'securityContainer': {
-        padding: '1rem'
-      }
     }
-  };
+
+  }, '@media (max-width: ' + sizes.breakpoint + ')', {
+    'securityContainer': {
+      padding: '1rem'
+    }
+  });
 });
 
 /***/ }),
@@ -5033,7 +5082,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -6953,7 +7002,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _defineProperty2 = __webpack_require__(15);
+var _defineProperty2 = __webpack_require__(12);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
