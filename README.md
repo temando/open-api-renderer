@@ -2,6 +2,7 @@
 
 <img src='assets/lincoln-logo-white.png' alt='Lincoln' height="96" width="96" />
 
+[![NPM](https://img.shields.io/npm/v/react-lincoln.svg)](https://npmjs.org/packages/react-lincoln/)
 [![Travis CI](https://img.shields.io/travis/temando/open-api-renderer.svg)](https://travis-ci.org/temando/open-api-renderer)
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -29,7 +30,7 @@ To use Lincoln in your React project:
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Lincoln from '../Lincoln'
+import Lincoln from 'react-lincoln'
 
 ReactDOM.render(
   <Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC2.json' />,
@@ -37,12 +38,12 @@ ReactDOM.render(
 )
 ```
 
-Alternatively, you can pass the contents of the definition directory to Lincoln:
+Alternatively, you can pass the contents of the definition directly to Lincoln:
 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Lincoln from '../Lincoln'
+import Lincoln from 'react-lincoln'
 import definition from './myApi.yml'
 
 ReactDOM.render(<Lincoln definition={definition} />, document.body)
