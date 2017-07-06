@@ -27,20 +27,23 @@ yarn
 
 ### Lincoln as a component
 
+> This represents a future state, Lincoln is not published to NPM yet.
+
 To use Lincoln in your React project:
 
 ```js
 import Lincoln from 'react-lincoln'
 
 <Lincoln definitionUrl='https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json' />
-// or
+```
 
+Alternatively, you can pass the contents of the definition directory to Lincoln:
+
+```js
 import definition from './myApi.yml'
 
 <Lincoln definition={definition} />
 ```
-
-> This represents a future state, Lincoln is not published to NPM yet.
 
 ### Lincoln demo
 
@@ -58,12 +61,12 @@ You need to specify a url for the `Open API v3` file, e.g. <http://localhost:820
 
 The following configuration options apply to the Lincoln component:
 
-| property                 | required | type    | description                                                                                                                                                                 |
-| ---------------          | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `definitionUrl`          | ✔        | string  | CORS-enabled URL to Open API v3 definition to render. Supports JSON or YAML.                                                                                                |
-| `navSort`                |          | enum    | This property applies when your definition uses `tags`. `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`. |
-| `validate`               |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.                                                            |
-| `initialSchemaTreeDepth` |          | number  | The initial opened tree depth for schema visualiser when first rendered. This is useful when the schema's actual contents is a couple of levels deep, and you want to expand the tree to the contents automatically. Defaults to 0.|
+| property                        | required | type    | description                                                                                                                                                                                                                         |
+| ------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `definitionUrl` or `definition` | ✔        | string  | CORS-enabled URL to, or contents of, Open API v3 definition to render. Supports JSON or YAML.                                                                                                                                       |
+| `navSort`                       |          | enum    | This property applies when your definition uses `tags`. Valid values are `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`.                                        |
+| `validate`                      |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.                                                                                                                    |
+| `initialSchemaTreeDepth`        |          | number  | The initial opened tree depth for schema visualiser when first rendered. This is useful when the schema's actual contents is a couple of levels deep, and you want to expand the tree to the contents automatically. Defaults to 0. |
 
 ## Building & Deployment
 
