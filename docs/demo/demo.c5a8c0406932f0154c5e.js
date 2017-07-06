@@ -2326,7 +2326,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
 
   }, '@media (max-width: ' + sizes.breakpoint + ')', {
     'method': {
-      padding: '1rem'
+      padding: '1rem',
+      margin: 0
     }
   });
 });

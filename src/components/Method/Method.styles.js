@@ -40,7 +40,8 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
     'method': {
-      padding: '1rem'
+      padding: '1rem',
+      margin: 0
     }
   }
 }))
