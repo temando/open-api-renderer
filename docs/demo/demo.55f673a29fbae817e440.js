@@ -4386,11 +4386,11 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
                 definition = props.definition;
 
                 if (!(definitionUrl && !definition)) {
-                  _context.next = 11;
+                  _context.next = 9;
                   break;
                 }
 
-                if (definitionUrl) {
+                if (!(definitionUrl === _this.state.definitionUrl)) {
                   _context.next = 6;
                   break;
                 }
@@ -4398,37 +4398,29 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
                 return _context.abrupt('return');
 
               case 6:
-                if (!(definitionUrl === _this.state.definitionUrl)) {
-                  _context.next = 8;
-                  break;
-                }
-
-                return _context.abrupt('return');
-
-              case 8:
-                _context.next = 10;
+                _context.next = 8;
                 return _this.fetchDefinition({ definitionUrl: definitionUrl, parserType: parserType, validate: validate });
 
-              case 10:
+              case 8:
                 definition = _context.sent;
 
-              case 11:
+              case 9:
                 if (definition) {
-                  _context.next = 13;
+                  _context.next = 11;
                   break;
                 }
 
                 return _context.abrupt('return');
 
-              case 13:
+              case 11:
 
                 _this.setState({ loading: true, error: null });
 
-                _context.prev = 14;
-                _context.next = 17;
+                _context.prev = 12;
+                _context.next = 15;
                 return (0, _definitions.parseDefinition)({ definition: definition, parserType: parserType, navSort: navSort });
 
-              case 17:
+              case 15:
                 parsedDefinition = _context.sent;
 
 
@@ -4438,20 +4430,20 @@ var Base = (0, _Base.styles)(_class = function (_React$PureComponent) {
                   parsedDefinition: parsedDefinition,
                   parserType: parserType
                 });
-                _context.next = 24;
+                _context.next = 22;
                 break;
 
-              case 21:
-                _context.prev = 21;
-                _context.t0 = _context['catch'](14);
+              case 19:
+                _context.prev = 19;
+                _context.t0 = _context['catch'](12);
                 return _context.abrupt('return', _this.setState({ loading: false, error: _context.t0 }));
 
-              case 24:
+              case 22:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this2, [[14, 21]]);
+        }, _callee, _this2, [[12, 19]]);
       }));
 
       return function (_x) {
@@ -4619,12 +4611,15 @@ var Definition = function Definition(_ref7) {
     _react2.default.createElement(
       'h3',
       null,
-      'Render your Open API definition by adding the CORS-enabled URL above.'
+      'Render your Open API definition.',
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('br', null),
+      'You can either input a CORS-enabled URL above, or input a definition as text'
     ),
     _react2.default.createElement(
       'p',
       null,
-      'You can also set this with the ',
+      'You can also set a url with the ',
       _react2.default.createElement(
         'code',
         null,
@@ -4948,7 +4943,7 @@ var Demo = exports.Demo = (0, _Demo.styles)(_class = function (_React$PureCompon
             'TEXT INPUT'
           )
         ),
-        useDefinition ? _react2.default.createElement(_Lincoln2.default, { definition: definition, hash: hash, initialSchemaTreeDepth: initialSchemaTreeDepth, wew: 'lad' }) : _react2.default.createElement(_Lincoln2.default, { definitionUrl: definitionUrl, hash: hash, initialSchemaTreeDepth: initialSchemaTreeDepth, lad: 'wew' })
+        useDefinition ? _react2.default.createElement(_Lincoln2.default, { definition: definition, hash: hash, initialSchemaTreeDepth: initialSchemaTreeDepth }) : _react2.default.createElement(_Lincoln2.default, { definitionUrl: definitionUrl, hash: hash, initialSchemaTreeDepth: initialSchemaTreeDepth })
       );
     }
   }]);
