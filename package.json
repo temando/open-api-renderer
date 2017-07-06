@@ -1,5 +1,6 @@
 {
   "name": "react-lincoln",
+  "version": "0.0.1",
   "description": "Meet Lincoln, a React component for rendering OpenAPI v3 definitions.",
   "license": "MIT",
   "repository": {
@@ -42,6 +43,8 @@
     "build:library": "./scripts/build.bash",
     "dash": "webpack-dashboard -- yarn start",
     "lint": "eslint src test",
+    "preversion": "npm run lint && npm run build && npm run test",
+    "release": "cd dist/library && npm publish",
     "start": "webpack-dev-server --config ./webpack.config.dev.js",
     "test": "jest",
     "test:bench": "node -r babel-register test/benchmark/parser.js",

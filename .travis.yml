@@ -11,3 +11,12 @@ script:
   - yarn build
   - yarn test
   - yarn test:bench
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npm set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+    - npm run release
+  on:
+    tags: true
