@@ -15,7 +15,6 @@ configureAnchors({ offset: 10, scrollDuration: 200, keepLastAnchorHash: true })
 export default class Base extends React.PureComponent {
   state = {
     parserType: 'open-api-v3',
-    definitionUrl: null,
     definition: null,
     parsedDefinition: null,
     loading: false,
@@ -27,64 +26,93 @@ export default class Base extends React.PureComponent {
   stopListeningToHistory;
 
   componentDidMount () {
-    this.intialise()
-  }
-
-  componentWillUnmount () {
-    if (this.stopListeningToHistory) { this.stopListeningToHistory() }
-  }
-
-  intialise = async () => {
-    const { parserType } = this.state
     const {
-      definitionUrl, navSort, validate, listenToHash,
+      listenToHash,
       history: inputHistory
     } = this.props
 
-    if (!definitionUrl) { return true }
-    if (definitionUrl === this.state.definitionUrl) { return false }
-
-    await this.setDefinition({ definitionUrl, parserType, navSort, validate })
-
     if (listenToHash) {
-      const history = inputHistory || createBrowserHistory()
+      this.history = inputHistory || createBrowserHistory()
 
-      this.stopListeningToHistory = history.listen((location) => {
+      this.stopListeningToHistory = this.history.listen((location) => {
         const { hash } = location
 
         if ((this.state.useStateHash && this.state.hash === hash) || this.props.hash === hash) { return }
 
         this.setState({ useStateHash: true, hash })
       })
-
-      this.setState({ history })
     }
 
-    return true
+    this.updateDefinition(this.props)
   }
 
-  setDefinition = async ({ definitionUrl, navSort, validate, parserType = this.state.parserType }) => {
-    this.setState({ loading: !!definitionUrl, error: null })
+  componentWillUpdate (props) {
+    const isNewDefinition = props.definition && props.definition !== this.props.definition
+    const isNewUrl = props.definitionUrl && props.definitionUrl !== this.props.definitionUrl
+
+    if (isNewDefinition || isNewUrl) {
+      this.updateDefinition(props)
+    }
+  }
+
+  componentWillUnmount () {
+    if (this.stopListeningToHistory) { this.stopListeningToHistory() }
+  }
+
+  updateDefinition = async (props) => {
+    const { parserType } = this.state
+    const {
+      definitionUrl, navSort, validate
+    } = props
+
+    let { definition } = props
+
+    if (definitionUrl && !definition) {
+      if (definitionUrl === this.state.definitionUrl) { return }
+
+      definition = await this.fetchDefinition({ definitionUrl, parserType, validate })
+    }
+
+    if (!definition) { return }
+
+    this.setState({ loading: true, error: null })
 
     try {
-      const [ definition ] = await Promise.all([
-        getDefinition(definitionUrl),
-        validate && validateDefinition(definitionUrl, parserType)
-      ])
       const parsedDefinition = await parseDefinition({ definition, parserType, navSort })
 
-      this.setState({ loading: false, definitionUrl, definition, parsedDefinition, parserType })
-    } catch (err) {
-      return this.setState({ loading: false, error: err })
+      this.setState({
+        loading: false,
+        definition,
+        parsedDefinition,
+        parserType
+      })
+    } catch (error) {
+      return this.setState({ loading: false, error })
     }
+  }
+
+  fetchDefinition = async ({ definitionUrl, validate, parserType = this.state.parserType }) => {
+    this.setState({ loading: true, error: null })
+
+    const [ definition ] = await Promise.all([
+      getDefinition(definitionUrl),
+      validate && validateDefinition(parserType)
+    ])
+
+    return definition
   }
 
   render () {
     const { hash: propsHash, classes } = this.props
     const {
-      parsedDefinition: definition, definitionUrl, loading, error,
-      useStateHash, hash: stateHash
+      parsedDefinition: definition,
+      hash: stateHash,
+      loading,
+      error,
+      useStateHash
     } = this.state
+
+    const { definitionUrl } = this.props
 
     const hash = useStateHash ? stateHash : propsHash
     let element
@@ -115,6 +143,7 @@ Base.propTypes = {
   classes: PropTypes.object,
   hash: PropTypes.string.isRequired,
   definitionUrl: PropTypes.string,
+  definition: PropTypes.string,
   navSort: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool
@@ -135,10 +164,10 @@ const Definition = ({ definition, definitionUrl, hash }) =>
   !definition
     ? <Overlay>
       <img src={lincolnLogo} alt='' />
-      <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
-      <p>You can also set this with the <code>?url</code> query parameter.</p>
+      <h3>Render your Open API definition.<br /><br />You can either input a CORS-enabled URL above, or input a definition as text</h3>
+      <p>You can also set a url with the <code>?url</code> query parameter.</p>
     </Overlay>
-    : <Page definition={definition} hash={hash} specUrl={definitionUrl} />
+    : <Page definition={definition} hash={hash} definitionUrl={definitionUrl} />
 
 Definition.propTypes = {
   definition: PropTypes.object,
@@ -147,7 +176,7 @@ Definition.propTypes = {
 }
 
 const Failure = ({ error }) => {
-  console.error('definition error')
+  console.error('[Definition Error]')
   console.error(error)
 
   return <Overlay>

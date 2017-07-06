@@ -5,11 +5,11 @@ import renderer from 'react-test-renderer'
 describe('<Header />', () => {
   const title = 'Swagger Petstore'
   const version = '1.0.0'
-  const specUrl = 'https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json'
+  const definitionUrl = 'https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json'
 
   it('renders header with minimum props', () => {
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -22,7 +22,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -36,7 +36,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -49,7 +49,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -62,7 +62,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -75,7 +75,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -89,7 +89,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -104,7 +104,7 @@ describe('<Header />', () => {
       }
     }
     const tree = renderer.create(
-      <Header title={title} version={version} specUrl={specUrl} info={info} />
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
     )
 
     expect(tree).toMatchSnapshot()

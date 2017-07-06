@@ -10,7 +10,7 @@ import { styles } from './Page.styles'
 @styles
 export default class Page extends Component {
   render () {
-    const { definition, hash, specUrl, classes } = this.props
+    const { definition, hash, definitionUrl, classes } = this.props
 
     if (!definition) {
       return null
@@ -27,7 +27,7 @@ export default class Page extends Component {
             description={definition.description}
             version={definition.version}
             info={definition.info}
-            specUrl={specUrl}
+            definitionUrl={definitionUrl}
           />
           {security && this.renderSecurity(security)}
           <ContentContainer>
@@ -59,6 +59,6 @@ Page.propTypes = {
     security: PropTypes.object
   }),
   hash: PropTypes.string.isRequired,
-  specUrl: PropTypes.string,
+  definitionUrl: PropTypes.string,
   classes: PropTypes.object
 }
