@@ -1,6 +1,7 @@
 import c from 'color'
 import { createSheet } from '../../theme'
 import { styles as base } from '../../containers/Base/Base.styles'
+import { styles as Overlay } from '../../components/Overlay/Overlay.styles'
 
 const headerHeight = '50px'
 const headerBackground = '#234f69'
@@ -13,6 +14,66 @@ export const styles = createSheet(({ shades }) => ({
     [`& .${base.classes.base}`]: {
       marginTop: `${headerHeight}`
     }
+  },
+
+  form: {
+    transition: 'all 0.5s',
+    opacity: 1
+  },
+
+  dialog: {
+    [`& .${Overlay.classes.overlay}`]: {
+      zIndex: '2',
+      transition: 'background 0.5s',
+      background: headerBackground,
+      paddingTop: '70px'
+    },
+
+    '& textarea': {
+      padding: '2em 2em',
+      fontFamily: 'monospace',
+      border: '0',
+      borderBottom: '1px solid rgba(0,0,0,0.25)',
+      width: '50%',
+      background: 'rgba(0,0,0, 0.15)',
+      boxShadow: '0 4px 22px rgba(0,0,0,0.09)',
+      height: '50%',
+      color: '#ccc',
+      resize: 'none'
+    },
+
+    '& button': {
+      marginTop: '1em',
+      padding: '0.8em 1.4em 0.7em',
+      fontSize: '96%',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
+      marginRight: '1em'
+    }
+  },
+
+  button: {
+    background: 'none',
+    border: `2px solid ${headerBorder}`,
+    borderRadius: '3px',
+    fontSize: 'smaller',
+    padding: '.25rem .5rem',
+    color: `${headerColor}`,
+    cursor: 'pointer',
+
+    '&:hover': {
+      transition: 'all .2s',
+      color: '#FFF',
+      borderColor: '#FFF'
+    }
+  },
+
+  closeButton: {
+    color: '#b63b3b',
+    borderColor: '#b63b3b'
+  },
+
+  inputButton: {
+    marginLeft: '1em'
   },
 
   header: {
@@ -30,7 +91,7 @@ export const styles = createSheet(({ shades }) => ({
     padding: '.4rem 1rem',
 
     borderBottom: '1px solid #222',
-    boxShadow: '0 1px 20px #8e8e8e',
+    boxShadow: '0 1px 20px rgba(0,0,0,0.35)',
 
     '&, & *': {
       boxSizing: 'border-box'
@@ -75,22 +136,6 @@ export const styles = createSheet(({ shades }) => ({
         transition: 'all .2s',
         color: '#FFF',
         borderBottomColor: '#FFF'
-      }
-    },
-
-    '& button': {
-      background: 'none',
-      border: `2px solid ${headerBorder}`,
-      borderRadius: '3px',
-      fontSize: 'smaller',
-      padding: '.25rem .5rem',
-      color: `${headerColor}`,
-      cursor: 'pointer',
-
-      '&:hover': {
-        transition: 'all .2s',
-        color: '#FFF',
-        borderColor: '#FFF'
       }
     }
   }
