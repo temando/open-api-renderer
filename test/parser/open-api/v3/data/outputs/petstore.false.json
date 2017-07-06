@@ -964,7 +964,20 @@
           "type": "post",
           "title": "uploads an image",
           "link": "/pet/{petId}/uploadImage/post",
-          "request": {},
+          "request": {
+            "schema": [
+              {
+                "constraints": {
+                  "format": "binary"
+                },
+                "name": "",
+                "required": false,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          },
           "responses": [
             {
               "code": "200",
@@ -1044,7 +1057,21 @@
           "responses": [
             {
               "code": "200",
-              "description": "successful operation"
+              "description": "successful operation",
+              "schema": [
+                {
+                  "additionalProperties": {
+                    "constraints": {
+                      "format": "int32"
+                    },
+                    "name": "additionalProperties",
+                    "required": false,
+                    "type": [
+                      "integer"
+                    ]
+                  }
+                }
+              ]
             }
           ],
           "description": "Returns a map of status codes to quantities",
@@ -1598,7 +1625,16 @@
           "responses": [
             {
               "code": "200",
-              "description": "successful operation"
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "",
+                  "required": false,
+                  "type": [
+                    "string"
+                  ]
+                }
+              ]
             },
             {
               "code": "400",

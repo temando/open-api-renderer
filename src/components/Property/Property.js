@@ -38,12 +38,13 @@ export default class Property extends PureComponent {
     const {
       type, title, description, constraints, isRequired,
       defaultValue, onClick, isOpen, isLast,
-      classes
+      isAdditional, classes
     } = this.props
 
     let {name, enumValues} = this.props
 
-    // If enumValues only has one single value, append the single value to name, and not display enum values
+    // If enumValues only has one single value, append the single value to name,
+    // and do not display enum values
     if (enumValues && enumValues.length === 1) {
       name = `${name} = "${enumValues[0]}"`
       enumValues = []
@@ -71,7 +72,8 @@ export default class Property extends PureComponent {
         onClick={this.handleClick}
       >
         <td className={classNames(classes.name, {
-          [classes.isClickable]: isClickable
+          [classes.isClickable]: isClickable,
+          [classes.isAdditional]: isAdditional
         })}>
           <span>{name}</span>
           {isClickable && <Indicator className={classes.indicator} direction={indicatorDirection} />}
@@ -174,6 +176,7 @@ Property.propTypes = {
   isRequired: PropTypes.bool,
   isOpen: PropTypes.bool,
   isLast: PropTypes.bool,
+  isAdditional: PropTypes.bool,
   onClick: PropTypes.func,
   classes: PropTypes.object
 }

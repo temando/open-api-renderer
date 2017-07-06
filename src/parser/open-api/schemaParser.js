@@ -10,7 +10,6 @@ const literalTypes = [ 'string', 'integer', 'number', 'boolean' ]
  * @param {String} nodeName
  * @param {Object} propertyNode
  * @param {Boolean} required
- *
  * @return {Object}
  */
 function getPropertyNode (nodeName, propertyNode, required = false) {
@@ -50,26 +49,21 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
     }
 
     return outputNode
-    // Otherwise, let's see if there's an object in there..
-  } else if (nodeType.length === 1 && nodeType.includes('object')) {
-    const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required)
+  }
 
-    if (propertiesNode !== undefined && propertiesNode.length > 0) {
-      outputNode.properties = propertiesNode
-    }
+  // Let's see if it's an object we are dealing with..
+  if (nodeType.length === 1 && nodeType.includes('object')) {
+    return getObjectProperties(outputNode, propertyNode)
+  }
 
-    return outputNode
-    // Is there an array?
-  } else if (nodeType.length === 1 && nodeType.includes('array')) {
+  // Finally check that it's an array
+  if (nodeType.length === 1 && nodeType.includes('array')) {
     if (propertyNode.items) {
       const arrayItemType = propertyNode.items.type
 
+      // Handle if the items is defined as a simple type, or as an object
       if (arrayItemType === 'object') {
-        const propertiesNode = getPropertiesNode(propertyNode.items.properties, propertyNode.items.required)
-
-        if (propertiesNode !== undefined && propertiesNode.length > 0) {
-          outputNode.properties = propertiesNode
-        }
+        return getObjectProperties(outputNode, propertyNode.items)
       } else {
         outputNode.subtype = arrayItemType
       }
@@ -84,49 +78,87 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
 /**
  * Construct UI ready properties object from given inputs.
  *
- * @param {Object} propertiesNode
+ * @param {Object} properties
  * @param {Array} requiredProperties
- *
- * @return {Object}
+ * @param {Object} additionalProperties
+ * @return {Object[]}
  */
-function getPropertiesNode (propertiesNode, requiredProperties = []) {
-  if (!propertiesNode) {
-    return []
+function getPropertiesNode (properties, requiredProperties = [], additionalProperties) {
+  let outputNode = []
+
+  if (properties) {
+    outputNode = Object.keys(properties)
+      .map(
+        (key) => getPropertyNode(key, properties[key], requiredProperties.includes(key))
+      )
+      .filter(Boolean)
   }
 
-  return Object.keys(propertiesNode)
-    .map(
-      (key) => getPropertyNode(key, propertiesNode[key], requiredProperties.includes(key))
-    )
-    .filter(Boolean)
+  if (additionalProperties) {
+    outputNode.push({
+      additionalProperties: getPropertyNode('additionalProperties', additionalProperties)
+    })
+  }
+
+  return outputNode
+}
+
+/**
+ * Mutates (and returns) the `targetObject` with any applicable `object` related
+ * properties.
+ *
+ * @param {Object} targetObject
+ * @param {Object} propertyNode
+ * @return {Object}
+ */
+function getObjectProperties (targetObject, propertyNode) {
+  const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required)
+
+  if (propertiesNode.length > 0) {
+    targetObject.properties = propertiesNode
+  }
+
+  // Handle additionalProperties: RE: #91
+  if (propertyNode.hasOwnProperty('additionalProperties')) {
+    if (propertyNode.additionalProperties === false) {
+      targetObject.additionalProperties = false
+    } else {
+      targetObject.additionalProperties =
+        getPropertyNode('additionalProperties', propertyNode.additionalProperties)
+    }
+  }
+
+  return targetObject
+}
+
+/**
+ * Given a resolved object, return all the relevant properties
+ *
+ * @param {Object} resolvedObj
+ * @return {Object[]}
+ */
+function getProperties (resolvedObj) {
+  if (resolvedObj.type !== 'object') {
+    return [ getPropertyNode('', resolvedObj) ]
+  }
+
+  return getPropertiesNode(resolvedObj.properties, resolvedObj.required, resolvedObj.additionalProperties)
 }
 
 /**
  * Converts json schema object to new object ready to be consumed by React components
  *
  * @param {Object} jsonSchema
- *
- * @return {Object}
+ * @return {Object[]}
  */
 export default function getUIReadySchema (jsonSchema) {
   let resolved = resolveAllOf(jsonSchema)
   resolved = resolveOneOf(resolved)
 
+  // Handle oneOf scenarios.
   if (Array.isArray(resolved.oneOf)) {
-    return resolved.oneOf.map(
-      (state) => {
-        if (state.type === 'array') {
-          return [ getPropertyNode('', state) ]
-        } else {
-          return getPropertiesNode(state.properties, state.required)
-        }
-      }
-    )
+    return resolved.oneOf.map(getProperties)
   }
 
-  if (resolved.type === 'array') {
-    return [ getPropertyNode('', resolved) ]
-  } else {
-    return getPropertiesNode(resolved.properties, resolved.required)
-  }
+  return getProperties(resolved)
 }
