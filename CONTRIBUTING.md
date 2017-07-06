@@ -2,9 +2,21 @@
 
 Thanks for being interested in contributing to Lincoln! Lincoln is Temando's first major open source project so bear with us while we iron out the kinks. The following describes some basic information that should help you get started.
 
-## Browser/device support
+## Getting Started
 
-Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and IE10+. While the project does not currently implement a responsive design, it will do in the future.
+To contribute to the project, the following prerequisites are required:
+
+- At minimum, [Node 6+](https://nodejs.org) is required to build and manage this project.
+- Familiarity with [yarn](https://yarnpkg.com) or [npm](https://docs.npmjs.com/).
+
+To preview Lincoln on your local machine:
+
+```sh
+yarn
+yarn start
+```
+
+Lincoln is now available on <http://localhost:8200>. You need to specify a url for the `Open API v3` definition, e.g. <http://localhost:8200?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC2.json>, or you can paste your definition directly into the UI.
 
 ## Linting
 
@@ -15,6 +27,20 @@ Lincoln is written adhering to the [StandardJS](https://standardjs.com/) code st
 Lincoln uses [Jest](https://facebook.github.io/jest/) for testing. Tests should be committed with each code change to ensure regressions do not occur.
 
 > Test coverage is not currently enforced, but it will be in the future.
+
+## Building & Deployment
+
+To build this project as React component, located in `dist/library`:
+
+```sh
+yarn build:library
+```
+
+To build the demo located in `/docs/demo`:
+
+```sh
+yarn build:demo
+```
 
 ## Github & Merge Requests
 
@@ -31,4 +57,4 @@ Alternatively, sometimes we have ideas that we are not sure how to approach, or 
 
 ## Versioning
 
-Lincoln will, in future, abide to [semver](http://semver.org/) and [keep a changelog](http://keepachangelog.com/en/0.3.0/). Right now we are at the peak of development and until we reach a release, these processes would add extra overhead that we are not willing to absorb just yet.
+Lincoln will, in future, abide to [semver](http://semver.org/) and [keep a changelog](http://keepachangelog.com/en/1.0.0/). Right now we are at the peak of development and until we reach a release, these processes would add extra overhead that we are not willing to absorb just yet.
