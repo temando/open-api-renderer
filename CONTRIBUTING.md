@@ -30,7 +30,7 @@ Lincoln uses [Jest](https://facebook.github.io/jest/) for testing. Tests should 
 
 ## Building & Deployment
 
-To build this project as React component, located in `dist/library`:
+To build this project as React component located in `dist/library`:
 
 ```sh
 yarn build:library
@@ -42,6 +42,10 @@ To build the demo located in `/docs/demo`:
 yarn build:demo
 ```
 
+## Versioning
+
+Lincoln will, in future, abide to [semver](http://semver.org/) and [keep a changelog](http://keepachangelog.com/en/1.0.0/). Right now we are at the peak of development and until we reach a release, these processes would add extra overhead that we are not willing to absorb just yet.
+
 ## Github & Merge Requests
 
 > We prefer small, focused MR's rather than large complex MR's whenever possible.
@@ -51,10 +55,7 @@ We use [Github projects](https://github.com/temando/open-api-renderer/projects) 
 1. Open a project and look at the *TODO* column for unassigned work. Generally it's in priority order.
 1. Leave a note on the issue saying you'd like to tackle it.
 1. Create a new branch in your fork and begin!
+1. Don't forget to update the unreleased section of the [changelog](#versioning) with your changes
 1. When raising the MR, include as much detail as possible to help the reviewer
 
 Alternatively, sometimes we have ideas that we are not sure how to approach, or don't fit in with our priorities. These issues are labelled as [wishes](https://github.com/temando/open-api-renderer/issues?q=is%3Aissue+is%3Aopen+label%3Awish). Feel free to tackle one of these or contribute any feedback.
-
-## Versioning
-
-Lincoln will, in future, abide to [semver](http://semver.org/) and [keep a changelog](http://keepachangelog.com/en/1.0.0/). Right now we are at the peak of development and until we reach a release, these processes would add extra overhead that we are not willing to absorb just yet.
