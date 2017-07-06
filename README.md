@@ -53,11 +53,12 @@ You need to specify a url for the `Open API v3` file, e.g. <http://localhost:820
 
 The following configuration options apply to the Lincoln component:
 
-| property        | required | type    | description                                                                                                                                                                 |
-| --------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `definitionUrl` | ✔        | string  | CORS-enabled URL to Open API v3 definition to render. Supports JSON or YAML.                                                                                                |
-| `navSort`       |          | enum    | This property applies when your definition uses `tags`. `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`. |
-| `validate`      |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.                                                            |
+| property                 | required | type    | description                                                                                                                                                                 |
+| ---------------          | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `definitionUrl`          | ✔        | string  | CORS-enabled URL to Open API v3 definition to render. Supports JSON or YAML.                                                                                                |
+| `navSort`                |          | enum    | This property applies when your definition uses `tags`. `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`. |
+| `validate`               |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.                                                            |
+| `initialSchemaTreeDepth` |          | number  | The initial opened tree depth for schema visualiser when first rendered. This is useful when the schema's actual contents is a couple of levels deep, and you want to expand the tree to the contents automatically. Defaults to 0.|
 
 ## Building & Deployment
 

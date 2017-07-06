@@ -62,7 +62,6 @@
     "prop-types": "^15.5.8",
     "qs": "^6.4.0",
     "react": "^15.5.4",
-    "react-addons-create-fragment": "^15.5.4",
     "react-document-title": "^2.0.2",
     "react-dom": "^15.5.4",
     "react-json-view": "^1.8.4",

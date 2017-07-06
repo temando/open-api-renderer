@@ -30,6 +30,7 @@ export class Demo extends React.PureComponent {
   render () {
     const { classes } = this.props
     const { definitionUrl } = this.state
+    const initialSchemaTreeDepth = 1
 
     return (
       <div className={classes.demo}>
@@ -47,7 +48,7 @@ export class Demo extends React.PureComponent {
             <button onClick={this.useUrlInput}>RENDER</button>
           </form>
         </header>
-        <Lincoln {...{ definitionUrl, hash }} />
+        <Lincoln {...{ definitionUrl, hash, initialSchemaTreeDepth }} />
       </div>
     )
   }

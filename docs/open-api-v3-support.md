@@ -124,9 +124,9 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 - [x] name
 - [x] in
     - [x] query
-    - [ ] header
+    - [x] header
     - [x] path
-    - [ ] cookie
+    - [x] cookie
 - [x] description
 - [x] required
 - [ ] deprecated

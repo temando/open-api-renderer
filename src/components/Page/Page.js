@@ -23,7 +23,7 @@ export default class Page extends Component {
   }
 
   render () {
-    const { definition, hash, specUrl, classes } = this.props
+    const { definition, hash, specUrl, classes, initialSchemaTreeDepth } = this.props
     const { isNavOpen } = this.state
 
     if (!definition) {
@@ -49,7 +49,7 @@ export default class Page extends Component {
           {security && this.renderSecurity(security)}
           <ContentContainer>
             {services && services.map(
-              (service) => <ServiceContainer key={service.title} service={service} />
+              (service) => <ServiceContainer key={service.title} service={service} initialSchemaTreeDepth={initialSchemaTreeDepth} />
             )}
           </ContentContainer>
         </div>
@@ -90,5 +90,6 @@ Page.propTypes = {
   }),
   hash: PropTypes.string.isRequired,
   specUrl: PropTypes.string,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  initialSchemaTreeDepth: PropTypes.number
 }

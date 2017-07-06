@@ -80,7 +80,7 @@ export default class Base extends React.PureComponent {
   }
 
   render () {
-    const { hash: propsHash, classes } = this.props
+    const { hash: propsHash, classes, initialSchemaTreeDepth } = this.props
     const {
       parsedDefinition: definition, definitionUrl, loading, error,
       useStateHash, hash: stateHash
@@ -94,7 +94,7 @@ export default class Base extends React.PureComponent {
     } else if (error) {
       element = <Failure {...{error}} />
     } else {
-      element = <Definition {...{ hash, definition, definitionUrl }} />
+      element = <Definition {...{ hash, definition, definitionUrl, initialSchemaTreeDepth }} />
     }
 
     return (
@@ -121,29 +121,32 @@ Base.propTypes = {
   ]),
   validate: PropTypes.bool,
   history: PropTypes.object, // eslint-disable-line
-  listenToHash: PropTypes.bool // eslint-disable-line
+  listenToHash: PropTypes.bool, // eslint-disable-line
+  initialSchemaTreeDepth: PropTypes.number
 }
 
 Base.defaultProps = {
   hash: '',
   navSort: false,
   validate: false,
-  listenToHash: true
+  listenToHash: true,
+  initialSchemaTreeDepth: 0
 }
 
-const Definition = ({ definition, definitionUrl, hash }) =>
+const Definition = ({ definition, definitionUrl, hash, initialSchemaTreeDepth }) =>
   !definition
     ? <Overlay>
       <img src={lincolnLogo} alt='' />
       <h3>Render your Open API definition by adding the CORS-enabled URL above.</h3>
       <p>You can also set this with the <code>?url</code> query parameter.</p>
     </Overlay>
-    : <Page definition={definition} hash={hash} specUrl={definitionUrl} />
+    : <Page definition={definition} hash={hash} specUrl={definitionUrl} initialSchemaTreeDepth={initialSchemaTreeDepth} />
 
 Definition.propTypes = {
   definition: PropTypes.object,
   definitionUrl: PropTypes.string,
-  hash: PropTypes.string
+  hash: PropTypes.string,
+  initialSchemaTreeDepth: PropTypes.number
 }
 
 const Failure = ({ error }) => {

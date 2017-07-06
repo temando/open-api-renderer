@@ -6,14 +6,14 @@ import { styles } from './ServiceContainer.styles'
 @styles
 export default class ServiceContainer extends PureComponent {
   render () {
-    const { service, classes } = this.props
+    const { service, classes, initialSchemaTreeDepth } = this.props
     const { title, methods } = service
 
     return (
       <div className={classes.serviceContainer} id={title}>
         <h2>{title}</h2>
         {methods.map(
-          (method) => <Method key={method.link} method={method} />
+          (method) => <Method key={method.link} method={method} initialSchemaTreeDepth={initialSchemaTreeDepth} />
         )}
       </div>
     )
@@ -22,5 +22,6 @@ export default class ServiceContainer extends PureComponent {
 
 ServiceContainer.propTypes = {
   service: PropTypes.object,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  initialSchemaTreeDepth: PropTypes.number
 }
