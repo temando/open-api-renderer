@@ -164,7 +164,7 @@ const Definition = ({ definition, definitionUrl, hash }) =>
   !definition
     ? <Overlay>
       <img src={lincolnLogo} alt='' />
-      <h3>Render your Open API definition by adding the CORS-enabled URL above, or input a definition body directly.</h3>
+      <h3>Render your Open API definition.<br /><br />You can either input a CORS-enabled URL above, or input a definition as text</h3>
       <p>You can also set a url with the <code>?url</code> query parameter.</p>
     </Overlay>
     : <Page definition={definition} hash={hash} definitionUrl={definitionUrl} />
