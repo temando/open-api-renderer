@@ -4,7 +4,7 @@ import BodySchema from '../BodySchema/BodySchema'
 
 export default class Parameters extends PureComponent {
   render () {
-    const {parameters} = this.props
+    const {parameters, initialSchemaTreeDepth} = this.props
 
     if (!parameters) {
       return null
@@ -18,7 +18,7 @@ export default class Parameters extends PureComponent {
             return (
               <div key={key}>
                 <h4>{key} Parameters</h4>
-                <BodySchema properties={value} />
+                <BodySchema properties={value} depthToExpand={initialSchemaTreeDepth} />
               </div>
             )
           })
@@ -29,5 +29,6 @@ export default class Parameters extends PureComponent {
 }
 
 Parameters.propTypes = {
-  parameters: PropTypes.object
+  parameters: PropTypes.object,
+  initialSchemaTreeDepth: PropTypes.number
 }

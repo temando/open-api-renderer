@@ -75,7 +75,7 @@ export default class BodyContent extends Component {
   }
 
   renderSchema (schema, index) {
-    const { examples } = this.props
+    const { examples, initialSchemaTreeDepth } = this.props
     const hasTabs = (schema !== undefined && examples !== undefined)
 
     if (!schema) {
@@ -88,13 +88,13 @@ export default class BodyContent extends Component {
       return (
         <div className='body-content-switcher'>
           <BodySchemaSwitcher options={schema} onChange={this.setBodySchemaIndex} />
-          <BodySchema properties={schema[index]} styleVariation='odd' hasTabs={hasTabs} />
+          <BodySchema properties={schema[index]} styleVariation='odd' hasTabs={hasTabs} depthToExpand={initialSchemaTreeDepth} />
         </div>
       )
     }
 
     return (
-      <BodySchema properties={schema} styleVariation='odd' hasTabs={hasTabs} />
+      <BodySchema properties={schema} styleVariation='odd' hasTabs={hasTabs} depthToExpand={initialSchemaTreeDepth} />
     )
   }
 
@@ -116,5 +116,6 @@ export default class BodyContent extends Component {
 BodyContent.propTypes = {
   schema: PropTypes.array,
   examples: PropTypes.array,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  initialSchemaTreeDepth: PropTypes.number
 }

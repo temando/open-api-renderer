@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import createFragment from 'react-addons-create-fragment'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Property from '../Property/Property'
@@ -12,18 +11,26 @@ export default class BodySchema extends Component {
 
     this.onClick = this.onClick.bind(this)
 
+    let expandedProps = []
+    const {properties, depthToExpand} = this.props
+
+    if (depthToExpand > 0) {
+      expandedProps = properties.map(property => property.name)
+    }
+
     this.state = {
-      expandedProp: []
+      expandedProps
     }
   }
 
   render () {
-    const { properties, styleVariation, classes, hasTabs } = this.props
+    const { properties, styleVariation, classes, hasTabs, depthToExpand } = this.props
 
     if (!properties) {
       return null
     }
-    const { expandedProp } = this.state
+
+    const { expandedProps } = this.state
 
     return (
       <table className={classNames(classes.bodySchema, classes[styleVariation], {
@@ -41,11 +48,11 @@ export default class BodySchema extends Component {
             const isPropertyObject = property.type.includes('object')
 
             if (isPropertyArray || isPropertyObject) {
-              if (expandedProp.includes(property.name)) {
-                return createFragment({
-                  property: this.renderPropertyRow(property, isLast, true, true),
-                  subset: this.renderSubsetProperties(property, isPropertyArray)
-                })
+              if (expandedProps.includes(property.name)) {
+                return [
+                  this.renderPropertyRow(property, isLast, true, true),
+                  this.renderSubsetProperties(property, isPropertyArray, depthToExpand - 1)
+                ]
               }
 
               return this.renderPropertyRow(property, isLast, false, true)
@@ -75,7 +82,7 @@ export default class BodySchema extends Component {
     )
   }
 
-  renderSubsetProperties (property, isArray = false) {
+  renderSubsetProperties (property, isArray = false, depthToExpand) {
     const { styleVariation, classes } = this.props
     const nextStyleVariation = (styleVariation === 'even') ? 'odd' : 'even'
 
@@ -88,6 +95,7 @@ export default class BodySchema extends Component {
             key={`${property.name}-properties`}
             properties={property.properties}
             styleVariation={nextStyleVariation}
+            depthToExpand={depthToExpand}
           />
           {isArray && <div className={classes.array}>]</div>}
         </td>
@@ -102,13 +110,13 @@ export default class BodySchema extends Component {
    * @param {string} propertyName
    */
   onClick (propertyName) {
-    const { expandedProp } = this.state
+    const { expandedProps } = this.state
 
-    if (expandedProp.includes(propertyName)) {
-      const newExpanded = expandedProp.filter((prop) => prop !== propertyName)
-      this.setState({ expandedProp: newExpanded })
+    if (expandedProps.includes(propertyName)) {
+      const newExpanded = expandedProps.filter((prop) => prop !== propertyName)
+      this.setState({ expandedProps: newExpanded })
     } else {
-      this.setState({ expandedProp: [...expandedProp, propertyName] })
+      this.setState({ expandedProps: [...expandedProps, propertyName] })
     }
   }
 }
@@ -120,5 +128,6 @@ BodySchema.propTypes = {
     'even'
   ]),
   classes: PropTypes.object,
-  hasTabs: PropTypes.bool
+  hasTabs: PropTypes.bool,
+  depthToExpand: PropTypes.number
 }
