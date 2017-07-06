@@ -15,7 +15,8 @@ module.exports = Object.assign({}, baseConfig, {
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    'prop-types': true
   },
 
   plugins: []
