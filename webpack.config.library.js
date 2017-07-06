@@ -1,5 +1,4 @@
 const baseConfig = require('./webpack.config')
-const pkgJson = require('./package.json')
 
 module.exports = Object.assign({}, baseConfig, {
   entry: {
@@ -14,7 +13,10 @@ module.exports = Object.assign({}, baseConfig, {
     library: '[name]'
   },
 
-  externals: Object.keys(pkgJson.dependencies),
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
 
   plugins: []
 })

@@ -64,12 +64,14 @@
     "markdown-it": "^8.3.1",
     "prop-types": "^15.5.8",
     "qs": "^6.4.0",
-    "react": "^15.5.4",
     "react-document-title": "^2.0.2",
-    "react-dom": "^15.5.4",
     "react-json-view": "^1.8.4",
     "react-jss": "^6.1.1",
     "react-scrollable-anchor": "^0.4.2"
+  },
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -101,8 +103,10 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
     "json-loader": "^0.5.4",
+    "react": "^15.5.4",
     "react-addons-perf": "^15.4.2",
     "react-dev-utils": "^3.0.0",
+    "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
