@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import yaml from 'js-yaml'
+import YAML from 'js-yaml'
 import { getParserFunction, getValidatorFunction } from '../parser/parserFactory'
 import { getSortingFunction } from './sorting'
 
@@ -12,16 +12,7 @@ export async function getDefinition (url) {
     throw new Error(result.statusText)
   }
 
-  let definition = {}
-
-  // TODO move this to another place
-  if (url.endsWith('.yaml') || url.endsWith('.yml')) {
-    definition = yaml.safeLoad(await result.text())
-  } else if (url.endsWith('json')) {
-    definition = await result.json()
-  }
-
-  return definition
+  return result.text()
 }
 
 export function validateDefinition (definition, parserType) {
@@ -31,6 +22,10 @@ export function validateDefinition (definition, parserType) {
 }
 
 export async function parseDefinition ({ definition, parserType, navSort }) {
+  if (typeof definition === 'string') {
+    definition = YAML.safeLoad(definition)
+  }
+
   const parser = getParserFunction(parserType)
   const sortFunc = getSortingFunction(navSort)
   const parsedDefinition = await parser(definition, sortFunc)

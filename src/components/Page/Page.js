@@ -23,7 +23,7 @@ export default class Page extends Component {
   }
 
   render () {
-    const { definition, hash, specUrl, classes, initialSchemaTreeDepth } = this.props
+    const { definition, hash, definitionUrl, initialSchemaTreeDepth, classes } = this.props
     const { isNavOpen } = this.state
 
     if (!definition) {
@@ -44,7 +44,7 @@ export default class Page extends Component {
             description={definition.description}
             version={definition.version}
             info={definition.info}
-            specUrl={specUrl}
+            definitionUrl={definitionUrl}
           />
           {security && this.renderSecurity(security)}
           <ContentContainer>
@@ -89,7 +89,7 @@ Page.propTypes = {
     security: PropTypes.object
   }),
   hash: PropTypes.string.isRequired,
-  specUrl: PropTypes.string,
-  classes: PropTypes.object,
-  initialSchemaTreeDepth: PropTypes.number
+  initialSchemaTreeDepth: PropTypes.number,
+  definitionUrl: PropTypes.string,
+  classes: PropTypes.object
 }

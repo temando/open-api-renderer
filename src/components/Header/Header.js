@@ -8,7 +8,7 @@ import { styles } from './Header.styles'
 @styles
 export default class Header extends PureComponent {
   render () {
-    const { title, version, description, info, specUrl, classes } = this.props
+    const { title, version, description, info, definitionUrl, classes } = this.props
 
     return (
       <header id='header' className={classes.header}>
@@ -24,7 +24,7 @@ export default class Header extends PureComponent {
         {description && <Description description={description} />}
 
         <nav>
-          <ExternalLink href={specUrl}>Download OpenAPI definition</ExternalLink>
+          { definitionUrl && <ExternalLink href={definitionUrl}>Download OpenAPI definition</ExternalLink> }
           {info && info.termsOfService &&
           <ExternalLink href={info.termsOfService}>Terms of Service</ExternalLink>}
         </nav>
@@ -90,6 +90,6 @@ Header.propTypes = {
     license: PropTypes.object,
     termsOfService: PropTypes.string
   }),
-  specUrl: PropTypes.string.isRequired,
+  definitionUrl: PropTypes.string,
   classes: PropTypes.object
 }
