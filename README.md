@@ -15,15 +15,11 @@ Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and 
 
 ## Installation
 
-> This represents a future state, Lincoln is not published to NPM yet.
-
 ```sh
 npm install --save react react-dom react-lincoln
 ```
 
 ## Usage
-
-> This represents a future state, Lincoln is not published to NPM yet.
 
 To use Lincoln in your React project:
 
