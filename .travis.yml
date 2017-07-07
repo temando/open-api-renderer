@@ -1,16 +1,16 @@
 language: node_js
 
 node_js:
-  - '6'
+- '6'
 
 install:
-  - yarn install
+- yarn install
 
 script:
-  - yarn lint
-  - yarn build
-  - yarn test
-  - yarn test:bench
+- yarn lint
+- yarn build
+- yarn test
+- yarn test:bench
 
 deploy:
   provider: npm
@@ -18,4 +18,5 @@ deploy:
   on:
     tags: true
   email: robot.grylls@temando.com
-  api_key: glPgfntEMpcyfGQbaxjnVfsYuVsx4Pf3xzv6A/P6lIMbvP0UZffqViun4I7ZQ3nZoGxqenjo1dLiUt8V2TvEwkv4Ulpld+qwGNlWfQgNxnhcEhWmrc2aMclN7AHvfzj+WQ2onWjD8r4jSazZ1L6qkHWIVoklJ+JRnPywiU4bQetEIuZ0VIUQd22T0aDydO47KGHNnmN5YXFbqGHqpqjhGkxRlTmFmCWaGT6elc/7xC9TEaDcrcGfC+YioGj+4uRFzEXyd+WU+2PIyh2ALu9qB33V3N5Otdr2SIFFy0GmIL2WL3ObRH5T99Qv0QTe/fmDgI3+ile9k7roJXXLqSZLomePKXSMfKDy9DNJsExPuyDwQ/gI3WtcwR+7AJn2cVVkbibDbtitx9ASYI2galYk3Gg5QEoYEsEOI0SesHbJGOD8IKSl2aE38gbxAL8pCuQuev+3Eoj6mXND8GQXth1eXzYZ6PYCO5i6pB2pof+sO3wMFUbrUY5bqC68/cIErPmOA2KFHHOS3HpVYn2ijWyiJK5QACDMbQfWblC67bdBRFIrMfXkV/THJ3Fs3lO7aE0bT5/ugHpaD+ikqAkR42obvGAZUKIS9kbPb5e9k/9cXabNsKjJSWHdj9ae9e/gNIdaDtfQlR1tXMMqXCQpeWG4ADi0uuOeRErNJletYY/k0lw=
+  api_key:
+    secure: FaKuxP8KTFof5h/s2KczVx8cDhBZIET4ShpwO9e8Ggx41PXMvQ77GKdbP1awzEbYmmxld5HAswWyO89m2/BKfnR+h/X/mXDzjL9JWoXjiBBL2lnXUhoVgHoNdlPSdV7fLcQWZvCQjA733swtjceY2YNUlbTXa4zOB+6CFf0vQM681/sLsV2ByV1DbTD9rUXzJLftSObkEG7NNLNRdOICsmGzA3RRh5DOF6wpWDa+HnQeUUDAc4iZPqWZFb98QQmhBWI4FlMYl2xQ9YZdgTr7XXYu3qZOgO/Ij7vUjekFhOjXQhXjYSJSXIykwXotl9+5YV/QtiuB9Eoeu53DUR5bi/oHIgxPP584cq9dYpSPPI90ahS82X4Zixj+1+h1Nc/eroiPTYx1hVhU/ul1la1itPFkPDlYqxFDjeUgaDtm8E2UOcWXfS5DB3Bg3EZMWXSTG6nrI2MyctOPEJaTu+B6gJ5FtrzjNBS5gylWKHB1l4pn+ycoh/CxO1901g4GSsOvFePBtkoN3eIhhJrLd97o9THcaQf9JurRXXqP9mkAnO5IlHoVjfDRQrnQFRs4SxVKluNSN3g1CukhNACXUCng4io/GkDGoNAPOvS60n4V8LvEZzBbWgq9dNLdAutl3ZVjZw/nfx871vCCqaJ7ngmgo0jH/m5jllKkj/11CJTwSco=
