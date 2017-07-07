@@ -1,9 +1,8 @@
 import React from 'react'
+import Lincoln from 'react-lincoln'
 
 describe('Lincoln', () => {
   it('imports as commonjs', () => {
-    const Lincoln = require('../../dist/library').default
-
     let component
     expect(() => {
       component = <Lincoln foo='bar' />
