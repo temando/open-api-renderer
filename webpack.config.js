@@ -7,7 +7,6 @@ module.exports = {
 
   output: {
     path: `${__dirname}/dist`,
-    publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
 
