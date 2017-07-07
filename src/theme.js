@@ -26,7 +26,11 @@ export const theme = (() => {
     default: shades.default
   }
 
-  return { backgrounds, text, shades, borders }
+  const sizes = {
+    breakpoint: '800px'
+  }
+
+  return { backgrounds, text, shades, borders, sizes }
 })()
 
 /**

@@ -16,11 +16,6 @@ export const styles = createSheet(({ shades }) => ({
     }
   },
 
-  form: {
-    transition: 'all 0.5s',
-    opacity: 1
-  },
-
   dialog: {
     [`& .${Overlay.classes.overlay}`]: {
       zIndex: '2',
@@ -48,6 +43,41 @@ export const styles = createSheet(({ shades }) => ({
       fontSize: '96%',
       boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
       marginRight: '1em'
+    },
+
+    '& label': {
+      fontSize: 'smaller',
+      color: `${headerTitleColor}`
+    },
+
+    '& input': {
+      display: 'inline-block',
+      width: '50%',
+      padding: '0.5em',
+      fontSize: '.9rem',
+      border: '0',
+      borderBottom: `1px solid ${headerBorder}`,
+      outline: '0',
+      margin: '0 .5rem',
+      color: `${headerColor}`,
+      background: 'none',
+
+      '&:focus, &:hover': {
+        transition: 'all .2s',
+        color: '#FFF',
+        borderBottomColor: '#FFF'
+      }
+    }
+  },
+
+  toggleButtons: {
+    position: 'absolute',
+    top: '5px',
+    right: '15px',
+    lineHeight: '50px',
+
+    '& pencil': {
+      position: 'relative'
     }
   },
 
@@ -73,7 +103,16 @@ export const styles = createSheet(({ shades }) => ({
   },
 
   inputButton: {
-    marginLeft: '1em'
+    marginLeft: '1em',
+    background: 'none',
+    border: 'none',
+    color: `${headerTitleColor}`,
+    cursor: 'pointer',
+
+    '&:hover': {
+      transition: 'all .2s',
+      color: `${headerColor}`
+    }
   },
 
   header: {
@@ -107,35 +146,40 @@ export const styles = createSheet(({ shades }) => ({
 
     '& small': {
       color: `${headerColor}`,
-      fontStyle: 'italic'
-    },
-
-    '& form': {
-      flex: '1',
-      marginLeft: '6.7rem',
-      textAlign: 'right'
-    },
-
-    '& small, & label': {
+      fontStyle: 'italic',
       fontSize: 'smaller'
-    },
+    }
+  },
 
-    '& input': {
-      display: 'inline-block',
-      width: '50%',
-      padding: '0.5em',
-      fontSize: '.9rem',
-      border: '0',
-      borderBottom: `1px solid ${headerBorder}`,
-      outline: '0',
-      margin: '0 .5rem',
-      color: `${headerColor}`,
-      background: 'none',
+  '@media (max-width: 800px)': {
 
-      '&:focus, &:hover': {
-        transition: 'all .2s',
-        color: '#FFF',
-        borderBottomColor: '#FFF'
+    'header': {
+      display: 'table',
+      zIndex: '100',
+
+      '& h1': {
+        display: 'inline',
+        paddingLeft: '30px'
+      },
+
+      '& small': {
+        display: 'none'
+      },
+
+      '& form': {
+        display: 'flex',
+        marginLeft: 0,
+        textAlign: 'left',
+        alignItems: 'center',
+
+        '& label': {
+          padding: '10px 0'
+        },
+
+        '& input': {
+          flexShrink: 10,
+          height: '38px'
+        }
       }
     }
   }
