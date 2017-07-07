@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import ReactJson from 'react-json-view'
 import copy from 'copy-to-clipboard'
 import CopyButton from '../CopyButton/CopyButton'
 import { styles } from './Example.styles'
@@ -48,18 +47,13 @@ export default class Example extends Component {
           {!isJson &&
             <span onClick={() => this.setState({ collapseAll: true })}>Collapse All</span>}
         </div>
-        {
-          isJson
-            ? <ReactJson
-              src={example}
-              theme='chalk'
-              displayDataTypes={false}
-              displayObjectSize={false}
-              collapsed={this.state.collapseAll}
-              enableClipboard={false}
-            />
-            : example
-        }
+        <pre>
+          {
+            isJson
+              ? JSON.stringify(example, null, 2)
+              : example
+          }
+        </pre>
       </div>
     )
   }

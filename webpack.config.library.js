@@ -1,5 +1,5 @@
+const webpack = require('webpack')
 const baseConfig = require('./webpack.config')
-const pkgJson = require('./package.json')
 
 module.exports = Object.assign({}, baseConfig, {
   entry: {
@@ -14,7 +14,19 @@ module.exports = Object.assign({}, baseConfig, {
     library: '[name]'
   },
 
-  externals: Object.keys(pkgJson.dependencies),
+  externals: {
+    react: true,
+    'react-dom': true,
+    'prop-types': true
+  },
 
-  plugins: []
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 })

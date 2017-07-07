@@ -17,18 +17,11 @@ exports[`<Example /> renders a JSON example 1`] = `
       Copy
     </span>
   </div>
-  <
-    collapsed={false}
-    displayDataTypes={false}
-    displayObjectSize={false}
-    enableClipboard={false}
-    src={
-      Object {
-        "message": "hi",
-      }
+  <pre>
+    {
+      "message": "hi"
     }
-    theme="chalk"
-  />
+  </pre>
 </div>
 `;
 
@@ -59,7 +52,9 @@ exports[`<Example /> renders a string example 1`] = `
       Collapse All
     </span>
   </div>
-  &lt;message&gt;hi&lt;/message&gt;
+  <pre>
+    &lt;message&gt;hi&lt;/message&gt;
+  </pre>
 </div>
 `;
 

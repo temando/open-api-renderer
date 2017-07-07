@@ -9,7 +9,7 @@
 
 Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) definitions. The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the OpenAPI specification.
 
-Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and IE10+. While the project does not currently implement a responsive design, it will do in the future.
+Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and IE11+. It is responsive and should be usable on most modern devices.
 
 [Demo](https://temando.github.io/open-api-renderer/demo/?https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC2.json)
 
