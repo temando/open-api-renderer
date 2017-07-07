@@ -11,7 +11,7 @@ Meet Lincoln, a [React](https://facebook.github.io/react/) component for renderi
 
 Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and IE11+. It is responsive and should be usable on most modern devices.
 
-[Demo](https://temando.github.io/open-api-renderer/demo/?https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC2.json)
+[Demo](https://temando.github.io/open-api-renderer/demo/?url=https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC2.json)
 
 ## Installation
 
