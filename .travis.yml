@@ -14,6 +14,7 @@ script:
 
 deploy:
   provider: npm
+  skip_cleanup: true
   on:
     tags: true
   email: robot.grylls@temando.com
