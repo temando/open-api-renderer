@@ -1,6 +1,6 @@
 {
   "name": "react-lincoln",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Meet Lincoln, a React component for rendering OpenAPI v3 definitions.",
   "license": "MIT",
   "repository": {
