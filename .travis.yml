@@ -1,17 +1,13 @@
 language: node_js
-
 node_js:
 - '6'
-
 install:
 - yarn install
-
 script:
 - yarn lint
 - yarn build
 - yarn test
 - yarn test:bench
-
 deploy:
   provider: npm
   skip_cleanup: true
@@ -19,4 +15,4 @@ deploy:
     tags: true
   email: robot.grylls@temando.com
   api_key:
-    secure: FaKuxP8KTFof5h/s2KczVx8cDhBZIET4ShpwO9e8Ggx41PXMvQ77GKdbP1awzEbYmmxld5HAswWyO89m2/BKfnR+h/X/mXDzjL9JWoXjiBBL2lnXUhoVgHoNdlPSdV7fLcQWZvCQjA733swtjceY2YNUlbTXa4zOB+6CFf0vQM681/sLsV2ByV1DbTD9rUXzJLftSObkEG7NNLNRdOICsmGzA3RRh5DOF6wpWDa+HnQeUUDAc4iZPqWZFb98QQmhBWI4FlMYl2xQ9YZdgTr7XXYu3qZOgO/Ij7vUjekFhOjXQhXjYSJSXIykwXotl9+5YV/QtiuB9Eoeu53DUR5bi/oHIgxPP584cq9dYpSPPI90ahS82X4Zixj+1+h1Nc/eroiPTYx1hVhU/ul1la1itPFkPDlYqxFDjeUgaDtm8E2UOcWXfS5DB3Bg3EZMWXSTG6nrI2MyctOPEJaTu+B6gJ5FtrzjNBS5gylWKHB1l4pn+ycoh/CxO1901g4GSsOvFePBtkoN3eIhhJrLd97o9THcaQf9JurRXXqP9mkAnO5IlHoVjfDRQrnQFRs4SxVKluNSN3g1CukhNACXUCng4io/GkDGoNAPOvS60n4V8LvEZzBbWgq9dNLdAutl3ZVjZw/nfx871vCCqaJ7ngmgo0jH/m5jllKkj/11CJTwSco=
+    secure: gKpjBhColhr9trutD+5JXyjuR8c4bDzBKcOLma8ZRLDzzCDKdkMym3dsuTB/d49JIL7fygoIwz49KxgVDvpXdqX5THAcS0IkuaTWIMO6ESoFVNvYYK0AQjfzYAoZNxtIaQXEY35JQVygMpiSKS5S+wHgKtNDIxNVFTmOCGcHDbVqHbO2vzozdhqv6RFnWugqVLUIA1NCpHAi8kwmZt+62Ccd9O43wnJDDqcZsurOkzQe/CWosIAgiOTC2NmK2W7C5LJltbTIy45LENU6iZqMa2rq9kgmDqcPL4vEUkvckjZ+UxyAoeEihc70+gQqsL0d6n4HJn7Wd1Uk1DZoYXXuHv1hilGZhgpSWNAS4KSFKhifWJVMm+I7XDx6GVViIiSsfmjNZD02osK/W574hBjI7WTY+XTKcQUhHcFMPx9I02F0kKr9sYm95+EOR5iM0fEHy70aD+c4JANtYdVbBnWmPEdRZk6hUomUxa4fq9kZnNljpKzCv3F8+ZB0YQZylhCXwZy/6am+YkXJhwX8ABQm/uzB2g5PUKljXakQ8BasfyaU2YhqAiq5yVlOIhMZPpzZ4vIyYhene5U6ekmLyKuokGLpQWuDTrCuZjgE0vasoIzwVGyf7JW7KElgRQ9wmU6xBffxgzEixsvqiIo/TE7uVcaZZOt6tZ2XD7N/BpjxlL4=

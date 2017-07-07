@@ -8,6 +8,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 Nil.
 
-## [v0.0.4] - 2017-07-07
+## [v0.0.5] - 2017-07-07
 
 - Initial release of Lincoln 🎩
