@@ -49,7 +49,8 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
     'bodySchema': {
-      paddingRight: '10px'
+      paddingRight: '10px',
+      fontSize: '0.8rem'
     }
   }
 }))

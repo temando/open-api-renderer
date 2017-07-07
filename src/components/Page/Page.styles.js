@@ -24,7 +24,8 @@ export const styles = createSheet(({ borders, sizes }) => ({
       position: 'relative',
       left: 0,
       opacity: 1,
-      transition: 'left .5s, opacity 2s'
+      transition: 'left .5s, opacity 2s',
+      wordBreak: 'break-word'
     },
 
     'isHidden': {

@@ -1276,7 +1276,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
 
   }, '@media (max-width: ' + sizes.breakpoint + ')', {
     'bodySchema': {
-      paddingRight: '10px'
+      paddingRight: '10px',
+      fontSize: '0.8rem'
     }
   });
 });
@@ -3367,7 +3368,8 @@ var styles = exports.styles = (0, _theme.createSheet)(function (_ref) {
       position: 'relative',
       left: 0,
       opacity: 1,
-      transition: 'left .5s, opacity 2s'
+      transition: 'left .5s, opacity 2s',
+      wordBreak: 'break-word'
     },
 
     'isHidden': {
