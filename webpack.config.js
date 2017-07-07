@@ -22,12 +22,12 @@ module.exports = {
     }),
 
     /**
-     * This renders out an `./dist/index.html` with all scripts, title etc. attached
+     * This renders out an `/docs/demo/index.html` with all scripts, title etc. attached
      */
     new HtmlWebpackPlugin({
       title: pkgJson.description || pkgJson.name,
       filename: 'index.html',
-      template: './index.html'
+      template: './entries/index.html'
     }),
 
     new webpack.DefinePlugin({

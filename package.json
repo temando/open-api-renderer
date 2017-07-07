@@ -36,20 +36,18 @@
       "email": "novus.nfour@gmail.com"
     }
   ],
-  "main": "./Lincoln.js",
+  "main": "./dist/Lincoln.js",
   "scripts": {
     "build": "npm run build:demo && npm run build:library",
     "build:demo": "rimraf docs/demo/* && NODE_ENV=production webpack --config webpack.config.demo.js",
-    "build:library": "./scripts/build.bash",
+    "build:library": "rimraf dist/* && NODE_ENV=production webpack --config webpack.config.library.js",
     "dash": "webpack-dashboard -- yarn start",
     "lint": "eslint src test",
     "preversion": "npm run lint && npm run build && npm run test",
-    "release": "cd dist/library && npm publish",
     "start": "webpack-dev-server --config ./webpack.config.dev.js",
     "test": "jest",
     "test:bench": "node -r babel-register test/benchmark/parser.js",
-    "test:coverage": "jest --coverage",
-    "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js"
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "classnames": "^2.2.5",

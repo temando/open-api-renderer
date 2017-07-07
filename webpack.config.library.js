@@ -7,7 +7,7 @@ module.exports = Object.assign({}, baseConfig, {
   },
 
   output: {
-    path: `${__dirname}/dist/library`,
+    path: `${__dirname}/dist`,
     publicPath: '/',
     filename: '[name].js',
     libraryTarget: 'commonjs2',

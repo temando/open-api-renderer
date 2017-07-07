@@ -30,7 +30,7 @@ Lincoln uses [Jest](https://facebook.github.io/jest/) for testing. Tests should 
 
 ## Building & Deployment
 
-To build this project as React component located in `dist/library`:
+To build this project as React component located in `/dist`:
 
 ```sh
 yarn build:library
