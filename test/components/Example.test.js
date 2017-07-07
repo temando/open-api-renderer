@@ -2,8 +2,6 @@ import React from 'react'
 import Example from './../../src/components/Example/Example'
 import renderer from 'react-test-renderer'
 
-jest.mock('react-json-view', () => '')
-
 describe('<Example />', () => {
   it('renders nothing when there is no examples passed', () => {
     const tree = renderer.create(

@@ -5,7 +5,7 @@
       "targets": {
         "browsers": [
           "last 2 versions",
-          "IE 10"
+          "IE 11"
         ]
       },
       "exclude": [
@@ -13,8 +13,6 @@
         "transform-regenerator"
       ],
       "useBuiltIns": true,
-      "loose": true,
-      "modules": false,
       "spec": true
     }]
   ],
@@ -30,6 +28,7 @@
     "production": {
       "presets": [
         ["babili", {
+          "mangle": false,
           "deadcode": false
         }]
       ]
