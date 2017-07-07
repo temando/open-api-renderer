@@ -1,6 +1,8 @@
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
 const baseConfig = require('./webpack.config')
 
-module.exports = Object.assign({}, baseConfig, {
+module.exports = webpackMerge(baseConfig, {
   entry: {
     demo: ['./entries/demo/index.js']
   },
@@ -8,5 +10,9 @@ module.exports = Object.assign({}, baseConfig, {
   output: {
     path: `${__dirname}/docs/demo`,
     filename: '[name].[chunkhash].js'
-  }
+  },
+
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 })
