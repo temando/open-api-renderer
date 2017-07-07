@@ -8,6 +8,8 @@ import cn from 'classnames'
 import Lincoln from '../Lincoln'
 import { styles } from './Demo.styles'
 import Overlay from '../../components/Overlay/Overlay'
+import pencilIcon from '../../../assets/pencil.svg'
+import globeIcon from '../../../assets/globe.svg'
 
 jss.setup(preset())
 configureAnchors({ offset: -52, scrollDuration: 200, keepLastAnchorHash: true })
@@ -20,22 +22,24 @@ export class Demo extends React.PureComponent {
   state = {
     definitionUrl,
     showDialog: false,
+    showForm: false,
     definition: '',
     useDefinition: false
   }
 
-  useUrlInput = () => this.setState({ definitionUrl: this.urlInput.value })
+  useUrlInput = () => this.setState({ definitionUrl: this.urlInput.value, showDialog: false, showForm: false })
   setUrlInput = (input) => { this.urlInput = input }
   updateDefinition = (event) => this.setState({ useDefinition: false, definition: event.target.value })
-  toggleDialog = () => this.setState({ showDialog: !this.state.showDialog })
+  toggleDialog = () => this.setState({ showDialog: !this.state.showDialog, showForm: false })
+  toggleForm = () => this.setState({ showForm: !this.state.showForm, showDialog: false })
 
   renderInputDefinition = () => {
-    this.setState({ useDefinition: true, definitionUrl: '', showDialog: false })
+    this.setState({ useDefinition: true, definitionUrl: '', showDialog: false, showForm: false })
   }
 
   render () {
     const { classes } = this.props
-    const { definitionUrl, showDialog, definition, useDefinition } = this.state
+    const { definitionUrl, showDialog, showForm, definition, useDefinition } = this.state
     const initialSchemaTreeDepth = 1
 
     return (
@@ -62,30 +66,46 @@ export class Demo extends React.PureComponent {
             </Overlay>
           </div>
         }
+        {
+          showForm &&
+          <div className={classes.dialog}>
+            <Overlay>
+              <form className={classes.form}>
+                <label htmlFor='url'>Definition URL</label>
+                <input
+                  name='url'
+                  type='url'
+                  defaultValue={this.state.definitionUrl}
+                  ref={this.setUrlInput}
+                />
+              </form>
+              <div>
+                <button
+                  className={classes.button}
+                  onClick={this.useUrlInput}
+                >RENDER</button>
+                <button
+                  className={cn(classes.button, classes.closeButton)}
+                  onClick={this.toggleForm}
+                >CLOSE</button>
+              </div>
+            </Overlay>
+          </div>
+        }
 
-        <header className={cn(classes.header, {
-          [classes.isDialogOpen]: showDialog
-        })}>
+        <header className={classes.header}>
           <h1>Lincoln</h1>
           <small>An Open API v3 renderer.</small>
-          <form className={classes.form} style={{ opacity: showDialog ? '0' : '1' }}>
-            <label htmlFor='url'>Definition URL</label>
-            <input
-              name='url'
-              type='url'
-              defaultValue={this.state.definitionUrl}
-              ref={this.setUrlInput}
-            />
+          <div className={classes.toggleButtons}>
             <button
-              className={classes.button}
-              onClick={this.useUrlInput}
-            >RENDER</button>
-          </form>
-
-          <button
-            className={cn(classes.button, classes.inputButton)}
-            onClick={this.toggleDialog}
-          >TEXT INPUT</button>
+              className={classes.inputButton}
+              onClick={this.toggleForm}
+            ><img src={globeIcon} alt='' /></button>
+            <button
+              className={classes.inputButton}
+              onClick={this.toggleDialog}
+            ><img src={pencilIcon} className={classes.pencil} alt='' /></button>
+          </div>
         </header>
         {
           useDefinition

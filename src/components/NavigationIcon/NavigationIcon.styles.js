@@ -12,7 +12,7 @@ export const styles = createSheet(({ backgrounds, sizes }) => ({
       height: '24px',
       color: `${backgrounds.default}`,
       position: 'fixed',
-      top: '15px',
+      top: '14px',
       left: '15px',
       cursor: 'pointer',
       zIndex: '1000'
