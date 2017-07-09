@@ -1044,7 +1044,22 @@
           "responses": [
             {
               "code": "200",
-              "description": "successful operation"
+              "description": "successful operation",
+              "schema": [
+                {
+                  "name": "additionalProperties",
+                  "type": [
+                    "integer"
+                  ],
+                  "required": false,
+                  "constraints": {
+                    "format": "int32"
+                  },
+                  "attributes": {
+                    "isAdditionalProperties": true
+                  }
+                }
+              ]
             }
           ],
           "description": "Returns a map of status codes to quantities",

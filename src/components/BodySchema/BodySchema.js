@@ -31,11 +31,13 @@ export default class BodySchema extends Component {
     }
 
     const { expandedProps } = this.state
+    const hasNoAdditionalProperties = this.props.additionalProperties === false
 
     return (
       <table className={classNames(classes.bodySchema, classes[styleVariation], {
         [classes.hasTabs]: hasTabs
       })}>
+        {hasNoAdditionalProperties && <caption className='isAdditional'>These are the only possible properties:</caption>}
         <tbody>
           {properties.map((property, i) => {
             const isLast = (properties.length === i + 1)
@@ -74,6 +76,7 @@ export default class BodySchema extends Component {
         enumValues={property.enum}
         defaultValue={property.defaultValue}
         constraints={property.constraints}
+        attributes={property.attributes}
         onClick={hasSubset ? this.onClick : undefined}
         isRequired={property.required}
         isOpen={isOpen}
@@ -96,6 +99,7 @@ export default class BodySchema extends Component {
             properties={property.properties}
             styleVariation={nextStyleVariation}
             depthToExpand={depthToExpand}
+            additionalProperties={property.additionalProperties}
           />
           {isArray && <div className={classes.array}>]</div>}
         </td>
@@ -129,5 +133,6 @@ BodySchema.propTypes = {
   ]),
   classes: PropTypes.object,
   hasTabs: PropTypes.bool,
-  depthToExpand: PropTypes.number
+  depthToExpand: PropTypes.number,
+  additionalProperties: PropTypes.bool
 }

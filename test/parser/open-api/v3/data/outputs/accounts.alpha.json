@@ -94,6 +94,7 @@
                     },
                     {
                       "name": "attributes",
+                      "additionalProperties": false,
                       "type": [
                         "object"
                       ],
@@ -405,6 +406,7 @@
                   },
                   {
                     "name": "attributes",
+                    "additionalProperties": false,
                     "type": [
                       "object"
                     ],

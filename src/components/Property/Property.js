@@ -38,6 +38,7 @@ export default class Property extends PureComponent {
     const {
       type, title, description, constraints, isRequired,
       defaultValue, onClick, isOpen, isLast,
+      attributes,
       classes
     } = this.props
 
@@ -50,6 +51,7 @@ export default class Property extends PureComponent {
     }
 
     const isClickable = onClick !== undefined
+    const isAdditional = attributes && attributes.isAdditionalProperties === true
 
     let subtype
     if (type.includes('array')) {
@@ -66,12 +68,14 @@ export default class Property extends PureComponent {
     return (
       <tr
         className={classNames(classes.property, {
-          [classes.last]: isLast
+          [classes.last]: isLast,
+          [classes.additionalProperties]: isLast
         })}
         onClick={this.handleClick}
       >
         <td className={classNames(classes.name, {
-          [classes.isClickable]: isClickable
+          [classes.isClickable]: isClickable,
+          [classes.isAdditional]: isAdditional
         })}>
           <span>{name}</span>
           {isClickable && <Indicator className={classes.indicator} direction={indicatorDirection} />}
@@ -175,5 +179,6 @@ Property.propTypes = {
   isOpen: PropTypes.bool,
   isLast: PropTypes.bool,
   onClick: PropTypes.func,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  attributes: PropTypes.object
 }

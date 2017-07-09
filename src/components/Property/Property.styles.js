@@ -130,6 +130,10 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
     fontWeight: 600
   },
 
+  'isAdditional': {
+    fontStyle: 'italic'
+  },
+
   'last': {},
 
   'enum': { ...enumAndDefault },
