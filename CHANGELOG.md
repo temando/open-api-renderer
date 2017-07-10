@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-Nil.
+- Lincoln can now display `additionalProperties`
 
 ## [v0.0.6] - 2017-07-07
 

@@ -52,5 +52,10 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
       paddingRight: '10px',
       fontSize: '0.8rem'
     }
+  },
+
+  'isAdditional': {
+    textAlign: 'left',
+    fontStyle: 'italic'
   }
 }))

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "aliases",
+    "type": [
+      "object"
+    ],
+    "required": false,
+    "properties": [
+      {
+        "name": "additionalProperties",
+        "type": [
+          "string"
+        ],
+        "required": false,
+        "constraints": {
+          "pattern": "^[-a-z0-9]+$"
+        },
+        "attributes": {
+          "isAdditionalProperties": true
+        }
+      }
+    ]
+  }
+]
