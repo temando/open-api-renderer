@@ -37,7 +37,7 @@ export default class BodySchema extends Component {
       <table className={classNames(classes.bodySchema, classes[styleVariation], {
         [classes.hasTabs]: hasTabs
       })}>
-        {hasNoAdditionalProperties && <caption className='isAdditional'>These are the only possible properties:</caption>}
+        {hasNoAdditionalProperties && <caption className={classes.isAdditional}>These are the only possible properties:</caption>}
         <tbody>
           {properties.map((property, i) => {
             const isLast = (properties.length === i + 1)

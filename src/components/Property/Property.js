@@ -37,8 +37,7 @@ export default class Property extends PureComponent {
   render () {
     const {
       type, title, description, constraints, isRequired,
-      defaultValue, onClick, isOpen, isLast,
-      attributes,
+      defaultValue, onClick, isOpen, isLast, attributes,
       classes
     } = this.props
 

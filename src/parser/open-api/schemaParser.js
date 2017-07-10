@@ -136,7 +136,22 @@ function getPropertiesNode (propertiesNode, requiredProperties = [], additionalP
 /**
  * Converts json schema object to new object ready to be consumed by React components
  *
- * @param {Object} jsonSchema
+ * @param {Object} jsonSchema resolved json schema
+ *
+ * @return {Object}
+ */
+function doGetUIReadySchema (jsonSchema) {
+  if (jsonSchema.type === 'array') {
+    return [getPropertyNode('', jsonSchema)]
+  } else {
+    return getPropertiesNode(jsonSchema.properties, jsonSchema.required, jsonSchema.additionalProperties)
+  }
+}
+
+/**
+ * Converts json schema object to new object ready to be consumed by React components
+ *
+ * @param {Object} jsonSchema raw json schema
  *
  * @return {Object}
  */
@@ -146,19 +161,9 @@ export default function getUIReadySchema (jsonSchema) {
 
   if (Array.isArray(resolved.oneOf)) {
     return resolved.oneOf.map(
-      (state) => {
-        if (state.type === 'array') {
-          return [getPropertyNode('', state)]
-        } else {
-          return getPropertiesNode(state.properties, state.required, state.additionalProperties)
-        }
-      }
+      (state) => doGetUIReadySchema(state)
     )
   }
 
-  if (resolved.type === 'array') {
-    return [getPropertyNode('', resolved)]
-  } else {
-    return getPropertiesNode(resolved.properties, resolved.required, resolved.additionalProperties)
-  }
+  return doGetUIReadySchema(resolved)
 }

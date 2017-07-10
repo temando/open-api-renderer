@@ -55,6 +55,7 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   },
 
   'isAdditional': {
+    textAlign: 'left',
     fontStyle: 'italic'
   }
 }))
