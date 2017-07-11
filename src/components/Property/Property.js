@@ -14,17 +14,26 @@ export default class Property extends PureComponent {
     this.handleClick = this.handleClick.bind(this)
     this.displayAllEnums = this.displayAllEnums.bind(this)
 
-    this.state = {
-      enumValues: (props.enumValues ? props.enumValues : null)
-    }
-  }
+    let {name, enumValues} = this.props
+    let trimmedEnumValues = enumValues
+    let isEnumTrimmed = false
 
-  componentWillMount () {
-    const enumValues = this.state.enumValues
-    if (enumValues && enumValues.length > 20) {
-      let updatedValues = enumValues.slice()
-      updatedValues.length = 20
-      this.setState({ enumValues: updatedValues })
+    if (enumValues) {
+      // If enumValues only has one single value, append the single value to name, and not display enum values
+      if (enumValues.length === 1) {
+        name = `${name} = "${enumValues[0]}"`
+        enumValues = trimmedEnumValues = null
+      } else if (enumValues.length > 20) {
+        trimmedEnumValues = enumValues.slice(0, 20)
+        isEnumTrimmed = true
+      }
+    }
+
+    this.state = {
+      name,
+      enumValues,
+      trimmedEnumValues,
+      isEnumTrimmed
     }
   }
 
@@ -41,12 +50,13 @@ export default class Property extends PureComponent {
       classes
     } = this.props
 
-    let {name, enumValues} = this.props
+    const name = this.state.name
+    let enumValues
 
-    // If enumValues only has one single value, append the single value to name, and not display enum values
-    if (enumValues && enumValues.length === 1) {
-      name = `${name} = "${enumValues[0]}"`
-      enumValues = []
+    if (this.state.isEnumTrimmed) {
+      enumValues = this.state.trimmedEnumValues
+    } else {
+      enumValues = this.state.enumValues
     }
 
     const isClickable = onClick !== undefined
@@ -88,11 +98,11 @@ export default class Property extends PureComponent {
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {((enumValues && enumValues.length) || defaultValue || description) &&
-            <div className={classes.additionalInfo}>
-              {enumValues && this.renderEnumValues(enumValues)}
-              {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
-              {description && <div><Description isInline description={description} /></div>}
-            </div>
+          <div className={classes.additionalInfo}>
+            {enumValues && this.renderEnumValues(enumValues, this.state.isEnumTrimmed)}
+            {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
+            {description && <div><Description isInline description={description} /></div>}
+          </div>
           }
         </td>
       </tr>
@@ -103,32 +113,32 @@ export default class Property extends PureComponent {
    * Render enum values
    *
    * @param {Array} values
+   * @param {boolean} isEnumTrimmed
    */
-  renderEnumValues (values) {
-    const { classes } = this.props
-    const valuesToDisplay = this.state.enumValues
-    let isEnumReduced = false
-    if (values.length !== valuesToDisplay.length) {
-      isEnumReduced = true
-    }
+  renderEnumValues (values, isEnumTrimmed) {
+    const {classes} = this.props
 
     return (
       <div>
         <span>Valid values:</span>
-        {valuesToDisplay.map(value => {
+        {values.map(value => {
           return (
             <span key={value} className={classes.enum}>{value}</span>
           )
         })}
-        {isEnumReduced &&
-          <a onClick={this.displayAllEnums}>...</a>
+        {isEnumTrimmed &&
+        <a onClick={this.displayAllEnums}>...</a>
         }
       </div>
     )
   }
 
   displayAllEnums () {
-    this.setState({ enumValues: this.props.enumValues })
+    this.setState(
+      {
+        isEnumTrimmed: false
+      }
+    )
   }
 
   renderDefaultValue (value) {
