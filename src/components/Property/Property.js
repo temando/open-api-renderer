@@ -31,12 +31,12 @@ export default class Property extends PureComponent {
       }
     }
 
-    this.state = {
+    this.setState({
       name,
       enumValues,
       trimmedEnumValues,
       isEnumTrimmed
-    }
+    })
   }
 
   handleClick () {
@@ -52,10 +52,10 @@ export default class Property extends PureComponent {
       classes
     } = this.props
 
-    const name = this.state.name
+    const {name, isEnumTrimmed} = this.state
     let enumValues
 
-    if (this.state.isEnumTrimmed) {
+    if (isEnumTrimmed) {
       enumValues = this.state.trimmedEnumValues
     } else {
       enumValues = this.state.enumValues
@@ -101,7 +101,7 @@ export default class Property extends PureComponent {
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
           {((enumValues && enumValues.length) || defaultValue || description) &&
           <div className={classes.additionalInfo}>
-            {enumValues && this.renderEnumValues(enumValues, this.state.isEnumTrimmed)}
+            {enumValues && this.renderEnumValues(enumValues, isEnumTrimmed)}
             {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
             {description && <div><Description isInline description={description} /></div>}
           </div>
