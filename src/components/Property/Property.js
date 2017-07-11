@@ -13,7 +13,9 @@ export default class Property extends PureComponent {
 
     this.handleClick = this.handleClick.bind(this)
     this.displayAllEnums = this.displayAllEnums.bind(this)
+  }
 
+  componentWillMount () {
     let {name, enumValues} = this.props
     let trimmedEnumValues = enumValues
     let isEnumTrimmed = false
