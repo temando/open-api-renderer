@@ -25,6 +25,9 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
         },
         '&.delete': {
           color: `${text.delete}`
+        },
+        '&.path': {
+          textTransform: 'none'
         }
       }
     },

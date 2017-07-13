@@ -7,13 +7,14 @@ import getUIReadySchema from '../schemaParser'
  * Construct navigation and services ready to be consumed by the UI
  *
  * @param {Object} paths
+ * @param {Array} servers
  * @param {Array} apiSecurity
  * @param {Object} securityDefinitions
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServices ({ paths, apiSecurity = [], securityDefinitions }) {
+function getUINavigationAndServices ({ paths, servers, apiSecurity = [], securityDefinitions }) {
   const { navigationMethods: navigation, servicesMethods } =
-    buildNavigationAndServices(paths, apiSecurity, securityDefinitions)
+    buildNavigationAndServices(paths, servers, apiSecurity, securityDefinitions)
 
   // Need to wrap up the methods to be individual services blocks.
   // This simplifies the component logic.
@@ -33,12 +34,13 @@ function getUINavigationAndServices ({ paths, apiSecurity = [], securityDefiniti
  *
  * @param {Array} tags
  * @param {Object} paths
+ * @param {Array} servers
  * @param {Array} apiSecurity
  * @param {Object} securityDefinitions
  * @param {Function} sortFunc
  * @return {{navigation: [], services: []}}
  */
-function getUINavigationAndServicesByTags ({ tags, paths, apiSecurity = [], securityDefinitions, sortFunc }) {
+function getUINavigationAndServicesByTags ({ tags, paths, servers = [], apiSecurity = [], securityDefinitions, sortFunc }) {
   const navigation = []
   const services = []
   const isFunc = typeof sortFunc === 'function'
@@ -47,7 +49,7 @@ function getUINavigationAndServicesByTags ({ tags, paths, apiSecurity = [], secu
     const tag = tags[i]
     const exclusionFunc = (method) => method.tags.includes(tag) === false
     const { navigationMethods, servicesMethods } =
-      buildNavigationAndServices(paths, apiSecurity, securityDefinitions, exclusionFunc)
+      buildNavigationAndServices(paths, servers, apiSecurity, securityDefinitions, exclusionFunc)
 
     navigation.push({
       title: tag,
@@ -69,12 +71,13 @@ function getUINavigationAndServicesByTags ({ tags, paths, apiSecurity = [], secu
  * the path from being included in the result.
  *
  * @param {Object} paths
+ * @param {Array} servers
  * @param {Array} apiSecurity
  * @param {Object} securityDefinitions
  * @param {Function} exclusionFunc
  * @return {{navigation: [], services: []}}
  */
-function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, exclusionFunc) {
+function buildNavigationAndServices (paths, servers, apiSecurity, securityDefinitions, exclusionFunc = null) {
   const pathIds = Object.keys(paths)
   const navigationMethods = []
   const servicesMethods = []
@@ -100,6 +103,7 @@ function buildNavigationAndServices (paths, apiSecurity, securityDefinitions, ex
       // Construct the full method object
       const servicesMethod = getServicesMethod({
         path: pathId,
+        servers,
         method,
         request: getUIRequest(method.description, method.requestBody),
         params: getUIParameters(method.parameters),
@@ -370,14 +374,16 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
   const apiSecurity = derefOpenApiV3.security || []
+  const servers = derefOpenApiV3.servers || []
+
   const securityDefinitions = getSecurityDefinitions(derefOpenApiV3)
 
   // Construct navigation and services, which differs depending on
   // if the definition utilises tags or not.
   const tags = getTags(paths)
   const {navigation, services} = (tags.length)
-    ? getUINavigationAndServicesByTags({ tags, paths, apiSecurity, securityDefinitions, sortFunc })
-    : getUINavigationAndServices({ paths, apiSecurity, securityDefinitions })
+    ? getUINavigationAndServicesByTags({ tags, paths, servers, apiSecurity, securityDefinitions, sortFunc })
+    : getUINavigationAndServices({ paths, servers, apiSecurity, securityDefinitions })
 
   // If we have top-level tag descriptions, add it to the navigation
   if (derefOpenApiV3.tags) {

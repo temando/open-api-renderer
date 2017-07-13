@@ -34,16 +34,18 @@ export function getNavigationMethod (path, method, tag) {
  * a response for the given `method`.
  *
  * @param {string} path
+ * @param {Array} servers
  * @param {object} method
  * @param {object} request
  * @param {object} params
  * @param {object} responses
  */
-export function getServicesMethod ({ path, method, request, params, responses }) {
+export function getServicesMethod ({path, servers, method, request, params, responses}) {
   const servicesMethod = {
     type: method.type,
     title: method.summary,
     link: getPermalink(path, method.type),
+    path,
     request,
     responses
   }
@@ -54,6 +56,16 @@ export function getServicesMethod ({ path, method, request, params, responses })
 
   if (params) {
     servicesMethod.parameters = params
+  }
+
+  if (servers && servers.length > 0) {
+    servicesMethod.paths = servers.map(server => {
+      return {
+        url: server.url + path,
+        description: server.description
+      }
+
+    })
   }
 
   return servicesMethod
