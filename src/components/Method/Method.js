@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import ScrollableAnchor from 'react-scrollable-anchor'
 import BodyContent from '../BodyContent/BodyContent'
 import Description from '../Description/Description'
@@ -20,8 +19,8 @@ export default class Method extends PureComponent {
         <div className={classes.method}>
           <h3>
             {title}
-            <MethodPath type={type} path={path} paths={paths} classes={classes}/>
           </h3>
+          <MethodPath type={type} path={path} paths={paths} />
           <div>
             {description && <Description description={description} />}
             {parameters && <Parameters parameters={parameters} initialSchemaTreeDepth={initialSchemaTreeDepth} />}
