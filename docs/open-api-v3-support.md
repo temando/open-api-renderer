@@ -26,7 +26,7 @@ This document outlines this project's support for visualising the [Open API V3][
 
 - [ ] openapi
 - [x] [info](#info-object)
-- [ ] [servers](#servers-object)
+- [x] [servers](#servers-object)
 - [x] [paths](#paths-object)
 - [ ] [components](#components-object)
 - [x] [security](#security-requirement-object)
@@ -251,7 +251,7 @@ The OpenAPI specification also supports several additional properties from JSON 
 - [ ] not
 - [x] items
 - [x] properties
-- [ ] additionalProperties
+- [x] additionalProperties
 - [x] description
 - [x] format
 - [x] default
