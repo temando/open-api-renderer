@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 
 export const styles = createSheet(({borders, text, sizes}) => ({
-  server: {
+  endpoint: {
     lineHeight: '200%'
   },
   readonly: {

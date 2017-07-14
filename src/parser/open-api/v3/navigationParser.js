@@ -59,12 +59,16 @@ export function getServicesMethod ({path, servers, method, request, params, resp
   }
 
   if (servers && servers.length > 0) {
-    servicesMethod.paths = servers.map(server => {
-      return {
-        url: server.url + path,
-        description: server.description
+    servicesMethod.endpoints = servers.map(server => {
+      const endpoint = {
+        url: server.url + path
       }
 
+      if (server.description) {
+        endpoint.description = server.description
+      }
+
+      return endpoint
     })
   }
 

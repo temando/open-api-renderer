@@ -2,7 +2,8 @@
   "openapi": "3.0.0-RC0",
   "servers": [
     {
-      "url": "https://api.temando.io/v1"
+      "url": "https://api.temando.io/v1",
+      "description": "default server"
     }
   ],
   "info": {

@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Servers from '../Servers/Servers'
+import Endpoints from '../Endpoints/Endpoints'
 import Indicator from '../Indicator/Indicator'
-import { styles } from './MethodPath.styles'
+import { styles } from './MethodEndpoints.styles'
 
 @styles
-export default class MethodPath extends PureComponent {
+export default class MethodEndpoints extends PureComponent {
   constructor (props) {
     super(props)
 
@@ -18,7 +18,7 @@ export default class MethodPath extends PureComponent {
   }
 
   render () {
-    const {type, path, paths, classes} = this.props
+    const {type, path, endpoints, classes} = this.props
 
     let indicatorDirection = 'downn'
     if (this.state.isServersExpanded) {
@@ -27,16 +27,16 @@ export default class MethodPath extends PureComponent {
 
     return (
       <div className={classNames(classes.methodPath)}>
-        <div  onClick={this.onClickPath}>
+        <div onClick={this.onClickPath}>
           <span className={classNames(type, 'methodType')}>{type}</span>
           <span className='path'>{path}</span>
           <Indicator direction={indicatorDirection} />
         </div>
-        {paths &&
+        {endpoints &&
           <div className={classNames(classes.methodServers, {
             [classes.expanded]: this.state.isServersExpanded
           })}>
-            <Servers servers={paths} />
+            <Endpoints endpoints={endpoints} />
           </div>
         }
       </div>
@@ -50,12 +50,12 @@ export default class MethodPath extends PureComponent {
   }
 }
 
-MethodPath.propTypes = {
+MethodEndpoints.propTypes = {
   type: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  paths: PropTypes.arrayOf(PropTypes.shape({
+  endpoints: PropTypes.arrayOf(PropTypes.shape({
     url: PropTypes.string.isRequired,
-    description: PropTypes.string,
+    description: PropTypes.string
   })),
   classes: PropTypes.object
 }

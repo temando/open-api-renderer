@@ -22,6 +22,7 @@
           "type": "get",
           "title": "List API versions",
           "link": "//get",
+          "path": "/",
           "request": {},
           "responses": [
             {
@@ -43,6 +44,7 @@
           "type": "get",
           "title": "Show API version details",
           "link": "/v2/get",
+          "path": "/v2",
           "request": {},
           "responses": [
             {

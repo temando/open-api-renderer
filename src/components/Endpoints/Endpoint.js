@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { styles } from  './Server.style'
+import { styles } from './Endpoint.style'
 
 @styles
-export default class Server extends PureComponent {
+export default class Endpoint extends PureComponent {
   constructor (props) {
     super(props)
 
@@ -14,7 +14,7 @@ export default class Server extends PureComponent {
     const {url, description, classes} = this.props
 
     return (
-      <div className={classes.server}>
+      <div className={classes.endpoint}>
         {description && <div><label>{description}</label></div>}
         <input className={classes.readonly} value={url} onFocus={this.handleFocus} />
       </div>
@@ -26,7 +26,7 @@ export default class Server extends PureComponent {
   }
 }
 
-Server.propTypes = {
+Endpoint.propTypes = {
   url: PropTypes.string,
   description: PropTypes.string,
   classes: PropTypes.object
