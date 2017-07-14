@@ -2,7 +2,7 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ borders, sizes }) => ({
   'header': {
-    padding: '0 20px',
+    padding: '0 2rem',
 
     '& h1': {
       marginBottom: '.5rem'

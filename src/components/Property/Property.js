@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+
+import Docs from '../Docs/Docs'
 import Description from '../Description/Description'
 import Indicator from '../Indicator/Indicator'
 import PropertyConstraints from './PropertyConstraints/PropertyConstraints'
@@ -47,9 +49,8 @@ export default class Property extends PureComponent {
 
   render () {
     const {
-      type, title, description, constraints, isRequired,
-      defaultValue, onClick, isOpen, isLast, attributes,
-      classes
+      type, title, description, constraints, docs, defaultValue, attributes,
+      isRequired, isOpen, isLast, onClick, classes
     } = this.props
 
     const {name, isEnumTrimmed} = this.state
@@ -104,6 +105,7 @@ export default class Property extends PureComponent {
             {enumValues && this.renderEnumValues(enumValues, isEnumTrimmed)}
             {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}
             {description && <div><Description isInline description={description} /></div>}
+            {docs && <Docs {...docs} />}
           </div>
           }
         </td>

@@ -31,7 +31,7 @@ This document outlines this project's support for visualising the [Open API V3][
 - [ ] [components](#components-object)
 - [x] [security](#security-requirement-object)
 - [x] [tags](#tag-object)
-- [ ] [externalDocs](#external-documentation-object)
+- [x] [externalDocs](#external-documentation-object)
 
 ### [Info](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#info-object) object
 
@@ -104,7 +104,7 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 - [x] tags
 - [x] summary
 - [x] description
-- [ ] [externalDocs](#external-documentation-object)
+- [x] [externalDocs](#external-documentation-object)
 - [ ] operationId
 - [x] [parameters](#parameter-object)
 - [x] [requestBody](#request-body-object)
@@ -116,8 +116,8 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 
 ### [External Documentation](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#external-documentation-object) object
 
-- [ ] description
-- [ ] url
+- [x] description
+- [x] url
 
 ### [Parameter](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#parameter-object) object
 
@@ -209,7 +209,7 @@ See [parameter](#parameter-object) object.
 
 - [x] name
 - [x] description
-- [ ] [externalDocs](#external-documentation-object)
+- [x] [externalDocs](#external-documentation-object)
 
 ### [Reference](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#reference-object) object
 
@@ -263,7 +263,7 @@ The OpenAPI specification also supports several additional properties from JSON 
 - [ ] readOnly
 - [ ] writeOnly
 - [ ] [xml](#xml-object)
-- [ ] [externalDocs](#external-documentation-object)
+- [x] [externalDocs](#external-documentation-object)
 - [ ] example
 - [ ] deprecated
 

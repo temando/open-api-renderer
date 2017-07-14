@@ -3,10 +3,8 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ text }) => ({
   'description': {
-    '&:not($inline)': {
-      color: `${c(text.default).lighten(0.3)}`,
-      fontSize: '0.9em'
-    },
+    color: `${c(text.default).lighten(0.3)}`,
+    fontSize: '1rem',
 
     '&$inline': {
       '&, & p': {
@@ -17,5 +15,7 @@ export const styles = createSheet(({ text }) => ({
       margin: '.5rem 0'
     }
   },
-  'inline': {}
+  'inline': {
+    paddingRight: '.2rem'
+  }
 }))

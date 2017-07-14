@@ -197,8 +197,11 @@ function getUIParametersForLocation (parameters, location) {
   const resultArray = parameters.filter(parameter => (parameter.in === location)).map(parameter => {
     const uiParameter = {
       name: parameter.name,
-      description: parameter.description,
       required: parameter.required
+    }
+
+    if (parameter.description && parameter.description !== '') {
+      uiParameter.description = parameter.description
     }
 
     // TODO: We set the type to be an array because the Property component
@@ -230,7 +233,7 @@ function getUIParametersForLocation (parameters, location) {
 function getUIRequest (description, requestBody = null) {
   const uiRequest = {}
 
-  if (description) {
+  if (description && description !== '') {
     uiRequest.description = description
   }
 
@@ -256,10 +259,12 @@ function getUIResponses (responses) {
 
   for (const statusCode in responses) {
     const response = responses[statusCode]
-
     const uiResponse = {
-      code: statusCode,
-      description: response.description
+      code: statusCode
+    }
+
+    if (response.description && response.description !== '') {
+      uiResponse.description = response.description
     }
 
     const mediaType = getMediaType(response.content)
@@ -345,12 +350,12 @@ function addTagDetailsToNavigation (navigation, tagDefinitions) {
       navGroup.handle = navGroup.title
       navGroup.title = tagDefinition.name
 
-      if (tagDefinition.description) {
+      if (tagDefinition.description && tagDefinition.description !== '') {
         navGroup.description = tagDefinition.description
       }
 
       if (tagDefinition.externalDocs) {
-        navGroup.externalDocs = tagDefinition.externalDocs
+        navGroup.docs = tagDefinition.externalDocs
       }
     }
   }
@@ -395,6 +400,10 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   delete infoObj.title
   delete infoObj.version
   delete infoObj.description
+
+  if (derefOpenApiV3.externalDocs) {
+    infoObj.docs = derefOpenApiV3.externalDocs
+  }
 
   const definition = {
     title: info.title,

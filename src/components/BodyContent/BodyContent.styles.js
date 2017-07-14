@@ -5,14 +5,14 @@ export const styles = createSheet(({ text, backgrounds, sizes }) => ({
   'bodyContent': {
     display: 'table',
     width: '100%',
-    padding: '10px',
+    padding: '1rem 0',
     boxSizing: 'border-box'
   },
 
   'tabs': {
     '& > div': {
       display: 'inline-block',
-      padding: '10px 20px',
+      padding: '1rem 2rem',
       cursor: 'pointer',
 
       '&:not($active)': {
@@ -23,12 +23,6 @@ export const styles = createSheet(({ text, backgrounds, sizes }) => ({
 
   'active': {
     backgroundColor: `${backgrounds.schema}`,
-    borderRadius: '10px 10px 0 0'
-  },
-
-  [`@media (max-width: ${sizes.breakpoint})`]: {
-    'bodyContent': {
-      padding: '10px 0'
-    }
+    borderRadius: '1rem 1rem 0 0'
   }
 }))

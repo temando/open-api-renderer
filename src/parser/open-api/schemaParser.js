@@ -55,6 +55,10 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
     outputNode.defaultValue = propertyNode.default
   }
 
+  if (propertyNode.externalDocs) {
+    outputNode.docs = propertyNode.externalDocs
+  }
+
   if (propertyNode.additionalProperties === false) {
     outputNode.additionalProperties = false
   }

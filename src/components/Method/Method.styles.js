@@ -5,7 +5,7 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
   method: {
     borderBottom: `1px solid ${borders.default}`,
     margin: '0 1rem 2rem 0',
-    padding: '1rem 2rem',
+    padding: '1rem 0',
 
     '& > h3': {
       display: 'inline-block',
