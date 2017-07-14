@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-- Lincoln can now display `additionalProperties`
+### Added
+
+- [#91](https://github.com/temando/open-api-renderer/issues/91) Lincoln learnt how to display `additionalProperties`.
+- [#157](https://github.com/temando/open-api-renderer/issues/157) Lincoln learnt how to display `servers` and path information.
+- [#112](https://github.com/temando/open-api-renderer/issues/112) Lincoln learnt how to display `externalDocs`.
 
 ## [v0.0.6] - 2017-07-07
 
