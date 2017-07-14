@@ -15,7 +15,7 @@ export default class Endpoint extends PureComponent {
 
     return (
       <div className={classes.endpoint}>
-        {description && <div><label>{description}</label></div>}
+        {description && <div>{description}</div>}
         <input className={classes.readonly} defaultValue={url} readOnly onFocus={this.handleFocus} />
       </div>
     )

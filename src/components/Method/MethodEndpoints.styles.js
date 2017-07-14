@@ -1,11 +1,16 @@
 import { createSheet } from '../../theme'
 
 export const styles = createSheet(({borders, text, sizes}) => ({
-  methodPath: {
+  methodEndpoints: {
     display: 'inline-block',
     fontFamily: 'monospace',
-    marginLeft: '30px',
+    fontSize: '1.2rem',
+    margin: '0 0 .5rem',
     position: 'relative',
+
+    '&:hover': {
+      textDecoration: 'underline'
+    },
 
     '& .methodType': {
       textTransform: 'uppercase',
@@ -31,9 +36,19 @@ export const styles = createSheet(({borders, text, sizes}) => ({
     display: 'none'
   },
   expanded: {
-    // outline: '1px solid red',
     display: 'block',
     position: 'absolute',
-    backgroundColor: 'white'
+    top: '1.6rem',
+    left: '0',
+    zIndex: '5'
+  },
+
+  [`@media (max-width: ${sizes.breakpoint})`]: {
+    'methodEndpoints': {
+      display: 'block'
+    },
+    expanded: {
+      width: 'calc(100% - 1rem)'
+    }
   }
 }))

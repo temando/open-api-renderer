@@ -9,7 +9,7 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
 
     '& > h3': {
       display: 'inline-block',
-      marginBottom: '15px'
+      margin: '0 1.5rem .5rem 0'
     },
 
     '& h4': {
@@ -17,7 +17,7 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
       textTransform: 'uppercase',
       color: `${c(text.default).lighten(0.5)}`,
       borderBottom: `1px solid ${borders.default}`,
-      marginTop: '20px'
+      marginTop: '1rem'
     }
   },
 

@@ -26,7 +26,7 @@ export default class MethodEndpoints extends PureComponent {
     }
 
     return (
-      <div className={classNames(classes.methodPath)}>
+      <div className={classNames(classes.methodEndpoints)}>
         <div onClick={this.onClickPath}>
           <span className={classNames(type, 'methodType')}>{type}</span>
           <span className='path'>{path}</span>

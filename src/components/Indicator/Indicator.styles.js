@@ -12,6 +12,10 @@ export const styles = createSheet(({ shades }) => ({
       marginLeft: '1em'
     },
 
+    '&:hover': {
+      cursor: 'pointer'
+    },
+
     '&$up img': { transform: 'rotate(180deg)' },
     '&$right img': { transform: 'rotate(-90deg)' }
   },
