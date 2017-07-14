@@ -55,8 +55,8 @@ This document outlines this project's support for visualising the [Open API V3][
 
 ### [Server](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#server-object) object
 
-- [ ] url
-- [ ] description
+- [x] url
+- [x] description
 - [ ] [variables](#server-variable-object)
 
 ### [Server Variable](https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/3.0.md#server-variable-object) object
