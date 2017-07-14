@@ -186,6 +186,10 @@ Property.propTypes = {
     pattern: PropTypes.string,
     uniqueItems: PropTypes.bool
   }),
+  docs: PropTypes.shape({
+    description: PropTypes.string,
+    url: PropTypes.string.isRequired
+  }),
   enumValues: PropTypes.array,
   defaultValue: PropTypes.any,
   isRequired: PropTypes.bool,
