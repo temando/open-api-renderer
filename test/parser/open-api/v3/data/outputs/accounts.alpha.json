@@ -20,45 +20,15 @@
       ]
     }
   ],
-  "security": {},
   "services": [
     {
       "title": "Account",
       "methods": [
         {
           "type": "get",
-          "link": "/accounts/{id}/users/get",
           "title": "Get all the users of a given account",
-          "parameters": {
-            "path": [
-              {
-                "name": "id",
-                "description": "Id of the account",
-                "required": true,
-                "type": [
-                  "string"
-                ]
-              }
-            ],
-            "query": [
-              {
-                "name": "offset",
-                "description": "Offset for the result set",
-                "required": true,
-                "type": [
-                  "string"
-                ]
-              },
-              {
-                "name": "limit",
-                "description": "Limit for the result set",
-                "required": true,
-                "type": [
-                  "string"
-                ]
-              }
-            ]
-          },
+          "link": "/accounts/{id}/users/get",
+          "path": "/accounts/{id}/users",
           "request": {
             "description": "Get all the users of a given account"
           },
@@ -94,11 +64,11 @@
                     },
                     {
                       "name": "attributes",
-                      "additionalProperties": false,
                       "type": [
                         "object"
                       ],
                       "required": true,
+                      "additionalProperties": false,
                       "properties": [
                         {
                           "name": "firstName",
@@ -366,12 +336,7 @@
               ]
             }
           ],
-          "description": "Get all the users of a given account"
-        },
-        {
-          "type": "post",
-          "link": "/accounts/{id}/users/post",
-          "title": "Create a user under the given account",
+          "description": "Get all the users of a given account",
           "parameters": {
             "path": [
               {
@@ -382,8 +347,38 @@
                   "string"
                 ]
               }
+            ],
+            "query": [
+              {
+                "name": "offset",
+                "description": "Offset for the result set",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              },
+              {
+                "name": "limit",
+                "description": "Limit for the result set",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              }
             ]
           },
+          "endpoints": [
+            {
+              "url": "https://api.temando.io/v1/accounts/{id}/users",
+              "description": "default server"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "title": "Create a user under the given account",
+          "link": "/accounts/{id}/users/post",
+          "path": "/accounts/{id}/users",
           "request": {
             "description": "Create a user under the given account",
             "schema": [
@@ -406,11 +401,11 @@
                   },
                   {
                     "name": "attributes",
-                    "additionalProperties": false,
                     "type": [
                       "object"
                     ],
                     "required": true,
+                    "additionalProperties": false,
                     "properties": [
                       {
                         "name": "firstName",
@@ -807,9 +802,28 @@
               ]
             }
           ],
-          "description": "Create a user under the given account"
+          "description": "Create a user under the given account",
+          "parameters": {
+            "path": [
+              {
+                "name": "id",
+                "description": "Id of the account",
+                "required": true,
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          },
+          "endpoints": [
+            {
+              "url": "https://api.temando.io/v1/accounts/{id}/users",
+              "description": "default server"
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "security": {}
 }

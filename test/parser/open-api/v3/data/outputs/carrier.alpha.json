@@ -6,26 +6,26 @@
   "navigation": [
     {
       "title": "Carriers",
-      "handle": "Carriers",
-      "description": "Access to Carriers",
       "methods": [
         {
           "type": "get",
           "title": "Returns a list of integrations available for registration",
           "link": "/carriers/get"
         }
-      ]
+      ],
+      "handle": "Carriers",
+      "description": "Access to Carriers"
     }
   ],
-  "security": {},
   "services": [
     {
       "title": "Carriers",
       "methods": [
         {
           "type": "get",
-          "link": "/carriers/get",
           "title": "Returns a list of integrations available for registration",
+          "link": "/carriers/get",
+          "path": "/carriers",
           "request": {
             "description": "Returns a list of integrations available for registration"
           },
@@ -296,9 +296,15 @@
                 "defaultValue": false
               }
             ]
-          }
+          },
+          "endpoints": [
+            {
+              "url": "https://api.temando.com/v1/carriers"
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "security": {}
 }

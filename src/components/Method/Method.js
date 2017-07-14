@@ -1,26 +1,26 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import ScrollableAnchor from 'react-scrollable-anchor'
 import BodyContent from '../BodyContent/BodyContent'
 import Description from '../Description/Description'
 import Parameters from '../Parameters/Parameters'
 import Response from '../Response/Response'
+import MethodEndpoints from './MethodEndpoints'
 import { styles } from './Method.styles'
 
 @styles
 export default class Method extends PureComponent {
   render () {
-    const { method, classes, initialSchemaTreeDepth } = this.props
-    const { title, type, description, parameters, request, responses } = method
+    const {method, classes, initialSchemaTreeDepth} = this.props
+    const {title, type, path, endpoints, description, parameters, request, responses} = method
 
     return (
       <ScrollableAnchor id={method.link}>
         <div className={classes.method}>
           <h3>
             {title}
-            <span className={classNames(classes.type, `${method.type}`)}>{type}</span>
           </h3>
+          <MethodEndpoints type={type} path={path} endpoints={endpoints} />
           <div>
             {description && <Description description={description} />}
             {parameters && <Parameters parameters={parameters} initialSchemaTreeDepth={initialSchemaTreeDepth} />}
@@ -33,7 +33,7 @@ export default class Method extends PureComponent {
   }
 
   renderRequest (request, initialSchemaTreeDepth) {
-    const { schema, examples } = request
+    const {schema, examples} = request
 
     if (!schema) {
       return null
@@ -65,7 +65,9 @@ Method.propTypes = {
     description: PropTypes.string,
     parameters: PropTypes.object,
     request: PropTypes.object,
-    responses: PropTypes.array
+    responses: PropTypes.array,
+    path: PropTypes.string,
+    endpoints: PropTypes.array
   }),
   classes: PropTypes.object,
   initialSchemaTreeDepth: PropTypes.number

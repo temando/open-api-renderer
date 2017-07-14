@@ -8,25 +8,8 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
     padding: '1rem 2rem',
 
     '& > h3': {
-      marginBottom: '15px',
-      '& > span': {
-        fontFamily: 'monospace',
-        textTransform: 'uppercase',
-        marginLeft: '10px',
-
-        '&.get': {
-          color: `${text.get}`
-        },
-        '&.post': {
-          color: `${text.post}`
-        },
-        '&.put': {
-          color: `${text.put}`
-        },
-        '&.delete': {
-          color: `${text.delete}`
-        }
-      }
+      display: 'inline-block',
+      marginBottom: '15px'
     },
 
     '& h4': {
