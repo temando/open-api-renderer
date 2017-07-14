@@ -205,6 +205,95 @@ exports[`<Header /> renders contact information (url) 1`] = `
 </header>
 `;
 
+exports[`<Header /> renders description 1`] = `
+<header
+  className={undefined}
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className={undefined}
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+  </dl>
+  <div
+    className=""
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Hello world</p>
+      ",
+      }
+    }
+  />
+  <nav>
+    <a
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+</header>
+`;
+
+exports[`<Header /> renders docs 1`] = `
+<header
+  className={undefined}
+  id="header"
+>
+  <h1>
+    Swagger Petstore
+  </h1>
+  <dl
+    className={undefined}
+  >
+    <dt>
+      Version
+    </dt>
+    <dd>
+      1.0.0
+    </dd>
+  </dl>
+  <nav>
+    <a
+      href="https://temando.github.io/open-api-renderer/petstore-open-api-v3.0.0-RC1.json"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Download OpenAPI definition
+    </a>
+  </nav>
+  <div
+    className=""
+  >
+    <div
+      className=""
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Hello</p>
+        ",
+        }
+      }
+    />
+    <a
+      href="http://example.org"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      More information »
+    </a>
+  </div>
+</header>
+`;
+
 exports[`<Header /> renders header with minimum props 1`] = `
 <header
   className={undefined}

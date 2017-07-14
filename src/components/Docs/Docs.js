@@ -14,7 +14,7 @@ export default class Docs extends PureComponent {
     return (
       <div className={classNames(classes.docs)}>
         {description && <Description description={description} />}
-        <ExternalLink href={url}>More information</ExternalLink>
+        <ExternalLink href={url}>More information »</ExternalLink>
       </div>
     )
   }

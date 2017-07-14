@@ -109,4 +109,26 @@ describe('<Header />', () => {
 
     expect(tree).toMatchSnapshot()
   })
+
+  it('renders description', () => {
+    const tree = renderer.create(
+      <Header title={title} version={version} definitionUrl={definitionUrl} description='Hello world' />
+    )
+
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders docs', () => {
+    const info = {
+      docs: {
+        description: 'Hello',
+        url: 'http://example.org'
+      }
+    }
+    const tree = renderer.create(
+      <Header title={title} version={version} definitionUrl={definitionUrl} info={info} />
+    )
+
+    expect(tree).toMatchSnapshot()
+  })
 })

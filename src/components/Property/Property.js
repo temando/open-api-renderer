@@ -100,7 +100,7 @@ export default class Property extends PureComponent {
             <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
           <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
-          {((enumValues && enumValues.length) || defaultValue || description) &&
+          {((enumValues && enumValues.length) || defaultValue || description || docs) &&
           <div className={classes.additionalInfo}>
             {enumValues && this.renderEnumValues(enumValues, isEnumTrimmed)}
             {defaultValue !== undefined && this.renderDefaultValue(defaultValue)}

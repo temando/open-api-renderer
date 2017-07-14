@@ -81,4 +81,21 @@ describe('<Property />', () => {
 
     expect(tree).toMatchSnapshot()
   })
+
+  it('can render a property with docs', () => {
+    const docs = {
+      description: 'Hello',
+      url: 'http://example.org'
+    }
+
+    const tree = renderer.create(
+      <Property
+        name={'value'}
+        docs={docs}
+        type={['string']}
+        isRequired={false} />
+    )
+
+    expect(tree).toMatchSnapshot()
+  })
 })
