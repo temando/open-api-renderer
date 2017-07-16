@@ -200,7 +200,7 @@ function getUIParametersForLocation (parameters, location) {
       required: parameter.required
     }
 
-    if (parameter.description && parameter.description !== '') {
+    if (parameter.description) {
       uiParameter.description = parameter.description
     }
 
@@ -233,7 +233,7 @@ function getUIParametersForLocation (parameters, location) {
 function getUIRequest (description, requestBody = null) {
   const uiRequest = {}
 
-  if (description && description !== '') {
+  if (description) {
     uiRequest.description = description
   }
 
@@ -263,7 +263,7 @@ function getUIResponses (responses) {
       code: statusCode
     }
 
-    if (response.description && response.description !== '') {
+    if (response.description) {
       uiResponse.description = response.description
     }
 
@@ -350,7 +350,7 @@ function addTagDetailsToNavigation (navigation, tagDefinitions) {
       navGroup.handle = navGroup.title
       navGroup.title = tagDefinition.name
 
-      if (tagDefinition.description && tagDefinition.description !== '') {
+      if (tagDefinition.description) {
         navGroup.description = tagDefinition.description
       }
 
