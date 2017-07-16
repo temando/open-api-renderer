@@ -77,6 +77,7 @@ export default class BodySchema extends Component {
         defaultValue={property.defaultValue}
         constraints={property.constraints}
         attributes={property.attributes}
+        docs={property.docs}
         onClick={hasSubset ? this.onClick : undefined}
         isRequired={property.required}
         isOpen={isOpen}

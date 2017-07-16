@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Docs /> renders docs 1`] = `
+<div
+  className=""
+>
+  <a
+    href="http://www.google.com"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    More information »
+  </a>
+</div>
+`;
+
+exports[`<Docs /> renders docs with description 1`] = `
+<div
+  className=""
+>
+  <div
+    className=""
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Hello world</p>
+      ",
+      }
+    }
+  />
+  <a
+    href="http://www.google.com"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    More information »
+  </a>
+</div>
+`;

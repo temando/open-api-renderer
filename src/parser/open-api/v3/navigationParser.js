@@ -54,6 +54,10 @@ export function getServicesMethod ({path, servers, method, request, params, resp
     servicesMethod.description = method.description
   }
 
+  if (method.externalDocs) {
+    servicesMethod.docs = method.externalDocs
+  }
+
   if (params) {
     servicesMethod.parameters = params
   }

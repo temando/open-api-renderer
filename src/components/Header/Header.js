@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
+import Docs from '../Docs/Docs'
 import Description from '../Description/Description'
 import ExternalLink from '../ExternalLink/ExternalLink'
 import { styles } from './Header.styles'
@@ -28,6 +29,8 @@ export default class Header extends PureComponent {
           {info && info.termsOfService &&
           <ExternalLink href={info.termsOfService}>Terms of Service</ExternalLink>}
         </nav>
+
+        {info && info.docs && <Docs {...info.docs} />}
       </header>
     )
   }
@@ -88,7 +91,11 @@ Header.propTypes = {
   info: PropTypes.shape({
     contact: PropTypes.object,
     license: PropTypes.object,
-    termsOfService: PropTypes.string
+    termsOfService: PropTypes.string,
+    docs: PropTypes.shape({
+      description: PropTypes.string,
+      url: PropTypes.string.isRequired
+    })
   }),
   definitionUrl: PropTypes.string,
   classes: PropTypes.object

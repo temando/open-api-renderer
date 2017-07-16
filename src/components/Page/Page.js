@@ -48,9 +48,17 @@ export default class Page extends Component {
           />
           {security && this.renderSecurity(security)}
           <ContentContainer>
-            {services && services.map(
-              (service) => <ServiceContainer key={service.title} service={service} initialSchemaTreeDepth={initialSchemaTreeDepth} />
-            )}
+            {services && services.map((service) => {
+              const serviceWithDocs = Object.assign({}, service, this.findTagDocs(service.title, navigation))
+
+              return (
+                <ServiceContainer
+                  key={service.title}
+                  service={serviceWithDocs}
+                  initialSchemaTreeDepth={initialSchemaTreeDepth}
+                />
+              )
+            })}
           </ContentContainer>
         </div>
       </div>
@@ -66,6 +74,21 @@ export default class Page extends Component {
         )}
       </ContentContainer>
     )
+  }
+
+  findTagDocs (tagHandle, navigation) {
+    // Find navigation tag that matches given `tagHandle`, and if has docs.
+    // Note: tag.methods is a way to determine if the navigation has tags at all.
+    const navigationTag = navigation.find((tag) => (tag.methods && tag.handle === tagHandle && tag.docs))
+
+    // No tag, no additional docs.
+    if (!navigationTag) {
+      return {}
+    }
+
+    return {
+      docs: navigationTag.docs
+    }
   }
 
   onToggleNavigation () {

@@ -10,6 +10,10 @@
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "docs": {
+      "description": "Find out more about Swagger",
+      "url": "http://swagger.io"
     }
   },
   "navigation": [
@@ -59,7 +63,7 @@
       ],
       "handle": "pet",
       "description": "Everything about your Pets",
-      "externalDocs": {
+      "docs": {
         "description": "Find out more",
         "url": "http://swagger.io"
       }
@@ -137,7 +141,7 @@
       ],
       "handle": "user",
       "description": "Operations about user",
-      "externalDocs": {
+      "docs": {
         "description": "Find out more about our store",
         "url": "http://swagger.io"
       }
@@ -162,6 +166,9 @@
                 "required": false,
                 "constraints": {
                   "format": "int64"
+                },
+                "docs": {
+                  "url": "http://petstore.swagger.io/v2"
                 }
               },
               {
@@ -293,6 +300,9 @@
                 "required": false,
                 "constraints": {
                   "format": "int64"
+                },
+                "docs": {
+                  "url": "http://petstore.swagger.io/v2"
                 }
               },
               {
@@ -445,6 +455,9 @@
                       "required": false,
                       "constraints": {
                         "format": "int64"
+                      },
+                      "docs": {
+                        "url": "http://petstore.swagger.io/v2"
                       }
                     },
                     {
@@ -602,6 +615,9 @@
                       "required": false,
                       "constraints": {
                         "format": "int64"
+                      },
+                      "docs": {
+                        "url": "http://petstore.swagger.io/v2"
                       }
                     },
                     {
@@ -736,6 +752,10 @@
           "title": "Find pet by ID",
           "link": "/pet/{petId}/get",
           "path": "/pet/{petId}",
+          "docs": {
+            "description": "Find out more about our store",
+            "url": "http://swagger.io"
+          },
           "request": {
             "description": "Returns a single pet"
           },
@@ -752,6 +772,9 @@
                   "required": false,
                   "constraints": {
                     "format": "int64"
+                  },
+                  "docs": {
+                    "url": "http://petstore.swagger.io/v2"
                   }
                 },
                 {

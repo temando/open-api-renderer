@@ -232,6 +232,10 @@
         "summary": "Find pet by ID",
         "description": "Returns a single pet",
         "operationId": "getPetById",
+        "externalDocs": {
+          "description": "Find out more about our store",
+          "url": "http://swagger.io"
+        },
         "parameters": [
           {
             "name": "petId",
@@ -946,7 +950,10 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "externalDocs": {
+              "url": "http://petstore.swagger.io/v2"
+            }
           },
           "category": {
             "$ref": "#/components/schemas/Category"

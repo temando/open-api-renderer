@@ -2,19 +2,13 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ sizes }) => ({
   'contentContainer': {
-    padding: '20px 0',
-
-    '& h2': {
-      paddingLeft: '2rem'
-    }
+    padding: '0.5rem 2rem',
+    margin: '1rem 0'
   },
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
     'contentContainer': {
-      padding: '10px 0',
-
       '& h2': {
-        paddingLeft: '1rem',
         margin: 0
       }
     }
