@@ -34,6 +34,10 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
       borderLeft: `1px solid ${borders.default}`
     },
 
+    [`& > td > table`]: {
+      marginLeft: '12px'
+    },
+
     [`.${property.classes.last} + & > td`]: {
       borderLeft: 'none'
     }
@@ -43,13 +47,14 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
     fontFamily: 'monospace',
     padding: '5px 10px'
   },
+
   'hasTabs': {
     borderTopLeftRadius: 0
   },
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
     'bodySchema': {
-      paddingRight: '10px',
+      paddingRight: '22px',
       fontSize: '0.8rem'
     }
   },
