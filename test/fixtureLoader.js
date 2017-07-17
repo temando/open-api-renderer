@@ -1,4 +1,5 @@
-import { readdirSync, readJSONSync } from 'fs-extra'
+import { readdirSync, readFileSync } from 'fs-extra'
+import YAML from 'js-yaml'
 
 /**
  * Given the path to the fixture data, and then the expected results,
@@ -15,8 +16,8 @@ export function getTestsFromFixtures (inputsDir, expectationsDir) {
 
   dataFiles.map(fileName => {
     try {
-      const inputData = readJSONSync(`${inputsDir}/${fileName}`)
-      const outputData = readJSONSync(`${expectationsDir}/${fileName}`)
+      const inputData = YAML.safeLoad(readFileSync(`${inputsDir}/${fileName}`, 'utf8'));
+      const outputData = YAML.safeLoad(readFileSync(`${expectationsDir}/${fileName}`, 'utf8'));
 
       if (inputData && outputData) {
         tests.push({
