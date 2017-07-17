@@ -16,8 +16,8 @@ export function getTestsFromFixtures (inputsDir, expectationsDir) {
 
   dataFiles.map(fileName => {
     try {
-      const inputData = YAML.safeLoad(readFileSync(`${inputsDir}/${fileName}`, 'utf8'));
-      const outputData = YAML.safeLoad(readFileSync(`${expectationsDir}/${fileName}`, 'utf8'));
+      const inputData = YAML.safeLoad(readFileSync(`${inputsDir}/${fileName}`, 'utf8'))
+      const outputData = YAML.safeLoad(readFileSync(`${expectationsDir}/${fileName}`, 'utf8'))
 
       if (inputData && outputData) {
         tests.push({

@@ -13,15 +13,20 @@ import toPath from 'lodash/toPath'
  */
 function getOneOfPaths (obj) {
   let paths = []
+  const checkedNodes = new Map()
   let walk = function (obj, path = '') {
     Object.keys(obj).forEach((key) => {
       // Handle if `oneOf` is found at the first level.
       const currentPath = (path === '') ? key : `${path}.${key}`
+      const item = obj[key]
 
       if (key === 'oneOf') {
         paths.push(currentPath)
-      } else if (typeof obj[key] === 'object' || Array.isArray(obj[key])) {
-        walk(obj[key], currentPath)
+      } else if (typeof item === 'object' || Array.isArray(item)) {
+        if (!checkedNodes.has(item)) {
+          checkedNodes.set(item, true)
+          walk(obj[key], currentPath)
+        }
       }
     })
   }
@@ -40,7 +45,7 @@ function getOneOfPaths (obj) {
  * @return {object[]}
  */
 function getStates (paths, obj) {
-  let states = [ ...getStateAt(paths[0], obj) ]
+  let states = [...getStateAt(paths[0], obj)]
 
   for (let i = 1, pathsLength = paths.length; i < pathsLength; i++) {
     let state = states.shift()
@@ -118,7 +123,7 @@ function getParentPath (path) {
 function merge (obj, state) {
   delete obj.oneOf
 
-  return { ...obj, ...state }
+  return {...obj, ...state}
 }
 
 /**

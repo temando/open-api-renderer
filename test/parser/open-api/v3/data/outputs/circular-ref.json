@@ -1,0 +1,74 @@
+{
+  "title": "BBC iPlayer Business Layer",
+  "version": "1.0",
+  "description": "The definitive iPlayer API.",
+  "info": {
+    "contact": {
+      "email": "ibl-team@lists.forge.bbc.co.uk",
+      "name": "Open iBL Project",
+      "url": "http://developer.bbc.co.uk/"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "navigation": [
+    {
+      "type": "get",
+      "title": "Get categories",
+      "link": "/categories/get"
+    }
+  ],
+  "services": [
+    {
+      "title": "Get categories",
+      "methods": [
+        {
+          "type": "get",
+          "title": "Get categories",
+          "link": "/categories/get",
+          "path": "/categories",
+          "request": {
+            "description": "Get the list of all the categories in TV & iPlayer."
+          },
+          "responses": [
+            {
+              "code": "200",
+              "description": "Default response",
+              "schema": [
+                {
+                  "name": "category",
+                  "type": [
+                    "object"
+                  ],
+                  "required": false,
+                  "properties": [
+                    {
+                      "name": "sub_categories",
+                      "type": [
+                        "array"
+                      ],
+                      "required": false,
+                      "properties": [
+                        {
+                          "name": "ERROR - circular reference",
+                          "type": [
+                            "string"
+                          ],
+                          "required": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "description": "Get the list of all the categories in TV & iPlayer."
+        }
+      ]
+    }
+  ],
+  "security": {}
+}

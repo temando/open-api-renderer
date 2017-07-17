@@ -376,7 +376,6 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
     throw new Error(`Unable to dereference input definition. Details: ${JSON.stringify(error)}`)
   }
 
-  const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
   const apiSecurity = derefOpenApiV3.security || []
   const servers = derefOpenApiV3.servers || []
@@ -396,6 +395,7 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   }
 
   // Additional information (if applicable)
+  const info = derefOpenApiV3.info
   const infoObj = { ...info }
   delete infoObj.title
   delete infoObj.version

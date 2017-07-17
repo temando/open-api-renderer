@@ -3,6 +3,7 @@ import { resolveOneOf } from './oneOfResolver'
 import { hasConstraints, getConstraints } from './constraints/constraintsParser'
 
 const literalTypes = ['string', 'integer', 'number', 'boolean']
+const checkedNodes = new Map()
 
 /**
  * Construct a UI ready property object from additionalProperties
@@ -11,8 +12,8 @@ const literalTypes = ['string', 'integer', 'number', 'boolean']
  *
  * @return {Object}
  */
-function getAdditionalPropertiesProperty (additionalProperties) {
-  const property = getPropertyNode('additionalProperties', additionalProperties)
+function getUIPropertyForAdditionalProperties (additionalProperties) {
+  const property = getUIProperty('additionalProperties', additionalProperties)
 
   // Also add some meta data to it, so the UI can handle this property differently if required
   property.attributes = {}
@@ -24,83 +25,97 @@ function getAdditionalPropertiesProperty (additionalProperties) {
 /**
  * Construct UI ready property object from given inputs.
  *
- * @param {String} nodeName
- * @param {Object} propertyNode
+ * @param {String} name
+ * @param {Object} property
  * @param {Boolean} required
  *
  * @return {Object}
  */
-function getPropertyNode (nodeName, propertyNode, required = false) {
-  let nodeType = propertyNode.type || 'string'
+function getUIProperty (name, property, required = false) {
+  let nodeTypes = property.type || 'string'
 
-  if (!Array.isArray(nodeType)) {
-    nodeType = [nodeType]
+  if (!Array.isArray(nodeTypes)) {
+    nodeTypes = [nodeTypes]
   }
 
-  const outputNode = {
-    name: nodeName,
-    type: nodeType,
+  const uiProperty = {
+    name,
+    type: nodeTypes,
     required
   }
 
-  if (propertyNode.title) {
-    outputNode.title = propertyNode.title
+  if (property.title) {
+    uiProperty.title = property.title
   }
 
-  if (propertyNode.description) {
-    outputNode.description = propertyNode.description
+  if (property.description) {
+    uiProperty.description = property.description
   }
 
-  if (propertyNode.default) {
-    outputNode.defaultValue = propertyNode.default
+  if (property.default) {
+    uiProperty.defaultValue = property.default
   }
 
-  if (propertyNode.externalDocs) {
-    outputNode.docs = propertyNode.externalDocs
+  if (property.externalDocs) {
+    uiProperty.docs = property.externalDocs
   }
 
-  if (propertyNode.additionalProperties === false) {
-    outputNode.additionalProperties = false
+  if (property.additionalProperties === false) {
+    uiProperty.additionalProperties = false
   }
 
-  if (hasConstraints(propertyNode)) {
-    outputNode.constraints = getConstraints(propertyNode)
+  if (hasConstraints(property)) {
+    uiProperty.constraints = getConstraints(property)
   }
 
   // Are all the possible types for this property literals?
   // TODO: Currently do not handle multiple types that are not all literals
-  if (nodeType.every((type) => literalTypes.includes(type))) {
-    if (propertyNode.enum) {
-      outputNode.enum = propertyNode.enum
+  if (nodeTypes.every((type) => literalTypes.includes(type))) {
+    if (property.enum) {
+      uiProperty.enum = property.enum
     }
 
-    return outputNode
+    return uiProperty
     // Otherwise, let's see if there's an object in there..
-  } else if (nodeType.length === 1 && nodeType.includes('object')) {
-    const propertiesNode = getPropertiesNode(propertyNode.properties, propertyNode.required, propertyNode.additionalProperties)
+  } else if (nodeTypes.length === 1 && nodeTypes.includes('object')) {
+    if (checkedNodes.has(property)) {
+      return getUIProperty(name, {})
+    } else {
+      checkedNodes.set(property, true)
+      const uiProperties = getUIProperties(property.properties, property.required, property.additionalProperties)
 
-    if (propertiesNode !== undefined && propertiesNode.length > 0) {
-      outputNode.properties = propertiesNode
+      if (uiProperties !== undefined && uiProperties.length > 0) {
+        uiProperty.properties = uiProperties
+      }
+
+      return uiProperty
     }
-
-    return outputNode
     // Is there an array?
-  } else if (nodeType.length === 1 && nodeType.includes('array')) {
-    if (propertyNode.items) {
-      const arrayItemType = propertyNode.items.type
+  } else if (nodeTypes.length === 1 && nodeTypes.includes('array')) {
+    if (property.items) {
+      const arrayItemType = property.items.type
 
       if (arrayItemType === 'object') {
-        const propertiesNode = getPropertiesNode(propertyNode.items.properties, propertyNode.items.required, propertyNode.items.additionalProperties)
+        const subProperty = property.items
 
-        if (propertiesNode !== undefined && propertiesNode.length > 0) {
-          outputNode.properties = propertiesNode
+        if (checkedNodes.has(subProperty)) {
+          uiProperty.properties = [
+            getUIProperty('ERROR - circular reference', {})
+          ]
+        } else {
+          checkedNodes.set(subProperty, true)
+          const uiProperties = getUIProperties(subProperty.properties, subProperty.required, subProperty.additionalProperties)
+
+          if (uiProperties !== undefined && uiProperties.length > 0) {
+            uiProperty.properties = uiProperties
+          }
         }
       } else {
-        outputNode.subtype = arrayItemType
+        uiProperty.subtype = arrayItemType
       }
     }
 
-    return outputNode
+    return uiProperty
   }
 
   return null
@@ -109,29 +124,27 @@ function getPropertyNode (nodeName, propertyNode, required = false) {
 /**
  * Construct UI ready properties object from given inputs.
  *
- * @param {Object} propertiesNode
+ * @param {Object} properties
  * @param {Array} requiredProperties
- * @param {Object} additionalPropertiesNode
+ * @param {Object} additionalProperties
  *
  * @return {Array}
  */
-function getPropertiesNode (propertiesNode, requiredProperties = [], additionalPropertiesNode) {
-  if (!propertiesNode && !additionalPropertiesNode) {
+function getUIProperties (properties, requiredProperties = [], additionalProperties) {
+  if (!properties && !additionalProperties) {
     return []
   }
 
   let resultArray = []
 
-  if (propertiesNode) {
-    resultArray = Object.keys(propertiesNode)
-      .map(
-        (key) => getPropertyNode(key, propertiesNode[key], requiredProperties.includes(key))
-      )
+  if (properties) {
+    resultArray = Object.keys(properties)
+      .map(key => getUIProperty(key, properties[key], requiredProperties.includes(key)))
       .filter(Boolean)
   }
 
-  if (additionalPropertiesNode) {
-    resultArray.push(getAdditionalPropertiesProperty(additionalPropertiesNode))
+  if (additionalProperties) {
+    resultArray.push(getUIPropertyForAdditionalProperties(additionalProperties))
   }
 
   return resultArray
@@ -145,10 +158,12 @@ function getPropertiesNode (propertiesNode, requiredProperties = [], additionalP
  * @return {Object}
  */
 function doGetUIReadySchema (jsonSchema) {
+  checkedNodes.clear()
+
   if (jsonSchema.type === 'array') {
-    return [getPropertyNode('', jsonSchema)]
+    return [getUIProperty('', jsonSchema)]
   } else {
-    return getPropertiesNode(jsonSchema.properties, jsonSchema.required, jsonSchema.additionalProperties)
+    return getUIProperties(jsonSchema.properties, jsonSchema.required, jsonSchema.additionalProperties)
   }
 }
 

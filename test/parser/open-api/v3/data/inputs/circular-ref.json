@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.0-rc2",
+  "info": {
+    "contact": {
+      "email": "ibl-team@lists.forge.bbc.co.uk",
+      "name": "Open iBL Project",
+      "url": "http://developer.bbc.co.uk/"
+    },
+    "description": "The definitive iPlayer API.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "title": "BBC iPlayer Business Layer",
+    "version": "1.0"
+  },
+  "paths": {
+    "/categories": {
+      "get": {
+        "description": "Get the list of all the categories in TV & iPlayer.",
+        "operationId": "Get_Categories_",
+        "responses": {
+          "200": {
+            "description": "Default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ibl"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get categories"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "category": {
+        "properties": {
+          "sub_categories": {
+            "items": {
+              "$ref": "#/components/schemas/category"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ibl": {
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/category"
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}
