@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+Nil.
+
+## [v0.1.0] - 2017-07-17
+
 ### Added
 
 - [#91](https://github.com/temando/open-api-renderer/issues/91) Lincoln learnt how to display `additionalProperties`.
