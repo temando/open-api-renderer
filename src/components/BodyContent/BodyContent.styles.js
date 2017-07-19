@@ -16,7 +16,7 @@ export const styles = createSheet(({ text, backgrounds, sizes }) => ({
       cursor: 'pointer',
 
       '&:not($active)': {
-        color: `${c(text.default).lighten(0.5)}`
+        color: `${c(text.secondary)}`
       }
     }
   },

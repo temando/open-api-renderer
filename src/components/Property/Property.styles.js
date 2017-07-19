@@ -9,13 +9,6 @@ const nameAndInfo = {
   paddingRight: `${cellPadding}`
 }
 
-const enumAndDefault = {
-  display: 'inline-block',
-  padding: '0 5px',
-  margin: '2px 3px',
-  border: '1px solid grey'
-}
-
 export const styles = createSheet(({ borders, backgrounds, text }) => ({
   'name': {
     ...nameAndInfo,
@@ -56,7 +49,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
 
   'additionalInfo': {
     fontSize: '0.9em',
-    color: `${c(text.default).lighten(0.5)}`,
+    color: `${c(text.secondary)}`,
     padding: '5px 0',
 
     '& a': {
@@ -69,7 +62,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
     fontSize: '.9rem',
     '& > span > span': {
       padding: '2px',
-      backgroundColor: `${c(borders.default).lighten(0.1)}`,
+      backgroundColor: `${c(borders.secondary)}`,
       marginLeft: '5px'
     }
   },
@@ -136,8 +129,15 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
 
   'last': {},
 
-  'enum': { ...enumAndDefault },
-  'default': { ...enumAndDefault },
+  'enum': {
+    display: 'inline-block',
+    padding: '0 5px',
+    margin: '2px 3px',
+    border: `1px solid ${borders.strong}`
+  },
+  'default': {
+    extend: 'enum'
+  },
   'indicator': {},
   'format': {},
   'subType': {}

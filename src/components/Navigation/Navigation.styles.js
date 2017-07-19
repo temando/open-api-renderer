@@ -27,7 +27,7 @@ export const styles = createSheet(({ backgrounds, borders, text, sizes }) => ({
       color: `${text.default}`,
       padding: '.7rem 1rem',
       '&:hover': {
-        color: `${c(text.default).lighten(0.1)}`,
+        color: `${c(text.tertiary)}`,
         transition: 'all .2s'
       }
     }

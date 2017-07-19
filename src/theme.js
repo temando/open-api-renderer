@@ -3,19 +3,26 @@ import c from 'color'
 
 export const theme = (() => {
   const backgrounds = {
-    default: c('#fff'),
-    nav: c('#fff'),
-    header: c('#fff'),
-    schema: c('#F0F0F0')
+    default: c('#FFFFFF'),
+    nav: c('#FFFFFF'),
+    header: c('#FFFFFF'),
+    schema: c('#F0F0F0'),
+    example: c('#111111')
   }
 
   const text = {
     default: c('#4c555a'),
+    secondary: c('#4c555a').lighten(0.5),
+    tertiary: c('#4c555a').lighten(0.1),
+    description: c('#4c555a').lighten(0.3),
+    reversed: c('#FFFFFF'),
     link: c('#69e'),
     get: c('#17c680'),
     post: c('#2a9bdd'),
     put: c('#c428d6'),
-    delete: c('#dd133f')
+    delete: c('#dd133f'),
+    success: c('rgb(76, 204, 79)'),
+    error: c('rgb(235, 15, 40)')
   }
 
   const shades = {
@@ -23,7 +30,9 @@ export const theme = (() => {
   }
 
   const borders = {
-    default: shades.default
+    default: shades.default,
+    secondary: c(shades.default).lighten(0.1),
+    strong: c('#808080')
   }
 
   const sizes = {
