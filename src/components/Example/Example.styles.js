@@ -1,10 +1,9 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(() => ({
-
+export const styles = createSheet(({ backgrounds, text }) => ({
   'example': {
-    backgroundColor: 'rgb(17, 17, 17)',
-    color: 'white',
+    backgroundColor: `${backgrounds.example}`,
+    color: `${text.reversed}`,
     padding: '10px'
   },
 
@@ -16,7 +15,7 @@ export const styles = createSheet(() => ({
     marginBottom: '10px',
 
     '& > span': {
-      color: 'white',
+      color: `${text.reversed}`,
       padding: '2px 10px',
       cursor: 'pointer'
     }

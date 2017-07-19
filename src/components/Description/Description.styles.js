@@ -3,7 +3,7 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ text }) => ({
   'description': {
-    color: `${c(text.default).lighten(0.3)}`,
+    color: `${c(text.description)}`,
     fontSize: '1rem',
 
     '&$inline': {

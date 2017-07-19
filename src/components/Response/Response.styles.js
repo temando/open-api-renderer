@@ -1,7 +1,7 @@
 import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = createSheet(({ text }) => ({
   'response': {
     marginBottom: '5px',
     bodyContent: {
@@ -24,12 +24,12 @@ export const styles = createSheet(({ shades }) => ({
   },
   'success': {
     '& $code': {
-      color: 'rgb(76, 204, 79)'
+      color: `${text.success}`
     }
   },
   'error': {
     '& $code': {
-      color: 'rgb(235, 15, 40)'
+      color: `${text.error}`
     }
   }
 }))

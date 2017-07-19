@@ -15,7 +15,7 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
     '& h4': {
       fontSize: 'smaller',
       textTransform: 'uppercase',
-      color: `${c(text.default).lighten(0.5)}`,
+      color: `${c(text.secondary)}`,
       borderBottom: `1px solid ${borders.default}`,
       marginTop: '1rem'
     }
