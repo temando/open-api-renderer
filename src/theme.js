@@ -38,11 +38,12 @@ export const theme = (() => {
   // http://www.modularscale.com/?1&em&1.25
   const sizes = {
     breakpoint: '800px',
-    h1: '3.052rem',
-    h2: '2.441rem',
-    h3: '1.953rem',
-    h4: '1.563rem',
-    text: '1.3rem'
+    h1: '3.418rem',
+    h2: '2.734rem',
+    h3: '2.188rem',
+    h4: '1.75rem',
+    text: '1.4rem',
+    smaller: '1.12rem'
   }
 
   return { backgrounds, text, shades, borders, sizes }
