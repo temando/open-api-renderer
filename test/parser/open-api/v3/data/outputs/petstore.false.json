@@ -160,7 +160,7 @@
             "schema": [
               {
                 "name": "id",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -173,14 +173,14 @@
               },
               {
                 "name": "category",
-                "type": [
+                "types": [
                   "object"
                 ],
                 "required": false,
                 "properties": [
                   {
                     "name": "id",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -190,7 +190,7 @@
                   },
                   {
                     "name": "name",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
@@ -199,14 +199,14 @@
               },
               {
                 "name": "name",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": true
               },
               {
                 "name": "photoUrls",
-                "type": [
+                "types": [
                   "array"
                 ],
                 "required": true,
@@ -214,14 +214,14 @@
               },
               {
                 "name": "tags",
-                "type": [
+                "types": [
                   "array"
                 ],
                 "required": false,
                 "properties": [
                   {
                     "name": "id",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -231,7 +231,7 @@
                   },
                   {
                     "name": "name",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
@@ -240,7 +240,7 @@
               },
               {
                 "name": "status",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false,
@@ -294,7 +294,7 @@
             "schema": [
               {
                 "name": "id",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -307,14 +307,14 @@
               },
               {
                 "name": "category",
-                "type": [
+                "types": [
                   "object"
                 ],
                 "required": false,
                 "properties": [
                   {
                     "name": "id",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -324,7 +324,7 @@
                   },
                   {
                     "name": "name",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
@@ -333,14 +333,14 @@
               },
               {
                 "name": "name",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": true
               },
               {
                 "name": "photoUrls",
-                "type": [
+                "types": [
                   "array"
                 ],
                 "required": true,
@@ -348,14 +348,14 @@
               },
               {
                 "name": "tags",
-                "type": [
+                "types": [
                   "array"
                 ],
                 "required": false,
                 "properties": [
                   {
                     "name": "id",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -365,7 +365,7 @@
                   },
                   {
                     "name": "name",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
@@ -374,7 +374,7 @@
               },
               {
                 "name": "status",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false,
@@ -442,14 +442,14 @@
               "schema": [
                 {
                   "name": "",
-                  "type": [
+                  "types": [
                     "array"
                   ],
                   "required": false,
                   "properties": [
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "integer"
                       ],
                       "required": false,
@@ -462,14 +462,14 @@
                     },
                     {
                       "name": "category",
-                      "type": [
+                      "types": [
                         "object"
                       ],
                       "required": false,
                       "properties": [
                         {
                           "name": "id",
-                          "type": [
+                          "types": [
                             "integer"
                           ],
                           "required": false,
@@ -479,7 +479,7 @@
                         },
                         {
                           "name": "name",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": false
@@ -488,14 +488,14 @@
                     },
                     {
                       "name": "name",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
                     },
                     {
                       "name": "photoUrls",
-                      "type": [
+                      "types": [
                         "array"
                       ],
                       "required": true,
@@ -503,14 +503,14 @@
                     },
                     {
                       "name": "tags",
-                      "type": [
+                      "types": [
                         "array"
                       ],
                       "required": false,
                       "properties": [
                         {
                           "name": "id",
-                          "type": [
+                          "types": [
                             "integer"
                           ],
                           "required": false,
@@ -520,7 +520,7 @@
                         },
                         {
                           "name": "name",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": false
@@ -529,7 +529,7 @@
                     },
                     {
                       "name": "status",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": false,
@@ -556,7 +556,7 @@
                 "name": "status",
                 "description": "Status values that need to be considered for filter",
                 "required": true,
-                "type": [
+                "types": [
                   "array"
                 ]
               }
@@ -602,14 +602,14 @@
               "schema": [
                 {
                   "name": "",
-                  "type": [
+                  "types": [
                     "array"
                   ],
                   "required": false,
                   "properties": [
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "integer"
                       ],
                       "required": false,
@@ -622,14 +622,14 @@
                     },
                     {
                       "name": "category",
-                      "type": [
+                      "types": [
                         "object"
                       ],
                       "required": false,
                       "properties": [
                         {
                           "name": "id",
-                          "type": [
+                          "types": [
                             "integer"
                           ],
                           "required": false,
@@ -639,7 +639,7 @@
                         },
                         {
                           "name": "name",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": false
@@ -648,14 +648,14 @@
                     },
                     {
                       "name": "name",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
                     },
                     {
                       "name": "photoUrls",
-                      "type": [
+                      "types": [
                         "array"
                       ],
                       "required": true,
@@ -663,14 +663,14 @@
                     },
                     {
                       "name": "tags",
-                      "type": [
+                      "types": [
                         "array"
                       ],
                       "required": false,
                       "properties": [
                         {
                           "name": "id",
-                          "type": [
+                          "types": [
                             "integer"
                           ],
                           "required": false,
@@ -680,7 +680,7 @@
                         },
                         {
                           "name": "name",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": false
@@ -689,7 +689,7 @@
                     },
                     {
                       "name": "status",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": false,
@@ -716,7 +716,7 @@
                 "name": "tags",
                 "description": "Tags to filter by",
                 "required": true,
-                "type": [
+                "types": [
                   "array"
                 ]
               }
@@ -766,7 +766,7 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -779,14 +779,14 @@
                 },
                 {
                   "name": "category",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false,
                   "properties": [
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "integer"
                       ],
                       "required": false,
@@ -796,7 +796,7 @@
                     },
                     {
                       "name": "name",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": false
@@ -805,14 +805,14 @@
                 },
                 {
                   "name": "name",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": true
                 },
                 {
                   "name": "photoUrls",
-                  "type": [
+                  "types": [
                     "array"
                   ],
                   "required": true,
@@ -820,14 +820,14 @@
                 },
                 {
                   "name": "tags",
-                  "type": [
+                  "types": [
                     "array"
                   ],
                   "required": false,
                   "properties": [
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "integer"
                       ],
                       "required": false,
@@ -837,7 +837,7 @@
                     },
                     {
                       "name": "name",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": false
@@ -846,7 +846,7 @@
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false,
@@ -875,7 +875,7 @@
                 "name": "petId",
                 "description": "ID of pet to return",
                 "required": true,
-                "type": [
+                "types": [
                   "integer"
                 ]
               }
@@ -904,7 +904,7 @@
             "schema": [
               {
                 "name": "name",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false,
@@ -912,7 +912,7 @@
               },
               {
                 "name": "status",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false,
@@ -932,7 +932,7 @@
                 "name": "petId",
                 "description": "ID of pet that needs to be updated",
                 "required": true,
-                "type": [
+                "types": [
                   "integer"
                 ]
               }
@@ -985,7 +985,7 @@
                 "name": "petId",
                 "description": "Pet id to delete",
                 "required": true,
-                "type": [
+                "types": [
                   "integer"
                 ]
               }
@@ -994,7 +994,7 @@
               {
                 "name": "api_key",
                 "required": false,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
@@ -1038,7 +1038,7 @@
               "schema": [
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1048,14 +1048,14 @@
                 },
                 {
                   "name": "type",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "message",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
@@ -1069,7 +1069,7 @@
                 "name": "petId",
                 "description": "ID of pet to update",
                 "required": true,
-                "type": [
+                "types": [
                   "integer"
                 ]
               }
@@ -1120,7 +1120,7 @@
               "schema": [
                 {
                   "name": "additionalProperties",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1159,7 +1159,7 @@
             "schema": [
               {
                 "name": "id",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1169,7 +1169,7 @@
               },
               {
                 "name": "petId",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1179,7 +1179,7 @@
               },
               {
                 "name": "quantity",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1189,7 +1189,7 @@
               },
               {
                 "name": "shipDate",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false,
@@ -1199,7 +1199,7 @@
               },
               {
                 "name": "status",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false,
@@ -1212,7 +1212,7 @@
               },
               {
                 "name": "complete",
-                "type": [
+                "types": [
                   "boolean"
                 ],
                 "required": false
@@ -1226,7 +1226,7 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1236,7 +1236,7 @@
                 },
                 {
                   "name": "petId",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1246,7 +1246,7 @@
                 },
                 {
                   "name": "quantity",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1256,7 +1256,7 @@
                 },
                 {
                   "name": "shipDate",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false,
@@ -1266,7 +1266,7 @@
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false,
@@ -1279,7 +1279,7 @@
                 },
                 {
                   "name": "complete",
-                  "type": [
+                  "types": [
                     "boolean"
                   ],
                   "required": false
@@ -1313,7 +1313,7 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1323,7 +1323,7 @@
                 },
                 {
                   "name": "petId",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1333,7 +1333,7 @@
                 },
                 {
                   "name": "quantity",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1343,7 +1343,7 @@
                 },
                 {
                   "name": "shipDate",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false,
@@ -1353,7 +1353,7 @@
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false,
@@ -1366,7 +1366,7 @@
                 },
                 {
                   "name": "complete",
-                  "type": [
+                  "types": [
                     "boolean"
                   ],
                   "required": false
@@ -1389,7 +1389,7 @@
                 "name": "orderId",
                 "description": "ID of pet that needs to be fetched",
                 "required": true,
-                "type": [
+                "types": [
                   "integer"
                 ]
               }
@@ -1426,7 +1426,7 @@
                 "name": "orderId",
                 "description": "ID of the order that needs to be deleted",
                 "required": true,
-                "type": [
+                "types": [
                   "integer"
                 ]
               }
@@ -1453,7 +1453,7 @@
             "schema": [
               {
                 "name": "id",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1463,49 +1463,49 @@
               },
               {
                 "name": "username",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "firstName",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "lastName",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "email",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "password",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "phone",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "userStatus",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1539,14 +1539,14 @@
             "schema": [
               {
                 "name": "",
-                "type": [
+                "types": [
                   "array"
                 ],
                 "required": false,
                 "properties": [
                   {
                     "name": "id",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -1556,49 +1556,49 @@
                   },
                   {
                     "name": "username",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "firstName",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "lastName",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "email",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "password",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "phone",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "userStatus",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -1633,14 +1633,14 @@
             "schema": [
               {
                 "name": "",
-                "type": [
+                "types": [
                   "array"
                 ],
                 "required": false,
                 "properties": [
                   {
                     "name": "id",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -1650,49 +1650,49 @@
                   },
                   {
                     "name": "username",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "firstName",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "lastName",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "email",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "password",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "phone",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": false
                   },
                   {
                     "name": "userStatus",
-                    "type": [
+                    "types": [
                       "integer"
                     ],
                     "required": false,
@@ -1740,7 +1740,7 @@
                 "name": "username",
                 "description": "The user name for login",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               },
@@ -1748,7 +1748,7 @@
                 "name": "password",
                 "description": "The password for login in clear text",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
@@ -1792,7 +1792,7 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1802,49 +1802,49 @@
                 },
                 {
                   "name": "username",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "firstName",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "lastName",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "email",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "password",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "phone",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "userStatus",
-                  "type": [
+                  "types": [
                     "integer"
                   ],
                   "required": false,
@@ -1870,7 +1870,7 @@
                 "name": "username",
                 "description": "The name that needs to be fetched. Use user1 for testing. ",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
@@ -1892,7 +1892,7 @@
             "schema": [
               {
                 "name": "id",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1902,49 +1902,49 @@
               },
               {
                 "name": "username",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "firstName",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "lastName",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "email",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "password",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "phone",
-                "type": [
+                "types": [
                   "string"
                 ],
                 "required": false
               },
               {
                 "name": "userStatus",
-                "type": [
+                "types": [
                   "integer"
                 ],
                 "required": false,
@@ -1972,7 +1972,7 @@
                 "name": "username",
                 "description": "name that need to be updated",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
@@ -2009,7 +2009,7 @@
                 "name": "username",
                 "description": "The name that needs to be deleted",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }

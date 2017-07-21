@@ -1,7 +1,5 @@
 import { clone } from '../../lib/clone'
 
-const checkedNodes = new Map()
-
 /**
  * Resolve node with allOf
  *
@@ -45,10 +43,7 @@ function resolveAllOfRecursive (obj) {
     const item = obj[key]
 
     if (typeof item === 'object') {
-      if (!checkedNodes.has(item)) {
-        checkedNodes.set(item, true)
-        resolveAllOfRecursive(item)
-      }
+      resolveAllOfRecursive(item)
     }
 
     if (item.allOf && Array.isArray(item.allOf)) {
@@ -65,9 +60,6 @@ function resolveAllOfRecursive (obj) {
  * @return {Object} definitions object that has allOf resolved
  */
 export function resolveAllOf (obj) {
-  checkedNodes.clear()
-  checkedNodes.set(obj, true)
-
   resolveAllOfRecursive(obj)
 
   return obj

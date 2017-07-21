@@ -49,7 +49,7 @@ export default class Property extends PureComponent {
 
   render () {
     const {
-      type, title, description, constraints, docs, defaultValue, attributes,
+      types, title, description, constraints, docs, defaultValue, attributes,
       isRequired, isOpen, isLast, onClick, classes
     } = this.props
 
@@ -64,9 +64,10 @@ export default class Property extends PureComponent {
 
     const isClickable = onClick !== undefined
     const isAdditional = attributes && attributes.isAdditionalProperties === true
+    const isCircularReference = attributes && attributes.isCircularReference === true
 
     let subtype
-    if (type.includes('array')) {
+    if (types.includes('array')) {
       subtype = this.props.subtype
     }
 
@@ -86,7 +87,8 @@ export default class Property extends PureComponent {
       >
         <td className={classNames(classes.name, {
           [classes.isClickable]: isClickable,
-          [classes.isAdditional]: isAdditional
+          [classes.isAdditional]: isAdditional,
+          [classes.isCircularReference]: isCircularReference
         })}>
           <span>{name}</span>
           {isClickable && <Indicator className={classes.indicator} direction={indicatorDirection} />}
@@ -94,11 +96,11 @@ export default class Property extends PureComponent {
         <td className={classes.info}>
           {title && <span className={classes.title}>{title}</span>}
           <span className={classes.type}>
-            {!subtype ? type.join(', ') : <span className={classes.subType}>{subtype}[]</span>}
+            {!subtype ? types.join(', ') : <span className={classes.subType}>{subtype}[]</span>}
             {!subtype && constraints && constraints.format &&
             <span className={classes.format}>&lt;{constraints.format}&gt;</span>}
           </span>
-          <PropertyConstraints constraints={constraints} type={type} isRequired={isRequired} />
+          <PropertyConstraints constraints={constraints} types={types} isRequired={isRequired} />
           {((enumValues && enumValues.length) || defaultValue || description || docs) &&
           <div className={classes.additionalInfo}>
             {enumValues && this.renderEnumValues(enumValues, isEnumTrimmed)}
@@ -165,7 +167,7 @@ export default class Property extends PureComponent {
 
 Property.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.arrayOf(PropTypes.string).isRequired,
+  types: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtype: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,

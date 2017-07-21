@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-Nil.
+### Fixed
+- [#176](https://github.com/temando/open-api-renderer/issues/176) Lincoln learnt how to handle circular reference in schema.
 
 ## [v0.1.0] - 2017-07-17
 

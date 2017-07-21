@@ -39,14 +39,14 @@
               "schema": [
                 {
                   "name": "data",
-                  "type": [
+                  "types": [
                     "array"
                   ],
                   "required": true,
                   "properties": [
                     {
                       "name": "type",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true,
@@ -56,7 +56,7 @@
                     },
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true,
@@ -64,7 +64,7 @@
                     },
                     {
                       "name": "attributes",
-                      "type": [
+                      "types": [
                         "object"
                       ],
                       "required": true,
@@ -72,7 +72,7 @@
                       "properties": [
                         {
                           "name": "firstName",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true,
@@ -80,7 +80,7 @@
                         },
                         {
                           "name": "lastName",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true,
@@ -88,7 +88,7 @@
                         },
                         {
                           "name": "email",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true,
@@ -133,56 +133,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -206,56 +206,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -279,56 +279,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -343,7 +343,7 @@
                 "name": "id",
                 "description": "Id of the account",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
@@ -353,7 +353,7 @@
                 "name": "offset",
                 "description": "Offset for the result set",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               },
@@ -361,7 +361,7 @@
                 "name": "limit",
                 "description": "Limit for the result set",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
@@ -384,14 +384,14 @@
             "schema": [
               {
                 "name": "data",
-                "type": [
+                "types": [
                   "object"
                 ],
                 "required": true,
                 "properties": [
                   {
                     "name": "type",
-                    "type": [
+                    "types": [
                       "string"
                     ],
                     "required": true,
@@ -401,7 +401,7 @@
                   },
                   {
                     "name": "attributes",
-                    "type": [
+                    "types": [
                       "object"
                     ],
                     "required": true,
@@ -409,7 +409,7 @@
                     "properties": [
                       {
                         "name": "firstName",
-                        "type": [
+                        "types": [
                           "string"
                         ],
                         "required": true,
@@ -417,7 +417,7 @@
                       },
                       {
                         "name": "lastName",
-                        "type": [
+                        "types": [
                           "string"
                         ],
                         "required": true,
@@ -425,7 +425,7 @@
                       },
                       {
                         "name": "password",
-                        "type": [
+                        "types": [
                           "string"
                         ],
                         "required": true,
@@ -433,7 +433,7 @@
                       },
                       {
                         "name": "email",
-                        "type": [
+                        "types": [
                           "string"
                         ],
                         "required": true,
@@ -444,7 +444,7 @@
                       },
                       {
                         "name": "bearerToken",
-                        "type": [
+                        "types": [
                           "string"
                         ],
                         "required": true,
@@ -463,14 +463,14 @@
               "schema": [
                 {
                   "name": "data",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": true,
                   "properties": [
                     {
                       "name": "type",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true,
@@ -480,7 +480,7 @@
                     },
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true,
@@ -488,7 +488,7 @@
                     },
                     {
                       "name": "attributes",
-                      "type": [
+                      "types": [
                         "object"
                       ],
                       "required": true
@@ -512,56 +512,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -585,56 +585,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -658,56 +658,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -745,56 +745,56 @@
               "schema": [
                 {
                   "name": "id",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "status",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "title",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "detail",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "meta",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "code",
-                  "type": [
+                  "types": [
                     "string"
                   ],
                   "required": false
                 },
                 {
                   "name": "links",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
                 },
                 {
                   "name": "source",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false
@@ -809,7 +809,7 @@
                 "name": "id",
                 "description": "Id of the account",
                 "required": true,
-                "type": [
+                "types": [
                   "string"
                 ]
               }

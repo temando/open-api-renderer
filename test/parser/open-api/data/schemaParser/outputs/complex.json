@@ -3,14 +3,14 @@
     {
       "name": "name",
       "required": false,
-      "type": [
+      "types": [
         "string"
       ]
     },
     {
       "name": "isRequired",
       "required": false,
-      "type": [
+      "types": [
         "boolean"
       ]
     },
@@ -24,14 +24,14 @@
           },
           "name": "key",
           "required": true,
-          "type": [
+          "types": [
             "string"
           ]
         },
         {
           "name": "value",
           "required": true,
-          "type": [
+          "types": [
             "number",
             "integer",
             "string",
@@ -40,7 +40,7 @@
         }
       ],
       "required": false,
-      "type": [
+      "types": [
         "array"
       ]
     }
@@ -49,14 +49,14 @@
     {
       "name": "name",
       "required": false,
-      "type": [
+      "types": [
         "string"
       ]
     },
     {
       "name": "isRequired",
       "required": false,
-      "type": [
+      "types": [
         "integer"
       ]
     },
@@ -70,14 +70,14 @@
           },
           "name": "key",
           "required": true,
-          "type": [
+          "types": [
             "string"
           ]
         },
         {
           "name": "value",
           "required": true,
-          "type": [
+          "types": [
             "number",
             "integer",
             "string",
@@ -86,7 +86,7 @@
         }
       ],
       "required": false,
-      "type": [
+      "types": [
         "array"
       ]
     }

@@ -208,9 +208,9 @@ function getUIParametersForLocation (parameters, location) {
     // handles this. Property should eventually be split and this won't be
     // necessary...
     if (parameter.type) {
-      uiParameter.type = [parameter.type]
+      uiParameter.types = [parameter.type]
     } else if (parameter.schema && parameter.schema.type) {
-      uiParameter.type = [parameter.schema.type]
+      uiParameter.types = [parameter.schema.type]
     }
 
     if (parameter.schema && parameter.schema.default !== undefined) {

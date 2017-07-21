@@ -39,24 +39,28 @@
               "schema": [
                 {
                   "name": "category",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": false,
                   "properties": [
                     {
                       "name": "sub_categories",
-                      "type": [
+                      "types": [
                         "array"
                       ],
                       "required": false,
                       "properties": [
                         {
-                          "name": "ERROR - circular reference",
-                          "type": [
+                          "name": "CIRCULAR REFERENCE",
+                          "types": [
                             "string"
                           ],
-                          "required": false
+                          "required": false,
+                          "attributes": {
+                            "isCircularReference": true
+                          },
+                          "description": "Circular reference to **/root/properties/category**."
                         }
                       ]
                     }

@@ -13,7 +13,7 @@ import toPath from 'lodash/toPath'
  */
 function getOneOfPaths (obj) {
   let paths = []
-  const checkedNodes = new Map()
+
   let walk = function (obj, path = '') {
     Object.keys(obj).forEach((key) => {
       // Handle if `oneOf` is found at the first level.
@@ -23,10 +23,7 @@ function getOneOfPaths (obj) {
       if (key === 'oneOf') {
         paths.push(currentPath)
       } else if (typeof item === 'object' || Array.isArray(item)) {
-        if (!checkedNodes.has(item)) {
-          checkedNodes.set(item, true)
-          walk(obj[key], currentPath)
-        }
+        walk(obj[key], currentPath)
       }
     })
   }

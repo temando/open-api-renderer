@@ -1,9 +1,9 @@
 import { resolveAllOf } from './allOfResolver'
 import { resolveOneOf } from './oneOfResolver'
+import { resolveCircularRef } from './circularRefResolver'
 import { hasConstraints, getConstraints } from './constraints/constraintsParser'
 
 const literalTypes = ['string', 'integer', 'number', 'boolean']
-const checkedNodes = new Map()
 
 /**
  * Construct a UI ready property object from additionalProperties
@@ -12,7 +12,7 @@ const checkedNodes = new Map()
  *
  * @return {Object}
  */
-function getUIPropertyForAdditionalProperties (additionalProperties) {
+function getAdditionalPropertiesProperty (additionalProperties) {
   const property = getUIProperty('additionalProperties', additionalProperties)
 
   // Also add some meta data to it, so the UI can handle this property differently if required
@@ -23,7 +23,24 @@ function getUIPropertyForAdditionalProperties (additionalProperties) {
 }
 
 /**
- * Construct UI ready property object from given inputs.
+ * Construct a UI ready property object for circular reference. This is mainly for debugging purpose.
+ *
+ * @param {string} name
+ *
+ * @return {Object}
+ */
+function getUIPropertyForCircularReference (name) {
+  const uiProperty = getBaseUIProperty('CIRCULAR REFERENCE', {})
+
+  uiProperty.description = `Circular reference to **${name}**.`
+  uiProperty.attributes = {}
+  uiProperty.attributes.isCircularReference = true
+
+  return uiProperty
+}
+
+/**
+ * Construct base UI ready property object from given inputs.
  *
  * @param {String} name
  * @param {Object} property
@@ -31,7 +48,7 @@ function getUIPropertyForAdditionalProperties (additionalProperties) {
  *
  * @return {Object}
  */
-function getUIProperty (name, property, required = false) {
+function getBaseUIProperty (name, property, required = false) {
   let nodeTypes = property.type || 'string'
 
   if (!Array.isArray(nodeTypes)) {
@@ -40,7 +57,7 @@ function getUIProperty (name, property, required = false) {
 
   const uiProperty = {
     name,
-    type: nodeTypes,
+    types: nodeTypes,
     required
   }
 
@@ -68,51 +85,43 @@ function getUIProperty (name, property, required = false) {
     uiProperty.constraints = getConstraints(property)
   }
 
+  return uiProperty
+}
+
+/**
+ * Construct UI ready property object from given inputs.
+ *
+ * @param {String} name
+ * @param {Object} property
+ * @param {Boolean} required
+ *
+ * @return {Object}
+ */
+function getUIProperty (name, property, required = false) {
+  const uiProperty = getBaseUIProperty(name, property, required)
+  const types = uiProperty.types
+
   // Are all the possible types for this property literals?
   // TODO: Currently do not handle multiple types that are not all literals
-  if (nodeTypes.every((type) => literalTypes.includes(type))) {
+  if (types.every((type) => literalTypes.includes(type))) {
     if (property.enum) {
       uiProperty.enum = property.enum
     }
 
     return uiProperty
-    // Otherwise, let's see if there's an object in there..
-  } else if (nodeTypes.length === 1 && nodeTypes.includes('object')) {
-    if (checkedNodes.has(property)) {
-      return getUIProperty(name, {})
+  } else if (types.length === 1 && types.includes('object')) {
+    // Handle object type
+    addPropertiesToUIProperty(uiProperty, property)
+    return uiProperty
+  } else if (types.length === 1 && types.includes('array') && property.items) {
+    // Handle array type
+    const arrayItemType = property.items.type
+
+    if (arrayItemType === 'object') {
+      const subProperty = property.items
+      addPropertiesToUIProperty(uiProperty, subProperty)
     } else {
-      checkedNodes.set(property, true)
-      const uiProperties = getUIProperties(property.properties, property.required, property.additionalProperties)
-
-      if (uiProperties !== undefined && uiProperties.length > 0) {
-        uiProperty.properties = uiProperties
-      }
-
-      return uiProperty
-    }
-    // Is there an array?
-  } else if (nodeTypes.length === 1 && nodeTypes.includes('array')) {
-    if (property.items) {
-      const arrayItemType = property.items.type
-
-      if (arrayItemType === 'object') {
-        const subProperty = property.items
-
-        if (checkedNodes.has(subProperty)) {
-          uiProperty.properties = [
-            getUIProperty('ERROR - circular reference', {})
-          ]
-        } else {
-          checkedNodes.set(subProperty, true)
-          const uiProperties = getUIProperties(subProperty.properties, subProperty.required, subProperty.additionalProperties)
-
-          if (uiProperties !== undefined && uiProperties.length > 0) {
-            uiProperty.properties = uiProperties
-          }
-        }
-      } else {
-        uiProperty.subtype = arrayItemType
-      }
+      uiProperty.subtype = arrayItemType
     }
 
     return uiProperty
@@ -121,30 +130,46 @@ function getUIProperty (name, property, required = false) {
   return null
 }
 
+function addPropertiesToUIProperty (uiProperty, property) {
+  if (property.circularReference) {
+    uiProperty.properties = [
+      getUIPropertyForCircularReference(property.circularReference)
+    ]
+  } else {
+    const uiProperties = getUIProperties(property.properties, property.required, property.additionalProperties)
+
+    if (uiProperties && uiProperties.length > 0) {
+      uiProperty.properties = uiProperties
+    }
+  }
+}
+
 /**
  * Construct UI ready properties object from given inputs.
  *
- * @param {Object} properties
+ * @param {Object} propertiesNode
  * @param {Array} requiredProperties
- * @param {Object} additionalProperties
+ * @param {Object} additionalPropertiesNode
  *
  * @return {Array}
  */
-function getUIProperties (properties, requiredProperties = [], additionalProperties) {
-  if (!properties && !additionalProperties) {
+function getUIProperties (propertiesNode, requiredProperties = [], additionalPropertiesNode) {
+  if (!propertiesNode && !additionalPropertiesNode) {
     return []
   }
 
   let resultArray = []
 
-  if (properties) {
-    resultArray = Object.keys(properties)
-      .map(key => getUIProperty(key, properties[key], requiredProperties.includes(key)))
+  if (propertiesNode) {
+    resultArray = Object.keys(propertiesNode)
+      .map(
+        (key) => getUIProperty(key, propertiesNode[key], requiredProperties.includes(key))
+      )
       .filter(Boolean)
   }
 
-  if (additionalProperties) {
-    resultArray.push(getUIPropertyForAdditionalProperties(additionalProperties))
+  if (additionalPropertiesNode) {
+    resultArray.push(getAdditionalPropertiesProperty(additionalPropertiesNode))
   }
 
   return resultArray
@@ -158,8 +183,6 @@ function getUIProperties (properties, requiredProperties = [], additionalPropert
  * @return {Object}
  */
 function doGetUIReadySchema (jsonSchema) {
-  checkedNodes.clear()
-
   if (jsonSchema.type === 'array') {
     return [getUIProperty('', jsonSchema)]
   } else {
@@ -175,7 +198,8 @@ function doGetUIReadySchema (jsonSchema) {
  * @return {Object}
  */
 export default function getUIReadySchema (jsonSchema) {
-  let resolved = resolveAllOf(jsonSchema)
+  let resolved = resolveCircularRef(jsonSchema)
+  resolved = resolveAllOf(resolved)
   resolved = resolveOneOf(resolved)
 
   if (Array.isArray(resolved.oneOf)) {

@@ -10,6 +10,7 @@ describe('getUIReadyDefinition', () => {
   tests.forEach(test => {
     // Expects filenames to be {name.navSortValue.json}.
     const sortFunc = getSortingFunction(test.fileName.split('.')[1])
+
     it(`returns the correct result for ${test.fileName}`, async () => {
       const outputDefinition = await getUIReadyDefinition(test.input, sortFunc)
       expect(outputDefinition).toEqual(test.expected)

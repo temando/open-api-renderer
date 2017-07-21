@@ -1,14 +1,14 @@
 [
   {
     "name": "aliases",
-    "type": [
+    "types": [
       "object"
     ],
     "required": false,
     "properties": [
       {
         "name": "additionalProperties",
-        "type": [
+        "types": [
           "string"
         ],
         "required": false,

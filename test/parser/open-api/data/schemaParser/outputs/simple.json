@@ -5,7 +5,7 @@
       {
         "name": "type",
         "required": true,
-        "type": [
+        "types": [
           "string"
         ],
         "enum": [
@@ -20,7 +20,7 @@
             "description": "Pre-generated Invitation code",
             "name": "invitationCode",
             "required": true,
-            "type": [
+            "types": [
               "string"
             ]
           },
@@ -28,7 +28,7 @@
             "description": "One of predefined platforms",
             "name": "platform",
             "required": true,
-            "type": [
+            "types": [
               "string"
             ],
             "enum": [
@@ -41,7 +41,7 @@
             "description": "Name, eg: Company name",
             "name": "name",
             "required": true,
-            "type": [
+            "types": [
               "string"
             ]
           },
@@ -50,7 +50,7 @@
             "description": "Email of the default user",
             "name": "email",
             "required": true,
-            "type": [
+            "types": [
               "string"
             ],
             "constraints": {
@@ -61,7 +61,7 @@
             "description": "User password",
             "name": "password",
             "required": false,
-            "type": [
+            "types": [
               "string"
             ],
             "constraints": {
@@ -74,7 +74,7 @@
             "description": "IP address where the request came from",
             "name": "ipAddress",
             "required": true,
-            "type": [
+            "types": [
               "string"
             ]
           },
@@ -86,7 +86,7 @@
                 "description": "Lines of the address",
                 "name": "line",
                 "required": false,
-                "type": [
+                "types": [
                   "array"
                 ],
                 "subtype": "string"
@@ -95,25 +95,25 @@
                 "description": "The post or zip code of this address.",
                 "name": "postalCode",
                 "required": false,
-                "type": [
+                "types": [
                   "string"
                 ]
               }
             ],
             "required": false,
-            "type": [
+            "types": [
               "object"
             ]
           }
         ],
         "required": true,
-        "type": [
+        "types": [
           "object"
         ]
       }
     ],
     "required": true,
-    "type": [
+    "types": [
       "object"
     ]
   }

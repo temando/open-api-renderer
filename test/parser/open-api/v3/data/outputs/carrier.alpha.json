@@ -36,7 +36,7 @@
               "schema": [
                 {
                   "name": "data",
-                  "type": [
+                  "types": [
                     "array"
                   ],
                   "required": true,
@@ -46,14 +46,14 @@
                   "properties": [
                     {
                       "name": "id",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
                     },
                     {
                       "name": "type",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true,
@@ -63,28 +63,28 @@
                     },
                     {
                       "name": "attributes",
-                      "type": [
+                      "types": [
                         "object"
                       ],
                       "required": true,
                       "properties": [
                         {
                           "name": "name",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true
                         },
                         {
                           "name": "description",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true
                         },
                         {
                           "name": "logo",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true,
@@ -94,7 +94,7 @@
                         },
                         {
                           "name": "services",
-                          "type": [
+                          "types": [
                             "array"
                           ],
                           "required": true,
@@ -104,14 +104,14 @@
                           "properties": [
                             {
                               "name": "id",
-                              "type": [
+                              "types": [
                                 "string"
                               ],
                               "required": true
                             },
                             {
                               "name": "name",
-                              "type": [
+                              "types": [
                                 "string"
                               ],
                               "required": true
@@ -130,21 +130,21 @@
               "schema": [
                 {
                   "name": "error",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": true,
                   "properties": [
                     {
                       "name": "code",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
                     },
                     {
                       "name": "description",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
@@ -159,21 +159,21 @@
               "schema": [
                 {
                   "name": "error",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": true,
                   "properties": [
                     {
                       "name": "code",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
                     },
                     {
                       "name": "description",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
@@ -188,63 +188,63 @@
               "schema": [
                 {
                   "name": "error",
-                  "type": [
+                  "types": [
                     "object"
                   ],
                   "required": true,
                   "properties": [
                     {
                       "name": "description",
-                      "type": [
+                      "types": [
                         "string"
                       ],
                       "required": true
                     },
                     {
                       "name": "code",
-                      "type": [
+                      "types": [
                         "integer"
                       ],
                       "required": true
                     },
                     {
                       "name": "details",
-                      "type": [
+                      "types": [
                         "array"
                       ],
                       "required": true,
                       "properties": [
                         {
                           "name": "keyword",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true
                         },
                         {
                           "name": "dataPath",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true
                         },
                         {
                           "name": "schemaPath",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true
                         },
                         {
                           "name": "params",
-                          "type": [
+                          "types": [
                             "object"
                           ],
                           "required": true,
                           "properties": [
                             {
                               "name": "format",
-                              "type": [
+                              "types": [
                                 "string"
                               ],
                               "required": true
@@ -253,7 +253,7 @@
                         },
                         {
                           "name": "message",
-                          "type": [
+                          "types": [
                             "string"
                           ],
                           "required": true
@@ -272,7 +272,7 @@
                 "name": "offset",
                 "description": "Offset for the returned array of records",
                 "required": false,
-                "type": [
+                "types": [
                   "number"
                 ],
                 "defaultValue": 0
@@ -281,7 +281,7 @@
                 "name": "limit",
                 "description": "Limit for the returned array of records.",
                 "required": false,
-                "type": [
+                "types": [
                   "number"
                 ],
                 "defaultValue": 10
@@ -290,7 +290,7 @@
                 "name": "filter[registered]",
                 "description": "Filter by integrations already registered with.",
                 "required": false,
-                "type": [
+                "types": [
                   "boolean"
                 ],
                 "defaultValue": false

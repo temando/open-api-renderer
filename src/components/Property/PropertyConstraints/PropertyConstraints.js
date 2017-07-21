@@ -9,15 +9,15 @@ import { getConstraintHints as getStringHints } from '../../../parser/open-api/c
 @styles
 export default class PropertyConstraints extends PureComponent {
   render () {
-    const { type, isRequired, constraints, classes } = this.props
+    const { types, isRequired, constraints, classes } = this.props
 
     return (
       <span className={classes.constraints}>
         {isRequired && <span className={classes.required}>required</span>}
-        {constraints && ['number', 'integer'].some(t => type.includes(t)) && this.renderConstraints(constraints, 'numeric')}
-        {constraints && type.includes('string') && this.renderConstraints(constraints, 'string')}
-        {constraints && type.includes('array') && this.renderConstraints(constraints, 'array')}
-        {constraints && type.includes('object') && this.renderConstraints(constraints, 'object')}
+        {constraints && ['number', 'integer'].some(t => types.includes(t)) && this.renderConstraints(constraints, 'numeric')}
+        {constraints && types.includes('string') && this.renderConstraints(constraints, 'string')}
+        {constraints && types.includes('array') && this.renderConstraints(constraints, 'array')}
+        {constraints && types.includes('object') && this.renderConstraints(constraints, 'object')}
       </span>
     )
   }
@@ -63,7 +63,7 @@ export default class PropertyConstraints extends PureComponent {
 }
 
 PropertyConstraints.propTypes = {
-  type: PropTypes.arrayOf(PropTypes.string).isRequired,
+  types: PropTypes.arrayOf(PropTypes.string).isRequired,
   isRequired: PropTypes.bool,
   classes: PropTypes.object,
   constraints: PropTypes.shape({

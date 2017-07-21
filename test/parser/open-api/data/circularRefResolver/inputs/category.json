@@ -1,0 +1,14 @@
+{
+  "category": {
+    "type": "object",
+    "properties": {
+      "id": "string",
+      "subCategories": {
+        "type": "array",
+        "items": {
+          "$ref": "#/category"
+        }
+      }
+    }
+  }
+}
