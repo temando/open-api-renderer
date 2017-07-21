@@ -9,7 +9,7 @@ export const styles = createSheet(({ backgrounds, sizes }) => ({
     height: '100%',
     backgroundColor: `${backgrounds.default}`,
 
-    padding: '15% 0 0',
+    padding: '5% 0 0',
     textAlign: 'center',
     textShadow: `1px 2px 2px rgba(#000, 0.5)`,
     fontSize: `${sizes.text}`,

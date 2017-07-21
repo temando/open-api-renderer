@@ -3,7 +3,7 @@ import c from 'color'
 
 export const styles = createSheet(({borders, backgrounds, text, sizes}) => ({
   endpoints: {
-    minWidth: '30rem',
+    minWidth: '60rem',
     backgroundColor: `${c(backgrounds.schema)}`,
     padding: '.5rem',
     boxShadow: '2px 2px 1rem rgba(0,0,0,0.25)',

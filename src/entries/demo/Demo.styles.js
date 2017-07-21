@@ -151,18 +151,18 @@ export const styles = createSheet(({ shades }) => ({
     },
 
     '& h1': {
-      margin: '0 .5rem 0 0',
+      margin: '0 1rem 0 0',
       fontSize: '2.7rem',
       textTransform: 'lowercase',
       fontVariant: 'small-caps',
       fontWeight: '100',
-      lineHeight: 1
+      lineHeight: '0.9'
     },
 
     '& small': {
       color: `${headerColor}`,
       fontStyle: 'italic',
-      fontSize: '1.2rem'
+      fontSize: '1.3rem'
     }
   },
 
@@ -194,6 +194,15 @@ export const styles = createSheet(({ shades }) => ({
           flexShrink: 10,
           height: '38px'
         }
+      }
+    },
+    'dialog': {
+      '& label': {
+        display: 'block'
+      },
+      '& input': {
+        width: '90%',
+        textAlign: 'left'
       }
     }
   }

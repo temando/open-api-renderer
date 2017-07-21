@@ -12,6 +12,7 @@ export const styles = createSheet(({ sizes }) => ({
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
     'contentContainer': {
+      padding: '0.5rem 1rem',
       '& h2': {
         margin: 0
       }

@@ -2,19 +2,20 @@ import { createSheet } from '../../theme'
 import c from 'color'
 
 const lineHeight = '40px'
-const cellPadding = '10px'
+const cellPadding = '1rem'
 
 const nameAndInfo = {
   verticalAlign: 'middle',
   paddingRight: `${cellPadding}`
 }
 
-export const styles = createSheet(({ borders, backgrounds, text }) => ({
+export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
   'name': {
     ...nameAndInfo,
-    width: '1%',
+    width: '15%',
     whiteSpace: 'nowrap',
     position: 'relative',
+    borderTop: '1px solid transparent',
 
     '&::before': {
       content: '""',
@@ -42,15 +43,14 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   },
 
   'info': {
-    ...nameAndInfo,
-    width: '75%',
-    paddingTop: '5px'
+    ...nameAndInfo
   },
 
   'additionalInfo': {
-    fontSize: '0.9em',
+    fontSize: `${sizes.smaller}`,
     color: `${c(text.secondary)}`,
-    padding: '5px 0',
+    paddingBottom: '0.7rem',
+    marginTop: '.5rem',
 
     '& a': {
       cursor: 'pointer'
@@ -58,12 +58,11 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   },
 
   'constraints': {
-    marginLeft: '5px',
-    fontSize: '.9rem',
+    marginLeft: '.5rem',
     '& > span > span': {
       padding: '2px',
       backgroundColor: `${c(borders.secondary)}`,
-      marginLeft: '5px'
+      marginLeft: '.5rem'
     }
   },
 
@@ -114,7 +113,7 @@ export const styles = createSheet(({ borders, backgrounds, text }) => ({
   },
 
   'required': {
-    marginLeft: '10px',
+    marginLeft: '1rem',
     color: 'red'
   },
 

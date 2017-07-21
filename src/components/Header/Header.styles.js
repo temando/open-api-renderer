@@ -33,6 +33,9 @@ export const styles = createSheet(({ borders, sizes }) => ({
   },
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
+    'header': {
+      padding: '0 1rem'
+    },
     'inlinePairs': {
       display: 'block'
     }

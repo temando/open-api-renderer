@@ -4,6 +4,7 @@ import { createSheet } from '../../theme'
 export const styles = createSheet(({ text, sizes }) => ({
   'description': {
     color: `${c(text.description)}`,
+    maxWidth: '80rem',
 
     '&$inline': {
       '&, & p': {

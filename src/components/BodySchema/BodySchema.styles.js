@@ -5,10 +5,10 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   'bodySchema': {
     width: '100%',
     borderSpacing: '0',
-    padding: '10px 50px 10px 20px',
+    padding: '0 4rem 0 1rem',
     boxSizing: 'border-box',
-    borderRadius: '10px',
-    fontSize: '14.5px'
+    borderRadius: '1rem',
+    fontSize: `${sizes.text}`
   },
 
   'even': {
@@ -35,7 +35,7 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
     },
 
     [`& > td > table`]: {
-      marginLeft: '12px'
+      marginLeft: '1rem'
     },
 
     [`.${property.classes.last} + & > td`]: {
@@ -45,7 +45,8 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
 
   'array': {
     fontFamily: 'monospace',
-    padding: '5px 10px'
+    fontSize: '1.6rem',
+    padding: '.5rem 1rem'
   },
 
   'hasTabs': {
@@ -54,8 +55,7 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
 
   [`@media (max-width: ${sizes.breakpoint})`]: {
     'bodySchema': {
-      paddingRight: '22px',
-      fontSize: '0.8rem'
+      paddingRight: '22px'
     }
   },
 
