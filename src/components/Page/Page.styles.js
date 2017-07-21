@@ -8,7 +8,7 @@ export const styles = createSheet(({ borders, sizes }) => ({
   },
   'main': {
     display: 'table-cell',
-    width: '80%',
+    width: '83%',
     boxSizing: 'border-box',
     border: `1px solid ${borders.default}`
   },

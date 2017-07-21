@@ -4,7 +4,7 @@ export const styles = createSheet(({borders, text, sizes}) => ({
   methodEndpoints: {
     display: 'inline-block',
     fontFamily: 'monospace',
-    fontSize: '1.2rem',
+    fontSize: `${sizes.h3}`,
     margin: '0 0 .5rem',
     position: 'relative',
 
@@ -14,7 +14,7 @@ export const styles = createSheet(({borders, text, sizes}) => ({
 
     '& .methodType': {
       textTransform: 'uppercase',
-      marginRight: '10px',
+      marginRight: '1rem',
       '&.get': {
         color: `${text.get}`
       },

@@ -13,7 +13,7 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
     },
 
     '& h4': {
-      fontSize: 'smaller',
+      fontSize: `${sizes.text}`,
       textTransform: 'uppercase',
       color: `${c(text.secondary)}`,
       borderBottom: `1px solid ${borders.default}`,

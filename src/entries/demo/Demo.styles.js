@@ -3,14 +3,28 @@ import { createSheet } from '../../theme'
 import { styles as base } from '../../containers/Base/Base.styles'
 import { styles as Overlay } from '../../components/Overlay/Overlay.styles'
 
-const headerHeight = '50px'
+const headerHeight = '41px'
 const headerBackground = '#234f69'
 const headerColor = `${c(headerBackground).lighten(0.75)}`
 const headerBorder = `${c(headerColor).darken(0.2)}`
 const headerTitleColor = c('#FFF')
 
 export const styles = createSheet(({ shades }) => ({
+  '@global': {
+    'html': {
+      fontSize: '62.5%'
+    },
+
+    'body': {
+      margin: 0,
+      padding: 0
+    }
+  },
+
   demo: {
+    fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
+    lineHeight: '1.4',
+
     [`& .${base.classes.base}`]: {
       marginTop: `${headerHeight}`
     }
@@ -25,36 +39,37 @@ export const styles = createSheet(({ shades }) => ({
     },
 
     '& textarea': {
-      padding: '2em 2em',
+      padding: '1rem',
+      fontSize: '1.6rem',
       fontFamily: 'monospace',
       border: '0',
       borderBottom: '1px solid rgba(0,0,0,0.25)',
-      width: '50%',
+      width: '70%',
       background: 'rgba(0,0,0, 0.15)',
       boxShadow: '0 4px 22px rgba(0,0,0,0.09)',
-      height: '50%',
+      height: '70%',
       color: '#ccc',
       resize: 'none'
     },
 
     '& button': {
-      marginTop: '1em',
+      marginTop: '2rem',
       padding: '0.8em 1.4em 0.7em',
-      fontSize: '96%',
+      fontSize: '1.3rem',
       boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
       marginRight: '1em'
     },
 
     '& label': {
-      fontSize: 'smaller',
+      fontSize: '1.4rem',
       color: `${headerTitleColor}`
     },
 
     '& input': {
       display: 'inline-block',
       width: '50%',
-      padding: '0.5em',
-      fontSize: '.9rem',
+      padding: '0.5rem',
+      fontSize: '1.4rem',
       border: '0',
       borderBottom: `1px solid ${headerBorder}`,
       outline: '0',
@@ -72,9 +87,8 @@ export const styles = createSheet(({ shades }) => ({
 
   toggleButtons: {
     position: 'absolute',
-    top: '5px',
-    right: '15px',
-    lineHeight: '50px',
+    top: '4px',
+    right: '1rem',
 
     '& pencil': {
       position: 'relative'
@@ -103,7 +117,7 @@ export const styles = createSheet(({ shades }) => ({
   },
 
   inputButton: {
-    marginLeft: '1em',
+    marginLeft: '.5rem',
     background: 'none',
     border: 'none',
     color: `${headerTitleColor}`,
@@ -127,7 +141,7 @@ export const styles = createSheet(({ shades }) => ({
     zIndex: '999',
     color: `${headerTitleColor}`,
 
-    padding: '.4rem 1rem',
+    padding: '.7rem 1rem',
 
     borderBottom: '1px solid #222',
     boxShadow: '0 1px 20px rgba(0,0,0,0.35)',
@@ -138,21 +152,21 @@ export const styles = createSheet(({ shades }) => ({
 
     '& h1': {
       margin: '0 .5rem 0 0',
-      fontSize: '1.5rem',
+      fontSize: '2.7rem',
       textTransform: 'lowercase',
       fontVariant: 'small-caps',
-      fontWeight: '100'
+      fontWeight: '100',
+      lineHeight: 1
     },
 
     '& small': {
       color: `${headerColor}`,
       fontStyle: 'italic',
-      fontSize: 'smaller'
+      fontSize: '1.2rem'
     }
   },
 
   '@media (max-width: 800px)': {
-
     'header': {
       display: 'table',
       zIndex: '100',

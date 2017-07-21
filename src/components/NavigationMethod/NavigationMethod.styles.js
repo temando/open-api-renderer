@@ -1,10 +1,10 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ backgrounds, text }) => ({
+export const styles = createSheet(({ backgrounds, text, sizes }) => ({
   'navigationMethod': {
     display: 'flex',
     padding: '.7rem 1.5rem',
-    fontSize: 'smaller'
+    fontSize: `${sizes.text}`
   },
   'active': {
     backgroundColor: `${backgrounds.schema}`
@@ -16,7 +16,7 @@ export const styles = createSheet(({ backgrounds, text }) => ({
     display: 'none'
   },
   'type': {
-    width: '55px',
+    width: '6rem',
     '&.get': {
       color: `${text.get}`
     },
@@ -31,6 +31,6 @@ export const styles = createSheet(({ backgrounds, text }) => ({
     }
   },
   'title': {
-    width: 'calc(100% - 55px)'
+    width: 'calc(100% - 6rem)'
   }
 }))

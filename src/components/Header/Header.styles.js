@@ -5,7 +5,7 @@ export const styles = createSheet(({ borders, sizes }) => ({
     padding: '0 2rem',
 
     '& h1': {
-      marginBottom: '.5rem'
+      margin: '.5rem 0'
     },
 
     '& nav a': {
