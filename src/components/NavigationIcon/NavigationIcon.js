@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import { styles } from './NavigationIcon.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class NavigationIcon extends Component {
   constructor (props) {
     super(props)

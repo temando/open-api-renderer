@@ -1,8 +1,8 @@
-import { createSheet } from '../../theme'
+import c from 'color'
 
-export const styles = createSheet(({ text, sizes }) => ({
+export const styles = theme => ({
   'description': {
-    color: `${text.description}`,
+    color: `${c(theme.text.description)}`,
     maxWidth: '80rem',
 
     '&$inline': {
@@ -15,10 +15,10 @@ export const styles = createSheet(({ text, sizes }) => ({
       margin: '.5rem 0'
     },
     '& p, & p *': {
-      fontSize: `${sizes.text}`
+      fontSize: `${theme.sizes.text}`
     }
   },
   'inline': {
     paddingRight: '.2rem'
   }
-}))
+})

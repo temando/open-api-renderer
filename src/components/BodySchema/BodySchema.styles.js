@@ -1,14 +1,13 @@
-import { createSheet } from '../../theme'
 import { styles as property } from '../Property/Property.styles'
 
-export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
+export const styles = theme => ({
   'bodySchema': {
     width: '100%',
     borderSpacing: '0',
-    paddingRight: '1rem',
+    padding: '0 4rem 0 1rem',
     boxSizing: 'border-box',
     borderRadius: '1rem',
-    fontSize: `${sizes.text}`,
+    fontSize: `${theme.sizes.text}`,
 
     '& td': {
       padding: '.5rem 1rem'
@@ -16,17 +15,17 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   },
 
   'even': {
-    backgroundColor: `${backgrounds.default}`
+    backgroundColor: `${theme.backgrounds.default}`
   },
   'odd': {
-    backgroundColor: `${backgrounds.schema}`
+    backgroundColor: `${theme.backgrounds.schema}`
   },
 
   'subset': {
     [`& + .${property.classes.property}:not(.${property.classes.last})`]: {
       [`& .${property.classes.name}::after`]: {
         content: '""',
-        borderLeft: `1px solid ${borders.default}`,
+        borderLeft: `1px solid ${theme.borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '1rem',
@@ -40,7 +39,7 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
 
     [`& > td::before`]: {
       content: '""',
-      borderLeft: `1px solid ${borders.default}`,
+      borderLeft: `1px solid ${theme.borders.default}`,
       padding: '0',
       position: 'absolute',
       top: 0,
@@ -74,13 +73,13 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   'isAdditional': {
     textAlign: 'left',
     fontStyle: 'italic',
-    fontSize: `${sizes.smaller}`,
+    fontSize: `${theme.sizes.smaller}`,
     paddingBottom: '0.5rem'
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'bodySchema': {
       paddingRight: '2rem'
     }
   }
-}))
+})

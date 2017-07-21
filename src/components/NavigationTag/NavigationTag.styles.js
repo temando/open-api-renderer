@@ -1,6 +1,4 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet((sizes) => ({
+export const styles = theme => ({
   'navigationTagMethods': {
     '&$expanded': {
       marginBottom: '.5rem'
@@ -12,7 +10,7 @@ export const styles = createSheet((sizes) => ({
     padding: '1rem 1rem .5rem',
 
     '& span': {
-      fontSize: `${sizes.h4}`
+      fontSize: `${theme.sizes.h4}`
     },
 
     '&:hover': {
@@ -23,4 +21,4 @@ export const styles = createSheet((sizes) => ({
   },
 
   'expanded': {}
-}))
+})

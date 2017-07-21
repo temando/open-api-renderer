@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import { styles } from './Endpoint.style'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Endpoint extends PureComponent {
   constructor (props) {
     super(props)

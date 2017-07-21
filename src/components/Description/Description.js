@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import markdown from 'markdown-it'
 import PropTypes from 'prop-types'
@@ -6,7 +7,8 @@ import { styles } from './Description.styles'
 
 const cm = markdown('commonmark')
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Description extends PureComponent {
   render () {
     const { isInline, description, classes } = this.props

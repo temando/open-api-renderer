@@ -1,6 +1,4 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ borders, sizes }) => ({
+export const styles = theme => ({
   'page': {
     display: 'table',
     width: '100%',
@@ -10,10 +8,10 @@ export const styles = createSheet(({ borders, sizes }) => ({
     display: 'table-cell',
     width: '80%',
     boxSizing: 'border-box',
-    border: `1px solid ${borders.default}`
+    border: `1px solid ${theme.borders.default}`
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'page': {
       display: 'block'
     },
@@ -34,4 +32,4 @@ export const styles = createSheet(({ borders, sizes }) => ({
       opacity: 0
     }
   }
-}))
+})

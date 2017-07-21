@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import BodySchema from '../BodySchema/BodySchema'
@@ -6,7 +7,8 @@ import BodySchemaSwitcher from '../BodySchemaSwitcher/BodySchemaSwitcher'
 import Example from '../Example/Example'
 import { styles } from './BodyContent.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class BodyContent extends Component {
   constructor (props) {
     super(props)

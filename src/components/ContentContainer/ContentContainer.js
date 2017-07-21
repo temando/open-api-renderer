@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import { styles } from './ContentContainer.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class ContentContainer extends Component {
   render () {
     const { classes } = this.props

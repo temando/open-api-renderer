@@ -1,17 +1,15 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ backgrounds, sizes }) => ({
+export const styles = theme => ({
   navigationIcon: {
     display: 'none',
     fontSize: '1.6rem'
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'navigationIcon': {
       display: 'inline-block',
       width: '24px',
       height: '24px',
-      color: `${backgrounds.default}`,
+      color: `${theme.backgrounds.default}`,
       position: 'fixed',
       top: '10px',
       left: '11px',
@@ -19,4 +17,4 @@ export const styles = createSheet(({ backgrounds, sizes }) => ({
       zIndex: '1000'
     }
   }
-}))
+})

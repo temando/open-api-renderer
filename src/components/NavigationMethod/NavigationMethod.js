@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { styles } from './NavigationMethod.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class NavigationMethod extends PureComponent {
   render () {
     const { method, isActive, isOpen, classes, onClick, navigationMethodDisplayType } = this.props

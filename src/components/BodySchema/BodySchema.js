@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Property from '../Property/Property'
 import { styles } from './BodySchema.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class BodySchema extends Component {
   constructor (props) {
     super(props)

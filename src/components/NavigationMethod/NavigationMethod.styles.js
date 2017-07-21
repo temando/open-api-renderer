@@ -1,13 +1,11 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ backgrounds, text, sizes }) => ({
+export const styles = theme => ({
   'navigationMethod': {
     display: 'flex',
     padding: '.7rem 1.5rem',
-    fontSize: `${sizes.text}`
+    fontSize: `${theme.sizes.text}`
   },
   'active': {
-    backgroundColor: `${backgrounds.schema}`
+    backgroundColor: `${theme.backgrounds.schema}`
   },
   'open': {
     display: 'flex',
@@ -19,16 +17,16 @@ export const styles = createSheet(({ backgrounds, text, sizes }) => ({
   'type': {
     width: '6rem',
     '&.get': {
-      color: `${text.get}`
+      color: `${theme.text.get}`
     },
     '&.post': {
-      color: `${text.post}`
+      color: `${theme.text.post}`
     },
     '&.put': {
-      color: `${text.put}`
+      color: `${theme.text.put}`
     },
     '&.delete': {
-      color: `${text.delete}`
+      color: `${theme.text.delete}`
     }
   },
   'path': {
@@ -40,4 +38,4 @@ export const styles = createSheet(({ backgrounds, text, sizes }) => ({
       width: 'calc(100% - 6rem)'
     }
   }
-}))
+})

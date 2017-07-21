@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import Description from '../Description/Description'
 import { styles } from './SecurityContainer.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class SecurityContainer extends PureComponent {
   render () {
     const { id, security, classes } = this.props

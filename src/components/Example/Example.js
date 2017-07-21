@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import copy from 'copy-to-clipboard'
 import CopyButton from '../CopyButton/CopyButton'
 import { styles } from './Example.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Example extends Component {
   constructor (props) {
     super(props)

@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { styles } from './Indicator.styles'
 import arrow from './arrow.png'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Indicator extends PureComponent {
   render () {
     const { direction, className, classes } = this.props

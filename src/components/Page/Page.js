@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Header from '../Header/Header'
@@ -9,7 +10,8 @@ import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import ServiceContainer from '../ServiceContainer/ServiceContainer'
 import { styles } from './Page.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Page extends Component {
   constructor (props) {
     super(props)

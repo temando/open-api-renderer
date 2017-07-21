@@ -1,6 +1,4 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ borders, sizes }) => ({
+export const styles = theme => ({
   'header': {
     padding: '0 2rem',
 
@@ -18,12 +16,12 @@ export const styles = createSheet(({ borders, sizes }) => ({
     display: 'inline-flex',
     margin: '1em 0',
     padding: '0',
-    borderBottom: `1px solid ${borders.default}`,
+    borderBottom: `1px solid ${theme.borders.default}`,
 
     '& dt, & dd': {
       margin: '0',
       padding: '.5rem',
-      borderTop: `1px solid ${borders.default}`
+      borderTop: `1px solid ${theme.borders.default}`
     },
 
     '& dt': {
@@ -32,7 +30,7 @@ export const styles = createSheet(({ borders, sizes }) => ({
     }
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'header': {
       padding: '0 1rem'
     },
@@ -40,4 +38,4 @@ export const styles = createSheet(({ borders, sizes }) => ({
       display: 'block'
     }
   }
-}))
+})

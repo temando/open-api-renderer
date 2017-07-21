@@ -1,8 +1,8 @@
-import { createSheet } from '../../theme'
+import c from 'color'
 
-export const styles = createSheet(({ borders, text, sizes }) => ({
+export const styles = theme => ({
   method: {
-    borderBottom: `1px solid ${borders.secondary}`,
+    borderBottom: `1px solid ${theme.borders.default}`,
     margin: '0 1rem 2rem 0',
     padding: '1rem 0',
 
@@ -12,18 +12,18 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
     },
 
     '& h4': {
-      fontSize: `${sizes.text}`,
+      fontSize: `${theme.sizes.text}`,
       textTransform: 'uppercase',
-      color: `${text.secondary}`,
-      borderBottom: `1px solid ${borders.secondary}`,
-      marginTop: '1.5rem'
+      color: `${c(theme.text.secondary)}`,
+      borderBottom: `1px solid ${theme.borders.default}`,
+      marginTop: '1rem'
     }
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'method': {
       padding: '1rem 0',
       margin: 0
     }
   }
-}))
+})

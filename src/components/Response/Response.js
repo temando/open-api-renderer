@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import BodyContent from '../BodyContent/BodyContent'
@@ -6,7 +7,8 @@ import Description from '../Description/Description'
 import Indicator from '../Indicator/Indicator'
 import { styles } from './Response.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Response extends PureComponent {
   constructor (props) {
     super(props)

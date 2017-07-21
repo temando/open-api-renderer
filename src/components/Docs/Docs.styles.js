@@ -1,7 +1,5 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(() => ({
+export const styles = {
   'docs': {
     margin: '0.5rem 0'
   }
-}))
+}

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -8,7 +9,8 @@ import Indicator from '../Indicator/Indicator'
 import PropertyConstraints from './PropertyConstraints/PropertyConstraints'
 import { styles } from './Property.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Property extends PureComponent {
   constructor (props) {
     super(props)

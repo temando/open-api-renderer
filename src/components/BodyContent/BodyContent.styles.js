@@ -1,6 +1,6 @@
-import { createSheet } from '../../theme'
+import c from 'color'
 
-export const styles = createSheet(({ text, backgrounds, sizes }) => ({
+export const styles = theme => ({
   'bodyContent': {
     display: 'table',
     width: '100%',
@@ -15,13 +15,13 @@ export const styles = createSheet(({ text, backgrounds, sizes }) => ({
       cursor: 'pointer',
 
       '&:not($active)': {
-        color: `${text.secondary}`
+        color: `${c(theme.text.secondary)}`
       }
     }
   },
 
   'active': {
-    backgroundColor: `${backgrounds.schema}`,
+    backgroundColor: `${theme.backgrounds.schema}`,
     borderRadius: '1rem 1rem 0 0'
   }
-}))
+})

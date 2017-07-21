@@ -1,7 +1,6 @@
-import { createSheet } from '../../theme'
 import c from 'color'
 
-export const styles = createSheet((theme) => ({
+export const styles = theme => ({
   base: {
     backgroundColor: `${theme.backgrounds.default}`,
     color: `${theme.text.default}`,
@@ -60,4 +59,4 @@ export const styles = createSheet((theme) => ({
       }
     }
   }
-}))
+})

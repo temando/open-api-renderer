@@ -1,10 +1,8 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({borders, text, sizes}) => ({
+export const styles = theme => ({
   methodEndpoints: {
     display: 'inline-block',
     fontFamily: 'monospace',
-    fontSize: `${sizes.h3}`,
+    fontSize: `${theme.sizes.h3}`,
     margin: '0 0 .5rem',
     position: 'relative',
 
@@ -16,16 +14,16 @@ export const styles = createSheet(({borders, text, sizes}) => ({
       textTransform: 'uppercase',
       marginRight: '1rem',
       '&.get': {
-        color: `${text.get}`
+        color: `${theme.text.get}`
       },
       '&.post': {
-        color: `${text.post}`
+        color: `${theme.text.post}`
       },
       '&.put': {
-        color: `${text.put}`
+        color: `${theme.text.put}`
       },
       '&.delete': {
-        color: `${text.delete}`
+        color: `${theme.text.delete}`
       },
       '&.path': {
         textTransform: 'none'
@@ -43,7 +41,7 @@ export const styles = createSheet(({borders, text, sizes}) => ({
     zIndex: '5'
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'methodEndpoints': {
       display: 'block'
     },
@@ -51,4 +49,4 @@ export const styles = createSheet(({borders, text, sizes}) => ({
       width: 'calc(100% - 1rem)'
     }
   }
-}))
+})
