@@ -1,5 +1,7 @@
 # Lincoln
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/temando/open-api-renderer.svg)](https://greenkeeper.io/)
+
 <img src='assets/lincoln-logo-white.png' alt='Lincoln' height="96" width="96" />
 
 [![NPM](https://img.shields.io/npm/v/react-lincoln.svg)](https://npmjs.org/packages/react-lincoln/)
