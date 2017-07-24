@@ -1,26 +1,26 @@
 import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 
-export const styles = createSheet(({ text }) => ({
+export const styles = createSheet(({ text, sizes }) => ({
   'response': {
-    marginBottom: '5px',
+    marginBottom: '.5rem',
     bodyContent: {
-      margin: '10px 0 20px 20px'
+      margin: '1rem 0 2rem 2rem'
     }
   },
   'info': {
-    padding: '10px',
-    fontSize: '0.9rem',
+    padding: '1rem',
+    fontSize: `${sizes.text}`,
 
     [`& ${indicator.classes.indicator}`]: {
-      marginRight: '10px'
+      marginRight: '1rem'
     }
   },
   'isClickable': {
     cursor: 'pointer'
   },
   'code': {
-    paddingRight: '20px'
+    paddingRight: '2rem'
   },
   'success': {
     '& $code': {

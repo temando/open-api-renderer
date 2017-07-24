@@ -5,10 +5,14 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   'bodySchema': {
     width: '100%',
     borderSpacing: '0',
-    padding: '10px 50px 10px 20px',
+    paddingRight: '1rem',
     boxSizing: 'border-box',
-    borderRadius: '10px',
-    fontSize: '14.5px'
+    borderRadius: '1rem',
+    fontSize: `${sizes.text}`,
+
+    '& td': {
+      padding: '.5rem 1rem'
+    }
   },
 
   'even': {
@@ -25,42 +29,58 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
         borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
-        left: '0',
+        left: '1rem',
         height: '100%'
       }
     },
 
     [`& > td`]: {
-      borderLeft: `1px solid ${borders.default}`
+      position: 'relative'
+    },
+
+    [`& > td::before`]: {
+      content: '""',
+      borderLeft: `1px solid ${borders.default}`,
+      padding: '0',
+      position: 'absolute',
+      top: 0,
+      left: '1rem',
+      bottom: 0
     },
 
     [`& > td > table`]: {
-      marginLeft: '12px'
+      marginLeft: '1rem'
     },
 
     [`.${property.classes.last} + & > td`]: {
+      paddingTop: 0
+    },
+
+    [`.${property.classes.last} + & > td::before`]: {
       borderLeft: 'none'
     }
   },
 
   'array': {
     fontFamily: 'monospace',
-    padding: '5px 10px'
+    fontSize: '1.6rem',
+    padding: '.5rem 1rem'
   },
 
   'hasTabs': {
     borderTopLeftRadius: 0
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
-    'bodySchema': {
-      paddingRight: '22px',
-      fontSize: '0.8rem'
-    }
-  },
-
   'isAdditional': {
     textAlign: 'left',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontSize: `${sizes.smaller}`,
+    paddingBottom: '0.5rem'
+  },
+
+  [`@media (max-width: ${sizes.breakpoint})`]: {
+    'bodySchema': {
+      paddingRight: '2rem'
+    }
   }
 }))

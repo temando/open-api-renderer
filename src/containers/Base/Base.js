@@ -70,7 +70,11 @@ export default class Base extends React.PureComponent {
     if (definitionUrl && !definition) {
       if (definitionUrl === this.state.definitionUrl) { return }
 
-      definition = await this.fetchDefinition({ definitionUrl, parserType, validate })
+      try {
+        definition = await this.fetchDefinition({ definitionUrl, parserType, validate })
+      } catch (error) {
+        return this.setState({ loading: false, error })
+      }
     }
 
     if (!definition) { return }

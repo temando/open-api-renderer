@@ -8,7 +8,6 @@ export const styles = createSheet(({borders, text, sizes}) => ({
     }
   },
   readonly: {
-    fontSize: '.8rem',
     fontFamily: 'monospace',
     lineHeight: '1.4',
     padding: '.25rem',

@@ -4,19 +4,19 @@ export const styles = createSheet(({ backgrounds, text }) => ({
   'example': {
     backgroundColor: `${backgrounds.example}`,
     color: `${text.reversed}`,
-    padding: '10px'
+    padding: '1rem'
   },
 
   'buttons': {
     opacity: '0.5',
     position: 'relative',
     textAlign: 'right',
-    paddingRight: '10px',
-    marginBottom: '10px',
+    paddingRight: '1rem',
+    marginBottom: '1rem',
 
     '& > span': {
       color: `${text.reversed}`,
-      padding: '2px 10px',
+      padding: '.2rem 1rem',
       cursor: 'pointer'
     }
   },

@@ -80,8 +80,7 @@ export default class Property extends PureComponent {
     return (
       <tr
         className={classNames(classes.property, {
-          [classes.last]: isLast,
-          [classes.additionalProperties]: isLast
+          [classes.last]: isLast
         })}
         onClick={this.handleClick}
       >

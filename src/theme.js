@@ -35,8 +35,15 @@ export const theme = (() => {
     strong: c('#808080')
   }
 
+  // http://www.modularscale.com/?1&em&1.25
   const sizes = {
-    breakpoint: '800px'
+    breakpoint: '800px',
+    h1: '3.418rem',
+    h2: '2.734rem',
+    h3: '2.188rem',
+    h4: '1.75rem',
+    text: '1.4rem',
+    smaller: '1.12rem'
   }
 
   return { backgrounds, text, shades, borders, sizes }
