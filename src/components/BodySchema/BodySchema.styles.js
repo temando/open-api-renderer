@@ -5,10 +5,14 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
   'bodySchema': {
     width: '100%',
     borderSpacing: '0',
-    padding: '0 4rem 0 1rem',
+    paddingRight: '1rem',
     boxSizing: 'border-box',
     borderRadius: '1rem',
-    fontSize: `${sizes.text}`
+    fontSize: `${sizes.text}`,
+
+    '& td': {
+      padding: '.5rem 1rem'
+    }
   },
 
   'even': {
@@ -25,13 +29,23 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
         borderLeft: `1px solid ${borders.default}`,
         position: 'absolute',
         bottom: '0',
-        left: '0',
+        left: '1rem',
         height: '100%'
       }
     },
 
     [`& > td`]: {
-      borderLeft: `1px solid ${borders.default}`
+      position: 'relative'
+    },
+
+    [`& > td::before`]: {
+      content: '""',
+      borderLeft: `1px solid ${borders.default}`,
+      padding: '0',
+      position: 'absolute',
+      top: 0,
+      left: '1rem',
+      bottom: 0
     },
 
     [`& > td > table`]: {
@@ -39,6 +53,10 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
     },
 
     [`.${property.classes.last} + & > td`]: {
+      paddingTop: 0
+    },
+
+    [`.${property.classes.last} + & > td::before`]: {
       borderLeft: 'none'
     }
   },
@@ -53,14 +71,16 @@ export const styles = createSheet(({ backgrounds, borders, sizes }) => ({
     borderTopLeftRadius: 0
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
-    'bodySchema': {
-      paddingRight: '22px'
-    }
-  },
-
   'isAdditional': {
     textAlign: 'left',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontSize: `${sizes.smaller}`,
+    paddingBottom: '0.5rem'
+  },
+
+  [`@media (max-width: ${sizes.breakpoint})`]: {
+    'bodySchema': {
+      paddingRight: '2rem'
+    }
   }
 }))

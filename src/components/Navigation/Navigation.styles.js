@@ -1,6 +1,5 @@
 import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
-import c from 'color'
 
 export const styles = createSheet(({ backgrounds, borders, text, sizes }) => ({
   navigation: {
@@ -27,7 +26,7 @@ export const styles = createSheet(({ backgrounds, borders, text, sizes }) => ({
       color: `${text.default}`,
       padding: '.7rem 1rem',
       '&:hover': {
-        color: `${c(text.tertiary)}`,
+        color: `${text.tertiary}`,
         transition: 'all .2s'
       }
     }

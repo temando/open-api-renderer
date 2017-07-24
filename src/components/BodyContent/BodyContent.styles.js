@@ -1,5 +1,4 @@
 import { createSheet } from '../../theme'
-import c from 'color'
 
 export const styles = createSheet(({ text, backgrounds, sizes }) => ({
   'bodyContent': {
@@ -16,7 +15,7 @@ export const styles = createSheet(({ text, backgrounds, sizes }) => ({
       cursor: 'pointer',
 
       '&:not($active)': {
-        color: `${c(text.secondary)}`
+        color: `${text.secondary}`
       }
     }
   },

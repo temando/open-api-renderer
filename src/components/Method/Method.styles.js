@@ -1,9 +1,8 @@
 import { createSheet } from '../../theme'
-import c from 'color'
 
 export const styles = createSheet(({ borders, text, sizes }) => ({
   method: {
-    borderBottom: `1px solid ${borders.default}`,
+    borderBottom: `1px solid ${borders.secondary}`,
     margin: '0 1rem 2rem 0',
     padding: '1rem 0',
 
@@ -15,9 +14,9 @@ export const styles = createSheet(({ borders, text, sizes }) => ({
     '& h4': {
       fontSize: `${sizes.text}`,
       textTransform: 'uppercase',
-      color: `${c(text.secondary)}`,
-      borderBottom: `1px solid ${borders.default}`,
-      marginTop: '1rem'
+      color: `${text.secondary}`,
+      borderBottom: `1px solid ${borders.secondary}`,
+      marginTop: '1.5rem'
     }
   },
 

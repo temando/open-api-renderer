@@ -38,7 +38,7 @@ export const styles = createSheet(({borders, text, sizes}) => ({
   expanded: {
     display: 'block',
     position: 'absolute',
-    top: '1.6rem',
+    top: '2.5rem',
     left: '0',
     zIndex: '5'
   },
