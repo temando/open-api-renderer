@@ -7,7 +7,7 @@
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) definitions. The project is tracking against [v3.0.0-rc2](docs/open-api-v3-support.md) of the OpenAPI specification.
+Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) definitions. The project is tracking against [v3.0.0](docs/open-api-v3-support.md) of the OpenAPI specification.
 
 Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and IE11+. It is responsive and should be usable on most modern devices.
 
