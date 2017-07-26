@@ -96,7 +96,7 @@ function checkCircularReference (node, value) {
 
 /**
  * Get reference to a node in the tree, by concatenating all the keys from top all the way down to that node
- * 
+ *
  * node has the following structure:
  * {
  *    key,
