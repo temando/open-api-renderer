@@ -7,7 +7,7 @@
 [![MIT License](https://img.shields.io/github/license/temando/open-api-renderer.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) definitions. The project is tracking against [v3.0.0](docs/open-api-v3-support.md) of the OpenAPI specification.
+Meet Lincoln, a [React](https://facebook.github.io/react/) component for rendering [OpenAPI](https://www.openapis.org) documents. The project is tracking against [v3.0.0](docs/open-api-v3-support.md) of the OpenAPI specification.
 
 Lincoln aims to support evergreen browsers, such as Chrome, Firefox, Safari and IE11+. It is responsive and should be usable on most modern devices.
 
@@ -51,14 +51,14 @@ The following configuration options are available:
 
 | property                        | required | type    | description                                                                                                                                                                                                                         |
 | ------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `definitionUrl` or `definition` | ✔        | string  | CORS-enabled URL to, or contents of, Open API v3 definition to render. Supports JSON or YAML.                                                                                                                                       |
+| `definitionUrl` or `definition` | ✔        | string  | CORS-enabled URL to, or contents of, OpenAPI v3 document to render. Supports JSON or YAML.                                                                                                                                          |
 | `navSort`                       |          | enum    | This property applies when your definition uses `tags`. Valid values are `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`.                                        |
 | `validate`                      |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.                                                                                                                    |
 | `initialSchemaTreeDepth`        |          | number  | The initial opened tree depth for schema visualiser when first rendered. This is useful when the schema's actual contents is a couple of levels deep, and you want to expand the tree to the contents automatically. Defaults to 0. |
 
 ## Philosophy
 
-While this project is currently focused on visualising Open API V3 specifications, it is architected in such a way that the React components deal with a `UIReadySchema`, which is a generic specification (admittedly heavily based on Open API V3).
+While this project is currently focused on visualising OpenAPI V3 specifications, it is architected in such a way that the React components deal with a `UIReadySchema`, which is a generic specification (admittedly heavily based on OpenAPI V3).
 
 The dream is that this renderer could visualise other formats by introducing new parsers which transform documents into the common `UIReadySchema` format. This approach allows us to build something sustainable and scalable, where the community can help contribute new parsers (among other things!) as required.
 

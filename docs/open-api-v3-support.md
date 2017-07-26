@@ -1,8 +1,8 @@
-# Open API v3 support
+# OpenAPI v3 support
 
 Tracking: [v3.0.0][oa3]
 
-This document outlines this project's support for visualising the [Open API V3][oa3] specification. Content is outlined in the same order as the original specification to make reading as quick (and familiar) as possible.
+This document outlines this project's support for visualising the [OpenAPI V3][oa3] specification. Content is outlined in the same order as the original specification to make reading as quick (and familiar) as possible.
 
 ## General
 

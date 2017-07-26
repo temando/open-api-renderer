@@ -1,5 +1,5 @@
 /**
- * Extracts any security schemes from the given Open API V3 definition file.
+ * Extracts any security schemes from the given OpenAPI V3 definition file.
  * Security schemes are defined in `components.securitySchemes`.
  * The API defines what security applies at either the top level (`security`)
  * or per operation.
