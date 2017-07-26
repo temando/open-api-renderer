@@ -208,9 +208,9 @@ function getUIParametersForLocation (parameters, location) {
     // handles this. Property should eventually be split and this won't be
     // necessary...
     if (parameter.type) {
-      uiParameter.type = [parameter.type]
+      uiParameter.types = [parameter.type]
     } else if (parameter.schema && parameter.schema.type) {
-      uiParameter.type = [parameter.schema.type]
+      uiParameter.types = [parameter.schema.type]
     }
 
     if (parameter.schema && parameter.schema.default !== undefined) {
@@ -376,7 +376,6 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
     throw new Error(`Unable to dereference input definition. Details: ${JSON.stringify(error)}`)
   }
 
-  const info = derefOpenApiV3.info
   const paths = derefOpenApiV3.paths
   const apiSecurity = derefOpenApiV3.security || []
   const servers = derefOpenApiV3.servers || []
@@ -396,6 +395,7 @@ export default async function getUIReadyDefinition (openApiV3, sortFunc) {
   }
 
   // Additional information (if applicable)
+  const info = derefOpenApiV3.info
   const infoObj = { ...info }
   delete infoObj.title
   delete infoObj.version

@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer'
 describe('<Property />', () => {
   it('can render a basic property', () => {
     const tree = renderer.create(
-      <Property name={'type'} type={['string']} isRequired isLast />
+      <Property name={'type'} types={['string']} isRequired isLast />
     )
 
     expect(tree).toMatchSnapshot()
@@ -15,7 +15,7 @@ describe('<Property />', () => {
     const tree = renderer.create(
       <Property
         name={'packagingType'}
-        type={['string']}
+        types={['string']}
         enumValues={['box', 'carton']}
         isRequired />
     )
@@ -27,7 +27,7 @@ describe('<Property />', () => {
     const tree = renderer.create(
       <Property
         name={'data'}
-        type={['array']}
+        types={['array']}
         subtype={'object'}
         isRequired={false} />
     )
@@ -39,7 +39,7 @@ describe('<Property />', () => {
     const tree = renderer.create(
       <Property
         name={'type'}
-        type={['string']}
+        types={['string']}
         description={'This is _markdown_ text'}
         isRequired />
     )
@@ -51,7 +51,7 @@ describe('<Property />', () => {
     const tree = renderer.create(
       <Property
         name={'type'}
-        type={['number']}
+        types={['number']}
         constraints={{multipleOf: 2}}
         isRequired />
     )
@@ -63,7 +63,7 @@ describe('<Property />', () => {
     const tree = renderer.create(
       <Property
         name={'value'}
-        type={['string', 'number']}
+        types={['string', 'number']}
         isRequired={false} />
     )
 
@@ -75,7 +75,7 @@ describe('<Property />', () => {
       <Property
         name={'value'}
         constraints={{format: 'email'}}
-        type={['string']}
+        types={['string']}
         isRequired={false} />
     )
 
@@ -92,7 +92,7 @@ describe('<Property />', () => {
       <Property
         name={'value'}
         docs={docs}
-        type={['string']}
+        types={['string']}
         isRequired={false} />
     )
 

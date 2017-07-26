@@ -118,6 +118,10 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
   'isAdditional': {
     fontStyle: 'italic'
   },
+  'isCircularReference': {
+    fontStyle: 'italic',
+    fontWeight: 'bold'
+  },
 
   'last': {},
 

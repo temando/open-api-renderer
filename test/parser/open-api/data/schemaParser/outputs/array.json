@@ -2,62 +2,62 @@
   {
     "name": "",
     "required": false,
-    "type": [
+    "types": [
       "array"
     ],
     "properties": [
       {
         "name": "id",
-        "type": [
+        "types": [
           "string"
         ],
         "required": false
       },
       {
         "name": "status",
-        "type": [
+        "types": [
           "string"
         ],
         "required": false
       },
       {
         "name": "title",
-        "type": [
+        "types": [
           "string"
         ],
         "required": false
       },
       {
         "name": "detail",
-        "type": [
+        "types": [
           "string"
         ],
         "required": false
       },
       {
         "name": "meta",
-        "type": [
+        "types": [
           "object"
         ],
         "required": false
       },
       {
         "name": "code",
-        "type": [
+        "types": [
           "string"
         ],
         "required": false
       },
       {
         "name": "links",
-        "type": [
+        "types": [
           "object"
         ],
         "required": false
       },
       {
         "name": "source",
-        "type": [
+        "types": [
           "object"
         ],
         "required": false

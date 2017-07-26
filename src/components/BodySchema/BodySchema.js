@@ -46,8 +46,8 @@ export default class BodySchema extends Component {
               return this.renderPropertyRow(property, isLast)
             }
 
-            const isPropertyArray = property.type.includes('array')
-            const isPropertyObject = property.type.includes('object')
+            const isPropertyArray = property.types.includes('array')
+            const isPropertyObject = property.types.includes('object')
 
             if (isPropertyArray || isPropertyObject) {
               if (expandedProps.includes(property.name)) {
@@ -70,7 +70,7 @@ export default class BodySchema extends Component {
       <Property
         key={property.name}
         name={property.name}
-        type={property.type}
+        types={property.types}
         subtype={property.subtype}
         description={property.description}
         enumValues={property.enum}

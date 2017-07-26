@@ -1,0 +1,15 @@
+{
+  "category": {
+    "type": "object",
+    "properties": {
+      "id": "string",
+      "subCategories": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "circularReference": "/root/category"
+        }
+      }
+    }
+  }
+}

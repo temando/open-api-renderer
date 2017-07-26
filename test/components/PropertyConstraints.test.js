@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer'
 describe('<PropertyConstraints />', () => {
   it('renders required constraint', () => {
     let tree = renderer.create(
-      <PropertyConstraints type={['string']} isRequired />
+      <PropertyConstraints types={['string']} isRequired />
     ).toJSON()
 
     expect(tree).toMatchSnapshot()
@@ -13,7 +13,7 @@ describe('<PropertyConstraints />', () => {
 
   it('renders array constraints', () => {
     const tree = renderer.create(
-      <PropertyConstraints type={['array']} isRequired={false} constraints={{uniqueItems: true}} />
+      <PropertyConstraints types={['array']} isRequired={false} constraints={{uniqueItems: true}} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -21,7 +21,7 @@ describe('<PropertyConstraints />', () => {
 
   it('renders numeric constraints', () => {
     const tree = renderer.create(
-      <PropertyConstraints type={['numeric']} isRequired={false} constraints={{minimum: 2}} />
+      <PropertyConstraints types={['numeric']} isRequired={false} constraints={{minimum: 2}} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -29,7 +29,7 @@ describe('<PropertyConstraints />', () => {
 
   it('renders object constraints', () => {
     const tree = renderer.create(
-      <PropertyConstraints type={['object']} isRequired={false} constraints={{minProperties: 2}} />
+      <PropertyConstraints types={['object']} isRequired={false} constraints={{minProperties: 2}} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -37,7 +37,7 @@ describe('<PropertyConstraints />', () => {
 
   it('renders string constraints', () => {
     const tree = renderer.create(
-      <PropertyConstraints type={['string']} isRequired={false} constraints={{pattern: '^[a-zA-Z0-9_-]+$'}} />
+      <PropertyConstraints types={['string']} isRequired={false} constraints={{pattern: '^[a-zA-Z0-9_-]+$'}} />
     )
 
     expect(tree).toMatchSnapshot()

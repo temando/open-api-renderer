@@ -1,7 +1,7 @@
 [
   {
     "name": "additionalProperties",
-    "type": [
+    "types": [
       "integer"
     ],
     "required": false,
