@@ -129,7 +129,7 @@ function buildNavigationAndServices (paths, servers, apiSecurity, securityDefini
  * This method mutates the `uiObject` parameter.
  *
  * @param {Object} uiObject
- * @param {Object} mediaType Open API mediaType object
+ * @param {Object} mediaType OpenAPI mediaType object
  */
 function addMediaTypeInfoToUIObject (uiObject, mediaType) {
   if (mediaType.schema) {
@@ -282,7 +282,7 @@ function getUIResponses (responses) {
 /**
  * Extracts the content for UI from the first available media type
  *
- * @param {Object} content Open API v3 Content Object
+ * @param {Object} content OpenAPI v3 Content Object
  * @return {Object|null}
  */
 function getMediaType (content) {
