@@ -2,7 +2,7 @@ import { createSheet } from '../../theme'
 
 export const styles = createSheet(({ backgrounds, borders }) => ({
   'securityContainer': {
-    padding: '1rem 0',
+    padding: '1rem 1rem',
     borderBottom: `1px solid ${borders.default}`
   },
   'scheme': {
@@ -12,17 +12,26 @@ export const styles = createSheet(({ backgrounds, borders }) => ({
   },
 
   'flowType': {
-    padding: '1rem 0',
+    padding: '0 1rem',
 
     '& + &': {
       borderTop: `1px dotted ${borders.default}`
     }
   },
 
-  inlinePairs: {},
+  inlinePairs: {
+    padding: '0 1rem'
+  },
+
   scopes: {
     '& > li > span': {
+      padding: '0 1rem',
       fontWeight: 600
-    }
+    },
+    padding: '0 1rem'
+  },
+
+  simple: {
+    padding: '0 1rem'
   }
 }))

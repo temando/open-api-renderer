@@ -6,13 +6,20 @@ import { styles } from './SecurityContainer.styles'
 @styles
 export default class SecurityContainer extends PureComponent {
   render () {
-    const { id, security, classes } = this.props
+    const { id, security, classes, placedIn } = this.props
     const { name, type, description } = security
     const isSimple = ['apiKey', 'http'].includes(security.type)
+    let title
+
+    if (placedIn === 'schema') {
+      title = <h3>{name} <code className={classes.scheme}>type={type}</code></h3>
+    } else if (placedIn === 'method') {
+      title = <h5>{name} <code className={classes.scheme}>type={type}</code></h5>
+    }
 
     return (
       <section className={classes.securityContainer} id={id}>
-        <h3>{name} <code className={classes.scheme}>type={type}</code></h3>
+        {title}
         {description && <Description description={description} />}
         {isSimple && this.renderSimple(security)}
         {security.type === 'oauth2' && this.renderOAuth2(security)}
@@ -23,6 +30,7 @@ export default class SecurityContainer extends PureComponent {
 
   renderSimple (security) {
     const { example, bearerFormat } = security
+    const { classes } = this.props
     let usage
 
     if (security.in === 'query') {
@@ -32,24 +40,31 @@ export default class SecurityContainer extends PureComponent {
     }
 
     return (
-      <div>
+      <div className={classes.simple} >
         {usage}
       </div>
     )
   }
 
   renderOAuth2 (security) {
-    const { classes } = this.props
+    const { classes, placedIn } = this.props
     const { flows } = security
 
     return (
       <div>
         {Object.keys(flows).map((flowKey) => {
           const flow = flows[flowKey]
+          let title
+
+          if (placedIn === 'schema') {
+            title = <h4><code>{flowKey}</code> flow</h4>
+          } else if (placedIn === 'method') {
+            title = <h5><code>{flowKey}</code> flow</h5>
+          }
 
           return (
             <div className={classes.flowType} key={flowKey}>
-              <h4><code>{flowKey}</code> flow</h4>
+              {title}
               <dl className={classes.inlinePairs}>
                 {flow.authorizationUrl && [
                   <dt key='auth'>Authorization URL</dt>,
@@ -103,5 +118,6 @@ export default class SecurityContainer extends PureComponent {
 SecurityContainer.propTypes = {
   id: PropTypes.string,
   security: PropTypes.object,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  placedIn: PropTypes.string
 }

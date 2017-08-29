@@ -5,17 +5,9 @@ exports[`<SecurityContainer /> renders apiKey type 1`] = `
   className={undefined}
   id="api_key"
 >
-  <h3>
-    api_key
-     
-    <code
-      className={undefined}
-    >
-      type=
-      apiKey
-    </code>
-  </h3>
-  <div>
+  <div
+    className={undefined}
+  >
     <p>
       To use this authentication scheme, pass 
       <code>
@@ -33,17 +25,9 @@ exports[`<SecurityContainer /> renders http type 1`] = `
   className={undefined}
   id="JWT"
 >
-  <h3>
-    JWT
-     
-    <code
-      className={undefined}
-    >
-      type=
-      http
-    </code>
-  </h3>
-  <div>
+  <div
+    className={undefined}
+  >
     <p>
       To use this authentication scheme, pass 
       <code>
@@ -56,7 +40,119 @@ exports[`<SecurityContainer /> renders http type 1`] = `
 </section>
 `;
 
-exports[`<SecurityContainer /> renders oauth2 type 1`] = `
+exports[`<SecurityContainer /> renders oauth2 type in Method 1`] = `
+<section
+  className={undefined}
+  id="oauth2"
+>
+  <h5>
+    oauth2
+     
+    <code
+      className={undefined}
+    >
+      type=
+      oauth2
+    </code>
+  </h5>
+  <div>
+    <div
+      className={undefined}
+    >
+      <h5>
+        <code>
+          implicit
+        </code>
+         flow
+      </h5>
+      <dl
+        className={undefined}
+      >
+        <dt>
+          Authorization URL
+        </dt>
+        <dd>
+          https://example.com/api/oauth/dialog
+        </dd>
+      </dl>
+      <div
+        className={undefined}
+      >
+        <h5>
+          Available scopes
+        </h5>
+        <ul>
+          <li>
+            <span>
+              write:pets
+            </span>
+             
+            modify pets in your account
+          </li>
+          <li>
+            <span>
+              read:pets
+            </span>
+             
+            read your pets
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      className={undefined}
+    >
+      <h5>
+        <code>
+          authorizationCode
+        </code>
+         flow
+      </h5>
+      <dl
+        className={undefined}
+      >
+        <dt>
+          Authorization URL
+        </dt>
+        <dd>
+          https://example.com/api/oauth/dialog
+        </dd>
+        <dt>
+          Token URL
+        </dt>
+        <dd>
+          https://example.com/api/oauth/token
+        </dd>
+      </dl>
+      <div
+        className={undefined}
+      >
+        <h5>
+          Available scopes
+        </h5>
+        <ul>
+          <li>
+            <span>
+              write:pets
+            </span>
+             
+            modify pets in your account
+          </li>
+          <li>
+            <span>
+              read:pets
+            </span>
+             
+            read your pets
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`<SecurityContainer /> renders oauth2 type in Schema 1`] = `
 <section
   className={undefined}
   id="oauth2"
@@ -168,7 +264,35 @@ exports[`<SecurityContainer /> renders oauth2 type 1`] = `
 </section>
 `;
 
-exports[`<SecurityContainer /> renders openIdConnect type 1`] = `
+exports[`<SecurityContainer /> renders openIdConnect type in Method 1`] = `
+<section
+  className={undefined}
+  id="openIdConnect"
+>
+  <h5>
+    openIdConnect
+     
+    <code
+      className={undefined}
+    >
+      type=
+      openIdConnect
+    </code>
+  </h5>
+  <div>
+    <dl
+      className={undefined}
+    >
+      <dt>
+        OpenID Connect URL
+      </dt>
+      <dd />
+    </dl>
+  </div>
+</section>
+`;
+
+exports[`<SecurityContainer /> renders openIdConnect type in Schema 1`] = `
 <section
   className={undefined}
   id="openIdConnect"

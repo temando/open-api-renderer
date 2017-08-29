@@ -6,13 +6,14 @@ import Description from '../Description/Description'
 import Parameters from '../Parameters/Parameters'
 import Response from '../Response/Response'
 import MethodEndpoints from './MethodEndpoints'
+import SecurityContainer from '../SecurityContainer/SecurityContainer'
 import { styles } from './Method.styles'
 
 @styles
 export default class Method extends PureComponent {
   render () {
     const {method, classes, initialSchemaTreeDepth} = this.props
-    const {title, type, path, endpoints, description, parameters, request, responses} = method
+    const {title, type, path, endpoints, description, parameters, request, security, responses} = method
 
     return (
       <ScrollableAnchor id={method.link}>
@@ -24,11 +25,23 @@ export default class Method extends PureComponent {
           <div>
             {description && <Description description={description} />}
             {parameters && <Parameters parameters={parameters} initialSchemaTreeDepth={initialSchemaTreeDepth} />}
+            {security && this.renderMethodSecurity(security)}
             {request && this.renderRequest(request, initialSchemaTreeDepth)}
             {responses && this.renderResponses(responses, initialSchemaTreeDepth)}
           </div>
         </div>
       </ScrollableAnchor>
+    )
+  }
+
+  renderMethodSecurity (security) {
+    return (
+      <div className='method-security'>
+        <h4>Authentication</h4>
+        {Object.keys(security).map(
+          (id) => <SecurityContainer key={id} id={id} security={security[id]} placedIn='method' />
+        )}
+      </div>
     )
   }
 
@@ -64,6 +77,7 @@ Method.propTypes = {
     link: PropTypes.string,
     description: PropTypes.string,
     parameters: PropTypes.object,
+    security: PropTypes.object,
     request: PropTypes.object,
     responses: PropTypes.array,
     path: PropTypes.string,
