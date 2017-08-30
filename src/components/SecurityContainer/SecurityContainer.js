@@ -119,5 +119,5 @@ SecurityContainer.propTypes = {
   id: PropTypes.string,
   security: PropTypes.object,
   classes: PropTypes.object,
-  placedIn: PropTypes.string
+  placedIn: PropTypes.oneOf(['schema', 'method'])
 }

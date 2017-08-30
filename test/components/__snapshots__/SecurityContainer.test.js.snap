@@ -5,6 +5,16 @@ exports[`<SecurityContainer /> renders apiKey type 1`] = `
   className={undefined}
   id="api_key"
 >
+  <h3>
+    api_key
+     
+    <code
+      className={undefined}
+    >
+      type=
+      apiKey
+    </code>
+  </h3>
   <div
     className={undefined}
   >
@@ -25,6 +35,16 @@ exports[`<SecurityContainer /> renders http type 1`] = `
   className={undefined}
   id="JWT"
 >
+  <h3>
+    JWT
+     
+    <code
+      className={undefined}
+    >
+      type=
+      http
+    </code>
+  </h3>
   <div
     className={undefined}
   >

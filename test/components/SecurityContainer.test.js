@@ -12,7 +12,7 @@ describe('<SecurityContainer />', () => {
     }
 
     const tree = renderer.create(
-      <SecurityContainer id='api_key' security={security} />
+      <SecurityContainer id='api_key' security={security} placedIn='schema' />
     )
 
     expect(tree).toMatchSnapshot()
@@ -28,7 +28,7 @@ describe('<SecurityContainer />', () => {
     }
 
     const tree = renderer.create(
-      <SecurityContainer id='JWT' security={security} />
+      <SecurityContainer id='JWT' security={security} placedIn='schema' />
     )
 
     expect(tree).toMatchSnapshot()
