@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'fetch-everywhere'
 
 const VALIDATOR_HOST = 'https://openapi-converter.herokuapp.com'
 

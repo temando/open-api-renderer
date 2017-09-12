@@ -1,10 +1,10 @@
 import { validateDefinition } from '../../../../src/parser/open-api/v3/open-api-v3-validator'
 
-jest.mock('isomorphic-fetch')
+jest.mock('fetch-everywhere')
 
 describe('#validateDefinition', () => {
   test('returns true for valid definition', async () => {
-    const fetch = require('isomorphic-fetch')
+    const fetch = require('fetch-everywhere')
 
     fetch.mockImplementationOnce((url) => Promise.resolve({
       ok: true,
@@ -20,7 +20,7 @@ describe('#validateDefinition', () => {
   })
 
   test('throws error for invalid definition', async () => {
-    const fetch = require('isomorphic-fetch')
+    const fetch = require('fetch-everywhere')
 
     fetch.mockImplementationOnce((url) => Promise.resolve({
       ok: true,
