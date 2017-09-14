@@ -19,8 +19,8 @@ exports[`<Example /> renders a JSON example 1`] = `
   </div>
   <pre>
     {
-      "message": "hi"
-    }
+  "message": "hi"
+}
   </pre>
 </div>
 `;
