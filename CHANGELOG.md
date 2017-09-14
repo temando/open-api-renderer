@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+Nil.
+
+## [v0.2.0] - 2017-09-14
+
 ### Changed
 
 - Various styling enhancements to typography and colours.
