@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 
 - Various styling enhancements to typography and colours.
+- Various package upgrades (both `dependencies` and `devDependencies`)
 
 ### Fixed
 

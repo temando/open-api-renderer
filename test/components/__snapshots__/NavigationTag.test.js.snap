@@ -24,7 +24,7 @@ exports[`<NavigationTag /> renders with description 1`] = `
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Access to Pets</p>
-        ",
+",
         }
       }
     />

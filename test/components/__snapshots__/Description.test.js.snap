@@ -6,7 +6,7 @@ exports[`<Description /> renders commonmark text as html 1`] = `
   dangerouslySetInnerHTML={
     Object {
       "__html": "<p>This method has some <code>var i = 0</code> <em>markdown</em>, including a <a href=\\"http://www.google.com\\">link</a>.</p>
-    ",
+",
     }
   }
 />
@@ -29,7 +29,7 @@ exports[`<Description /> renders text with no commonmark as html 1`] = `
   dangerouslySetInnerHTML={
     Object {
       "__html": "<p>This method has zero markdown.</p>
-    ",
+",
     }
   }
 />
