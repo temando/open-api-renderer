@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'fetch-everywhere'
 import YAML from 'js-yaml'
 import { getParserFunction, getValidatorFunction } from '../parser/parserFactory'
 import { getSortingFunction } from './sorting'
