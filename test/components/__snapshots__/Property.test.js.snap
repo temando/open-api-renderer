@@ -180,7 +180,7 @@ exports[`<Property /> can render a property with docs 1`] = `
           dangerouslySetInnerHTML={
             Object {
               "__html": "<p>Hello</p>
-            ",
+",
             }
           }
         />

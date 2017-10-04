@@ -228,7 +228,7 @@ exports[`<Header /> renders description 1`] = `
     dangerouslySetInnerHTML={
       Object {
         "__html": "<p>Hello world</p>
-      ",
+",
       }
     }
   />
@@ -279,7 +279,7 @@ exports[`<Header /> renders docs 1`] = `
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Hello</p>
-        ",
+",
         }
       }
     />

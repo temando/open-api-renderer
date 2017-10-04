@@ -23,7 +23,7 @@ exports[`<Docs /> renders docs with description 1`] = `
     dangerouslySetInnerHTML={
       Object {
         "__html": "<p>Hello world</p>
-      ",
+",
       }
     }
   />
