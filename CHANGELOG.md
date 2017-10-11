@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-Nil.
+- Example object rendering is updated to support the summary, description, and value attributes.
 
 ## [v0.2.0] - 2017-09-14
 
