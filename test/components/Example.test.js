@@ -37,7 +37,7 @@ describe('<Example />', () => {
 
   it('renders a JSON example', () => {
     const tree = renderer.create(
-      <Example examples={[{'value':{'message': 'hi'}}]} />
+      <Example examples={[{'value': {'message': 'hi'}}]} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -53,7 +53,7 @@ describe('<Example />', () => {
 
   it('renders a JSON example with a summary', () => {
     const tree = renderer.create(
-      <Example examples={[{'summary': 'This is a test summary.', 'value':{'message': 'hi'}}]} />
+      <Example examples={[{'summary': 'This is a test summary.', 'value': {'message': 'hi'}}]} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -69,7 +69,7 @@ describe('<Example />', () => {
 
   it('renders a JSON example with a description', () => {
     const tree = renderer.create(
-      <Example examples={[{'description': 'This is a test description.', 'value':{'message': 'hi'}}]} />
+      <Example examples={[{'description': 'This is a test description.', 'value': {'message': 'hi'}}]} />
     )
 
     expect(tree).toMatchSnapshot()
@@ -85,7 +85,7 @@ describe('<Example />', () => {
 
   it('renders a JSON example with a summary and a description', () => {
     const tree = renderer.create(
-      <Example examples={[{'summary': 'This is a test summary.', 'description': 'This is a test description.', 'value':{'message': 'hi'}}]} />
+      <Example examples={[{'summary': 'This is a test summary.', 'description': 'This is a test description.', 'value': {'message': 'hi'}}]} />
     )
 
     expect(tree).toMatchSnapshot()

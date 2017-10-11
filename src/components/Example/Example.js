@@ -47,7 +47,7 @@ export default class Example extends Component {
           <div className={classNames(classes.buttons, {
             [classes.hovered]: this.state.hovered
           })}>
-            <CopyButton onCopyClick={this.onCopyClick} tooltip='Copy to Clipboard'/>
+            <CopyButton onCopyClick={this.onCopyClick} tooltip='Copy to Clipboard' />
             {!isJson &&
             <span onClick={() => this.setState({collapseAll: false})}>Expand All</span>}
             {!isJson &&
