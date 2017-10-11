@@ -1,60 +1,330 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Example /> renders a JSON example with a summary and a description 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test summary.
+  </div>
+  <div
+    className={undefined}
+  >
+    This is a test description.
+  </div>
+  <div
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className=""
+    >
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+    </div>
+    <pre>
+      {
+  "message": "hi"
+}
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`<Example /> renders a string example with a summary and a description 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test summary.
+  </div>
+  <div
+    className={undefined}
+  >
+    This is a test description.
+  </div>
+  <div
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className=""
+    >
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Expand All
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Collapse All
+      </span>
+    </div>
+    <pre>
+      &lt;message&gt;hi&lt;/message&gt;
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`<Example /> renders a JSON example with a description 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test description.
+  </div>
+  <div
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className=""
+    >
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+    </div>
+    <pre>
+      {
+  "message": "hi"
+}
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`<Example /> renders a string example with a description 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test description.
+  </div>
+  <div
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className=""
+    >
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Expand All
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Collapse All
+      </span>
+    </div>
+    <pre>
+      &lt;message&gt;hi&lt;/message&gt;
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`<Example /> renders a JSON example with a summary 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test summary.
+  </div>
+  <div
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className=""
+    >
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+    </div>
+    <pre>
+      {
+  "message": "hi"
+}
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`<Example /> renders a string example with a summary 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test summary.
+  </div>
+  <div
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className=""
+    >
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Expand All
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Collapse All
+      </span>
+    </div>
+    <pre>
+      &lt;message&gt;hi&lt;/message&gt;
+    </pre>
+  </div>
+</div>
+`;
+
 exports[`<Example /> renders a JSON example 1`] = `
 <div
   className={undefined}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
-    className=""
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
-    <span
-      onClick={[Function]}
-      onMouseOver={[Function]}
-      title="Copy to Clipboard"
+    <div
+      className=""
     >
-      Copy
-    </span>
-  </div>
-  <pre>
-    {
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+    </div>
+    <pre>
+      {
   "message": "hi"
 }
-  </pre>
+    </pre>
+  </div>
 </div>
 `;
 
 exports[`<Example /> renders a string example 1`] = `
 <div
   className={undefined}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
-    className=""
+    className={undefined}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
-    <span
-      onClick={[Function]}
-      onMouseOver={[Function]}
-      title="Copy to Clipboard"
+    <div
+      className=""
     >
-      Copy
-    </span>
-    <span
-      onClick={[Function]}
-    >
-      Expand All
-    </span>
-    <span
-      onClick={[Function]}
-    >
-      Collapse All
-    </span>
+      <span
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        title="Copy to Clipboard"
+      >
+        Copy
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Expand All
+      </span>
+      <span
+        onClick={[Function]}
+      >
+        Collapse All
+      </span>
+    </div>
+    <pre>
+      &lt;message&gt;hi&lt;/message&gt;
+    </pre>
   </div>
-  <pre>
-    &lt;message&gt;hi&lt;/message&gt;
-  </pre>
+</div>
+`;
+
+exports[`<Example /> renders the description only 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test description.
+  </div>
+</div>
+`;
+
+exports[`<Example /> renders the summary only 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    This is a test summary.
+  </div>
 </div>
 `;
 
