@@ -6,9 +6,15 @@ const VALIDATOR_HOST = 'https://openapi-converter.herokuapp.com'
  * @param {string} definitionUrl
  * @return {Promise<boolean>}
  */
-export async function validateDefinition (definitionUrl) {
+export async function validateDefinition (definition) {
   const url = `${VALIDATOR_HOST}/api/v1/validate`
-  const result = await fetch(`${url}?url=${definitionUrl}`)
+  const fetchOptions = {
+    method: 'POST',
+    body: {
+      source: definition
+    }
+  }
+  const result = await fetch(`${url}`, fetchOptions)
 
   if (result.ok) {
     const response = await result.json()

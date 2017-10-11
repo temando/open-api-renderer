@@ -98,12 +98,8 @@ export default class Base extends React.PureComponent {
   fetchDefinition = async ({ definitionUrl, validate, parserType = this.state.parserType }) => {
     this.setState({ loading: true, error: null })
 
-    const [ definition ] = await Promise.all([
-      getDefinition(definitionUrl),
-      validate && validateDefinition(parserType)
-    ])
-
-    return definition
+    return getDefinition(definitionUrl)
+      .then((definition) => (validate && validateDefinition(definition, parserType)))
   }
 
   render () {
