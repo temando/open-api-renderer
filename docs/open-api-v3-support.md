@@ -187,9 +187,9 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 
 ### [Example](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/3.0.0.md#example-object) object
 
-- [ ] summary
-- [ ] description
-- [ ] value
+- [x] summary
+- [x] description
+- [x] value
 - [ ] externalValue
 
 ### [Link](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/3.0.0.md#link-object) object
