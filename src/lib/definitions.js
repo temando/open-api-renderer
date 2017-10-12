@@ -18,7 +18,9 @@ export async function getDefinition (url) {
 export function validateDefinition (definition, parserType) {
   const validator = getValidatorFunction(parserType)
 
-  return validator(definition)
+  validator(definition)
+
+  return definition
 }
 
 export async function parseDefinition ({ definition, parserType, navSort }) {
