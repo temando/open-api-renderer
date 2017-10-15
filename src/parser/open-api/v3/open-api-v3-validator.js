@@ -1,5 +1,4 @@
 import fetch from 'fetch-everywhere'
-import yaml from 'js-yaml'
 
 const VALIDATOR_HOST = 'https://openapi-converter.herokuapp.com'
 
