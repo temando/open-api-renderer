@@ -15,10 +15,12 @@ export async function getDefinition (url) {
   return result.text()
 }
 
-export function validateDefinition (definition, parserType) {
+export async function validateDefinition (definition, parserType) {
   const validator = getValidatorFunction(parserType)
 
-  return validator(definition)
+  await validator(definition)
+
+  return definition
 }
 
 export async function parseDefinition ({ definition, parserType, navSort }) {

@@ -34,6 +34,10 @@
     {
       "name": "nfour",
       "email": "novus.nfour@gmail.com"
+    },
+    {
+      "name": "Szabolcs (Szasza) Palmer",
+      "email": "szasza@szasza.info"
     }
   ],
   "main": "./Lincoln.js",
