@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+## [0.2.1][] - 2017-10-18
+
 ### Added
 
 - Updated example object rendering support the summary, description, and value attributes.
@@ -15,7 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - [#196](https://github.com/temando/open-api-renderer/issues/196) Validation changed to use POST instead of GET
 
-## [v0.2.0][] - 2017-09-14
+## [0.2.0][] - 2017-09-14
 
 ### Changed
 
@@ -27,7 +29,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - [#192](https://github.com/temando/open-api-renderer/issues/192) Swap `isomorphic-fetch` for `fetch-everywhere` to prevent `ReferenceError: self is not defined` error.
 - [#176](https://github.com/temando/open-api-renderer/issues/176) Lincoln learnt how to handle circular reference in schema.
 
-## [v0.1.0][] - 2017-07-17
+## [0.1.0][] - 2017-07-17
 
 ### Added
 
@@ -35,6 +37,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - [#157](https://github.com/temando/open-api-renderer/issues/157) Lincoln learnt how to display `servers` and path information.
 - [#112](https://github.com/temando/open-api-renderer/issues/112) Lincoln learnt how to display `externalDocs`.
 
-## [v0.0.6][] - 2017-07-07
+## [0.0.6][] - 2017-07-07
 
 - Initial release of Lincoln 🎩
+
+[Unreleased]: https://github.com/temando/open-api-renderer/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/temando/open-api-renderer/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/temando/open-api-renderer/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/temando/open-api-renderer/compare/v0.0.6...v0.1.0
+[0.0.6]: https://github.com/temando/open-api-renderer/tree/v0.0.6
