@@ -53,6 +53,7 @@
     "test": "jest",
     "test:bench": "node -r babel-register test/benchmark/parser.js",
     "test:coverage": "jest --coverage",
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
     "webpack:library": "rimraf dist/library/* && NODE_ENV=production webpack --config webpack.config.library.js"
   },
   "dependencies": {
@@ -89,6 +90,7 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.23.0",
     "benchmark": "^2.1.4",
+    "changelog-verify": "^1.0.4",
     "css-loader": "^0.28.4",
     "eslint": "^4.1.0",
     "eslint-config-standard": "^10.2.1",
@@ -115,6 +117,7 @@
     "style-loader": "^0.18.2",
     "transform-runtime": "^0.0.0",
     "url-loader": "^0.5.9",
+    "version-changelog": "^2.1.0",
     "webpack": "2",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dashboard": "^0.4.0",
