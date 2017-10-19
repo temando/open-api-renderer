@@ -6,7 +6,7 @@ export const styles = theme => ({
     maxWidth: '80rem',
 
     '&$inline': {
-      fontSize: `${sizes.text}`,
+      fontSize: `${theme.sizes.text}`,
       '&, & p': {
         display: 'inline'
       }

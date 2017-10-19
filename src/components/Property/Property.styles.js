@@ -1,4 +1,3 @@
-import { theme } from '../../theme'
 import c from 'color'
 
 const lineHeight = '40px'

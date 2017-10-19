@@ -1,4 +1,5 @@
 import { styles as indicator } from '../Indicator/Indicator.styles'
+import c from 'color'
 
 export const styles = theme => ({
   navigation: {
@@ -11,7 +12,7 @@ export const styles = theme => ({
     boxSizing: 'border-box',
     overflowY: 'auto',
 
-    [`& ${indicator.classes.indicator}`]: {
+    [`& ${indicator(theme).indicator}`]: {
       float: 'right',
       display: 'block',
       marginTop: '5px'

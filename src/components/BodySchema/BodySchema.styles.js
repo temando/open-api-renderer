@@ -22,8 +22,8 @@ export const styles = theme => ({
   },
 
   'subset': {
-    [`& + .${property.classes.property}:not(.${property.classes.last})`]: {
-      [`& .${property.classes.name}::after`]: {
+    [`& + .${property(theme).property}:not(.${property(theme).last})`]: {
+      [`& .${property(theme).name}::after`]: {
         content: '""',
         borderLeft: `1px solid ${theme.borders.default}`,
         position: 'absolute',
@@ -51,11 +51,11 @@ export const styles = theme => ({
       marginLeft: '1rem'
     },
 
-    [`.${property.classes.last} + & > td`]: {
+    [`.${property(theme).last} + & > td`]: {
       paddingTop: 0
     },
 
-    [`.${property.classes.last} + & > td::before`]: {
+    [`.${property(theme).last} + & > td::before`]: {
       borderLeft: 'none'
     }
   },

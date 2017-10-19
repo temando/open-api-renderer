@@ -11,7 +11,7 @@ export const styles = theme => ({
     padding: '1rem',
     fontSize: `${theme.sizes.text}`,
 
-    [`& ${indicator.classes.indicator}`]: {
+    [`& ${indicator(theme).indicator}`]: {
       marginRight: '1rem'
     }
   },

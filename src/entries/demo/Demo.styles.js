@@ -8,7 +8,7 @@ const headerColor = `${c(headerBackground).lighten(0.75)}`
 const headerBorder = `${c(headerColor).darken(0.2)}`
 const headerTitleColor = c('#FFF')
 
-export const styles = {
+export const styles = theme => ({
   '@global': {
     'html': {
       fontSize: '62.5%'
@@ -24,18 +24,18 @@ export const styles = {
     fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
     lineHeight: '1.4',
 
-    // [`& .${Base.classes.base}`]: {
-    //   marginTop: `${headerHeight}`
-    // }
+    [`& .${Base(theme).base}`]: {
+      marginTop: `${headerHeight}`
+    }
   },
 
   dialog: {
-    // [`& .${Overlay.classes.overlay}`]: {
-    //   zIndex: '2',
-    //   transition: 'background 0.5s',
-    //   background: headerBackground,
-    //   paddingTop: '70px'
-    // },
+    [`& .${Overlay(theme).overlay}`]: {
+      zIndex: '2',
+      transition: 'background 0.5s',
+      background: headerBackground,
+      paddingTop: '70px'
+    },
 
     '& textarea': {
       padding: '1rem',
@@ -205,4 +205,4 @@ export const styles = {
       }
     }
   }
-}
+})

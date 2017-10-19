@@ -1,5 +1,3 @@
-import { createSheet } from '../../theme'
-
 export const styles = theme => ({
   'summary': {
     lineHeight: '1.4',
