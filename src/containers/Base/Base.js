@@ -143,7 +143,8 @@ export default class Base extends React.PureComponent {
 }
 
 Base.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object,
+  __THEMING__: PropTypes.object
 }
 
 Base.propTypes = {

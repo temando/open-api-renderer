@@ -14,11 +14,14 @@ import globeIcon from '../../../assets/globe.svg'
 import { theme } from './../../theme'
 
 jss.setup(preset())
+
 configureAnchors({ offset: -52, scrollDuration: 200, keepLastAnchorHash: true })
 
 const definitionUrl = parseQuery(window.location.search.split('?')[1]).url
 const hash = window.location.hash
 
+@withTheme
+@injectSheet(styles)
 export class Demo extends React.PureComponent {
   state = {
     definitionUrl,
@@ -123,10 +126,8 @@ Demo.propTypes = {
   classes: PropTypes.object
 }
 
-const StyledDemo = injectSheet(styles)(Demo)
-
 export const DemoRoot = () => (
   <ThemeProvider theme={theme}>
-    <StyledDemo />
+    <Demo />
   </ThemeProvider>
 )

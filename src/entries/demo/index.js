@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Demo } from './Demo'
+import { DemoRoot } from './Demo'
 
 const dom = document.body.appendChild(document.createElement('div'))
 
-ReactDOM.render(<Demo />, dom)
+ReactDOM.render(<DemoRoot />, dom)
