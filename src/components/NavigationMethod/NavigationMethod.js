@@ -22,8 +22,6 @@ export default class NavigationMethod extends PureComponent {
         { (navigationMethodDisplayType === 'all' || navigationMethodDisplayType === 'path') &&
           <span className={classes.path}>{method.path}</span>
         }
-        { navigationMethodDisplayType === 'all' &&
-          <br /> }
         { navigationMethodDisplayType !== 'path' &&
           <span className={classNames(classes.title, {
             'short': navigationMethodDisplayType !== 'all'
