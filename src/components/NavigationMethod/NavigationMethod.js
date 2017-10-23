@@ -6,7 +6,7 @@ import { styles } from './NavigationMethod.styles'
 @styles
 export default class NavigationMethod extends PureComponent {
   render () {
-    const { method, isActive, isOpen, classes, onClick } = this.props
+    const { method, isActive, isOpen, classes, onClick, navigationMethodDisplayType } = this.props
 
     return (
       <a
@@ -19,7 +19,15 @@ export default class NavigationMethod extends PureComponent {
         onClick={onClick}
       >
         <span className={classNames(classes.type, `${method.type}`)}>{method.type.toUpperCase()}</span>
-        <span className={classes.title}>{method.title}</span>
+        { (navigationMethodDisplayType === 'all' || navigationMethodDisplayType === 'path') &&
+          <span className={classes.path}>{method.path}</span>
+        }
+        { navigationMethodDisplayType === 'all' &&
+          <br /> }
+        { navigationMethodDisplayType !== 'path' &&
+          <span className={classNames(classes.title, {
+            'short': navigationMethodDisplayType !== 'all'
+          })}>{method.title}</span> }
       </a>
     )
   }
@@ -30,5 +38,6 @@ NavigationMethod.propTypes = {
   isActive: PropTypes.bool,
   isOpen: PropTypes.bool,
   classes: PropTypes.object,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  navigationMethodDisplayType: PropTypes.string
 }

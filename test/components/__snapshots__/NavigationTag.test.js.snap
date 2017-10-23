@@ -69,7 +69,7 @@ exports[`<NavigationTag /> renders with methods 1`] = `
         GET
       </span>
       <span
-        className={undefined}
+        className="short"
       >
         Get pets
       </span>
@@ -85,7 +85,137 @@ exports[`<NavigationTag /> renders with methods 1`] = `
         GET
       </span>
       <span
+        className="short"
+      >
+        Get pets
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`<NavigationTag /> renders with methods having paths 1`] = `
+<div>
+  <a
+    className={undefined}
+    href="#pets"
+    onClick={[Function]}
+  >
+    <span>
+      pets
+    </span>
+    <div
+      className=""
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+  </a>
+  <div
+    className=""
+  >
+    <a
+      className="undefined"
+      href="#/pets/get"
+      onClick={undefined}
+    >
+      <span
+        className="get"
+      >
+        GET
+      </span>
+      <span
         className={undefined}
+      >
+        /pets
+      </span>
+    </a>
+    <a
+      className="undefined"
+      href="#/pets/:id/get"
+      onClick={undefined}
+    >
+      <span
+        className="get"
+      >
+        GET
+      </span>
+      <span
+        className={undefined}
+      >
+        /pets/:id
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`<NavigationTag /> renders with methods having paths and summary 1`] = `
+<div>
+  <a
+    className={undefined}
+    href="#pets"
+    onClick={[Function]}
+  >
+    <span>
+      pets
+    </span>
+    <div
+      className=""
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+  </a>
+  <div
+    className=""
+  >
+    <a
+      className="undefined"
+      href="#/pets/get"
+      onClick={undefined}
+    >
+      <span
+        className="get"
+      >
+        GET
+      </span>
+      <span
+        className={undefined}
+      >
+        /pets
+      </span>
+      <br />
+      <span
+        className=""
+      >
+        Get pets
+      </span>
+    </a>
+    <a
+      className="undefined"
+      href="#/pets/:id/get"
+      onClick={undefined}
+    >
+      <span
+        className="get"
+      >
+        GET
+      </span>
+      <span
+        className={undefined}
+      >
+        /pets/:id
+      </span>
+      <br />
+      <span
+        className=""
       >
         Get pets
       </span>

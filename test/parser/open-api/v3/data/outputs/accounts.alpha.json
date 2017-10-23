@@ -10,11 +10,13 @@
         {
           "type": "get",
           "title": "Get all the users of a given account",
+          "path": "/accounts/{id}/users",
           "link": "/accounts/{id}/users/get"
         },
         {
           "type": "post",
           "title": "Create a user under the given account",
+          "path": "/accounts/{id}/users",
           "link": "/accounts/{id}/users/post"
         }
       ]

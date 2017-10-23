@@ -108,7 +108,7 @@ export default class Base extends React.PureComponent {
   }
 
   render () {
-    const { hash: propsHash, classes, initialSchemaTreeDepth } = this.props
+    const { hash: propsHash, classes, initialSchemaTreeDepth, navigationMethodDisplayType } = this.props
     const {
       parsedDefinition: definition,
       hash: stateHash,
@@ -127,7 +127,7 @@ export default class Base extends React.PureComponent {
     } else if (error) {
       element = <Failure {...{error}} />
     } else {
-      element = <Definition {...{ hash, definition, definitionUrl, initialSchemaTreeDepth }} />
+      element = <Definition {...{ hash, definition, definitionUrl, initialSchemaTreeDepth, navigationMethodDisplayType }} />
     }
 
     return (
@@ -156,7 +156,8 @@ Base.propTypes = {
   validate: PropTypes.bool,
   history: PropTypes.object, // eslint-disable-line
   listenToHash: PropTypes.bool, // eslint-disable-line
-  initialSchemaTreeDepth: PropTypes.number
+  initialSchemaTreeDepth: PropTypes.number,
+  navigationMethodDisplayType: PropTypes.string
 }
 
 Base.defaultProps = {
@@ -164,23 +165,30 @@ Base.defaultProps = {
   navSort: false,
   validate: false,
   listenToHash: true,
-  initialSchemaTreeDepth: 0
+  initialSchemaTreeDepth: 0,
+  navigationMethodDisplayType: 'all'
 }
 
-const Definition = ({ definition, definitionUrl, hash, initialSchemaTreeDepth }) =>
+const Definition = ({ definition, definitionUrl, hash, initialSchemaTreeDepth, navigationMethodDisplayType }) =>
   !definition
     ? <Overlay>
       <img src={lincolnLogo} alt='' />
       <h3>Render your OpenAPI document.<br /><br />You can either input a CORS-enabled URL above, or input a definition as text</h3>
       <p>You can also set a url with the <code>?url</code> query parameter.</p>
     </Overlay>
-    : <Page definition={definition} hash={hash} definitionUrl={definitionUrl} initialSchemaTreeDepth={initialSchemaTreeDepth} />
+    : <Page
+      definition={definition}
+      hash={hash}
+      definitionUrl={definitionUrl}
+      initialSchemaTreeDepth={initialSchemaTreeDepth}
+      navigationMethodDisplayType={navigationMethodDisplayType} />
 
 Definition.propTypes = {
   definition: PropTypes.object,
   definitionUrl: PropTypes.string,
   hash: PropTypes.string,
-  initialSchemaTreeDepth: PropTypes.number
+  initialSchemaTreeDepth: PropTypes.number,
+  navigationMethodDisplayType: PropTypes.string
 }
 
 const Failure = ({ error }) => {
