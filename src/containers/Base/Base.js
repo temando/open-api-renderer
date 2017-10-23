@@ -166,7 +166,7 @@ Base.defaultProps = {
   validate: false,
   listenToHash: true,
   initialSchemaTreeDepth: 0,
-  navigationMethodDisplayType: 'all'
+  navigationMethodDisplayType: 'summary'
 }
 
 const Definition = ({ definition, definitionUrl, hash, initialSchemaTreeDepth, navigationMethodDisplayType }) =>

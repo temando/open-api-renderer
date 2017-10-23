@@ -191,7 +191,6 @@ exports[`<NavigationTag /> renders with methods having paths and summary 1`] = `
       >
         /pets
       </span>
-      <br />
       <span
         className=""
       >
@@ -213,7 +212,6 @@ exports[`<NavigationTag /> renders with methods having paths and summary 1`] = `
       >
         /pets/:id
       </span>
-      <br />
       <span
         className=""
       >
