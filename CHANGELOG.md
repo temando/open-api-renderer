@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+## [0.3.0][] - 2017-10-24
+
 ### Added
 
-- `navigationMethodDisplayType` parameter is added for better customisation of the navigation on the left.
+- [#199](https://github.com/temando/open-api-renderer/issues/199) `navigationMethodDisplayType` parameter is added for better customisation of the navigation on the left.
 
 ## [0.2.1][] - 2017-10-18
 
@@ -45,7 +47,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Initial release of Lincoln 🎩
 
-[Unreleased]: https://github.com/temando/open-api-renderer/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/temando/open-api-renderer/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/temando/open-api-renderer/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/temando/open-api-renderer/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/temando/open-api-renderer/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/temando/open-api-renderer/compare/v0.0.6...v0.1.0
