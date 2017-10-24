@@ -1,6 +1,4 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({borders, text, sizes}) => ({
+export const styles = {
   endpoint: {
     lineHeight: '1.4',
     '& + &': {
@@ -17,4 +15,4 @@ export const styles = createSheet(({borders, text, sizes}) => ({
       outline: 'none'
     }
   }
-}))
+}

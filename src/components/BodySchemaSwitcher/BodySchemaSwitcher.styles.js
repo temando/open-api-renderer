@@ -1,16 +1,14 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ text }) => ({
+export const styles = theme => ({
   'schemaSwitcher': {
     marginBottom: '1rem'
   },
 
   'select': {
     background: 'transparent',
-    color: `${text.default}`,
-    border: `1px solid ${text.default}`,
+    color: `${theme.text.default}`,
+    border: `1px solid ${theme.text.default}`,
     borderRadius: '.5rem',
     marginLeft: '1.5rem',
     fontSize: 'medium'
   }
-}))
+})

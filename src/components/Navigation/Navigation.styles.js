@@ -1,38 +1,38 @@
-import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
+import c from 'color'
 
-export const styles = createSheet(({ backgrounds, borders, text, sizes }) => ({
+export const styles = theme => ({
   navigation: {
     display: 'table-cell',
     width: '20%',
     height: '100%',
     verticalAlign: 'top',
-    backgroundColor: `${backgrounds.nav}`,
+    backgroundColor: `${theme.backgrounds.nav}`,
     position: 'fixed',
     boxSizing: 'border-box',
     overflowY: 'auto',
 
-    [`& ${indicator.classes.indicator}`]: {
+    [`& ${indicator(theme).indicator}`]: {
       float: 'right',
       display: 'block',
       marginTop: '5px'
     },
 
     '& > div + div': {
-      borderTop: `1px solid ${borders.default}`
+      borderTop: `1px solid ${theme.borders.default}`
     },
 
     '& a': {
-      color: `${text.default}`,
+      color: `${theme.text.default}`,
       padding: '.7rem 1rem',
       '&:hover': {
-        color: `${text.tertiary}`,
+        color: `${c(theme.text.tertiary)}`,
         transition: 'all .2s'
       }
     }
   },
 
-  [`@media (max-width: ${sizes.breakpoint})`]: {
+  [`@media (max-width: ${theme.sizes.breakpoint})`]: {
     'navigation': {
       display: 'block',
       width: '100%',
@@ -46,4 +46,4 @@ export const styles = createSheet(({ backgrounds, borders, text, sizes }) => ({
       right: 0
     }
   }
-}))
+})

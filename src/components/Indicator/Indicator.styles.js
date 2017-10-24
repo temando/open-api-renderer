@@ -1,6 +1,4 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ shades }) => ({
+export const styles = theme => ({
   indicator: {
     display: 'inline',
     verticalAlign: 'middle',
@@ -22,4 +20,4 @@ export const styles = createSheet(({ shades }) => ({
 
   up: {},
   right: {}
-}))
+})

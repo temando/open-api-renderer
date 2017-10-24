@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Indicator from '../Indicator/Indicator'
@@ -6,7 +7,8 @@ import NavigationMethod from '../NavigationMethod/NavigationMethod'
 import Description from '../Description/Description'
 import { styles } from './NavigationTag.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class NavigationTag extends Component {
   constructor (props) {
     super(props)

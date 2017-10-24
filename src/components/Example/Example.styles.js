@@ -1,21 +1,19 @@
-import { createSheet } from '../../theme'
-
-export const styles = createSheet(({ backgrounds, text, sizes }) => ({
+export const styles = theme => ({
   'summary': {
     lineHeight: '1.4',
-    fontSize: `${sizes.h4}`,
+    fontSize: `${theme.sizes.h4}`,
     marginBottom: '1rem'
   },
 
   'description': {
     lineHeight: '1.2',
-    fontSize: `${sizes.text}`,
+    fontSize: `${theme.sizes.text}`,
     marginBottom: '1rem'
   },
 
   'value': {
-    backgroundColor: `${backgrounds.example}`,
-    color: `${text.reversed}`,
+    backgroundColor: `${theme.backgrounds.example}`,
+    color: `${theme.text.reversed}`,
     padding: '1rem'
   },
 
@@ -27,7 +25,7 @@ export const styles = createSheet(({ backgrounds, text, sizes }) => ({
     marginBottom: '1rem',
 
     '& > span': {
-      color: `${text.reversed}`,
+      color: `${theme.text.reversed}`,
       padding: '.2rem 1rem',
       cursor: 'pointer'
     }
@@ -39,4 +37,4 @@ export const styles = createSheet(({ backgrounds, text, sizes }) => ({
       opacity: '1'
     }
   }
-}))
+})

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import ScrollableAnchor from 'react-scrollable-anchor'
 import BodyContent from '../BodyContent/BodyContent'
@@ -8,7 +9,8 @@ import Response from '../Response/Response'
 import MethodEndpoints from './MethodEndpoints'
 import { styles } from './Method.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Method extends PureComponent {
   render () {
     const {method, classes, initialSchemaTreeDepth} = this.props

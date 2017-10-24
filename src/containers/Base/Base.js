@@ -1,5 +1,6 @@
 import React from 'react'
 import { configureAnchors } from 'react-scrollable-anchor'
+import injectSheet, { withTheme } from 'react-jss'
 import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 import Page from '../../components/Page/Page'
@@ -11,7 +12,8 @@ import { createBrowserHistory } from 'history'
 
 configureAnchors({ offset: 10, scrollDuration: 200, keepLastAnchorHash: true })
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Base extends React.PureComponent {
   state = {
     parserType: 'open-api-v3',
@@ -141,7 +143,8 @@ export default class Base extends React.PureComponent {
 }
 
 Base.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object,
+  __THEMING__: PropTypes.object
 }
 
 Base.propTypes = {

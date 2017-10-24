@@ -1,7 +1,6 @@
-import { createSheet } from '../../theme'
 import { styles as indicator } from '../Indicator/Indicator.styles'
 
-export const styles = createSheet(({ text, sizes }) => ({
+export const styles = theme => ({
   'response': {
     marginBottom: '.5rem',
     bodyContent: {
@@ -10,9 +9,9 @@ export const styles = createSheet(({ text, sizes }) => ({
   },
   'info': {
     padding: '1rem',
-    fontSize: `${sizes.text}`,
+    fontSize: `${theme.sizes.text}`,
 
-    [`& ${indicator.classes.indicator}`]: {
+    [`& ${indicator(theme).indicator}`]: {
       marginRight: '1rem'
     }
   },
@@ -24,12 +23,12 @@ export const styles = createSheet(({ text, sizes }) => ({
   },
   'success': {
     '& $code': {
-      color: `${text.success}`
+      color: `${theme.text.success}`
     }
   },
   'error': {
     '& $code': {
-      color: `${text.error}`
+      color: `${theme.text.error}`
     }
   }
-}))
+})

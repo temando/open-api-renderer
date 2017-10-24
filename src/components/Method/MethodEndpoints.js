@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Endpoints from '../Endpoints/Endpoints'
 import Indicator from '../Indicator/Indicator'
 import { styles } from './MethodEndpoints.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class MethodEndpoints extends PureComponent {
   constructor (props) {
     super(props)

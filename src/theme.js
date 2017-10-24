@@ -1,16 +1,15 @@
-import injectSheet, { jss } from 'react-jss'
 import c from 'color'
 
-export const theme = (() => {
-  const backgrounds = {
+export const theme = {
+  backgrounds: {
     default: c('#FFFFFF'),
     nav: c('#FFFFFF'),
     header: c('#FFFFFF'),
     schema: c('#F0F0F0'),
     example: c('#111111')
-  }
+  },
 
-  const text = {
+  text: {
     default: c('#4c555a'),
     secondary: c('#4c555a').lighten(0.5),
     tertiary: c('#4c555a').lighten(0.1),
@@ -23,20 +22,10 @@ export const theme = (() => {
     delete: c('#dd133f'),
     success: c('rgb(76, 204, 79)'),
     error: c('rgb(235, 15, 40)')
-  }
+  },
 
-  const shades = {
-    default: c(backgrounds.default).darken(0.2)
-  }
-
-  const borders = {
-    default: shades.default,
-    secondary: c(shades.default).lighten(0.1),
-    strong: c('#808080')
-  }
-
-  // http://www.modularscale.com/?1&em&1.25
-  const sizes = {
+  // http://www.modularscale.com/?1.4&em&1.25
+  sizes: {
     breakpoint: '800px',
     h1: '3.418rem',
     h2: '2.734rem',
@@ -45,20 +34,14 @@ export const theme = (() => {
     text: '1.4rem',
     smaller: '1.12rem'
   }
+}
 
-  return { backgrounds, text, shades, borders, sizes }
-})()
+theme.shades = {
+  default: c(theme.backgrounds.default).darken(0.2)
+}
 
-/**
- * FIXME: This only exists because react-jss doesnt do themes yet
- * as a central place to refactor
- */
-export function createSheet (styles) {
-  const sheet = jss.createStyleSheet(styles(theme))
-
-  const decorator = (...args) => injectSheet(sheet)(...args)
-
-  Object.assign(decorator, sheet)
-
-  return decorator
+theme.borders = {
+  default: theme.shades.default,
+  secondary: c(theme.shades.default).lighten(0.1),
+  strong: c('#808080')
 }

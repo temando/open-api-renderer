@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import isEqual from 'lodash/isEqual'
@@ -6,7 +7,8 @@ import NavigationTag from '../NavigationTag/NavigationTag'
 import NavigationMethod from '../NavigationMethod/NavigationMethod'
 import { styles } from './Navigation.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class Navigation extends Component {
   constructor (props) {
     super(props)

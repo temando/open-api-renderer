@@ -2,6 +2,7 @@ import React from 'react'
 import { parse as parseQuery } from 'qs'
 import jss from 'jss'
 import preset from 'jss-preset-default'
+import injectSheet, { withTheme, ThemeProvider } from 'react-jss'
 import PropTypes from 'prop-types'
 import { configureAnchors } from 'react-scrollable-anchor'
 import cn from 'classnames'
@@ -10,14 +11,17 @@ import { styles } from './Demo.styles'
 import Overlay from '../../components/Overlay/Overlay'
 import pencilIcon from '../../../assets/pencil.svg'
 import globeIcon from '../../../assets/globe.svg'
+import { theme } from './../../theme'
 
 jss.setup(preset())
+
 configureAnchors({ offset: -52, scrollDuration: 200, keepLastAnchorHash: true })
 
 const definitionUrl = parseQuery(window.location.search.split('?')[1]).url
 const hash = window.location.hash
 
-@styles
+@withTheme
+@injectSheet(styles)
 export class Demo extends React.PureComponent {
   state = {
     definitionUrl,
@@ -38,7 +42,7 @@ export class Demo extends React.PureComponent {
   }
 
   render () {
-    const { classes } = this.props
+    const { classes = {} } = this.props
     const { definitionUrl, showDialog, showForm, definition, useDefinition } = this.state
     const initialSchemaTreeDepth = 1
     const navigationMethodDisplayType = 'all'
@@ -121,3 +125,9 @@ export class Demo extends React.PureComponent {
 Demo.propTypes = {
   classes: PropTypes.object
 }
+
+export const DemoRoot = () => (
+  <ThemeProvider theme={theme}>
+    <Demo />
+  </ThemeProvider>
+)

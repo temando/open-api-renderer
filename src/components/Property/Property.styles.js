@@ -1,11 +1,16 @@
-import { createSheet } from '../../theme'
+import c from 'color'
 
 const lineHeight = '40px'
 const cellPadding = '1rem'
 
-export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
+const nameAndInfo = {
+  verticalAlign: 'middle',
+  paddingRight: `${cellPadding}`
+}
+
+export const styles = theme => ({
   'name': {
-    verticalAlign: 'middle',
+    ...nameAndInfo,
     width: '15%',
     whiteSpace: 'nowrap',
     position: 'relative',
@@ -14,7 +19,7 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
       content: '""',
       display: 'inline-block',
       verticalAlign: 'middle',
-      borderTop: `1px solid ${borders.default}`,
+      borderTop: `1px solid ${theme.borders.default}`,
       width: '2rem'
     },
 
@@ -30,7 +35,7 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
         width: `${cellPadding}`,
         height: `8px`,
         verticalAlign: 'middle',
-        borderLeft: `1px solid ${borders.default}`
+        borderLeft: `1px solid ${theme.borders.default}`
       }
     }
   },
@@ -40,8 +45,8 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
   },
 
   'additionalInfo': {
-    fontSize: `${sizes.smaller}`,
-    color: `${text.secondary}`,
+    fontSize: `${theme.sizes.smaller}`,
+    color: `${c(theme.text.secondary)}`,
     paddingBottom: '0.7rem',
     marginTop: '.5rem',
 
@@ -54,7 +59,7 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
     marginLeft: '.5rem',
     '& > span > span': {
       padding: '2px',
-      backgroundColor: `${borders.secondary}`,
+      backgroundColor: `${c(theme.borders.secondary)}`,
       marginLeft: '.5rem'
     }
   },
@@ -63,7 +68,7 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
     '&:first-child': {
       '& $name::after': {
         content: '""',
-        borderLeft: `1px solid ${borders.default}`,
+        borderLeft: `1px solid ${theme.borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '1rem',
@@ -73,7 +78,7 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
     '&:last-child, &$last': {
       '& $name::after': {
         content: '""',
-        borderLeft: `1px solid ${borders.default}`,
+        borderLeft: `1px solid ${theme.borders.default}`,
         position: 'absolute',
         top: '0',
         left: '1rem',
@@ -92,11 +97,11 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
     },
     '& + &': {
       '& $info': {
-        borderTop: `1px solid ${borders.secondary}`
+        borderTop: `1px solid ${theme.borders.default}`
       },
       '& $name::after': {
         content: '""',
-        borderLeft: `1px solid ${borders.default}`,
+        borderLeft: `1px solid ${theme.borders.default}`,
         position: 'absolute',
         bottom: '0',
         left: '1rem',
@@ -129,7 +134,7 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
     display: 'inline-block',
     padding: '0 5px',
     margin: '2px 3px',
-    border: `1px solid ${borders.strong}`
+    border: `1px solid ${theme.borders.strong}`
   },
   'default': {
     extend: 'enum'
@@ -137,4 +142,4 @@ export const styles = createSheet(({ borders, backgrounds, text, sizes }) => ({
   'indicator': {},
   'format': {},
   'subType': {}
-}))
+})

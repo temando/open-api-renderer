@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import { styles } from './BodySchemaSwitcher.styles'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class BodySchemaSwitcher extends Component {
   constructor (props) {
     super(props)

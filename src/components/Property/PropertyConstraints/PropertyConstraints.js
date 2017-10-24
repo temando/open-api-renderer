@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import injectSheet, { withTheme } from 'react-jss'
 import PropTypes from 'prop-types'
 import { styles } from '../Property.styles'
 import { getConstraintHints as getArrayHints } from '../../../parser/open-api/constraints/array'
@@ -6,7 +7,8 @@ import { getConstraintHints as getNumericHints } from '../../../parser/open-api/
 import { getConstraintHints as getObjectHints } from '../../../parser/open-api/constraints/object'
 import { getConstraintHints as getStringHints } from '../../../parser/open-api/constraints/string'
 
-@styles
+@withTheme
+@injectSheet(styles)
 export default class PropertyConstraints extends PureComponent {
   render () {
     const { types, isRequired, constraints, classes } = this.props

@@ -1,6 +1,5 @@
 import c from 'color'
-import { createSheet } from '../../theme'
-import { styles as base } from '../../containers/Base/Base.styles'
+import { styles as Base } from '../../containers/Base/Base.styles'
 import { styles as Overlay } from '../../components/Overlay/Overlay.styles'
 
 const headerHeight = '41px'
@@ -9,7 +8,7 @@ const headerColor = `${c(headerBackground).lighten(0.75)}`
 const headerBorder = `${c(headerColor).darken(0.2)}`
 const headerTitleColor = c('#FFF')
 
-export const styles = createSheet(({ shades }) => ({
+export const styles = theme => ({
   '@global': {
     'html': {
       fontSize: '62.5%'
@@ -25,13 +24,13 @@ export const styles = createSheet(({ shades }) => ({
     fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",helvetica,sans-serif;',
     lineHeight: '1.4',
 
-    [`& .${base.classes.base}`]: {
+    [`& .${Base(theme).base}`]: {
       marginTop: `${headerHeight}`
     }
   },
 
   dialog: {
-    [`& .${Overlay.classes.overlay}`]: {
+    [`& .${Overlay(theme).overlay}`]: {
       zIndex: '2',
       transition: 'background 0.5s',
       background: headerBackground,
@@ -206,4 +205,4 @@ export const styles = createSheet(({ shades }) => ({
       }
     }
   }
-}))
+})
