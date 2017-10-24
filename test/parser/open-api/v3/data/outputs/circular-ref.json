@@ -17,6 +17,7 @@
     {
       "type": "get",
       "title": "Get categories",
+      "path": "/categories",
       "link": "/categories/get"
     }
   ],

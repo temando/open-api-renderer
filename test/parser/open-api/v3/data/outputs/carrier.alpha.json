@@ -10,6 +10,7 @@
         {
           "type": "get",
           "title": "Returns a list of integrations available for registration",
+          "path": "/carriers",
           "link": "/carriers/get"
         }
       ],

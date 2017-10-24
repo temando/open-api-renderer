@@ -23,41 +23,49 @@
         {
           "type": "post",
           "title": "Add a new pet to the store",
+          "path": "/pet",
           "link": "/pet/post"
         },
         {
           "type": "put",
           "title": "Update an existing pet",
+          "path": "/pet",
           "link": "/pet/put"
         },
         {
           "type": "get",
           "title": "Finds Pets by status",
+          "path": "/pet/findByStatus",
           "link": "/pet/findByStatus/get"
         },
         {
           "type": "get",
           "title": "Finds Pets by tags",
+          "path": "/pet/findByTags",
           "link": "/pet/findByTags/get"
         },
         {
           "type": "get",
           "title": "Find pet by ID",
+          "path": "/pet/{petId}",
           "link": "/pet/{petId}/get"
         },
         {
           "type": "post",
           "title": "Updates a pet in the store with form data",
+          "path": "/pet/{petId}",
           "link": "/pet/{petId}/post"
         },
         {
           "type": "delete",
           "title": "Deletes a pet",
+          "path": "/pet/{petId}",
           "link": "/pet/{petId}/delete"
         },
         {
           "type": "post",
           "title": "uploads an image",
+          "path": "/pet/{petId}/uploadImage",
           "link": "/pet/{petId}/uploadImage/post"
         }
       ],
@@ -74,21 +82,25 @@
         {
           "type": "get",
           "title": "Returns pet inventories by status",
+          "path": "/store/inventory",
           "link": "/store/inventory/get"
         },
         {
           "type": "post",
           "title": "Place an order for a pet",
+          "path": "/store/order",
           "link": "/store/order/post"
         },
         {
           "type": "get",
           "title": "Find purchase order by ID",
+          "path": "/store/order/{orderId}",
           "link": "/store/order/{orderId}/get"
         },
         {
           "type": "delete",
           "title": "Delete purchase order by ID",
+          "path": "/store/order/{orderId}",
           "link": "/store/order/{orderId}/delete"
         }
       ],
@@ -101,41 +113,49 @@
         {
           "type": "post",
           "title": "Create user",
+          "path": "/user",
           "link": "/user/post"
         },
         {
           "type": "post",
           "title": "Creates list of users with given input array",
+          "path": "/user/createWithArray",
           "link": "/user/createWithArray/post"
         },
         {
           "type": "post",
           "title": "Creates list of users with given input array",
+          "path": "/user/createWithList",
           "link": "/user/createWithList/post"
         },
         {
           "type": "get",
           "title": "Logs user into the system",
+          "path": "/user/login",
           "link": "/user/login/get"
         },
         {
           "type": "get",
           "title": "Logs out current logged in user session",
+          "path": "/user/logout",
           "link": "/user/logout/get"
         },
         {
           "type": "get",
           "title": "Get user by user name",
+          "path": "/user/{username}",
           "link": "/user/{username}/get"
         },
         {
           "type": "put",
           "title": "Updated user",
+          "path": "/user/{username}",
           "link": "/user/{username}/put"
         },
         {
           "type": "delete",
           "title": "Delete user",
+          "path": "/user/{username}",
           "link": "/user/{username}/delete"
         }
       ],

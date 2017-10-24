@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+### Added
+
+- `navigationMethodDisplayType` parameter is added for better customisation of the navigation on the left.
+
 ## [0.2.1][] - 2017-10-18
 
 ### Added

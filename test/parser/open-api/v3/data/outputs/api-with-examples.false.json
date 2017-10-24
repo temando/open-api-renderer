@@ -6,11 +6,13 @@
     {
       "type": "get",
       "title": "List API versions",
+      "path": "/",
       "link": "//get"
     },
     {
       "type": "get",
       "title": "Show API version details",
+      "path": "/v2",
       "link": "/v2/get"
     }
   ],

@@ -28,7 +28,7 @@ export default class Navigation extends Component {
   }
 
   render () {
-    const { navigation, hash, classes, isNavOpen } = this.props
+    const { navigation, hash, classes, isNavOpen, navigationMethodDisplayType } = this.props
     const { expandedTags } = this.state
 
     return (
@@ -40,7 +40,13 @@ export default class Navigation extends Component {
           if (!tag.methods) {
             const isActive = (`#${tag.link}` === location.hash)
             return (
-              <NavigationMethod key={tag.link} method={tag} isActive={isActive} onClick={this.onClickMethod} isOpen />
+              <NavigationMethod
+                key={tag.link}
+                method={tag}
+                isActive={isActive}
+                onClick={this.onClickMethod}
+                isOpen
+                navigationMethodDisplayType={navigationMethodDisplayType} />
             )
           }
 
@@ -55,6 +61,7 @@ export default class Navigation extends Component {
               onClick={this.onClick}
               onClickMethod={this.onClickMethod}
               hash={hash}
+              navigationMethodDisplayType={navigationMethodDisplayType}
             />
           )
         })}
@@ -90,5 +97,6 @@ Navigation.propTypes = {
   hash: PropTypes.string,
   classes: PropTypes.object,
   isNavOpen: PropTypes.bool,
-  onClickNavItem: PropTypes.func
+  onClickNavItem: PropTypes.func,
+  navigationMethodDisplayType: PropTypes.string
 }

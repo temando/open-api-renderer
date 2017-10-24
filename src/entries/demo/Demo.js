@@ -41,6 +41,7 @@ export class Demo extends React.PureComponent {
     const { classes } = this.props
     const { definitionUrl, showDialog, showForm, definition, useDefinition } = this.state
     const initialSchemaTreeDepth = 1
+    const navigationMethodDisplayType = 'all'
 
     return (
       <div className={classes.demo}>
@@ -109,8 +110,8 @@ export class Demo extends React.PureComponent {
         </header>
         {
           useDefinition
-            ? <Lincoln {...{ definition, hash, initialSchemaTreeDepth }} />
-            : <Lincoln {...{ definitionUrl, hash, initialSchemaTreeDepth }} />
+            ? <Lincoln {...{ definition, hash, initialSchemaTreeDepth, navigationMethodDisplayType }} />
+            : <Lincoln {...{ definitionUrl, hash, initialSchemaTreeDepth, navigationMethodDisplayType }} />
         }
       </div>
     )
