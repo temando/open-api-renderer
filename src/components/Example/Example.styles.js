@@ -1,7 +1,19 @@
 import { createSheet } from '../../theme'
 
-export const styles = createSheet(({ backgrounds, text }) => ({
-  'example': {
+export const styles = createSheet(({ backgrounds, text, sizes }) => ({
+  'summary': {
+    lineHeight: '1.4',
+    fontSize: `${sizes.h4}`,
+    marginBottom: '1rem'
+  },
+
+  'description': {
+    lineHeight: '1.2',
+    fontSize: `${sizes.text}`,
+    marginBottom: '1rem'
+  },
+
+  'value': {
     backgroundColor: `${backgrounds.example}`,
     color: `${text.reversed}`,
     padding: '1rem'

@@ -8,9 +8,7 @@ describe('#validateDefinition', () => {
 
     fetch.mockImplementationOnce((url) => Promise.resolve({
       ok: true,
-      json: jest.fn().mockReturnValue({
-        status: true
-      })
+      json: jest.fn().mockReturnValue({status: true})
     }))
 
     expect(await validateDefinition('http://example.org')).toBeTruthy()
@@ -24,9 +22,7 @@ describe('#validateDefinition', () => {
 
     fetch.mockImplementationOnce((url) => Promise.resolve({
       ok: true,
-      json: jest.fn().mockReturnValue({
-        status: false
-      })
+      json: jest.fn().mockReturnValue({status: false, message: 'The definition did not validate', context: 'Test context'})
     }))
 
     expect.assertions(2)

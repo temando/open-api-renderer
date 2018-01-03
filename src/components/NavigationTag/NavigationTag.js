@@ -42,7 +42,7 @@ export default class NavigationTag extends Component {
   }
 
   render () {
-    const { title, description, shouldBeExpanded, methods, hash, classes, onClickMethod } = this.props
+    const { title, description, shouldBeExpanded, methods, hash, classes, onClickMethod, navigationMethodDisplayType } = this.props
 
     // If tag has any method that matches hash, then it is considered active
     let isActiveTag = false
@@ -79,7 +79,13 @@ export default class NavigationTag extends Component {
           {methods && methods.map((method) => {
             const isActive = (`#${method.link}` === hash)
 
-            return <NavigationMethod key={method.link} method={method} isActive={isActive} isOpen={isExpanded} onClick={onClickMethod} />
+            return <NavigationMethod
+              key={method.link}
+              method={method}
+              isActive={isActive}
+              isOpen={isExpanded}
+              navigationMethodDisplayType={navigationMethodDisplayType}
+              onClick={onClickMethod} />
           })}
         </div>
       </div>
@@ -95,5 +101,6 @@ NavigationTag.propTypes = {
   onClick: PropTypes.func.isRequired,
   hash: PropTypes.string.isRequired,
   classes: PropTypes.object,
+  navigationMethodDisplayType: PropTypes.string,
   onClickMethod: PropTypes.func
 }

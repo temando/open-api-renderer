@@ -23,7 +23,7 @@ export default class Page extends Component {
   }
 
   render () {
-    const { definition, hash, definitionUrl, initialSchemaTreeDepth, classes } = this.props
+    const { definition, hash, definitionUrl, initialSchemaTreeDepth, classes, navigationMethodDisplayType } = this.props
     const { isNavOpen } = this.state
 
     if (!definition) {
@@ -35,7 +35,8 @@ export default class Page extends Component {
     return (
       <div className={classes.page}>
         <NavigationIcon onClick={this.onToggleNavigation} />
-        <Navigation navigation={navigation} hash={hash} isNavOpen={isNavOpen} onClickNavItem={this.onClickNavItem} />
+        <Navigation navigation={navigation} hash={hash} isNavOpen={isNavOpen} onClickNavItem={this.onClickNavItem}
+          navigationMethodDisplayType={navigationMethodDisplayType} />
         <div className={classNames(classes.main, {
           [classes.isHidden]: isNavOpen
         })}>
@@ -114,5 +115,6 @@ Page.propTypes = {
   hash: PropTypes.string.isRequired,
   initialSchemaTreeDepth: PropTypes.number,
   definitionUrl: PropTypes.string,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  navigationMethodDisplayType: PropTypes.string
 }

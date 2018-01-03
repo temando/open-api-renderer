@@ -10,7 +10,8 @@ export const styles = createSheet(({ backgrounds, text, sizes }) => ({
     backgroundColor: `${backgrounds.schema}`
   },
   'open': {
-    display: 'flex'
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   'closed': {
     display: 'none'
@@ -30,7 +31,13 @@ export const styles = createSheet(({ backgrounds, text, sizes }) => ({
       color: `${text.delete}`
     }
   },
-  'title': {
+  'path': {
     width: 'calc(100% - 6rem)'
+  },
+  'title': {
+    width: '100%',
+    '&.short': {
+      width: 'calc(100% - 6rem)'
+    }
   }
 }))

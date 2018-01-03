@@ -8,6 +8,7 @@ pids
 *.pid
 *.seed
 coverage
+jest_*
 
 # Dependency directories
 node_modules
@@ -19,3 +20,6 @@ dist
 
 # OSX
 .DS_Store
+
+# IntelliJ
+.idea

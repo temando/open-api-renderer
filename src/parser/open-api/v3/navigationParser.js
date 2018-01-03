@@ -24,6 +24,7 @@ export function getNavigationMethod (path, method, tag) {
   return {
     type: method.type,
     title: method.summary,
+    path: path,
     link: getPermalink(path, method.type)
   }
 }

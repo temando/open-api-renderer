@@ -55,6 +55,7 @@ The following configuration options are available:
 | `navSort`                       |          | enum    | This property applies when your definition uses `tags`. Valid values are `alpha` which sorts by HTTP method, then path or `false`, which will display paths as defined. Defaults to `false`.                                        |
 | `validate`                      |          | boolean | If `true`, uses [Mermade](https://openapi-converter.herokuapp.com/) to validate definition. Defaults to `false`.                                                                                                                    |
 | `initialSchemaTreeDepth`        |          | number  | The initial opened tree depth for schema visualiser when first rendered. This is useful when the schema's actual contents is a couple of levels deep, and you want to expand the tree to the contents automatically. Defaults to 0. |
+| `navigationMethodDisplayType`   |          | string  | Regulates how the navigation items are rendered - path only, summary only, or both. The possible values are `summary` (default), `path`, or `all`. In case of any other value only the summary is rendered.                         |
 
 ## Philosophy
 

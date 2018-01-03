@@ -6,16 +6,31 @@ const VALIDATOR_HOST = 'https://openapi-converter.herokuapp.com'
  * @param {string} definitionUrl
  * @return {Promise<boolean>}
  */
-export async function validateDefinition (definitionUrl) {
+export async function validateDefinition (definition) {
+  const headers = new Headers({
+    'Accept': 'application/json'
+  })
+
+  const form = new FormData()
+
+  form.append('source', definition)
+
   const url = `${VALIDATOR_HOST}/api/v1/validate`
-  const result = await fetch(`${url}?url=${definitionUrl}`)
+  const fetchOptions = {
+    method: 'POST',
+    headers: headers,
+    body: form
+  }
+  const result = await fetch(`${url}`, fetchOptions)
 
-  if (result.ok) {
-    const response = await result.json()
+  if (result.ok === false) {
+    throw new Error(`There was a problem with the validation service, please see the console and ${VALIDATOR_HOST}.`)
+  }
 
-    if (response.status === false) {
-      throw new Error(`The definition did not validate, see ${VALIDATOR_HOST}.`)
-    }
+  const response = await result.json()
+
+  if (response.status === false) {
+    throw new Error(`Validation error, message: ${response.message}, context: ${response.context}`)
   }
 
   return true
