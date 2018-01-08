@@ -67,6 +67,10 @@ export default class Page extends Component {
   }
 
   renderSecurity (security) {
+    if (Object.keys(security).length === 0) {
+      return null
+    }
+
     return (
       <ContentContainer>
         <h2>Authentication</h2>

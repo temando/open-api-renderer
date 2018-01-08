@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+### Fixed
+
+- [#204](https://github.com/temando/open-api-renderer/issues/199) Linclon learnt to _only_ display the Authentication section when there was security information in the definition.
+
 ## [0.3.0][] - 2017-10-24
 
 ### Added
@@ -16,7 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 
-- Updated example object rendering support the summary, description, and value attributes.
+- Updated example object rendering support `summary`, `description`, and `value` attributes.
 - Implement CHANGELOG handling with `changelog-verify` and `version-changelog`.
 
 ### Fixed
