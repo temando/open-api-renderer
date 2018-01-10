@@ -1,16 +1,37 @@
 import React, { PureComponent } from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import Description from '../Description/Description'
+import Indicator from '../Indicator/Indicator'
 import { styles } from './SecurityContainer.styles'
 
 @styles
 export default class SecurityContainer extends PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.onClick = this.onClick.bind(this)
+
+    this.state = {
+      isOpen: false
+    }
+  }
+
   render () {
     const { id, security, classes, placedIn } = this.props
     const { name, type, description } = security
     const isSimple = ['apiKey', 'http'].includes(security.type)
-    let title
 
+    const { isOpen } = this.state
+
+    let indicatorDirection
+    if (isOpen) {
+      indicatorDirection = 'up'
+    } else {
+      indicatorDirection = 'down'
+    }
+
+    let title
     if (placedIn === 'schema') {
       title = <h3>{name} <code className={classes.scheme}>type={type}</code></h3>
     } else if (placedIn === 'method') {
@@ -18,13 +39,18 @@ export default class SecurityContainer extends PureComponent {
     }
 
     return (
-      <section className={classes.securityContainer} id={id}>
-        {title}
-        {description && <Description description={description} />}
-        {isSimple && this.renderSimple(security)}
-        {security.type === 'oauth2' && this.renderOAuth2(security)}
-        {security.type === 'openIdConnect' && this.renderOpenIdConnect(security)}
-      </section>
+      <div className={classes.securityContainer}>
+        <div className={classNames(classes.info, classes.isClickable)} onClick={this.onClick}>
+          {title}
+          {<Indicator direction={indicatorDirection} />}
+        </div>
+        <section id={id} >
+          {isOpen && description && <Description isInline description={description} />}
+          {isOpen && isSimple && this.renderSimple(security)}
+          {isOpen && security.type === 'oauth2' && this.renderOAuth2(security)}
+          {isOpen && security.type === 'openIdConnect' && this.renderOpenIdConnect(security)}
+        </section>
+      </div>
     )
   }
 
@@ -112,6 +138,14 @@ export default class SecurityContainer extends PureComponent {
         </dl>
       </div>
     )
+  }
+
+  onClick () {
+    if (this.state.isOpen) {
+      this.setState({ isOpen: false })
+    } else {
+      this.setState({ isOpen: true })
+    }
   }
 }
 
