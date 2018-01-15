@@ -7,7 +7,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased][]
 
 ### Added
+
 - [#115](https://github.com/temando/open-api-renderer/issues/115) Show security schema per method, it'd be collapsed by default.
+
+### Changed
+
+- Bump `json-schema-ref-parser` dependency, which removes `Promises` and `TypedArrays` polyfills.
 
 ### Fixed
 
