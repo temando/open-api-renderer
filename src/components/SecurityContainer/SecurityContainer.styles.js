@@ -1,28 +1,43 @@
 import { createSheet } from '../../theme'
+import { styles as indicator } from '../Indicator/Indicator.styles'
 
-export const styles = createSheet(({ backgrounds, borders }) => ({
+export const styles = createSheet(({ text, sizes }) => ({
   'securityContainer': {
-    padding: '1rem 0',
-    borderBottom: `1px solid ${borders.default}`
+    marginBottom: '.5rem',
+    bodyContent: {
+      margin: '1rem 0 2rem 2rem'
+    }
   },
-  'scheme': {
-    display: 'inline-block',
-    marginLeft: '.5rem',
-    backgroundColor: `${backgrounds.nav}`
-  },
-
-  'flowType': {
-    padding: '1rem 0',
-
-    '& + &': {
-      borderTop: `1px dotted ${borders.default}`
+  'info': {
+    padding: '1rem',
+    fontSize: `${sizes.text}`,
+    display: 'inline-flex',
+    [`& ${indicator.classes.indicator}`]: {
+      marginRight: '1rem'
     }
   },
 
-  inlinePairs: {},
+  isClickable: {
+    cursor: 'pointer'
+  },
+
+  flowType: {
+    padding: '0 1rem'
+  },
+
+  inlinePairs: {
+    padding: '0 1rem'
+  },
+
   scopes: {
     '& > li > span': {
+      padding: '0 1rem',
       fontWeight: 600
-    }
+    },
+    padding: '0 1rem'
+  },
+
+  simple: {
+    padding: '0 1rem'
   }
 }))

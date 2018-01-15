@@ -75,7 +75,7 @@ export default class Page extends Component {
       <ContentContainer>
         <h2>Authentication</h2>
         {Object.keys(security).map(
-          (id) => <SecurityContainer key={id} id={id} security={security[id]} />
+          (id) => <SecurityContainer key={id} id={id} security={security[id]} placedIn='schema' />
         )}
       </ContentContainer>
     )

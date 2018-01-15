@@ -111,7 +111,7 @@ This is supported by default as all `$ref` are dereferenced before the definitio
 - [x] [responses](#responses-object)
 - [ ] [callbacks](#callback-object)
 - [ ] deprecated
-- [ ] [security](#security-scheme-object)
+- [x] [security](#security-scheme-object)
 - [ ] [servers](#server-object)
 
 ### [External Documentation](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0/versions/3.0.0.md#external-documentation-object) object

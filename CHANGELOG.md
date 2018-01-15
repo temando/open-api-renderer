@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+### Added
+- [#115](https://github.com/temando/open-api-renderer/issues/115) Show security schema per method, it'd be collapsed by default.
+
 ### Fixed
 
 - [#204](https://github.com/temando/open-api-renderer/issues/199) Linclon learnt to _only_ display the Authentication section when there was security information in the definition.

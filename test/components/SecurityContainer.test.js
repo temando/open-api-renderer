@@ -12,7 +12,7 @@ describe('<SecurityContainer />', () => {
     }
 
     const tree = renderer.create(
-      <SecurityContainer id='api_key' security={security} />
+      <SecurityContainer id='api_key' security={security} placedIn='schema' />
     )
 
     expect(tree).toMatchSnapshot()
@@ -28,13 +28,13 @@ describe('<SecurityContainer />', () => {
     }
 
     const tree = renderer.create(
-      <SecurityContainer id='JWT' security={security} />
+      <SecurityContainer id='JWT' security={security} placedIn='schema' />
     )
 
     expect(tree).toMatchSnapshot()
   })
 
-  it('renders oauth2 type', () => {
+  it('renders oauth2 type in Schema', () => {
     const security = {
       name: 'oauth2',
       type: 'oauth2',
@@ -58,13 +58,43 @@ describe('<SecurityContainer />', () => {
     }
 
     const tree = renderer.create(
-      <SecurityContainer id='oauth2' security={security} />
+      <SecurityContainer id='oauth2' security={security} placedIn='schema' />
     )
 
     expect(tree).toMatchSnapshot()
   })
 
-  it('renders openIdConnect type', () => {
+  it('renders oauth2 type in Method', () => {
+    const security = {
+      name: 'oauth2',
+      type: 'oauth2',
+      flows: {
+        implicit: {
+          authorizationUrl: 'https://example.com/api/oauth/dialog',
+          scopes: {
+            'write:pets': 'modify pets in your account',
+            'read:pets': 'read your pets'
+          }
+        },
+        authorizationCode: {
+          authorizationUrl: 'https://example.com/api/oauth/dialog',
+          tokenUrl: 'https://example.com/api/oauth/token',
+          scopes: {
+            'write:pets': 'modify pets in your account',
+            'read:pets': 'read your pets'
+          }
+        }
+      }
+    }
+
+    const tree = renderer.create(
+      <SecurityContainer id='oauth2' security={security} placedIn='method' />
+    )
+
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders openIdConnect type in Schema', () => {
     const security = {
       name: 'openIdConnect',
       type: 'openIdConnect',
@@ -72,7 +102,21 @@ describe('<SecurityContainer />', () => {
     }
 
     const tree = renderer.create(
-      <SecurityContainer id='openIdConnect' security={security} />
+      <SecurityContainer id='openIdConnect' security={security} placedIn='schema' />
+    )
+
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders openIdConnect type in Method', () => {
+    const security = {
+      name: 'openIdConnect',
+      type: 'openIdConnect',
+      openIdConnect: 'https://example.com/openIdConnect'
+    }
+
+    const tree = renderer.create(
+      <SecurityContainer id='openIdConnect' security={security} placedIn='method' />
     )
 
     expect(tree).toMatchSnapshot()

@@ -1,197 +1,205 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SecurityContainer /> renders apiKey type 1`] = `
-<section
+<div
   className={undefined}
-  id="api_key"
 >
-  <h3>
-    api_key
-     
-    <code
-      className={undefined}
-    >
-      type=
-      apiKey
-    </code>
-  </h3>
-  <div>
-    <p>
-      To use this authentication scheme, pass 
-      <code>
-        api_key: credentials
+  <div
+    className=""
+    onClick={[Function]}
+  >
+    <h3>
+      api_key
+       
+      <code
+        className={undefined}
+      >
+        type=
+        apiKey
       </code>
-      
-       as a request header.
-    </p>
+    </h3>
+    <div
+      className=""
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
   </div>
-</section>
+  <section
+    id="api_key"
+  />
+</div>
 `;
 
 exports[`<SecurityContainer /> renders http type 1`] = `
-<section
+<div
   className={undefined}
-  id="JWT"
 >
-  <h3>
-    JWT
-     
-    <code
-      className={undefined}
-    >
-      type=
-      http
-    </code>
-  </h3>
-  <div>
-    <p>
-      To use this authentication scheme, pass 
-      <code>
-        Authorization: bearer credentials
+  <div
+    className=""
+    onClick={[Function]}
+  >
+    <h3>
+      JWT
+       
+      <code
+        className={undefined}
+      >
+        type=
+        http
       </code>
-      , formatted as JWT
-       as a request header.
-    </p>
+    </h3>
+    <div
+      className=""
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
   </div>
-</section>
+  <section
+    id="JWT"
+  />
+</div>
 `;
 
-exports[`<SecurityContainer /> renders oauth2 type 1`] = `
-<section
+exports[`<SecurityContainer /> renders oauth2 type in Method 1`] = `
+<div
   className={undefined}
-  id="oauth2"
 >
-  <h3>
-    oauth2
-     
-    <code
-      className={undefined}
-    >
-      type=
+  <div
+    className=""
+    onClick={[Function]}
+  >
+    <h5>
       oauth2
-    </code>
-  </h3>
-  <div>
+       
+      <code
+        className={undefined}
+      >
+        type=
+        oauth2
+      </code>
+    </h5>
     <div
-      className={undefined}
+      className=""
     >
-      <h4>
-        <code>
-          implicit
-        </code>
-         flow
-      </h4>
-      <dl
-        className={undefined}
-      >
-        <dt>
-          Authorization URL
-        </dt>
-        <dd>
-          https://example.com/api/oauth/dialog
-        </dd>
-      </dl>
-      <div
-        className={undefined}
-      >
-        <h5>
-          Available scopes
-        </h5>
-        <ul>
-          <li>
-            <span>
-              write:pets
-            </span>
-             
-            modify pets in your account
-          </li>
-          <li>
-            <span>
-              read:pets
-            </span>
-             
-            read your pets
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div
-      className={undefined}
-    >
-      <h4>
-        <code>
-          authorizationCode
-        </code>
-         flow
-      </h4>
-      <dl
-        className={undefined}
-      >
-        <dt>
-          Authorization URL
-        </dt>
-        <dd>
-          https://example.com/api/oauth/dialog
-        </dd>
-        <dt>
-          Token URL
-        </dt>
-        <dd>
-          https://example.com/api/oauth/token
-        </dd>
-      </dl>
-      <div
-        className={undefined}
-      >
-        <h5>
-          Available scopes
-        </h5>
-        <ul>
-          <li>
-            <span>
-              write:pets
-            </span>
-             
-            modify pets in your account
-          </li>
-          <li>
-            <span>
-              read:pets
-            </span>
-             
-            read your pets
-          </li>
-        </ul>
-      </div>
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
     </div>
   </div>
-</section>
+  <section
+    id="oauth2"
+  />
+</div>
 `;
 
-exports[`<SecurityContainer /> renders openIdConnect type 1`] = `
-<section
+exports[`<SecurityContainer /> renders oauth2 type in Schema 1`] = `
+<div
   className={undefined}
-  id="openIdConnect"
 >
-  <h3>
-    openIdConnect
-     
-    <code
-      className={undefined}
+  <div
+    className=""
+    onClick={[Function]}
+  >
+    <h3>
+      oauth2
+       
+      <code
+        className={undefined}
+      >
+        type=
+        oauth2
+      </code>
+    </h3>
+    <div
+      className=""
     >
-      type=
-      openIdConnect
-    </code>
-  </h3>
-  <div>
-    <dl
-      className={undefined}
-    >
-      <dt>
-        OpenID Connect URL
-      </dt>
-      <dd />
-    </dl>
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
   </div>
-</section>
+  <section
+    id="oauth2"
+  />
+</div>
+`;
+
+exports[`<SecurityContainer /> renders openIdConnect type in Method 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className=""
+    onClick={[Function]}
+  >
+    <h5>
+      openIdConnect
+       
+      <code
+        className={undefined}
+      >
+        type=
+        openIdConnect
+      </code>
+    </h5>
+    <div
+      className=""
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+  </div>
+  <section
+    id="openIdConnect"
+  />
+</div>
+`;
+
+exports[`<SecurityContainer /> renders openIdConnect type in Schema 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className=""
+    onClick={[Function]}
+  >
+    <h3>
+      openIdConnect
+       
+      <code
+        className={undefined}
+      >
+        type=
+        openIdConnect
+      </code>
+    </h3>
+    <div
+      className=""
+    >
+      <img
+        alt=""
+        src="test-file-stub"
+        title="arrow"
+      />
+    </div>
+  </div>
+  <section
+    id="openIdConnect"
+  />
+</div>
 `;
