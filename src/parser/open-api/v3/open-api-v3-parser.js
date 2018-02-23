@@ -47,7 +47,7 @@ function getUINavigationAndServicesByTags ({ tags, paths, servers = [], apiSecur
 
   for (let i = 0, tagLength = tags.length; i < tagLength; i++) {
     const tag = tags[i]
-    const exclusionFunc = (method) => method.tags.includes(tag) === false
+    const exclusionFunc = (method) => method.tags && method.tags.includes(tag) === false
     const { navigationMethods, servicesMethods } =
       buildNavigationAndServices(paths, servers, apiSecurity, securityDefinitions, exclusionFunc)
 
