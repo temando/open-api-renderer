@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased][]
+## [0.4.1][] - 2018-02-23
+
+### Fixed
+
+- [#206](https://github.com/temando/open-api-renderer/issues/206) Added null check for method.tags
 
 ## [0.4.0][] - 2018-01-15
 
